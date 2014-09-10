@@ -1,12 +1,29 @@
 # coding=utf-8
 # Copyright 2013 Janusz Skonieczny
 
+"""
+Klasyczna gra w odbijanie piłeczki napisana z użyciem biblioteki PyGame.
+
+
+Na co warto zwrócić uwagę
+- wykorzystanie __init__ do utworzenie instancji obiektów (ich właściwości)
+- dziedziczenie i implementacja metod "wirtualnych", a raczej brakujących
+- wykorzystanie *args jako zamiast jednego parametru z kolekcją
+
+Co można poprawić
+- różne poziomy sprawności AI (aktualnie komputer zawsze wygrywa)
+- zabezpieczenie by piłeczka nie zazębiała się z rakietką
+- zmiana wektora prędkości w zależności od pędu rakietki
+- dwie piłeczki
+
+"""
+
 import pygame
 import pygame.locals
 import sys
 
 
-class Movable(object):
+class Drawable(object):
     def __init__(self, width, height, x, y, color=(0, 255, 0)):
         self.width = width
         self.height = height
@@ -22,12 +39,17 @@ class Movable(object):
         return self.rect.x + self.surface.get_width() / 2
 
 
-class Ball(Movable):
-
+class Ball(Drawable):
+    """
+    Piłeczka, porusza się z wektorem prędkości,
+    odbija się gdy uderzy w jakiś inny obiekt lub ściany boczne.
+    """
     def __init__(self, width, height, x, y, color=(255, 0, 0), x_speed=3, y_speed=3):
         super(Ball, self).__init__(width, height, x, y, color)
         self.x_speed = x_speed
         self.y_speed = y_speed
+        self.start_x = x
+        self.start_y = y
 
     def draw(self):
         pygame.draw.ellipse(self.surface, self.color, [0, 0, self.width, self.height])
@@ -48,12 +70,18 @@ class Ball(Movable):
     def bounce_x(self):
         self.x_speed *= -1
 
+    def reset(self):
+        self.bounce_y()
+        self.rect.x = self.start_x
+        self.rect.y = self.start_y
 
-class Paddle(Movable):
 
-    def __init__(self, width, height, x, y, color=(0, 255, 0), ball=None):
-        super(Paddle, self).__init__(width, height, x, y, color)
-        self.ball = ball
+class Racket(Drawable):
+    """
+    Rakietka, porusza się w osi X nie wychodząc poza brzegi planszy.
+    """
+    def __init__(self, width, height, x, y, color=(0, 255, 0)):
+        super(Racket, self).__init__(width, height, x, y, color)
 
     def draw(self):
         self.surface.fill(self.color)
@@ -70,22 +98,26 @@ class Paddle(Movable):
 
 
 class Ai(object):
-
-    def __init__(self, paddle, ball, speed=4):
+    """
+    Przeciwnik, steruje swoją rakietką na podstawie obserwacji piłeczki.
+    """
+    def __init__(self, racket, ball, speed=4):
         self.speed = speed
         self.ball = ball
-        self.paddle = paddle
+        self.racket = racket
 
     def move(self):
         x = self.ball.rect.x
-        if self.paddle.center_x > x:
-            self.paddle.rect.x -= self.speed
+        if self.racket.center_x > x:
+            self.racket.rect.x -= self.speed
         else:
-            self.paddle.rect.x += self.speed
+            self.racket.rect.x += self.speed
 
 
 class Board(object):
-
+    """
+    Plansza do gry.
+    """
     def __init__(self, width, height):
         self.surface = pygame.display.set_mode((width, height), 0, 32)
         pygame.display.set_caption('Simple Pong')
@@ -98,29 +130,34 @@ class Board(object):
 
 
 class PongGame(object):
-
+    """
+    Łączy wszystkie elementy gry w całość.
+    """
     def __init__(self, width, height):
         super(PongGame, self).__init__()
         self.board = Board(width, height)
         self.ball = Ball(10, 10, width/2, height/2)
-        self.player1 = Paddle(50, 10, 350, 20)
-        self.player2 = Paddle(50, 10, 350, 360)
+        self.player1 = Racket(50, 10, 350, 20)
+        self.player2 = Racket(50, 10, 350, height - 30)
         self.ai = Ai(self.player2, self.ball)
+        self.score = [0, 0]
         self.clock = pygame.time.Clock()
+        pygame.font.init()
+        font_path = pygame.font.match_font('arial')
+        self.font = pygame.font.Font(font_path, 64)
 
     def run(self):
         while True:
             self.handle_events()
             self.ai.move()
-            self.ball.move(self.board, (self.player1, self.ai.paddle))
+            self.ball.move(self.board, (self.player1, self.ai.racket))
+            s1, s2 = self.update_score()
             self.board.draw(
                 (self.player1.surface, self.player1.rect),
                 (self.player2.surface, self.player2.rect),
                 (self.ball.surface, self.ball.rect),
+                s1, s2
             )
-
-            self.board.surface.blit(self.player2.surface, self.player2.rect)
-            self.board.surface.blit(self.ball.surface, self.ball.rect)
             self.clock.tick(60)
 
     def handle_events(self):
@@ -132,6 +169,26 @@ class PongGame(object):
             if event.type == pygame.locals.MOUSEMOTION:
                 self.player1.move(self.board, event.pos)
 
+    def update_score(self):
+        height = self.board.surface.get_height()
+        if self.ball.rect.y < 0:
+            self.score[1] += 1
+            self.ball.reset()
+        elif self.ball.rect.y > height:
+            self.score[0] += 1
+            self.ball.reset()
+        width = self.board.surface.get_width()
+        s1 = self.draw_score("Player: {}".format(self.score[0]), width/2, height * 0.3)
+        s2 = self.draw_score("Computer: {}".format(self.score[1]), width/2, height * 0.7)
+        return s1, s2
+
+    def draw_score(self, score, x, y):
+        surface = self.font.render(score, True, (120, 120, 120))
+        rect = surface.get_rect()
+        rect.center = x, y
+        return surface, rect
+
 if __name__ == "__main__":
     game = PongGame(800, 400)
     game.run()
+
