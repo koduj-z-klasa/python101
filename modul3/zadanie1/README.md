@@ -3,11 +3,12 @@ Quiz – Aplikacja internetowa
 
 * Opis implementacji:  
   Realizacja aplikacji internetowej Quiz w oparciu o Python i framework Flask (wersja 0.10.1).
-* Autorzy: 
+* Autorzy:  
   Tomasz Nowacki, Robert Bednarz  
 * Proponowany czas realizacji implementacji:   
   90 min
-* Poziom trudności: Poziom 1
+* Poziom trudności:  
+  Poziom 1
 
 ## Katalog, plik i przeznaczenie aplikacji
 
