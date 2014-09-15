@@ -41,7 +41,7 @@ if __name__ == '__main__':
 
 Serwer uruchamiamy komendą: 
 
-    ~$ python todo.py
+    ~/python101/modul3/zadanie1$ python todo.py
 
 ![](../doc/start_serwera.png)
 
