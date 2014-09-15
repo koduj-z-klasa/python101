@@ -25,7 +25,7 @@ odpowiedzi na pytania i otrzymuje ocenę – ma pokazać podstawową strukturę 
 Utworzenie minimalnej aplikacji Flask pozwoli na uruchomienie serwera 
 deweloperskiego, umożliwiającego wygodne rozwijanie kodu. W pliku quiz.py wpisujemy:
 
-``` python
+``` python aaa
 
 # -*- coding: utf-8 -*-
 # todo/todo.py
