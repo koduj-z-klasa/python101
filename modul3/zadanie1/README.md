@@ -25,7 +25,7 @@ odpowiedzi na pytania i otrzymuje ocenę – ma pokazać podstawową strukturę 
 Utworzenie minimalnej aplikacji Flask pozwoli na uruchomienie serwera 
 deweloperskiego, umożliwiającego wygodne rozwijanie kodu. W pliku quiz.py wpisujemy:
 
-``` python aaa
+``` python
 
 # -*- coding: utf-8 -*-
 # todo/todo.py
@@ -61,24 +61,28 @@ do przeglądarki.
 
 W pliku todo.py umieścimy funkcję index(), widok naszej strony głównej:
 
-    # -*- coding: utf-8 -*-
-    # todo/todo.py
+``` python
+
+# -*- coding: utf-8 -*-
+# todo/todo.py
+
+from flask import Flask
+from flask import render_template
+
+app = Flask(__name__)
+
+# dekorator laczacy adres glowny z widokiem index
+@app.route('/')
+def index():
+    # gdybyśmy chcieli wyświetlić prosty tekst, użyjemy funkcji poniżej
+    #return 'Hello, SWOI'
+    # zwracamy wyrenderowany szablon index.html:
+    return render_templpate('index.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
     
-    from flask import Flask
-    from flask import render_template
-    
-    app = Flask(__name__)
-    
-    # dekorator laczacy adres glowny z widokiem index
-    @app.route('/')
-    def index():
-        # gdybyśmy chcieli wyświetlić prosty tekst, użyjemy funkcji poniżej
-        #return 'Hello, SWOI'
-        # zwracamy wyrenderowany szablon index.html:
-        return render_templpate('index.html')
-    
-    if __name__ == '__main__':
-        app.run(debug=True)
+```    
 
 Zauważmy, że widok index() za pomocą dekoratora @app.route('/') związaliśmy 
 z adresem głównym (/). Dalej w katalogu quiz tworzymy podkatalog templates, 
@@ -88,15 +92,19 @@ a w nim szablon index.html, wydajemy polecenia w terminalu:
 
 Do pliku index.html wstawiamy przykładowy kod HTML:
 
-    <!-- quiz/templates/index.html -->
-    <html>
-        <head>
-            <title>Quiz SWOi</title>
-        </head>
-        <body>
-            <h1>Quiz SWOI</h1>
-        </body>
-    </html>
+``` html
+
+<!-- quiz/templates/index.html -->
+<html>
+    <head>
+        <title>Quiz SWOi</title>
+    </head>
+    <body>
+        <h1>Quiz SWOI</h1>
+    </body>
+</html>
+
+```
 
 Po odwiedzeniu adresu http://127.0.0.1:5000, otrzymamy stronę HTML.
 
@@ -108,89 +116,97 @@ Dane naszej aplikacji, a więc pytania i odpowiedzi, umieścimy w liście QUESTI
  oraz poprawną odpowiedź. W pliku quiz.py wstawiamy listę pytań, aktualizujemy 
  widok index(), przekazując do szablonu listę pytań jako zmienną questions.
 
-    # -*- coding: utf-8 -*-
+``` python
+
+# -*- coding: utf-8 -*-
+
+# quiz/quiz.py
+
+from flask import Flask
+from flask import render_template
+
+app = Flask(__name__)
+
+# konfiguracja aplikacji
+app.config.update(dict(
+    SECRET_KEY='bardzosekretnawartosc', # nieznany nikomu sekret
+))
+
+# lista pytan
+QUESTIONS = [
+    {
+        'question': u'Stolica Hiszpani, to:',# pytanie
+        'answers': [u'Madryt', u'Warszawa', u'Barcelona'], # mozliwe odpowiedzi
+        'correct_answer': u'Madryt', # poprawna odpowiedz
+    },
+    {
+        'question': u'Objętość sześcianu o boku 6 cm, wynosi:', # pytanie
+        'answers': [u'36', u'216', u'18'], # mozliwe odpowiedzi
+        'correct_answer': u'216', # poprawna odpowiedz
+    },
+    {
+        'question': u'Symbol pierwiastka Helu, to:', # pytanie
+        'answers': [u'Fe', u'H', u'He'], # mozlowe odpowiedzi
+        'correct_answer': u'He', # poprawna odpowiedz
+    }
+]
+
+
+@app.route('/')
+def index():
+    # do templatki index.html przekazujemy liste pytan jako zmienna questions
+    return render_template('index.html', questions=QUESTIONS)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
     
-    # quiz/quiz.py
-    
-    from flask import Flask
-    from flask import render_template
-    
-    app = Flask(__name__)
-    
-    # konfiguracja aplikacji
-    app.config.update(dict(
-        SECRET_KEY='bardzosekretnawartosc', # nieznany nikomu sekret
-    ))
-    
-    # lista pytan
-    QUESTIONS = [
-        {
-            'question': u'Stolica Hiszpani, to:',# pytanie
-            'answers': [u'Madryt', u'Warszawa', u'Barcelona'], # mozliwe odpowiedzi
-            'correct_answer': u'Madryt', # poprawna odpowiedz
-        },
-        {
-            'question': u'Objętość sześcianu o boku 6 cm, wynosi:', # pytanie
-            'answers': [u'36', u'216', u'18'], # mozliwe odpowiedzi
-            'correct_answer': u'216', # poprawna odpowiedz
-        },
-        {
-            'question': u'Symbol pierwiastka Helu, to:', # pytanie
-            'answers': [u'Fe', u'H', u'He'], # mozlowe odpowiedzi
-            'correct_answer': u'He', # poprawna odpowiedz
-        }
-    ]
-    
-    
-    @app.route('/')
-    def index():
-        # do templatki index.html przekazujemy liste pytan jako zmienna questions
-        return render_template('index.html', questions=QUESTIONS)
-    
-    
-    if __name__ == '__main__':
-        app.run(debug=True)
+```
 
 Dodatkowo dodaliśmy konfigurację aplikacji, ustalając sekretny klucz, który przyda 
 nam się w późniejszej części. Aktualizujemy szablon index.html, aby wyświetlić 
 listę pytań w postaci formularza HTML.
 
-    <!-- quiz/templates/index.html -->
-    <html>
-        <head>
-            <title>Quiz SWOI</title>
-        </head>
-        <body>
-            <h1>Quiz SWOI</h1>
-    
-            <!-- formularz z quizem -->
-            <form method="POST">
-                <!-- iterujemy po liscie pytan -->
-                {% for entry in questions %}
-                    <p>
-                        <!-- dla kazdego pytania wypisujemy pytanie (pole question) -->
-                        {{ entry.question }}
+``` html
+
+<!-- quiz/templates/index.html -->
+<html>
+    <head>
+        <title>Quiz SWOI</title>
+    </head>
+    <body>
+        <h1>Quiz SWOI</h1>
+
+        <!-- formularz z quizem -->
+        <form method="POST">
+            <!-- iterujemy po liscie pytan -->
+            {% for entry in questions %}
+                <p>
+                    <!-- dla kazdego pytania wypisujemy pytanie (pole question) -->
+                    {{ entry.question }}
+                    <br>
+                    <!-- zapamietujemy numer pytania liczac od zera -->
+                    {% set question_number = loop.index0 %}
+                    <!-- iterujemy po mozliwych odpowiedziach dla danego pytania -->
+                    {% for answer in entry.answers %}
+                        <label>
+                            <!-- odpowiedzi zamieniamy na radio buttony -->
+                            <input type="radio" value="{{ answer }}" name="{{ question_number }}">
+                            {{ answer }}
+                        </label>
                         <br>
-                        <!-- zapamietujemy numer pytania liczac od zera -->
-                        {% set question_number = loop.index0 %}
-                        <!-- iterujemy po mozliwych odpowiedziach dla danego pytania -->
-                        {% for answer in entry.answers %}
-                            <label>
-                                <!-- odpowiedzi zamieniamy na radio buttony -->
-                                <input type="radio" value="{{ answer }}" name="{{ question_number }}">
-                                {{ answer }}
-                            </label>
-                            <br>
-                        {% endfor %}
-                    </p>
-                {% endfor %}
-    
-                <!-- button wysylajacy wypelniony formularz -->
-                <button type="submit">Sprawdź odpowiedzi</button>
-            </form>
-    
-        </body>
-    </html>
+                    {% endfor %}
+                </p>
+            {% endfor %}
+
+            <!-- button wysylajacy wypelniony formularz -->
+            <button type="submit">Sprawdź odpowiedzi</button>
+        </form>
+
+    </body>
+</html>
+
+```
 
 Wewnątrz szablonu przeglądamy pytania zawarte w zmiennej questions za pomocą 
 instrukcji `{% for entry in questions %}`, tworzymy formularz HTML składający 
@@ -206,41 +222,49 @@ W efekcie powinniśmy otrzymać następującą stronę internetową:
 
 Mechanizm sprawdzana liczby poprawnych odpowiedzi umieścimy w pliku quiz.py, modyfikując widok index():
 
-    # uzupelniamy importy
-    from flask import request
-    from flask import redirect, url_for
-    from flask import flash
+``` python
+
+# uzupelniamy importy
+from flask import request
+from flask import redirect, url_for
+from flask import flash
+
+
+# rozszerzamy widok
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    # jezeli zadanie jest typu POST, to znaczy, ze ktos przeslal odpowiedzi do sprawdzenia
+    if request.method == 'POST':
+        score = 0 # liczba poprawnych odpowiedzi
+        answers = request.form # zapamietujemy slownik z odpowiedziami
+        # sprawdzamy odpowiedzi:
+        for question_number, user_answer in answers.items():
+            # pobieramy z listy informacje o poprawnej odpowiedzi
+            correct_answer = QUESTIONS[int(question_number)]['correct_answer']
+            if user_answer == correct_answer: # porownujemy odpowiedzi
+                score += 1 # zwiekszamy wynik
+        # przygotowujemy informacje o wyniku
+        flash(u'Liczba poprawnych odpowiedzi, to: {0}'.format(score))
+        # po POST przekierowujemy na strone glowna
+        return redirect(url_for('index'))
+
+    # jezeli zadanie jest typu GET, renderujemy index.html
+    return render_template('index.html', questions=QUESTIONS)
     
-    
-    # rozszerzamy widok
-    @app.route('/', methods=['GET', 'POST'])
-    def index():
-        # jezeli zadanie jest typu POST, to znaczy, ze ktos przeslal odpowiedzi do sprawdzenia
-        if request.method == 'POST':
-            score = 0 # liczba poprawnych odpowiedzi
-            answers = request.form # zapamietujemy slownik z odpowiedziami
-            # sprawdzamy odpowiedzi:
-            for question_number, user_answer in answers.items():
-                # pobieramy z listy informacje o poprawnej odpowiedzi
-                correct_answer = QUESTIONS[int(question_number)]['correct_answer']
-                if user_answer == correct_answer: # porownujemy odpowiedzi
-                    score += 1 # zwiekszamy wynik
-            # przygotowujemy informacje o wyniku
-            flash(u'Liczba poprawnych odpowiedzi, to: {0}'.format(score))
-            # po POST przekierowujemy na strone glowna
-            return redirect(url_for('index'))
-    
-        # jezeli zadanie jest typu GET, renderujemy index.html
-        return render_template('index.html', questions=QUESTIONS)
+```
 
 W szablonie index.html po znaczniku <h1> wstawiamy instrukcje wyświetlające wynik:
 
-    <!-- umieszczamy informacje ustawiona za pomoca funkcji flash -->
-    <p>
-        {% for message in get_flashed_messages() %}
-            <strong class="success">{{ message }}</strong>
-        {% endfor %}
-    </p>
+``` html
+    
+<!-- umieszczamy informacje ustawiona za pomoca funkcji flash -->
+<p>
+    {% for message in get_flashed_messages() %}
+        <strong class="success">{{ message }}</strong>
+    {% endfor %}
+</p>
+
+```
 
 JAK TO DZIAŁA: Uzupełniliśmy dekorator app.route, aby obsługiwał zarówno żądania 
 GET (wejście na stronę główną po wpisaniu adresu => pokazujemy pytania), 
