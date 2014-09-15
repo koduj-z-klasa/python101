@@ -253,7 +253,7 @@ def index():
     
 ```
 
-W szablonie index.html po znaczniku <h1> wstawiamy instrukcje wyświetlające wynik:
+W szablonie index.html po znaczniku `<h1>` wstawiamy instrukcje wyświetlające wynik:
 
 ``` html
     
