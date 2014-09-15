@@ -43,6 +43,7 @@ Serwer uruchamiamy komendą:
 
     ~$ python todo.py
 
+![](../doc/start_serwera.png)
 
 Domyślnie serwer uruchamia się pod adresem http://127.0.0.1:5000. Po wpisaniu 
 adresu do przeglądarki internetowej otrzymamy stronę z błędem HTTP 404, 
