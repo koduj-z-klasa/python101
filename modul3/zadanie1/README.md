@@ -109,6 +109,7 @@ Do pliku index.html wstawiamy przykładowy kod HTML:
 
 Po odwiedzeniu adresu http://127.0.0.1:5000, otrzymamy stronę HTML.
 
+![](../doc/h1.png)
 
 ## Pokaż dane aplikacji – pytania i odpowiedzi
 
@@ -218,6 +219,7 @@ od 0 (`{% set question_number = loop.index0 %}`).
 
 W efekcie powinniśmy otrzymać następującą stronę internetową:
 
+![](../doc/quiz.png)
 
 ## Oceniamy odpowiedzi
 
