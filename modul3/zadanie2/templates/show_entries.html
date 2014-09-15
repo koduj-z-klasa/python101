@@ -1,0 +1,53 @@
+<!-- todo/templates/show_entries.html -->
+<html>
+    <head>
+        <title>{{ config.SITE_NAME }}</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <h1>{{ config.SITE_NAME }}:</h1>
+
+        <form class="add-form" method="POST" action="{{ url_for('index') }}">
+            <input name="entry" value=""/>
+            <button type="submit">Dodaj zadanie</button>
+        </form>
+
+        <p>
+            {% if error %}
+                <strong class="error">Błąd: {{ error }}</strong>
+            {% endif %}
+
+            {% for message in get_flashed_messages() %}
+                <strong class="success">{{ message }}</strong>
+            {% endfor %}
+        </p>
+
+        <ol>
+            {% for entry in entries %}
+                <li>
+                    <!-- dodatkowe dekoracje dla zadan zakonczonych -->
+                    {% if entry.is_done %}
+                        <span class="done">
+                    {% endif %}
+
+                    {{ entry.title }}<em>{{ entry.created_at }}</em>
+
+                    <!-- dodatkowe dekoracje dla zadan zakonczonych -->
+                    {% if entry.is_done %}
+                        </span>
+                    {% endif %}
+                    
+                    <!-- formularz zmiany statusu zadania -->
+                    {% if not entry.is_done %}
+                        <form method="POST" action="{{ url_for('mark_as_done') }}">
+                            <!-- wysylamy jedynie informacje o id zadania -->
+                            <input type="hidden" name="id" value="{{ entry.id }}"/>
+                            <button type="submit">Wykonane</button>
+                        </form>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ol>
+
+    </body>
+</html>

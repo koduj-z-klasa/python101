@@ -1,0 +1,25 @@
+/* todo/static/style.css */
+
+body { margin-top: 20px; }
+h1, p { margin-left: 20px; }
+.add-form { margin-left: 20px; }
+ol { text-align: left; }
+em { font-size: 11px; margin-left: 10px; }
+form { display: inline-block; margin-bottom: 0;}
+input[name="entry"] { width: 300px; }
+input[name="entry"]:focus {
+    border-color: blue;
+    border-radius: 5px;
+}
+li { margin-bottom: 5px; }
+button {
+    padding: 0;
+    cursor: pointer;
+    font-size: 11px;
+    background: white;
+    border: none;
+    color: blue;
+}
+.error { color: red; }
+.success { color: green; }
+.done { text-decoration: line-through; }
