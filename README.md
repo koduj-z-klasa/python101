@@ -1,5 +1,5 @@
 Python 101
-=========+
+==========
 
 Materiały dla nauczycieli do szkolenia z języka Python realizowanego w ramach
 projektu Koduj z Klasą prowadzonego przez Fundację Centrum Edukacji Obywatelskiej
