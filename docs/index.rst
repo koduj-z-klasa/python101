@@ -12,16 +12,14 @@ projektu Koduj z Klasą prowadzonego przez Fundację Centrum Edukacji Obywatelsk
 http://www.ceo.org.pl/koduj
 
 
-Środowisko szkoleniowe
-----------------------
+Przygotowanie do szkolenia
+--------------------------
 
 ..  toctree::
     :maxdepth: 1
 
-    env/sru
-    env/linux
-    env/windows
-    env/pycharm
+    env
+    git
 
 Zaczynamy!
 ----------
@@ -29,7 +27,6 @@ Zaczynamy!
 .. toctree::
     :maxdepth: 2
 
-    env/git
     m3zadanie1
 
 
