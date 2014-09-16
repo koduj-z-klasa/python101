@@ -49,7 +49,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Python 101'
-copyright = u'2014, Janusz Skonieczny, Tomasz Nowacki, Robert Bednarz'
+copyright = u'2014, Centrum Edukacji Obywatelskiej'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -202,7 +202,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
   ('index', 'Python101.tex', u'Python 101 Documentation',
-   u'Janusz Skonieczny, Tomasz Nowacki, Robert Bednarz', 'manual'),
+   u'Centrum Edukacji Obywatelskiej', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -232,7 +232,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'python101', u'Python 101 Documentation',
-     [u'Janusz Skonieczny, Tomasz Nowacki, Robert Bednarz'], 1)
+     [u'Centrum Edukacji Obywatelskiej'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -246,7 +246,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'Python101', u'Python 101 Documentation',
-   u'Janusz Skonieczny, Tomasz Nowacki, Robert Bednarz', 'Python101', 'One line description of project.',
+   u'Centrum Edukacji Obywatelskiej', 'Python101', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -261,3 +261,7 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
+
+import sphinx_rtd_theme
+html_theme = "sphinx_rtd_theme"
+html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]

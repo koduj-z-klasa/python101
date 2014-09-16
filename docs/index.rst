@@ -3,18 +3,39 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Python 101's documentation!
-======================================
+Szkolenie Python 101
+====================
 
-Contents:
+Materiały dla nauczycieli do szkolenia z języka Python realizowanego w ramach
+projektu Koduj z Klasą prowadzonego przez Fundację Centrum Edukacji Obywatelskiej
+
+http://www.ceo.org.pl/koduj
+
+
+Środowisko szkoleniowe
+----------------------
+
+..  toctree::
+    :maxdepth: 1
+
+    env/sru
+    env/linux
+    env/windows
+    env/pycharm
+
+Zaczynamy!
+----------
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
+
+    env/git
+    m3zadanie1
 
 
 
 Indices and tables
-==================
+~~~~~~~~~~~~~~~~~~
 
 * :ref:`genindex`
 * :ref:`modindex`
