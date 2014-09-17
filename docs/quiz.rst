@@ -1,10 +1,11 @@
 Quiz – Aplikacja internetowa
 ============================
 
-Realizacja aplikacji internetowej Quiz w oparciu o framework Flask.
 
-Katalog, plik i przeznaczenie aplikacji
----------------------------------------
+Realizacja aplikacji internetowej Quiz w oparciu o mikro-framework Flask.
+
+Struktura katalogów
+-------------------
 
 Zaczynamy od utworzenia katalogu projektu Quiz, w którym zamieścimy
 wszystkie pliki niezbędne do realizacji tej implementacji. W katalogu
@@ -25,6 +26,7 @@ Utworzenie minimalnej aplikacji Flask pozwoli na uruchomienie serwera
 deweloperskiego, umożliwiającego wygodne rozwijanie kodu. W pliku
 quiz.py wpisujemy:
 
+
 .. code-block:: python
     :linenos:
 
@@ -44,7 +46,7 @@ Serwer uruchamiamy komendą:
 
     ~/python101/modul3/zadanie1$ python todo.py
 
-.. figure:: /img/start_serwera.png
+.. figure:: img/start_serwera.png
 
 Domyślnie serwer uruchamia się pod adresem http://127.0.0.1:5000. Po
 wpisaniu adresu do przeglądarki internetowej otrzymamy stronę z błędem
@@ -114,7 +116,7 @@ Do pliku index.html wstawiamy przykładowy kod HTML:
 
 Po odwiedzeniu adresu http://127.0.0.1:5000, otrzymamy stronę HTML.
 
-.. figure:: /img/h1.png
+.. figure:: img/h1.png
 
 Pokaż dane aplikacji – pytania i odpowiedzi
 -------------------------------------------
@@ -226,7 +228,7 @@ liczonymi od 0 (``{% set question_number = loop.index0 %}``).
 
 W efekcie powinniśmy otrzymać następującą stronę internetową:
 
-.. figure:: /img/quiz.png
+.. figure:: img/quiz.png
 
 Oceniamy odpowiedzi
 -------------------
@@ -282,7 +284,7 @@ Jak to działa
 ^^^^^^^^^^^^^
 
 Uzupełniliśmy dekorator app.route, aby obsługiwał zarówno
-żądania GET (wejście na stronę główną po wpisaniu adresu => pokazujemy
+żądania :term:`GET` (wejście na stronę główną po wpisaniu adresu => pokazujemy
 pytania), jak i POST (przesłanie odpowiedzi z formularza pytań =>
 oceniamy odpowiedzi).
 
@@ -306,33 +308,8 @@ aplikacji).
 
 W efekcie otrzymujemy aplikację Quiz.
 
-Film instruktażowy:
-------------------
 
-http://youtu.be/1WAeyriYymQ
-
-Słownik pojęć
--------------
-
--  Aplikacja – program komputerowy.
--  Framework – zestaw komponentów i bibliotek wykorzystywany do budowy
-   aplikacji.
--  GET – typ żądania HTTP, służący do pobierania zasobów z serwera WWW.
--  HTML – język znaczników wykorzystywany do formatowania dokumentów,
-   zwłaszcza stron WWW.
--  HTTP – protokół przesyłania dokumentów WWW.
--  POST – typ żądania HTTP, służący do umieszczania zasobów na serwerze
-   WWW.
--  Serwer deweloperski – serwer używany w czasie prac nad
-   oprogramowaniem.
--  Serwer WWW – serwer obsługujący protokół HTTP.
--  Templatka – szablon strony WWW wykorzystywany przez Flask do
-   renderowania widoków.
--  URL – ustandaryzowany format adresowania zasobów w internecie
-   (przykład: adres strony WWW).
--  Widok – fragment danych, który jest reprezentowany użytkownikowi.
-
-Materiały pomocnicze
+Dodatkowe informacje
 --------------------
 
 1. Strona projektu Flask http://flask.pocoo.org/
@@ -340,4 +317,58 @@ Materiały pomocnicze
 3. Co nieco o HTTP i żądaniach GET i POST
    http://pl.wikipedia.org/wiki/Http
 
-Załączniki - quiz.tar.gz
+Słownik pojęć
+^^^^^^^^^^^^^
+
+.. glossary::
+
+    Aplikacja
+        program komputerowy.
+
+    Framework
+        zestaw komponentów i bibliotek wykorzystywany do budowy aplikacji.
+
+    GET
+        typ żądania HTTP, służący do pobierania zasobów z serwera WWW.
+
+    HTML
+        język znaczników wykorzystywany do formatowania dokumentów,
+        zwłaszcza stron WWW.
+
+    HTTP
+        protokół przesyłania dokumentów WWW.
+
+    POST
+        typ żądania HTTP, służący do umieszczania zasobów na serwerze WWW.
+
+    Serwer deweloperski
+        serwer używany w czasie prac nad oprogramowaniem.
+
+    Serwer WWW
+        serwer obsługujący protokół HTTP.
+
+    Templatka
+        szablon strony WWW wykorzystywany przez Flask do
+        renderowania widoków.
+
+    URL
+        ustandaryzowany format adresowania zasobów w internecie
+        (przykład: adres strony WWW).
+
+    Widok
+        fragment danych, który jest reprezentowany użytkownikowi.
+
+Film instruktażowy:
+^^^^^^^^^^^^^^^^^^^
+
+http://youtu.be/1WAeyriYymQ
+
+
+Metryka
+^^^^^^^
+
+
+:Autorzy: Tomasz Nowacki, Robert Bednarz, Janusz Skonieczny
+
+:Czas trwania: 90 minut
+

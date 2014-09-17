@@ -26,8 +26,15 @@ Zaczynamy!
 
 .. toctree::
     :maxdepth: 2
+    :numbered:
 
-    m3zadanie1
+    basics
+    tic-tac-toe
+    pong
+    conway-life
+    quiz
+    todo
+    chatter
 
 
 
