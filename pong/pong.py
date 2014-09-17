@@ -30,13 +30,15 @@ class PongGame(object):
         self.board = Board(width, height)
         self.clock = pygame.time.Clock()
         self.ball = Ball(10, 10, width/2, height/2)
+        self.player1 = Racket(50, 10, width/2, height/2)
 
     def run(self):
         while True:
             self.handle_events()
-            self.ball.move()
+            self.ball.move(self.board, (self.player1,))
             self.board.draw(
                 (self.ball.surface, self.ball.rect),
+                (self.player1.surface, self.player1.rect),
             )
             self.clock.tick(60)
 
@@ -46,6 +48,8 @@ class PongGame(object):
                 pygame.quit()
                 sys.exit()
 
+            if event.type == pygame.locals.MOUSEMOTION:
+                self.player1.move(self.board, event.pos)
 
 class Drawable(object):
     def __init__(self, width, height, x, y, color=(0, 255, 0)):
@@ -78,9 +82,18 @@ class Ball(Drawable):
     def draw(self):
         pygame.draw.ellipse(self.surface, self.color, [0, 0, self.width, self.height])
 
-    def move(self):
+    def move(self, board, rackets):
         self.rect.x += self.x_speed
         self.rect.y += self.y_speed
+        for r in rackets:
+            if self.rect.colliderect(r.rect):
+                self.bounce_y()
+
+        if self.rect.x < 0 or self.rect.x > board.surface.get_width():
+            self.bounce_x()
+
+        if self.rect.y < 0 or self.rect.y > board.surface.get_height():
+            self.bounce_y()
 
     def bounce_y(self):
         self.y_speed *= -1
@@ -93,6 +106,26 @@ class Ball(Drawable):
         self.rect.x = self.start_x
         self.rect.y = self.start_y
 
+
+class Racket(Drawable):
+    """
+    Rakietka, porusza się w osi X nie wychodząc poza brzegi planszy.
+    """
+    def __init__(self, width, height, x, y, color=(0, 255, 0)):
+        super(Racket, self).__init__(width, height, x, y, color)
+
+    def draw(self):
+        self.surface.fill(self.color)
+
+    def move(self, board, position):
+        x, y = position
+        x = x - self.width
+        max_x = board.surface.get_width()
+        if x < 0:
+            x = 0
+        elif x + self.width > max_x:
+            x = max_x
+        self.rect.x = x
 
 game = PongGame(800, 400)
 game.run()
