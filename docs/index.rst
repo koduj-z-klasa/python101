@@ -3,13 +3,23 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+.. sidebar:: Krótki link do tej strony
+
+    `bit.ly/py-101 <http://bit.ly/py-101>`_
+
 Szkolenie Python 101
 ====================
 
-Materiały dla nauczycieli do szkolenia z języka Python realizowanego w ramach
-projektu Koduj z Klasą prowadzonego przez Fundację Centrum Edukacji Obywatelskiej
+Niniejsze materiały to dokumentacja do szkolenia z języka Python realizowanego
+w ramach projektu `Koduj z Klasą`_ prowadzonego przez
+Fundację `Centrum Edukacji Obywatelskiej`_.
 
-http://www.ceo.org.pl/koduj
+Materiały w wersji źródłowej są dostępne `naszym repozytorium`_:
+
+
+.. _Koduj z Klasą: http://www.ceo.org.pl/koduj
+.. _Centrum Edukacji Obywatelskiej: http://www.ceo.org.pl/
+.. _naszym repozytorium: https://github.com/koduj-z-klasa/python101
 
 
 Przygotowanie do szkolenia

@@ -74,8 +74,8 @@ i ścieżek do plików używanych w scenariuszach. Jednak użycie Windows jako
 środowiska szkoleniowego nie jest wykluczone.
 
 .. note::
-    Pamiętaj by zmieniać znaki `/` na `\` w ścieżkach, a także w miejscu
-    komend systemu Linux używać bliskich zamienników z Windows
+    Pamiętaj by zmieniać znaki `/` (slash) na `\\` (backslash) w ścieżkach,
+    natomiast w miejscu komend systemu Linux użyj bliskich zamienników z Windows.
 
 
 Instalacja Python 2.7 pod windows
