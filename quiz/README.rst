@@ -1,1 +1,1 @@
-  .. include:: ../docs/quiz.rst
+.. include:: ../docs/quiz.rst
