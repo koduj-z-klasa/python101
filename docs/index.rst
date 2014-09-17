@@ -43,6 +43,7 @@ Zaczynamy!
     pong
     conway-life
     quiz
+    ../quiz/README.rst
     todo
     chatter
 
