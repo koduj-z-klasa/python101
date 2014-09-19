@@ -83,7 +83,7 @@ Instalacja Python 2.7 pod windows
 
 Możemy szybko zainstalować Python z pomocą konsoli PowerShell (taka niebieska)
 
-.. code-block:: PowerShell
+.. code-block:: powershell
 
     (new-object System.Net.WebClient).DownloadFile("https://www.python.org/ftp/python/2.7.8/python-2.7.8.msi", "$pwd\python-2.7.8.msi")
     msiexec /i python-2.7.8.msi TARGETDIR=C:\Python27
@@ -113,7 +113,7 @@ A następnie zainstalować pip przy użyciu świeżo zainstalowanego Pythona :)
 
 Ponadto możemy ustawić zmienną systemową by za każdym razerm nie używać pełnej ścieżki.
 
-.. code-block:: Batch
+.. code-block:: batch
 
     set PATH=%PATH%;c:\Python27\;c:\Python27\Scripts\
 
@@ -151,4 +151,9 @@ Jak zdobyć bezpłatną licencję
 Każdy nauczyciel może wystąpić o klucz licencyjny przy pomocy `formularza
 dostępnego na stronie producenta <http://www.jetbrains.com/eforms/classroomRequest.action?licenseRequest=PCP04LS#>`_
 
+Polski słownik ortograficzny
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+W programie możemy włączyć sprawdzanie polskiej pisowni, jednak potrzebne
+jest wskazanie pliku słownika. W ustawieniach :kbd:`Ctrl+Alt+S` szukamy `spell` i dodajemy
+``custom dictionaries folder`` wskazując na ``/usr/share/hunspell/`` (lokalizacja w SRU.

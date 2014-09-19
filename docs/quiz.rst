@@ -1,7 +1,6 @@
 Quiz – Aplikacja internetowa
 ============================
 
-
 Realizacja aplikacji internetowej Quiz w oparciu o mikro-framework Flask.
 
 Struktura katalogów

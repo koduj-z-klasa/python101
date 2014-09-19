@@ -11,6 +11,7 @@ Na co warto zwrócić uwagę
 - wykorzystanie *args jako zamiast jednego parametru z kolekcją
 
 Co można poprawić
+- piłeczka wychodzi poza prawą krawędź planszy
 - różne poziomy sprawności AI (aktualnie komputer zawsze wygrywa)
 - zabezpieczenie by piłeczka nie zazębiała się z rakietką
 - zmiana wektora prędkości w zależności od pędu rakietki
@@ -32,12 +33,13 @@ class Drawable(object):
         self.rect = self.surface.get_rect()
         self.rect.x = x
         self.rect.y = y
-        self.draw()
 
     @property
     def center_x(self):
         return self.rect.x + self.surface.get_width() / 2
 
+    def draw_on(self, surface):
+        surface.surface.blit(self.surface, self.rect)
 
 class Ball(Drawable):
     """
@@ -136,9 +138,9 @@ class PongGame(object):
     def __init__(self, width, height):
         super(PongGame, self).__init__()
         self.board = Board(width, height)
-        self.ball = Ball(10, 10, width/2, height/2)
-        self.player1 = Racket(50, 10, 350, 20)
-        self.player2 = Racket(50, 10, 350, height - 30)
+        self.ball = Ball(20, 20, width/2, height/2)
+        self.player1 = Racket(80, 20, width/2 - 40, height - 40, color=(0, 255, 0))
+        self.player2 = Racket(80, 20, width/2 - 40, 20, color=(0, 0, 0))
         self.ai = Ai(self.player2, self.ball)
         self.score = [0, 0]
         self.clock = pygame.time.Clock()
@@ -183,7 +185,7 @@ class PongGame(object):
         return s1, s2
 
     def draw_score(self, score, x, y):
-        surface = self.font.render(score, True, (120, 120, 120))
+        surface = self.font.render(score, True, (150, 150, 150))
         rect = surface.get_rect()
         rect.center = x, y
         return surface, rect
