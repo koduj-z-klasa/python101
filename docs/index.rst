@@ -49,7 +49,7 @@ Zaczynamy!
 
     basics
     tic-tac-toe
-    pong
+    pong/pong
     conway-life
     quiz
     todo

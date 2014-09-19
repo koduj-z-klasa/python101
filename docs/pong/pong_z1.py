@@ -5,10 +5,14 @@ import pygame.locals
 
 
 class Board(object):
-    """Plansza do gry. Odpowiada za rysowanie okna gry.
     """
+    Plansza do gry. Odpowiada za rysowanie okna gry.
+    """
+
     def __init__(self, width, height):
-        """Konstruktor planszy do gry. Przygotowuje okienko gry.
+        """
+        Konstruktor planszy do gry. Przygotowuje okienko gry.
+
         :param width:
         :param height:
         """
@@ -16,7 +20,9 @@ class Board(object):
         pygame.display.set_caption('Simple Pong')
 
     def draw(self, *args):
-        """Rysuje okno gry
+        """
+        Rysuje okno gry
+
         :param args: lista obiektów do narysowania
         """
         background = (230, 255, 255)
