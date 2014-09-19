@@ -61,7 +61,7 @@ class PongGame(object):
         for event in pygame.event.get():
             if event.type == pygame.locals.QUIT:
                 pygame.quit()
-                return False
+                return True
 
 # Ta część powinna być zawsze na końcu modułu (ten plik jest modułem)
 # chcemy uruchomić naszą grę dopiero po tym jak wszystkie klasy zostaną zadeklarowane

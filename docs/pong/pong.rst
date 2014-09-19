@@ -26,7 +26,7 @@ Do rozpoczęcia pracy z przykładem pobieramy szczątkowy kod źródłowy:
     Oprócz znaku zachęty ``$`` przykłady mogą zawierać informację o
     lokalizacji w jakiej należy wykonać komendę. Np. ``~/python101$`` oznacza
     że komendę wykonujemy w folderze ``python101`` w katalogu domowym
-    użytkownika.
+    użytkownika, czyli ``/home/sru/python101`` w środowisku SRU.
     Jeśli nie mamy tego katalogu należy :doc:`przygotować katalog projektu <../git>`.
 
     Komendy należy kopiować i wklejać bez znaku zachęty ``$`` i poprzedzającego tekstu.
@@ -116,14 +116,14 @@ rysować w oknie naszej gry:
 
 .. literalinclude:: pong_z3.py
     :linenos:
-    :lineno-start: 66
+    :lineno-start: 67
     :lines: 72-85
 
 Następnie dodajmy klasę samej piłeczki dziedzicząc z ``Drawable``:
 
 .. literalinclude:: pong_z3.py
     :linenos:
-    :lineno-start: 81
+    :lineno-start: 83
     :lines: 88-124
 
 Teraz musimy naszą piłeczkę zintegrować z resztą gry:
@@ -131,7 +131,7 @@ Teraz musimy naszą piłeczkę zintegrować z resztą gry:
 .. literalinclude:: pong_z3.py
     :linenos:
     :lines: 38-60
-    :emphasize-lines: 12, 20-22
+    :emphasize-lines: 12, 19-22
     :lineno-start: 38
 
 .. note::
@@ -147,3 +147,165 @@ Teraz musimy naszą piłeczkę zintegrować z resztą gry:
     jest przecinek, czy go brakuje, czy go należy usunąć. Zgodnie z konwencją powinien być
     tam zawsze.
 
+Gotowy kod możemy wyciągnąć komendą:
+
+.. code-block:: bash
+
+    ~/python101$ git checkout -f --track origin/pong/z3
+
+
+Odbijanie piłeczki
+------------------
+
+Uruchommy naszą "grę" ;)
+
+.. code-block:: bash
+
+    ~/python101$ python pong/pong.py
+
+.. figure:: pong_3.png
+
+Efekt nie jest powalający, ale mamy już jakiś ruch na planszy. Szkoda, że piłka spada z planszy.
+Może mogła by się odbijać od krawędzi okienka?
+Możemy wykorzystać wcześniej przygotowane metody do zmiany kierunku wektora
+prędkości, musimy tylko wykryć moment w którym piłeczka będzie dotykać krawędzi.
+
+W tym celu piłeczka musi być świadoma istnienia planszy i pozycji krawędzi, dlatego
+zmodyfikujemy metodę ``Ball.move`` tak by przyjmowała ``board`` jako argument i na
+jego podstawie sprawdzimy czy piłeczka powinna się odbijać:
+
+.. code-block:: python
+    :emphasize-lines: 1, 8-12
+    :lineno-start: 119
+
+    def move(self, board):
+        """
+        Przesuwa piłeczkę o wektor prędkości
+        """
+        self.rect.x += self.x_speed
+        self.rect.y += self.y_speed
+
+        if self.rect.x < 0 or self.rect.x > board.surface.get_width():
+            self.bounce_x()
+
+        if self.rect.y < 0 or self.rect.y > board.surface.get_height():
+            self.bounce_y()
+
+Jeszcze zmodyfikujmy wywołanie metody ``move`` w naszej pętli głównej:
+
+.. code-block:: python
+    :emphasize-lines: 6
+    :lineno-start: 51
+
+    def run(self):
+        """
+        Główna pętla programu
+        """
+        while not self.handle_events():
+            self.ball.move(self.board)
+            self.board.draw(
+                self.ball,
+            )
+            self.fps_clock.tick(30)
+
+.. warning::
+
+    Powyższe przykłady mają o jedno wcięcie za mało. Poprawnie wcięte przykłady
+    straciłyby kolorowanie, dlatego należy lekko poprawić kod po ewentualnym wklejeniu.
+
+
+Sprawdzamy piłka się odbija, uruchamiamy nasz program:
+
+.. code-block:: bash
+
+    ~/python101$ python pong/pong.py
+
+Gotowy kod możemy wyciągnąć komendą:
+
+.. code-block:: bash
+
+    ~/python101$ git checkout -f --track origin/pong/z4
+
+
+Rakietka — na razie tylko jedna :)
+----------------------------------
+
+Dodajmy "rakietkę" od przy pomocy której będziemy mogli odbijać piłeczkę.
+Dodajmy zwykły prostokąt, który będziemy przesuwać przy pomocy myszki.
+
+.. literalinclude:: pong_z5.py
+    :linenos:
+    :lines: 144-161
+    :lineno-start: 133
+
+Następnie "pokażemy" rakietkę piłeczce, tak by mogła się od niej odbijać.
+Wiemy że rakietek będzie więcej dlatego od razu tak zmodyfikujemy metodę
+``Ball.move`` by przyjmowała kolekcję rakietek:
+
+.. code-block:: python
+    :linenos:
+    :emphasize-lines: 1, 14-16
+
+    def move(self, board, *args):
+        """
+        Przesuwa piłeczkę o wektor prędkości
+        """
+        self.rect.x += self.x_speed
+        self.rect.y += self.y_speed
+
+        if self.rect.x < 0 or self.rect.x > board.surface.get_width():
+            self.bounce_x()
+
+        if self.rect.y < 0 or self.rect.y > board.surface.get_height():
+            self.bounce_y()
+
+        for racket in args:
+            if self.rect.colliderect(racket.rect):
+                self.bounce_y()
+
+
+Tak jak w przypadku dodawania piłeczki, rakietkę też trzeba dodać do "gry",
+dodatkowo musimy ją pokazać piłeczce:
+
+.. literalinclude:: pong_z5.py
+    :linenos:
+    :lines: 38-76
+    :emphasize-lines: 13, 23, 36-39
+    :lineno-start: 38
+
+Gotowy kod możemy wyciągnąć komendą:
+
+.. code-block:: bash
+
+    ~/python101$ git checkout -f --track origin/pong/z4
+
+.. note::
+
+    W tym miejscu można się pobawić naszą grą, zmodyfikuj ją według uznania
+    i pochwal się rezultatem z innymi
+
+    Jeśli kod przestanie działać, można szybko porzucić zmiany poniższą komendą.
+
+    .. code-block:: bash
+
+        ~/python101$ git reset --hard
+
+
+Dwie rakietki
+-------------
+
+
+Pokazujemy punkty
+-----------------
+
+
+Zadania dodatkowe
+-----------------
+
+#. Piłeczka "odbija się" po zewnętrznej prawej i dolnej krawędzi. Można to poprawić.
+#. Metoda ``Ball.move`` otrzymuje w argumentach planszę i rakietki. Te elementy można
+   piłeczce przekazać tylko raz w konstruktorze.
+#. Rakietka gracza rusza się tylko gdy gracz rusza myszką, ruch w stronę myszki powinen
+   być kontynuowany także gdy myszka jest bezczynna.
+#. Gdy piłeczka odbija się od boków rakietki powinna odbijać się w osi X.
+#. Gra dwuosobowa z użyciem komunikacji po sieci.

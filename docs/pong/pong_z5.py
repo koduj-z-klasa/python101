@@ -47,15 +47,17 @@ class PongGame(object):
         # kolejnych klatek gry
         self.fps_clock = pygame.time.Clock()
         self.ball = Ball(20, 20, width/2, height/2)
+        self.player1 = Racket(80, 20, width/2, height/2)
 
     def run(self):
         """
         Główna pętla programu
         """
         while not self.handle_events():
-            self.ball.move(self.board)
+            self.ball.move(self.board, self.player1)
             self.board.draw(
                 self.ball,
+                self.player1,
             )
             self.fps_clock.tick(30)
 
@@ -67,6 +69,11 @@ class PongGame(object):
             if event.type == pygame.locals.QUIT:
                 pygame.quit()
                 return True
+
+            if event.type == pygame.locals.MOUSEMOTION:
+                # myszka steruje ruchem pierwszego gracza
+                x, y = event.pos
+                self.player1.move(x)
 
 
 class Drawable(object):
@@ -116,7 +123,7 @@ class Ball(Drawable):
         self.rect.move(self.start_x, self.start_y)
         self.bounce_y()
 
-    def move(self, board):
+    def move(self, board, *args):
         """
         Przesuwa piłeczkę o wektor prędkości
         """
@@ -129,6 +136,29 @@ class Ball(Drawable):
         if self.rect.y < 0 or self.rect.y > board.surface.get_height():
             self.bounce_y()
 
+        for racket in args:
+            if self.rect.colliderect(racket.rect):
+                self.bounce_y()
+
+
+class Racket(Drawable):
+    """
+    Rakietka, porusza się w osi X z ograniczeniem prędkości.
+    """
+
+    def __init__(self, width, height, x, y, color=(0, 255, 0), max_speed=10):
+        super(Racket, self).__init__(width, height, x, y, color)
+        self.max_speed = max_speed
+        self.surface.fill(color)
+
+    def move(self, x):
+        """
+        Przesuwa rakietkę w wyznaczone miejsce.
+        """
+        delta = x - self.rect.x
+        if abs(delta) > self.max_speed:
+            delta = self.max_speed if delta > 0 else -self.max_speed
+        self.rect.x += delta
 
 # Ta część powinna być zawsze na końcu modułu (ten plik jest modułem)
 # chcemy uruchomić naszą grę dopiero po tym jak wszystkie klasy zostaną zadeklarowane

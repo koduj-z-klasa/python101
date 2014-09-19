@@ -97,13 +97,6 @@ class Ball(Drawable):
         self.start_x = x
         self.start_y = y
 
-    def move(self):
-        """
-        Przesuwa piłeczkę o wektor prędkości
-        """
-        self.rect.x += self.x_speed
-        self.rect.y += self.y_speed
-
     def bounce_y(self):
         """
         Odwraca wektor prędkości w osi Y
@@ -122,6 +115,20 @@ class Ball(Drawable):
         """
         self.rect.move(self.start_x, self.start_y)
         self.bounce_y()
+
+    def move(self, board):
+        """
+        Przesuwa piłeczkę o wektor prędkości
+        """
+        self.rect.x += self.x_speed
+        self.rect.y += self.y_speed
+
+        if self.rect.x < 0 or self.rect.x > board.surface.get_width():
+            self.bounce_x()
+
+        if self.rect.y < 0 or self.rect.y > board.surface.get_height():
+            self.bounce_y()
+
 
 # Ta część powinna być zawsze na końcu modułu (ten plik jest modułem)
 # chcemy uruchomić naszą grę dopiero po tym jak wszystkie klasy zostaną zadeklarowane
