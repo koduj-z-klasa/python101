@@ -227,8 +227,8 @@ Gotowy kod możemy wyciągnąć komendą:
     ~/python101$ git checkout -f --track origin/pong/z4
 
 
-Rakietka — na razie tylko jedna :)
-----------------------------------
+Odbijamy piłeczkę rakietką
+--------------------------
 
 Dodajmy "rakietkę" od przy pomocy której będziemy mogli odbijać piłeczkę.
 Dodajmy zwykły prostokąt, który będziemy przesuwać przy pomocy myszki.
@@ -291,20 +291,43 @@ Gotowy kod możemy wyciągnąć komendą:
         ~/python101$ git reset --hard
 
 
-Dwie rakietki
--------------
+Gramy przeciwko komputerowi
+---------------------------
+
+Dodajemy przeciwnika, nasz przeciwnik będzie mistrzem, będzie dokładnie
+śledził piłeczkę i zawsze starał się utrzymać rakietkę gotową do odbicia piłeczki.
+
+.. literalinclude:: pong_z6.py
+    :linenos:
+    :lines: 167-177
+    :lineno-start: 164
+
+Tak jak w przypadku piłeczki i rakietki dodajemy nasze ``Ai`` do gry,
+a wraz nią wraz dodajemy drugą rakietkę.
+Dwie rakietki ustawiamy na przeciwległych brzegach planszy.
+
+Trzeba pamiętać by pokazać drugą rakietkę piłeczce, tak by mogła się
+od niej odbijać.
+
+.. literalinclude:: pong_z6.py
+    :linenos:
+    :lines: 38-66
+    :emphasize-lines: 13-15, 22, 26, 28
+    :lineno-start: 38
 
 
 Pokazujemy punkty
 -----------------
 
 
-Zadania dodatkowe
------------------
+
+Zadania dodatkowe i rzeczy które można poprawić
+-----------------------------------------------
 
 #. Piłeczka "odbija się" po zewnętrznej prawej i dolnej krawędzi. Można to poprawić.
 #. Metoda ``Ball.move`` otrzymuje w argumentach planszę i rakietki. Te elementy można
    piłeczce przekazać tylko raz w konstruktorze.
+#. Komputer nie odbija piłeczkę rogiem rakietki.
 #. Rakietka gracza rusza się tylko gdy gracz rusza myszką, ruch w stronę myszki powinen
    być kontynuowany także gdy myszka jest bezczynna.
 #. Gdy piłeczka odbija się od boków rakietki powinna odbijać się w osi X.
