@@ -319,7 +319,21 @@ od niej odbijać.
 Pokazujemy punkty
 -----------------
 
+Dodajmy klasę sędziego, który patrząc na poszczególne elementy gry będzie
+decydował czy graczom należą się punkty i będzie ustawiał piłkę w początkowym położeniu.
 
+.. literalinclude:: pong_z7.py
+    :linenos:
+    :lines: 183-228
+    :lineno-start: 183
+
+Tradycyjnie dodajemy instancję nowej klasy do gry:
+
+.. literalinclude:: pong_z7.py
+    :linenos:
+    :lines: 38-66
+    :emphasize-lines: 16, 28
+    :lineno-start: 38
 
 Zadania dodatkowe i rzeczy które można poprawić
 -----------------------------------------------

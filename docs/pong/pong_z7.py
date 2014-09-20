@@ -1,23 +1,4 @@
 # coding=utf-8
-# Copyright 2013 Janusz Skonieczny
-
-"""
-Klasyczna gra w odbijanie piłeczki napisana z użyciem biblioteki PyGame.
-
-
-Na co warto zwrócić uwagę
-- wykorzystanie __init__ do utworzenie instancji obiektów (ich właściwości)
-- dziedziczenie i implementacja metod "wirtualnych", a raczej brakujących
-- wykorzystanie *args jako zamiast jednego parametru z kolekcją
-
-Co można poprawić
-- piłeczka wychodzi poza prawą krawędź planszy
-- różne poziomy sprawności AI (aktualnie komputer zawsze wygrywa)
-- zabezpieczenie by piłeczka nie zazębiała się z rakietką
-- zmiana wektora prędkości w zależności od pędu rakietki
-- dwie piłeczki
-
-"""
 
 import pygame
 import pygame.locals
@@ -217,7 +198,7 @@ class Judge(object):
 
     def update_score(self, board_height):
         """
-        Sprawdza czy któremuś z graczy należy się punkt, nalicza punkty i ew. ustawia piłkę.
+        Jeśli trzeba przydziela punkty i ustawia piłeczkę w początkowym położeniu.
         """
         if self.ball.rect.y < 0:
             self.score[0] += 1
@@ -232,7 +213,6 @@ class Judge(object):
         """
         text = self.font.render(text, True, (150, 150, 150))
         rect = text.get_rect()
-        print rect, x, y
         rect.center = x, y
         surface.blit(text, rect)
 
@@ -241,7 +221,6 @@ class Judge(object):
         Aktualizuje i rysuje wyniki
         """
         height = self.board.surface.get_height()
-        print height
         self.update_score(height)
 
         width = self.board.surface.get_width()
