@@ -217,7 +217,7 @@ class Judge(object):
 
     def update_score(self, board_height):
         """
-        Sprawdza czy któremuś z graczy należy się punkt, nalicza punkty i ew. ustawia piłkę.
+        Jeśli trzeba przydziela punkty i ustawia piłeczkę w początkowym położeniu.
         """
         if self.ball.rect.y < 0:
             self.score[0] += 1
@@ -232,7 +232,6 @@ class Judge(object):
         """
         text = self.font.render(text, True, (150, 150, 150))
         rect = text.get_rect()
-        print rect, x, y
         rect.center = x, y
         surface.blit(text, rect)
 
@@ -241,7 +240,6 @@ class Judge(object):
         Aktualizuje i rysuje wyniki
         """
         height = self.board.surface.get_height()
-        print height
         self.update_score(height)
 
         width = self.board.surface.get_width()
