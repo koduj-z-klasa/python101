@@ -245,6 +245,7 @@ Wiemy że rakietek będzie więcej dlatego od razu tak zmodyfikujemy metodę
 .. code-block:: python
     :linenos:
     :emphasize-lines: 1, 14-16
+    :lineno-start: 119
 
     def move(self, board, *args):
         """
