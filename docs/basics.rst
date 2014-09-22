@@ -57,13 +57,13 @@ Wielkość liter jest rozróżniana (zmienna x i zmienna X to dwie różne zmien
 Przykłady poprawnych:
 
 .. code-block:: python
-    :linenos:
+
     i, _chodnik, nazwa_23, a2c4
 
 Przykłady niepoprawnych:
 
 .. code-block:: python
-    :linenos:
+
     1nazwa, 4_strony_świata, z-myslnikiem, nazwa ze spacja,
 
 Główne typy zmiennych, którymi będziemy się zajmować to:
@@ -76,7 +76,7 @@ Istnieje wiele innych typów zmiennych. [odniesienie do zewn. Źródeł]
 Zróbmy proste zadanie - będąc w interpreterze wykonaj:
 
 .. code-block:: python
-    :linenos:
+
     zmienna1 = raw_input(``Podaj imię: ``)
     print(``Witaj``, zmienna1)
 
@@ -94,7 +94,7 @@ Aby zamienić podaną z klawiatury liczbę na zmienną liczbową (int lub float)
 funkcji ``int``.
 
 .. code-block:: python
-    :linenos:
+
     zmienna1 = raw_input(``Podaj 1 liczbę: ``)
     zmienna2 = raw_input(``Podaj 2 liczbę: ``)
     wynik = int(zmienna1) + int(zmienna2)
@@ -134,7 +134,7 @@ Python pozwala także na sprawdzenie większej liczby warunków w ramach jednej 
 do tego instrukcja ``elif`` (skrót od else if).
 
 .. code-block:: python
-    :linenos:
+
     if wyrażenie_warunkowe:
         blok kodu 1
     elif:
@@ -151,7 +151,7 @@ czterech spacji) ale musi być ono w całym programie zawsze tej samej głęboko
 Pobawmy się instrukcjami ``if``, ``elif`` i ``else`` na prostym przykładzie.
 
 .. code-block:: python
-    :linenos:
+
     zmienna = raw_input('Podaj liczbę: ')
     zmienna = int(zmienna)
     if zmienna > 0:
@@ -184,7 +184,7 @@ Napisz program, w którym:
   napis określający czy podana liczba jest większa od danej czy mniejsza.
 
 .. code-block:: python
-    :linenos:
+
     dana = 18
     strzal = int(raw_input(‘Wpisz liczbę całkowitą’))
     if strzal == dana:
@@ -213,7 +213,7 @@ Równania kwadratowe
 ^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: python
-    :linenos:
+
     print 'Dla równania kwadratowego ax2+bx+c=0'
     a=int(raw_input('podaj wartość parametru a: '))
     b=int(raw_input('podaj wartość parametru b: '))
@@ -239,14 +239,14 @@ to ponownie wykonuje wszystkie polecenia. Pętla jest wykonywana tak długo, jak
 prawdziwy.
 
 .. code-block:: python
-    :linenos:
+
     while wyrażenie_warunkowe:
         blok kodu
 
 Zobaczmy działanie pętli ``while`` na poniższym przykładzie.
 
 .. code-block:: python
-    :linenos:
+
     dana = 18
     kontynuuj = True
     while koniec:
@@ -272,7 +272,7 @@ Wyrażenia break i continue
 Wyrażenie ``break`` powoduje natychmiastowe zakończenie wykonywania pętli.
 
 .. code-block:: python
-    :linenos:
+
     dana = 18
     while True:
     strzal = int(raw_input(‘Wpisz liczbę całkowitą’))
@@ -293,7 +293,7 @@ rozpoczyna ponowne wykonanie pętli.
 Przykład 8.
 
 .. code-block:: python
-    :linenos:
+
 
     dana = 18
 
@@ -341,14 +341,14 @@ Przykłady list:
 • lista liczb wpisanych ręcznie – elementy podane w nawiasach kwadratowych
 
 .. code-block:: python
-    :linenos:
+
     [2,3,4,5]
 
 • funkcja range – wywoła kolejno liczby naturalne zaczynając od podanej w nawiasie na
 pierwszym miejscu, kończąc na liczbie mniejszej o 1 od liczby na miejscu drugim
 
 .. code-block:: python
-    :linenos:
+
 
     range(2,6)
 
@@ -358,7 +358,7 @@ listy.
 Przykład 9.
 
 .. code-block:: python
-    :linenos:
+
 
     print(‘Mamy listę elementów: ’, [5,6,7,8])
 
