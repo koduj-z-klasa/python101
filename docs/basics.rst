@@ -56,10 +56,14 @@ nie może zawierać:
 Wielkość liter jest rozróżniana (zmienna x i zmienna X to dwie różne zmienne).
 Przykłady poprawnych:
 
+.. code-block:: python
+    :linenos:
     i, _chodnik, nazwa_23, a2c4
 
 Przykłady niepoprawnych:
 
+.. code-block:: python
+    :linenos:
     1nazwa, 4_strony_świata, z-myslnikiem, nazwa ze spacja,
 
 Główne typy zmiennych, którymi będziemy się zajmować to:
@@ -71,7 +75,8 @@ Główne typy zmiennych, którymi będziemy się zajmować to:
 Istnieje wiele innych typów zmiennych. [odniesienie do zewn. Źródeł]
 Zróbmy proste zadanie - będąc w interpreterze wykonaj:
 
-
+.. code-block:: python
+    :linenos:
     zmienna1 = raw_input(``Podaj imię: ``)
     print(``Witaj``, zmienna1)
 
@@ -88,7 +93,8 @@ utworzonej zmiennej.
 Aby zamienić podaną z klawiatury liczbę na zmienną liczbową (int lub float) musimy skorzystać z
 funkcji ``int``.
 
-
+.. code-block:: python
+    :linenos:
     zmienna1 = raw_input(``Podaj 1 liczbę: ``)
     zmienna2 = raw_input(``Podaj 2 liczbę: ``)
     wynik = int(zmienna1) + int(zmienna2)
@@ -127,6 +133,8 @@ wyrażenie warunkowe było fałszywe.
 Python pozwala także na sprawdzenie większej liczby warunków w ramach jednej instrukcji ``if``. Służy
 do tego instrukcja ``elif`` (skrót od else if).
 
+.. code-block:: python
+    :linenos:
     if wyrażenie_warunkowe:
         blok kodu 1
     elif:
@@ -142,7 +150,8 @@ Głębokość wcięcia nie ma znaczenia (dobry zwyczaj programowania w Pythonie 
 czterech spacji) ale musi być ono w całym programie zawsze tej samej głębokości.
 Pobawmy się instrukcjami ``if``, ``elif`` i ``else`` na prostym przykładzie.
 
-
+.. code-block:: python
+    :linenos:
     zmienna = raw_input('Podaj liczbę: ')
     zmienna = int(zmienna)
     if zmienna > 0:
@@ -174,15 +183,17 @@ Napisz program, w którym:
 - jeżeli użytkownik trafi program wyświetli komunikat: ``Gratulacje!``, a jeśli nie, to wyświetli
   napis określający czy podana liczba jest większa od danej czy mniejsza.
 
-dana = 18
-strzal = int(raw_input(‘Wpisz liczbę całkowitą’))
-if strzal == dana:
-    print(‘Gratulacje! Zgadłeś’)
-elif strzal < dana:
-    print(‘Nie! Szukana liczba jest większa!’)
-else:
-    print(‘Nie! Szukana liczba jest mniejsza!’)
-print(‘Koniec programu.’)
+.. code-block:: python
+    :linenos:
+    dana = 18
+    strzal = int(raw_input(‘Wpisz liczbę całkowitą’))
+    if strzal == dana:
+        print(‘Gratulacje! Zgadłeś’)
+    elif strzal < dana:
+        print(‘Nie! Szukana liczba jest większa!’)
+    else:
+        print(‘Nie! Szukana liczba jest mniejsza!’)
+    print(‘Koniec programu.’)
 
 Zadania dodatkowe
 -----------------
@@ -201,20 +212,22 @@ Zadania dodatkowe
 Równania kwadratowe
 ^^^^^^^^^^^^^^^^^^^
 
-print 'Dla równania kwadratowego ax2+bx+c=0'
-a=int(raw_input('podaj wartość parametru a: '))
-b=int(raw_input('podaj wartość parametru b: '))
-c=int(raw_input('podaj wartość parametru c: '))
-delta = b**2-4*a*c
-if delta > 0:
-    x1 = (-b-delta**(1/2))/(2*a)
-    x2 = (-b+delta**(1/2))/(2*a)
-    print 'x1 = ', x1, ', x2= ', x2
-elif delta == 0:
-    x0 = -b/(2*a)
-    print 'x0 = ', x0
-else:
-    print 'brak rozwiązań'
+.. code-block:: python
+    :linenos:
+    print 'Dla równania kwadratowego ax2+bx+c=0'
+    a=int(raw_input('podaj wartość parametru a: '))
+    b=int(raw_input('podaj wartość parametru b: '))
+    c=int(raw_input('podaj wartość parametru c: '))
+    delta = b**2-4*a*c
+    if delta > 0:
+        x1 = (-b-delta**(1/2))/(2*a)
+        x2 = (-b+delta**(1/2))/(2*a)
+        print 'x1 = ', x1, ', x2= ', x2
+    elif delta == 0:
+        x0 = -b/(2*a)
+        print 'x0 = ', x0
+    else:
+        print 'brak rozwiązań'
 
 Pętla WHILE
 -----------
@@ -225,23 +238,27 @@ instrukcje zawarte w bloku. Następnie ponownie sprawdzany jest warunek, jeśli 
 to ponownie wykonuje wszystkie polecenia. Pętla jest wykonywana tak długo, jak długo warunek jest
 prawdziwy.
 
-while wyrażenie_warunkowe:
-    blok kodu
+.. code-block:: python
+    :linenos:
+    while wyrażenie_warunkowe:
+        blok kodu
 
 Zobaczmy działanie pętli ``while`` na poniższym przykładzie.
 
-dana = 18
-kontynuuj = True
-while koniec:
-    strzal = int(raw_input(‘Wpisz liczbę całkowitą’))
-    if strzal == dana:
-    elif strzal < dana:
-    else:
-print(‘Koniec programu.’)
-print(‘Gratulacje! Zgadłeś’)
-kontynuuj = False
-print(‘Nie! Szukana liczba jest większa!’)
-print(‘Nie! Szukana liczba jest mniejsza!’)
+.. code-block:: python
+    :linenos:
+    dana = 18
+    kontynuuj = True
+    while koniec:
+        strzal = int(raw_input(‘Wpisz liczbę całkowitą’))
+        if strzal == dana:
+        elif strzal < dana:
+        else:
+    print(‘Koniec programu.’)
+    print(‘Gratulacje! Zgadłeś’)
+    kontynuuj = False
+    print(‘Nie! Szukana liczba jest większa!’)
+    print(‘Nie! Szukana liczba jest mniejsza!’)
 
 Program będzie wykonywany do momentu, w którym użytkownik poda właściwą liczbę. Zatem nie
 trzeba do każdego strzału ponownie uruchamiać programu. Zmienna ``kontynuuj`` ma ustawioną
@@ -254,128 +271,134 @@ Wyrażenia break i continue
 
 Wyrażenie ``break`` powoduje natychmiastowe zakończenie wykonywania pętli.
 
-dana = 18
-while True:
-strzal = int(raw_input(‘Wpisz liczbę całkowitą’))
-if strzal == dana:
-elif strzal < dana:
-else:
-print(‘Koniec programu.’)
-print(‘Gratulacje! Zgadłeś’)
-break
+.. code-block:: python
+    :linenos:
+    dana = 18
+    while True:
+    strzal = int(raw_input(‘Wpisz liczbę całkowitą’))
+    if strzal == dana:
+    elif strzal < dana:
+    else:
+    print(‘Koniec programu.’)
+    print(‘Gratulacje! Zgadłeś’)
+    break
 
-print(‘Nie! Szukana liczba jest większa!’)
+    print(‘Nie! Szukana liczba jest większa!’)
 
-print(‘Nie! Szukana liczba jest mniejsza!’)
+    print(‘Nie! Szukana liczba jest mniejsza!’)
 
 Wyrażenie ``continue`` powoduje ominięcie następujących po nim wyrażeń w bloku, a następnie
-
 rozpoczyna ponowne wykonanie pętli.
 
 Przykład 8.
 
-dana = 18
+.. code-block:: python
+    :linenos:
 
-while True:
+    dana = 18
 
-strzal = int(raw_input(‘Wpisz liczbę całkowitą’))
+    while True:
 
-if strzal > dana:
+    strzal = int(raw_input(‘Wpisz liczbę całkowitą’))
 
-elif strzal < dana:
+    if strzal > dana:
 
-print(‘Gratulacje! Zgadłeś’)
+    elif strzal < dana:
 
-break
+    print(‘Gratulacje! Zgadłeś’)
 
-print(‘Koniec programu.’)
+    break
 
-print(‘Nie! Szukana liczba jest mniejsza!’)
+    print(‘Koniec programu.’)
 
-continue
+    print(‘Nie! Szukana liczba jest mniejsza!’)
 
-print(‘Nie! Szukana liczba jest większa!’)
+    continue
 
-continue
+    print(‘Nie! Szukana liczba jest większa!’)
+
+    continue
 
 Zadania dodatkowe
+^^^^^^^^^^^^^^^^^
 
 1. Napisz program, który sumuje liczby dodatnie podawane przez użytkownika – pętla pozwala
-
 użytkownikowi podawać liczby dopóki nie poda liczby niedodatniej.
-
 Następnie obok podawanego wyniku będzie wyświetlana liczba określająca ilość podanych
-
 liczb.
 
 2. Na podstawie wcześniejszego zadania napisz program obliczający średnią liczb dodatnich, a
-
 następnie zmodyfikuj go tak, aby obliczana była średnia również dla liczb ujemnych.
 
 6. Pętla FOR
 
 Pętla for służy do wykonywania tego samego bloku operacji dla każdego elementu z pewnej listy.
-
 Ilość wykonań tego bloku jest równa liczbie elementów tej listy. Wywoływana w pętli zmienna
-
 przyjmuje po kolei wartości każdego z elementów.
 
 Przykłady list:
 
 • lista liczb wpisanych ręcznie – elementy podane w nawiasach kwadratowych
 
-[2,3,4,5]
+.. code-block:: python
+    :linenos:
+    [2,3,4,5]
 
 • funkcja range – wywoła kolejno liczby naturalne zaczynając od podanej w nawiasie na
-
 pierwszym miejscu, kończąc na liczbie mniejszej o 1 od liczby na miejscu drugim
 
-range(2,6)
+.. code-block:: python
+    :linenos:
+
+    range(2,6)
 
 Zobrazujmy działanie pętli ``for`` na prostym przykładzie, wymieniającym kolejno elementy z pewnej
-
 listy.
 
 Przykład 9.
 
-print(‘Mamy listę elementów: ’, [5,6,7,8])
+.. code-block:: python
+    :linenos:
 
-for liczba in [5,6,7,8]:
+    print(‘Mamy listę elementów: ’, [5,6,7,8])
 
-print(‘element listy: ’, liczba)
+    for liczba in [5,6,7,8]:
+
+    print(‘element listy: ’, liczba)
 
 Zadania dodatkowe
+^^^^^^^^^^^^^^^^^
 
 1. Napisz dwa programy, które wypisują liczby naturalne od 1 do 15. W pierwszym programie
-
 wykonaj pętlę for, a w drugim while.
-
 2. Zmodyfikuj powyższe zadanie, tak aby programy obliczały sumę liczb od 1 do 15.
-
 3. Za pomocą pętli for, napisz program, który oblicza silnię liczby podanej przez użytkownika.
-
 4. Oblicz sumę kwadratów liczb naturalnych z zakresu od 1 do 100.
 
-Słowniczek:
+Słowniczek
+^^^^^^^^^^
 
-• Język interpretowany – język, który jest tłumaczony i wykonywany "w locie". Tłumaczeniem i
+.. glossary::
 
-wykonywaniem programu zajmuje się specjalny program nazwany interpreterem języka.
+    Język interpretowany
+        język, który jest tłumaczony i wykonywany "w locie". Tłumaczeniem i
+        wykonywaniem programu zajmuje się specjalny program nazwany interpreterem języka.
 
-• Interpreter – program, który zajmuje się tłumaczeniem kodu języka programowania na język
+    Interpreter
+        program, który zajmuje się tłumaczeniem kodu języka programowania na język
+        maszynowy i jego wykonywaniem.
 
-maszynowy i jego wykonywaniem.
+    Zmienne
+        symbole zdefiniowane i nazwane przez programistę, które służą do
+        przechowywania wartości, obliczeń na nich i odwoływanie się do wartości przez zdefiniowaną nazwę.
 
-• Zmienne – symbole zdefiniowane i nazwane przez programistę, które służą do
+    Funkcje
 
-przechowywania wartości, obliczeń na nich i odwoływanie się do wartości przez zdefiniowaną nazwę.
+        fragmenty kodu zamknięte w określonym przez programistę symbolu, mogące
+        przyjmować parametry oraz mogące zwracać wartości. Umożliwiają wielokrotne wywoływanie tego
+        samego kodu, bez konieczności jego przepisywania za każdym razem, gdy zajdzie potrzeba jego
+        wykonania.
 
-• Funkcje – fragmenty kodu zamknięte w określonym przez programistę symbolu, mogące
+    Typ zmiennych
 
-przyjmować parametry oraz mogące zwracać wartości. Umożliwiają wielokrotne wywoływanie tego
-
-samego kodu, bez konieczności jego przepisywania za każdym razem, gdy zajdzie potrzeba jego
-
-wykonania.
-
-• Typ zmiennych – rodzaj danych, który przypisany jest do zmiennej w momencie jej tworzenia.
+        rodzaj danych, który przypisany jest do zmiennej w momencie jej tworzenia.
