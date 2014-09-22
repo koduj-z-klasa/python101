@@ -338,13 +338,13 @@ przyjmuje po kolei wartości każdego z elementów.
 
 Przykłady list:
 
-• lista liczb wpisanych ręcznie – elementy podane w nawiasach kwadratowych
+- lista liczb wpisanych ręcznie – elementy podane w nawiasach kwadratowych
 
 .. code-block:: python
 
     [2,3,4,5]
 
-• funkcja range – wywoła kolejno liczby naturalne zaczynając od podanej w nawiasie na
+- funkcja range – wywoła kolejno liczby naturalne zaczynając od podanej w nawiasie na
 pierwszym miejscu, kończąc na liczbie mniejszej o 1 od liczby na miejscu drugim
 
 .. code-block:: python
@@ -371,8 +371,11 @@ Zadania dodatkowe
 
 1. Napisz dwa programy, które wypisują liczby naturalne od 1 do 15. W pierwszym programie
 wykonaj pętlę for, a w drugim while.
+
 2. Zmodyfikuj powyższe zadanie, tak aby programy obliczały sumę liczb od 1 do 15.
+
 3. Za pomocą pętli for, napisz program, który oblicza silnię liczby podanej przez użytkownika.
+
 4. Oblicz sumę kwadratów liczb naturalnych z zakresu od 1 do 100.
 
 Słowniczek
