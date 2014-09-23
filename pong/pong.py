@@ -47,7 +47,9 @@ class PongGame(object):
         # kolejnych klatek gry
         self.fps_clock = pygame.time.Clock()
         self.ball = Ball(width=20, height=20, x=width/2, y=height/2)
-        self.player1 = Racket(width=80, height=20, x=width/2, y=height/2)
+        self.player1 = Racket(width=80, height=20, x=width/2 - 40, y=height - 40)
+        self.player2 = Racket(width=80, height=20, x=width/2 - 40, y=20, color=(0, 0, 0))
+        self.ai = Ai(self.player2, self.ball)
 
     def run(self):
         """
@@ -55,11 +57,13 @@ class PongGame(object):
         """
         while not self.handle_events():
             # działaj w pętli do momentu otrzymania sygnału do wyjścia
-            self.ball.move(self.board, self.player1)
+            self.ball.move(self.board, self.player1, self.player2)
             self.board.draw(
                 self.ball,
                 self.player1,
+                self.player2,
             )
+            self.ai.move()
             self.fps_clock.tick(30)
 
     def handle_events(self):
@@ -123,7 +127,7 @@ class Ball(Drawable):
         """
         Ustawia piłeczkę w położeniu początkowym i odwraca wektor prędkości w osi Y
         """
-        self.rect.move(self.start_x, self.start_y)
+        self.rect.x, self.rect.y = self.start_x, self.start_y
         self.bounce_y()
 
     def move(self, board, *args):
@@ -162,6 +166,19 @@ class Racket(Drawable):
         if abs(delta) > self.max_speed:
             delta = self.max_speed if delta > 0 else -self.max_speed
         self.rect.x += delta
+
+
+class Ai(object):
+    """
+    Przeciwnik, steruje swoją rakietką na podstawie obserwacji piłeczki.
+    """
+    def __init__(self, racket, ball):
+        self.ball = ball
+        self.racket = racket
+
+    def move(self):
+        x = self.ball.rect.centerx
+        self.racket.move(x)
 
 
 # Ta część powinna być zawsze na końcu modułu (ten plik jest modułem)
