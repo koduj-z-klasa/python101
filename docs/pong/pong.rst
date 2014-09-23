@@ -39,7 +39,7 @@ Na wstępie w pliku ``~/python101/pong/pong.py`` otrzymujemy kod który przygotu
 
 .. raw:: html
 
-    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: pong_z1.py
     :linenos:
@@ -77,7 +77,7 @@ możemy na końcu chwilkę uśpić nasz program:
 
 .. raw:: html
 
-    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 
 .. code-block:: python
@@ -92,7 +92,7 @@ Jednak zamiast tego, dla lepszej kontroli powinniśmy zadeklarować klasę kontr
 
 .. raw:: html
 
-    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 
 .. literalinclude:: pong_z2.py
@@ -130,7 +130,7 @@ rysować w oknie naszej gry:
 
 .. raw:: html
 
-    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 
 .. literalinclude:: pong_z3.py
@@ -142,7 +142,7 @@ Następnie dodajmy klasę samej piłeczki dziedzicząc z ``Drawable``:
 
 .. raw:: html
 
-    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 
 .. literalinclude:: pong_z3.py
@@ -154,7 +154,7 @@ Teraz musimy naszą piłeczkę zintegrować z resztą gry:
 
 .. raw:: html
 
-    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 
 .. literalinclude:: pong_z3.py
@@ -391,6 +391,6 @@ Dokument wygenerowany |date| o |time|
 .. raw:: html
 
     <style>
-        div.codeno { text-align: right; background: #e3e3e3; padding: 6px 12px; }
+        div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
         div.highlight, div.highlight-python { margin-top: 0px; }
     </style>

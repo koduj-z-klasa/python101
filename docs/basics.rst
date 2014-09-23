@@ -36,7 +36,7 @@ W interpreterze wpisz poniższy przykład:
 
 .. raw:: html
 
-    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code:: pycon
 
@@ -101,7 +101,7 @@ Zróbmy proste zadanie - będąc w interpreterze wykonaj:
 
 .. raw:: html
 
-    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -116,6 +116,7 @@ następnie używając funkcji ``print`` wyświetla na ekranie kawałek tekstu or
 utworzonej zmiennej.
 
 .. warning::::
+
     Funkcja ``raw_input`` zwraca zmienną typu napisowego (string). Nawet, gdy podamy
     liczbę, to będzie ona traktowana jak napis i nie można wykonywać na niej działań matematycznych.
 
@@ -124,7 +125,7 @@ funkcji ``int``.
 
 .. raw:: html
 
-    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -138,7 +139,7 @@ funkcji ``int``.
     Grupy mniej zaawansowane mogą poświęcić czas na eksperymenty z operacjami na zmiennych podawanych z klawiatury.
 
 Funkcje
-"""""""
+^^^^^^^
 
 Funkcje są to wcześniej zdefiniowane kawałki kodu, których możemy później użyć do wykonania
 określonej czynności, zamiast wpisywać ten sam kod po raz kolejny.
@@ -192,7 +193,7 @@ Pobawmy się instrukcjami ``if``, ``elif`` i ``else`` na prostym przykładzie.
 
 .. raw:: html
 
-    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -230,7 +231,7 @@ Napisz program, w którym:
 
 .. raw:: html
 
-    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -249,15 +250,15 @@ Zadania dodatkowe
 -----------------
 
 #. Za pomocą poznanych narzędzi stwórz program będący kalkulatorem.
-#. Napisz program rozwiązujący równania kwadratowe (rozwiązanie: :ref:'kwadratowe`).
+#. Napisz program rozwiązujący równania kwadratowe (rozwiązanie: :ref:`kwadratowe`).
 #. Napisz program, który spyta użytkownika ile ma lat, a następnie wyświetli czy osoba ta jest
-    młodzieżą, dzieckiem czy dorosłym (załóżmy, że dziecko ma mniej niż 12 lat, a dorosły więcej
-    niż 18).
+   młodzieżą, dzieckiem czy dorosłym (załóżmy, że dziecko ma mniej niż 12 lat, a dorosły więcej
+   niż 18).
 #. Napisz program, który będzie sortował trzy podane przez użytkownika liczby.
 #. Napisz program, który w odpowiedzi na podaną przez użytkownika liczbę będzie wyświetlał
-    komunikat czy jest to liczba parzysta, czy nieparzysta.
+   komunikat czy jest to liczba parzysta, czy nieparzysta.
 #. Napisz program, który będzie sprawdzał czy z podanych przez użytkownika trzech długości
-    można zbudować trójkąt.
+   można zbudować trójkąt.
 
 
 .. _kwadratowe:
@@ -267,9 +268,10 @@ Równania kwadratowe
 
 .. raw:: html
 
-    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
+    :linenos:
 
     print 'Dla równania kwadratowego ax2+bx+c=0'
     a=int(raw_input('podaj wartość parametru a: '))
@@ -304,7 +306,7 @@ Zobaczmy działanie pętli ``while`` na poniższym przykładzie.
 
 .. raw:: html
 
-    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 
 .. code-block:: python
@@ -335,7 +337,7 @@ Wyrażenie ``break`` powoduje natychmiastowe zakończenie wykonywania pętli.
 
 .. raw:: html
 
-    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -358,7 +360,7 @@ rozpoczyna ponowne wykonanie pętli.
 
 .. raw:: html
 
-    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -398,7 +400,8 @@ liczb.
 2. Na podstawie wcześniejszego zadania napisz program obliczający średnią liczb dodatnich, a
 następnie zmodyfikuj go tak, aby obliczana była średnia również dla liczb ujemnych.
 
-6. Pętla FOR
+Pętla FOR
+---------
 
 Pętla for służy do wykonywania tego samego bloku operacji dla każdego elementu z pewnej listy.
 Ilość wykonań tego bloku jest równa liczbie elementów tej listy. Wywoływana w pętli zmienna
@@ -408,15 +411,14 @@ Przykłady list:
 
 - lista liczb wpisanych ręcznie – elementy podane w nawiasach kwadratowych
 
-.. code-block:: python
+    .. code-block:: python
 
-    [2,3,4,5]
+        [2,3,4,5]
 
 - funkcja range – wywoła kolejno liczby naturalne zaczynając od podanej w nawiasie na
-pierwszym miejscu, kończąc na liczbie mniejszej o 1 od liczby na miejscu drugim
+  pierwszym miejscu, kończąc na liczbie mniejszej o 1 od liczby na miejscu drugim
 
 .. code-block:: python
-
 
     range(2,6)
 
@@ -425,7 +427,7 @@ listy.
 
 .. raw:: html
 
-    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -437,7 +439,7 @@ listy.
     print("element listy: ", liczba)
 
 Zadania dodatkowe
-'''''''''''''''''
+^^^^^^^^^^^^^^^^^
 
 1. Napisz dwa programy, które wypisują liczby naturalne od 1 do 15. W pierwszym programie
 wykonaj pętlę for, a w drugim while.
@@ -449,7 +451,7 @@ wykonaj pętlę for, a w drugim while.
 4. Oblicz sumę kwadratów liczb naturalnych z zakresu od 1 do 100.
 
 Słowniczek
-''''''''''
+----------
 
 .. glossary::
 
@@ -479,6 +481,6 @@ Słowniczek
 .. raw:: html
 
     <style>
-        div.codeno { text-align: right; background: #e3e3e3; padding: 6px 12px; }
+        div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
         div.highlight, div.highlight-python { margin-top: 0px; }
     </style>
