@@ -34,5 +34,6 @@ class Board(object):
         # w oknie gry, wcześniej tylko ustalaliśmy co i jak ma zostać narysowane
         pygame.display.update()
 
+
 board = Board(800, 400)
 board.draw()

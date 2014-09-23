@@ -57,6 +57,7 @@ class PongGame(object):
         Główna pętla programu
         """
         while not self.handle_events():
+            # działaj w pętli do momentu otrzymania sygnału do wyjścia
             self.ball.move(self.board, self.player1, self.player2)
             self.board.draw(
                 self.ball,
@@ -70,6 +71,8 @@ class PongGame(object):
     def handle_events(self):
         """
         Obsługa zdarzeń systemowych, tutaj zinterpretujemy np. ruchy myszką
+
+        :return True jeżeli pygame przekazał zdarzenie wyjścia z gry
         """
         for event in pygame.event.get():
             if event.type == pygame.locals.QUIT:
