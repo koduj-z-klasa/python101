@@ -82,7 +82,7 @@ możemy na końcu chwilkę uśpić nasz program:
 
 .. code-block:: python
     :linenos:
-    
+    :lineno-start: 39
 
     import time
     time.sleep(5)
@@ -97,7 +97,7 @@ Jednak zamiast tego, dla lepszej kontroli powinniśmy zadeklarować klasę kontr
 
 .. literalinclude:: pong_z2.py
     :linenos:
-    
+    :lineno-start: 37
     :lines: 37-
 
 .. note::
@@ -135,7 +135,7 @@ rysować w oknie naszej gry:
 
 .. literalinclude:: pong_z3.py
     :linenos:
-    
+    :lineno-start: 67
     :lines: 72-85
 
 Następnie dodajmy klasę samej piłeczki dziedzicząc z ``Drawable``:
@@ -147,7 +147,7 @@ Następnie dodajmy klasę samej piłeczki dziedzicząc z ``Drawable``:
 
 .. literalinclude:: pong_z3.py
     :linenos:
-    
+    :lineno-start: 83
     :lines: 88-124
 
 Teraz musimy naszą piłeczkę zintegrować z resztą gry:
@@ -161,7 +161,7 @@ Teraz musimy naszą piłeczkę zintegrować z resztą gry:
     :linenos:
     :lines: 38-60
     :emphasize-lines: 12, 19-22
-    
+    :lineno-start: 38
 
 .. note::
 
@@ -205,7 +205,7 @@ jego podstawie sprawdzimy czy piłeczka powinna się odbijać:
 
 .. code-block:: python
     :emphasize-lines: 1, 8-12
-    
+    :lineno-start: 119
 
     def move(self, board):
         """
@@ -224,7 +224,7 @@ Jeszcze zmodyfikujmy wywołanie metody ``move`` w naszej pętli głównej:
 
 .. code-block:: python
     :emphasize-lines: 6
-    
+    :lineno-start: 51
 
     def run(self):
         """
@@ -265,7 +265,7 @@ Dodajmy zwykły prostokąt, który będziemy przesuwać przy pomocy myszki.
 .. literalinclude:: pong_z5.py
     :linenos:
     :lines: 144-161
-    
+    :lineno-start: 133
 
 Następnie "pokażemy" rakietkę piłeczce, tak by mogła się od niej odbijać.
 Wiemy że rakietek będzie więcej dlatego od razu tak zmodyfikujemy metodę
@@ -301,7 +301,7 @@ dodatkowo musimy ją pokazać piłeczce:
     :linenos:
     :lines: 38-76
     :emphasize-lines: 13, 23, 36-39
-    
+    :lineno-start: 38
 
 Gotowy kod możemy wyciągnąć komendą:
 
@@ -330,7 +330,7 @@ Dodajemy przeciwnika, nasz przeciwnik będzie mistrzem, będzie dokładnie
 .. literalinclude:: pong_z6.py
     :linenos:
     :lines: 167-177
-    
+    :lineno-start: 164
 
 Tak jak w przypadku piłeczki i rakietki dodajemy nasze ``Ai`` do gry,
 a wraz nią wraz dodajemy drugą rakietkę.
@@ -343,7 +343,7 @@ od niej odbijać.
     :linenos:
     :lines: 38-66
     :emphasize-lines: 13-15, 22, 26, 28
-    
+    :lineno-start: 38
 
 
 Pokazujemy punkty
@@ -355,7 +355,7 @@ decydował czy graczom należą się punkty i będzie ustawiał piłkę w począ
 .. literalinclude:: pong_z7.py
     :linenos:
     :lines: 183-228
-    
+    :lineno-start: 183
 
 Tradycyjnie dodajemy instancję nowej klasy do gry:
 
@@ -363,7 +363,7 @@ Tradycyjnie dodajemy instancję nowej klasy do gry:
     :linenos:
     :lines: 38-66
     :emphasize-lines: 16, 28
-    
+    :lineno-start: 38
 
 Zadania dodatkowe i rzeczy które można poprawić
 -----------------------------------------------
