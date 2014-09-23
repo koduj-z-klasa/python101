@@ -42,7 +42,7 @@ Na wstępie w pliku ``~/python101/pong/pong.py`` otrzymujemy kod który przygotu
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: pong_z1.py
-    :linenos:
+    
 
 
 W powyższym kodzie zdefiniowaliśmy klasę ``Board`` z dwiema metodami:
@@ -81,7 +81,7 @@ możemy na końcu chwilkę uśpić nasz program:
 
 
 .. code-block:: python
-    :linenos:
+    
     :lineno-start: 39
 
     import time
@@ -96,7 +96,7 @@ usuńmy kod o linii 37 do końca i dodajmy klasę kontrolera:
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: pong_z2.py
-    :linenos:
+    
     :lineno-start: 38
     :lines: 38-
 
@@ -133,7 +133,7 @@ rysować w oknie naszej gry:
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: pong_z3.py
-    :linenos:
+    
     :lineno-start: 71
     :lines: 75-88
 
@@ -144,7 +144,7 @@ Następnie dodajmy klasę samej piłeczki dziedzicząc z ``Drawable``:
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: pong_z3.py
-    :linenos:
+    
     :lineno-start: 87
     :lines: 91-127
 
@@ -155,7 +155,7 @@ Teraz musimy naszą piłeczkę zintegrować z resztą gry:
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: pong_z3.py
-    :linenos:
+    
     :lines: 38-61
     :emphasize-lines: 12, 20-23
     :lineno-start: 38
@@ -272,7 +272,7 @@ Dodajmy zwykły prostokąt, który będziemy przesuwać przy pomocy myszki.
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: pong_z5.py
-    :linenos:
+    
     :lines: 147-164
     :lineno-start: 136
 
@@ -298,7 +298,7 @@ Wiemy że rakietek będzie więcej dlatego od razu tak zmodyfikujemy metodę
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
-    :linenos:
+    
     :emphasize-lines: 1, 14-16
     :lineno-start: 122
 
@@ -328,7 +328,7 @@ dodatkowo musimy ją pokazać piłeczce:
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: pong_z5.py
-    :linenos:
+    
     :lines: 38-79
     :emphasize-lines: 13, 21, 24, 39-42
     :lineno-start: 38
@@ -361,7 +361,7 @@ Dodajemy przeciwnika, nasz przeciwnik będzie mistrzem, będzie dokładnie
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: pong_z6.py
-    :linenos:
+    
     :lines: 170-180
     :lineno-start: 167
 
@@ -377,7 +377,7 @@ od niej odbijać.
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: pong_z6.py
-    :linenos:
+    
     :lines: 38-67
     :emphasize-lines: 13-15, 23, 27, 29
     :lineno-start: 38
@@ -394,7 +394,7 @@ decydował czy graczom należą się punkty i będzie ustawiał piłkę w począ
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: pong_z7.py
-    :linenos:
+    
     :lines: 184-228
     :lineno-start: 184
 
@@ -405,7 +405,7 @@ Tradycyjnie dodajemy instancję nowej klasy do gry:
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: pong_z7.py
-    :linenos:
+    
     :lines: 38-70
     :emphasize-lines: 16, 29
     :lineno-start: 38
