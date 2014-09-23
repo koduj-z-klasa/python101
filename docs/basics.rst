@@ -13,7 +13,7 @@ kodu (np. IPython omawiany w kolejnych scenariuszach).
 
 Naukę zaczynamy od poznania interpretera. Interpreter uruchamiamy z konsoli poleceniem
 
-.. code-block:: bash
+.. code:: bash
 
     $ python
 
@@ -21,10 +21,24 @@ Po uruchomieniu interpretera komputer powinien wypisać trzy linie tekstu a w cz
 znak zachęty, po którym wpisujemy komendy. Standardowym znakiem zachęty w interpreterze
 Pythona jest ``>>>``.
 
+.. note::
+
+    Przykłady zawierające znak zachęty ``$`` oznaczają komendy
+    do wykonania w terminalu systemu operacyjnego (uruchom przez :kbd:`Win+T`).
+
+    Komendy należy kopiować i wklejać bez znaku zachęty ``$`` i poprzedzającego tekstu.
+    Komendy można wklejać do terminala środkowym klawiszem myszki.
+
 Zmienne
 -------
 
-W interpreterze wpisz poniższy przykład::
+W interpreterze wpisz poniższy przykład:
+
+.. raw:: html
+
+    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code:: pycon
 
     >>> a = 3
     >>> b = 5
@@ -44,6 +58,14 @@ W interpreterze wpisz poniższy przykład::
     >>> kwiatek + ' i ' + kwiatek2
     'stokrotka i róża'
 
+
+.. note::
+
+    Przykłady zawierające znaki zachęty ``>>>`` elementy do wykonania w interpreterze
+    języka Python.
+    Komendy należy kopiować i wklejać bez znaku zachęty ``>>>``.
+
+
 W powyższym przykładzie wykonujemy operacje na zmiennych. Zmienne są "pudełkami"
 trzymającymi różne informacje. Zmienna posiada swoją nazwę i wartość. Nazwa zmiennej w Pythonie
 nie może zawierać:
@@ -56,15 +78,17 @@ nie może zawierać:
 Wielkość liter jest rozróżniana (zmienna x i zmienna X to dwie różne zmienne).
 Przykłady poprawnych:
 
-.. code-block:: python
-
-    i, _chodnik, nazwa_23, a2c4
+- ``i``
+- ``_chodnik``
+- ``nazwa_23``
+- ``a2c4``
 
 Przykłady niepoprawnych:
 
-.. code-block:: python
-
-    1nazwa, 4_strony_świata, z-myslnikiem, nazwa ze spacja,
+- ``1nazwa``
+- ``4_strony_świata``
+- ``z-myslnikiem``,
+- ``nazwa ze spacja``
 
 Główne typy zmiennych, którymi będziemy się zajmować to:
 
@@ -75,10 +99,15 @@ Główne typy zmiennych, którymi będziemy się zajmować to:
 Istnieje wiele innych typów zmiennych. [odniesienie do zewn. Źródeł]
 Zróbmy proste zadanie - będąc w interpreterze wykonaj:
 
+.. raw:: html
+
+    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. code-block:: python
 
     zmienna1 = raw_input(``Podaj imię: ``)
     print(``Witaj``, zmienna1)
+
 
 Stworzyliśmy właśnie pierwszy program w języku Python. Gratulacje!
 
@@ -93,12 +122,23 @@ utworzonej zmiennej.
 Aby zamienić podaną z klawiatury liczbę na zmienną liczbową (int lub float) musimy skorzystać z
 funkcji ``int``.
 
+.. raw:: html
+
+    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. code-block:: python
 
     zmienna1 = raw_input(``Podaj 1 liczbę: ``)
     zmienna2 = raw_input(``Podaj 2 liczbę: ``)
     wynik = int(zmienna1) + int(zmienna2)
     print(``Suma:``, wynik)
+
+.. tip::
+
+    Grupy mniej zaawansowane mogą poświęcić czas na eksperymenty z operacjami na zmiennych podawanych z klawiatury.
+
+Funkcje
+"""""""
 
 Funkcje są to wcześniej zdefiniowane kawałki kodu, których możemy później użyć do wykonania
 określonej czynności, zamiast wpisywać ten sam kod po raz kolejny.
@@ -112,7 +152,7 @@ mówimy, że funkcja zwraca dane.
 
 Kolejny program zapiszemy już w pliku aby prościej było go zmieniać oraz wykonywać wiele razy.
 W tym celu należy otworzyć edytor tekstu, wpisać do niego instrukcje języka Python, a następnie
-zapisać z rozszerzeniem ``.py ``. Aby uruchomić tak zapisany program należy będąc w linii poleceń
+zapisać z rozszerzeniem ``.py``. Aby uruchomić tak zapisany program należy będąc w linii poleceń
 (konsola / terminal) w tym samym katalogu gdzie zapisaliśmy nasz plik wpisać:
 
 .. code-block:: bash
@@ -150,6 +190,10 @@ Głębokość wcięcia nie ma znaczenia (dobry zwyczaj programowania w Pythonie 
 czterech spacji) ale musi być ono w całym programie zawsze tej samej głębokości.
 Pobawmy się instrukcjami ``if``, ``elif`` i ``else`` na prostym przykładzie.
 
+.. raw:: html
+
+    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. code-block:: python
 
     zmienna = raw_input('Podaj liczbę: ')
@@ -161,6 +205,7 @@ Pobawmy się instrukcjami ``if``, ``elif`` i ``else`` na prostym przykładzie.
     else:
         print('Wpisałeś liczbę ujemną')
     print('Koniec programu')
+
 
 W programie na początku wczytywana jest wartość z klawiatury do zmiennej, a następnie
 dokonujemy zmiany jej typu na liczbę całkowitą. W dalszej części stosujemy instrukcję ``if``
@@ -183,23 +228,28 @@ Napisz program, w którym:
 - jeżeli użytkownik trafi program wyświetli komunikat: ``Gratulacje!``, a jeśli nie, to wyświetli
   napis określający czy podana liczba jest większa od danej czy mniejsza.
 
+.. raw:: html
+
+    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. code-block:: python
 
     dana = 18
-    strzal = int(raw_input(‘Wpisz liczbę całkowitą’))
+    strzal = int(raw_input("Wpisz liczbę całkowitą"))
     if strzal == dana:
-        print(‘Gratulacje! Zgadłeś’)
+        print("Gratulacje! Zgadłeś")
     elif strzal < dana:
-        print(‘Nie! Szukana liczba jest większa!’)
+        print("Nie! Szukana liczba jest większa!")
     else:
-        print(‘Nie! Szukana liczba jest mniejsza!’)
-    print(‘Koniec programu.’)
+        print("Nie! Szukana liczba jest mniejsza!")
+    print("Koniec programu.")
+
 
 Zadania dodatkowe
 -----------------
 
 #. Za pomocą poznanych narzędzi stwórz program będący kalkulatorem.
-#. Napisz program rozwiązujący równania kwadratowe.
+#. Napisz program rozwiązujący równania kwadratowe (rozwiązanie: :ref:'kwadratowe`).
 #. Napisz program, który spyta użytkownika ile ma lat, a następnie wyświetli czy osoba ta jest
     młodzieżą, dzieckiem czy dorosłym (załóżmy, że dziecko ma mniej niż 12 lat, a dorosły więcej
     niż 18).
@@ -209,8 +259,15 @@ Zadania dodatkowe
 #. Napisz program, który będzie sprawdzał czy z podanych przez użytkownika trzech długości
     można zbudować trójkąt.
 
+
+.. _kwadratowe:
+
 Równania kwadratowe
 ^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -245,20 +302,25 @@ prawdziwy.
 
 Zobaczmy działanie pętli ``while`` na poniższym przykładzie.
 
+.. raw:: html
+
+    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+
 .. code-block:: python
 
     dana = 18
     kontynuuj = True
     while koniec:
-        strzal = int(raw_input(‘Wpisz liczbę całkowitą’))
+        strzal = int(raw_input("Wpisz liczbę całkowitą"))
         if strzal == dana:
         elif strzal < dana:
         else:
-    print(‘Koniec programu.’)
-    print(‘Gratulacje! Zgadłeś’)
+    print("Koniec programu.")
+    print("Gratulacje! Zgadłeś")
     kontynuuj = False
-    print(‘Nie! Szukana liczba jest większa!’)
-    print(‘Nie! Szukana liczba jest mniejsza!’)
+    print("Nie! Szukana liczba jest większa!")
+    print("Nie! Szukana liczba jest mniejsza!")
 
 Program będzie wykonywany do momentu, w którym użytkownik poda właściwą liczbę. Zatem nie
 trzeba do każdego strzału ponownie uruchamiać programu. Zmienna ``kontynuuj`` ma ustawioną
@@ -271,26 +333,32 @@ Wyrażenia break i continue
 
 Wyrażenie ``break`` powoduje natychmiastowe zakończenie wykonywania pętli.
 
+.. raw:: html
+
+    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. code-block:: python
 
     dana = 18
     while True:
-    strzal = int(raw_input(‘Wpisz liczbę całkowitą’))
+    strzal = int(raw_input("Wpisz liczbę całkowitą"))
     if strzal == dana:
     elif strzal < dana:
     else:
-    print(‘Koniec programu.’)
-    print(‘Gratulacje! Zgadłeś’)
+    print("Koniec programu.")
+    print("Gratulacje! Zgadłeś")
     break
 
-    print(‘Nie! Szukana liczba jest większa!’)
+    print("Nie! Szukana liczba jest większa!")
 
-    print(‘Nie! Szukana liczba jest mniejsza!’)
+    print("Nie! Szukana liczba jest mniejsza!")
 
 Wyrażenie ``continue`` powoduje ominięcie następujących po nim wyrażeń w bloku, a następnie
 rozpoczyna ponowne wykonanie pętli.
 
-Przykład 8.
+.. raw:: html
+
+    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -299,23 +367,23 @@ Przykład 8.
 
     while True:
 
-    strzal = int(raw_input(‘Wpisz liczbę całkowitą’))
+    strzal = int(raw_input("Wpisz liczbę całkowitą"))
 
     if strzal > dana:
 
     elif strzal < dana:
 
-    print(‘Gratulacje! Zgadłeś’)
+    print("Gratulacje! Zgadłeś")
 
     break
 
-    print(‘Koniec programu.’)
+    print("Koniec programu.")
 
-    print(‘Nie! Szukana liczba jest mniejsza!’)
+    print("Nie! Szukana liczba jest mniejsza!")
 
     continue
 
-    print(‘Nie! Szukana liczba jest większa!’)
+    print("Nie! Szukana liczba jest większa!")
 
     continue
 
@@ -355,19 +423,21 @@ pierwszym miejscu, kończąc na liczbie mniejszej o 1 od liczby na miejscu drugi
 Zobrazujmy działanie pętli ``for`` na prostym przykładzie, wymieniającym kolejno elementy z pewnej
 listy.
 
-Przykład 9.
+.. raw:: html
+
+    <div class="codeno">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
 
-    print(‘Mamy listę elementów: ’, [5,6,7,8])
+    print("Mamy listę elementów: ", [5,6,7,8])
 
     for liczba in [5,6,7,8]:
 
-    print(‘element listy: ’, liczba)
+    print("element listy: ", liczba)
 
 Zadania dodatkowe
-^^^^^^^^^^^^^^^^^
+'''''''''''''''''
 
 1. Napisz dwa programy, które wypisują liczby naturalne od 1 do 15. W pierwszym programie
 wykonaj pętlę for, a w drugim while.
@@ -379,7 +449,7 @@ wykonaj pętlę for, a w drugim while.
 4. Oblicz sumę kwadratów liczb naturalnych z zakresu od 1 do 100.
 
 Słowniczek
-^^^^^^^^^^
+''''''''''
 
 .. glossary::
 
@@ -405,3 +475,10 @@ Słowniczek
     Typ zmiennych
 
         rodzaj danych, który przypisany jest do zmiennej w momencie jej tworzenia.
+
+.. raw:: html
+
+    <style>
+        div.codeno { text-align: right; background: #e3e3e3; padding: 6px 12px; }
+        div.highlight, div.highlight-python { margin-top: 0px; }
+    </style>
