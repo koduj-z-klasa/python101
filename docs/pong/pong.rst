@@ -16,7 +16,7 @@ Do rozpoczęcia pracy z przykładem pobieramy szczątkowy kod źródłowy:
 
 .. code-block:: bash
 
-    ~/python101$ git checkout -f --track origin/pong/z1
+    ~/python101$ git checkout -f tags/pong/z1
 
 .. note::
 
@@ -117,7 +117,7 @@ Gotowy kod możemy wyciągnąć komendą:
 
 .. code-block:: bash
 
-    ~/python101$ git checkout -f --track origin/pong/z2
+    ~/python101$ git checkout -f tags/pong/z2
 
 Piłeczka
 --------
@@ -177,7 +177,7 @@ Gotowy kod możemy wyciągnąć komendą:
 
 .. code-block:: bash
 
-    ~/python101$ git checkout -f --track origin/pong/z3
+    ~/python101$ git checkout -f tags/pong/z3
 
 
 Odbijanie piłeczki
@@ -258,7 +258,7 @@ Gotowy kod możemy wyciągnąć komendą:
 
 .. code-block:: bash
 
-    ~/python101$ git checkout -f --track origin/pong/z4
+    ~/python101$ git checkout -f tags/pong/z4
 
 
 Odbijamy piłeczkę rakietką
@@ -337,7 +337,7 @@ Gotowy kod możemy wyciągnąć komendą:
 
 .. code-block:: bash
 
-    ~/python101$ git checkout -f --track origin/pong/z5
+    ~/python101$ git checkout -f tags/pong/z5
 
 .. note::
 
