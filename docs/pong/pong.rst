@@ -37,6 +37,10 @@ Okienko gry
 
 Na wstępie w pliku ``~/python101/pong/pong.py`` otrzymujemy kod który przygotuje okienko naszej gry:
 
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. literalinclude:: pong_z1.py
     :linenos:
 
@@ -71,6 +75,11 @@ Nasz program możemy uruchomić komendą:
 Mrugnęło? Program się wykonał i zakończył działanie :). Żeby zobaczyć efekt na dłużej,
 możemy na końcu chwilkę uśpić nasz program:
 
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+
 .. code-block:: python
     :linenos:
     
@@ -80,6 +89,11 @@ możemy na końcu chwilkę uśpić nasz program:
 
 
 Jednak zamiast tego, dla lepszej kontroli powinniśmy zadeklarować klasę kontrolera gry:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 
 .. literalinclude:: pong_z2.py
     :linenos:
@@ -114,6 +128,11 @@ naszej pętli przesuniemy o kilka punktów w osi X i Y, zgodnie wektorem prędko
 Wcześniej jednak zdefiniujemy wspólną klasę bazową dla obiektów które będziemy
 rysować w oknie naszej gry:
 
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+
 .. literalinclude:: pong_z3.py
     :linenos:
     
@@ -121,12 +140,22 @@ rysować w oknie naszej gry:
 
 Następnie dodajmy klasę samej piłeczki dziedzicząc z ``Drawable``:
 
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+
 .. literalinclude:: pong_z3.py
     :linenos:
     
     :lines: 88-124
 
 Teraz musimy naszą piłeczkę zintegrować z resztą gry:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 
 .. literalinclude:: pong_z3.py
     :linenos:
@@ -245,6 +274,7 @@ Wiemy że rakietek będzie więcej dlatego od razu tak zmodyfikujemy metodę
 .. code-block:: python
     :linenos:
     :emphasize-lines: 1, 14-16
+    :lineno-start: 119
 
     def move(self, board, *args):
         """
@@ -346,3 +376,21 @@ Zadania dodatkowe i rzeczy które można poprawić
    być kontynuowany także gdy myszka jest bezczynna.
 #. Gdy piłeczka odbija się od boków rakietki powinna odbijać się w osi X.
 #. Gra dwuosobowa z użyciem komunikacji po sieci.
+
+
+Metryka
+^^^^^^^
+
+:Autorzy: Janusz Skonieczny <js@bravelabs.pl>
+
+Dokument wygenerowany |date| o |time|
+
+.. |date| date::
+.. |time| date:: %H:%M
+
+.. raw:: html
+
+    <style>
+        div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
+        div.highlight, div.highlight-python { margin-top: 0px; }
+    </style>

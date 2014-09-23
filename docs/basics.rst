@@ -13,7 +13,7 @@ kodu (np. IPython omawiany w kolejnych scenariuszach).
 
 Naukę zaczynamy od poznania interpretera. Interpreter uruchamiamy z konsoli poleceniem
 
-.. code-block:: bash
+.. code:: bash
 
     $ python
 
@@ -21,10 +21,24 @@ Po uruchomieniu interpretera komputer powinien wypisać trzy linie tekstu a w cz
 znak zachęty, po którym wpisujemy komendy. Standardowym znakiem zachęty w interpreterze
 Pythona jest ``>>>``.
 
+.. note::
+
+    Przykłady zawierające znak zachęty ``$`` oznaczają komendy
+    do wykonania w terminalu systemu operacyjnego (uruchom przez :kbd:`Win+T`).
+
+    Komendy należy kopiować i wklejać bez znaku zachęty ``$`` i poprzedzającego tekstu.
+    Komendy można wklejać do terminala środkowym klawiszem myszki.
+
 Zmienne
 -------
 
-W interpreterze wpisz poniższy przykład::
+W interpreterze wpisz poniższy przykład:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code:: pycon
 
     >>> a = 3
     >>> b = 5
@@ -44,6 +58,14 @@ W interpreterze wpisz poniższy przykład::
     >>> kwiatek + ' i ' + kwiatek2
     'stokrotka i róża'
 
+
+.. note::
+
+    Przykłady zawierające znaki zachęty ``>>>`` elementy do wykonania w interpreterze
+    języka Python.
+    Komendy należy kopiować i wklejać bez znaku zachęty ``>>>``.
+
+
 W powyższym przykładzie wykonujemy operacje na zmiennych. Zmienne są "pudełkami"
 trzymającymi różne informacje. Zmienna posiada swoją nazwę i wartość. Nazwa zmiennej w Pythonie
 nie może zawierać:
@@ -56,11 +78,17 @@ nie może zawierać:
 Wielkość liter jest rozróżniana (zmienna x i zmienna X to dwie różne zmienne).
 Przykłady poprawnych:
 
-    i, _chodnik, nazwa_23, a2c4
+- ``i``
+- ``_chodnik``
+- ``nazwa_23``
+- ``a2c4``
 
 Przykłady niepoprawnych:
 
-    1nazwa, 4_strony_świata, z-myslnikiem, nazwa ze spacja,
+- ``1nazwa``
+- ``4_strony_świata``
+- ``z-myslnikiem``,
+- ``nazwa ze spacja``
 
 Główne typy zmiennych, którymi będziemy się zajmować to:
 
@@ -71,9 +99,15 @@ Główne typy zmiennych, którymi będziemy się zajmować to:
 Istnieje wiele innych typów zmiennych. [odniesienie do zewn. Źródeł]
 Zróbmy proste zadanie - będąc w interpreterze wykonaj:
 
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block:: python
 
     zmienna1 = raw_input(``Podaj imię: ``)
     print(``Witaj``, zmienna1)
+
 
 Stworzyliśmy właśnie pierwszy program w języku Python. Gratulacje!
 
@@ -82,17 +116,30 @@ następnie używając funkcji ``print`` wyświetla na ekranie kawałek tekstu or
 utworzonej zmiennej.
 
 .. warning::::
+
     Funkcja ``raw_input`` zwraca zmienną typu napisowego (string). Nawet, gdy podamy
     liczbę, to będzie ona traktowana jak napis i nie można wykonywać na niej działań matematycznych.
 
 Aby zamienić podaną z klawiatury liczbę na zmienną liczbową (int lub float) musimy skorzystać z
 funkcji ``int``.
 
+.. raw:: html
 
-    zmienna1 = raw_input(``Podaj 1 liczbę: ``)
-    zmienna2 = raw_input(``Podaj 2 liczbę: ``)
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block:: python
+
+    zmienna1 = raw_input("Podaj 1 liczbę: ")
+    zmienna2 = raw_input("Podaj 2 liczbę: ")
     wynik = int(zmienna1) + int(zmienna2)
-    print(``Suma:``, wynik)
+    print("Suma:", wynik)
+
+.. tip::
+
+    Grupy mniej zaawansowane mogą poświęcić czas na eksperymenty z operacjami na zmiennych podawanych z klawiatury.
+
+Funkcje
+^^^^^^^
 
 Funkcje są to wcześniej zdefiniowane kawałki kodu, których możemy później użyć do wykonania
 określonej czynności, zamiast wpisywać ten sam kod po raz kolejny.
@@ -106,7 +153,7 @@ mówimy, że funkcja zwraca dane.
 
 Kolejny program zapiszemy już w pliku aby prościej było go zmieniać oraz wykonywać wiele razy.
 W tym celu należy otworzyć edytor tekstu, wpisać do niego instrukcje języka Python, a następnie
-zapisać z rozszerzeniem ``.py ``. Aby uruchomić tak zapisany program należy będąc w linii poleceń
+zapisać z rozszerzeniem ``.py``. Aby uruchomić tak zapisany program należy będąc w linii poleceń
 (konsola / terminal) w tym samym katalogu gdzie zapisaliśmy nasz plik wpisać:
 
 .. code-block:: bash
@@ -127,6 +174,8 @@ wyrażenie warunkowe było fałszywe.
 Python pozwala także na sprawdzenie większej liczby warunków w ramach jednej instrukcji ``if``. Służy
 do tego instrukcja ``elif`` (skrót od else if).
 
+.. code-block:: python
+
     if wyrażenie_warunkowe:
         blok kodu 1
     elif:
@@ -142,6 +191,11 @@ Głębokość wcięcia nie ma znaczenia (dobry zwyczaj programowania w Pythonie 
 czterech spacji) ale musi być ono w całym programie zawsze tej samej głębokości.
 Pobawmy się instrukcjami ``if``, ``elif`` i ``else`` na prostym przykładzie.
 
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block:: python
 
     zmienna = raw_input('Podaj liczbę: ')
     zmienna = int(zmienna)
@@ -152,6 +206,7 @@ Pobawmy się instrukcjami ``if``, ``elif`` i ``else`` na prostym przykładzie.
     else:
         print('Wpisałeś liczbę ujemną')
     print('Koniec programu')
+
 
 W programie na początku wczytywana jest wartość z klawiatury do zmiennej, a następnie
 dokonujemy zmiany jej typu na liczbę całkowitą. W dalszej części stosujemy instrukcję ``if``
@@ -174,47 +229,64 @@ Napisz program, w którym:
 - jeżeli użytkownik trafi program wyświetli komunikat: ``Gratulacje!``, a jeśli nie, to wyświetli
   napis określający czy podana liczba jest większa od danej czy mniejsza.
 
-dana = 18
-strzal = int(raw_input(‘Wpisz liczbę całkowitą’))
-if strzal == dana:
-    print(‘Gratulacje! Zgadłeś’)
-elif strzal < dana:
-    print(‘Nie! Szukana liczba jest większa!’)
-else:
-    print(‘Nie! Szukana liczba jest mniejsza!’)
-print(‘Koniec programu.’)
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block:: python
+
+    dana = 18
+    strzal = int(raw_input("Wpisz liczbę całkowitą"))
+    if strzal == dana:
+        print("Gratulacje! Zgadłeś")
+    elif strzal < dana:
+        print("Nie! Szukana liczba jest większa!")
+    else:
+        print("Nie! Szukana liczba jest mniejsza!")
+    print("Koniec programu.")
+
 
 Zadania dodatkowe
 -----------------
 
 #. Za pomocą poznanych narzędzi stwórz program będący kalkulatorem.
-#. Napisz program rozwiązujący równania kwadratowe.
+#. Napisz program rozwiązujący równania kwadratowe (:ref:`kwadratowe`).
 #. Napisz program, który spyta użytkownika ile ma lat, a następnie wyświetli czy osoba ta jest
-    młodzieżą, dzieckiem czy dorosłym (załóżmy, że dziecko ma mniej niż 12 lat, a dorosły więcej
-    niż 18).
+   młodzieżą, dzieckiem czy dorosłym (załóżmy, że dziecko ma mniej niż 12 lat, a dorosły więcej
+   niż 18).
 #. Napisz program, który będzie sortował trzy podane przez użytkownika liczby.
 #. Napisz program, który w odpowiedzi na podaną przez użytkownika liczbę będzie wyświetlał
-    komunikat czy jest to liczba parzysta, czy nieparzysta.
+   komunikat czy jest to liczba parzysta, czy nieparzysta.
 #. Napisz program, który będzie sprawdzał czy z podanych przez użytkownika trzech długości
-    można zbudować trójkąt.
+   można zbudować trójkąt.
 
-Równania kwadratowe
-^^^^^^^^^^^^^^^^^^^
 
-print 'Dla równania kwadratowego ax2+bx+c=0'
-a=int(raw_input('podaj wartość parametru a: '))
-b=int(raw_input('podaj wartość parametru b: '))
-c=int(raw_input('podaj wartość parametru c: '))
-delta = b**2-4*a*c
-if delta > 0:
-    x1 = (-b-delta**(1/2))/(2*a)
-    x2 = (-b+delta**(1/2))/(2*a)
-    print 'x1 = ', x1, ', x2= ', x2
-elif delta == 0:
-    x0 = -b/(2*a)
-    print 'x0 = ', x0
-else:
-    print 'brak rozwiązań'
+.. _kwadratowe:
+
+Przykład równania kwadratowego
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block:: python
+    :linenos:
+
+    print 'Dla równania kwadratowego ax2+bx+c=0'
+    a=int(raw_input('podaj wartość parametru a: '))
+    b=int(raw_input('podaj wartość parametru b: '))
+    c=int(raw_input('podaj wartość parametru c: '))
+    delta = b**2-4*a*c
+    if delta > 0:
+        x1 = (-b-delta**(1/2))/(2*a)
+        x2 = (-b+delta**(1/2))/(2*a)
+        print 'x1 = ', x1, ', x2= ', x2
+    elif delta == 0:
+        x0 = -b/(2*a)
+        print 'x0 = ', x0
+    else:
+        print 'brak rozwiązań'
 
 Pętla WHILE
 -----------
@@ -225,23 +297,33 @@ instrukcje zawarte w bloku. Następnie ponownie sprawdzany jest warunek, jeśli 
 to ponownie wykonuje wszystkie polecenia. Pętla jest wykonywana tak długo, jak długo warunek jest
 prawdziwy.
 
-while wyrażenie_warunkowe:
-    blok kodu
+.. code-block:: python
+
+    while wyrażenie_warunkowe:
+        blok kodu
 
 Zobaczmy działanie pętli ``while`` na poniższym przykładzie.
 
-dana = 18
-kontynuuj = True
-while koniec:
-    strzal = int(raw_input(‘Wpisz liczbę całkowitą’))
-    if strzal == dana:
-    elif strzal < dana:
-    else:
-print(‘Koniec programu.’)
-print(‘Gratulacje! Zgadłeś’)
-kontynuuj = False
-print(‘Nie! Szukana liczba jest większa!’)
-print(‘Nie! Szukana liczba jest mniejsza!’)
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block:: python
+    :linenos:
+
+    import random
+    dana = random.choice(range(10))
+    kontynuuj = True
+    while koniec:
+        strzal = int(raw_input("Wpisz liczbę całkowitą"))
+        if strzal == dana:
+            print("Gratulacje! Zgadłeś")
+            kontynuuj = False
+        elif strzal < dana:
+            print("Nie! Szukana liczba jest większa!")
+        else:
+            print("Nie! Szukana liczba jest mniejsza!")
+    print("Koniec programu.")
 
 Program będzie wykonywany do momentu, w którym użytkownik poda właściwą liczbę. Zatem nie
 trzeba do każdego strzału ponownie uruchamiać programu. Zmienna ``kontynuuj`` ma ustawioną
@@ -254,101 +336,103 @@ Wyrażenia break i continue
 
 Wyrażenie ``break`` powoduje natychmiastowe zakończenie wykonywania pętli.
 
-dana = 18
-while True:
-strzal = int(raw_input(‘Wpisz liczbę całkowitą’))
-if strzal == dana:
-elif strzal < dana:
-else:
-print(‘Koniec programu.’)
-print(‘Gratulacje! Zgadłeś’)
-break
+.. raw:: html
 
-print(‘Nie! Szukana liczba jest większa!’)
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-print(‘Nie! Szukana liczba jest mniejsza!’)
+.. code-block:: python
+    :linenos:
+
+    import random
+    dana = random.choice(range(10))
+    while True:
+        strzal = int(raw_input("Wpisz liczbę całkowitą"))
+        if strzal == dana:
+            print("Gratulacje! Zgadłeś")
+            break
+        elif strzal < dana:
+            print("Nie! Szukana liczba jest większa!")
+        else:
+            print("Nie! Szukana liczba jest mniejsza!")
+    print("Koniec programu.")
+
 
 Wyrażenie ``continue`` powoduje ominięcie następujących po nim wyrażeń w bloku, a następnie
-
 rozpoczyna ponowne wykonanie pętli.
 
-Przykład 8.
+.. raw:: html
 
-dana = 18
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-while True:
+.. code-block:: python
+    :linenos:
 
-strzal = int(raw_input(‘Wpisz liczbę całkowitą’))
-
-if strzal > dana:
-
-elif strzal < dana:
-
-print(‘Gratulacje! Zgadłeś’)
-
-break
-
-print(‘Koniec programu.’)
-
-print(‘Nie! Szukana liczba jest mniejsza!’)
-
-continue
-
-print(‘Nie! Szukana liczba jest większa!’)
-
-continue
+    import random
+    dana = random.choice(range(10))
+    while True:
+        strzal = int(raw_input("Wpisz liczbę całkowitą"))
+        if strzal > dana:
+            print("Nie! Szukana liczba jest mniejsza!")
+            continue
+        elif strzal < dana:
+            print("Nie! Szukana liczba jest większa!")
+            continue
+        print("Gratulacje! Zgadłeś")
+        break
+    print("Koniec programu.")
 
 Zadania dodatkowe
+^^^^^^^^^^^^^^^^^
 
 1. Napisz program, który sumuje liczby dodatnie podawane przez użytkownika – pętla pozwala
-
-użytkownikowi podawać liczby dopóki nie poda liczby niedodatniej.
-
-Następnie obok podawanego wyniku będzie wyświetlana liczba określająca ilość podanych
-
-liczb.
+   użytkownikowi podawać liczby dopóki nie poda liczby niedodatniej.
+   Następnie obok podawanego wyniku będzie wyświetlana liczba określająca ilość podanych
+   liczb.
 
 2. Na podstawie wcześniejszego zadania napisz program obliczający średnią liczb dodatnich, a
+   następnie zmodyfikuj go tak, aby obliczana była średnia również dla liczb ujemnych.
 
-następnie zmodyfikuj go tak, aby obliczana była średnia również dla liczb ujemnych.
-
-6. Pętla FOR
+Pętla FOR
+---------
 
 Pętla for służy do wykonywania tego samego bloku operacji dla każdego elementu z pewnej listy.
-
 Ilość wykonań tego bloku jest równa liczbie elementów tej listy. Wywoływana w pętli zmienna
-
 przyjmuje po kolei wartości każdego z elementów.
 
 Przykłady list:
 
-• lista liczb wpisanych ręcznie – elementy podane w nawiasach kwadratowych
+- lista liczb wpisanych ręcznie – elementy podane w nawiasach kwadratowych
 
-[2,3,4,5]
+    .. code-block:: python
 
-• funkcja range – wywoła kolejno liczby naturalne zaczynając od podanej w nawiasie na
+        [2,3,4,5]
 
-pierwszym miejscu, kończąc na liczbie mniejszej o 1 od liczby na miejscu drugim
+- funkcja range – wywoła kolejno liczby naturalne zaczynając od podanej w nawiasie na
+  pierwszym miejscu, kończąc na liczbie mniejszej o 1 od liczby na miejscu drugim
 
-range(2,6)
+    .. code-block:: python
+
+        range(2,6)
 
 Zobrazujmy działanie pętli ``for`` na prostym przykładzie, wymieniającym kolejno elementy z pewnej
-
 listy.
 
-Przykład 9.
+.. raw:: html
 
-print(‘Mamy listę elementów: ’, [5,6,7,8])
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-for liczba in [5,6,7,8]:
+.. code-block:: python
 
-print(‘element listy: ’, liczba)
+
+    print("Mamy listę elementów: ", [5,6,7,8])
+    for liczba in [5,6,7,8]:
+        print("element listy: ", liczba)
 
 Zadania dodatkowe
+^^^^^^^^^^^^^^^^^
 
 1. Napisz dwa programy, które wypisują liczby naturalne od 1 do 15. W pierwszym programie
-
-wykonaj pętlę for, a w drugim while.
+   wykonaj pętlę for, a w drugim while.
 
 2. Zmodyfikuj powyższe zadanie, tak aby programy obliczały sumę liczb od 1 do 15.
 
@@ -356,26 +440,37 @@ wykonaj pętlę for, a w drugim while.
 
 4. Oblicz sumę kwadratów liczb naturalnych z zakresu od 1 do 100.
 
-Słowniczek:
+Słowniczek
+----------
 
-• Język interpretowany – język, który jest tłumaczony i wykonywany "w locie". Tłumaczeniem i
+.. glossary::
 
-wykonywaniem programu zajmuje się specjalny program nazwany interpreterem języka.
+    Język interpretowany
+        język, który jest tłumaczony i wykonywany "w locie". Tłumaczeniem i
+        wykonywaniem programu zajmuje się specjalny program nazwany interpreterem języka.
 
-• Interpreter – program, który zajmuje się tłumaczeniem kodu języka programowania na język
+    Interpreter
+        program, który zajmuje się tłumaczeniem kodu języka programowania na język
+        maszynowy i jego wykonywaniem.
 
-maszynowy i jego wykonywaniem.
+    Zmienne
+        symbole zdefiniowane i nazwane przez programistę, które służą do
+        przechowywania wartości, obliczeń na nich i odwoływanie się do wartości przez zdefiniowaną nazwę.
 
-• Zmienne – symbole zdefiniowane i nazwane przez programistę, które służą do
+    Funkcje
 
-przechowywania wartości, obliczeń na nich i odwoływanie się do wartości przez zdefiniowaną nazwę.
+        fragmenty kodu zamknięte w określonym przez programistę symbolu, mogące
+        przyjmować parametry oraz mogące zwracać wartości. Umożliwiają wielokrotne wywoływanie tego
+        samego kodu, bez konieczności jego przepisywania za każdym razem, gdy zajdzie potrzeba jego
+        wykonania.
 
-• Funkcje – fragmenty kodu zamknięte w określonym przez programistę symbolu, mogące
+    Typ zmiennych
 
-przyjmować parametry oraz mogące zwracać wartości. Umożliwiają wielokrotne wywoływanie tego
+        rodzaj danych, który przypisany jest do zmiennej w momencie jej tworzenia.
 
-samego kodu, bez konieczności jego przepisywania za każdym razem, gdy zajdzie potrzeba jego
+.. raw:: html
 
-wykonania.
-
-• Typ zmiennych – rodzaj danych, który przypisany jest do zmiennej w momencie jej tworzenia.
+    <style>
+        div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
+        div.highlight, div.highlight-python { margin-top: 0px; }
+    </style>
