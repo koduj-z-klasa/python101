@@ -10,7 +10,5 @@ Fundację `Centrum Edukacji Obywatelskiej`_.
 
 Pełna dokumentacja szkolenia znajduje się tutaj:
 
-.. pull-quote::
-
-  `bit.ly/py-101 <http://bit.ly/py-101>`_
+`bit.ly/py-101 <http://bit.ly/py-101>`_
 
