@@ -52,6 +52,7 @@ class PongGame(object):
         Główna pętla programu
         """
         while not self.handle_events():
+            self.board.draw()
             self.fps_clock.tick(30)
 
     def handle_events(self):
