@@ -94,7 +94,6 @@ Jednak zamiast tego, dla lepszej kontroli powinniśmy zadeklarować klasę kontr
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-
 .. literalinclude:: pong_z2.py
     :linenos:
     :lineno-start: 37
@@ -132,7 +131,6 @@ rysować w oknie naszej gry:
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-
 .. literalinclude:: pong_z3.py
     :linenos:
     :lineno-start: 67
@@ -144,7 +142,6 @@ Następnie dodajmy klasę samej piłeczki dziedzicząc z ``Drawable``:
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-
 .. literalinclude:: pong_z3.py
     :linenos:
     :lineno-start: 83
@@ -155,7 +152,6 @@ Teraz musimy naszą piłeczkę zintegrować z resztą gry:
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
 
 .. literalinclude:: pong_z3.py
     :linenos:
@@ -262,6 +258,10 @@ Odbijamy piłeczkę rakietką
 Dodajmy "rakietkę" od przy pomocy której będziemy mogli odbijać piłeczkę.
 Dodajmy zwykły prostokąt, który będziemy przesuwać przy pomocy myszki.
 
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. literalinclude:: pong_z5.py
     :linenos:
     :lines: 144-161
@@ -270,6 +270,10 @@ Dodajmy zwykły prostokąt, który będziemy przesuwać przy pomocy myszki.
 Następnie "pokażemy" rakietkę piłeczce, tak by mogła się od niej odbijać.
 Wiemy że rakietek będzie więcej dlatego od razu tak zmodyfikujemy metodę
 ``Ball.move`` by przyjmowała kolekcję rakietek:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
     :linenos:
@@ -296,6 +300,10 @@ Wiemy że rakietek będzie więcej dlatego od razu tak zmodyfikujemy metodę
 
 Tak jak w przypadku dodawania piłeczki, rakietkę też trzeba dodać do "gry",
 dodatkowo musimy ją pokazać piłeczce:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: pong_z5.py
     :linenos:
@@ -327,6 +335,10 @@ Gramy przeciwko komputerowi
 Dodajemy przeciwnika, nasz przeciwnik będzie mistrzem, będzie dokładnie
 śledził piłeczkę i zawsze starał się utrzymać rakietkę gotową do odbicia piłeczki.
 
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. literalinclude:: pong_z6.py
     :linenos:
     :lines: 167-177
@@ -338,6 +350,10 @@ Dwie rakietki ustawiamy na przeciwległych brzegach planszy.
 
 Trzeba pamiętać by pokazać drugą rakietkę piłeczce, tak by mogła się
 od niej odbijać.
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: pong_z6.py
     :linenos:
@@ -352,12 +368,20 @@ Pokazujemy punkty
 Dodajmy klasę sędziego, który patrząc na poszczególne elementy gry będzie
 decydował czy graczom należą się punkty i będzie ustawiał piłkę w początkowym położeniu.
 
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. literalinclude:: pong_z7.py
     :linenos:
     :lines: 183-228
     :lineno-start: 183
 
 Tradycyjnie dodajemy instancję nowej klasy do gry:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: pong_z7.py
     :linenos:
@@ -381,7 +405,7 @@ Zadania dodatkowe i rzeczy które można poprawić
 Metryka
 ^^^^^^^
 
-:Autorzy: Janusz Skonieczny <js@bravelabs.pl>
+:Autorzy: Janusz Skonieczny <js@bravelabs.pl>, Robert Bednarz
 
 Dokument wygenerowany |date| o |time|
 
