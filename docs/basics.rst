@@ -129,10 +129,10 @@ funkcji ``int``.
 
 .. code-block:: python
 
-    zmienna1 = raw_input(``Podaj 1 liczbę: ``)
-    zmienna2 = raw_input(``Podaj 2 liczbę: ``)
+    zmienna1 = raw_input("Podaj 1 liczbę: ")
+    zmienna2 = raw_input("Podaj 2 liczbę: ")
     wynik = int(zmienna1) + int(zmienna2)
-    print(``Suma:``, wynik)
+    print("Suma:", wynik)
 
 .. tip::
 
@@ -250,7 +250,7 @@ Zadania dodatkowe
 -----------------
 
 #. Za pomocą poznanych narzędzi stwórz program będący kalkulatorem.
-#. Napisz program rozwiązujący równania kwadratowe (rozwiązanie: :ref:`kwadratowe`).
+#. Napisz program rozwiązujący równania kwadratowe (:ref:`kwadratowe`).
 #. Napisz program, który spyta użytkownika ile ma lat, a następnie wyświetli czy osoba ta jest
    młodzieżą, dzieckiem czy dorosłym (załóżmy, że dziecko ma mniej niż 12 lat, a dorosły więcej
    niż 18).
@@ -263,8 +263,8 @@ Zadania dodatkowe
 
 .. _kwadratowe:
 
-Równania kwadratowe
-^^^^^^^^^^^^^^^^^^^
+Przykład równania kwadratowego
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. raw:: html
 
@@ -308,21 +308,22 @@ Zobaczmy działanie pętli ``while`` na poniższym przykładzie.
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-
 .. code-block:: python
+    :linenos:
 
-    dana = 18
+    import random
+    dana = random.choice(range(10))
     kontynuuj = True
     while koniec:
         strzal = int(raw_input("Wpisz liczbę całkowitą"))
         if strzal == dana:
+            print("Gratulacje! Zgadłeś")
+            kontynuuj = False
         elif strzal < dana:
+            print("Nie! Szukana liczba jest większa!")
         else:
+            print("Nie! Szukana liczba jest mniejsza!")
     print("Koniec programu.")
-    print("Gratulacje! Zgadłeś")
-    kontynuuj = False
-    print("Nie! Szukana liczba jest większa!")
-    print("Nie! Szukana liczba jest mniejsza!")
 
 Program będzie wykonywany do momentu, w którym użytkownik poda właściwą liczbę. Zatem nie
 trzeba do każdego strzału ponownie uruchamiać programu. Zmienna ``kontynuuj`` ma ustawioną
@@ -340,20 +341,21 @@ Wyrażenie ``break`` powoduje natychmiastowe zakończenie wykonywania pętli.
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
+    :linenos:
 
-    dana = 18
+    import random
+    dana = random.choice(range(10))
     while True:
-    strzal = int(raw_input("Wpisz liczbę całkowitą"))
-    if strzal == dana:
-    elif strzal < dana:
-    else:
+        strzal = int(raw_input("Wpisz liczbę całkowitą"))
+        if strzal == dana:
+            print("Gratulacje! Zgadłeś")
+            break
+        elif strzal < dana:
+            print("Nie! Szukana liczba jest większa!")
+        else:
+            print("Nie! Szukana liczba jest mniejsza!")
     print("Koniec programu.")
-    print("Gratulacje! Zgadłeś")
-    break
 
-    print("Nie! Szukana liczba jest większa!")
-
-    print("Nie! Szukana liczba jest mniejsza!")
 
 Wyrażenie ``continue`` powoduje ominięcie następujących po nim wyrażeń w bloku, a następnie
 rozpoczyna ponowne wykonanie pętli.
@@ -363,42 +365,32 @@ rozpoczyna ponowne wykonanie pętli.
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
+    :linenos:
 
-
-    dana = 18
-
+    import random
+    dana = random.choice(range(10))
     while True:
-
-    strzal = int(raw_input("Wpisz liczbę całkowitą"))
-
-    if strzal > dana:
-
-    elif strzal < dana:
-
-    print("Gratulacje! Zgadłeś")
-
-    break
-
+        strzal = int(raw_input("Wpisz liczbę całkowitą"))
+        if strzal > dana:
+            print("Nie! Szukana liczba jest mniejsza!")
+            continue
+        elif strzal < dana:
+            print("Nie! Szukana liczba jest większa!")
+            continue
+        print("Gratulacje! Zgadłeś")
+        break
     print("Koniec programu.")
-
-    print("Nie! Szukana liczba jest mniejsza!")
-
-    continue
-
-    print("Nie! Szukana liczba jest większa!")
-
-    continue
 
 Zadania dodatkowe
 ^^^^^^^^^^^^^^^^^
 
 1. Napisz program, który sumuje liczby dodatnie podawane przez użytkownika – pętla pozwala
-użytkownikowi podawać liczby dopóki nie poda liczby niedodatniej.
-Następnie obok podawanego wyniku będzie wyświetlana liczba określająca ilość podanych
-liczb.
+   użytkownikowi podawać liczby dopóki nie poda liczby niedodatniej.
+   Następnie obok podawanego wyniku będzie wyświetlana liczba określająca ilość podanych
+   liczb.
 
 2. Na podstawie wcześniejszego zadania napisz program obliczający średnią liczb dodatnich, a
-następnie zmodyfikuj go tak, aby obliczana była średnia również dla liczb ujemnych.
+   następnie zmodyfikuj go tak, aby obliczana była średnia również dla liczb ujemnych.
 
 Pętla FOR
 ---------
@@ -418,9 +410,9 @@ Przykłady list:
 - funkcja range – wywoła kolejno liczby naturalne zaczynając od podanej w nawiasie na
   pierwszym miejscu, kończąc na liczbie mniejszej o 1 od liczby na miejscu drugim
 
-.. code-block:: python
+    .. code-block:: python
 
-    range(2,6)
+        range(2,6)
 
 Zobrazujmy działanie pętli ``for`` na prostym przykładzie, wymieniającym kolejno elementy z pewnej
 listy.
@@ -433,16 +425,14 @@ listy.
 
 
     print("Mamy listę elementów: ", [5,6,7,8])
-
     for liczba in [5,6,7,8]:
-
-    print("element listy: ", liczba)
+        print("element listy: ", liczba)
 
 Zadania dodatkowe
 ^^^^^^^^^^^^^^^^^
 
 1. Napisz dwa programy, które wypisują liczby naturalne od 1 do 15. W pierwszym programie
-wykonaj pętlę for, a w drugim while.
+   wykonaj pętlę for, a w drugim while.
 
 2. Zmodyfikuj powyższe zadanie, tak aby programy obliczały sumę liczb od 1 do 15.
 
