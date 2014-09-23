@@ -46,14 +46,15 @@ class PongGame(object):
         # zegar którego użyjemy do kontrolowania szybkości rysowania
         # kolejnych klatek gry
         self.fps_clock = pygame.time.Clock()
-        self.ball = Ball(20, 20, width/2, height/2)
-        self.player1 = Racket(80, 20, width/2, height/2)
+        self.ball = Ball(width=20, height=20, x=width/2, y=height/2)
+        self.player1 = Racket(width=80, height=20, x=width/2, y=height/2)
 
     def run(self):
         """
         Główna pętla programu
         """
         while not self.handle_events():
+            # działaj w pętli do momentu otrzymania sygnału do wyjścia
             self.ball.move(self.board, self.player1)
             self.board.draw(
                 self.ball,
@@ -64,6 +65,8 @@ class PongGame(object):
     def handle_events(self):
         """
         Obsługa zdarzeń systemowych, tutaj zinterpretujemy np. ruchy myszką
+
+        :return True jeżeli pygame przekazał zdarzenie wyjścia z gry
         """
         for event in pygame.event.get():
             if event.type == pygame.locals.QUIT:
@@ -159,6 +162,7 @@ class Racket(Drawable):
         if abs(delta) > self.max_speed:
             delta = self.max_speed if delta > 0 else -self.max_speed
         self.rect.x += delta
+
 
 # Ta część powinna być zawsze na końcu modułu (ten plik jest modułem)
 # chcemy uruchomić naszą grę dopiero po tym jak wszystkie klasy zostaną zadeklarowane

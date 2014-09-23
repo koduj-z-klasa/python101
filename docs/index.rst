@@ -47,7 +47,7 @@ Zaczynamy!
     :maxdepth: 2
     :numbered:
 
-    basics
+    basic/basic
     tic-tac-toe
     pong/pong
     conway-life

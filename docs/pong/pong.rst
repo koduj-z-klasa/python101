@@ -16,7 +16,7 @@ Do rozpoczęcia pracy z przykładem pobieramy szczątkowy kod źródłowy:
 
 .. code-block:: bash
 
-    ~/python101$ git checkout -f --track origin/pong/z1
+    ~/python101$ git checkout -f tags/pong/z1
 
 .. note::
 
@@ -88,17 +88,17 @@ możemy na końcu chwilkę uśpić nasz program:
     time.sleep(5)
 
 
-Jednak zamiast tego, dla lepszej kontroli powinniśmy zadeklarować klasę kontrolera gry:
+Jednak zamiast tego, dla lepszej kontroli powinniśmy zadeklarować klasę kontrolera gry,
+usuńmy kod o linii 37 do końca i dodajmy klasę kontrolera:
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-
 .. literalinclude:: pong_z2.py
     :linenos:
-    :lineno-start: 37
-    :lines: 37-
+    :lineno-start: 38
+    :lines: 38-
 
 .. note::
 
@@ -117,7 +117,7 @@ Gotowy kod możemy wyciągnąć komendą:
 
 .. code-block:: bash
 
-    ~/python101$ git checkout -f --track origin/pong/z2
+    ~/python101$ git checkout -f tags/pong/z2
 
 Piłeczka
 --------
@@ -132,11 +132,10 @@ rysować w oknie naszej gry:
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-
 .. literalinclude:: pong_z3.py
     :linenos:
-    :lineno-start: 67
-    :lines: 72-85
+    :lineno-start: 71
+    :lines: 75-88
 
 Następnie dodajmy klasę samej piłeczki dziedzicząc z ``Drawable``:
 
@@ -144,11 +143,10 @@ Następnie dodajmy klasę samej piłeczki dziedzicząc z ``Drawable``:
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-
 .. literalinclude:: pong_z3.py
     :linenos:
-    :lineno-start: 83
-    :lines: 88-124
+    :lineno-start: 87
+    :lines: 91-127
 
 Teraz musimy naszą piłeczkę zintegrować z resztą gry:
 
@@ -156,18 +154,17 @@ Teraz musimy naszą piłeczkę zintegrować z resztą gry:
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-
 .. literalinclude:: pong_z3.py
     :linenos:
-    :lines: 38-60
-    :emphasize-lines: 12, 19-22
+    :lines: 38-61
+    :emphasize-lines: 12, 20-23
     :lineno-start: 38
 
 .. note::
 
-    Metoda ``Board.draw`` oczekuje wielu opcjonalnych argumentów, na razie przekazujemy
-    tylko jeden, by zwiększyć czytelność potencjalnie dużej listy argumentów — kto
-    wie co jeszcze dodamy :) — podajemy każdy w swojej linii zakończonej przecinkiem ``,``
+    Metoda ``Board.draw`` oczekuje wielu opcjonalnych argumentów, chodź na razie przekazujemy
+    tylko jeden. By zwiększyć czytelność potencjalnie dużej listy argumentów — kto
+    wie co jeszcze dodamy :) — podajemy każdy argument w swojej linii zakończonej przecinkiem ``,``
 
     Python nie traktuje takich osieroconych przecinków jako błąd, jest to ukłon w stronę
     programistów którzy często zmieniają kod, kopiują i wklejają kawałki.
@@ -180,7 +177,7 @@ Gotowy kod możemy wyciągnąć komendą:
 
 .. code-block:: bash
 
-    ~/python101$ git checkout -f --track origin/pong/z3
+    ~/python101$ git checkout -f tags/pong/z3
 
 
 Odbijanie piłeczki
@@ -203,9 +200,13 @@ W tym celu piłeczka musi być świadoma istnienia planszy i pozycji krawędzi, 
 zmodyfikujemy metodę ``Ball.move`` tak by przyjmowała ``board`` jako argument i na
 jego podstawie sprawdzimy czy piłeczka powinna się odbijać:
 
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. code-block:: python
     :emphasize-lines: 1, 8-12
-    :lineno-start: 119
+    :lineno-start: 122
 
     def move(self, board):
         """
@@ -221,6 +222,10 @@ jego podstawie sprawdzimy czy piłeczka powinna się odbijać:
             self.bounce_y()
 
 Jeszcze zmodyfikujmy wywołanie metody ``move`` w naszej pętli głównej:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
     :emphasize-lines: 6
@@ -253,7 +258,7 @@ Gotowy kod możemy wyciągnąć komendą:
 
 .. code-block:: bash
 
-    ~/python101$ git checkout -f --track origin/pong/z4
+    ~/python101$ git checkout -f tags/pong/z4
 
 
 Odbijamy piłeczkę rakietką
@@ -262,19 +267,40 @@ Odbijamy piłeczkę rakietką
 Dodajmy "rakietkę" od przy pomocy której będziemy mogli odbijać piłeczkę.
 Dodajmy zwykły prostokąt, który będziemy przesuwać przy pomocy myszki.
 
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. literalinclude:: pong_z5.py
     :linenos:
-    :lines: 144-161
-    :lineno-start: 133
+    :lines: 147-164
+    :lineno-start: 136
+
+.. note::
+
+    W tym przykładzie zastosowaliśmy operator warunkowy, za jego pomocą ograniczamy
+    prędkość poruszania się rakietki:
+
+    .. code-block:: python
+
+        delta = self.max_speed if delta > 0 else -self.max_speed
+
+    Zmienna ``delta`` otrzyma wartość ``max_speed`` ze znakiem ``+`` lub ``-``
+    w zależności od znaku jaki ma aktualnie.
+
 
 Następnie "pokażemy" rakietkę piłeczce, tak by mogła się od niej odbijać.
 Wiemy że rakietek będzie więcej dlatego od razu tak zmodyfikujemy metodę
 ``Ball.move`` by przyjmowała kolekcję rakietek:
 
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. code-block:: python
     :linenos:
     :emphasize-lines: 1, 14-16
-    :lineno-start: 119
+    :lineno-start: 122
 
     def move(self, board, *args):
         """
@@ -297,23 +323,26 @@ Wiemy że rakietek będzie więcej dlatego od razu tak zmodyfikujemy metodę
 Tak jak w przypadku dodawania piłeczki, rakietkę też trzeba dodać do "gry",
 dodatkowo musimy ją pokazać piłeczce:
 
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. literalinclude:: pong_z5.py
     :linenos:
-    :lines: 38-76
-    :emphasize-lines: 13, 23, 36-39
+    :lines: 38-79
+    :emphasize-lines: 13, 21, 24, 39-42
     :lineno-start: 38
 
 Gotowy kod możemy wyciągnąć komendą:
 
 .. code-block:: bash
 
-    ~/python101$ git checkout -f --track origin/pong/z4
+    ~/python101$ git checkout -f tags/pong/z5
 
 .. note::
 
     W tym miejscu można się pobawić naszą grą, zmodyfikuj ją według uznania
-    i pochwal się rezultatem z innymi
-
+    i pochwal się rezultatem z innymi.
     Jeśli kod przestanie działać, można szybko porzucić zmiany poniższą komendą.
 
     .. code-block:: bash
@@ -327,10 +356,14 @@ Gramy przeciwko komputerowi
 Dodajemy przeciwnika, nasz przeciwnik będzie mistrzem, będzie dokładnie
 śledził piłeczkę i zawsze starał się utrzymać rakietkę gotową do odbicia piłeczki.
 
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. literalinclude:: pong_z6.py
     :linenos:
-    :lines: 167-177
-    :lineno-start: 164
+    :lines: 170-180
+    :lineno-start: 167
 
 Tak jak w przypadku piłeczki i rakietki dodajemy nasze ``Ai`` do gry,
 a wraz nią wraz dodajemy drugą rakietkę.
@@ -339,10 +372,14 @@ Dwie rakietki ustawiamy na przeciwległych brzegach planszy.
 Trzeba pamiętać by pokazać drugą rakietkę piłeczce, tak by mogła się
 od niej odbijać.
 
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. literalinclude:: pong_z6.py
     :linenos:
-    :lines: 38-66
-    :emphasize-lines: 13-15, 22, 26, 28
+    :lines: 38-67
+    :emphasize-lines: 13-15, 23, 27, 29
     :lineno-start: 38
 
 
@@ -352,17 +389,25 @@ Pokazujemy punkty
 Dodajmy klasę sędziego, który patrząc na poszczególne elementy gry będzie
 decydował czy graczom należą się punkty i będzie ustawiał piłkę w początkowym położeniu.
 
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. literalinclude:: pong_z7.py
     :linenos:
-    :lines: 183-228
-    :lineno-start: 183
+    :lines: 184-228
+    :lineno-start: 184
 
 Tradycyjnie dodajemy instancję nowej klasy do gry:
 
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. literalinclude:: pong_z7.py
     :linenos:
-    :lines: 38-66
-    :emphasize-lines: 16, 28
+    :lines: 38-70
+    :emphasize-lines: 16, 29
     :lineno-start: 38
 
 Zadania dodatkowe i rzeczy które można poprawić
@@ -381,9 +426,10 @@ Zadania dodatkowe i rzeczy które można poprawić
 Metryka
 ^^^^^^^
 
-:Autorzy: Janusz Skonieczny <js@bravelabs.pl>
+:Autorzy: Janusz Skonieczny <js@bravelabs.pl>,
+          Robert Bednarz
 
-Dokument wygenerowany |date| o |time|
+:Utworzony: |date| o |time|
 
 .. |date| date::
 .. |time| date:: %H:%M

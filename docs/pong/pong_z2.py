@@ -52,16 +52,21 @@ class PongGame(object):
         Główna pętla programu
         """
         while not self.handle_events():
+            # działaj w pętli do momentu otrzymania sygnału do wyjścia
+            self.board.draw()
             self.fps_clock.tick(30)
 
     def handle_events(self):
         """
         Obsługa zdarzeń systemowych, tutaj zinterpretujemy np. ruchy myszką
+
+        :return True jeżeli pygame przekazał zdarzenie wyjścia z gry
         """
         for event in pygame.event.get():
             if event.type == pygame.locals.QUIT:
                 pygame.quit()
                 return True
+
 
 # Ta część powinna być zawsze na końcu modułu (ten plik jest modułem)
 # chcemy uruchomić naszą grę dopiero po tym jak wszystkie klasy zostaną zadeklarowane

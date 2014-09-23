@@ -46,9 +46,9 @@ class PongGame(object):
         # zegar którego użyjemy do kontrolowania szybkości rysowania
         # kolejnych klatek gry
         self.fps_clock = pygame.time.Clock()
-        self.ball = Ball(20, 20, width/2, height/2)
-        self.player1 = Racket(80, 20, width/2 - 40, height - 40)
-        self.player2 = Racket(80, 20, width/2 - 40, 20, color=(0, 0, 0))
+        self.ball = Ball(width=20, height=20, x=width/2, y=height/2)
+        self.player1 = Racket(width=80, height=20, x=width/2 - 40, y=height - 40)
+        self.player2 = Racket(width=80, height=20, x=width/2 - 40, y=20, color=(0, 0, 0))
         self.ai = Ai(self.player2, self.ball)
 
     def run(self):
@@ -56,6 +56,7 @@ class PongGame(object):
         Główna pętla programu
         """
         while not self.handle_events():
+            # działaj w pętli do momentu otrzymania sygnału do wyjścia
             self.ball.move(self.board, self.player1, self.player2)
             self.board.draw(
                 self.ball,
@@ -68,6 +69,8 @@ class PongGame(object):
     def handle_events(self):
         """
         Obsługa zdarzeń systemowych, tutaj zinterpretujemy np. ruchy myszką
+
+        :return True jeżeli pygame przekazał zdarzenie wyjścia z gry
         """
         for event in pygame.event.get():
             if event.type == pygame.locals.QUIT:
@@ -124,7 +127,7 @@ class Ball(Drawable):
         """
         Ustawia piłeczkę w położeniu początkowym i odwraca wektor prędkości w osi Y
         """
-        self.rect.move(self.start_x, self.start_y)
+        self.rect.x, self.rect.y = self.start_x, self.start_y
         self.bounce_y()
 
     def move(self, board, *args):
