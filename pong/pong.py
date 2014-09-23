@@ -1,4 +1,23 @@
 # coding=utf-8
+# Copyright 2013 Janusz Skonieczny
+
+"""
+Klasyczna gra w odbijanie piłeczki napisana z użyciem biblioteki PyGame.
+
+
+Na co warto zwrócić uwagę
+- wykorzystanie __init__ do utworzenie instancji obiektów (ich właściwości)
+- dziedziczenie i implementacja metod "wirtualnych", a raczej brakujących
+- wykorzystanie *args jako zamiast jednego parametru z kolekcją
+
+Co można poprawić
+- piłeczka wychodzi poza prawą krawędź planszy
+- różne poziomy sprawności AI (aktualnie komputer zawsze wygrywa)
+- zabezpieczenie by piłeczka nie zazębiała się z rakietką
+- zmiana wektora prędkości w zależności od pędu rakietki
+- dwie piłeczki
+
+"""
 
 import pygame
 import pygame.locals
