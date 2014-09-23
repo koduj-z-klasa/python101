@@ -46,9 +46,9 @@ class PongGame(object):
         # zegar którego użyjemy do kontrolowania szybkości rysowania
         # kolejnych klatek gry
         self.fps_clock = pygame.time.Clock()
-        self.ball = Ball(20, 20, width/2, height/2)
-        self.player1 = Racket(80, 20, width/2 - 40, height - 40)
-        self.player2 = Racket(80, 20, width/2 - 40, 20, color=(0, 0, 0))
+        self.ball = Ball(width=20, height=20, x=width/2, y=height/2)
+        self.player1 = Racket(width=80, height=20, x=width/2 - 40, y=height - 40)
+        self.player2 = Racket(width=80, height=20, x=width/2 - 40, y=20, color=(0, 0, 0))
         self.ai = Ai(self.player2, self.ball)
 
     def run(self):
@@ -127,7 +127,7 @@ class Ball(Drawable):
         """
         Ustawia piłeczkę w położeniu początkowym i odwraca wektor prędkości w osi Y
         """
-        self.rect.move(self.start_x, self.start_y)
+        self.rect.x, self.rect.y = self.start_x, self.start_y
         self.bounce_y()
 
     def move(self, board, *args):

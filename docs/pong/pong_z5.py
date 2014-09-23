@@ -46,8 +46,8 @@ class PongGame(object):
         # zegar którego użyjemy do kontrolowania szybkości rysowania
         # kolejnych klatek gry
         self.fps_clock = pygame.time.Clock()
-        self.ball = Ball(20, 20, width/2, height/2)
-        self.player1 = Racket(80, 20, width/2, height/2)
+        self.ball = Ball(width=20, height=20, x=width/2, y=height/2)
+        self.player1 = Racket(width=80, height=20, x=width/2, y=height/2)
 
     def run(self):
         """
