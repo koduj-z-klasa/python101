@@ -7,7 +7,7 @@ prowadzonego przez Fundację [Centrum Edukacji Obywatelskiej][2].
 
 Pełna dokumentacja szkolenia znajduje się tutaj:
 
-[bit.ly/py-101](bit.ly/py-101)
+[bit.ly/kzk-py](http://bit.ly/kzk-py)
 
 Modyfikacje i budowa dokumentacji offline
 -----------------------------------------

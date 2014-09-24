@@ -13,6 +13,9 @@ Fundację `Centrum Edukacji Obywatelskiej`_.
 
 Krótki link do tej strony: `bit.ly/kzk-py <http://bit.ly/kzk-py>`_
 
+Te materiały można [pobrać do wykorzystania offline](python-101-html.zip), lub zmodyfikować
+i [przygotować według instrukcji w repozytorium](https://github.com/koduj-z-klasa/python101)
+
 Pobieranie tej dokumentacji
 ---------------------------
 
