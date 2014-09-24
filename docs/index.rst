@@ -55,7 +55,7 @@ Zaczynamy!
     basic/basic
     tic-tac-toe
     pong/pong
-    conway-life
+    life/index
     quiz
     todo
     chatter
