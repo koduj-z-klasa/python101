@@ -37,6 +37,8 @@ Te materiały można także pobrać i zmodyfikować i `przygotować według inst
 Przygotowanie do szkolenia
 --------------------------
 
+Przed szkoleniem warto przygotować sprawdzić i przygotować swój komputer.
+
 ..  toctree::
     :maxdepth: 1
 
