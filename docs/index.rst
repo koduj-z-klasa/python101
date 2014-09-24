@@ -13,26 +13,24 @@ Fundację `Centrum Edukacji Obywatelskiej`_.
 
 Krótki link do tej strony: `bit.ly/kzk-py <http://bit.ly/kzk-py>`_
 
-Te materiały można [pobrać do wykorzystania offline](python-101-html.zip), lub zmodyfikować
-i [przygotować według instrukcji w repozytorium](https://github.com/koduj-z-klasa/python101)
 
 Pobieranie tej dokumentacji
 ---------------------------
 
 Materiały można pobrać do czytania w wersji offline. Poniższa komenda pobierze
-dokumentację i rozpakuje pliki na pulpicie w folderze ``~/Pulpit/python-101-latest``:
+dokumentację i rozpakuje pliki na pulpicie w folderze ``~/Pulpit/python-101-html``:
 
 .. code-block:: bash
 
-    wget -O kzk-python-101.zip http://rtfd.org/projects/python101/downloads/htmlzip/latest/ && unzip kzk-python-101.zip -d ~/Pulpit/
+    wget -O python-101-html.zip http://koduj-z-klasa.github.io/python101/python-101-html.zip
+    unzip python-101-html.zip -d ~/Pulpit/
 
-
-
-Materiały w wersji źródłowej są dostępne `naszym repozytorium`_
+Te materiały można także pobrać i zmodyfikować i `przygotować według instrukcji w repozytorium`_
 
 .. _Koduj z Klasą: http://www.ceo.org.pl/koduj
 .. _Centrum Edukacji Obywatelskiej: http://www.ceo.org.pl/
-.. _naszym repozytorium: https://github.com/koduj-z-klasa/python101
+.. _przygotować według instrukcji w repozytorium: https://github.com/koduj-z-klasa/python101
+
 
 Przygotowanie do szkolenia
 --------------------------
