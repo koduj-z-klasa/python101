@@ -11,7 +11,7 @@ Niniejsze materiały to dokumentacja do szkolenia z języka Python realizowanego
 w ramach projektu `Koduj z Klasą`_ prowadzonego przez
 Fundację `Centrum Edukacji Obywatelskiej`_.
 
-Krótki link do tej strony: `bit.ly/py-101 <http://bit.ly/py-101>`_
+Krótki link do tej strony: `bit.ly/kzk-py <http://bit.ly/kzk-py>`_
 
 Pobieranie tej dokumentacji
 ---------------------------
