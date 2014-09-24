@@ -17,8 +17,10 @@ Krótki link do tej strony: `bit.ly/kzk-py <http://bit.ly/kzk-py>`_
 Pobieranie tej dokumentacji
 ---------------------------
 
-Materiały można pobrać do czytania w wersji offline. Poniższa komenda pobierze
-dokumentację i rozpakuje pliki na pulpicie w folderze ``~/Pulpit/python-101-html``:
+Materiały można `pobrać do czytania w wersji offline
+<http://koduj-z-klasa.github.io/python101/python-101-html.zip>`_.
+Poniższa komendy pobiorą dokumentację i rozpakują pliki na pulpicie
+w folderze ``~/Pulpit/python-101-html``:
 
 .. code-block:: bash
 
