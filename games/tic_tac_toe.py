@@ -9,9 +9,10 @@ import pygame
 import pygame.locals
 import logging
 
+# Konfiguracja modułu logowania, element dla zaawansowanych
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)-7s | %(module)s.%(funcName)s - %(message)s', datefmt='%H:%M:%S')
-# logging.getLogger().setLevel(logging.DEBUG)
-# logging.disable(logging.NOTSET)
+logging.getLogger().setLevel(logging.INFO)
+
 
 class Board(object):
     """
@@ -54,6 +55,9 @@ class Board(object):
         pygame.display.update()
 
     def draw_net(self):
+        """
+        Rysuje siatkę linii na planszy
+        """
         color = (255, 255, 255)
         width = self.surface.get_width()
         for i in range(1, 3):
@@ -64,12 +68,18 @@ class Board(object):
             pygame.draw.line(self.surface, color, (pos, 0), (pos, width), 1)
 
     def player_move(self, x, y):
+        """
+        Ustawia na planszy znacznik gracza X na podstawie współrzędnych w pikselach
+        """
         cell_size = self.surface.get_width() / 3
         x /= cell_size
         y /= cell_size
         self.markers[x + y * 3] = player_marker(True)
 
     def draw_markers(self):
+        """
+        Rysuje znaczniki graczy
+        """
         box_side = self.surface.get_width() / 3
         for x in range(3):
             for y in range(3):
@@ -93,6 +103,9 @@ class Board(object):
         surface.blit(text, rect)
 
     def draw_score(self):
+        """
+        Sprawdza czy gra została skończona i rysuje właściwy komunikat
+        """
         if check_win(self.markers, True):
             score = u"Wygrałeś(aś)"
         elif check_win(self.markers, True):
@@ -120,6 +133,7 @@ class TicTacToeGame(object):
         # zegar którego użyjemy do kontrolowania szybkości rysowania
         # kolejnych klatek gry
         self.fps_clock = pygame.time.Clock()
+
         self.board = Board(width)
         self.ai = Ai(self.board)
         self.ai_turn = ai_turn
@@ -149,18 +163,25 @@ class TicTacToeGame(object):
 
             if event.type == pygame.locals.MOUSEBUTTONDOWN:
                 if self.ai_turn:
+                    # jeśli jeszcze trwa ruch komputera to ignorujemy zdarzenia
                     continue
-                # pobierz pozycję kursora na planszy mierzoną w pikselach
+                # pobierz aktualną pozycję kursora na planszy mierzoną w pikselach
                 x, y = pygame.mouse.get_pos()
                 self.board.player_move(x, y)
                 self.ai_turn = True
 
 
 class Ai(object):
+    """
+    Kieruje ruchami komputera na podstawie analizy położenia znaczników
+    """
     def __init__(self, board):
         self.board = board
 
     def make_turn(self):
+        """
+        Wykonuje ruch komputera
+        """
         if not None in self.board.markers:
             # brak dostępnych ruchów
             return
@@ -170,18 +191,38 @@ class Ai(object):
 
     @classmethod
     def next_move(cls, markers):
+        """
+        Wybierz następny ruch komputera na podstawie wskazanej planszy
+        :param markers: plansza gry
+        :return: index tablicy jednowymiarowe w której należy ustawić znacznik kółka
+        """
+        # pobierz dostępne ruchy wraz z oceną
         moves = cls.score_moves(markers, False)
-        moves = sorted(moves, key=lambda m: m[0], reverse=True)
-        score, move = moves[0]
+        # wybierz najlepiej oceniony ruch
+        score, move = max(moves, key=lambda m: m[0])
         logging.info("Dostępne ruchy: %s", moves)
         logging.info("Wybrany ruch: %s %s", move, score)
         return move
 
     @classmethod
     def score_moves(cls, markers, x_player):
+        """
+        Ocenia rekurencyjne możliwe ruchy
+
+        Jeśli ruch jest zwycięstwem otrzymuje +1, jeśli przegraną -1
+        lub 0 jeśli nie nie ma zwycięscy. Dla ruchów bez zwycięscy rekreacyjnie
+        analizowane są kolejne ruchy a suma ich punktów jest wynikiem aktualnego
+        ruchu.
+
+        :param markers: plansza na podstawie której analizowane są następne ruchy
+        :param x_player: True jeśli ruch dotyczy gracza X, False dla gracza O
+        """
+        # wybieramy wszystkie możliwe ruchy na podstawie wolnych pól
         available_moves = (i for i, m in enumerate(markers) if m is None)
         for move in available_moves:
             from copy import copy
+            # tworzymy kopię planszy która na której testowo zostanie
+            # wykonany ruch w celu jego późniejszej oceny
             proposal = copy(markers)
             proposal[move] = player_marker(x_player)
 
@@ -199,6 +240,7 @@ class Ai(object):
             if not next_moves:
                 yield 0, move
                 continue
+
             # rozdzielamy wyniki od ruchów
             scores, moves = zip(*next_moves)
             # sumujemy wyniki możliwych ruchów, to będzie nasz wynik
@@ -206,6 +248,11 @@ class Ai(object):
 
 
 def player_marker(x_player):
+    """
+    Funkcja pomocnicza zwracająca znaczniki graczy
+    :param x_player: True dla gracza X False dla gracza O
+    :return: odpowiedni znak gracza
+    """
     return "X" if x_player else "O"
 
 
@@ -219,10 +266,12 @@ def check_win(markers, x_player):
     win = [player_marker(x_player)] * 3
     seq = range(3)
 
+    # definiujemy funkcję pomocniczą pobierającą znacznik
+    # na podstawie współrzędnych x i y
     def marker(xx, yy):
         return markers[xx + yy * 3]
 
-    # sprawdzamy każdą rząd
+    # sprawdzamy każdy rząd
     for x in seq:
         row = [marker(x, y) for y in seq]
         if row == win:

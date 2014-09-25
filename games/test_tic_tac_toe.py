@@ -6,7 +6,7 @@ Testy jednostkowe dla modułu tic_tac_toe.py
 """
 
 from unittest import TestCase
-from ticatactoe import check_win, Ai
+from tic_tac_toe import check_win, Ai
 
 
 class WinTests(TestCase):
