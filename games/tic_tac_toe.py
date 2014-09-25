@@ -9,7 +9,7 @@ import pygame
 import pygame.locals
 import logging
 
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)-7s %(message)s', datefmt='%H:%M:%S')
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)-7s | %(module)s.%(funcName)s - %(message)s', datefmt='%H:%M:%S')
 # logging.getLogger().setLevel(logging.DEBUG)
 # logging.disable(logging.NOTSET)
 
@@ -33,8 +33,7 @@ class Board(object):
         self.font = pygame.font.Font(font_path, 48)
 
         # tablica znaczników 3x3 w formie listy
-        # self.markers = [None] * 9
-        self.markers = ['X', None, 'O', 'O', 'O', None, 'X', None, 'X']
+        self.markers = [None] * 9
 
     def draw(self, *args):
         """
@@ -104,7 +103,7 @@ class Board(object):
             return
 
         i = self.surface.get_width() / 2
-        self.draw_text(self.surface, score, center=(i, i))
+        self.draw_text(self.surface, score, center=(i, i), color=(255, 26, 26))
 
 
 class TicTacToeGame(object):
@@ -165,33 +164,29 @@ class Ai(object):
         if not None in self.board.markers:
             # brak dostępnych ruchów
             return
-
+        logging.debug("Plansza: %s" % self.board.markers)
         move = self.next_move(self.board.markers)
-        print self.board.markers
         self.board.markers[move] = player_marker(False)
-        print self.board.markers
 
     @classmethod
     def next_move(cls, markers):
         moves = cls.score_moves(markers, False)
         moves = sorted(moves, key=lambda m: m[0], reverse=True)
-        logging.debug("Dostępne ruchy: %s", moves)
         score, move = moves[0]
-        logging.debug("Wybrany ruch: %s %s", move, score)
+        logging.info("Dostępne ruchy: %s", moves)
+        logging.info("Wybrany ruch: %s %s", move, score)
         return move
 
     @classmethod
     def score_moves(cls, markers, x_player):
-        print "score_moves", markers, x_player
         available_moves = (i for i, m in enumerate(markers) if m is None)
         for move in available_moves:
-            logging.debug("Ruch: %s", move)
             from copy import copy
             proposal = copy(markers)
             proposal[move] = player_marker(x_player)
 
             # sprawdzamy czy ktoś wygrywa gracz którego ruch testujemy
-            if check_win(markers, x_player):
+            if check_win(proposal, x_player):
                 # dodajemy punkty jeśli to my wygrywamy
                 # czyli nie x_player
                 score = -1 if x_player else 1
@@ -201,7 +196,6 @@ class Ai(object):
             # ruch jest neutralny,
             # sprawdzamy rekurencyjne kolejne ruchy zmieniając gracza
             next_moves = list(cls.score_moves(proposal, not x_player))
-            print "Next:", next_moves
             if not next_moves:
                 yield 0, move
                 continue
@@ -253,17 +247,3 @@ if __name__ == "__main__":
     game = TicTacToeGame(300)
     game.run()
 
-
-from unittest import TestCase
-
-
-class WinTests(TestCase):
-    def test_win(self):
-        markers = ['X', 'O', 'O', 'O', 'O', 'X', 'X', 'X', 'X']
-        self.assertTrue(check_win(markers, True))
-
-
-class NextMoveTest(TestCase):
-    def test_move(self):
-        markers = ['X', None, 'O', 'O', 'O', 'X', 'X', None, 'X']
-        self.assertEqual(7, Ai.next_move(markers))
