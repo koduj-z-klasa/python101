@@ -16,21 +16,7 @@ Do rozpoczęcia pracy z przykładem pobieramy szczątkowy kod źródłowy:
 
 .. code-block:: bash
 
-    ~/python101$ git checkout -f tags/pong/z1
-
-.. note::
-
-    Przykłady zawierające znak zachęty ``$`` oznaczają komendy
-    do wykonania w terminalu systemu operacyjnego (uruchom przez :kbd:`Win+T`).
-
-    Oprócz znaku zachęty ``$`` przykłady mogą zawierać informację o
-    lokalizacji w jakiej należy wykonać komendę. Np. ``~/python101$`` oznacza
-    że komendę wykonujemy w folderze ``python101`` w katalogu domowym
-    użytkownika, czyli ``/home/sru/python101`` w środowisku SRU.
-    Jeśli nie mamy tego katalogu należy :doc:`przygotować katalog projektu <../git>`.
-
-    Komendy należy kopiować i wklejać bez znaku zachęty ``$`` i poprzedzającego tekstu.
-    Komendy można wklejać do terminala środkowym klawiszem myszki.
+    ~/python101$ git checkout -f pong/z1
 
 Okienko gry
 -----------
@@ -117,7 +103,7 @@ Gotowy kod możemy wyciągnąć komendą:
 
 .. code-block:: bash
 
-    ~/python101$ git checkout -f tags/pong/z2
+    ~/python101$ git checkout -f pong/z2
 
 Piłeczka
 --------
@@ -187,7 +173,7 @@ Gotowy kod możemy wyciągnąć komendą:
 
 .. code-block:: bash
 
-    ~/python101$ git checkout -f tags/pong/z3
+    ~/python101$ git checkout -f pong/z3
 
 
 Odbijanie piłeczki
@@ -270,7 +256,7 @@ Gotowy kod możemy wyciągnąć komendą:
 
 .. code-block:: bash
 
-    ~/python101$ git checkout -f tags/pong/z4
+    ~/python101$ git checkout -f pong/z4
 
 
 Odbijamy piłeczkę rakietką
@@ -349,7 +335,7 @@ Gotowy kod możemy wyciągnąć komendą:
 
 .. code-block:: bash
 
-    ~/python101$ git checkout -f tags/pong/z5
+    ~/python101$ git checkout -f pong/z5
 
 .. note::
 

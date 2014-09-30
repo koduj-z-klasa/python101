@@ -1,11 +1,4 @@
 # coding=utf-8
-# Copyright 2014 Janusz Skonieczny
-
-"""
-Gra w życie
-
-http://pl.wikipedia.org/wiki/Gra_w_życie
-"""
 
 import pygame
 import pygame.locals
@@ -24,7 +17,7 @@ class Board(object):
         :param height: wysokość w pikselach
         """
         self.surface = pygame.display.set_mode((width, height), 0, 32)
-        pygame.display.set_caption('Simple Pong')
+        pygame.display.set_caption('Game of life')
 
     def draw(self, *args):
         """
@@ -59,7 +52,6 @@ class GameOfLife(object):
         # zegar którego użyjemy do kontrolowania szybkości rysowania
         # kolejnych klatek gry
         self.fps_clock = pygame.time.Clock()
-        self.population = Population(width, height, cell_size)
 
     def run(self):
         """
@@ -67,11 +59,7 @@ class GameOfLife(object):
         """
         while not self.handle_events():
             # działaj w pętli do momentu otrzymania sygnału do wyjścia
-            self.board.draw(
-                self.population,
-            )
-            if getattr(self, "started", None):
-                self.population.cycle_generation()
+            self.board.draw()
             self.fps_clock.tick(15)
 
     def handle_events(self):
@@ -85,114 +73,9 @@ class GameOfLife(object):
                 pygame.quit()
                 return True
 
-            if event.type == pygame.locals.KEYDOWN and event.key == pygame.locals.K_RETURN:
-                self.started = True
-
-            if event.type == pygame.locals.MOUSEMOTION or event.type == pygame.locals.MOUSEBUTTONDOWN:
-                buttons = pygame.mouse.get_pressed()
-                if not any(buttons):
-                    # ignoruj zdarzenie jeśli żaden z guzików nie jest wciśnięty
-                    continue
-                # pobierz pozycję kursora na planszy mierzoną w pikselach
-                x, y = pygame.mouse.get_pos()
-                # przeliczamy współrzędne komórki z pikseli
-                x, y = x / self.population.box_size, y / self.population.box_size
-                # dodaj żywą komórką jeśli wciśnięty jest pierwszy guzik
-                alive = True if buttons[0] else False
-                self.population.set_cell(x, y, alive)
-
-
-# magiczne liczby używane do określenia czy komórka jest żywa
-DEAD = 0
-ALIVE = 1
-
-
-class Population(object):
-    """
-    Populacja komórek
-    """
-
-    def __init__(self, width, height, cell_size=10):
-        """
-        Przygotowuje ustawienia populacji
-
-        :param width: szerokość planszy mierzona liczbą komórek
-        :param height: wysokość planszy mierzona liczbą komórek
-        :param cell_size: bok komórki w pikselach
-        """
-        self.box_size = cell_size
-        self.height = height
-        self.width = width
-        self.generation = self.reset_generation()
-
-    def reset_generation(self):
-        """
-        Tworzy i zwraca index pustej populacji
-        """
-        return [[DEAD for y in xrange(self.height)] for x in xrange(self.width)]
-
-    def draw_on(self, surface):
-        """
-        Rysuje komórki na planszy
-        """
-        for x, y in self.alive_cells():
-            size = (self.box_size, self.box_size)
-            position = (x * self.box_size, y * self.box_size)
-            pygame.draw.rect(surface, (255, 255, 255), pygame.locals.Rect(position, size), 1)
-
-    def set_cell(self, x, y, alive):
-        self.generation[x][y] = ALIVE if alive else DEAD
-
-    def alive_cells(self):
-        """
-        Generator zwracający współrzędne żywych komórek.
-        """
-        for x in range(len(self.generation)):
-            column = self.generation[x]
-            for y in range(len(column)):
-                if column[y] == ALIVE:
-                    yield x, y
-
-    def neighbours(self, x, y):
-        """
-        Generator zwracający wszystkich okolicznych sąsiadów
-        """
-        for nx in range(x-1, x+2):
-            for ny in range(y-1, y+2):
-                if nx == x and ny == y:
-                    continue
-                try:
-                    yield self.generation[nx][ny]
-                except IndexError:
-                    # ignorujemy indeksy poza zakresem
-                    pass
-
-
-    def cycle_generation(self):
-        """
-        Generuje następną generację populacji komórek
-        """
-        next_gen = self.reset_generation()
-        for x in range(len(self.generation)):
-            column = self.generation[x]
-            for y in range(len(column)):
-                neighbours = sum(self.neighbours(x, y))
-                if neighbours == 3:
-                    # rozmnażamy się
-                    next_gen[x][y] = ALIVE
-                elif neighbours == 2:
-                    # przechodzi do kolejnej generacji bez zmian
-                    next_gen[x][y] = column[y]
-                else:
-                    # za dużo lub za mało sąsiadów by przeżyć
-                    next_gen[x][y] = DEAD
-        self.generation = next_gen
-
 
 # Ta część powinna być zawsze na końcu modułu (ten plik jest modułem)
 # chcemy uruchomić naszą grę dopiero po tym jak wszystkie klasy zostaną zadeklarowane
 if __name__ == "__main__":
     game = GameOfLife(80, 40)
     game.run()
-
-

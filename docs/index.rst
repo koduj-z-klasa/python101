@@ -53,9 +53,9 @@ Zaczynamy!
     :numbered:
 
     basic/basic
-    tic-tac-toe
-    pong/pong
+    pong/index
     life/index
+    tic-tac-toe/index
     quiz
     todo
     chatter
