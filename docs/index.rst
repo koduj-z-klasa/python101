@@ -55,7 +55,7 @@ Zaczynamy!
     basic/basic
     pong/index
     life/index
-    tic-tac-toe/index
+    tictactoe/index
     quiz
     todo
     chatter
