@@ -45,14 +45,14 @@ Aby używać Szkolny Remiks Ucznia jako maszynę wirtualną bez konieczności st
 zainstalujcie Virtualbox, a następnie pobierzcie plik OVA i po prostu kliknijcie na niego dwa razy.
 Następnie postępujcie wg wskazówek wyświetlanych przez VirtualBox. Po wykonanym imporcie, 
 będziecie mogli po prostu uruchomić maszynę w Virtualbox. 
+
 Po imporcie plik OVA można skasować, aby nie zabierał już miejsca. Nie będzie więcej potrzebny.
 pamięci USB zawierające SRU i umożliwiające uruchomienie systemu bez instalacji.
 
 Niezbędne pakiety:
 
-Virtualbox - wersja dla Windows: http://www.cyfrowaszkola.waw.pl/_pliki/Virtualbox_abix.exe
-
-OVA ze Szkolnym Remiksem: http://www.cyfrowaszkola.waw.pl/_python/SRU_FWIOO.ova
+* `Virtualbox - wersja dla Windows <http://www.cyfrowaszkola.waw.pl/_pliki/Virtualbox_abix.exe>`_
+* `Maszyna wirtualna SRU <http://www.cyfrowaszkola.waw.pl/_python/SRU_FWIOO.ova>`_
 
 
 Brakujące komponenty
