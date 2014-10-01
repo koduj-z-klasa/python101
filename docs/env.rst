@@ -38,6 +38,30 @@ pamięci USB zawierające SRU i umożliwiające uruchomienie systemu bez instala
     nie mogą popsuć konfiguracji systemu, ale też nie są wstanie instalować
     nowego oprogramowania.
 
+Dla komputerów z systemem Windows 8 i BIOS UEFI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Przepraszamy, ale Microsoft bardzo się stara, aby utrudnić używanie innych systemów
+niż ich własny w nowych komputerach. Dlatego też w nowych laptopach czasami nawet nie ma
+możliwości startu systemu z pamięci USB, nie ma też napędu DVD.
+Nieważne. Dajemy Wam do dyspozycji narzędzie, które pozwoli używać system w okienku.
+Aby używać Szkolny Remiks Ucznia jako maszynę wirtualną bez konieczności startu z USB,
+zainstalujcie Virtualbox, a następnie pobierzcie plik OVA i po prostu kliknijcie na niego dwa razy.
+Następnie postępujcie wg wskazówek wyświetlanych przez VirtualBox. Po wykonanym imporcie, 
+będziecie mogli po prostu uruchomić maszynę w Virtualbox. 
+Po imporcie plik OVA można skasować, aby nie zabierał już miejsca. Nie będzie więcej potrzebny.
+pamięci USB zawierające SRU i umożliwiające uruchomienie systemu bez instalacji.
+
+Niezbędne pakiety:
+
+Virtualbox - wersja dla Windows: http://www.cyfrowaszkola.waw.pl/_pliki/Virtualbox_abix.exe
+OVA ze Szkolnym Remiksem: http://www.cyfrowaszkola.waw.pl/_python/SRU_FWIOO.ova
+
+.. note::
+    Dosyć szczegółowy opis instalacji znajdziecie na stronie
+    http://cyfrowaszkola.waw.pl/free_desktop-uruchomienie-wewnatrz-ms-windows-macos-osx/
+    Nie jest to opis dla Szkolnego Remiksu, który używamy tu na szkoleniach, 
+    ale jest analogiczny i możecie spokojnie się nim posiłkować.
 
 Brakujące komponenty
 ^^^^^^^^^^^^^^^^^^^^
@@ -156,4 +180,4 @@ Polski słownik ortograficzny
 
 W programie możemy włączyć sprawdzanie polskiej pisowni, jednak potrzebne
 jest wskazanie pliku słownika. W ustawieniach :kbd:`Ctrl+Alt+S` szukamy `spell` i dodajemy
-``custom dictionaries folder`` wskazując na ``/usr/share/hunspell/`` (lokalizacja w SRU.
+``custom dictionaries folder`` wskazując na ``/usr/share/hunspell/`` (lokalizacja w SRU).
