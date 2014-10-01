@@ -41,10 +41,6 @@ pamięci USB zawierające SRU i umożliwiające uruchomienie systemu bez instala
 Dla komputerów z systemem Windows 8 i BIOS UEFI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Przepraszamy, ale Microsoft bardzo się stara, aby utrudnić używanie innych systemów
-niż ich własny w nowych komputerach. Dlatego też w nowych laptopach czasami nawet nie ma
-możliwości startu systemu z pamięci USB, nie ma też napędu DVD.
-Nieważne. Dajemy Wam do dyspozycji narzędzie, które pozwoli używać system w okienku.
 Aby używać Szkolny Remiks Ucznia jako maszynę wirtualną bez konieczności startu z USB,
 zainstalujcie Virtualbox, a następnie pobierzcie plik OVA i po prostu kliknijcie na niego dwa razy.
 Następnie postępujcie wg wskazówek wyświetlanych przez VirtualBox. Po wykonanym imporcie, 
@@ -58,11 +54,6 @@ Virtualbox - wersja dla Windows: http://www.cyfrowaszkola.waw.pl/_pliki/Virtualb
 
 OVA ze Szkolnym Remiksem: http://www.cyfrowaszkola.waw.pl/_python/SRU_FWIOO.ova
 
-.. note::
-    Dosyć szczegółowy opis instalacji znajdziecie na stronie
-    http://cyfrowaszkola.waw.pl/free_desktop-uruchomienie-wewnatrz-ms-windows-macos-osx/
-    Nie jest to opis dla Szkolnego Remiksu, który używamy tu na szkoleniach, 
-    ale jest analogiczny i możecie spokojnie się nim posiłkować.
 
 Brakujące komponenty
 ^^^^^^^^^^^^^^^^^^^^
