@@ -55,6 +55,7 @@ pamięci USB zawierające SRU i umożliwiające uruchomienie systemu bez instala
 Niezbędne pakiety:
 
 Virtualbox - wersja dla Windows: http://www.cyfrowaszkola.waw.pl/_pliki/Virtualbox_abix.exe
+
 OVA ze Szkolnym Remiksem: http://www.cyfrowaszkola.waw.pl/_python/SRU_FWIOO.ova
 
 .. note::
