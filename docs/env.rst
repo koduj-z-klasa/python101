@@ -51,7 +51,7 @@ pamięci USB zawierające SRU i umożliwiające uruchomienie systemu bez instala
 
 Niezbędne pakiety:
 
-* `Virtualbox - wersja dla Windows <http://www.cyfrowaszkola.waw.pl/_pliki/Virtualbox_abix.exe>`_
+* `Virtualbox - wersja dla Windows <http://download.virtualbox.org/virtualbox/4.3.8/VirtualBox-4.3.8-92456-Win.exe>`_
 * `Maszyna wirtualna SRU <http://www.cyfrowaszkola.waw.pl/_python/SRU_FWIOO.ova>`_
 
 
