@@ -9,6 +9,13 @@ Pełna dokumentacja szkolenia znajduje się tutaj:
 
 [bit.ly/kzk-py](http://bit.ly/kzk-py)
 
+Dodatkowe materiały przygotowane przez ambasadorów KZK
+------------------------------------------------------
+
+1. [Folder z materiałamy Roberta Bednarza](https://www.dropbox.com/sh/mvvz59by7buh2oz/AAAFC-rYZHAOmjQmDCThi72Na?dl=0)
+2. [Podstawy Python'a Doroty Rybickiej](https://drive.google.com/file/d/0B1hYVXsrSXCKY0hwZ3FHcHAwdDhpVDI2MmVIcVgybFV2UWZ3/view?usp=sharing)
+
+
 Modyfikacje i budowa dokumentacji offline
 -----------------------------------------
 
