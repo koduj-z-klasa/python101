@@ -217,7 +217,7 @@ Poniżej podano wybrane operatory dostępne w Pythonie.
 - znak + znak (konkatenacja napisów)
 - znak * 10 (powielenie znaków)
 
-**Przypisania**::
+**Przypisania**:
 
 - =, +=, -=, *=, /=, %=, **=, //=
 
