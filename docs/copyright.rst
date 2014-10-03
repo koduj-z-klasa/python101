@@ -3,7 +3,10 @@
     <p>
         <a style="float:left; margin: 0.3em 1em 1em 0" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
             <img alt="Licencja Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
-        <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Python 101</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.ceo.org.pl/" property="cc:attributionName" rel="cc:attributionURL">Centrum Edudkacji Europejsci</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Uznanie autorstwa-Na tych samych warunkach 4.0 Międzynarodowe License</a>.<br />W oparciu o utwór dostępny pod adresem <a xmlns:dct="http://purl.org/dc/terms/" href="http://koduj-z-klasa.github.io/python101/" rel="dct:source">http://koduj-z-klasa.github.io/python101/</a>
+        Materiały <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Python 101</span>
+        udostępniane przez <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.ceo.org.pl/" property="cc:attributionName" rel="cc:attributionURL">
+        Centrum Edudkacji Europejsci</a> na licencji <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+        Creative Commons Uznanie autorstwa-Na tych samych warunkach 4.0 Międzynarodowa</a>.<br />
     </p>
 
     <script>
