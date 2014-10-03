@@ -38,6 +38,22 @@ pamięci USB zawierające SRU i umożliwiające uruchomienie systemu bez instala
     nie mogą popsuć konfiguracji systemu, ale też nie są wstanie instalować
     nowego oprogramowania.
 
+Dla komputerów z systemem Windows 8 i BIOS UEFI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Aby używać Szkolny Remiks Ucznia jako maszynę wirtualną bez konieczności startu z USB,
+zainstalujcie Virtualbox, a następnie pobierzcie plik OVA i po prostu kliknijcie na niego dwa razy.
+Następnie postępujcie wg wskazówek wyświetlanych przez VirtualBox. Po wykonanym imporcie, 
+będziecie mogli po prostu uruchomić maszynę w Virtualbox. 
+
+Po imporcie plik OVA można skasować, aby nie zabierał już miejsca. Nie będzie więcej potrzebny.
+pamięci USB zawierające SRU i umożliwiające uruchomienie systemu bez instalacji.
+
+Niezbędne pakiety:
+
+* `Virtualbox - wersja dla Windows <http://download.virtualbox.org/virtualbox/4.3.8/VirtualBox-4.3.8-92456-Win.exe>`_
+* `Maszyna wirtualna SRU <http://www.cyfrowaszkola.waw.pl/_python/SRU_FWIOO.ova>`_
+
 
 Brakujące komponenty
 ^^^^^^^^^^^^^^^^^^^^
@@ -83,7 +99,7 @@ Instalacja Python 2.7 pod windows
 
 Możemy szybko zainstalować Python z pomocą konsoli PowerShell (taka niebieska)
 
-.. code-block:: powershell
+.. code-block:: posh
 
     (new-object System.Net.WebClient).DownloadFile("https://www.python.org/ftp/python/2.7.8/python-2.7.8.msi", "$pwd\python-2.7.8.msi")
     msiexec /i python-2.7.8.msi TARGETDIR=C:\Python27
@@ -113,7 +129,7 @@ A następnie zainstalować pip przy użyciu świeżo zainstalowanego Pythona :)
 
 Ponadto możemy ustawić zmienną systemową by za każdym razerm nie używać pełnej ścieżki.
 
-.. code-block:: batch
+.. code-block:: bat
 
     set PATH=%PATH%;c:\Python27\;c:\Python27\Scripts\
 
@@ -156,4 +172,4 @@ Polski słownik ortograficzny
 
 W programie możemy włączyć sprawdzanie polskiej pisowni, jednak potrzebne
 jest wskazanie pliku słownika. W ustawieniach :kbd:`Ctrl+Alt+S` szukamy `spell` i dodajemy
-``custom dictionaries folder`` wskazując na ``/usr/share/hunspell/`` (lokalizacja w SRU.
+``custom dictionaries folder`` wskazując na ``/usr/share/hunspell/`` (lokalizacja w SRU).
