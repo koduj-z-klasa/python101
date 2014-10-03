@@ -1,7 +1,7 @@
 Mów mi Python – wprowadzenie do języka Python
 *********************************************
 
-I. Jestem Python
+Jestem Python
 ================
 
 Python jest dynamicznie typowanym językiem interpretowanym wysokiego poziomu. Cechuje się czytelnością i zwięzłością kodu. Stworzony został w latach 90. przez Guido van Rossuma, nazwa zaś pochodzi od tytułu serialu komediowego emitowanego w BBC pt. "Latający cyrk Monty Pythona".
@@ -12,9 +12,9 @@ Kodować można w dowolnym edytorze tekstowym, jednak ze względów praktycznych
 
 Zanim przystąpimy do pracy w katalogu domowym utworzymy podkatalog python, w którym będziemy zapisywali nasze skrypty:
 
-.. role:: nrkodu(emphasis)
+.. raw:: html
 
-:nrkodu:`Terminal I.1`
+    <div class="code_no">Terminal nr 2.1</div>
 
 .. code:: bash
 
@@ -24,17 +24,19 @@ Poznawanie Pythona zrealizujemy poprzez rozwiązywanie prostych zadań, które p
 
 .. [#f1]_ Ipython to rozszerzona konsola Pythona przeznaczona do wszelkiego rodzaju interaktywnych obliczeń.
 
-II. Witaj Python!
+Witaj Python!
 =================
 
-ZADANIE II.1
+ZADANIE
 ------------
 Pobierz od użytkownika imię, wiek i powitaj go komunikatem::
     "Mów mi Python, mam x lat.
     Witaj w moim świecie imie.
     Jesteś starszy(młodszy) ode mnie."
 
-:nrkodu:`Kod II.1`
+.. raw:: html
+
+    <div class="code_no">Kod nr 2.2.1</div>
 
 .. code-block:: python
 
@@ -94,15 +96,17 @@ POĆWICZ SAM
 
     Zmień program tak, aby zmienna curYear (aktualny rok) była podawana przez użytkownika na początku programu.
 
-III. Warunki i pętle
+Warunki i pętle
 ====================
 
-ZADANIE III.1
+ZADANIE
 -------------
 
     Pobierz od użytkownika trzy liczby, sprawdź, która jest najmniejsza i wydrukuj ją na ekranie.
 
-:nrkodu:`Kod III.1`
+.. raw:: html
+
+    <div class="code_no">Kod nr 2.3.1</div>
 
 .. code-block:: python
 
@@ -156,13 +160,15 @@ POĆWICZ SAM
     Sprawdź, co się stanie, jeśli podasz liczby oddzielone przecinkiem lub podasz
     za mało liczb. Zmień program tak, aby poprawnie interpretował dane oddzielane przecinkami.
 
-ZADANIE III.2
+ZADANIE
 -------------
 
     Wydrukuj alfabet w porządku naturalnym, a następnie odwróconym w formacie:
      "mała => duża litera". W jednym wierszu trzeba wydrukować po pięć takich grup.
 
-:nrkodu:`Kod III.2`
+.. raw:: html
+
+    <div class="code_no">Kod nr 2.3.4</div>
 
 .. code-block :: python
 
@@ -205,29 +211,29 @@ Zmienna pomocnicza ``x`` jest zwiększana (inkrementacja) w pętlach o 1. Wyraż
 
 Poniżej podano wybrane operatory dostępne w Pythonie.
 
-Arytmetyczne:
+**Arytmetyczne**:
 
-- +, -, *, /, //, %, ** (potęgowanie)
+- +, -, \*, /, //, %, \*\* (potęgowanie)
 - znak + znak (konkatenacja napisów)
 - znak * 10 (powielenie znaków)
 
-Przypisania::
+**Przypisania**::
 
-    - =, +=, -=, *=, /=, %=, **=, //=
+- =, +=, -=, *=, /=, %=, **=, //=
 
-Logiczne::
+**Logiczne**:
 
-    - and, or, not
+- and, or, not
 
 Fałszem logicznym są: liczby zero (0, 0.0), False, None (null), puste kolekcje ([], (), {}, set()), puste napisy. Wszystko inne jest prawdą logiczną.
 
-Zawierania::
+**Zawierania**:
 
-    - in, not in
+- in, not in
 
-Porównania::
+**Porównania**:
 
-    - ==, >, <, <>, <=, >= != (jest różne)
+- ==, >, <, <>, <=, >= != (jest różne)
 
 POĆWICZ SAM
 -----------
@@ -236,17 +242,19 @@ Uprość warunek w pierwszej pętli for drukującej alfabet w porządku naturaln
 Wydrukuj co n-tą grupę liter alfabetu, przy czym wartość n podaje użytkownik. Wskazówka: użyj opcjonalnego, trzeciego argumentu funkcji ``range()``.
 Sprawdź działanie różnych operatorów Pythona w konsoli.
 
-IV. Listy, tuple i funkcje
+Listy, tuple i funkcje
 ==========================
 
-ZADANIE IV.1
+ZADANIE
 ------------
 
     Pobierz od użytkownika n liczb i zapisz je w liście. Wydrukuj: elementy listy i ich indeksy, elementy w odwrotnej kolejności, posortowane elementy. Usuń z listy pierwsze wystąpienie elementu podanego przez użytkownika. Usuń z listy element o podanym indeksie. Podaj ilość wystąpień oraz indeks pierwszego wystąpienia podanego elementu. Wybierz z listy elementy od indeksu i do j.
 
 Wszystkie poniższe przykłady proponujemy wykonać w konsoli Pythona. Nie umieszczaj w konsoli komentarzy, możesz też pominąć lub skrócić komunikaty funkcji print. Można również wpisać poniższy kod do pliku i go uruchomić.
 
-:nrkodu:`Kod IV.1`
+.. raw:: html
+
+    <div class="code_no">Kod nr 2.4.1</div>
 
 .. code-block :: python
 
@@ -332,18 +340,16 @@ POĆWICZ SAM
     i ujemnych, np. ``lista[2:], lista[:4], lista[-2], lista[-2:]``.
     Posortuj dowolną listę malejąco. Wskazówka: wykorzystaj metodę ``.sort(reverse=True)``.
 
-ZADANIE IV.2
+ZADANIE
 ------------
 
     Wypisz ciąg Fibonacciego aż do n-ego wyrazu podanego przez użytkownika.
     Ciąg Fibonacciego to ciąg liczb naturalnych, którego każdy wyraz poza dwoma
     pierwszymi jest sumą dwóch wyrazów poprzednich. Początkowe wyrazy tego ciągu to: 0 1 1 2 3 5 8 13 21
 
-:nrkodu:`Kod IV.2`
-
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr 2.4.4</div>
 
 .. code-block:: python
     :linenos:
@@ -388,7 +394,7 @@ POĆWICZ SAM
 
     Zmień funkcję ``fibonnacci()`` tak, aby zwracała wartość n-tego wyrazu. Wydrukuj tylko tę wartość w programie.
 
-V. Listy, zbiory, moduły i funkcje w praktyce
+Listy, zbiory, moduły i funkcje w praktyce
 =============================================
 
 ZADANIE
@@ -396,11 +402,9 @@ ZADANIE
 
     Napisz program, który umożliwi wprowadzanie ocen z podanego przedmiotu ścisłego (np. fizyki), następnie policzy i wyświetla średnią, medianę i odchylenie standardowe wprowadzonych ocen. Funkcje pomocnicze i statystyczne umieść w osobnym module.
 
-:nrkodu`Kod V.1`
-
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr 2.5.1</div>
 
 .. code-block:: python
     :linenos:
@@ -486,11 +490,9 @@ POĆWICZ SAM
 
 Funkcje wykorzystywane w programie umieszczamy w osobnym pliku.
 
-:nrkodu`Kod V.2`
-
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr 2.5.4</div>
 
 .. code-block:: python
     :linenos:
@@ -575,7 +577,7 @@ POĆWICZ SAM
 
     Dopisz funkcję, która wyświetli wszystkie oceny oraz ich odchylenia od wartości średniej.
 
-VI. Słowniki
+Słowniki
 ============
 
 ZADANIE
@@ -583,11 +585,9 @@ ZADANIE
 
     Przygotuj słownik zawierający obce wyrazy oraz ich możliwe znaczenia. Pobierz od użytkownika dane w formacie: *wyraz obcy: znaczenie1, znaczenie2, ...* itd. Pobieranie danych kończy wpisanie słowa "koniec". Podane dane zapisz w pliku. Użytkownik powinien mieć możliwość dodawania nowych i zmieniania zapisanych danych.
 
-:nrkodu`Kod VI.1`
-
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr 2.6.1</div>
 
 .. code-block:: python
     :linenos:
@@ -689,7 +689,7 @@ POĆWICZ SAM
 
     Dodaj do programu możliwość uczenia się zapisanych w słowniku słówek. Niech program wyświetla kolejne słowa obce i pobiera od użytkownika możliwe znaczenia. Następnie powinien wyświetlać, które z nich są poprawne.
 
-VII. Znam Pythona
+Znam Pythona
 =================
 
 ZADANIE
@@ -699,11 +699,9 @@ ZADANIE
 
 Pierwszy program na podstawie danych pobranych od użytkownika sprawdza m. in., czy da się zbudować trójkąt.
 
-:nrkodu`Kod VII.1`
-
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr 2.7.1</div>
 
 .. code-block:: python
     :linenos:
@@ -738,11 +736,9 @@ POĆWICZ SAM
 
 Drugi program jest przykładem implementacji szyfru Cezara.
 
-:nrkodu`Kod VII.2`
-
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr 2.7.3</div>
 
 .. code-block:: python
     :linenos:
@@ -772,7 +768,7 @@ POĆWICZ SAM
 
     Napisz funkcję deszyfrującą ``deszyfruj(txt)``. Dodaj do funkcji ``szyfruj(), deszyfruj()`` drugi parametr w postaci długości klucza podawanej przez użytkownika. Dodaj poprawne szyfrowanie dużych liter, obsługę białych znaków i znaków interpunkcyjnych.
 
-VIII. Nie znam Pythona... jeszcze
+Nie znam Pythona... jeszcze
 =================================
 
 ZADANIE
@@ -780,7 +776,12 @@ ZADANIE
 
 Wypróbuj w konsoli podane przykłady ułatwień (ang. comprehensions) Pythona:
 
-:nrkodu`Kod VIII.1`
+.. raw:: html
+
+    <div class="code_no">Kod nr 2.8.1</div>
+
+.. code-block:: python
+    :linenos:
 
     # Przykład tzw. list comprehensions
     # lista kwadratów liczb od 0 do 9
