@@ -191,3 +191,5 @@ Polski słownik ortograficzny
 W programie możemy włączyć sprawdzanie polskiej pisowni, jednak potrzebne
 jest wskazanie pliku słownika. W ustawieniach :kbd:`Ctrl+Alt+S` szukamy `spell` i dodajemy
 ``custom dictionaries folder`` wskazując na ``/usr/share/hunspell/`` (lokalizacja w SRU).
+
+.. include:: copyright.rst

@@ -66,7 +66,7 @@ takie zmienne czasem są określane jako :term:`stała`.
 .. literalinclude:: code1a.py
     :linenos:
     :lines: 77-79
-    
+    :lineno-start: 77
 
 Podstawą naszego życia będzie klasa ``Population`` która będzie przechowywać stan gry,
 a także realizować funkcje potrzebne do zmian stanu gry w czasie. W przeciwieństwie do
@@ -80,7 +80,7 @@ pomiędzy większą liczbę klas.
 .. literalinclude:: code1a.py
     :linenos:
     :lines: 82-106
-    
+    :lineno-start: 82
 
 Poza ostatnią linią nie ma tutaj wielu niespodzianek, ot konstruktor ``__init__``
 zapamiętujący wartości konfiguracyjne w instancji naszej klasy, tj. w ``self``.
@@ -207,7 +207,7 @@ nie będziemy nic robić jeśli gracz poruszy myszką bez naciskania klawiszy.
 .. literalinclude:: code1a.py
     :linenos:
     :lines: 108-128
-    
+    :lineno-start: 108
 
 Następnie dodajmy metodę ``draw_on`` która będzie rysować żywe komórki na planszy.
 Tą metodę wywołamy w metodzie ``GameOfLife.draw``.
@@ -219,7 +219,7 @@ Tą metodę wywołamy w metodzie ``GameOfLife.draw``.
 .. literalinclude:: code1a.py
     :linenos:
     :lines: 130-137
-    
+    :lineno-start: 130
 
 Powyżej wykorzystaliśmy nie istniejącą metodę ``alive_cells`` która jak wynika z
 jej użycia powinna zwrócić kolekcję współrzędnych dla żywych komórek.
@@ -236,7 +236,7 @@ i zwróci tylko współrzędne żywych komórek.
 .. literalinclude:: code1a.py
     :linenos:
     :lines: 141-150
-    
+    :lineno-start: 141
 
 W kodzie powyżej mamy przykład dwóch pętli przy pomocy których sprawdzamy zawartość
 stan życia komórek dla wszystkich możliwych współrzędnych ``x`` i ``y`` w macierzy.
@@ -268,7 +268,7 @@ Czas by rozwinąć nasz kontroler gry, klasę ``GameOfLife`` o instancję klasy 
     :linenos:
     :lines: 38-81
     :emphasize-lines: 18, 26-28, 42-44
-    
+    :lineno-start: 38
 
 Gotowy kod możemy wyciągnąć komendą:
 
@@ -291,7 +291,7 @@ komórek w bezpośrednim sąsiedztwie. Przygotujmy do tego metodę:
 .. literalinclude:: code2a.py
     :linenos:
     :lines: 159-183
-    
+    :lineno-start: 159
 
 Następnie przygotujmy funkcję która będzie tworzyć nową populację
 
@@ -302,7 +302,7 @@ Następnie przygotujmy funkcję która będzie tworzyć nową populację
 .. literalinclude:: code2a.py
     :linenos:
     :lines: 185-209
-    
+    :lineno-start: 185
 
 Jeszcze ostatnie modyfikacje kontrolera gry tak by komórki zaczęły żyć po wciśnięciu klawisza enter.
 
@@ -314,7 +314,7 @@ Jeszcze ostatnie modyfikacje kontrolera gry tak by komórki zaczęły żyć po w
     :linenos:
     :lines: 38-87
     :emphasize-lines: 29-30, 48-50
-    
+    :lineno-start: 1
 
 Gotowy kod możemy wyciągnąć komendą:
 
@@ -369,3 +369,5 @@ Metryka
         div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
         div.highlight, div.highlight-python { margin-top: 0px; }
     </style>
+
+.. include:: ../copyright.rst

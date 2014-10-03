@@ -371,3 +371,4 @@ Metryka
 
 :Czas trwania: 90 minut
 
+.. include:: copyright.rst
