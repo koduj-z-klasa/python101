@@ -815,6 +815,11 @@ Materiały pomocnicze
 8. http://www.codecademy.com
 9. https://www.coursera.org
 
+Metryka
+^^^^^^^
+
+:Autorzy: Robert Bednarz <rob@lo1.sandomierz.pl>,
+          Janusz Skonieczny <js@bravelabs.pl>
 
 .. raw:: html
 
