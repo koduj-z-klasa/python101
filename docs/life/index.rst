@@ -21,12 +21,12 @@ Do rozpoczęcia pracy z przykładem pobieramy szczątkowy kod źródłowy:
 Okienko gry
 -----------
 
-Na wstępie w pliku ``~/python101/life/life.py`` otrzymujemy kod który przygotuje okienko naszej gry:
+Na wstępie w pliku ``~/python101/games/life.py`` otrzymujemy kod który przygotuje okienko naszej gry:
 
 .. note::
 
     Ten przykład zakłada wcześniejsze zrealizowanie przykładu: :doc:`../pong/index`,
-    opisy niektórych cech wspólnych został tutaj wyraźnie pominięty.
+    opisy niektórych cech wspólnych zostały tutaj wyraźnie pominięte.
     W tym przykładzie wykorzystujemy np. podobne mechanizmy do tworzenia okna i
     zarządzania główną pętlą naszej gry.
 
