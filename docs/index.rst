@@ -53,6 +53,7 @@ Zaczynamy!
     :numbered:
 
     basic/basic
+    basic1/basic1
     pong/index
     life/index
     tictactoe/index
