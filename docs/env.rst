@@ -99,7 +99,7 @@ Instalacja Python 2.7 pod windows
 
 Możemy szybko zainstalować Python z pomocą konsoli PowerShell (taka niebieska)
 
-.. code-block:: powershell
+.. code-block:: posh
 
     (new-object System.Net.WebClient).DownloadFile("https://www.python.org/ftp/python/2.7.8/python-2.7.8.msi", "$pwd\python-2.7.8.msi")
     msiexec /i python-2.7.8.msi TARGETDIR=C:\Python27
@@ -129,7 +129,7 @@ A następnie zainstalować pip przy użyciu świeżo zainstalowanego Pythona :)
 
 Ponadto możemy ustawić zmienną systemową by za każdym razerm nie używać pełnej ścieżki.
 
-.. code-block:: batch
+.. code-block:: bat
 
     set PATH=%PATH%;c:\Python27\;c:\Python27\Scripts\
 
