@@ -1,8 +1,8 @@
 Mów mi Python – wprowadzenie do języka Python
-**********************************
+*********************************************
 
 I. Jestem Python
-==================================
+================
 
 Python jest dynamicznie typowanym językiem interpretowanym wysokiego poziomu. Cechuje się czytelnością i zwięzłością kodu. Stworzony został w latach 90. przez Guido van Rossuma, nazwa zaś pochodzi od tytułu serialu komediowego emitowanego w BBC pt. "Latający cyrk Monty Pythona".
 
@@ -25,10 +25,10 @@ Poznawanie Pythona zrealizujemy poprzez rozwiązywanie prostych zadań, które p
 .. [#f1]_ Ipython to rozszerzona konsola Pythona przeznaczona do wszelkiego rodzaju interaktywnych obliczeń.
 
 II. Witaj Python!
-==================================
+=================
 
 ZADANIE II.1
-----------------------------------
+------------
 Pobierz od użytkownika imię, wiek i powitaj go komunikatem::
     "Mów mi Python, mam x lat.
     Witaj w moim świecie imie.
@@ -46,7 +46,7 @@ Pobierz od użytkownika imię, wiek i powitaj go komunikatem::
     # inicjalizujemy zmienne (wartości)
     curYear = 2014
     pythonYear = 1989
-    wiekPythona = curYear – pythonYear # ile lat ma Python
+    wiekPythona = curYear - pythonYear # ile lat ma Python
 
     # pobieramy dane
     imie = raw_input('Jak się nazywasz? ')
@@ -62,35 +62,43 @@ Pobierz od użytkownika imię, wiek i powitaj go komunikatem::
     else:
         print 'Jesteś młodszy ode mnie.'
 
+
 JAK TO DZIAŁA
-----------------------------------
+-------------
 
 **Pojęcia**: *zmienna, wartość, wyrażenie, wejście i wyjście danych, instrukcja warunkowa, komentarz*.
 
-Deklaracja zmiennej w Pythonie nie jest wymagana, wystarczy podanej nazwie przypisać jakąś wartość za pomocą operatora przypisania "="[#f2]_. Zmiennym często przypisujemy wartości za pomocą wyrażeń, czyli działań arytmetycznych lub logicznych.
+Deklaracja zmiennej w Pythonie nie jest wymagana, wystarczy podanej nazwie przypisać jakąś wartość
+za pomocą operatora przypisania "=" [#f2]_. Zmiennym często przypisujemy wartości za pomocą wyrażeń,
+czyli działań arytmetycznych lub logicznych.
 
-.. [#f2]_ Dlatego niekiedy mówi się, że w Pythonie zmiennych nie ma, są natomiast wartości określonego typu.
+.. [#f2] Dlatego niekiedy mówi się, że w Pythonie zmiennych nie ma, są natomiast wartości określonego typu.
 
 Funkcja ``raw_input()`` zwraca pobrane z klawiatury znaki jako napis, czyli typ **string**.
 
 Funkcja ``int()`` umożliwia konwersję napisu na liczbę całkowitą, czyli typ **integer**.
 
-Funkcja ``print`` drukuje podane argumenty oddzielone przecinkami. Komunikaty tekstowe ujmujemy w cudzysłowy podwójne lub pojedyncze. Przecinek oddziela kolejne argumenty spacjami.
+Funkcja ``print`` drukuje podane argumenty oddzielone przecinkami. Komunikaty tekstowe ujmujemy
+w cudzysłowy podwójne lub pojedyncze. Przecinek oddziela kolejne argumenty spacjami.
 
-Instrukcja ``if`` (jeżeli) pozwala na warunkowe wykonanie kodu. Jeżeli podane wyrażenie jest prawdziwe (przyjmuje wartość ``True``) wykonywana jest pierwsza instrukcja, w przeciwnym wypadku (``else``), kiedy wyrażenie jest fałszywe (wartość ``False``), wykonywana jest instrukcja druga. Warto zauważyć, że polecenia instrukcji warunkowej kończymy dwukropkiem.
+Instrukcja ``if`` (jeżeli) pozwala na warunkowe wykonanie kodu. Jeżeli podane wyrażenie
+jest prawdziwe (przyjmuje wartość ``True``) wykonywana jest pierwsza instrukcja,
+w przeciwnym wypadku (``else``), kiedy wyrażenie jest fałszywe (wartość ``False``),
+wykonywana jest instrukcja druga. Warto zauważyć, że polecenia instrukcji warunkowej kończymy dwukropkiem.
 
-Charakterystyczną cechą Pythona jest używanie wcięć do zaznaczania bloków kodu. Komentarze wprowadzamy po znaku ``#``.
+Charakterystyczną cechą Pythona jest używanie wcięć do zaznaczania bloków kodu.
+Komentarze wprowadzamy po znaku ``#``.
 
 POĆWICZ SAM
-----------------------------------
+-----------
 
     Zmień program tak, aby zmienna curYear (aktualny rok) była podawana przez użytkownika na początku programu.
 
 III. Warunki i pętle
-==================================
+====================
 
 ZADANIE III.1
-----------------------------------
+-------------
 
     Pobierz od użytkownika trzy liczby, sprawdź, która jest najmniejsza i wydrukuj ją na ekranie.
 
@@ -123,30 +131,41 @@ ZADANIE III.1
     print "Nie, to nie :-("
 
 JAK TO DZIAŁA
-----------------------------------
+-------------
 
 **Pojęcia**: *pętla, obiekt, metoda, instrukcja warunkowa zagnieżdżona, formatowanie kodu*.
 
-Pętla while umożliwia powtarzanie określonych operacji, czyli pozwala użytkownikowi wprowadzać kolejne serie liczb. Definiując pętle określamy warunek powtarzania kodu. Dopóki jest prawdziwy, czyli dopóki zmienna op ma wartość "t" pętla działa. Do wydzielania kodu przynależnego do pętli i innych instrukcji (np. ``if``) stosujemy wcięcia. Formatując kod, możemy używać zarówno tabulatorów, jak i spacji, ważne aby w obrębie pliku było to konsekwentne[#f3]_.
+Pętla while umożliwia powtarzanie określonych operacji, czyli pozwala użytkownikowi wprowadzać
+kolejne serie liczb. Definiując pętle określamy warunek powtarzania kodu. Dopóki jest prawdziwy,
+czyli dopóki zmienna op ma wartość "t" pętla działa. Do wydzielania kodu przynależnego do pętli
+i innych instrukcji (np. ``if``) stosujemy wcięcia. Formatując kod, możemy używać zarówno tabulatorów,
+jak i spacji, ważne aby w obrębie pliku było to konsekwentne [#f3]_.
 
-.. [#f3]_ Dobry styl programowania sugeruje używanie do wcięć 4 spacji.
+.. [#f3] Dobry styl programowania sugeruje używanie do wcięć 4 spacji.
 
-W Pythonie wszystko jest obiektem, czyli typy wbudowane, np. napisy, posiadają metody (funkcje) wykonujące określone operacje na wartościach. W podanym kodzie funkcja ``raw_input()`` zwraca ciąg znaków wprowadzony przez użytkownika, z którego wydobywamy poszczególne słowa za pomocą metody ``split()`` typu string.
-Instrukcje warunkowe (``if``), jak i pętle, można zagnieżdżać stosując wcięcia. W jednej złożonej instrukcji warunkowej można sprawdzać wiele warunków (``elif:``).
+W Pythonie wszystko jest obiektem, czyli typy wbudowane, np. napisy, posiadają metody (funkcje)
+wykonujące określone operacje na wartościach. W podanym kodzie funkcja ``raw_input()`` zwraca
+ciąg znaków wprowadzony przez użytkownika, z którego wydobywamy poszczególne słowa za pomocą
+metody ``split()`` typu string.
+Instrukcje warunkowe (``if``), jak i pętle, można zagnieżdżać stosując wcięcia.
+W jednej złożonej instrukcji warunkowej można sprawdzać wiele warunków (``elif:``).
 
 POĆWICZ SAM
-----------------------------------
+-----------
 
-    Sprawdź, co się stanie, jeśli podasz liczby oddzielone przecinkiem lub podasz za mało liczb. Zmień program tak, aby poprawnie interpretował dane oddzielane przecinkami.
+    Sprawdź, co się stanie, jeśli podasz liczby oddzielone przecinkiem lub podasz
+    za mało liczb. Zmień program tak, aby poprawnie interpretował dane oddzielane przecinkami.
 
 ZADANIE III.2
-----------------------------------
+-------------
 
-    Wydrukuj alfabet w porządku naturalnym, a następnie odwróconym w formacie: "mała => duża litera". W jednym wierszu trzeba wydrukować po pięć takich grup.
+    Wydrukuj alfabet w porządku naturalnym, a następnie odwróconym w formacie:
+     "mała => duża litera". W jednym wierszu trzeba wydrukować po pięć takich grup.
 
 :nrkodu:`Kod III.2`
 
 .. code-block :: python
+
     #! /usr/bin/env python
     # -*- coding: UTF-8 -*-
 
@@ -174,7 +193,7 @@ ZADANIE III.2
         print litera.upper(), "=>", litera,
 
 JAK TO DZIAŁA
-----------------------------------
+-------------
 
 **Pojęcia**: *iteracja, pętla, kod ASCII, lista, inkrementacja, operatory arytmetyczne, logiczne, przypisania i zawierania*.
 
@@ -192,36 +211,36 @@ Arytmetyczne:
 - znak + znak (konkatenacja napisów)
 - znak * 10 (powielenie znaków)
 
-Przypisania:
+Przypisania::
 
-- =, +=, -=, *=, /=, %=, **=, //=
+    - =, +=, -=, *=, /=, %=, **=, //=
 
-Logiczne:
+Logiczne::
 
-- and, or, not
+    - and, or, not
 
 Fałszem logicznym są: liczby zero (0, 0.0), False, None (null), puste kolekcje ([], (), {}, set()), puste napisy. Wszystko inne jest prawdą logiczną.
 
-Zawierania:
+Zawierania::
 
-- in, not in
+    - in, not in
 
-Porównania:
+Porównania::
 
-- ==, >, <, <>, <=, >= != (jest różne)
+    - ==, >, <, <>, <=, >= != (jest różne)
 
 POĆWICZ SAM
-----------------------------------
+-----------
 
 Uprość warunek w pierwszej pętli for drukującej alfabet w porządku naturalnym tak, aby nie używać operatora modulo.
 Wydrukuj co n-tą grupę liter alfabetu, przy czym wartość n podaje użytkownik. Wskazówka: użyj opcjonalnego, trzeciego argumentu funkcji ``range()``.
 Sprawdź działanie różnych operatorów Pythona w konsoli.
 
 IV. Listy, tuple i funkcje
-==================================
+==========================
 
 ZADANIE IV.1
-----------------------------------
+------------
 
     Pobierz od użytkownika n liczb i zapisz je w liście. Wydrukuj: elementy listy i ich indeksy, elementy w odwrotnej kolejności, posortowane elementy. Usuń z listy pierwsze wystąpienie elementu podanego przez użytkownika. Usuń z listy element o podanym indeksie. Podaj ilość wystąpień oraz indeks pierwszego wystąpienia podanego elementu. Wybierz z listy elementy od indeksu i do j.
 
@@ -276,29 +295,58 @@ Wszystkie poniższe przykłady proponujemy wykonać w konsoli Pythona. Nie umies
     print lista[i:j]
 
 JAK TO DZIAŁA
-----------------------------------
+-------------
 
 **Pojęcia**: *tupla, lista, metoda.*
 
-Funkcja ``input()`` pobiera dane wprowadzone przez użytkownika (tak jak ``raw_input()``), ale próbuje zinterpretować je jako kod Pythona. Podane na wejściu liczby oddzielone przecinkami zostają więc spakowane jako **tupla** (krotka). Jest to uporządkowana sekwencja poindeksowanych danych, przypominająca tablicę, której wartości nie można zmieniać. Gdybyśmy chcieli wpisać do tupli wartości od razu w kodzie, napisalibyśmy: ``tupla = (4, 3, 5)``[#f4]_. Listy to również uporządkowane sekwencje indeksowanych danych, zazwyczaj tego samego typu, które jednak możemy zmieniać.
+Funkcja ``input()`` pobiera dane wprowadzone przez użytkownika
+(tak jak ``raw_input()``), ale próbuje zinterpretować je jako kod Pythona.
+Podane na wejściu liczby oddzielone przecinkami zostają więc spakowane jako
+**tupla** (krotka). Jest to uporządkowana sekwencja poindeksowanych danych,
+przypominająca tablicę, której wartości nie można zmieniać. Gdybyśmy chcieli
+wpisać do tupli wartości od razu w kodzie, napisalibyśmy: ``tupla = (4, 3, 5)`` [#f4]_.
+Listy to również uporządkowane sekwencje indeksowanych danych, zazwyczaj tego samego typu, które jednak możemy zmieniać.
 
-.. [#f4]_ W definicji tupli nawiasy są opcjonalne, można więc pisać tak: ``tupla = 3, 2, 5, 8.``
+.. [#f4] W definicji tupli nawiasy są opcjonalne, można więc pisać tak: ``tupla = 3, 2, 5, 8.``
 
-Dostęp do elementów tupli lub listy uzyskujemy podając nazwę i indeks, np. ``lista[0]``. Elementy indeksowane są od 0 (zera!). Funkcja ``len()`` zwraca ilość elementów w tupli/liście. Funkcja ``enumerate()`` zwraca obiekt zawierający indeksy i elementy sekwencji (np. tupli lub listy) podanej jako atrybut. Funkcja ``reversed()`` zwraca odwróconą sekwencję.
+Dostęp do elementów tupli lub listy uzyskujemy podając nazwę i indeks, np. ``lista[0]``.
+Elementy indeksowane są od 0 (zera!). Funkcja ``len()`` zwraca ilość elementów w tupli/liście.
+Funkcja ``enumerate()`` zwraca obiekt zawierający indeksy i elementy sekwencji (np. tupli lub listy) podanej jako atrybut.
+Funkcja ``reversed()`` zwraca odwróconą sekwencję.
 
-Lista ma wiele użytecznych metod: ``.append(x)`` – dodaje x do listy; ``.remove(x)`` – usuwa pierwszy x z listy; ``.insert(i, x)`` – wstawia x przed indeksem i; ``.count(x)`` – zwraca ilość wystąpień x; ``.index(x)`` – zwraca indeks pierwszego wystąpienia x; ``.pop()`` – usuwa i zwraca ostatni element listy. Funkcja ``reversed(lista)`` zwraca kopię listy w odwróconym porządku, natomiast ``sorted(lista)`` zwraca kopię listy posortowanej rosnąco. Jeżeli chcemy trwale odwrócić lub posortować elementy listy stosujemy metody: ``.reverse()`` i ``.sort()``. Z każdej sekwencji (napisu, tupli czy listy) możemy wydobywać fragmenty dzięki notacji *slice* (wycinek). W najprostszym przypadku polega ona na podaniu początkowego i końcowego (wyłącznie) indeksu elementów, które chcemy wydobyć, np. ``lista[1:4]``.
+Lista ma wiele użytecznych metod: ``.append(x)`` – dodaje x do listy; ``.remove(x)`` – usuwa pierwszy x z listy;
+``.insert(i, x)`` – wstawia x przed indeksem i; ``.count(x)`` – zwraca ilość wystąpień x;
+``.index(x)`` – zwraca indeks pierwszego wystąpienia x; ``.pop()``
+– usuwa i zwraca ostatni element listy. Funkcja ``reversed(lista)`` zwraca kopię listy w odwróconym porządku,
+natomiast ``sorted(lista)`` zwraca kopię listy posortowanej rosnąco.
+Jeżeli chcemy trwale odwrócić lub posortować elementy listy stosujemy metody:
+``.reverse()`` i ``.sort()``. Z każdej sekwencji (napisu, tupli czy listy) możemy
+wydobywać fragmenty dzięki notacji *slice* (wycinek). W najprostszym przypadku polega
+ona na podaniu początkowego i końcowego (wyłącznie) indeksu elementów, które chcemy
+wydobyć, np. ``lista[1:4]``.
 
 POĆWICZ SAM
-----------------------------------
+-----------
 
-    Utwórz w konsoli Pythona dowolną listę i przećwicz notację slice. Sprawdź działanie indeksów pustych i ujemnych, np. ``lista[2:], lista[:4], lista[-2], lista[-2:]``. Posortuj dowolną listę malejąco. Wskazówka: wykorzystaj metodę ``.sort(reverse=True)``.
+    Utwórz w konsoli Pythona dowolną listę i przećwicz notację slice. Sprawdź działanie indeksów pustych
+    i ujemnych, np. ``lista[2:], lista[:4], lista[-2], lista[-2:]``.
+    Posortuj dowolną listę malejąco. Wskazówka: wykorzystaj metodę ``.sort(reverse=True)``.
 
 ZADANIE IV.2
-----------------------------------
+------------
 
-    Wypisz ciąg Fibonacciego aż do n-ego wyrazu podanego przez użytkownika. Ciąg Fibonacciego to ciąg liczb naturalnych, którego każdy wyraz poza dwoma pierwszymi jest sumą dwóch wyrazów poprzednich. Początkowe wyrazy tego ciągu to: 0 1 1 2 3 5 8 13 21
+    Wypisz ciąg Fibonacciego aż do n-ego wyrazu podanego przez użytkownika.
+    Ciąg Fibonacciego to ciąg liczb naturalnych, którego każdy wyraz poza dwoma
+    pierwszymi jest sumą dwóch wyrazów poprzednich. Początkowe wyrazy tego ciągu to: 0 1 1 2 3 5 8 13 21
 
 :nrkodu:`Kod IV.2`
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block:: python
+    :linenos:
 
     #! /usr/bin/env python
     # -*- coding: UTF-8 -*-
@@ -318,28 +366,44 @@ ZADANIE IV.2
     print "=" * 25 #na koniec szlaczek
 
 JAK TO DZIAŁA
-----------------------------------
+-------------
 
 **Pojęcia**: *funkcja, zwracanie wartości, tupla, rozpakowanie tupli, przypisanie wielokrotne*.
 
-Definicja funkcji w Pythonie polega na użyciu słowa kluczowego ``def``, podaniu nazwy funkcji i w nawiasach okrągłych ewentualnej listy argumentów. Definicję kończymy znakiem dwukropka, po którym wpisujemy w następnych liniach, pamiętając o wcięciach, ciało funkcji. Funkcja może, ale nie musi zwracać wartości. Jeżeli chcemy zwrócić jakąś wartość używamy polecenia return wartość.
+Definicja funkcji w Pythonie polega na użyciu słowa kluczowego ``def``,
+podaniu nazwy funkcji i w nawiasach okrągłych ewentualnej listy argumentów.
+Definicję kończymy znakiem dwukropka, po którym wpisujemy w następnych liniach,
+pamiętając o wcięciach, ciało funkcji. Funkcja może, ale nie musi zwracać wartości.
+Jeżeli chcemy zwrócić jakąś wartość używamy polecenia return wartość.
 
-Zapis ``a, b = pwyrazy`` jest przykładem rozpakowania tupli, tzn. zmienne *a* i *b* przyjmują wartości kolejnych elementów tupli pwyrazy. Zapis równoważny, w którym nie definiujemy tupli tylko wprost podajemy wartości, to ``a, b = 0, 1``; ten sposób przypisania wielokrotnego stosujemy w kodzie ``a, b = b, b+a``. Jak widać, ilość zmiennych z lewej strony musi odpowiadać liczbie wartości rozpakowywanych z tupli lub liczbie wartości podawanych wprost z prawej strony.
+Zapis ``a, b = pwyrazy`` jest przykładem rozpakowania tupli, tzn. zmienne *a* i *b*
+przyjmują wartości kolejnych elementów tupli pwyrazy. Zapis równoważny, w którym nie
+definiujemy tupli tylko wprost podajemy wartości, to ``a, b = 0, 1``; ten sposób
+przypisania wielokrotnego stosujemy w kodzie ``a, b = b, b+a``. Jak widać, ilość
+zmiennych z lewej strony musi odpowiadać liczbie wartości rozpakowywanych z tupli
+lub liczbie wartości podawanych wprost z prawej strony.
 
 POĆWICZ SAM
-----------------------------------
+-----------
 
     Zmień funkcję ``fibonnacci()`` tak, aby zwracała wartość n-tego wyrazu. Wydrukuj tylko tę wartość w programie.
 
 V. Listy, zbiory, moduły i funkcje w praktyce
-==================================
+=============================================
 
 ZADANIE
-----------------------------------
+-------
 
     Napisz program, który umożliwi wprowadzanie ocen z podanego przedmiotu ścisłego (np. fizyki), następnie policzy i wyświetla średnią, medianę i odchylenie standardowe wprowadzonych ocen. Funkcje pomocnicze i statystyczne umieść w osobnym module.
 
 :nrkodu`Kod V.1`
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block:: python
+    :linenos:
 
     #! /usr/bin/env python
     # -*- coding: UTF-8 -*-
@@ -394,13 +458,18 @@ ZADANIE
     print "\nŚrednia: {0:5.2f}\nMediana: {1:5.2f}\nOdchylenie: {2:5.2f}".format(s,m,o)
 
 JAK TO DZIAŁA
-----------------------------------
+-------------
 
 **Pojęcia**: *import, moduł, zbiór, przechwytywanie wyjątków, formatowanie napisów i danych na wyjściu*.
 
-Klauza from moduł import funkcja umożliwia wykorzystanie w programie funkcji zdefiniowanych w innych modułach i zapisanych w osobnych plikach. Dzięki temu utrzymujemy przejrzystość programu głównego, a jednocześnie możemy funkcje z modułów wykorzystywać, importując je w innych programach. Nazwa modułu to nazwa pliku z kodem pozbawiona jednak rozszerzenia *.py*. Moduł musi być dostępny w ścieżce przeszukiwania[#f5]_, aby można go było poprawnie dołączyć.
+Klauza from moduł import funkcja umożliwia wykorzystanie w programie funkcji
+zdefiniowanych w innych modułach i zapisanych w osobnych plikach. Dzięki temu
+utrzymujemy przejrzystość programu głównego, a jednocześnie możemy funkcje
+z modułów wykorzystywać, importując je w innych programach. Nazwa modułu
+to nazwa pliku z kodem pozbawiona jednak rozszerzenia *.py*. Moduł musi
+być dostępny w ścieżce przeszukiwania [#f5]_, aby można go było poprawnie dołączyć.
 
-:: [#f5]_ W przypadku prostych programów zapisuj moduły w tym samym katalogu co program główny.
+.. [#f5] W przypadku prostych programów zapisuj moduły w tym samym katalogu co program główny.
 
 Instrukcja ``set()`` tworzy zbiór, czyli nieuporządkowany zestaw niepowtarzalnych (!) elementów. Instrukcje ``if przedmiot in przedmioty`` i ``if przedmiot not in przedmioty`` za pomocą operatorów zawierania ``(not) in`` sprawdzają, czy podany przedmiot już jest lub nie w zbiorze. Polecenie ``przedmioty.add()`` pozwala dodawać elementy do zbioru, przy czym jeżeli element jest już w zbiorze, nie zostanie dodany. Polecenie ``przedmioty.remove()`` usunnie podany jako argument element ze zbioru.
 
@@ -411,13 +480,20 @@ Metoda ``.capitalize()`` pozwala wydrukować podany napis dużą literą.
 W funkcji ``print(...).format(s,m,o)`` zastosowano formatowanie drukowanych wartości, do których odwołujemy się w specyfikacji ``{0:5.2f}``. Pierwsza cyfra wskazuje, którą wartość z numerowanej od 0 (zera) listy, umieszczonej w funkcji ``format()``, wydrukować; np. aby wydrukować drugą wartość, trzeba by użyć kodu ``{1:}``.Po dwukropku podajemy szerokość pola przeznaczonego na wydruk, po kropce ilość miejsc po przecinku, symbol *f* oznacza natomiast liczbę zmiennoprzecinkową stałej precyzji.
 
 POĆWICZ SAM
-----------------------------------
+-----------
 
     W konsoli Pythona utwórz listę wyrazy zawierającą elementy: *abrakadabra* i *kordoba*. Utwórz zbiór *w1* poleceniem ``set(wyrazy[0])``. Oraz zbiór *w2* poleceniem ``set(wyrazy[1])``. Wykonaj kolejno polecenia: ``print w1 – w2; print w1 | w2; print w1 & w2; print w1 ^ w2``. Przykłady te ilustrują użycie klasycznych operatorów na zbiorach, czyli: różnica (-) , suma (|), przecięcie (część wspólna, &) i elementy unikalne (^).
 
 Funkcje wykorzystywane w programie umieszczamy w osobnym pliku.
 
 :nrkodu`Kod V.2`
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block:: python
+    :linenos:
 
     #! /usr/bin/env python
     # -*- coding: UTF-8 -*-
@@ -468,36 +544,53 @@ Funkcje wykorzystywane w programie umieszczamy w osobnym pliku.
         return math.sqrt(w)
 
 JAK TO DZIAŁA
-----------------------------------
+-------------
 
 **Pojęcia**: *funkcja, argumenty funkcji, zwracanie wartości, moduł*.
 
-Klauzula ``import math`` udostępnia w pliku wszystkie metody z modułu matematycznego, dlatego musimy odwoływać się do nich za pomocą notacji moduł.funkcja, np.: ``math.sqrt()`` – zwraca pierwiastek kwadratowy.
+Klauzula ``import math`` udostępnia w pliku wszystkie metody z modułu
+matematycznego, dlatego musimy odwoływać się do nich za pomocą notacji
+moduł.funkcja, np.: ``math.sqrt()`` – zwraca pierwiastek kwadratowy.
 
-Funkcja ``drukuj(co, kom="...")`` przyjmuje dwa argumenty, *co* – listę lub zbiór, który drukujemy w pętli for, oraz *kom* – komunikat, który wyświetlamy przed wydrukiem. Argument kom jest opcjonalny, przypisano mu bowiem wartość domyślną, która zostanie użyta, jeżeli użytkownik nie poda innej w wywołaniu funkcji.
+Funkcja ``drukuj(co, kom="...")`` przyjmuje dwa argumenty, *co* – listę
+lub zbiór, który drukujemy w pętli for, oraz *kom* – komunikat,
+który wyświetlamy przed wydrukiem. Argument kom jest opcjonalny,
+przypisano mu bowiem wartość domyślną, która zostanie użyta,
+jeżeli użytkownik nie poda innej w wywołaniu funkcji.
 
 Funkcja ``srednia()`` do zsumowania wartości ocen wykorzystuje funkcję ``sum()``.
 
-Funkcja ``mediana()`` sortuje otrzymaną listę "w miejscu" (``oceny.sort()``), tzn. trwale zmienia porządek elementów [#f6]_]1. W zależności od długości listy zwraca wartość środkową (długość nieparzysta) lub średnią arytmetyczną dwóch środkowych wartości (długość). Zapis ``oceny[half-1:half+1]`` wycina i zwraca dwa środkowe elementy z listy, przy czym wyrażenie ``half = len(oceny)/2`` wylicza nam indeks drugiego ze środkowych elementów.
+Funkcja ``mediana()`` sortuje otrzymaną listę "w miejscu" (``oceny.sort()``), tzn. trwale zmienia porządek elementów [#f6]_.
+W zależności od długości listy zwraca wartość środkową (długość nieparzysta)
+lub średnią arytmetyczną dwóch środkowych wartości (długość).
+Zapis ``oceny[half-1:half+1]`` wycina i zwraca dwa środkowe elementy
+z listy, przy czym wyrażenie ``half = len(oceny)/2`` wylicza nam indeks drugiego ze środkowych elementów.
 
-:: [#f6]_Przypomnijmy: alternatywna funkcja ``sorted(lista)`` zwraca uporządkowaną rosnąco kopię listy.
+.. [#f6] Przypomnijmy: alternatywna funkcja ``sorted(lista)`` zwraca uporządkowaną rosnąco kopię listy.
 
 W funkcja ``wariancja()`` pętla for odczytuje kolejne oceny i w kodzie ``sigma += (ocena-srednia)**2`` korzysta z operatorów skróconego dodawania (+=) i potęgowania (**), aby wyliczyć sumę kwadratów różnic kolejnych ocen i średniej.
 
 POĆWICZ SAM
-----------------------------------
+-----------
 
     Dopisz funkcję, która wyświetli wszystkie oceny oraz ich odchylenia od wartości średniej.
 
 VI. Słowniki
-==================================
+============
 
 ZADANIE
-----------------------------------
+-------
 
     Przygotuj słownik zawierający obce wyrazy oraz ich możliwe znaczenia. Pobierz od użytkownika dane w formacie: *wyraz obcy: znaczenie1, znaczenie2, ...* itd. Pobieranie danych kończy wpisanie słowa "koniec". Podane dane zapisz w pliku. Użytkownik powinien mieć możliwość dodawania nowych i zmieniania zapisanych danych.
 
 :nrkodu`Kod VI.1`
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block:: python
+    :linenos:
 
     #!/usr/bin/env python
     # -*- coding: utf-8 -*-
@@ -571,7 +664,7 @@ ZADANIE
         print "{0: <15}{1: <40}".format(wobcy,",".join(slownik[wobcy]))
 
 JAK TO DZIAŁA
-----------------------------------
+-------------
 
 **Pojęcia**: *słownik, odczyt i zapis plików, formatowanie napisów.*
 
@@ -588,7 +681,7 @@ W pętli głównej programu pobrane dane rozbite na wyraz obcy i jego znaczenia 
 Na końcu drukujemy nasz słownik. Specyfikacja ``{0: <15}{1: <40}`` oznacza, że pierwszy argument umieszczony w funkcji ``format()``, drukowany ma być wyrównany do lewej (<) w polu o szerokości 15 znaków, drugi argument, również wyrównany do lewej, w polu o szerokości 40 znaków.
 
 POĆWICZ SAM
-----------------------------------
+-----------
 
     Kod drukujący słownik zamień w funkcję. Wykorzystaj ją do wydrukowania słownika odczytanego z dysku i słownika uzupełnionego przez użytkownika.
 
@@ -597,16 +690,23 @@ POĆWICZ SAM
     Dodaj do programu możliwość uczenia się zapisanych w słowniku słówek. Niech program wyświetla kolejne słowa obce i pobiera od użytkownika możliwe znaczenia. Następnie powinien wyświetlać, które z nich są poprawne.
 
 VII. Znam Pythona
-==================================
+=================
 
 ZADANIE
-----------------------------------
+-------
 
     Przeanalizuj podane kody dwóch programów i spróbuj sam zrozumieć, jak działają i wprowadź sugerowane zmiany.
 
 Pierwszy program na podstawie danych pobranych od użytkownika sprawdza m. in., czy da się zbudować trójkąt.
 
 :nrkodu`Kod VII.1`
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block:: python
+    :linenos:
 
     #! /usr/bin/env python
     # -*- coding: UTF-8 -*-
@@ -630,14 +730,22 @@ Pierwszy program na podstawie danych pobranych od użytkownika sprawdza m. in., 
     else:
         print "Z podanych odcinków nie można utworzyć trójkąta prostokątnego."
 
+
 POĆWICZ SAM
-----------------------------------
+-----------
 
     Zmień program tak, aby użytkownik w przypadku podania boków, z których trójkąta zbudować się nie da, mógł spróbować kolejny raz.
 
 Drugi program jest przykładem implementacji szyfru Cezara.
 
 :nrkodu`Kod VII.2`
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block:: python
+    :linenos:
 
     #! /usr/bin/env python
     # -*- coding: UTF-8 -*-
@@ -660,15 +768,15 @@ Drugi program jest przykładem implementacji szyfru Cezara.
     print "Ciąg zaszyfrowany:\n", stxt
 
 POĆWICZ SAM
-----------------------------------
+-----------
 
     Napisz funkcję deszyfrującą ``deszyfruj(txt)``. Dodaj do funkcji ``szyfruj(), deszyfruj()`` drugi parametr w postaci długości klucza podawanej przez użytkownika. Dodaj poprawne szyfrowanie dużych liter, obsługę białych znaków i znaków interpunkcyjnych.
 
 VIII. Nie znam Pythona... jeszcze
-==================================
+=================================
 
 ZADANIE
-----------------------------------
+-------
 
 Wypróbuj w konsoli podane przykłady ułatwień (ang. comprehensions) Pythona:
 
@@ -684,7 +792,7 @@ Wypróbuj w konsoli podane przykłady ułatwień (ang. comprehensions) Pythona:
     [(x, y) for x in [1,2,3] for y in [3,1,4] if x != y]
 
 Lista pojęć
-----------------------------------
+-----------
 - *zmienna, wartość, wyrażenie, wejście i wyjście danych, instrukcja warunkowa, komentarz*;
 - *pętla, obiekt, metoda, instrukcja warunkowa zagnieżdżona, formatowanie kodu*;
 - *iteracja, kod ASCII, lista, inkrementacja, operatory arytmetyczne, logiczne, przypisania, porównania i zawierania*;
@@ -694,7 +802,7 @@ Lista pojęć
 - *słownik, odczyt i zapis plików*.
 
 Materiały pomocnicze
-----------------------------------
+--------------------
 
 1. http://pl.wikibooks.org/wiki/Zanurkuj_w_Pythonie
 2. http://brain.fuw.edu.pl/edu/TI:Programowanie_z_Pythonem
@@ -705,3 +813,11 @@ Materiały pomocnicze
 7. http://www.checkio.org
 8. http://www.codecademy.com
 9. https://www.coursera.org
+
+
+.. raw:: html
+
+    <style>
+        div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
+        div.highlight, div.highlight-python { margin-top: 0px; }
+    </style>
