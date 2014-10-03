@@ -63,6 +63,8 @@ class GameOfLife(object):
             self.board.draw(
                 self.population,
             )
+            if getattr(self, "started", None):
+                self.population.cycle_generation()
             self.fps_clock.tick(15)
 
     def handle_events(self):
@@ -79,6 +81,10 @@ class GameOfLife(object):
             from pygame.locals import MOUSEMOTION, MOUSEBUTTONDOWN
             if event.type == MOUSEMOTION or event.type == MOUSEBUTTONDOWN:
                 self.population.handle_mouse()
+
+            from pygame.locals import KEYDOWN, K_RETURN
+            if event.type == KEYDOWN and event.key == K_RETURN:
+                self.started = True
 
 
 # magiczne liczby używane do określenia czy komórka jest żywa
@@ -155,6 +161,58 @@ class Population(object):
                 if column[y] == ALIVE:
                     # jeśli komórka jest żywa zwrócimy jej współrzędne
                     yield x, y
+
+    def neighbours(self, x, y):
+        """
+        Generator zwracający wszystkich okolicznych sąsiadów
+        """
+        for nx in range(x-1, x+2):
+            for ny in range(y-1, y+2):
+                if nx == x and ny == y:
+                    # pomiń współrzędne centrum
+                    continue
+                if nx >= self.width:
+                    # sąsiad poza końcem planszy, bierzemy pierwszego w danym rzędzie
+                    nx = 0
+                elif nx < 0:
+                    # sąsiad przed początkiem planszy, bierzemy ostatniego w danym rzędzie
+                    nx = self.width - 1
+                if ny >= self.height:
+                    # sąsiad poza końcem planszy, bierzemy pierwszego w danej kolumnie
+                    ny = 0
+                elif ny < 0:
+                    # sąsiad przed początkiem planszy, bierzemy ostatniego w danej kolumnie
+                    ny = self.height - 1
+
+                # dla każdego nie pominiętego powyżej
+                # przejścia pętli zwróć komórkę w tych współrzędnych
+                yield self.generation[nx][ny]
+
+    def cycle_generation(self):
+        """
+        Generuje następną generację populacji komórek
+        """
+        next_gen = self.reset_generation()
+        for x in range(len(self.generation)):
+            column = self.generation[x]
+            for y in range(len(column)):
+                # pobieramy wartości sąsiadów
+                # dla żywej komórki dostaniemy wartość 1 (ALIVE)
+                # dla martwej otrzymamy wartość 0 (DEAD)
+                # zwykła suma pozwala nam określić liczbę żywych sąsiadów
+                count = sum(self.neighbours(x, y))
+                if count == 3:
+                    # rozmnażamy się
+                    next_gen[x][y] = ALIVE
+                elif count == 2:
+                    # przechodzi do kolejnej generacji bez zmian
+                    next_gen[x][y] = column[y]
+                else:
+                    # za dużo lub za mało sąsiadów by przeżyć
+                    next_gen[x][y] = DEAD
+
+        # nowa generacja staje się aktualną generacją
+        self.generation = next_gen
 
 
 # Ta część powinna być zawsze na końcu modułu (ten plik jest modułem)
