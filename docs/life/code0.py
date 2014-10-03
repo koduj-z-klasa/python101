@@ -78,11 +78,13 @@ class GameOfLife(object):
                 pygame.quit()
                 return True
 
-            if event.type == pygame.locals.MOUSEMOTION or event.type == pygame.locals.MOUSEBUTTONDOWN:
-            if event.type == pygame.locals.KEYDOWN and event.key == pygame.locals.K_RETURN:
+            from pygame.locals import MOUSEMOTION, MOUSEBUTTONDOWN
+            if event.type == MOUSEMOTION or event.type == MOUSEBUTTONDOWN:
+                self.population.handle_mouse()
+
+            from pygame.locals import KEYDOWN, K_RETURN
+            if event.type == KEYDOWN and event.key == K_RETURN:
                 self.started = True
-
-
 
 
 # magiczne liczby używane do określenia czy komórka jest żywa
@@ -116,8 +118,38 @@ class Population(object):
         # które także w pętli zostają wypełnione wartością 0 (DEAD)
         return [[DEAD for y in xrange(self.height)] for x in xrange(self.width)]
 
-    def set_cell(self, x, y, alive):
+    def handle_mouse(self):
+        # pobierz stan guzików myszki z wykorzystaniem funcji pygame
+        buttons = pygame.mouse.get_pressed()
+        if not any(buttons):
+            # ignoruj zdarzenie jeśli żaden z guzików nie jest wciśnięty
+            return
+
+        # dodaj żywą komórką jeśli wciśnięty jest pierwszy guzik myszki
+        # będziemy mogli nie tylko dodawać żywe komórki ale także je usuwać
+        alive = True if buttons[0] else False
+
+        # pobierz pozycję kursora na planszy mierzoną w pikselach
+        x, y = pygame.mouse.get_pos()
+
+        # przeliczamy współrzędne komórki z pikseli na współrzędne komórki w macierz
+        # gracz może kliknąć w kwadracie o szerokości box_size by wybrać komórkę
+        x /= self.box_size
+        y /= self.box_size
+
+        # ustaw stan komórki na macierzy
         self.generation[x][y] = ALIVE if alive else DEAD
+
+    def draw_on(self, surface):
+        """
+        Rysuje komórki na planszy
+        """
+        for x, y in self.alive_cells():
+            size = (self.box_size, self.box_size)
+            position = (x * self.box_size, y * self.box_size)
+            color = (255, 255, 255)
+            thickness = 1
+            pygame.draw.rect(surface, color, pygame.locals.Rect(position, size), thickness)
 
     def alive_cells(self):
         """
@@ -130,16 +162,6 @@ class Population(object):
                     # jeśli komórka jest żywa zwrócimy jej współrzędne
                     yield x, y
 
-    def draw_on(self, surface):
-        """
-        Rysuje komórki na planszy
-        """
-        for x, y in self.alive_cells():
-            size = (self.box_size, self.box_size)
-            position = (x * self.box_size, y * self.box_size)
-        color = (255, 255, 255)
-            pygame.draw.rect(surface, (255, 255, 255), pygame.locals.Rect(position, size), 1)
-
     def neighbours(self, x, y):
         """
         Generator zwracający wszystkich okolicznych sąsiadów
@@ -147,15 +169,15 @@ class Population(object):
         for nx in range(x-1, x+2):
             for ny in range(y-1, y+2):
                 if nx == x and ny == y:
-                    # pomiń te współrzędne
+                    # pomiń współrzędne centrum
                     continue
-                if nx > self.width:
+                if nx >= self.width:
                     # sąsiad poza końcem planszy, bierzemy pierwszego w danym rzędzie
                     nx = 0
                 elif nx < 0:
                     # sąsiad przed początkiem planszy, bierzemy ostatniego w danym rzędzie
                     nx = self.width - 1
-                if ny > self.height:
+                if ny >= self.height:
                     # sąsiad poza końcem planszy, bierzemy pierwszego w danej kolumnie
                     ny = 0
                 elif ny < 0:
@@ -178,11 +200,11 @@ class Population(object):
                 # dla żywej komórki dostaniemy wartość 1 (ALIVE)
                 # dla martwej otrzymamy wartość 0 (DEAD)
                 # zwykła suma pozwala nam określić liczbę żywych sąsiadów
-                neighbours = sum(self.neighbours(x, y))
-                if neighbours == 3:
+                count = sum(self.neighbours(x, y))
+                if count == 3:
                     # rozmnażamy się
                     next_gen[x][y] = ALIVE
-                elif neighbours == 2:
+                elif count == 2:
                     # przechodzi do kolejnej generacji bez zmian
                     next_gen[x][y] = column[y]
                 else:
@@ -198,5 +220,3 @@ class Population(object):
 if __name__ == "__main__":
     game = GameOfLife(80, 40)
     game.run()
-
-
