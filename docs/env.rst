@@ -133,6 +133,24 @@ Ponadto możemy ustawić zmienną systemową by za każdym razerm nie używać p
 
     set PATH=%PATH%;c:\Python27\;c:\Python27\Scripts\
 
+Środowisko programistyczne Geany
+----------------------------------
+
+Geany to profesjonalne środowisko środowisko OpenSource, a więc dostępne na licencji  GNU General Public Licence. To oznacza, że każdy użytkownik posiada:
+
+* wolność uruchamiania programu, w dowolnym celu (wolność 0)
+* wolność analizowania programu oraz dostosowywania go do swoich potrzeb (wolność 1)
+* wolność rozpowszechniania kopii programu (wolność 2)
+* wolność udoskonalania programu i publicznego rozpowszechniania własnych ulepszeń, dzięki czemu może z nich skorzystać cała społeczność (wolność 3).
+
+Geany oferuje kolorowanie składni dla najpopularniejszych języków,
+m.in. C, C++, C#, Java, PHP, HTML, Python, Perl i Pascal, 
+wsparcie dla kodowania w ponad 50 standardach, mechanizm automatycznego zamykanie tagów dla HTML\XML, 
+auto-wcięć, pracy na kartach i wiele, wiele więcej. Podczas pisania kodu przydatny okazuje się brudnopis, 
+pozwalający tworzyć dowolne notatki, a także możliwość kompilacji plików źródłowych 
+bezpośrednio z poziomu programu.
+
+
 Środowisko programistyczne PyCharm
 ----------------------------------
 
