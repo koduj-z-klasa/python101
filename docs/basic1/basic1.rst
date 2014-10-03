@@ -39,6 +39,7 @@ Pobierz od użytkownika imię, wiek i powitaj go komunikatem::
     <div class="code_no">Kod nr 2.2.1</div>
 
 .. code-block:: python
+    :linenos:
 
     #! /usr/bin/env python
     # -*- coding: UTF-8 -*-
@@ -109,6 +110,7 @@ ZADANIE
     <div class="code_no">Kod nr 2.3.1</div>
 
 .. code-block:: python
+    :linenos:
 
     #! /usr/bin/env python
     # -*- coding: UTF-8 -*-
@@ -171,6 +173,7 @@ ZADANIE
     <div class="code_no">Kod nr 2.3.4</div>
 
 .. code-block :: python
+    :linenos:
 
     #! /usr/bin/env python
     # -*- coding: UTF-8 -*-
@@ -257,6 +260,7 @@ Wszystkie poniższe przykłady proponujemy wykonać w konsoli Pythona. Nie umies
     <div class="code_no">Kod nr 2.4.1</div>
 
 .. code-block :: python
+    :linenos:
 
     #! /usr/bin/env python
     # -*- coding: UTF-8 -*-
