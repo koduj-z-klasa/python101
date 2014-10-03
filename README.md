@@ -12,7 +12,7 @@ Pełna dokumentacja szkolenia znajduje się tutaj:
 Dodatkowe materiały 
 -------------------
 
-1. [Folder z materiałamy Roberta Bednarza](https://www.dropbox.com/sh/mvvz59by7buh2oz/AAAFC-rYZHAOmjQmDCThi72Na?dl=0)
+1. [Folder z materiałami Roberta Bednarza](https://www.dropbox.com/sh/mvvz59by7buh2oz/AAAFC-rYZHAOmjQmDCThi72Na?dl=0)
 2. [Podstawy Python'a Doroty Rybickiej](https://drive.google.com/file/d/0B1hYVXsrSXCKY0hwZ3FHcHAwdDhpVDI2MmVIcVgybFV2UWZ3/view?usp=sharing)
 
 
