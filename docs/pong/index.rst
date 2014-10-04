@@ -360,7 +360,7 @@ Dodajemy przeciwnika, nasz przeciwnik będzie mistrzem, będzie dokładnie
 
 .. literalinclude:: pong_z6.py
     :linenos:
-    :lines: 170-180
+    :lines: 170-181
     :lineno-start: 167
 
 Tak jak w przypadku piłeczki i rakietki dodajemy nasze ``Ai`` do gry,
@@ -393,7 +393,7 @@ decydował czy graczom należą się punkty i będzie ustawiał piłkę w począ
 
 .. literalinclude:: pong_z7.py
     :linenos:
-    :lines: 184-228
+    :lines: 184-231
     :lineno-start: 184
 
 Tradycyjnie dodajemy instancję nowej klasy do gry:
