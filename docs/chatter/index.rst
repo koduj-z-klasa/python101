@@ -1,4 +1,4 @@
-Chatter (prosty czat) – aplikacja internetowa
+Chatter – aplikacja internetowa
 ==========================================
 
 Opis: Zastosowanie Pythona i frameworka Django (wersja 1.6.5) do stworzenia aplikacji internetowej Chatter; prostego czata, w którym zarejestrowani użytkownicy będą mogli wymieniać się krótkimi wiadomościami.

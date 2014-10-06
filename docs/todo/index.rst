@@ -1,4 +1,4 @@
-ToDo (lista zadań) – aplikacja internetowa
+ToDo – aplikacja internetowa
 ==========================================
 
 .. highlight:: python
