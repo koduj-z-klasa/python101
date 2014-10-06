@@ -1,12 +1,12 @@
 ToDo (lista zadań) – aplikacja internetowa
-===========
+==========================================
 
 .. highlight:: python
 
 Realizacja prostej listy ToDo (lista zadań do zrobienia) jako aplikacji internetowej, z wykorzystaniem Pythona i frameworka Flask w wersji 0.10.1.
 
 Katalog, plik i przeznaczenie aplikacji
--------------
+---------------------------------------
 
 Zaczynamy od utworzenia katalogu projektu ToDo w katalogu domowym użytkownika, a w nim pliku :file:`todo.py`:
 
@@ -21,7 +21,7 @@ Zaczynamy od utworzenia katalogu projektu ToDo w katalogu domowym użytkownika, 
 Aplikacja ma pozwalać na dodawanie z określoną datą, przeglądanie i oznaczanie jako wykonane różnych zadań, które zapisywane będą w bazie danych SQLite.
 
 Szkielet aplikacji
--------------
+---------------------------------------
 
 Utworzenie minimalnej aplikacji Flask pozwoli na uruchomienie serwera deweloperskiego, umożliwiającego wygodne rozwijanie kodu. W pliku :file:`todo.py` wpisujemy:
 
@@ -37,7 +37,7 @@ Serwer uruchamiamy komendą: ``python todo.py``
 Domyślnie serwer uruchamia się pod adresem *127.0.0.1:5000*. Po wpisaniu adresu do przeglądarki internetowej otrzymamy stronę z błędem HTTP 404, co wynika z faktu, że nasza aplikacja nie ma jeszcze zdefiniowanego żadnego zachowania (widoku) dla tego adresu. Widok to funkcja obsługująca wywołania powiązanego z nim adresu. Widok (funkcja) zwraca najczęściej użytkownikowi wyrenderowaną z szablonu stronę internetową.
 
 Definiowanie widoków
--------------
+---------------------------------------
 
 W pliku :file:`todo.py` umieścimy funkcję ``index()``, domyślny widok naszej strony:
 
@@ -51,7 +51,7 @@ W pliku :file:`todo.py` umieścimy funkcję ``index()``, domyślny widok naszej 
 Widok ``index()`` za pomocą dekoratora związaliśmy z adresem głównym (/). Po odświeżeniu adresu *127.0.0.1:5000* zamiast błędu powinniśmy zobaczyć napis: "Witaj na moim serwerze!"
 
 Model bazy danych
--------------
+---------------------------------------
 
 W katalogu aplikacji tworzymy plik :file:`schema.sql`, który zawiera opis struktury tabeli z zadaniami. Do tabeli wprowadzimy przykładowe dane.
 
@@ -77,7 +77,7 @@ Tworzymy bazę danych w pliku :file:`db.sqlite`, łączymy się z nią i próbuj
 Pracę z bazą kończymy poleceniem .quit.
 
 Połączenie z bazą danych
--------------
+---------------------------------------
 
 Bazę danych już mamy, teraz pora napisać funkcje umożiwiające łączenie się z nią z poziomu naszej aplikacji. W pliku :file:`todo.py` dodajemy:
 
@@ -87,7 +87,7 @@ Bazę danych już mamy, teraz pora napisać funkcje umożiwiające łączenie si
 Dodaliśmy sekretny klucz zabezpieczający mechanizm sesji, ustawiliśmy ścieżkę do pliku bazy danych (w katalogu aplikacji, dlatego funkcja ``app.root_path``) oraz nazwę aplikacji. Utworzyliśmy trzy funkcje odpowiedzialne za nawiązywanie (``connect_db``, ``get_db``) i kończenie (``close_db``) połączenia z bazą danych.
 
 Pobieranie i wyświetlanie danych
--------------
+---------------------------------------
 
 Wyświetlanie danych umożliwia wbudowany we Flask system szablonów (templatek), czyli mechanizm renderowania kodu HTML na podstawie plików zawierających instrukcje wstawiające wybrane dane z aplikacji oraz znaczniki HTML. Modyfikujemy funkcję ``index()`` w pliku :file:`todo.py`:
 
@@ -122,7 +122,7 @@ W widoku ``index()`` pobieramy obiekt bazy danych (`db`) i wykonujemy zapytanie 
 Wewnątrz szablonu przeglądamy wszystkie wpisy (`entries`) i umieszczamy je na liście HTML. Do szablonu automatycznie przekazywany jest obiekt ``config`` (dane konfiguracyjne), z którego pobieramy tytuł strony (`SITE_NAME`). Po odwiedzeniu strony *127.0.0.1:5000* powinniśmy zobaczyć listę zadań.
 
 Formularz dodawania zadań
--------------
+---------------------------------------
 
 Aby umożliwić dodawanie i zapisywanie w bazie nowych zadań, modyfikujemy widok ``index()``, tak aby obsługiwał żądania POST, które zawierają dane wysłane z formularza na serwer.
 
@@ -179,7 +179,7 @@ Szablon :file:`show_entries.html` aktualizujemy, dodając odpowiedni formularz:
 W szablonie dodaliśmy formularz oraz informację o błędzie lub sukcesie przy próbie dodawania zadania. Określając atrybut *action* w formularzu, skorzystaliśmy z wbudowanej funkcji ``url_for``, która zamienia nazwę widoku (w tym wypadku ``index``) na odpowiadający jej adres URL (w tym wypadku ``/``). W ten sposób łączymy formularz z konkretną funkcją Pythonową (widokiem), a nie z adresem URL.
 
 Wygląd aplikacji (opcja)
--------------
+---------------------------------------
 
 Wygląd aplikacji możemy zdefiniować w arkuszu stylów CSS o nazwie :file:`style.css`, który zapisujemy w podkatalogu static aplikacji:
 
@@ -206,7 +206,7 @@ Zdefiniowane style podpinamy do pliku show_entries.html, dodając w sekcji head 
 Dzięki temu nasza aplikacja nabierze nieco lepszego wyglądu.
 
 Oznaczanie zadań jako wykonane (opcja)
--------------
+---------------------------------------
 
 Do każdego zadania dodamy formularz, którego wysłanie będzie oznaczało, że wykonaliśmy dane zadanie, czyli zmienimy atrybut ``is_done`` wpisu z *0* (niewykonane) na *1* (wykonane). Odpowiednie żądanie typu POST obsłuży nowy widok w pliku :file:`todo.py`. W szablonie :file:`show_entries.html` dodamy kod wyróżniający zadania wykonane.
 
@@ -268,14 +268,14 @@ W szablonie :file:`show_entries.html` modyfikujemy fragment wyświetlający list
 Aplikację można uznać za skończoną. Możemy dodawać zadania oraz zmieniać ich status.
 
 Zadania dodatkowe
--------------
+---------------------------------------
 
 * Dodać możliwość usuwania zadań.
 * Dodać mechanizm logowania użytkownika tak, aby użytkownik mógł dodawać i edytować tylko swoją listę zadań.
 * Można rozważyć wprowadzenie osobnych list dla każdego użytkownika.
 
 Pojęcia
--------------
+---------------------------------------
 * Aplikacja – program komputerowy.
 * Baza danych – program przeznaczony do przechowywania i przetwarzania danych.
 * CSS – język służący do opisu formy prezentacji stron WWW.
@@ -291,7 +291,7 @@ Pojęcia
 * Widok – funkcja obsługująca żądania przychodzące na powiązany z nią adres, zazwyczaj zwraca użytkownikowi żądaną stronę html wyrenderowaną ze wskazanego szablonu.
 
 Materiały
--------------
+---------------------------------------
 1. Strona projektu Flask http://flask.pocoo.org/
 2. Informacje o SQLite http://pl.wikipedia.org/wiki/SQLite
 3. Co to jest framework? http://pl.wikipedia.org/wiki/Framework

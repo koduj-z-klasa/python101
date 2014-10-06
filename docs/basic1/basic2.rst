@@ -1,13 +1,12 @@
-Mów mi Python – wprowadzenie do języka Python
-*********************************************
-
-Warunki i pętle
-====================
+Witaj Python!
+=================
 
 ZADANIE
--------------
-
-    Pobierz od użytkownika trzy liczby, sprawdź, która jest najmniejsza i wydrukuj ją na ekranie.
+------------
+Pobierz od użytkownika imię, wiek i powitaj go komunikatem::
+    "Mów mi Python, mam x lat.
+    Witaj w moim świecie imie.
+    Jesteś starszy(młodszy) ode mnie."
 
 .. raw:: html
 
@@ -19,134 +18,55 @@ ZADANIE
     #! /usr/bin/env python
     # -*- coding: UTF-8 -*-
 
-    # ~/python/02_if.py
+    # ~/python/01_hello.py
 
-    op = "t"
-    while op == "t":
-        a, b, c = raw_input("Podaj trzy liczby oddzielone spacjami: ").split(" ")
-        
-        print "Wprowadzono liczby:", a, b, c,
-        print "\nNajmniejsza: ",
+    # inicjalizujemy zmienne (wartości)
+    curYear = 2014
+    pythonYear = 1989
+    wiekPythona = curYear - pythonYear # ile lat ma Python
 
-        if a < b:
-            if a < c:
-                print a
-            else
-                print c
-        elif b < c:
-            print b
-        else:
-            print c
-            
-        op = raw_input("Jeszcze raz (t/n)? ")
+    # pobieramy dane
+    imie = raw_input('Jak się nazywasz? ')
+    wiek = int(raw_input('Ile masz lat? '))
 
-    print "Nie, to nie :-("
+    # wyprowadzamy dane
+    print "Witaj w moim świecie ",imie
+    print "Mów mi Python, mam", wiekPythona, "lat."
 
-JAK TO DZIAŁA
--------------
+    # instrukcja warunkowa
+    if wiek > wiekPythona:
+        print 'Jesteś starszy ode mnie.'
+    else:
+        print 'Jesteś młodszy ode mnie.'
 
-**Pojęcia**: *pętla, obiekt, metoda, instrukcja warunkowa zagnieżdżona, formatowanie kodu*.
-
-Pętla while umożliwia powtarzanie określonych operacji, czyli pozwala użytkownikowi wprowadzać
-kolejne serie liczb. Definiując pętle określamy warunek powtarzania kodu. Dopóki jest prawdziwy,
-czyli dopóki zmienna op ma wartość "t" pętla działa. Do wydzielania kodu przynależnego do pętli
-i innych instrukcji (np. ``if``) stosujemy wcięcia. Formatując kod, możemy używać zarówno tabulatorów,
-jak i spacji, ważne aby w obrębie pliku było to konsekwentne [#f3]_.
-
-.. [#f3] Dobry styl programowania sugeruje używanie do wcięć 4 spacji.
-
-W Pythonie wszystko jest obiektem, czyli typy wbudowane, np. napisy, posiadają metody (funkcje)
-wykonujące określone operacje na wartościach. W podanym kodzie funkcja ``raw_input()`` zwraca
-ciąg znaków wprowadzony przez użytkownika, z którego wydobywamy poszczególne słowa za pomocą
-metody ``split()`` typu string.
-Instrukcje warunkowe (``if``), jak i pętle, można zagnieżdżać stosując wcięcia.
-W jednej złożonej instrukcji warunkowej można sprawdzać wiele warunków (``elif:``).
-
-POĆWICZ SAM
------------
-
-    Sprawdź, co się stanie, jeśli podasz liczby oddzielone przecinkiem lub podasz
-    za mało liczb. Zmień program tak, aby poprawnie interpretował dane oddzielane przecinkami.
-
-ZADANIE
--------------
-
-    Wydrukuj alfabet w porządku naturalnym, a następnie odwróconym w formacie:
-     "mała => duża litera". W jednym wierszu trzeba wydrukować po pięć takich grup.
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. code-block :: python
-    :linenos:
-
-    #! /usr/bin/env python
-    # -*- coding: UTF-8 -*-
-
-    # ~/python/03_petle.py
-
-    print "Alfabet w porządku naturalnym:"
-    x = 0
-    for i in range(65,91):
-        litera = chr(i)
-        tmp = litera + " => " + litera.lower()
-        x += 1
-        if i > 65 and x % 5 == 0: # warunek złożony
-            x = 0
-            tmp += "\n"
-        print tmp,
-
-    x = -1
-    print "\nAlfabet w porządku odwróconym:"
-    for i in range(122,96,-1):
-        litera = chr(i)
-        x += 1
-        if x == 5:
-            x = 0
-            print "\n",
-        print litera.upper(), "=>", litera,
 
 JAK TO DZIAŁA
 -------------
 
-**Pojęcia**: *iteracja, pętla, kod ASCII, lista, inkrementacja, operatory arytmetyczne, logiczne, przypisania i zawierania*.
+**Pojęcia**: *zmienna, wartość, wyrażenie, wejście i wyjście danych, instrukcja warunkowa, komentarz*.
 
-Pętla for wykorzystuje zmienną i, która przybiera wartości z listy liczb całkowitych zwróconej przez funkcję ``range()``. Parametry tej funkcji określają wartość początkową i końcową listy, przy czym wartość końcowa nie wchodzi do listy. Kod ``range(122,96,-1)`` generuje listę wartości malejących od 122 do 97(!) z krokiem -1.
+Deklaracja zmiennej w Pythonie nie jest wymagana, wystarczy podanej nazwie przypisać jakąś wartość
+za pomocą operatora przypisania "=" [#f2]_. Zmiennym często przypisujemy wartości za pomocą wyrażeń,
+czyli działań arytmetycznych lub logicznych.
 
-Funkcja ``chr()`` zwraca znak, którego kod ASCII, czyli liczbę całkowitą, przyjmuje jako argument. Metoda ``lower()`` typu string (napisu) zwraca małą literę, ``upper()`` – dużą. Wyrażenie przypisywane zmiennej tmp pokazuje, jak można łączyć napisy (konkatenacja).
+.. [#f2] Dlatego niekiedy mówi się, że w Pythonie zmiennych nie ma, są natomiast wartości określonego typu.
 
-Zmienna pomocnicza ``x`` jest zwiększana (inkrementacja) w pętlach o 1. Wyrażenie ``x += 1`` odpowiada wyrażeniu ``x = x + 1``. Pierwszy warunek wykorzystuje operator logiczny and (koniunkcję) i operator modulo ``%`` (zwraca resztę z dzielenia), aby do ciągu znaków w zmiennej ``tmp`` dodać znak końca linii (``\n``) za pomocą operatora ``+=``. W drugim warunku używamy operatora porównania ``==``.
+Funkcja ``raw_input()`` zwraca pobrane z klawiatury znaki jako napis, czyli typ **string**.
 
-Poniżej podano wybrane operatory dostępne w Pythonie.
+Funkcja ``int()`` umożliwia konwersję napisu na liczbę całkowitą, czyli typ **integer**.
 
-**Arytmetyczne**:
+Funkcja ``print`` drukuje podane argumenty oddzielone przecinkami. Komunikaty tekstowe ujmujemy
+w cudzysłowy podwójne lub pojedyncze. Przecinek oddziela kolejne argumenty spacjami.
 
-- +, -, \*, /, //, %, \*\* (potęgowanie)
-- znak + znak (konkatenacja napisów)
-- znak * 10 (powielenie znaków)
+Instrukcja ``if`` (jeżeli) pozwala na warunkowe wykonanie kodu. Jeżeli podane wyrażenie
+jest prawdziwe (przyjmuje wartość ``True``) wykonywana jest pierwsza instrukcja,
+w przeciwnym wypadku (``else``), kiedy wyrażenie jest fałszywe (wartość ``False``),
+wykonywana jest instrukcja druga. Warto zauważyć, że polecenia instrukcji warunkowej kończymy dwukropkiem.
 
-**Przypisania**:
-
-- =, +=, -=, *=, /=, %=, **=, //=
-
-**Logiczne**:
-
-- and, or, not
-
-Fałszem logicznym są: liczby zero (0, 0.0), False, None (null), puste kolekcje ([], (), {}, set()), puste napisy. Wszystko inne jest prawdą logiczną.
-
-**Zawierania**:
-
-- in, not in
-
-**Porównania**:
-
-- ==, >, <, <>, <=, >= != (jest różne)
+Charakterystyczną cechą Pythona jest używanie wcięć do zaznaczania bloków kodu.
+Komentarze wprowadzamy po znaku ``#``.
 
 POĆWICZ SAM
 -----------
 
-    Uprość warunek w pierwszej pętli for drukującej alfabet w porządku naturalnym tak, aby nie używać operatora modulo.
-    Wydrukuj co n-tą grupę liter alfabetu, przy czym wartość n podaje użytkownik. Wskazówka: użyj opcjonalnego, trzeciego argumentu funkcji ``range()``.
-    Sprawdź działanie różnych operatorów Pythona w konsoli.
+    Zmień program tak, aby zmienna curYear (aktualny rok) była podawana przez użytkownika na początku programu.

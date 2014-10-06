@@ -1,4 +1,4 @@
-Quiz – Aplikacja internetowa
+Quiz – aplikacja internetowa
 ============================
 
 Realizacja aplikacji internetowej Quiz w oparciu o mikro-framework Flask.

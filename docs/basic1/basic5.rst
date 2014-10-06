@@ -1,13 +1,10 @@
-Mów mi Python – wprowadzenie do języka Python
-*********************************************
-
-Słowniki
-============
+Listy, zbiory, moduły i funkcje
+==================================
 
 ZADANIE
 -------
 
-    Przygotuj słownik zawierający obce wyrazy oraz ich możliwe znaczenia. Pobierz od użytkownika dane w formacie: *wyraz obcy: znaczenie1, znaczenie2, ...* itd. Pobieranie danych kończy wpisanie słowa "koniec". Podane dane zapisz w pliku. Użytkownik powinien mieć możliwość dodawania nowych i zmieniania zapisanych danych.
+    Napisz program, który umożliwi wprowadzanie ocen z podanego przedmiotu ścisłego (np. fizyki), następnie policzy i wyświetla średnią, medianę i odchylenie standardowe wprowadzonych ocen. Funkcje pomocnicze i statystyczne umieść w osobnym module.
 
 .. raw:: html
 
@@ -16,99 +13,170 @@ ZADANIE
 .. code-block:: python
     :linenos:
 
-    #!/usr/bin/env python
-    # -*- coding: utf-8 -*-
+    #! /usr/bin/env python
+    # -*- coding: UTF-8 -*-
 
-    # ~/python/06_slownik_02.py
+    # ~/python/05_oceny_03.py
 
-    import os.path # moduł udostępniający funkcję isfile()
+    # importujemy funkcje z modułu ocenyfun zapisanego w pliku ocenyfun.py
+    from ocenyfun import drukuj
+    from ocenyfun import srednia
+    from ocenyfun import mediana
+    from ocenyfun import odchylenie
 
-    print """Podaj dane w formacie:
-    wyraz obcy: znaczenie1, znaczenie2
-    Aby zakończyć wprowadzanie danych, podaj 0.
-    """
+    przedmioty = set(['polski','angielski']) #definicja zbioru
+    drukuj(przedmioty, "Lista przedmiotów zawiera: ") #wywołanie funkcji z modułu ocenyfun
 
-    sFile="slownik.txt" #nazwa pliku zawierającego wyrazy i ich tłumaczenia
-    slownik = {} # pusty słownik
-
-    def otworz(plik):
-        if os.path.isfile(sFile): #czy istnieje plik słownika?
-            with open(sFile, "r") as sTxt: #otwórz plik do odczytu
-                for line in sTxt: #przeglądamy kolejne linie
-                    t = line.split(":") #rozbijamy linię na wyraz obcy i tłumaczenia
-                    wobcy = t[0]
-                    znaczenia = t[1].replace("\n","") #usuwamy znaki nowych linii
-                    znaczenia = znaczenia.split(",") #tworzymy listę znaczeń
-                    slownik[wobcy] = znaczenia #dodajemy do słownika wyrazy obce i ich znaczenia
-        return len(slownik) #zwracamy ilość elementów w słowniku
-
-    def zapisz(slownik):
-        file1 = open(sFile,"w") #otwieramy plik do zapisu, istniejący plik zostanie nadpisany(!)
-        for wobcy in slownik:
-            znaczenia=",".join(slownik[wobcy]) # "sklejamy" znaczenia przecinkami w jeden napis
-            linia = ":".join([wobcy,znaczenia])# wyraz_obcy:znaczenie1,znaczenie2,...
-            print >>file1, linia # zapisujemy w pliku kolejne linie
-        file1.close() #zamykamy plik
-
-    def oczysc(str):
-        str = str.strip() # usuń początkowe lub końcowe białe znaki
-        str = str.lower() # zmień na małe litery
-        return str
-
-    nowy = False #zmienna oznaczająca, że użytkownik uzupełnił lub zmienił słownik
-    ileWyrazow = otworz(sFile)
-    print "Wpisów w bazie:", ileWyrazow
-
-    #główna pętla programu
+    print "\nAby przerwać wprowadzanie przedmiotów, naciśnij Enter."
     while True:
-        dane = raw_input("Podaj dane: ")
-        t = dane.split(":")
-        wobcy = t[0].strip().lower() # robimy to samo, co funkcja oczysc()
-        if wobcy == 'koniec':
-            break
-        elif dane.count(":") == 1: #sprawdzamy poprawność wprowadzonych danych
-            if wobcy in slownik:
-                print "Wyraz", wobcy, " i jego znaczenia są już w słowniku."
-                op = raw_input("Zastąpić wpis (t/n)? ")
-            #czy wyrazu nie ma w słowniku? a może chcemy go zastąpić?
-            if wobcy not in slownik or op == "t":
-                znaczenia = t[1].split(",") #podane znaczenia zapisujemy w liście
-                znaczenia = map(oczysc, znaczenia) #oczyszczamy elementy listy
-                slownik[wobcy] = znaczenia
-                nowy = True
+        przedmiot = raw_input("Podaj nazwę przedmiotu: ")
+        if len(przedmiot):
+            if przedmiot in przedmioty: #czy przedmiot jest w zbiorze?
+                print "Ten przedmiot już mamy :-)"
+            przedmioty.add(przedmiot) #dodaj przedmiot do zbioru
         else:
-            print "Błędny format!"
+            drukuj(przedmioty,"\nTwoje przedmioty: ")
+            przedmiot = raw_input("\nZ którego przedmiotu wprowadzisz oceny? ")
+            if przedmiot not in przedmioty: #jeżeli przedmiotu nie ma w zbiorze
+                print "Brak takiego przedmiotu, możesz go dodać."
+            else:
+                break # wyjście z pętli
 
-    if nowy: zapisz(slownik)
+    oceny = [] # pusta lista ocen
+    ocena = None # zmienna sterująca pętlą i do pobierania ocen
+    print "\nAby przerwać wprowadzanie ocen, podaj 0 (zero)."
 
-    print "="*50
-    print "{0: <15}{1: <40}".format("Wyraz obcy","Znaczenia")
-    print "="*50
-    for wobcy in slownik:
-        print "{0: <15}{1: <40}".format(wobcy,",".join(slownik[wobcy]))
+    while not ocena:
+        try: #mechanizm obsługi błędów
+            ocena = int(raw_input("Podaj ocenę (1-6): "))
+            if (ocena > 0 and ocena < 7):
+                oceny.append(float(ocena))
+            elif ocena == 0:
+                break
+            else:
+                print "Błędna ocena."
+            ocena = None
+        except ValueError:
+            print "Błędne dane!"
+
+    drukuj(oceny,przedmiot.capitalize()+" - wprowadzone oceny: ")
+    s = srednia(oceny) # wywołanie funkcji z modułu ocenyfun
+    m = mediana(oceny) # wywołanie funkcji z modułu ocenyfun
+    o = odchylenie(oceny,s) # wywołanie funkcji z modułu ocenyfun
+    print "\nŚrednia: {0:5.2f}\nMediana: {1:5.2f}\nOdchylenie: {2:5.2f}".format(s,m,o)
 
 JAK TO DZIAŁA
 -------------
 
-**Pojęcia**: *słownik, odczyt i zapis plików, formatowanie napisów.*
+**Pojęcia**: *import, moduł, zbiór, przechwytywanie wyjątków, formatowanie napisów i danych na wyjściu*.
 
-Słownik to struktura nieposortowanych danych w formacie klucz:wartość. Kluczami są najczęściej napisy, które wskazują na wartości dowolnego typu, np. inne napisy, liczby, listy, tuple itd. Notacja ``oceny = { 'polski':'1,4,2', 'fizyka':'4,3,1' }`` utworzy nam słownik ocen z poszczególnych przedmiotów.  Aby zapisać coś w słowniku stosujemy notację oceny['biologia'] = 4,2,5. Aby odczytać wartość używamy po prostu: ``oceny['polski']``.
+Klauza from moduł import funkcja umożliwia wykorzystanie w programie funkcji
+zdefiniowanych w innych modułach i zapisanych w osobnych plikach. Dzięki temu
+utrzymujemy przejrzystość programu głównego, a jednocześnie możemy funkcje
+z modułów wykorzystywać, importując je w innych programach. Nazwa modułu
+to nazwa pliku z kodem pozbawiona jednak rozszerzenia *.py*. Moduł musi
+być dostępny w ścieżce przeszukiwania [#f5]_, aby można go było poprawnie dołączyć.
 
-W programie wykorzystujemy słownik, którego kluczami są obce wyrazy, natomiast wartościami są listy możliwych znaczeń. Przykładowy element naszego słownika wygląda więc tak: ``{ 'go':'iść,pojechać' }``. Natomiast ten sam element zapisany w pliku będzie miał format: *wyraz_obcy:znaczenie1,znaczeni2,...*. Dlatego funkcja ``otworz()`` przekształca format pliku na słownik, a funkcja ``zapisz()`` słownik na format pliku.
+.. [#f5] W przypadku prostych programów zapisuj moduły w tym samym katalogu co program główny.
 
-Funkcja ``otworz(plik)`` sprawdza za pomocą funkcji ``isFile(plik)`` z modułu *os.path*, czy podany plik istnieje na dysku. Polecenie ``open("plik", "r")`` otwiera podany plik w trybie do odczytu. Wyrażenie ``with ... as sTxt`` zapewnia obsługę błędów podczas dostępu do pliku (m. in. zadba o jego zamknięcie) i udostępnia zawartość pliku w zmiennej *sTxt*. Pętla ``for line in sTxt:`` odczytuje kolejne linie (czyli napisy). Metoda ``.split()`` zwraca listę zawierającą wydzielone według podanego znaku części ciągu, np.: ``t = line.split(":")``. Operacją odwrotną jest "sklejanie" w jeden ciąg elementów listy za pomocą podanego znaku, np. ",".join(slownik[wobcy]). Metoda .replace("co","czym") pozwala zastąpić w ciągu wszystkie wystąpienia *co – czym*., np.: ``znaczenia = t[1].replace("\n","")``.
+Instrukcja ``set()`` tworzy zbiór, czyli nieuporządkowany zestaw niepowtarzalnych (!) elementów. Instrukcje ``if przedmiot in przedmioty`` i ``if przedmiot not in przedmioty`` za pomocą operatorów zawierania ``(not) in`` sprawdzają, czy podany przedmiot już jest lub nie w zbiorze. Polecenie ``przedmioty.add()`` pozwala dodawać elementy do zbioru, przy czym jeżeli element jest już w zbiorze, nie zostanie dodany. Polecenie ``przedmioty.remove()`` usunnie podany jako argument element ze zbioru.
 
-Funkcja ``zapisz()`` otrzymuje słownik zawierający dane odczytane z pliku na dysku i dopisane przez użytkownika. W pętli odczytujemy klucze słownika, następnie tworzymy znaczenia oddzielone przecinkami i sklejamy je z wyrazem obcym za pomocą dwukropka. Kolejne linie za pisujemy do pliku ``print >>file1, ":".join([wobcy,znaczenia])``, wykorzystując operator ``>>`` i nazwę uchwytu pliku (*file1*).
+Oceny z wybranego przedmiotu pobieramy w pętli dopóty, dopóki użytkownik nie wprowadzi 0 (zera). Blok ``try...except`` pozwala przechwycić wyjątki, czyli w naszym przypadku niemożność przekształcenia wprowadzonej wartości na liczbę całkowitą. Jeżeli funkcja ``int()`` zwróci wyjątek, wykonywane są instrukcje w bloku ``except ValueError:``, w przeciwnym razie po sprawdzeniu poprawności oceny dodajemy ją jako liczbę zmiennoprzecinkową (typ *float*) do listy: ``oceny.append(float(ocena))``.
 
-W pętli głównej programu pobrane dane rozbite na wyraz obcy i jego znaczenia zapisujemy w liście *t*. Oczyszczamy pierwszy element tej listy zawierający wyraz obcy (``t[0].strip().lower()``) i sprawdzamy czy nie jest to słowo "koniec", jeśli tak wychodzimy z pętli wprowadzanie danych (``break``). W przeciwnym wypadku sprawdzamy metodą ``.count(":")``, czy dwukropek występuje we wprowadzonym ciągu tylko raz. Jeśli nie, format jest nieprawidłowy, w przeciwnym razie, o ile wyrazu nie ma w słowniku lub gdy chcemy go przedefiniować, tworzymy listę znaczeń. Funkcja ``map(funkcja, lista)`` do każdego elementu listy stosuje podaną jako argument funkcję (mapowanie funkcji). W naszym przypadku każde znaczenie z listy zostaje oczyszczone przez funkcję ``oczysc()``.
+Metoda ``.capitalize()`` pozwala wydrukować podany napis dużą literą.
 
-Na końcu drukujemy nasz słownik. Specyfikacja ``{0: <15}{1: <40}`` oznacza, że pierwszy argument umieszczony w funkcji ``format()``, drukowany ma być wyrównany do lewej (<) w polu o szerokości 15 znaków, drugi argument, również wyrównany do lewej, w polu o szerokości 40 znaków.
+W funkcji ``print(...).format(s,m,o)`` zastosowano formatowanie drukowanych wartości, do których odwołujemy się w specyfikacji ``{0:5.2f}``. Pierwsza cyfra wskazuje, którą wartość z numerowanej od 0 (zera) listy, umieszczonej w funkcji ``format()``, wydrukować; np. aby wydrukować drugą wartość, trzeba by użyć kodu ``{1:}``.Po dwukropku podajemy szerokość pola przeznaczonego na wydruk, po kropce ilość miejsc po przecinku, symbol *f* oznacza natomiast liczbę zmiennoprzecinkową stałej precyzji.
 
 POĆWICZ SAM
 -----------
 
-    Kod drukujący słownik zamień w funkcję. Wykorzystaj ją do wydrukowania słownika odczytanego z dysku i słownika uzupełnionego przez użytkownika.
+    W konsoli Pythona utwórz listę wyrazy zawierającą elementy: *abrakadabra* i *kordoba*. Utwórz zbiór *w1* poleceniem ``set(wyrazy[0])``. Oraz zbiór *w2* poleceniem ``set(wyrazy[1])``. Wykonaj kolejno polecenia: ``print w1 – w2; print w1 | w2; print w1 & w2; print w1 ^ w2``. Przykłady te ilustrują użycie klasycznych operatorów na zbiorach, czyli: różnica (-) , suma (|), przecięcie (część wspólna, &) i elementy unikalne (^).
 
-    Spróbuj zmienić program tak, aby umożliwiał usuwanie wpisów.
+Funkcje wykorzystywane w programie umieszczamy w osobnym pliku.
 
-    Dodaj do programu możliwość uczenia się zapisanych w słowniku słówek. Niech program wyświetla kolejne słowa obce i pobiera od użytkownika możliwe znaczenia. Następnie powinien wyświetlać, które z nich są poprawne.
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block:: python
+    :linenos:
+
+    #! /usr/bin/env python
+    # -*- coding: UTF-8 -*-
+
+    # ~/python/ocenyfun.py
+
+    """
+        Moduł ocenyfun zawiera funkcje wykorzystywane w programie m01_oceny.
+    """
+
+    import math # zaimportuj moduł matematyczny
+
+    def drukuj(co,kom="Sekwencja zawiera: "):
+        print kom
+        for i in co:
+            print i,
+
+    def srednia(oceny):
+        suma = sum(oceny)
+        return suma/float(len(oceny))
+
+    def mediana(oceny):
+        oceny.sort();
+        if len(oceny) % 2 == 0: #parzysta ilość ocen
+            half = len(oceny)/2
+            #można tak:
+            #return float(oceny[half-1]+oceny[half]) / 2.0
+            #albo tak:
+            return sum(oceny[half-1:half+1]) / 2.0
+        else: #nieparzysta ilość ocen
+            return oceny[len(oceny)/2]
+
+    def wariancja(oceny,srednia):
+        """
+        Wariancja to suma kwadratów różnicy każdej oceny i średniej podzielona przez ilość ocen:
+        sigma = (o1-s)+(o2-s)+...+(on-s) / n, gdzie:
+        o1, o2, ..., on - kolejne oceny,
+        s - średnia ocen,
+        n - liczba ocen.
+        """
+        sigma = 0.0
+        for ocena in oceny:
+            sigma += (ocena-srednia)**2
+        return sigma/len(oceny)
+
+    def odchylenie(oceny,srednia): #pierwiastek kwadratowy z wariancji
+        w = wariancja(oceny,srednia)
+        return math.sqrt(w)
+
+JAK TO DZIAŁA
+-------------
+
+**Pojęcia**: *funkcja, argumenty funkcji, zwracanie wartości, moduł*.
+
+Klauzula ``import math`` udostępnia w pliku wszystkie metody z modułu
+matematycznego, dlatego musimy odwoływać się do nich za pomocą notacji
+moduł.funkcja, np.: ``math.sqrt()`` – zwraca pierwiastek kwadratowy.
+
+Funkcja ``drukuj(co, kom="...")`` przyjmuje dwa argumenty, *co* – listę
+lub zbiór, który drukujemy w pętli for, oraz *kom* – komunikat,
+który wyświetlamy przed wydrukiem. Argument kom jest opcjonalny,
+przypisano mu bowiem wartość domyślną, która zostanie użyta,
+jeżeli użytkownik nie poda innej w wywołaniu funkcji.
+
+Funkcja ``srednia()`` do zsumowania wartości ocen wykorzystuje funkcję ``sum()``.
+
+Funkcja ``mediana()`` sortuje otrzymaną listę "w miejscu" (``oceny.sort()``), tzn. trwale zmienia porządek elementów [#f6]_.
+W zależności od długości listy zwraca wartość środkową (długość nieparzysta)
+lub średnią arytmetyczną dwóch środkowych wartości (długość).
+Zapis ``oceny[half-1:half+1]`` wycina i zwraca dwa środkowe elementy
+z listy, przy czym wyrażenie ``half = len(oceny)/2`` wylicza nam indeks drugiego ze środkowych elementów.
+
+.. [#f6] Przypomnijmy: alternatywna funkcja ``sorted(lista)`` zwraca uporządkowaną rosnąco kopię listy.
+
+W funkcja ``wariancja()`` pętla for odczytuje kolejne oceny i w kodzie ``sigma += (ocena-srednia)**2`` korzysta z operatorów skróconego dodawania (+=) i potęgowania (**), aby wyliczyć sumę kwadratów różnic kolejnych ocen i średniej.
+
+POĆWICZ SAM
+-----------
+
+    Dopisz funkcję, która wyświetli wszystkie oceny oraz ich odchylenia od wartości średniej.

@@ -3,7 +3,7 @@ Gra w Ponga
 
 .. highlight:: python
 
-Klasyczna gry w odbijanie piłeczki zrealizowana z użyciem biblioteki `PyGame`_.
+Klasyczna gra w odbijanie piłeczki zrealizowana z użyciem biblioteki `PyGame`_.
 
 .. _PyGame: http://www.pygame.org/wiki/tutorials
 

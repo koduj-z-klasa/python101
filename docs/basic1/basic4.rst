@@ -1,13 +1,108 @@
-Mów mi Python – wprowadzenie do języka Python
-*********************************************
-
-Listy, zbiory, moduły i funkcje w praktyce
-=============================================
+Listy, tuple i funkcje
+==================================
 
 ZADANIE
--------
+------------
 
-    Napisz program, który umożliwi wprowadzanie ocen z podanego przedmiotu ścisłego (np. fizyki), następnie policzy i wyświetla średnią, medianę i odchylenie standardowe wprowadzonych ocen. Funkcje pomocnicze i statystyczne umieść w osobnym module.
+    Pobierz od użytkownika n liczb i zapisz je w liście. Wydrukuj: elementy listy i ich indeksy, elementy w odwrotnej kolejności, posortowane elementy. Usuń z listy pierwsze wystąpienie elementu podanego przez użytkownika. Usuń z listy element o podanym indeksie. Podaj ilość wystąpień oraz indeks pierwszego wystąpienia podanego elementu. Wybierz z listy elementy od indeksu i do j.
+
+Wszystkie poniższe przykłady proponujemy wykonać w konsoli Pythona. Nie umieszczaj w konsoli komentarzy, możesz też pominąć lub skrócić komunikaty funkcji print. Można również wpisać poniższy kod do pliku i go uruchomić.
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block :: python
+    :linenos:
+
+    #! /usr/bin/env python
+    # -*- coding: UTF-8 -*-
+
+    # ~/python/04_1_listy.py
+
+    tupla = input("Podaj liczby oddzielone przecinkami: ")
+    lista = [] # deklaracja pustej listy
+    for i in range(len(tupla)):
+        lista.append(int(tupla[i]))
+
+    print "Elementy i ich indeksy:"
+    for i, v in enumerate(lista):
+        print v, "[",i,"]"
+
+    print "Elementy w odwróconym porządku:"
+    for e in reversed(lista):
+        print e,
+
+    print ""
+    print "Elementy posortowane rosnąco:"
+    for e in sorted(lista):
+        print e,
+
+    print ""
+    e = int(raw_input("Którą liczbę usunąć? "))
+    lista.remove(e)
+    print lista
+
+    a, i = input("Podaj element do dodania i indeks, przed którym ma się on znaleźć: ")
+    lista.insert(i, a)
+    print lista
+
+    e = int(raw_input("Podaj liczbę, której wystąpienia w liście chcesz zliczyć? "))
+    print lista.count(e)
+    print "Pierwszy indeks, pod którym zapisana jest podana liczba to: "
+    print lista.index(e)
+
+    print "Pobieramy ostatni element z listy: "
+    print lista.pop()
+    print lista
+
+    i, j = input("Podaj indeks początkowy i końcowy, aby uzyskać frgament listy: ")
+    print lista[i:j]
+
+JAK TO DZIAŁA
+-------------
+
+**Pojęcia**: *tupla, lista, metoda.*
+
+Funkcja ``input()`` pobiera dane wprowadzone przez użytkownika
+(tak jak ``raw_input()``), ale próbuje zinterpretować je jako kod Pythona.
+Podane na wejściu liczby oddzielone przecinkami zostają więc spakowane jako
+**tupla** (krotka). Jest to uporządkowana sekwencja poindeksowanych danych,
+przypominająca tablicę, której wartości nie można zmieniać. Gdybyśmy chcieli
+wpisać do tupli wartości od razu w kodzie, napisalibyśmy: ``tupla = (4, 3, 5)`` [#f4]_.
+Listy to również uporządkowane sekwencje indeksowanych danych, zazwyczaj tego samego typu, które jednak możemy zmieniać.
+
+.. [#f4] W definicji tupli nawiasy są opcjonalne, można więc pisać tak: ``tupla = 3, 2, 5, 8.``
+
+Dostęp do elementów tupli lub listy uzyskujemy podając nazwę i indeks, np. ``lista[0]``.
+Elementy indeksowane są od 0 (zera!). Funkcja ``len()`` zwraca ilość elementów w tupli/liście.
+Funkcja ``enumerate()`` zwraca obiekt zawierający indeksy i elementy sekwencji (np. tupli lub listy) podanej jako atrybut.
+Funkcja ``reversed()`` zwraca odwróconą sekwencję.
+
+Lista ma wiele użytecznych metod: ``.append(x)`` – dodaje x do listy; ``.remove(x)`` – usuwa pierwszy x z listy;
+``.insert(i, x)`` – wstawia x przed indeksem i; ``.count(x)`` – zwraca ilość wystąpień x;
+``.index(x)`` – zwraca indeks pierwszego wystąpienia x; ``.pop()``
+– usuwa i zwraca ostatni element listy. Funkcja ``reversed(lista)`` zwraca kopię listy w odwróconym porządku,
+natomiast ``sorted(lista)`` zwraca kopię listy posortowanej rosnąco.
+Jeżeli chcemy trwale odwrócić lub posortować elementy listy stosujemy metody:
+``.reverse()`` i ``.sort()``. Z każdej sekwencji (napisu, tupli czy listy) możemy
+wydobywać fragmenty dzięki notacji *slice* (wycinek). W najprostszym przypadku polega
+ona na podaniu początkowego i końcowego (wyłącznie) indeksu elementów, które chcemy
+wydobyć, np. ``lista[1:4]``.
+
+POĆWICZ SAM
+-----------
+
+    Utwórz w konsoli Pythona dowolną listę i przećwicz notację slice. Sprawdź działanie indeksów pustych
+    i ujemnych, np. ``lista[2:], lista[:4], lista[-2], lista[-2:]``.
+    Posortuj dowolną listę malejąco. Wskazówka: wykorzystaj metodę ``.sort(reverse=True)``.
+
+ZADANIE
+------------
+
+    Wypisz ciąg Fibonacciego aż do n-ego wyrazu podanego przez użytkownika.
+    Ciąg Fibonacciego to ciąg liczb naturalnych, którego każdy wyraz poza dwoma
+    pierwszymi jest sumą dwóch wyrazów poprzednich. Początkowe wyrazy tego ciągu to: 0 1 1 2 3 5 8 13 21
 
 .. raw:: html
 
@@ -19,167 +114,39 @@ ZADANIE
     #! /usr/bin/env python
     # -*- coding: UTF-8 -*-
 
-    # ~/python/05_oceny_03.py
+    # ~/python/04_2_fibonacci.py
 
-    # importujemy funkcje z modułu ocenyfun zapisanego w pliku ocenyfun.py
-    from ocenyfun import drukuj
-    from ocenyfun import srednia
-    from ocenyfun import mediana
-    from ocenyfun import odchylenie
+    def fibonacci(n): #definicja funkcji
+        pwyrazy = (0, 1) #dwa pierwsze wyrazy ciągu zapisane w tupli
+        a, b = pwyrazy #przypisanie wielokrotne, rozpakowanie tupli
+        while a < n:
+            print b
+            a, b = b, a+b #przypisanie wielokrotne
 
-    przedmioty = set(['polski','angielski']) #definicja zbioru
-    drukuj(przedmioty, "Lista przedmiotów zawiera: ") #wywołanie funkcji z modułu ocenyfun
-
-    print "\nAby przerwać wprowadzanie przedmiotów, naciśnij Enter."
-    while True:
-        przedmiot = raw_input("Podaj nazwę przedmiotu: ")
-        if len(przedmiot):
-            if przedmiot in przedmioty: #czy przedmiot jest w zbiorze?
-                print "Ten przedmiot już mamy :-)"
-            przedmioty.add(przedmiot) #dodaj przedmiot do zbioru
-        else:
-            drukuj(przedmioty,"\nTwoje przedmioty: ")
-            przedmiot = raw_input("\nZ którego przedmiotu wprowadzisz oceny? ")
-            if przedmiot not in przedmioty: #jeżeli przedmiotu nie ma w zbiorze
-                print "Brak takiego przedmiotu, możesz go dodać."
-            else:
-                break # wyjście z pętli
-
-    oceny = [] # pusta lista ocen
-    ocena = None # zmienna sterująca pętlą i do pobierania ocen
-    print "\nAby przerwać wprowadzanie ocen, podaj 0 (zero)."
-
-    while not ocena:
-        try: #mechanizm obsługi błędów
-            ocena = int(raw_input("Podaj ocenę (1-6): "))
-            if (ocena > 0 and ocena < 7):
-                oceny.append(float(ocena))
-            elif ocena == 0:
-                break
-            else:
-                print "Błędna ocena."
-            ocena = None
-        except ValueError:
-            print "Błędne dane!"
-
-    drukuj(oceny,przedmiot.capitalize()+" - wprowadzone oceny: ")
-    s = srednia(oceny) # wywołanie funkcji z modułu ocenyfun
-    m = mediana(oceny) # wywołanie funkcji z modułu ocenyfun
-    o = odchylenie(oceny,s) # wywołanie funkcji z modułu ocenyfun
-    print "\nŚrednia: {0:5.2f}\nMediana: {1:5.2f}\nOdchylenie: {2:5.2f}".format(s,m,o)
+    n = int(raw_input("Podaj numer wyrazu: "))
+    fibonacci(n) #wywołanie funkcji
+    print "" #pusta linia
+    print "=" * 25 #na koniec szlaczek
 
 JAK TO DZIAŁA
 -------------
 
-**Pojęcia**: *import, moduł, zbiór, przechwytywanie wyjątków, formatowanie napisów i danych na wyjściu*.
+**Pojęcia**: *funkcja, zwracanie wartości, tupla, rozpakowanie tupli, przypisanie wielokrotne*.
 
-Klauza from moduł import funkcja umożliwia wykorzystanie w programie funkcji
-zdefiniowanych w innych modułach i zapisanych w osobnych plikach. Dzięki temu
-utrzymujemy przejrzystość programu głównego, a jednocześnie możemy funkcje
-z modułów wykorzystywać, importując je w innych programach. Nazwa modułu
-to nazwa pliku z kodem pozbawiona jednak rozszerzenia *.py*. Moduł musi
-być dostępny w ścieżce przeszukiwania [#f5]_, aby można go było poprawnie dołączyć.
+Definicja funkcji w Pythonie polega na użyciu słowa kluczowego ``def``,
+podaniu nazwy funkcji i w nawiasach okrągłych ewentualnej listy argumentów.
+Definicję kończymy znakiem dwukropka, po którym wpisujemy w następnych liniach,
+pamiętając o wcięciach, ciało funkcji. Funkcja może, ale nie musi zwracać wartości.
+Jeżeli chcemy zwrócić jakąś wartość używamy polecenia return wartość.
 
-.. [#f5] W przypadku prostych programów zapisuj moduły w tym samym katalogu co program główny.
-
-Instrukcja ``set()`` tworzy zbiór, czyli nieuporządkowany zestaw niepowtarzalnych (!) elementów. Instrukcje ``if przedmiot in przedmioty`` i ``if przedmiot not in przedmioty`` za pomocą operatorów zawierania ``(not) in`` sprawdzają, czy podany przedmiot już jest lub nie w zbiorze. Polecenie ``przedmioty.add()`` pozwala dodawać elementy do zbioru, przy czym jeżeli element jest już w zbiorze, nie zostanie dodany. Polecenie ``przedmioty.remove()`` usunnie podany jako argument element ze zbioru.
-
-Oceny z wybranego przedmiotu pobieramy w pętli dopóty, dopóki użytkownik nie wprowadzi 0 (zera). Blok ``try...except`` pozwala przechwycić wyjątki, czyli w naszym przypadku niemożność przekształcenia wprowadzonej wartości na liczbę całkowitą. Jeżeli funkcja ``int()`` zwróci wyjątek, wykonywane są instrukcje w bloku ``except ValueError:``, w przeciwnym razie po sprawdzeniu poprawności oceny dodajemy ją jako liczbę zmiennoprzecinkową (typ *float*) do listy: ``oceny.append(float(ocena))``.
-
-Metoda ``.capitalize()`` pozwala wydrukować podany napis dużą literą.
-
-W funkcji ``print(...).format(s,m,o)`` zastosowano formatowanie drukowanych wartości, do których odwołujemy się w specyfikacji ``{0:5.2f}``. Pierwsza cyfra wskazuje, którą wartość z numerowanej od 0 (zera) listy, umieszczonej w funkcji ``format()``, wydrukować; np. aby wydrukować drugą wartość, trzeba by użyć kodu ``{1:}``.Po dwukropku podajemy szerokość pola przeznaczonego na wydruk, po kropce ilość miejsc po przecinku, symbol *f* oznacza natomiast liczbę zmiennoprzecinkową stałej precyzji.
+Zapis ``a, b = pwyrazy`` jest przykładem rozpakowania tupli, tzn. zmienne *a* i *b*
+przyjmują wartości kolejnych elementów tupli pwyrazy. Zapis równoważny, w którym nie
+definiujemy tupli tylko wprost podajemy wartości, to ``a, b = 0, 1``; ten sposób
+przypisania wielokrotnego stosujemy w kodzie ``a, b = b, b+a``. Jak widać, ilość
+zmiennych z lewej strony musi odpowiadać liczbie wartości rozpakowywanych z tupli
+lub liczbie wartości podawanych wprost z prawej strony.
 
 POĆWICZ SAM
 -----------
 
-    W konsoli Pythona utwórz listę wyrazy zawierającą elementy: *abrakadabra* i *kordoba*. Utwórz zbiór *w1* poleceniem ``set(wyrazy[0])``. Oraz zbiór *w2* poleceniem ``set(wyrazy[1])``. Wykonaj kolejno polecenia: ``print w1 – w2; print w1 | w2; print w1 & w2; print w1 ^ w2``. Przykłady te ilustrują użycie klasycznych operatorów na zbiorach, czyli: różnica (-) , suma (|), przecięcie (część wspólna, &) i elementy unikalne (^).
-
-Funkcje wykorzystywane w programie umieszczamy w osobnym pliku.
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. code-block:: python
-    :linenos:
-
-    #! /usr/bin/env python
-    # -*- coding: UTF-8 -*-
-
-    # ~/python/ocenyfun.py
-
-    """
-        Moduł ocenyfun zawiera funkcje wykorzystywane w programie m01_oceny.
-    """
-
-    import math # zaimportuj moduł matematyczny
-
-    def drukuj(co,kom="Sekwencja zawiera: "):
-        print kom
-        for i in co:
-            print i,
-
-    def srednia(oceny):
-        suma = sum(oceny)
-        return suma/float(len(oceny))
-
-    def mediana(oceny):
-        oceny.sort();
-        if len(oceny) % 2 == 0: #parzysta ilość ocen
-            half = len(oceny)/2
-            #można tak:
-            #return float(oceny[half-1]+oceny[half]) / 2.0
-            #albo tak:
-            return sum(oceny[half-1:half+1]) / 2.0
-        else: #nieparzysta ilość ocen
-            return oceny[len(oceny)/2]
-
-    def wariancja(oceny,srednia):
-        """
-        Wariancja to suma kwadratów różnicy każdej oceny i średniej podzielona przez ilość ocen:
-        sigma = (o1-s)+(o2-s)+...+(on-s) / n, gdzie:
-        o1, o2, ..., on - kolejne oceny,
-        s - średnia ocen,
-        n - liczba ocen.
-        """
-        sigma = 0.0
-        for ocena in oceny:
-            sigma += (ocena-srednia)**2
-        return sigma/len(oceny)
-
-    def odchylenie(oceny,srednia): #pierwiastek kwadratowy z wariancji
-        w = wariancja(oceny,srednia)
-        return math.sqrt(w)
-
-JAK TO DZIAŁA
--------------
-
-**Pojęcia**: *funkcja, argumenty funkcji, zwracanie wartości, moduł*.
-
-Klauzula ``import math`` udostępnia w pliku wszystkie metody z modułu
-matematycznego, dlatego musimy odwoływać się do nich za pomocą notacji
-moduł.funkcja, np.: ``math.sqrt()`` – zwraca pierwiastek kwadratowy.
-
-Funkcja ``drukuj(co, kom="...")`` przyjmuje dwa argumenty, *co* – listę
-lub zbiór, który drukujemy w pętli for, oraz *kom* – komunikat,
-który wyświetlamy przed wydrukiem. Argument kom jest opcjonalny,
-przypisano mu bowiem wartość domyślną, która zostanie użyta,
-jeżeli użytkownik nie poda innej w wywołaniu funkcji.
-
-Funkcja ``srednia()`` do zsumowania wartości ocen wykorzystuje funkcję ``sum()``.
-
-Funkcja ``mediana()`` sortuje otrzymaną listę "w miejscu" (``oceny.sort()``), tzn. trwale zmienia porządek elementów [#f6]_.
-W zależności od długości listy zwraca wartość środkową (długość nieparzysta)
-lub średnią arytmetyczną dwóch środkowych wartości (długość).
-Zapis ``oceny[half-1:half+1]`` wycina i zwraca dwa środkowe elementy
-z listy, przy czym wyrażenie ``half = len(oceny)/2`` wylicza nam indeks drugiego ze środkowych elementów.
-
-.. [#f6] Przypomnijmy: alternatywna funkcja ``sorted(lista)`` zwraca uporządkowaną rosnąco kopię listy.
-
-W funkcja ``wariancja()`` pętla for odczytuje kolejne oceny i w kodzie ``sigma += (ocena-srednia)**2`` korzysta z operatorów skróconego dodawania (+=) i potęgowania (**), aby wyliczyć sumę kwadratów różnic kolejnych ocen i średniej.
-
-POĆWICZ SAM
------------
-
-    Dopisz funkcję, która wyświetli wszystkie oceny oraz ich odchylenia od wartości średniej.
+    Zmień funkcję ``fibonnacci()`` tak, aby zwracała wartość n-tego wyrazu. Wydrukuj tylko tę wartość w programie.
