@@ -366,9 +366,21 @@ http://youtu.be/1WAeyriYymQ
 Metryka
 ^^^^^^^
 
+:Autorzy: Tomasz Nowacki,
+          Robert Bednarz,
+          Janusz Skonieczny
 
-:Autorzy: Tomasz Nowacki, Robert Bednarz, Janusz Skonieczny
+:Utworzony: |date| o |time|
 
-:Czas trwania: 90 minut
+.. |date| date::
+.. |time| date:: %H:%M
 
-.. include:: copyright.rst
+.. raw:: html
+
+    <style>
+        div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
+        div.highlight, div.highlight-python { margin-top: 0px; }
+    </style>
+
+
+.. include:: ../copyright.rst

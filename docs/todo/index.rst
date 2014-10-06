@@ -81,6 +81,10 @@ Połączenie z bazą danych
 
 Bazę danych już mamy, teraz pora napisać funkcje umożiwiające łączenie się z nią z poziomu naszej aplikacji. W pliku :file:`todo.py` dodajemy:
 
+.. raw:: html
+
+    <div class="code_no">Terminal nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. literalinclude:: todo_z3.py
     :linenos:
 
@@ -296,3 +300,24 @@ Materiały
 2. Informacje o SQLite http://pl.wikipedia.org/wiki/SQLite
 3. Co to jest framework? http://pl.wikipedia.org/wiki/Framework
 4. Co nieco o HTTP i żądaniach GET i POST http://pl.wikipedia.org/wiki/Http
+
+Metryka
+^^^^^^^
+
+:Autorzy: Tomasz Nowacki,
+          Robert Bednarz
+
+:Utworzony: |date| o |time|
+
+.. |date| date::
+.. |time| date:: %H:%M
+
+.. raw:: html
+
+    <style>
+        div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
+        div.highlight, div.highlight-python { margin-top: 0px; }
+    </style>
+
+
+.. include:: ../copyright.rst

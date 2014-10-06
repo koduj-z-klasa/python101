@@ -1,4 +1,6 @@
-Chatter – Aplikacja internetowa
+Chatter (prosty czat) – aplikacja internetowa
+==========================================
+
 Opis: Zastosowanie Pythona i frameworka Django (wersja 1.6.5) do stworzenia aplikacji internetowej Chatter; prostego czata, w którym zarejestrowani użytkownicy będą mogli wymieniać się krótkimi wiadomościami.
 
 I. Projekt i aplikacja
@@ -409,3 +411,24 @@ Materiały pomocnicze:
 2. Strona projektu Django https://www.djangoproject.com/
 3. Co to jest framework? http://pl.wikipedia.org/wiki/Framework
 4. Co nieco o HTTP i żądaniach GET i POST http://pl.wikipedia.org/wiki/Http
+
+Metryka
+^^^^^^^
+
+:Autorzy: Tomasz Nowacki,
+          Robert Bednarz
+
+:Utworzony: |date| o |time|
+
+.. |date| date::
+.. |time| date:: %H:%M
+
+.. raw:: html
+
+    <style>
+        div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
+        div.highlight, div.highlight-python { margin-top: 0px; }
+    </style>
+
+
+.. include:: ../copyright.rst
