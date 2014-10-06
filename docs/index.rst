@@ -54,12 +54,19 @@ Zaczynamy!
 
     basic/basic
     basic1/basic1
+    basic1/basic2
+    basic1/basic3
+    basic1/basic4
+    basic1/basic5
+    basic1/basic6
+    basic1/basic7
+    basic1/basic8
     pong/index
     life/index
     tictactoe/index
-    quiz
-    todo
-    chatter
+    quiz/index
+    todo/index
+    chatter/index
 
 
 

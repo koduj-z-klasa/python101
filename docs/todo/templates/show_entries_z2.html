@@ -1,0 +1,34 @@
+<!-- todo/templates/show_entries.html -->
+<html>
+    <head>
+    <!-- automatycznie przekazana informacja z konfiguracji aplikacji -->
+        <title>{{ config.SITE_NAME }}</title>
+    </head>
+    <body>
+        <h1>{{ config.SITE_NAME }}:</h1>
+        <!-- formularz dodawania zadania -->
+        <form class="add-form" method="POST" action="{{ url_for('index') }}">
+            <input name="entry" value=""/>
+            <button type="submit">Dodaj zadanie</button>
+        </form>
+
+        <!-- informacje o sukcesie lub bledzie -->
+        <p>
+            {% if error %}
+                <strong class="error">Błąd: {{ error }}</strong>
+            {% endif %}
+
+            {% for message in get_flashed_messages() %}
+                <strong class="success">{{ message }}</strong>
+            {% endfor %}
+        </p>
+        <ol>
+            <!-- wypisujemy kolejno wszystkie zdania -->
+            {% for entry in entries %}
+                <li>
+                    {{ entry.title }}<em>{{ entry.created_at }}</em>
+                </li>
+            {% endfor %}
+        </ol>
+    </body>
+</html>
