@@ -69,10 +69,10 @@ Funkcja ``input()`` pobiera dane wprowadzone przez użytkownika
 Podane na wejściu liczby oddzielone przecinkami zostają więc spakowane jako
 **tupla** (krotka). Jest to uporządkowana sekwencja poindeksowanych danych,
 przypominająca tablicę, której wartości nie można zmieniać. Gdybyśmy chcieli
-wpisać do tupli wartości od razu w kodzie, napisalibyśmy: ``tupla = (4, 3, 5)`` [#f4]_.
+wpisać do tupli wartości od razu w kodzie, napisalibyśmy: ``tupla = (4, 3, 5)`` [4]_.
 Listy to również uporządkowane sekwencje indeksowanych danych, zazwyczaj tego samego typu, które jednak możemy zmieniać.
 
-.. [#f4] W definicji tupli nawiasy są opcjonalne, można więc pisać tak: ``tupla = 3, 2, 5, 8.``
+.. [4] W definicji tupli nawiasy są opcjonalne, można więc pisać tak: ``tupla = 3, 2, 5, 8.``
 
 Dostęp do elementów tupli lub listy uzyskujemy podając nazwę i indeks, np. ``lista[0]``.
 Elementy indeksowane są od 0 (zera!). Funkcja ``len()`` zwraca ilość elementów w tupli/liście.

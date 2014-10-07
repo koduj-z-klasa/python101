@@ -1,0 +1,13 @@
+<! -- chatter/chatter/templates/chatter/index.html -->
+
+<html>
+    <head></head>
+    <body>
+        {% if not user.is_authenticated %}
+            <h1>Witaj w systemie Chatter</h1>
+            <p><a href="{% url 'login' %}">Zaloguj się</a></p>
+        {% else %}
+            <h1>Witaj, {{ user.username }}</h1>
+        {% endif %}
+    </body>
+</html>

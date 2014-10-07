@@ -46,10 +46,10 @@ JAK TO DZIAŁA
 **Pojęcia**: *zmienna, wartość, wyrażenie, wejście i wyjście danych, instrukcja warunkowa, komentarz*.
 
 Deklaracja zmiennej w Pythonie nie jest wymagana, wystarczy podanej nazwie przypisać jakąś wartość
-za pomocą operatora przypisania "=" [#f2]_. Zmiennym często przypisujemy wartości za pomocą wyrażeń,
+za pomocą operatora przypisania "=" [2]_. Zmiennym często przypisujemy wartości za pomocą wyrażeń,
 czyli działań arytmetycznych lub logicznych.
 
-.. [#f2] Dlatego niekiedy mówi się, że w Pythonie zmiennych nie ma, są natomiast wartości określonego typu.
+.. [2] Dlatego niekiedy mówi się, że w Pythonie zmiennych nie ma, są natomiast wartości określonego typu.
 
 Funkcja ``raw_input()`` zwraca pobrane z klawiatury znaki jako napis, czyli typ **string**.
 

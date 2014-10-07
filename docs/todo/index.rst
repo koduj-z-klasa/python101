@@ -271,31 +271,59 @@ W szablonie :file:`show_entries.html` modyfikujemy fragment wyświetlający list
 
 Aplikację można uznać za skończoną. Możemy dodawać zadania oraz zmieniać ich status.
 
-Zadania dodatkowe
+POĆWICZ SAM
 ---------------------------------------
 
-* Dodać możliwość usuwania zadań.
-* Dodać mechanizm logowania użytkownika tak, aby użytkownik mógł dodawać i edytować tylko swoją listę zadań.
-* Można rozważyć wprowadzenie osobnych list dla każdego użytkownika.
+    Dodaj możliwość usuwania zadań.
+    Dodaj mechanizm logowania użytkownika tak, aby użytkownik mógł dodawać i edytować tylko swoją listę zadań.
+    Wprowadź osobne listy zadań dla każdego użytkownika.
 
 Pojęcia
----------------------------------------
-* Aplikacja – program komputerowy.
-* Baza danych – program przeznaczony do przechowywania i przetwarzania danych.
-* CSS – język służący do opisu formy prezentacji stron WWW.
-* Framework – zestaw komponentów i bibliotek wykorzystywany do budowy aplikacji.
-* GET – typ żądania HTTP, służący do pobierania zasobów z serwera WWW.
-* HTML – język znaczników wykorzystywany do formatowania dokumentów, zwłaszcza stron WWW.
-* HTTP – protokół przesyłania dokumentów WWW.
-* POST – typ żądania HTTP, służący do umieszczania zasobów na serwerze WWW.
-* Serwer deweloperski – serwer używany w czasie prac nad oprogramowaniem.
-* Serwer WWW – serwer obsługujący protokół HTTP.
-* Templatka – szablon strony WWW wykorzystywany przez Flask do renderowania widoków.
-* URL – ustandaryzowany format adresowania zasobów w internecie (przykład: adres strony WWW).
+^^^^^^^^^^^^^^^^^^^
+
+.. glossary::
+
+    Aplikacja
+        program komputerowy.
+
+    Baza danych
+        program przeznaczony do przechowywania i przetwarzania danych.
+
+    CSS
+        język służący do opisu formy prezentacji stron WWW.
+
+    Framework
+        zestaw komponentów i bibliotek wykorzystywany do budowy aplikacji.
+
+    GET
+        typ żądania HTTP, służący do pobierania zasobów z serwera WWW.
+
+    HTML
+        język znaczników wykorzystywany do formatowania dokumentów, zwłaszcza stron WWW.
+
+    HTTP
+        protokół przesyłania dokumentów WWW.
+
+    POST
+        typ żądania HTTP, służący do umieszczania zasobów na serwerze WWW.
+
+    Serwer deweloperski
+        serwer używany w czasie prac nad oprogramowaniem.
+
+    Serwer WWW
+        serwer obsługujący protokół HTTP.
+
+    Templatka
+        szablon strony WWW wykorzystywany przez Flask do renderowania widoków.
+
+    URL
+        ustandaryzowany format adresowania zasobów w internecie (przykład: http://pl.wikipedia.org/wiki/Uniform_Resource_Locator).
+
 * Widok – funkcja obsługująca żądania przychodzące na powiązany z nią adres, zazwyczaj zwraca użytkownikowi żądaną stronę html wyrenderowaną ze wskazanego szablonu.
 
 Materiały
----------------------------------------
+^^^^^^^^^^^^^^^^^^^
+
 1. Strona projektu Flask http://flask.pocoo.org/
 2. Informacje o SQLite http://pl.wikipedia.org/wiki/SQLite
 3. Co to jest framework? http://pl.wikipedia.org/wiki/Framework

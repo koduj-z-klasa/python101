@@ -1,0 +1,36 @@
+<!-- quiz/templates/index.html -->
+<html>
+    <head>
+        <title>Quiz SWOI</title>
+    </head>
+    <body>
+        <h1>Quiz SWOI</h1>
+
+        <!-- formularz z quizem -->
+        <form method="POST">
+            <!-- iterujemy po liscie pytan -->
+            {% for entry in questions %}
+                <p>
+                    <!-- dla kazdego pytania wypisujemy pytanie (pole question) -->
+                    {{ entry.question }}
+                    <br>
+                    <!-- zapamietujemy numer pytania liczac od zera -->
+                    {% set question_number = loop.index0 %}
+                    <!-- iterujemy po mozliwych odpowiedziach dla danego pytania -->
+                    {% for answer in entry.answers %}
+                        <label>
+                            <!-- odpowiedzi zamieniamy na radio buttony -->
+                            <input type="radio" value="{{ answer }}" name="{{ question_number }}">
+                            {{ answer }}
+                        </label>
+                        <br>
+                    {% endfor %}
+                </p>
+            {% endfor %}
+
+            <!-- button wysylajacy wypelniony formularz -->
+            <button type="submit">Sprawdź odpowiedzi</button>
+        </form>
+
+    </body>
+</html>

@@ -48,9 +48,9 @@ Pętla while umożliwia powtarzanie określonych operacji, czyli pozwala użytko
 kolejne serie liczb. Definiując pętle określamy warunek powtarzania kodu. Dopóki jest prawdziwy,
 czyli dopóki zmienna op ma wartość "t" pętla działa. Do wydzielania kodu przynależnego do pętli
 i innych instrukcji (np. ``if``) stosujemy wcięcia. Formatując kod, możemy używać zarówno tabulatorów,
-jak i spacji, ważne aby w obrębie pliku było to konsekwentne [#f3]_.
+jak i spacji, ważne aby w obrębie pliku było to konsekwentne [3]_.
 
-.. [#f3] Dobry styl programowania sugeruje używanie do wcięć 4 spacji.
+.. [3] Dobry styl programowania sugeruje używanie do wcięć 4 spacji.
 
 W Pythonie wszystko jest obiektem, czyli typy wbudowane, np. napisy, posiadają metody (funkcje)
 wykonujące określone operacje na wartościach. W podanym kodzie funkcja ``raw_input()`` zwraca
@@ -117,29 +117,12 @@ Zmienna pomocnicza ``x`` jest zwiększana (inkrementacja) w pętlach o 1. Wyraż
 
 Poniżej podano wybrane operatory dostępne w Pythonie.
 
-**Arytmetyczne**:
-
-- +, -, \*, /, //, %, \*\* (potęgowanie)
-- znak + znak (konkatenacja napisów)
-- znak * 10 (powielenie znaków)
-
-**Przypisania**:
-
-- =, +=, -=, *=, /=, %=, \**=, //=
-
-**Logiczne**:
-
-- and, or, not
-
-Fałszem logicznym są: liczby zero (0, 0.0), False, None (null), puste kolekcje ([], (), {}, set()), puste napisy. Wszystko inne jest prawdą logiczną.
-
-**Zawierania**:
-
-- in, not in
-
-**Porównania**:
-
-- ==, >, <, <>, <=, >= != (jest różne)
+* **Arytmetyczne**: +, -, \*, /, //, %, \*\* (potęgowanie); znak + znak (konkatenacja napisów); znak * 10 (powielenie znaków)
+* **Przypisania**: =, +=, -=, *=, /=, %=, \**=, //=
+* **Logiczne**: and, or, not
+    Fałszem logicznym są: liczby zero (0, 0.0), False, None (null), puste kolekcje ([], (), {}, set()), puste napisy. Wszystko inne jest prawdą logiczną.
+* **Zawierania**: in, not in
+* **Porównania**: ==, >, <, <>, <=, >= != (jest różne)
 
 POĆWICZ SAM
 -----------

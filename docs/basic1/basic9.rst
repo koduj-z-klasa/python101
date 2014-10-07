@@ -27,8 +27,7 @@ Materiały pomocnicze
 Metryka
 ^^^^^^^
 
-:Autorzy: Robert Bednarz <rob@lo1.sandomierz.pl>,
-          Janusz Skonieczny <js@bravelabs.pl>
+:Autorzy: Robert Bednarz <rob@lo1.sandomierz.pl>
 
 .. raw:: html
 
