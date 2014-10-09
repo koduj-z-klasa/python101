@@ -9,8 +9,8 @@ Pełna dokumentacja szkolenia znajduje się tutaj:
 
 [bit.ly/kzk-py](http://bit.ly/kzk-py)
 
-Kody źrółowe jako archiwum ZIP
-------------------------------
+Pobieranie tego repozytorium
+----------------------------
 
 Gorąco zalecamy do klonowania tego repozytorium lokanie:
 
