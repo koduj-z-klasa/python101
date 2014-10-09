@@ -34,7 +34,11 @@ Utworzenie minimalnej aplikacji Flask pozwoli na uruchomienie serwera dewelopers
 
 Serwer uruchamiamy komendą: ``python todo.py``
 
-Domyślnie serwer uruchamia się pod adresem *127.0.0.1:5000*. Po wpisaniu adresu do przeglądarki internetowej otrzymamy stronę z błędem HTTP 404, co wynika z faktu, że nasza aplikacja nie ma jeszcze zdefiniowanego żadnego zachowania (widoku) dla tego adresu. Widok to funkcja obsługująca wywołania powiązanego z nim adresu. Widok (funkcja) zwraca najczęściej użytkownikowi wyrenderowaną z szablonu stronę internetową.
+.. figure:: img/serwerrun.png
+
+Domyślnie serwer uruchamia się pod adresem *127.0.0.1:5000*. Po wpisaniu adresu do przeglądarki internetowej otrzymamy stronę z błędem HTTP 404, co wynika z faktu, że nasza aplikacja nie ma jeszcze zdefiniowanego żadnego zachowania (widoku) dla tego adresu. :term:`Widok` to funkcja obsługująca wywołania powiązanego z nim adresu. Widok (funkcja) zwraca najczęściej użytkownikowi wyrenderowaną z szablonu stronę internetową.
+
+.. figure:: img/notfound.png
 
 Definiowanie widoków
 ---------------------------------------
@@ -72,9 +76,11 @@ Tworzymy bazę danych w pliku :file:`db.sqlite`, łączymy się z nią i próbuj
 
     sqlite3 db.sqlite < schema.sql
     sqlite3 db.sqlite
-    select * from entries;
+    select \* from entries;
 
-Pracę z bazą kończymy poleceniem .quit.
+.. figure:: img/sqlite.png
+
+Pracę z bazą kończymy poleceniem ``.quit``.
 
 Połączenie z bazą danych
 ---------------------------------------
@@ -88,7 +94,7 @@ Bazę danych już mamy, teraz pora napisać funkcje umożiwiające łączenie si
 .. literalinclude:: todo_z3.py
     :linenos:
 
-Dodaliśmy sekretny klucz zabezpieczający mechanizm sesji, ustawiliśmy ścieżkę do pliku bazy danych (w katalogu aplikacji, dlatego funkcja ``app.root_path``) oraz nazwę aplikacji. Utworzyliśmy trzy funkcje odpowiedzialne za nawiązywanie (``connect_db``, ``get_db``) i kończenie (``close_db``) połączenia z bazą danych.
+Dodaliśmy sekretny klucz zabezpieczający mechanizm sesji, ustawiliśmy ścieżkę do pliku bazy danych w katalogu aplikacji (stąd użycie funkcji ``app.root_path``) oraz nazwę aplikacji. Utworzyliśmy trzy funkcje odpowiedzialne za nawiązywanie (``connect_db``, ``get_db``) i kończenie (``close_db``) połączenia z bazą danych.
 
 Pobieranie i wyświetlanie danych
 ---------------------------------------
@@ -114,7 +120,7 @@ Wyświetlanie danych umożliwia wbudowany we Flask system szablonów (templatek)
         # renderujemy tempaltke i zwracamy ja do klienta
         return render_template('show_entries.html', entries=entries)
 
-W widoku ``index()`` pobieramy obiekt bazy danych (`db`) i wykonujemy zapytanie (`select...`), by wyciągnąć wszystkie zapisane zadania. Na koniec renderujemy szablon przekazując do niego pobrane zadania (``entries``). Szablon, czyli plik :file:`show_entries.html`, umieszczamy w podkatalogu templates aplikacji. Poniżej jego zawartość:
+W widoku ``index()`` pobieramy obiekt bazy danych (`db`) i wykonujemy zapytanie (`select...`), by wyciągnąć wszystkie zapisane zadania. Na koniec renderujemy szablon przekazując do niego pobrane zadania (``entries``). Szablon, czyli plik :file:`show_entries.html`, umieszczamy w podkatalogu :file:`templates` aplikacji. Poniżej jego zawartość:
 
 .. raw:: html
 
@@ -124,6 +130,8 @@ W widoku ``index()`` pobieramy obiekt bazy danych (`db`) i wykonujemy zapytanie 
     :linenos:
 
 Wewnątrz szablonu przeglądamy wszystkie wpisy (`entries`) i umieszczamy je na liście HTML. Do szablonu automatycznie przekazywany jest obiekt ``config`` (dane konfiguracyjne), z którego pobieramy tytuł strony (`SITE_NAME`). Po odwiedzeniu strony *127.0.0.1:5000* powinniśmy zobaczyć listę zadań.
+
+.. figure:: img/listatodo1.png
 
 Formularz dodawania zadań
 ---------------------------------------
@@ -180,12 +188,14 @@ Szablon :file:`show_entries.html` aktualizujemy, dodając odpowiedni formularz:
 .. literalinclude:: templates/show_entries_z2.html
     :linenos:
 
-W szablonie dodaliśmy formularz oraz informację o błędzie lub sukcesie przy próbie dodawania zadania. Określając atrybut *action* w formularzu, skorzystaliśmy z wbudowanej funkcji ``url_for``, która zamienia nazwę widoku (w tym wypadku ``index``) na odpowiadający jej adres URL (w tym wypadku ``/``). W ten sposób łączymy formularz z konkretną funkcją Pythonową (widokiem), a nie z adresem URL.
+W szablonie dodaliśmy formularz oraz informację o błędzie lub sukcesie przy próbie dodawania zadania. Określając atrybut *action* w formularzu, skorzystaliśmy z wbudowanej funkcji ``url_for``, która zamienia nazwę widoku (w tym wypadku ``index``) na odpowiadający jej adres URL (w tym wypadku ``/``). W ten sposób łączymy formularz z konkretną funkcją Pythonową (widokiem), która obsługuje dany adres.
+
+.. figure:: img/listatodo2.png
 
 Wygląd aplikacji (opcja)
 ---------------------------------------
 
-Wygląd aplikacji możemy zdefiniować w arkuszu stylów CSS o nazwie :file:`style.css`, który zapisujemy w podkatalogu static aplikacji:
+Wygląd aplikacji możemy zdefiniować w arkuszu stylów CSS o nazwie :file:`style.css`, który zapisujemy w podkatalogu :file:`static` aplikacji:
 
 .. raw:: html
 
@@ -194,7 +204,7 @@ Wygląd aplikacji możemy zdefiniować w arkuszu stylów CSS o nazwie :file:`sty
 .. literalinclude:: static/style.css
     :linenos:
 
-Zdefiniowane style podpinamy do pliku show_entries.html, dodając w sekcji head wpis <link... >:
+Zdefiniowane style podpinamy do pliku :file:`show_entries.html`, dodając w sekcji head wpis <link... >:
 
 .. raw:: html
 
@@ -208,6 +218,8 @@ Zdefiniowane style podpinamy do pliku show_entries.html, dodając w sekcji head 
     </head>
 
 Dzięki temu nasza aplikacja nabierze nieco lepszego wyglądu.
+
+.. figure:: img/listatodo3.png
 
 Oznaczanie zadań jako wykonane (opcja)
 ---------------------------------------
@@ -270,6 +282,8 @@ W szablonie :file:`show_entries.html` modyfikujemy fragment wyświetlający list
         </ol>
 
 Aplikację można uznać za skończoną. Możemy dodawać zadania oraz zmieniać ich status.
+
+.. figure:: img/listatodo4.png
 
 POĆWICZ SAM
 ---------------------------------------

@@ -70,12 +70,7 @@ JAK TO DZIAŁA
 
 **Pojęcia**: *import, moduł, zbiór, przechwytywanie wyjątków, formatowanie napisów i danych na wyjściu*.
 
-Klauza from moduł import funkcja umożliwia wykorzystanie w programie funkcji
-zdefiniowanych w innych modułach i zapisanych w osobnych plikach. Dzięki temu
-utrzymujemy przejrzystość programu głównego, a jednocześnie możemy funkcje
-z modułów wykorzystywać, importując je w innych programach. Nazwa modułu
-to nazwa pliku z kodem pozbawiona jednak rozszerzenia *.py*. Moduł musi
-być dostępny w ścieżce przeszukiwania [5]_, aby można go było poprawnie dołączyć.
+Klauza ``from moduł import funkcja`` umożliwia wykorzystanie w programie funkcji zdefiniowanych w innych modułach i zapisanych w osobnych plikach. Dzięki temu utrzymujemy przejrzystość programu głównego, a jednocześnie możemy funkcje z modułów wykorzystywać, importując je w innych programach. Nazwa modułu to nazwa pliku z kodem pozbawiona jednak rozszerzenia *.py*. Moduł musi być dostępny w ścieżce przeszukiwania [5]_, aby można go było poprawnie dołączyć.
 
 .. [5] W przypadku prostych programów zapisuj moduły w tym samym katalogu co program główny.
 
@@ -160,7 +155,7 @@ moduł.funkcja, np.: ``math.sqrt()`` – zwraca pierwiastek kwadratowy.
 
 Funkcja ``drukuj(co, kom="...")`` przyjmuje dwa argumenty, *co* – listę
 lub zbiór, który drukujemy w pętli for, oraz *kom* – komunikat,
-który wyświetlamy przed wydrukiem. Argument kom jest opcjonalny,
+który wyświetlamy przed wydrukiem. Argument *kom* jest opcjonalny,
 przypisano mu bowiem wartość domyślną, która zostanie użyta,
 jeżeli użytkownik nie poda innej w wywołaniu funkcji.
 

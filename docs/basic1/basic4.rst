@@ -4,9 +4,9 @@ Listy, tuple i funkcje
 ZADANIE
 ------------
 
-    Pobierz od użytkownika n liczb i zapisz je w liście. Wydrukuj: elementy listy i ich indeksy, elementy w odwrotnej kolejności, posortowane elementy. Usuń z listy pierwsze wystąpienie elementu podanego przez użytkownika. Usuń z listy element o podanym indeksie. Podaj ilość wystąpień oraz indeks pierwszego wystąpienia podanego elementu. Wybierz z listy elementy od indeksu i do j.
+    Pobierz od użytkownika *n* liczb i zapisz je w liście. Wydrukuj: elementy listy i ich indeksy, elementy w odwrotnej kolejności, posortowane elementy. Usuń z listy pierwsze wystąpienie elementu podanego przez użytkownika. Usuń z listy element o podanym indeksie. Podaj ilość wystąpień oraz indeks pierwszego wystąpienia podanego elementu. Wybierz z listy elementy od indeksu *i* do *j*.
 
-Wszystkie poniższe przykłady proponujemy wykonać w konsoli Pythona. Nie umieszczaj w konsoli komentarzy, możesz też pominąć lub skrócić komunikaty funkcji print. Można również wpisać poniższy kod do pliku i go uruchomić.
+Wszystkie poniższe przykłady proponujemy wykonać w konsoli Pythona. Nie umieszczaj w konsoli komentarzy, możesz też pominąć lub skrócić komunikaty funkcji ``print``. Można również wpisać poniższy kod do pliku i go uruchomić.
 
 .. raw:: html
 
@@ -93,14 +93,14 @@ wydobyć, np. ``lista[1:4]``.
 POĆWICZ SAM
 -----------
 
-    Utwórz w konsoli Pythona dowolną listę i przećwicz notację slice. Sprawdź działanie indeksów pustych
+    Utwórz w konsoli Pythona dowolną listę i przećwicz notację *slice*. Sprawdź działanie indeksów pustych
     i ujemnych, np. ``lista[2:], lista[:4], lista[-2], lista[-2:]``.
     Posortuj dowolną listę malejąco. Wskazówka: wykorzystaj metodę ``.sort(reverse=True)``.
 
 ZADANIE
 ------------
 
-    Wypisz ciąg Fibonacciego aż do n-ego wyrazu podanego przez użytkownika.
+    Wypisz ciąg Fibonacciego aż do *n*-ego wyrazu podanego przez użytkownika.
     Ciąg Fibonacciego to ciąg liczb naturalnych, którego każdy wyraz poza dwoma
     pierwszymi jest sumą dwóch wyrazów poprzednich. Początkowe wyrazy tego ciągu to: 0 1 1 2 3 5 8 13 21
 
@@ -140,7 +140,7 @@ pamiętając o wcięciach, ciało funkcji. Funkcja może, ale nie musi zwracać 
 Jeżeli chcemy zwrócić jakąś wartość używamy polecenia return wartość.
 
 Zapis ``a, b = pwyrazy`` jest przykładem rozpakowania tupli, tzn. zmienne *a* i *b*
-przyjmują wartości kolejnych elementów tupli pwyrazy. Zapis równoważny, w którym nie
+przyjmują wartości kolejnych elementów tupli ``pwyrazy``. Zapis równoważny, w którym nie
 definiujemy tupli tylko wprost podajemy wartości, to ``a, b = 0, 1``; ten sposób
 przypisania wielokrotnego stosujemy w kodzie ``a, b = b, b+a``. Jak widać, ilość
 zmiennych z lewej strony musi odpowiadać liczbie wartości rozpakowywanych z tupli
@@ -149,4 +149,4 @@ lub liczbie wartości podawanych wprost z prawej strony.
 POĆWICZ SAM
 -----------
 
-    Zmień funkcję ``fibonnacci()`` tak, aby zwracała wartość n-tego wyrazu. Wydrukuj tylko tę wartość w programie.
+    Zmień funkcję ``fibonnacci()`` tak, aby zwracała wartość *n*-tego wyrazu. Wydrukuj tylko tę wartość w programie.

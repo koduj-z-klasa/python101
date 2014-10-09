@@ -6,7 +6,7 @@ Realizacja aplikacji internetowej Quiz w oparciu o mikro-framework Flask.
 Struktura katalogów
 -------------------
 
-Zaczynamy od utworzenia katalogu projektu Quiz, w którym zamieścimy wszystkie pliki niezbędne do realizacji tej implementacji. W katalogu użytkownika tworzymy nowy katalog :file:`quiz`, a w nim plik :file:`quiz.py`:
+W katalogu użytkownika tworzymy nowy katalog dla aplikacji :file:`quiz`, a w nim plik główny :file:`quiz.py`:
 
 .. raw:: html
 
@@ -90,8 +90,7 @@ W pliku :file:`todo.py` umieścimy funkcję ``index()``, widok naszej strony gł
         app.run(debug=True)
         
 
-Zauważmy, że widok ``index()`` za pomocą dekoratora ``@app.route('/')`` związaliśmy z adresem głównym (/). Dalej w katalogu quiz tworzymy
-podkatalog templates, a w nim szablon :file:`index.html`, wydajemy polecenia w terminalu:
+Zauważmy, że widok ``index()`` za pomocą dekoratora ``@app.route('/')`` związaliśmy z adresem głównym (/). Dalej w katalogu :file:`quiz` tworzymy podkatalog :file:`templates`, a w nim szablon :file:`index.html`, wydajemy polecenia w terminalu:
 
 .. raw:: html
 

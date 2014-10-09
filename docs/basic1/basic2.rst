@@ -3,7 +3,7 @@ Witaj Python!
 
 ZADANIE
 ------------
-Pobierz od użytkownika imię, wiek i powitaj go komunikatem::
+    Pobierz od użytkownika imię, wiek i powitaj go komunikatem:
     "Mów mi Python, mam x lat.
     Witaj w moim świecie imie.
     Jesteś starszy(młodszy) ode mnie."
@@ -69,4 +69,4 @@ Komentarze wprowadzamy po znaku ``#``.
 POĆWICZ SAM
 -----------
 
-    Zmień program tak, aby zmienna curYear (aktualny rok) była podawana przez użytkownika na początku programu.
+    Zmień program tak, aby zmienna *curYear* (aktualny rok) była podawana przez użytkownika na początku programu.

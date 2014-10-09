@@ -20,14 +20,16 @@ Tworzymy nowy projekt Django, a następnie uruchamiamy lokalny serwer, który po
     ~ $ cd chatter
     ~/chatter $ python manage.py runserver 127.0.0.1:8080
 
-Powstanie katalog projektu chatter i aplikacja o nazwie chatter. Pod adresem *127.0.0.1:8080* w przeglądarce zobaczymy stronę powitalną.
+Powstanie katalog projektu :file:`chatter` i aplikacja o nazwie :file:`chatter`. Pod adresem *127.0.0.1:8080* w przeglądarce zobaczymy stronę powitalną.
+
+.. figure:: img/chatter1.png
 
 .. note::
 
     Jeden projekt może zawierać wiele aplikacji zapisywanych w osobnych podkatalogach katalogu projektu.
     Lokalny serwer deweloperski można zatrzymać za pomocą skrótu Ctrl+C.
 
-Teraz zmodyfikujemy ustawienia projektu, aby korzystał z polskiej wersji językowej oraz lokalnych ustawień daty i czasu. Musimy również zarejestrować naszą aplikację w projekcie. W pliku setting.py zmieniamy następujące linie:
+Teraz zmodyfikujemy ustawienia projektu, aby korzystał z polskiej wersji językowej oraz lokalnych ustawień daty i czasu. Musimy również zarejestrować naszą aplikację w projekcie. W pliku :file:`setting.py` zmieniamy następujące linie:
 
 .. raw:: html
 
@@ -58,9 +60,9 @@ Model – Widok – Kontroler
 
 W projektowaniu aplikacji internetowych za pomocą Django odwołujemy się do wzorca M(odel)V(iew)C(ontroller), czyli Model–Widok–Kontroler [#]_, co pozwala na oddzielenie danych od ich prezentacji oraz logiki aplikacji. Funkcje kolejnych elementów są następujące:
 
-:term:`Modele` – w Django reprezentują źródło informacji, są to klasy Pythona, które zawierają pola, właściwości i zachowania danych, odwzorowują pojedyncze tabele w bazie danych [#]_. Definiowane są w pliku :file:`models.py`.
-:term:`Widoki` – w Django są to funkcje Pythona, które na podstawie żądań www (dla danych adresów URL) zwracają odpowiedź w postaci kodu HTML generowanego w szablonach (templates), przekierowania, dokumentu XML czy obrazka. Definiowane są w pliku :file:`views.py`.
-:term:`Kontroler` – to mechanizm kierujący kolejne żądania do odpowiednich widoków na podstawie konfiguracji adresów URL zawartej w pliku :file:`urls.py`.
+* :term:`Modele` – w Django reprezentują źródło informacji, są to klasy Pythona, które zawierają pola, właściwości i zachowania danych, odwzorowują pojedyncze tabele w bazie danych [#]_. Definiowane są w pliku :file:`models.py`.
+* :term:`Widoki` – w Django są to funkcje Pythona, które na podstawie żądań www (dla danych adresów URL) zwracają odpowiedź w postaci kodu HTML generowanego w szablonach (templates), przekierowania, dokumentu XML czy obrazka. Definiowane są w pliku :file:`views.py`.
+* :term:`Kontroler` – to mechanizm kierujący kolejne żądania do odpowiednich widoków na podstawie konfiguracji adresów URL zawartej w pliku :file:`urls.py`.
 
 .. [#] Twórcy Django traktują jednak ten wzorzec elastycznie, mówiąc że ich framework wykorzystuje wzorzec MTV, czyli model (model), szablon (template), widok (view).
 .. [#] Takie odwzorowanie nosi nazwę mapowania obiektowo-relacyjnego (ORM). ORM odwzorowuje strukturę bazy na obiekty Pythona.
@@ -68,7 +70,7 @@ W projektowaniu aplikacji internetowych za pomocą Django odwołujemy się do wz
 Model danych i baza
 ---------------------------------------
 
-Model, jak zostało powiedziane, jest klasą Pythona opisującą dane naszej aplikacji, czyli wiadomości. Instancje tej klasy będą konkretnymi wiadomościami napisanymi przez użytkowników systemu. Każda wiadomość  będzie zwierała treść, datę dodania oraz autora wiadomości (użytkownika).
+:term:`Model`, jak zostało powiedziane, jest klasą Pythona opisującą dane naszej aplikacji, czyli wiadomości. Instancje tej klasy będą konkretnymi wiadomościami napisanymi przez użytkowników systemu. Każda wiadomość  będzie zwierała treść, datę dodania oraz autora wiadomości (użytkownika).
 
 W katalogu :file:`chatter/chatter` w pliku :file:`models.py` wpisujemy:
 
@@ -106,6 +108,10 @@ Django pozwala szybko utworzyć panel administratora dla naszego projektu. Rejes
 Po ewentualnym ponownum uruchomieniu serwera wchodzimy na adres *127.0.0.1:8080/admin/*. Otrzymamy dostęp do panelu administracyjnego, w którym możemy dodawać nowych użytkowników i wiadomości [#]_.
 
 .. [#] Bezpieczna aplikacja powinna dysponować osobnym mechanizmem rejestracji użytkowników i dodawania wiadomości, tak by nie trzeba było udostępniać panelu administracyjnego osobom postronnym.
+
+.. figure:: img/admin1.png
+
+.. figure:: img/admin2.png
 
 Strona główna – widoki i szablony
 ---------------------------------------
@@ -158,6 +164,8 @@ Tworzymy szablon, plik :file:`chatter/chatter/templates/chatter/index.html`, kt�
     :linenos:
 
 Po wpisaniu adresu *127.0.0.1:8080/* zobaczymy tekst, który zwróciliśmy z widoku, czyli "Witaj w systemie Chatter".
+
+.. figure:: img/chatter2.png
 
 Logowanie użytkowników
 ---------------------------------------
@@ -214,6 +222,8 @@ Zwróćmy uwagę, jak umieszczamy linki w szablonach. Mianowicie kod ``{% url 'l
 
 JAK TO DZIAŁA:  Po przejściu pod adres *127.0.0.1:8080/login/*, powiązany z widokiem ``my_login()``, przeglądarka wysyła żądanie GET do serwera. Widok ``my_login()`` przygotowuje formularz autoryzacji (AuthenticationForm), przekazuje go do szablonu :file:`login.html` i zwraca do klienta. Efekt jest taki:
 
+.. figure:: img/loginfrm.png
+
 Po wypełnieniu formularza danymi i kliknięciu przycisku "Zaloguj", do serwera zostanie wysłane żądanie typu POST. W widoku ``my_login()`` obsługujemy taki przypadek za pomocą instrukcji ``if``. Sprawdzamy poprawność przesłanych danych (walidacja), logujemy użytkownika w systemie i zwracamy przekierowanie na stronę główną, która wyświetla nazwę zalogowanego użytkownika. Jeżeli dane nie są poprawne, zwracana jest informacja o błędach. Przetestuj!
 
 Dodawanie i wyświetlanie wiadomości
@@ -266,7 +276,7 @@ Chcemy, by zalogowani użytkownicy mogli przeglądać wiadomości od innych uży
         # renderujemy templatke wiadomosci
         return render(request, 'chatter/messages.html', context)
 
-Teraz tworzymy nową templatkę messages.html w katalogu :file:`templates/chatter/`.
+Teraz tworzymy nowy szablon :file:`messages.html` w katalogu :file:`templates/chatter/`.
 
 .. raw:: html
 
@@ -275,7 +285,7 @@ Teraz tworzymy nową templatkę messages.html w katalogu :file:`templates/chatte
 .. literalinclude:: messages_z1.html
     :linenos:
 
-Uzupełniamy szablon widoku głównego, aby zalogowanym użytkownikom wyświetlał się link prowadzący do strony z wiadomościami. W pliku index.html po klauzuli ``{% else %}``, poniżej znacznika ``<h1>`` wstawiamy:
+Uzupełniamy szablon widoku głównego, aby zalogowanym użytkownikom wyświetlał się link prowadzący do strony z wiadomościami. W pliku :file:`index.html` po klauzuli ``{% else %}``, poniżej znacznika ``<h1>`` wstawiamy:
 
 .. raw:: html
 
@@ -299,7 +309,9 @@ Jeżeli uruchomimy serwer deweloperski, zalogujemy się do aplikacji i odwiedzim
 
 .. [#] Jeżeli w panelu administracyjnym nie dodałeś żadnej wiadomości, lista będzie pusta.
 
-JAK TO DZIAŁA: W widoku ``messages()``, podobnie jak w widoku ``login()``, mamy dwie ścieżki postępowania, w zależności od użytej metody HTTP. GET pobiera wszystkie wiadomości (``messages = Message.objects.all()``), przekazuje je do szablonu i renderuje. Django konstruuje odpowiednie zapytanie i mapuje dane z bazy na obiekty klasy Message (mapowanie obiektowo-relacyjne (ORM)).
+.. figure:: img/messages.png
+
+JAK TO DZIAŁA: W widoku ``messages()``, podobnie jak w widoku ``login()``, mamy dwie ścieżki postępowania, w zależności od użytej metody HTTP. GET pobiera wszystkie wiadomości (``messages = Message.objects.all()``), przekazuje je do szablonu i renderuje. Django konstruuje odpowiednie zapytanie i mapuje dane z bazy na obiekty klasy ``Message`` (mapowanie obiektowo-relacyjne (ORM)).
 
 POST zawiera z kolei treść nowej wiadomości, której długość sprawdzamy i jeżeli wszystko jest w porządku, tworzymy nową wiadomość (instancję klasy *Message*, czyli obiekt ``msg``) i zapisujemy ją w bazie danych (wywołujemy metodę obiektu: ``msg.save()``).
 
@@ -377,6 +389,8 @@ Na koniec uzupełniamy plik :file:`urls.py`:
 
 JAK TO DZIAŁA: Zasada działania jest taka sama jak w przypadku pozostałych widoków. Po wpisaniu adresu *127.0.0.1:8080/register/* otrzymujemy formularz rejestracji nowego użytkownika, który podobnie jak formularz logowania, jest wbudowany w Django, więc wystarczy przekazać go do szablonu. Po wypełnieniu i zatwierdzeniu formularza wysyłamy żądanie POST, widok ``my_register()`` odbiera przekazane dane (nazwę użytkownika, hasło i powtórzone hasło), sprawdza ich poprawność (poprawność i unikalność nazwy użytkownika oraz hasło) oraz tworzy i zapisuje nowego użytkownika. Po rejestracji użytkownik przekierowywany jest na stronę główną.
 
+.. figure:: img/register.png
+
 Wylogowywanie użytkowników
 ---------------------------------------
 
@@ -398,6 +412,8 @@ POĆWICZ SAM
 ---------------------------------------
     Powiąż widok ``my_logut`` z adresem *logout/* dopisując regułę w odpowiednim pliku. Powiązanie nazwij "logout".
     Wylogowywanie nie wymaga osobnego szablonu, dodaj jednak link wylogowujący do 1) szablonu :file:`index.html` po linku "Zobacz wiadomości" oraz do 2) szablonu :file:`messages.html` po nagłówku ``<h1>``.
+
+.. figure:: img/chatter3.png
 
 Pojęcia
 ^^^^^^^^^^^^^^^^^^^

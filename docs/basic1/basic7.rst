@@ -4,9 +4,9 @@ Znam Pythona
 ZADANIE
 -------
 
-    Przeanalizuj podane kody dwóch programów i spróbuj sam zrozumieć, jak działają i wprowadź sugerowane zmiany.
-
-Pierwszy program na podstawie danych pobranych od użytkownika sprawdza m. in., czy da się zbudować trójkąt.
+    Napisz program, który na podstawie danych pobranych od użytkownika, czyli długości boków, sprawdza, czy da się zbudować trójkąt
+    i czy jest to trójkąt prostokątny. Jeżeli da się zbudować trójkąt, należy wydrukować jego obwód i pole, w przeciwnym wypadku
+    komunikat, że nie da się utworzyć trójkąta.
 
 .. raw:: html
 
@@ -35,7 +35,7 @@ Pierwszy program na podstawie danych pobranych od użytkownika sprawdza m. in., 
         P = math.sqrt(p*(p-a)*(p-b)*(p-c)) #pole ze wzoru Herona
         print "Pole wynosi:", P
     else:
-        print "Z podanych odcinków nie można utworzyć trójkąta prostokątnego."
+        print "Z podanych odcinków nie można utworzyć trójkąta."
 
 
 POĆWICZ SAM
@@ -43,7 +43,9 @@ POĆWICZ SAM
 
     Zmień program tak, aby użytkownik w przypadku podania boków, z których trójkąta zbudować się nie da, mógł spróbować kolejny raz.
 
-Drugi program jest przykładem implementacji szyfru Cezara.
+ZADANIE
+-----------
+    Napisz program, który podany przez użytkownika ciąg znaków szyfruje przy użyciu szyfru Cezara i wyświetla zaszyfrowany tekst.
 
 .. raw:: html
 
