@@ -9,7 +9,14 @@ Pełna dokumentacja szkolenia znajduje się tutaj:
 
 [bit.ly/kzk-py](http://bit.ly/kzk-py)
 
-Wszystkie kody źródłowe można pobrać jako archiwum ZIP bezpośrednio z tego repozytorium 
+Kody źrółowe jako archiwum ZIP
+------------------------------
+
+Gorąco zalecamy do klonowania tego repozytorium lokanie:
+
+    $ git clone git@github.com:koduj-z-klasa/python101.git
+
+Wszystkie kody źródłowe można też pobrać jako archiwum ZIP bezpośrednio z tego repozytorium 
 bez wykorzystania narzędzia GIT, jednak stracimy wtedy możliwość wykonywania
 skoków pomiędzy etapami które zostały wskazane w materiałach szkoleniowych.
 
