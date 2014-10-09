@@ -8,7 +8,7 @@ Pobieranie materiałów
 ---------------------
 
 Materiały szkoleniowe zostały umieszczone w repozytorium GIT w serwisie GitHub
-dzięki temu każdy może w łatwy sposób pobrać, zmieniać a także zsynchronizować
+dzięki temu każdy może w łatwy sposób pobrać, zmieniać, a także zsynchronizować
 swoją lokalną kopię.
 
 W katalogu domowym użytkownika uruchamiamy komendę:
@@ -43,7 +43,7 @@ By wspierać uczenie się na błędach i zwracanie uwagi na niuanse składni
 języka programowania, warto by część przykładów uczestnicy próbowali odtworzyć
 samodzielnie.
 
-Jednak dla w przypadku większego tempa i w przypadku jasnych przykładów
+Jednak dla większego tempa i w przypadku jasnych przykładów
 warto je zwyczajnie kopiować, omawiać ich działanie i ewentualnie modyfikować
 w ramach eksperymentów.
 
@@ -70,7 +70,7 @@ Przykładowo kod poniżej powinien zostać wklejony w linii ``51`` omawianego pl
             self.fps_clock.tick(30)
 
 
-Podczas przepisywania kodu, można pominąć kawałki dokumentujące kod,
+Podczas przepisywania kodu można pominąć kawałki dokumentujące kod,
 to znaczy tzw. *komentarze*. Komentarzem są teksty zaczynające się od
 znaku ``#`` oraz teksty zamknięte pomiędzy potrójnymi cudzysłowami ``"""``.
 
@@ -82,13 +82,12 @@ Synchronizacja kodu pomiędzy etapami przykładów
 
     Poniższe instrukcje nie są wymagane w ramach przygotowania, ale warto
     się z nimi zapoznać w przypadku gdybyśmy chcieli skorzystać z możliwości
-    pozbycia się lokalnych zmian wprowadzonych podczas ćwiczeń i przewrócenia
-    stany do punktu wyjścia.
+    pozbycia się lokalnych zmian wprowadzonych podczas ćwiczeń i przywrócenia
+    stanu do punktu wyjścia.
 
-Materiały zostały podzielone w repozytorium na części które w kolejnych krokach
-są rozbudowywane. Dzięki temu
-na początku szkolenia mamy niewielki zbiór plików, natomiast w kolejnych krokach
-szkolenia możemy aktualizować wersję roboczą o nowe treści.
+Materiały zostały podzielone w repozytorium na części, które w kolejnych krokach
+są rozbudowywane. Dzięki temu na początku szkolenia mamy niewielki zbiór plików,
+natomiast w kolejnych krokach szkolenia możemy aktualizować wersję roboczą o nowe treści.
 
 Uczestnicy mogą spokojnie edytować i zmieniać materiały bez obaw
 o późniejsze różnice względem reszty grupy.
@@ -100,14 +99,14 @@ Zmiany możemy szybko wyczyścić i powrócić do stanu z początku ćwiczenia:
     $ git reset --hard
 
 Możemy także skakać pomiędzy punktami kontrolnymi np. skoczyć do następnego
-Lub skoczyć do następnego punktu kontrolnego i zsynchronizować kody źródłowe grupy
+lub skoczyć do następnego punktu kontrolnego i zsynchronizować kody źródłowe grupy
 bez zachowania zmian poszczególnych uczestników:
 
 .. code-block:: bash
 
     $ git checkout -f pong/z1
 
-Jeśli uczestnicy chą wcześniej zachować swoje modyfikacje mogą je zapisać
+Jeśli uczestnicy chą wcześniej zachować swoje modyfikacje, mogą je zapisać
 w swoim lokalnym repozytorium (wykonują tzw. commit).
 
 
