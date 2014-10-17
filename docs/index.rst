@@ -53,15 +53,15 @@ Zaczynamy!
     :numbered:
 
     basic/basic
-    basic1/basic1
-    basic1/basic2
-    basic1/basic3
-    basic1/basic4
-    basic1/basic5
-    basic1/basic6
-    basic1/basic7
-    basic1/basic8
-    basic1/basic9
+    basic/basic1
+    basic/basic2
+    basic/basic3
+    basic/basic4
+    basic/basic5
+    basic/basic6
+    basic/basic7
+    basic/basic8
+    basic/basic9
     pong/index
     life/index
     tictactoe/index
