@@ -71,5 +71,3 @@ POĆWICZ SAM
 
     Zmień program tak, aby zmienna *curYear* (aktualny rok) była podawana przez użytkownika na początku programu.
 
-**Pliki**
-#. :download:`01_hello.zip <../basic/01_hello.zip>`

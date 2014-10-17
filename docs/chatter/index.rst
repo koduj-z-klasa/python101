@@ -474,6 +474,11 @@ Materiały
 3. Co to jest framework? http://pl.wikipedia.org/wiki/Framework
 4. Co nieco o HTTP i żądaniach GET i POST http://pl.wikipedia.org/wiki/Http
 
+Źródła
+^^^^^^^^^^^^^
+
+* :download:`chatter_all.zip <chatter_all.zip>`
+
 Metryka
 ^^^^^^^
 

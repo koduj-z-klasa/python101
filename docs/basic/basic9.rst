@@ -24,6 +24,11 @@ Materiały pomocnicze
 8. http://www.codecademy.com
 9. https://www.coursera.org
 
+Źródło
+--------------------
+
+* :download:`basic_all.zip <basic_all.zip>`
+
 Metryka
 ^^^^^^^
 

@@ -260,6 +260,11 @@ Pojęcia
     Widok
         fragment danych, który jest reprezentowany użytkownikowi.
 
+Źródła
+^^^^^^^^^^^^^
+
+* :download:`quiz_all.zip <quiz_all.zip>`
+
 Metryka
 ^^^^^^^
 
