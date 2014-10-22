@@ -28,6 +28,53 @@ Dodatkowe materiały
 1. [Folder z materiałami Roberta Bednarza](https://www.dropbox.com/sh/mvvz59by7buh2oz/AAAFC-rYZHAOmjQmDCThi72Na?dl=0)
 2. [Podstawy Python'a Doroty Rybickiej](https://drive.google.com/file/d/0B1hYVXsrSXCKY0hwZ3FHcHAwdDhpVDI2MmVIcVgybFV2UWZ3/view?usp=sharing)
 
+Linki do zapamiętania dla uczestników
+-------------------------------------
+
+Polecamy do zajrzenia na poniższe strony jeśli będziecie szukać informacji po szkoleniu.
+
+- GitHub: Bezpłatne publiczne repozytoria kodu źródłowego  
+  https://github.com/
+
+- BitBucket: Bezpłatne prywatne repozytoria kodu źródłowego dla małych zespołów  
+  https://bitbucket.org/
+
+- SourceTree: Okienkowa aplikacja dla GIT pod Windows  
+  http://www.sourcetreeapp.com/
+
+- PyCharm: Środowisko IDE dla Pythona bezpłatne na nauczycieli i uczniów  
+  https://www.jetbrains.com/student/
+
+- Python101: Nasze repozytorium materiałów szkoleniowych  
+  https://github.com/koduj-z-klasa/python101
+
+- Strona główna programu KZK dla Python  
+  http://www.ceo.org.pl/pl/kodujzklasa/python
+
+- Forum KZK  
+  http://forum.kodujzklasa.pl/
+
+- Proste przykłady OEIiZK dla pythona  
+  http://python.oeiizk.edu.pl/
+
+- Darmowy soft i usługi dla uczniów (w tym 100$ na serwer w internecie, hosting na ~1,5 roku)  
+  https://education.github.com/pack
+
+- Dokumentacja Python'a i bibliotek standardowych  
+  https://docs.python.org/2.7/
+
+- PyPi: Python Package Index, miejsce w którym można poszukać biliotek instalowanych przy pomocy narzędzia PIP  
+  https://pypi.python.org/pypi
+
+- Django: Framework do robienia aplikacji WWW z bateryjkami i dużym ekosystemem dodatków  
+  https://docs.djangoproject.com/en/1.7/ - polecam zrobienie tutoriala 
+
+- Flask: Elastyczny Frameworkdo budowy aplikacji WWW. Pomimo tego że jest na początek jest prosty, to zbudowanie większych aplikacji wymaga doświadczeń.  
+  http://flask.pocoo.org/
+
+- PyGame: Framework do tworzenia gier  
+  http://www.pygame.org/news.html
+
 
 Modyfikacje i budowa dokumentacji offline
 -----------------------------------------
