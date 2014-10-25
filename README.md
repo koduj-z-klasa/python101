@@ -7,14 +7,14 @@ prowadzonego przez Fundację [Centrum Edukacji Obywatelskiej][2].
 
 Pełna dokumentacja szkolenia znajduje się tutaj:
 
-[bit.ly/kzk-py](http://bit.ly/kzk-py)
+http://koduj-z-klasa.github.io
 
 Pobieranie tego repozytorium
 ----------------------------
 
 Gorąco zalecamy do klonowania tego repozytorium lokanie:
 
-    $ git clone git@github.com:koduj-z-klasa/python101.git
+    $ git clone https://github.com/koduj-z-klasa/python101/
 
 Wszystkie kody źródłowe można też pobrać jako archiwum ZIP bezpośrednio z tego repozytorium 
 bez wykorzystania narzędzia GIT, jednak stracimy wtedy możliwość wykonywania
