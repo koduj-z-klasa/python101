@@ -7,7 +7,7 @@ prowadzonego przez Fundację [Centrum Edukacji Obywatelskiej][2].
 
 Pełna dokumentacja szkolenia znajduje się tutaj:
 
-http://koduj-z-klasa.github.io
+http://koduj-z-klasa.github.io/python101/
 
 Pobieranie tego repozytorium
 ----------------------------
