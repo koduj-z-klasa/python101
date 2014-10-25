@@ -189,7 +189,12 @@ Polski słownik ortograficzny
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 W programie możemy włączyć sprawdzanie polskiej pisowni, jednak potrzebne
-jest wskazanie pliku słownika. W ustawieniach :kbd:`Ctrl+Alt+S` szukamy `spell` i dodajemy
-``custom dictionaries folder`` wskazując na ``/usr/share/hunspell/`` (lokalizacja w SRU).
+jest wskazanie pliku słownika. Pod linuksem możemy sobie wyprowadukować słownik dla PyCharm komendą:
+
+    aspell --lang pl dump master | aspell --lang pl expand | tr ' ' '\n' > polish.dic
+    sudo mv polish.dic ``/usr/share/dictionaries-common/``
+
+W ustawieniach :kbd:`Ctrl+Alt+S` szukamy `spell` i dodajemy
+``custom dictionaries folder`` wskazując na ``/usr/share/dictionaries-common/`` (lokalizacja w SRU).
 
 .. include:: copyright.rst
