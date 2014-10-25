@@ -4,8 +4,8 @@
 # ~/python/03_petle_01.py
 
 """ 
-	ZADANIE:
-	Wydrukuj alfabet w porządku naturalnym, a następnie odwróconym
+    ZADANIE:
+    Wydrukuj alfabet w porządku naturalnym, a następnie odwróconym
     w formacie: mała - duża litera.
 """
 print "Alfabet w porządku naturalnym:"

@@ -4,7 +4,7 @@
 # ~/python/05_oceny_03.py
 
 """
-	ZADANIE
+    ZADANIE
     Napisz program, który umożliwia wprowadzanie nazw przedmiotów oraz ocen
     z wybranego przedmiotu, następnie liczy i wyświetla średnią, medianę
     i odchylenie standardowe wprowadzonych ocen.
@@ -40,17 +40,17 @@ ocena = None # zmienna sterująca pętlą i do pobierania ocen
 print "\nAby przerwać wprowadzanie ocen, podaj 0 (zero)."
 
 while not ocena:
-	try:
-		ocena = int(raw_input("Podaj ocenę (1-6): "))
-		if (ocena > 0 and ocena < 7):
-			oceny.append(float(ocena))
-		elif ocena == 0:
-			break
-		else:
-			print "Błędna ocena."
-		ocena = None
-	except ValueError:
-		print "Błędne dane!"
+    try:
+        ocena = int(raw_input("Podaj ocenę (1-6): "))
+        if (ocena > 0 and ocena < 7):
+            oceny.append(float(ocena))
+        elif ocena == 0:
+            break
+        else:
+            print "Błędna ocena."
+        ocena = None
+    except ValueError:
+        print "Błędne dane!"
 
 drukuj(oceny,przedmiot.capitalize()+" - wprowadzone oceny: ")
 s = srednia(oceny) # wywołanie funkcji z modułu ocenyfun

@@ -4,9 +4,9 @@
 # ~/python/04_2_fibonacci.py
 
 """
-	ZADANIE
-	Wypisz ciąg Fibonacciego aż do n-ego wyrazu podanego przez użytkownika.
-	Ciąg Fibbonaciego to ciąg liczb naturalnych, którego każdy wyraz poza
+    ZADANIE
+    Wypisz ciąg Fibonacciego aż do n-ego wyrazu podanego przez użytkownika.
+    Ciąg Fibbonaciego to ciąg liczb naturalnych, którego każdy wyraz poza
     dwoma pierwszymi jest sumą dwóch wyrazów poprzednich.
     Początkowe wyrazy tego ciągu to:
     0 1 1 2 3 5 8 13 21

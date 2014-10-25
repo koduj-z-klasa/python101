@@ -4,9 +4,9 @@
 # ~/python/06_slownik_01.py
 
 """
-	ZADANIE
-	Przygotuj słownik zawierający obce wyrazy oraz ich możliwe znaczenia.
-	Pobierz od użytkownika dane w formacie: wyraz obcy: znaczenie1, znaczenie2, ... itd.
+    ZADANIE
+    Przygotuj słownik zawierający obce wyrazy oraz ich możliwe znaczenia.
+    Pobierz od użytkownika dane w formacie: wyraz obcy: znaczenie1, znaczenie2, ... itd.
     Pobieranie danych kończy wpisanie słowa "koniec".
 """
 

@@ -4,7 +4,7 @@
 # ~/python/05_oceny_01.py
 
 """
-	ZADANIE
+    ZADANIE
     Napisz program, który umożliwia wprowadzanie nazw przedmiotów.
 """
 def drukuj(co,kom="Sekwencja zawiera: "):
