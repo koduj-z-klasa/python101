@@ -46,7 +46,7 @@ class PongGame(object):
         # zegar którego użyjemy do kontrolowania szybkości rysowania
         # kolejnych klatek gry
         self.fps_clock = pygame.time.Clock()
-        self.ball = Ball(20, 20, width/2, height/2)
+        self.ball = Ball(width=20, height=20, x=width/2, y=height/2)
 
     def run(self):
         """
@@ -54,7 +54,7 @@ class PongGame(object):
         """
         while not self.handle_events():
             # działaj w pętli do momentu otrzymania sygnału do wyjścia
-            self.ball.move()
+            self.ball.move(self.board)
             self.board.draw(
                 self.ball,
             )
@@ -119,12 +119,18 @@ class Ball(Drawable):
         self.rect.move(self.start_x, self.start_y)
         self.bounce_y()
 
-    def move(self):
+    def move(self, board):
         """
         Przesuwa piłeczkę o wektor prędkości
         """
         self.rect.x += self.x_speed
         self.rect.y += self.y_speed
+
+        if self.rect.x < 0 or self.rect.x > board.surface.get_width():
+            self.bounce_x()
+
+        if self.rect.y < 0 or self.rect.y > board.surface.get_height():
+            self.bounce_y()
 
 
 # Ta część powinna być zawsze na końcu modułu (ten plik jest modułem)
