@@ -50,6 +50,7 @@ class PongGame(object):
         self.player1 = Racket(width=80, height=20, x=width/2 - 40, y=height - 40)
         self.player2 = Racket(width=80, height=20, x=width/2 - 40, y=20, color=(0, 0, 0))
         self.ai = Ai(self.player2, self.ball)
+        self.judge = Judge(self.board, self.ball, self.player2, self.ball)
 
     def run(self):
         """
@@ -62,6 +63,7 @@ class PongGame(object):
                 self.ball,
                 self.player1,
                 self.player2,
+                self.judge,
             )
             self.ai.move()
             self.fps_clock.tick(30)
@@ -179,6 +181,54 @@ class Ai(object):
     def move(self):
         x = self.ball.rect.centerx
         self.racket.move(x)
+
+
+class Judge(object):
+    """
+    Sędzia gry
+    """
+
+    def __init__(self, board, ball, *args):
+        self.ball = ball
+        self.board = board
+        self.rackets = args
+        self.score = [0, 0]
+
+        # Przed pisaniem tekstów, musimy zainicjować mechanizmy wyboru fontów PyGame
+        pygame.font.init()
+        font_path = pygame.font.match_font('arial')
+        self.font = pygame.font.Font(font_path, 64)
+
+    def update_score(self, board_height):
+        """
+        Jeśli trzeba przydziela punkty i ustawia piłeczkę w początkowym położeniu.
+        """
+        if self.ball.rect.y < 0:
+            self.score[0] += 1
+            self.ball.reset()
+        elif self.ball.rect.y > board_height:
+            self.score[1] += 1
+            self.ball.reset()
+
+    def draw_text(self, surface,  text, x, y):
+        """
+        Rysuje wskazany tekst we wskazanym miejscu
+        """
+        text = self.font.render(text, True, (150, 150, 150))
+        rect = text.get_rect()
+        rect.center = x, y
+        surface.blit(text, rect)
+
+    def draw_on(self, surface):
+        """
+        Aktualizuje i rysuje wyniki
+        """
+        height = self.board.surface.get_height()
+        self.update_score(height)
+
+        width = self.board.surface.get_width()
+        self.draw_text(surface, "Player: {}".format(self.score[0]), width/2, height * 0.3)
+        self.draw_text(surface, "Computer: {}".format(self.score[1]), width/2, height * 0.7)
 
 
 # Ta część powinna być zawsze na końcu modułu (ten plik jest modułem)
