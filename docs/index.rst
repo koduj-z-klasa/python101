@@ -62,6 +62,7 @@ Zaczynamy!
     basic/basic7
     basic/basic8
     basic/basic9
+    pong_str/index
     pong/index
     life/index
     tictactoe/index

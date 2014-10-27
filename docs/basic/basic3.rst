@@ -10,34 +10,8 @@ ZADANIE
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code-block:: python
+.. literalinclude:: 02_if.py
     :linenos:
-
-    #! /usr/bin/env python
-    # -*- coding: UTF-8 -*-
-
-    # ~/python/02_if.py
-
-    op = "t"
-    while op == "t":
-        a, b, c = raw_input("Podaj trzy liczby oddzielone spacjami: ").split(" ")
-        
-        print "Wprowadzono liczby:", a, b, c,
-        print "\nNajmniejsza: ",
-
-        if a < b:
-            if a < c:
-                print a
-            else
-                print c
-        elif b < c:
-            print b
-        else:
-            print c
-            
-        op = raw_input("Jeszcze raz (t/n)? ")
-
-    print "Nie, to nie :-("
 
 JAK TO DZIAŁA
 -------------
@@ -75,34 +49,8 @@ ZADANIE
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code-block :: python
+.. literalinclude:: 03_petle_02.py
     :linenos:
-
-    #! /usr/bin/env python
-    # -*- coding: UTF-8 -*-
-
-    # ~/python/03_petle.py
-
-    print "Alfabet w porządku naturalnym:"
-    x = 0
-    for i in range(65,91):
-        litera = chr(i)
-        tmp = litera + " => " + litera.lower()
-        x += 1
-        if i > 65 and x % 5 == 0: # warunek złożony
-            x = 0
-            tmp += "\n"
-        print tmp,
-
-    x = -1
-    print "\nAlfabet w porządku odwróconym:"
-    for i in range(122,96,-1):
-        litera = chr(i)
-        x += 1
-        if x == 5:
-            x = 0
-            print "\n",
-        print litera.upper(), "=>", litera,
 
 JAK TO DZIAŁA
 -------------
@@ -127,6 +75,6 @@ Poniżej podano wybrane operatory dostępne w Pythonie.
 POĆWICZ SAM
 -----------
 
-    Uprość warunek w pierwszej pętli for drukującej alfabet w porządku naturalnym tak, aby nie używać operatora modulo.
+    Uprość warunek w pierwszej pętli ``for`` drukującej alfabet w porządku naturalnym tak, aby nie używać operatora modulo.
     Wydrukuj co n-tą grupę liter alfabetu, przy czym wartość *n* podaje użytkownik. Wskazówka: użyj opcjonalnego, trzeciego argumentu funkcji ``range()``.
     Sprawdź działanie różnych operatorów Pythona w konsoli.

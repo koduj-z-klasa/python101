@@ -1,9 +1,10 @@
-Gra w Ponga
+Gra w Ponga (obj)
 ===========
 
 .. highlight:: python
 
-Klasyczna gra w odbijanie piłeczki zrealizowana z użyciem biblioteki `PyGame`_.
+Klasyczna gra w odbijanie piłeczki zrealizowana z użyciem biblioteki `PyGame`_. Wersja obiektowa.
+Biblioteka PyGame ułatwia tworzenie aplikacji multimedialnych, w tym gier.
 
 .. _PyGame: http://www.pygame.org/wiki/tutorials
 

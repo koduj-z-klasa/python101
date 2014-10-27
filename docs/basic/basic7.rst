@@ -12,31 +12,29 @@ ZADANIE
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code-block:: python
+.. literalinclude:: 07_trojkat_01.py
     :linenos:
 
-    #! /usr/bin/env python
-    # -*- coding: UTF-8 -*-
+JAK TO DZIAŁA
+-------
 
-    # ~/python/07_1_trojkat.py
+Pętla ``while`` wykonuje się dopóki warunek jest prawdziwy, czyli zmienna kontrolna "op" różna jest od "n". Dzięki temu użytkownik może wielokrotnie wprowadzać wartości boków tworzące trójkąt.
+	
+Są dwie metody pobierania kilku wartości z wejścia (np. klawiatury) na raz. 
+Funkcja ``raw_input()`` zwraca wprowadzone dane zakończone nową linią jako napis.
+Funkcja ``input()`` wartości pobrane z wejścia (np. klawiatury) traktuje jak kod Pythona.
+Konstrukcja ``int(x) for x in raw_input().split()`` (przykład tzw. wyrażenia listowego) wywołuje funkcję ``int()``, która
+usiłuje przekształcić podaną wartość na liczbę całkowitą dla każdej
+wartości wyodrębnionej z ciągu wejściowego przez funkcję ``split()``. Separatorem
+kolejnych wartości są dla funkcji ``split()`` białe znaki (spacje, tabulatory).
+Funkcja ``input()`` pobiera wejście w postaci napisu, ale próbuje zinterpretować go
+jakby był częścią kodu w Pythonie. Dlatego dane oddzielone przecinkami w postaci
+np. "1, 2, 3" przypisywane są podanym zmiennym.
 
-    import math
-
-    #a, b, c = input("Podaj 3 boki trójkąta (oddzielone przecinkami): ")
-    # można też tak:
-    #a, b, c = [int(x) for x in raw_input("Podaj 3 boki trójkąta (oddzielone spacjami): ").split()]
-    if a+b > c and a+c > b and b+c > a:
-        print "Z podanych boków można zbudować trójkąt."
-        if ((a**2 + b**2) == c**2 or (a**2 + c**2) == b**2 or (b**2 + c**2) == a**2):
-            print "Do tego prostokątny!"
-        
-        print "Obwód wynosi:", (a+b+c)
-        p = 0.5 * (a + b + c) #współczynnik wzoru Herona
-        P = math.sqrt(p*(p-a)*(p-b)*(p-c)) #pole ze wzoru Herona
-        print "Pole wynosi:", P
-    else:
-        print "Z podanych odcinków nie można utworzyć trójkąta."
-
+Funkcje ``if`` sprawdzają warunki złożone oparte na koniunkcji (``and``) i alternatywie (``or``).
+Wyrażenie ``x**y`` oznacza podnoszenie podstawy ``x`` do potęgi ``y``.
+Funkcja ``sqrt()`` (pierwiastek kwadratowy) zawarta jest w module ``math``, który na początku
+programu trzeba zaimportować.
 
 POĆWICZ SAM
 -----------
@@ -51,30 +49,37 @@ ZADANIE
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code-block:: python
+.. literalinclude:: 07_szyfr_02.py
     :linenos:
 
-    #! /usr/bin/env python
-    # -*- coding: UTF-8 -*-
+JAK TO DZIAŁA
+-----------
 
-    # ~/python/07_2_szyfr_cezara.py
-
-    KLUCZ = 3
-
-    def szyfruj(txt):
-        stxt = ""
-        for i in range(len(txt)):
-            if ord(txt[i]) > 122 - KLUCZ:
-                stxt += chr(ord(txt[i]) + KLUCZ - 26)
-            else:
-                stxt += chr(ord(txt[i]) + KLUCZ)
-        return stxt;
-
-    utxt = raw_input("Podaj ciąg do zaszyfrowania:\n")
-    stxt = szyfruj(utxt)
-    print "Ciąg zaszyfrowany:\n", stxt
+W programie możemy wykorzystywać zmienne globalne, np. KLUCZ.
+``def nazwa_funkcji(argumenty)`` - tak definiujemy funkcje, które
+mogą lub nie zwracać jakieś wartości.
+``nazwa_funkcji(argumenty)`` - tak wywołujemy funkcje.
+Napisy mogą być indeksowane (od 0), co daje dostęp do pojedynczych znaków.
+Funkcja ``len(str)`` zwraca długość napisu, wykorzystana jako argument funkcji
+``range()`` pozwala iterować po znakach napisu.
+Operator ``+=`` oznacza dodanie argumentu z prawej strony do wartości z lewej.
 
 POĆWICZ SAM
 -----------
 
     Napisz funkcję deszyfrującą ``deszyfruj(txt)``. Dodaj do funkcji ``szyfruj(), deszyfruj()`` drugi parametr w postaci długości klucza podawanej przez użytkownika. Dodaj poprawne szyfrowanie dużych liter, obsługę białych znaków i znaków interpunkcyjnych.
+
+Przykład funkcji deszyfrującej:
+
+.. code-block:: python
+    :linenos:
+
+def deszyfruj(txt):
+    dtxt = ""
+    KLUCZM = KLUCZ % 26;
+    for i in range(len(txt)):
+        if (ord(txt[i]) - KLUCZM < 97):
+            dtxt += chr(ord(txt[i]) - KLUCZM + 26)
+        else:
+            dtxt += chr(ord(txt[i]) - KLUCZM)
+    return dtxt

@@ -12,33 +12,8 @@ ZADANIE
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code-block:: python
+.. literalinclude:: kody/01_hello.py
     :linenos:
-
-    #! /usr/bin/env python
-    # -*- coding: UTF-8 -*-
-
-    # ~/python/01_hello.py
-
-    # inicjalizujemy zmienne (wartości)
-    curYear = 2014
-    pythonYear = 1989
-    wiekPythona = curYear - pythonYear # ile lat ma Python
-
-    # pobieramy dane
-    imie = raw_input('Jak się nazywasz? ')
-    wiek = int(raw_input('Ile masz lat? '))
-
-    # wyprowadzamy dane
-    print "Witaj w moim świecie ",imie
-    print "Mów mi Python, mam", wiekPythona, "lat."
-
-    # instrukcja warunkowa
-    if wiek > wiekPythona:
-        print 'Jesteś starszy ode mnie.'
-    else:
-        print 'Jesteś młodszy ode mnie.'
-
 
 JAK TO DZIAŁA
 -------------

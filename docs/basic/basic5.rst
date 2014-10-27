@@ -10,60 +10,8 @@ ZADANIE
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code-block:: python
+.. literalinclude:: 05_oceny_03.py
     :linenos:
-
-    #! /usr/bin/env python
-    # -*- coding: UTF-8 -*-
-
-    # ~/python/05_oceny_03.py
-
-    # importujemy funkcje z modułu ocenyfun zapisanego w pliku ocenyfun.py
-    from ocenyfun import drukuj
-    from ocenyfun import srednia
-    from ocenyfun import mediana
-    from ocenyfun import odchylenie
-
-    przedmioty = set(['polski','angielski']) #definicja zbioru
-    drukuj(przedmioty, "Lista przedmiotów zawiera: ") #wywołanie funkcji z modułu ocenyfun
-
-    print "\nAby przerwać wprowadzanie przedmiotów, naciśnij Enter."
-    while True:
-        przedmiot = raw_input("Podaj nazwę przedmiotu: ")
-        if len(przedmiot):
-            if przedmiot in przedmioty: #czy przedmiot jest w zbiorze?
-                print "Ten przedmiot już mamy :-)"
-            przedmioty.add(przedmiot) #dodaj przedmiot do zbioru
-        else:
-            drukuj(przedmioty,"\nTwoje przedmioty: ")
-            przedmiot = raw_input("\nZ którego przedmiotu wprowadzisz oceny? ")
-            if przedmiot not in przedmioty: #jeżeli przedmiotu nie ma w zbiorze
-                print "Brak takiego przedmiotu, możesz go dodać."
-            else:
-                break # wyjście z pętli
-
-    oceny = [] # pusta lista ocen
-    ocena = None # zmienna sterująca pętlą i do pobierania ocen
-    print "\nAby przerwać wprowadzanie ocen, podaj 0 (zero)."
-
-    while not ocena:
-        try: #mechanizm obsługi błędów
-            ocena = int(raw_input("Podaj ocenę (1-6): "))
-            if (ocena > 0 and ocena < 7):
-                oceny.append(float(ocena))
-            elif ocena == 0:
-                break
-            else:
-                print "Błędna ocena."
-            ocena = None
-        except ValueError:
-            print "Błędne dane!"
-
-    drukuj(oceny,przedmiot.capitalize()+" - wprowadzone oceny: ")
-    s = srednia(oceny) # wywołanie funkcji z modułu ocenyfun
-    m = mediana(oceny) # wywołanie funkcji z modułu ocenyfun
-    o = odchylenie(oceny,s) # wywołanie funkcji z modułu ocenyfun
-    print "\nŚrednia: {0:5.2f}\nMediana: {1:5.2f}\nOdchylenie: {2:5.2f}".format(s,m,o)
 
 JAK TO DZIAŁA
 -------------
@@ -93,56 +41,8 @@ Funkcje wykorzystywane w programie umieszczamy w osobnym pliku.
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code-block:: python
+.. literalinclude:: ocenyfun.py
     :linenos:
-
-    #! /usr/bin/env python
-    # -*- coding: UTF-8 -*-
-
-    # ~/python/ocenyfun.py
-
-    """
-        Moduł ocenyfun zawiera funkcje wykorzystywane w programie m01_oceny.
-    """
-
-    import math # zaimportuj moduł matematyczny
-
-    def drukuj(co,kom="Sekwencja zawiera: "):
-        print kom
-        for i in co:
-            print i,
-
-    def srednia(oceny):
-        suma = sum(oceny)
-        return suma/float(len(oceny))
-
-    def mediana(oceny):
-        oceny.sort();
-        if len(oceny) % 2 == 0: #parzysta ilość ocen
-            half = len(oceny)/2
-            #można tak:
-            #return float(oceny[half-1]+oceny[half]) / 2.0
-            #albo tak:
-            return sum(oceny[half-1:half+1]) / 2.0
-        else: #nieparzysta ilość ocen
-            return oceny[len(oceny)/2]
-
-    def wariancja(oceny,srednia):
-        """
-        Wariancja to suma kwadratów różnicy każdej oceny i średniej podzielona przez ilość ocen:
-        sigma = (o1-s)+(o2-s)+...+(on-s) / n, gdzie:
-        o1, o2, ..., on - kolejne oceny,
-        s - średnia ocen,
-        n - liczba ocen.
-        """
-        sigma = 0.0
-        for ocena in oceny:
-            sigma += (ocena-srednia)**2
-        return sigma/len(oceny)
-
-    def odchylenie(oceny,srednia): #pierwiastek kwadratowy z wariancji
-        w = wariancja(oceny,srednia)
-        return math.sqrt(w)
 
 JAK TO DZIAŁA
 -------------

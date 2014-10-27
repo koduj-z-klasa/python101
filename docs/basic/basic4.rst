@@ -12,52 +12,8 @@ Wszystkie poniższe przykłady proponujemy wykonać w konsoli Pythona. Nie umies
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code-block :: python
+.. literalinclude:: 04_listy_01.py
     :linenos:
-
-    #! /usr/bin/env python
-    # -*- coding: UTF-8 -*-
-
-    # ~/python/04_1_listy.py
-
-    tupla = input("Podaj liczby oddzielone przecinkami: ")
-    lista = [] # deklaracja pustej listy
-    for i in range(len(tupla)):
-        lista.append(int(tupla[i]))
-
-    print "Elementy i ich indeksy:"
-    for i, v in enumerate(lista):
-        print v, "[",i,"]"
-
-    print "Elementy w odwróconym porządku:"
-    for e in reversed(lista):
-        print e,
-
-    print ""
-    print "Elementy posortowane rosnąco:"
-    for e in sorted(lista):
-        print e,
-
-    print ""
-    e = int(raw_input("Którą liczbę usunąć? "))
-    lista.remove(e)
-    print lista
-
-    a, i = input("Podaj element do dodania i indeks, przed którym ma się on znaleźć: ")
-    lista.insert(i, a)
-    print lista
-
-    e = int(raw_input("Podaj liczbę, której wystąpienia w liście chcesz zliczyć? "))
-    print lista.count(e)
-    print "Pierwszy indeks, pod którym zapisana jest podana liczba to: "
-    print lista.index(e)
-
-    print "Pobieramy ostatni element z listy: "
-    print lista.pop()
-    print lista
-
-    i, j = input("Podaj indeks początkowy i końcowy, aby uzyskać frgament listy: ")
-    print lista[i:j]
 
 JAK TO DZIAŁA
 -------------
@@ -108,25 +64,8 @@ ZADANIE
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code-block:: python
+.. literalinclude:: 04_funkcja_02.py
     :linenos:
-
-    #! /usr/bin/env python
-    # -*- coding: UTF-8 -*-
-
-    # ~/python/04_2_fibonacci.py
-
-    def fibonacci(n): #definicja funkcji
-        pwyrazy = (0, 1) #dwa pierwsze wyrazy ciągu zapisane w tupli
-        a, b = pwyrazy #przypisanie wielokrotne, rozpakowanie tupli
-        while a < n:
-            print b
-            a, b = b, a+b #przypisanie wielokrotne
-
-    n = int(raw_input("Podaj numer wyrazu: "))
-    fibonacci(n) #wywołanie funkcji
-    print "" #pusta linia
-    print "=" * 25 #na koniec szlaczek
 
 JAK TO DZIAŁA
 -------------
