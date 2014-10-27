@@ -7,14 +7,14 @@ prowadzonego przez Fundację [Centrum Edukacji Obywatelskiej][2].
 
 Pełna dokumentacja szkolenia znajduje się tutaj:
 
-[bit.ly/kzk-py](http://bit.ly/kzk-py)
+http://koduj-z-klasa.github.io/python101/
 
 Pobieranie tego repozytorium
 ----------------------------
 
 Gorąco zalecamy do klonowania tego repozytorium lokanie:
 
-    $ git clone git@github.com:koduj-z-klasa/python101.git
+    $ git clone https://github.com/koduj-z-klasa/python101/
 
 Wszystkie kody źródłowe można też pobrać jako archiwum ZIP bezpośrednio z tego repozytorium 
 bez wykorzystania narzędzia GIT, jednak stracimy wtedy możliwość wykonywania
@@ -80,17 +80,9 @@ Modyfikacje i budowa dokumentacji offline
 -----------------------------------------
 
 Materiały szkoleniowe są przygotowywane z pomocą oprogramowania [Sphinx w
-wersji 1.3][3]. Ponieważ wersja ta nie jest jeszcze opublikowana należy ją 
-zainstalować ze źródeł. W tym celu pobieramy archiwum:
+wersji 1.3][3]. W tym celu instalujemy wersję z kodów źródlowych.
 
-    wget -O sphinx-latest.zip https://bitbucket.org/birkenfeld/sphinx/get/default.zip 
-    unzip sphinx-latest.zip
-
-Po rozpakowaniu znajdziemy folder podobny do tego `birkenfeld-sphinx-10d9deb02fd5`,
-w nim wykonujemy polecenie instalacji Sphinx'a w naszym środowisku Python.
-
-    $ sudo python setup.py install
-    $ sudo pip install sphinx_rtd_theme
+    $ sudo pip install sphinx_rtd_theme hg+https://bitbucket.org/birkenfeld/sphinx#sphinx
         
 Po instalacji możemy w folderze dokumentacji możemy uruchomić make:
   
