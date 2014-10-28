@@ -333,7 +333,8 @@ Pojęcia
     URL
         ustandaryzowany format adresowania zasobów w internecie (przykład: http://pl.wikipedia.org/wiki/Uniform_Resource_Locator).
 
-* Widok – funkcja obsługująca żądania przychodzące na powiązany z nią adres, zazwyczaj zwraca użytkownikowi żądaną stronę html wyrenderowaną ze wskazanego szablonu.
+    Widok
+        funkcja obsługująca żądania przychodzące na powiązany z nią adres, zazwyczaj zwraca użytkownikowi żądaną stronę html wyrenderowaną ze wskazanego szablonu.
 
 Materiały
 ^^^^^^^^^^^^^^^^^^^
