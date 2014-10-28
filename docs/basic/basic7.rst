@@ -2,7 +2,7 @@ Znam Pythona
 =================
 
 ZADANIE
--------
+-------------
 
     Napisz program, który na podstawie danych pobranych od użytkownika, czyli długości boków, sprawdza, czy da się zbudować trójkąt
     i czy jest to trójkąt prostokątny. Jeżeli da się zbudować trójkąt, należy wydrukować jego obwód i pole, w przeciwnym wypadku
@@ -16,7 +16,7 @@ ZADANIE
     :linenos:
 
 JAK TO DZIAŁA
--------
+-------------
 
 Pętla ``while`` wykonuje się dopóki warunek jest prawdziwy, czyli zmienna kontrolna "op" różna jest od "n". Dzięki temu użytkownik może wielokrotnie wprowadzać wartości boków tworzące trójkąt.
 	
@@ -37,12 +37,12 @@ Funkcja ``sqrt()`` (pierwiastek kwadratowy) zawarta jest w module ``math``, któ
 programu trzeba zaimportować.
 
 POĆWICZ SAM
------------
+-------------
 
     Zmień program tak, aby użytkownik w przypadku podania boków, z których trójkąta zbudować się nie da, mógł spróbować kolejny raz.
 
 ZADANIE
------------
+-------------
     Napisz program, który podany przez użytkownika ciąg znaków szyfruje przy użyciu szyfru Cezara i wyświetla zaszyfrowany tekst.
 
 .. raw:: html
@@ -53,7 +53,7 @@ ZADANIE
     :linenos:
 
 JAK TO DZIAŁA
------------
+-------------
 
 W programie możemy wykorzystywać zmienne globalne, np. KLUCZ.
 ``def nazwa_funkcji(argumenty)`` - tak definiujemy funkcje, które
@@ -65,7 +65,7 @@ Funkcja ``len(str)`` zwraca długość napisu, wykorzystana jako argument funkcj
 Operator ``+=`` oznacza dodanie argumentu z prawej strony do wartości z lewej.
 
 POĆWICZ SAM
------------
+-------------
 
     Napisz funkcję deszyfrującą ``deszyfruj(txt)``. Dodaj do funkcji ``szyfruj(), deszyfruj()`` drugi parametr w postaci długości klucza podawanej przez użytkownika. Dodaj poprawne szyfrowanie dużych liter, obsługę białych znaków i znaków interpunkcyjnych.
 
@@ -74,12 +74,13 @@ Przykład funkcji deszyfrującej:
 .. code-block:: python
     :linenos:
 
-def deszyfruj(txt):
-    dtxt = ""
-    KLUCZM = KLUCZ % 26;
-    for i in range(len(txt)):
-        if (ord(txt[i]) - KLUCZM < 97):
-            dtxt += chr(ord(txt[i]) - KLUCZM + 26)
-        else:
-            dtxt += chr(ord(txt[i]) - KLUCZM)
-    return dtxt
+    def deszyfruj(txt):
+        dtxt = ""
+        KLUCZM = KLUCZ % 26
+        for i in range(len(txt)):
+            if (ord(txt[i]) - KLUCZM < 97):
+                dtxt += chr(ord(txt[i]) - KLUCZM + 26)
+            else:
+                dtxt += chr(ord(txt[i]) - KLUCZM)
+        return dtxt
+

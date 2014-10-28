@@ -27,12 +27,12 @@ Materiały pomocnicze
 Źródło
 --------------------
 
-* :download:`basic_all.zip <basic_all.zip>`
+* :download:`basic_all.zip <basic.zip>`
 
 Metryka
 ^^^^^^^
 
-:Autorzy: Robert Bednarz <rob@lo1.sandomierz.pl>
+:Autor: Robert Bednarz <rob@lo1.sandomierz.pl>
 
 :Utworzony: |date| o |time|
 

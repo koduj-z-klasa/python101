@@ -12,7 +12,7 @@ ZADANIE
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: kody/01_hello.py
+.. literalinclude:: 01_hello.py
     :linenos:
 
 JAK TO DZIAŁA

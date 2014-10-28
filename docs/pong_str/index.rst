@@ -1,5 +1,5 @@
 Gra w Ponga (str)
-===========
+=================
 
 .. highlight:: python
 
@@ -119,3 +119,23 @@ POĆWICZ SAM
 Zmodyfikuj właściwości obiektów (paletek, piłki) takie jak rozmiar, kolor, początkowa pozycja.
 Zmień położenie paletek tak aby znalazły przy lewej i prawej krawędzi okna, wprowadź potrzebne zmiany w kodzie, aby umożliwić rozgrywkę.
 Dodaj trzecią paletkę, która co jakiś czas będzie "przelatywać" przez środek planszy i zmieniać w przypadku kolizji tor i kolor piłki.
+
+Metryka
+^^^^^^^
+
+:Autorzy: Łukasz Zarzecki, Robert Bednarz <rob@lo1.sandomierz.pl>
+
+:Utworzony: |date| o |time|
+
+.. |date| date::
+.. |time| date:: %H:%M
+
+.. raw:: html
+
+    <style>
+        div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
+        div.highlight, div.highlight-python { margin-top: 0px; }
+    </style>
+
+
+.. include:: ../copyright.rst

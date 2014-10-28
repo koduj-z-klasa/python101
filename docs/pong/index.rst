@@ -1,5 +1,5 @@
 Gra w Ponga (obj)
-===========
+=================
 
 .. highlight:: python
 
