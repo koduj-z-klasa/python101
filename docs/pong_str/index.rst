@@ -52,9 +52,10 @@ W grze chcemy wyświetlać punkty zdobywane przez graczy. Dopisujemy więc poni�
     :lineno-start: 72
     :lines: 72-
 
-Po zdefiniowaniu zmiennych przechowujących punkty graczy, tworzymy obiekt czcionki z podanego pliku (``pygame.font.Font()``)[1]_. Następnie definujemy funkcje, których zadaniem jest rysowanie punktacji graczy. Na początku tworzą one nową powierzchnię z punktacją gracza (``.render()``), pobierają jej powierzchnię prostokątną (``.get_rect()``), pozycjonują ją (``.center()``) i rysują na głównej powierzchni gry (``.blit()``).
+Po zdefiniowaniu zmiennych przechowujących punkty graczy, tworzymy obiekt czcionki z podanego pliku (``pygame.font.Font()``). Następnie definujemy funkcje, których zadaniem jest rysowanie punktacji graczy. Na początku tworzą one nową powierzchnię z punktacją gracza (``.render()``), pobierają jej powierzchnię prostokątną (``.get_rect()``), pozycjonują ją (``.center()``) i rysują na głównej powierzchni gry (``.blit()``).
 
-.. [1] Plik wykorzystywany do wyświetlania tekstu (``freesansbold.ttf``) musi znaleźć się w katalogu ze skryptem.
+.. note::
+    Plik wykorzystywany do wyświetlania tekstu (``freesansbold.ttf``) musi znaleźć się w katalogu ze skryptem.
 
 Główna pętla programu
 ---------------------
@@ -99,31 +100,61 @@ Grę możemy uruchomić poleceniem wpisanym w terminalu:
 Słownik
 ---------
 
-Klatki na sekundę (FPS) – liczba klatek wyświetlanych w ciągu sekundy, czyli częstotliwość, z jaką statyczne obrazy pojawiają się na ekranie. Jest ona miarą płynności wyświetlania ruchomych obrazów.
-Kanał alfa (ang. alpha channel) – w grafice komputerowej jest kanałem, który definiuje przezroczyste obszary grafiki. Jest on zapisywany dodatkowo wewnątrz grafiki razem z trzema wartościami barw składowych RGB.
-Inicjalizacja – proces wstępnego przypisania wartości zmiennym i obiektom. Każdy obiekt jest inicjalizowany różnymi sposobami zależnie od swojego typu.
-Iteracja – czynność powtarzania (najczęściej wielokrotnego) tej samej instrukcji (albo wielu instrukcji) w pętli. Mianem iteracji określa się także operacje wykonywane wewnątrz takiej pętli.
-Zdarzenie (ang. event) – zapis zajścia w systemie komputerowym określonej sytuacji, np. poruszenie myszką, kliknięcie, naciśnięcie klawisza.
-pygame.time.Clock() – tworzy obiekt do śledzenia czasu; .tick() – kontroluje ile milisekund upłynęło od poprzedniego wywołania.
-pygame.display.set_mode() – inicjuje okno lub ekran do wyświetlania, parametry: rozdzielczość w pikselach = (x,y), flagi, głębia koloru.
-pygame.display.set_caption() – ustawia tytuł okna, parametr: tekst tytułu.
-pygame.Surface() – obiekt reprezentujący dowolny obrazek (grafikę), który ma określoną rozdzielczość (szerokość i wysokość) oraz format pikseli (głębokość, przezroczystość); SRCALPHA – oznacza, że format pikseli będzie zawierać ustawienie alfa (przezroczystości); .fill() – wypełnia obrazek kolorem; .get_rect() – zwraca prostokąt zawierający obrazek; .convert_alpha() – zmienia format pikseli, w tym przezroczystość; .blit() – rysuje jeden obrazek na drugim, parametry: źródło, cel.
-pygame.draw.ellipse() – rysuje okrągły kształt wewnątrz prostokąta, parametry: przestrzeń, kolor, prostokąt.
-pygame.font.Font() – tworzy obiekt czcionki z podanego pliku; .render() – tworzy nową powierzchnię z podanym tekstem, parametry: tekst, antyalias, kolor, tło.
-pygame.event.get() – pobiera zdarzenia z kolejki zdarzeń; event.type() – zwraca identyfikator SDL typu zdarzenia, np. KEYDOWN, KEYUP, MOUSEMOTION, QUIT.
-SDL (Simple DirectMedia Layer) – międzyplatformowa bilioteka ułatwiająca tworzenie gier i programów multimedialnych.
-pygame.Rect – obiekt pygame przechowujący współrzędne prostokąta; .centerx, .x, .y, .top, .bottom, .left, .right – wirtualne własności obiektu prostokąta określające jego położenie; .colliderect() – metoda sprawdza czy dwa prostokąty nachodzą na siebie.
+.. glossary::
+
+    Klatki na sekundę (FPS)
+        liczba klatek wyświetlanych w ciągu sekundy, czyli częstotliwość, z jaką statyczne obrazy pojawiają się na ekranie. Jest ona miarą płynności wyświetlania ruchomych obrazów.
+
+    Kanał alfa (ang. alpha channel)
+        w grafice komputerowej jest kanałem, który definiuje przezroczyste obszary grafiki. Jest on zapisywany dodatkowo wewnątrz grafiki razem z trzema wartościami barw składowych RGB.
+
+    Inicjalizacja
+        proces wstępnego przypisania wartości zmiennym i obiektom. Każdy obiekt jest inicjalizowany różnymi sposobami zależnie od swojego typu.
+
+    Iteracja
+        czynność powtarzania (najczęściej wielokrotnego) tej samej instrukcji (albo wielu instrukcji) w pętli. Mianem iteracji określa się także operacje wykonywane wewnątrz takiej pętli.
+
+    Zdarzenie (ang. event)
+        zapis zajścia w systemie komputerowym określonej sytuacji, np. poruszenie myszką, kliknięcie, naciśnięcie klawisza.
+
+    pygame.time.Clock()
+        tworzy obiekt do śledzenia czasu; .tick() – kontroluje ile milisekund upłynęło od poprzedniego wywołania.
+
+    pygame.display.set_mode()
+        inicjuje okno lub ekran do wyświetlania, parametry: rozdzielczość w pikselach = (x,y), flagi, głębia koloru.
+
+    pygame.display.set_caption()
+        ustawia tytuł okna, parametr: tekst tytułu.
+
+    pygame.Surface()
+        obiekt reprezentujący dowolny obrazek (grafikę), który ma określoną rozdzielczość (szerokość i wysokość) oraz format pikseli (głębokość, przezroczystość); SRCALPHA – oznacza, że format pikseli będzie zawierać ustawienie alfa (przezroczystości); .fill() – wypełnia obrazek kolorem; .get_rect() – zwraca prostokąt zawierający obrazek; .convert_alpha() – zmienia format pikseli, w tym przezroczystość; .blit() – rysuje jeden obrazek na drugim, parametry: źródło, cel.
+
+    pygame.draw.ellipse()
+        rysuje okrągły kształt wewnątrz prostokąta, parametry: przestrzeń, kolor, prostokąt.
+
+    pygame.font.Font()
+        tworzy obiekt czcionki z podanego pliku; .render() – tworzy nową powierzchnię z podanym tekstem, parametry: tekst, antyalias, kolor, tło.
+
+    pygame.event.get()
+        pobiera zdarzenia z kolejki zdarzeń; event.type() – zwraca identyfikator SDL typu zdarzenia, np. KEYDOWN, KEYUP, MOUSEMOTION, QUIT.
+
+    SDL (Simple DirectMedia Layer)
+        międzyplatformowa bilioteka ułatwiająca tworzenie gier i programów multimedialnych.
+
+    pygame.Rect
+        obiekt pygame przechowujący współrzędne prostokąta; .centerx, .x, .y, .top, .bottom, .left, .right – wirtualne własności obiektu prostokąta określające jego położenie; .colliderect() – metoda sprawdza czy dwa prostokąty nachodzą na siebie.
 
 POĆWICZ SAM
 -----------
-Zmodyfikuj właściwości obiektów (paletek, piłki) takie jak rozmiar, kolor, początkowa pozycja.
-Zmień położenie paletek tak aby znalazły przy lewej i prawej krawędzi okna, wprowadź potrzebne zmiany w kodzie, aby umożliwić rozgrywkę.
-Dodaj trzecią paletkę, która co jakiś czas będzie "przelatywać" przez środek planszy i zmieniać w przypadku kolizji tor i kolor piłki.
+
+    Zmodyfikuj właściwości obiektów (paletek, piłki) takie jak rozmiar, kolor, początkowa pozycja.
+    Zmień położenie paletek tak aby znalazły przy lewej i prawej krawędzi okna, wprowadź potrzebne zmiany w kodzie, aby umożliwić rozgrywkę.
+    Dodaj trzecią paletkę, która co jakiś czas będzie "przelatywać" przez środek planszy i zmieniać w przypadku kolizji tor i kolor piłki.
 
 Metryka
 ^^^^^^^
 
-:Autorzy: Łukasz Zarzecki, Robert Bednarz <rob@lo1.sandomierz.pl>
+:Autorzy: Łukasz Zarzecki, Robert Bednarz <ecg@ecg.vot.pl>
 
 :Utworzony: |date| o |time|
 

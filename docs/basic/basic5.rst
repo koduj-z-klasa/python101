@@ -1,77 +1,106 @@
-Listy, zbiory, moduły i funkcje
-==================================
+Znam Pythona?
+=================
 
-ZADANIE
--------
+Trójkąt
+-------------
 
-    Napisz program, który umożliwi wprowadzanie ocen z podanego przedmiotu ścisłego (np. fizyki), następnie policzy i wyświetla średnią, medianę i odchylenie standardowe wprowadzonych ocen. Funkcje pomocnicze i statystyczne umieść w osobnym module.
+    **ZADANIE**: Napisz program, który na podstawie danych pobranych od użytkownika, czyli długości boków, sprawdza, czy da się zbudować trójkąt
+    i czy jest to trójkąt prostokątny. Jeżeli da się zbudować trójkąt, należy wydrukować jego obwód i pole, w przeciwnym wypadku
+    komunikat, że nie da się utworzyć trójkąta.
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: 05_oceny_03.py
+.. literalinclude:: 07_trojkat_01.py
     :linenos:
 
 JAK TO DZIAŁA
--------------
+^^^^^^^^^^^^^^
 
-**Pojęcia**: *import, moduł, zbiór, przechwytywanie wyjątków, formatowanie napisów i danych na wyjściu*.
+Pętla ``while`` wykonuje się dopóki warunek jest prawdziwy, czyli zmienna kontrolna "op" różna jest od "n". Dzięki temu użytkownik może wielokrotnie wprowadzać wartości boków tworzące trójkąt.
+	
+Są dwie metody pobierania kilku wartości z wejścia (np. klawiatury) na raz. 
+Funkcja ``raw_input()`` zwraca wprowadzone dane zakończone nową linią jako napis.
+Funkcja ``input()`` wartości pobrane z wejścia (np. klawiatury) traktuje jak kod Pythona.
+Konstrukcja ``int(x) for x in raw_input().split()`` (przykład tzw. wyrażenia listowego) wywołuje funkcję ``int()``, która
+usiłuje przekształcić podaną wartość na liczbę całkowitą dla każdej
+wartości wyodrębnionej z ciągu wejściowego przez funkcję ``split()``. Separatorem
+kolejnych wartości są dla funkcji ``split()`` białe znaki (spacje, tabulatory).
+Funkcja ``input()`` pobiera wejście w postaci napisu, ale próbuje zinterpretować go
+jakby był częścią kodu w Pythonie. Dlatego dane oddzielone przecinkami w postaci
+np. "1, 2, 3" przypisywane są podanym zmiennym.
 
-Klauza ``from moduł import funkcja`` umożliwia wykorzystanie w programie funkcji zdefiniowanych w innych modułach i zapisanych w osobnych plikach. Dzięki temu utrzymujemy przejrzystość programu głównego, a jednocześnie możemy funkcje z modułów wykorzystywać, importując je w innych programach. Nazwa modułu to nazwa pliku z kodem pozbawiona jednak rozszerzenia *.py*. Moduł musi być dostępny w ścieżce przeszukiwania [5]_, aby można go było poprawnie dołączyć.
-
-.. [5] W przypadku prostych programów zapisuj moduły w tym samym katalogu co program główny.
-
-Instrukcja ``set()`` tworzy zbiór, czyli nieuporządkowany zestaw niepowtarzalnych (!) elementów. Instrukcje ``if przedmiot in przedmioty`` i ``if przedmiot not in przedmioty`` za pomocą operatorów zawierania ``(not) in`` sprawdzają, czy podany przedmiot już jest lub nie w zbiorze. Polecenie ``przedmioty.add()`` pozwala dodawać elementy do zbioru, przy czym jeżeli element jest już w zbiorze, nie zostanie dodany. Polecenie ``przedmioty.remove()`` usunnie podany jako argument element ze zbioru.
-
-Oceny z wybranego przedmiotu pobieramy w pętli dopóty, dopóki użytkownik nie wprowadzi 0 (zera). Blok ``try...except`` pozwala przechwycić wyjątki, czyli w naszym przypadku niemożność przekształcenia wprowadzonej wartości na liczbę całkowitą. Jeżeli funkcja ``int()`` zwróci wyjątek, wykonywane są instrukcje w bloku ``except ValueError:``, w przeciwnym razie po sprawdzeniu poprawności oceny dodajemy ją jako liczbę zmiennoprzecinkową (typ *float*) do listy: ``oceny.append(float(ocena))``.
-
-Metoda ``.capitalize()`` pozwala wydrukować podany napis dużą literą.
-
-W funkcji ``print(...).format(s,m,o)`` zastosowano formatowanie drukowanych wartości, do których odwołujemy się w specyfikacji ``{0:5.2f}``. Pierwsza cyfra wskazuje, którą wartość z numerowanej od 0 (zera) listy, umieszczonej w funkcji ``format()``, wydrukować; np. aby wydrukować drugą wartość, trzeba by użyć kodu ``{1:}``.Po dwukropku podajemy szerokość pola przeznaczonego na wydruk, po kropce ilość miejsc po przecinku, symbol *f* oznacza natomiast liczbę zmiennoprzecinkową stałej precyzji.
+Funkcje ``if`` sprawdzają warunki złożone oparte na koniunkcji (``and``) i alternatywie (``or``).
+Wyrażenie ``x**y`` oznacza podnoszenie podstawy ``x`` do potęgi ``y``.
+Funkcja ``sqrt()`` (pierwiastek kwadratowy) zawarta jest w module ``math``, który na początku
+programu trzeba zaimportować.
 
 POĆWICZ SAM
------------
+^^^^^^^^^^^^^^
 
-    W konsoli Pythona utwórz listę wyrazy zawierającą elementy: *abrakadabra* i *kordoba*. Utwórz zbiór *w1* poleceniem ``set(wyrazy[0])``. Oraz zbiór *w2* poleceniem ``set(wyrazy[1])``. Wykonaj kolejno polecenia: ``print w1 – w2; print w1 | w2; print w1 & w2; print w1 ^ w2``. Przykłady te ilustrują użycie klasycznych operatorów na zbiorach, czyli: różnica (-) , suma (|), przecięcie (część wspólna, &) i elementy unikalne (^).
+    Zmień program tak, aby użytkownik w przypadku podania boków, z których trójkąta zbudować się nie da, mógł spróbować kolejny raz.
 
-Funkcje wykorzystywane w programie umieszczamy w osobnym pliku.
+Szyfr Cezara
+-------------
+
+    **ZADANIE**: Napisz program, który podany przez użytkownika ciąg znaków szyfruje przy użyciu szyfru Cezara i wyświetla zaszyfrowany tekst.
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: ocenyfun.py
+.. literalinclude:: 07_szyfr_02.py
     :linenos:
 
 JAK TO DZIAŁA
--------------
+^^^^^^^^^^^^^^
 
-**Pojęcia**: *funkcja, argumenty funkcji, zwracanie wartości, moduł*.
-
-Klauzula ``import math`` udostępnia w pliku wszystkie metody z modułu
-matematycznego, dlatego musimy odwoływać się do nich za pomocą notacji
-moduł.funkcja, np.: ``math.sqrt()`` – zwraca pierwiastek kwadratowy.
-
-Funkcja ``drukuj(co, kom="...")`` przyjmuje dwa argumenty, *co* – listę
-lub zbiór, który drukujemy w pętli for, oraz *kom* – komunikat,
-który wyświetlamy przed wydrukiem. Argument *kom* jest opcjonalny,
-przypisano mu bowiem wartość domyślną, która zostanie użyta,
-jeżeli użytkownik nie poda innej w wywołaniu funkcji.
-
-Funkcja ``srednia()`` do zsumowania wartości ocen wykorzystuje funkcję ``sum()``.
-
-Funkcja ``mediana()`` sortuje otrzymaną listę "w miejscu" (``oceny.sort()``), tzn. trwale zmienia porządek elementów [6]_.
-W zależności od długości listy zwraca wartość środkową (długość nieparzysta)
-lub średnią arytmetyczną dwóch środkowych wartości (długość).
-Zapis ``oceny[half-1:half+1]`` wycina i zwraca dwa środkowe elementy
-z listy, przy czym wyrażenie ``half = len(oceny)/2`` wylicza nam indeks drugiego ze środkowych elementów.
-
-.. [6] Przypomnijmy: alternatywna funkcja ``sorted(lista)`` zwraca uporządkowaną rosnąco kopię listy.
-
-W funkcja ``wariancja()`` pętla for odczytuje kolejne oceny i w kodzie ``sigma += (ocena-srednia)**2`` korzysta z operatorów skróconego dodawania (+=) i potęgowania (**), aby wyliczyć sumę kwadratów różnic kolejnych ocen i średniej.
+W programie możemy wykorzystywać zmienne globalne, np. KLUCZ.
+``def nazwa_funkcji(argumenty)`` - tak definiujemy funkcje, które
+mogą lub nie zwracać jakieś wartości.
+``nazwa_funkcji(argumenty)`` - tak wywołujemy funkcje.
+Napisy mogą być indeksowane (od 0), co daje dostęp do pojedynczych znaków.
+Funkcja ``len(str)`` zwraca długość napisu, wykorzystana jako argument funkcji
+``range()`` pozwala iterować po znakach napisu.
+Operator ``+=`` oznacza dodanie argumentu z prawej strony do wartości z lewej.
 
 POĆWICZ SAM
------------
+^^^^^^^^^^^^^^
 
-    Dopisz funkcję, która wyświetli wszystkie oceny oraz ich odchylenia od wartości średniej.
+    Napisz funkcję deszyfrującą ``deszyfruj(txt)``. Dodaj do funkcji ``szyfruj(), deszyfruj()`` drugi parametr w postaci długości klucza podawanej przez użytkownika. Dodaj poprawne szyfrowanie dużych liter, obsługę białych znaków i znaków interpunkcyjnych.
+
+Przykład funkcji deszyfrującej:
+
+.. code-block:: python
+    :linenos:
+
+    def deszyfruj(txt):
+        dtxt = ""
+        KLUCZM = KLUCZ % 26
+        for i in range(len(txt)):
+            if (ord(txt[i]) - KLUCZM < 97):
+                dtxt += chr(ord(txt[i]) - KLUCZM + 26)
+            else:
+                dtxt += chr(ord(txt[i]) - KLUCZM)
+        return dtxt
+
+Metryka
+^^^^^^^
+
+:Autor: Robert Bednarz <ecg@ecg.vot.pl>
+
+:Utworzony: |date| o |time|
+
+.. |date| date::
+.. |time| date:: %H:%M
+
+.. raw:: html
+
+    <style>
+        div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
+        div.highlight, div.highlight-python { margin-top: 0px; }
+    </style>
+
+
+.. include:: ../copyright.rst

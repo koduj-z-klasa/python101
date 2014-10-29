@@ -40,6 +40,8 @@ pamięci USB zawierające SRU i umożliwiające uruchomienie systemu bez instala
     nie mogą popsuć konfiguracji systemu i nie są w stanie instalować
     nowego oprogramowania.
 
+.. _usb-creator:
+
 Przygotowanie rozruchowych kluczy USB
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -117,9 +119,9 @@ Przygotowując klucz USB w oparciu o obraz systemu SRU, postępujemy następują
    podajemy hasło naszego użytkownika.
    
 Dodatkowe materiały na temat przygotowywania nośników USB, w tym galerię ilustrującą
-kolejne kroki znajdziecie w serwisie ECG_.
+kolejne kroki znajdziecie w serwisie eCG_.
 
-.. _ECG: http://ecg.vot.pl/?id=usb-boot
+.. _eCG: http://ecg.vot.pl/?id=usb-boot
 
 Dla komputerów z systemem Windows 8 i BIOS UEFI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -157,7 +159,7 @@ w szkoleniu bibliotekami:
 
 .. code-block:: bash
 
-    $ sudo apt-get install python-pip python-virtualenv
+    $ sudo apt-get install ipython python-pip python-virtualenv
     $ sudo apt-get install python-flask python-django python-pygame
 
 Podane przykłady odnoszą się do systemów opartych na Debianie i Ubuntu,

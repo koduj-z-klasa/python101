@@ -37,7 +37,7 @@ Te materiały można także pobrać i zmodyfikować i `przygotować według inst
 Przygotowanie do szkolenia
 --------------------------
 
-Przed szkoleniem warto przygotować sprawdzić i przygotować swój komputer.
+Przed szkoleniem warto przygotować i sprawdzić swój komputer.
 
 ..  toctree::
     :maxdepth: 1
@@ -59,9 +59,6 @@ Zaczynamy!
     basic/basic4
     basic/basic5
     basic/basic6
-    basic/basic7
-    basic/basic8
-    basic/basic9
     pong_str/index
     pong/index
     life/index
@@ -69,7 +66,7 @@ Zaczynamy!
     quiz/index
     todo/index
     chatter/index
-
+    faq/index.rst
 
 
 Indices and tables
@@ -80,4 +77,3 @@ Indices and tables
 * :ref:`search`
 
 .. include:: copyright.rst
-
