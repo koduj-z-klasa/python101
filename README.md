@@ -22,12 +22,6 @@ skoków pomiędzy etapami które zostały wskazane w materiałach szkoleniowych.
 
 https://github.com/koduj-z-klasa/python101/archive/master.zip
 
-Dodatkowe materiały 
--------------------
-
-1. [Folder z materiałami Roberta Bednarza](https://www.dropbox.com/sh/mvvz59by7buh2oz/AAAFC-rYZHAOmjQmDCThi72Na?dl=0)
-2. [Podstawy Python'a Doroty Rybickiej](https://drive.google.com/file/d/0B1hYVXsrSXCKY0hwZ3FHcHAwdDhpVDI2MmVIcVgybFV2UWZ3/view?usp=sharing)
-
 Linki do zapamiętania dla uczestników
 -------------------------------------
 
@@ -80,7 +74,7 @@ Modyfikacje i budowa dokumentacji offline
 -----------------------------------------
 
 Materiały szkoleniowe są przygotowywane z pomocą oprogramowania [Sphinx w
-wersji 1.3][3]. W tym celu instalujemy wersję z kodów źródlowych.
+wersji 1.3][3]. Jeżeli chcemy lokalnie generować dokumentację, instalujemy Sphinksa z kodów źródlowych.
 
     $ sudo pip install sphinx_rtd_theme hg+https://bitbucket.org/birkenfeld/sphinx#sphinx
         

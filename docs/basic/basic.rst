@@ -29,6 +29,13 @@ Pythona jest ``>>>``.
     Komendy należy kopiować i wklejać bez znaku zachęty ``$`` i poprzedzającego tekstu.
     Komendy można wklejać do terminala środkowym klawiszem myszki.
 
+Źródła
+--------------------
+
+Poniższy dokument możesz pobraćw formacie *odt* lub *pdf*:
+:download:`T1.odt <T1.odt>`
+:download:`T1.pdf <T1.pdf>`
+
 Zmienne
 -------
 
@@ -467,6 +474,16 @@ Słowniczek
     Typ zmiennych
 
         rodzaj danych, który przypisany jest do zmiennej w momencie jej tworzenia.
+
+Metryka
+^^^^^^^
+
+:Autorzy: Dorota Rybicka, Grzegorz Wilczek
+
+:Utworzony: |date| o |time|
+
+.. |date| date::
+.. |time| date:: %H:%M
 
 .. raw:: html
 
