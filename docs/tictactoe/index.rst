@@ -1,7 +1,8 @@
-Gra w Kółko i Krzyżyk
-=====================
+Gra w Kółko i Krzyżyk (obj)
+===========================
 
-Klasyczna gra w kółko i krzyżyk zrealizowana przy pomocy  `PyGame`_.
+Klasyczna gra w kółko i krzyżyk zrealizowana przy pomocy  `PyGame`_. Wersja obiektowa.
+Biblioteka PyGame ułatwia tworzenie aplikacji multimedialnych, w tym gier.
 
 .. _PyGame: http://www.pygame.org/wiki/tutorials
 

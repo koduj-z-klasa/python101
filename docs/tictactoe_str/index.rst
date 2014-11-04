@@ -3,9 +3,12 @@ Gra w Kółko i Krzyżyk (str)
 
 .. highlight:: python
 
-Biblioteka `PyGame`_ ułatwia tworzenie aplikacji multimedialnych, w tym gier. Poniższy scenariusz prezentuje implementację prostej gry Kółko i krzyżyk.
+Klasyczna gra w kółko i krzyżyk zrealizowana przy pomocy  `PyGame`_. Wersja strukturalna.
+Biblioteka `PyGame`_ ułatwia tworzenie aplikacji multimedialnych, w tym gier.
 
 .. _PyGame: http://www.pygame.org/wiki/tutorials
+
+.. figure:: tictactoe.png
 
 Zmienne i plansza gry
 ---------------------
@@ -94,8 +97,6 @@ Grę możemy uruchomić poleceniem wpisanym w terminalu:
 .. code:: bash
 
     $ python tictactoe.py
-
-.. figure:: tictactoe.png
 
 Poćwicz sam
 -----------

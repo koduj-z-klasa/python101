@@ -8,6 +8,8 @@ Biblioteka PyGame ułatwia tworzenie aplikacji multimedialnych, w tym gier.
 
 .. _PyGame: http://www.pygame.org/wiki/tutorials
 
+.. figure:: pong.png
+
 Zmienne i plansza gry
 ---------------------
 
@@ -96,8 +98,6 @@ Grę możemy uruchomić poleceniem wpisanym w terminalu:
 .. code:: bash
 
     $ python pong_str.py
-
-.. figure:: pong.png
 
 Poćwicz sam
 -----------
