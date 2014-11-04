@@ -20,7 +20,7 @@ Tworzymy plik ``pong_str.py`` w terminalu lub w wybranym edytorze, zapisujemy na
 .. literalinclude:: pong_str1.py
     :linenos:
 
-W instrukcji ``pygame.display.set_mode()`` inicjalizujemy okno (powierzchnię główną) o rozmiarach 800x400 pikseli i 32 bitowej głębi kolorów. Tworzy w ten sposób powierzchnię do rysowania zapisaną w zmiennej OKNOGRY. Definujemy również kolory w formacie RGB (Red, Green, Blue) podając składowe poszczegónych kanałów w tuplach, np. (0, 0, 255).
+W instrukcji ``pygame.display.set_mode()`` inicjalizujemy okno gry o rozmiarach 800x400 pikseli i 32 bitowej głębi kolorów. Tworzy w ten sposób powierzchnię główną do rysowania zapisaną w zmiennej OKNOGRY. Definujemy również kolory w formacie RGB (Red, Green, Blue) podając składowe poszczegónych kanałów w tuplach, np. (0, 0, 255).
 
 Obiekty graficzne
 ---------------------
@@ -66,7 +66,7 @@ Programy interaktywne, w tym gry, reagujące na działania użytkownika, takie j
 * aktualizacja stanu gry (przesunięcia elementów, aktualizacja planszy),
 * aktualizacja wyświetlanego okna (narysowanie nowego stanu gry).
 
-Dopisujemy więc do kodu głównę pętlę wraz z obsługą zdarzeń:
+Dopisujemy więc do kodu główną pętlę wraz z obsługą zdarzeń:
 
 .. raw:: html
 
@@ -89,7 +89,7 @@ Do pętli głównej musimy dopisać jeszcze kod kontrolujący paletkę komputera
     :lineno-start: 119
     :lines: 119-
 
-Komentarze w kodzie wyjaśniają kolejne czynności. Warto zwrócić uwagę na sposób odczytywania pozycji obiektów klasy ``Rect`` (prostokątów), czyli właściwości ``.x, .y, .centerx, .right, .left, .top, .bottom``; oraz na sprawdzanie kolizji piłki z paletkami, czyli metodę ``.colliderect()``. Ostatnie linie kodu rysują okno gry i obiekty (tekst z wynikami graczy, paletki i piłkę) ze zmienionymi właściwościami (liczba punktów, położenie). Funkcja ``pygame.display.update()``, która musi być wykonywana na końcu rysowania, aktualizuje obraz gry. Ostatnia linia natomiast (``fpsClock.tick()``) pozwala blokuje grę na 30 klatek na sekundę, aby nie działała tak szybko jak pozwala sprzęt, lecz ze stałą prędkością.
+Komentarze w kodzie wyjaśniają kolejne czynności. Warto zwrócić uwagę na sposób odczytywania pozycji obiektów klasy ``Rect`` (prostokątów), czyli właściwości ``.x, .y, .centerx, .right, .left, .top, .bottom``; oraz na sprawdzanie kolizji piłki z paletkami, czyli metodę ``.colliderect()``. Ostatnie linie kodu rysują okno gry i obiekty (tekst z wynikami graczy, paletki i piłkę) ze zmienionymi właściwościami (liczba punktów, położenie). Funkcja ``pygame.display.update()``, która musi być wykonywana na końcu rysowania, aktualizuje obraz gry na ekranie. Ostatnia linia natomiast (``fpsClock.tick()``) pozwala blokuje grę na 30 klatek na sekundę, aby nie działała tak szybko jak pozwala sprzęt, lecz ze stałą prędkością.
 
 Grę możemy uruchomić poleceniem wpisanym w terminalu:
 
@@ -97,8 +97,22 @@ Grę możemy uruchomić poleceniem wpisanym w terminalu:
 
     $ python pong_str.py
 
+.. figure:: pong.png
+
+Poćwicz sam
+-----------
+
+    Zmodyfikuj właściwości obiektów (paletek, piłki) takie jak rozmiar, kolor, początkowa pozycja.
+    Zmień położenie paletek tak aby znalazły przy lewej i prawej krawędzi okna, wprowadź potrzebne zmiany w kodzie, aby umożliwić rozgrywkę.
+    Dodaj trzecią paletkę, która co jakiś czas będzie "przelatywać" przez środek planszy i zmieniać w przypadku kolizji tor i kolor piłki.
+
+Źródła
+^^^^^^^^
+
+Wszystkie kody możesz pobrać w formie archiwum: :download:`pong_str.zip <pong_str.zip>`
+
 Słownik
----------
+^^^^^^^^
 
 .. glossary::
 
@@ -116,9 +130,12 @@ Słownik
 
     Zdarzenie (ang. event)
         zapis zajścia w systemie komputerowym określonej sytuacji, np. poruszenie myszką, kliknięcie, naciśnięcie klawisza.
+    
+    pygame.locals
+        moduła zawierający różne stałe używane przez Pygame, np. typy zdarzeń, identyfikatory naciśniętych klawiszy itp.
 
     pygame.time.Clock()
-        tworzy obiekt do śledzenia czasu; .tick() – kontroluje ile milisekund upłynęło od poprzedniego wywołania.
+        tworzy obiekt do śledzenia czasu; ``.tick()`` – kontroluje ile milisekund upłynęło od poprzedniego wywołania.
 
     pygame.display.set_mode()
         inicjuje okno lub ekran do wyświetlania, parametry: rozdzielczość w pikselach = (x,y), flagi, głębia koloru.
@@ -127,29 +144,22 @@ Słownik
         ustawia tytuł okna, parametr: tekst tytułu.
 
     pygame.Surface()
-        obiekt reprezentujący dowolny obrazek (grafikę), który ma określoną rozdzielczość (szerokość i wysokość) oraz format pikseli (głębokość, przezroczystość); SRCALPHA – oznacza, że format pikseli będzie zawierać ustawienie alfa (przezroczystości); .fill() – wypełnia obrazek kolorem; .get_rect() – zwraca prostokąt zawierający obrazek; .convert_alpha() – zmienia format pikseli, w tym przezroczystość; .blit() – rysuje jeden obrazek na drugim, parametry: źródło, cel.
+        obiekt reprezentujący dowolny obrazek (grafikę), który ma określoną rozdzielczość (szerokość i wysokość) oraz format pikseli (głębokość, przezroczystość); SRCALPHA – oznacza, że format pikseli będzie zawierać ustawienie alfa (przezroczystości); ``.fill()`` – wypełnia obrazek kolorem; ``.get_rect()`` – zwraca prostokąt zawierający obrazek, czyli obiekt **Rect**; ``.convert_alpha()`` – zmienia format pikseli, w tym przezroczystość; ``.blit()`` – rysuje jeden obrazek na drugim, parametry: źródło, cel.
 
     pygame.draw.ellipse()
         rysuje okrągły kształt wewnątrz prostokąta, parametry: przestrzeń, kolor, prostokąt.
 
     pygame.font.Font()
-        tworzy obiekt czcionki z podanego pliku; .render() – tworzy nową powierzchnię z podanym tekstem, parametry: tekst, antyalias, kolor, tło.
+        tworzy obiekt czcionki z podanego pliku; ``.render()`` – tworzy nową powierzchnię z podanym tekstem, parametry: tekst, antyalias, kolor, tło.
 
     pygame.event.get()
-        pobiera zdarzenia z kolejki zdarzeń; event.type() – zwraca identyfikator SDL typu zdarzenia, np. KEYDOWN, KEYUP, MOUSEMOTION, QUIT.
+        pobiera zdarzenia z kolejki zdarzeń; ``event.type()`` – zwraca identyfikator SDL typu zdarzenia, np. KEYDOWN, KEYUP, MOUSEMOTION, MOUSEBUTTONDOWN, QUIT.
 
     SDL (Simple DirectMedia Layer)
-        międzyplatformowa bilioteka ułatwiająca tworzenie gier i programów multimedialnych.
+        międzyplatformowa biblioteka ułatwiająca tworzenie gier i programów multimedialnych.
 
     pygame.Rect
-        obiekt pygame przechowujący współrzędne prostokąta; .centerx, .x, .y, .top, .bottom, .left, .right – wirtualne własności obiektu prostokąta określające jego położenie; .colliderect() – metoda sprawdza czy dwa prostokąty nachodzą na siebie.
-
-POĆWICZ SAM
------------
-
-    Zmodyfikuj właściwości obiektów (paletek, piłki) takie jak rozmiar, kolor, początkowa pozycja.
-    Zmień położenie paletek tak aby znalazły przy lewej i prawej krawędzi okna, wprowadź potrzebne zmiany w kodzie, aby umożliwić rozgrywkę.
-    Dodaj trzecią paletkę, która co jakiś czas będzie "przelatywać" przez środek planszy i zmieniać w przypadku kolizji tor i kolor piłki.
+        obiekt pygame przechowujący współrzędne prostokąta; ``.centerx, .x, .y, .top, .bottom, .left, .right`` – wirtualne własności obiektu prostokąta określające jego położenie; ``.colliderect()`` – metoda sprawdza czy dwa prostokąty nachodzą na siebie.
 
 Metryka
 ^^^^^^^

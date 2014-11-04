@@ -62,6 +62,7 @@ Zaczynamy!
     pong_str/index
     pong/index
     life/index
+    tictactoe_str/index
     tictactoe/index
     quiz/index
     todo/index

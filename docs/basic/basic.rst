@@ -32,7 +32,7 @@ Pythona jest ``>>>``.
 Źródła
 --------------------
 
-Poniższy dokument możesz pobraćw formacie *odt* lub *pdf*:
+Poniższy dokument możesz pobrać w formacie *odt* lub *pdf*:
 :download:`T1.odt <T1.odt>`
 :download:`T1.pdf <T1.pdf>`
 
