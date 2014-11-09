@@ -49,7 +49,7 @@ Zaczynamy!
 ----------
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 3
     :numbered:
 
     basic/basic
@@ -61,14 +61,14 @@ Zaczynamy!
     basic/basic6
     pong_str/index
     pong/index
-    life/index
     tictactoe_str/index
     tictactoe/index
+    life_str/index
+    life/index
     quiz/index
     todo/index
     chatter/index
     faq/index.rst
-
 
 Indices and tables
 ~~~~~~~~~~~~~~~~~~
