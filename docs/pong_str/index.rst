@@ -22,7 +22,7 @@ Tworzymy plik ``pong_str.py`` w terminalu lub w wybranym edytorze, zapisujemy na
 .. literalinclude:: pong_str1.py
     :linenos:
 
-W instrukcji ``pygame.display.set_mode()`` inicjalizujemy okno gry o rozmiarach 800x400 pikseli i 32 bitowej głębi kolorów. Tworzy w ten sposób powierzchnię główną do rysowania zapisaną w zmiennej OKNOGRY. Definujemy również kolory w formacie RGB (Red, Green, Blue) podając składowe poszczegónych kanałów w tuplach, np. (0, 0, 255).
+W instrukcji ``pygame.display.set_mode()`` inicjalizujemy okno gry o rozmiarach 800x400 pikseli i 32 bitowej głębi kolorów. Tworzymy w ten sposób powierzchnię główną do rysowania zapisaną w zmiennej OKNOGRY. Definujemy również kolory w formacie RGB (Red, Green, Blue) podając składowe poszczegónych kanałów w tuplach, np. ``(0, 0, 255)``.
 
 Obiekty graficzne
 ---------------------
@@ -38,7 +38,7 @@ W dalszej kolejności zamiemy się określeniem właściwości i inicjalizacją 
     :lineno-start: 34
     :lines: 34-
 
-Schemat dodawania obiektów jest prosty. Po określeniu wymiarów obiektu (szerokości i wysokości), tworzymy powierzchnię (``pygame.Surface``), którą wypełniamy odpowiednim kolorem (``.fill()``). W przypadku piłki do metody ``Surface()`` przekazujemy dodatkowe argumenty (``pygame.SRCALPHA``) umożliwiające uzyskanie powierzchni z przezroczystymi pikselami (z kanałem alpha), na której rysujemy koło (``pygame.draw.ellipse()``) o podanym kolorze, środku i rozmiarach. W kolejnym kroku pobieramy powierzchnię prostokąta zajmowanego przez obiekt (``.get_rect()``), za pomocą której łatwiej ustawić wstępne położenie obiektu, a później nim manipulować (właściwości ``.x`` i ``.y``).
+Schemat dodawania obiektów graficznych jest prosty. Po określeniu wymiarów obiektu (szerokości i wysokości), tworzymy powierzchnię (``pygame.Surface``), którą wypełniamy odpowiednim kolorem (``.fill()``). W przypadku piłki do metody ``Surface()`` przekazujemy dodatkowe argumenty (``pygame.SRCALPHA``) umożliwiające uzyskanie powierzchni z przezroczystymi pikselami (z kanałem alpha), na której rysujemy koło (``pygame.draw.ellipse()``) o podanym kolorze, środku i rozmiarach. W kolejnym kroku pobieramy prostokąt (np. ``paletka1_prost = paletka1_obr.get_rect()``) zajmowany przez obiekt, za pomocą którego łatwiej ustawić wstępne położenie obiektu, a później nim manipulować (właściwości ``.x`` i ``.y`` obiektu :term:`Rect` zwróconego przez metodę ``.get_rect()``).
 
 Wyświetlanie tekstu
 ---------------------
@@ -54,7 +54,7 @@ W grze chcemy wyświetlać punkty zdobywane przez graczy. Dopisujemy więc poni�
     :lineno-start: 72
     :lines: 72-
 
-Po zdefiniowaniu zmiennych przechowujących punkty graczy, tworzymy obiekt czcionki z podanego pliku (``pygame.font.Font()``). Następnie definujemy funkcje, których zadaniem jest rysowanie punktacji graczy. Na początku tworzą one nową powierzchnię z punktacją gracza (``.render()``), pobierają jej powierzchnię prostokątną (``.get_rect()``), pozycjonują ją (``.center()``) i rysują na głównej powierzchni gry (``.blit()``).
+Po zdefiniowaniu zmiennych przechowujących punkty graczy, tworzymy obiekt czcionki z podanego pliku (``pygame.font.Font()``). Następnie definujemy funkcje, których zadaniem jest rysowanie punktacji graczy. Na początku tworzą one nową powierzchnię z punktacją gracza (``.render()``), pobierają jej prostokąt (``.get_rect()``), pozycjonują go (``.center()``) i rysują na głównej powierzchni gry (``.blit()``).
 
 .. note::
     Plik wykorzystywany do wyświetlania tekstu (``freesansbold.ttf``) musi znaleźć się w katalogu ze skryptem.
@@ -79,7 +79,7 @@ Dopisujemy więc do kodu główną pętlę wraz z obsługą zdarzeń:
     :lineno-start: 95
     :lines: 95-
 
-W obrębie głównej pętli programu pętla ``for`` odczytuje kolejne zdarzenia zwracane przez metodę ``pygame.event.get()``. Jak widać, obsługujemy wydarzenie typu (właściwość ``.type``) QUIT, czyli zakończenie aplikacji, oraz MOUSEMOTION, a więc ruch myszy. W tym drugim przypadku pobieramy współrzędne kursora (``.pos``) i obliczamy przesunięcie myszy w poziomie. Kolejne instrukcje uniemożliwiają wyjście paletki gracza poza okno gry.
+W obrębie głównej pętli programu pętla ``for`` odczytuje kolejne zdarzenia zwracane przez metodę ``pygame.event.get()``. Jak widać, za pomocą instrukcji warunkowych (``if event.type ==``) obsługujemy wydarzenia typu QUIT, czyli zakończenie aplikacji, oraz MOUSEMOTION, a więc ruch myszy W tym drugim przypadku pobieramy współrzędne kursora (``event.pos``) i obliczamy przesunięcie myszy w poziomie. Kolejne instrukcje uniemożliwiają wyjście paletki gracza poza okno gry.
 Do pętli głównej musimy dopisać jeszcze kod kontrolujący paletkę komputera, piłkę i jej interakcje ze ścianami okna gry oraz paletkami, a także rysujący poszczególne obiekty:
 
 .. raw:: html
@@ -91,7 +91,7 @@ Do pętli głównej musimy dopisać jeszcze kod kontrolujący paletkę komputera
     :lineno-start: 119
     :lines: 119-
 
-Komentarze w kodzie wyjaśniają kolejne czynności. Warto zwrócić uwagę na sposób odczytywania pozycji obiektów klasy ``Rect`` (prostokątów), czyli właściwości ``.x, .y, .centerx, .right, .left, .top, .bottom``; oraz na sprawdzanie kolizji piłki z paletkami, czyli metodę ``.colliderect()``. Ostatnie linie kodu rysują okno gry i obiekty (tekst z wynikami graczy, paletki i piłkę) ze zmienionymi właściwościami (liczba punktów, położenie). Funkcja ``pygame.display.update()``, która musi być wykonywana na końcu rysowania, aktualizuje obraz gry na ekranie. Ostatnia linia natomiast (``fpsClock.tick()``) pozwala blokuje grę na 30 klatek na sekundę, aby nie działała tak szybko jak pozwala sprzęt, lecz ze stałą prędkością.
+Komentarze w kodzie wyjaśniają kolejne czynności. Warto zwrócić uwagę na sposób odczytywania pozycji obiektów klasy ``Rect`` (prostokątów), czyli właściwości ``.x, .y, .centerx, .right, .left, .top, .bottom``; oraz na sprawdzanie kolizji piłki z paletkami, czyli metodę ``.colliderect()``. Ostatnie linie kodu rysują okno gry i obiekty (tekst z wynikami graczy, paletki i piłkę) ze zmienionymi właściwościami (liczba punktów, położenie). Funkcja ``pygame.display.update()``, która musi być wykonywana na końcu rysowania, aktualizuje obraz gry na ekranie. Ostatnia linia natomiast (``fpsClock.tick()``) blokuje grę na 30 klatek na sekundę, aby nie działała tak szybko jak pozwala sprzęt, lecz ze stałą prędkością.
 
 Grę możemy uruchomić poleceniem wpisanym w terminalu:
 
