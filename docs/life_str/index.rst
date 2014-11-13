@@ -92,7 +92,8 @@ Poćwicz sam
 Źródła
 ^^^^^^^^
 
-Wszystkie kody możesz pobrać w formie archiwum: :download:`life_str.zip <life_str.zip>`
+* :download:`life_str.zip <life_str.zip>`
+* :download:`life_str.pdf <../pdf/life_str.pdf>`
 
 Słownik
 ^^^^^^^^

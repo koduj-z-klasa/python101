@@ -108,7 +108,8 @@ Poćwicz sam
 Źródła
 ^^^^^^^^
 
-Wszystkie kody możesz pobrać w formie archiwum: :download:`tictactoe_str.zip <tictactoe_str.zip>`
+* :download:`tictactoe_str.zip <tictactoe_str.zip>`
+* :download:`tictactoe_str.pdf <../pdf/tictactoe_str.pdf>`
 
 Słownik
 ^^^^^^^^

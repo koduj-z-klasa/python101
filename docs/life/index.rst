@@ -1,5 +1,5 @@
-Gra w życie Conwaya
-===================
+Gra w życie Conwaya (obj)
+=========================
 
 `Gra w życie`_ zrealizowana z użyciem biblioteki `PyGame`_.
 

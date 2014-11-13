@@ -264,6 +264,7 @@ Pojęcia
 ^^^^^^^^^^^^^
 
 * :download:`quiz_all.zip <quiz_all.zip>`
+* :download:`quiz_flask.pdf <../pdf/quiz_flask.pdf>`
 
 Metryka
 ^^^^^^^

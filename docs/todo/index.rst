@@ -348,6 +348,7 @@ Materiały
 ^^^^^^^^^^^^^
 
 * :download:`todo_all.zip <todo_all.zip>`
+* :download:`todo_flask_sqlite.pdf <../pdf/todo_flask_sqlite.pdf>`
 
 Metryka
 ^^^^^^^

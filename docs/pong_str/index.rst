@@ -109,7 +109,8 @@ Poćwicz sam
 Źródła
 ^^^^^^^^
 
-Wszystkie kody możesz pobrać w formie archiwum: :download:`pong_str.zip <pong_str.zip>`
+* :download:`pong_str.zip <pong_str.zip>`
+* :download:`pong_str.pdf <../pdf/pong_str.pdf>`
 
 Słownik
 ^^^^^^^^

@@ -478,6 +478,7 @@ Materiały
 ^^^^^^^^^^^^^
 
 * :download:`chatter_all.zip <chatter_all.zip>`
+* :download:`chatter_django.pdf <../pdf/chatter_django.pdf>`
 
 Metryka
 ^^^^^^^
