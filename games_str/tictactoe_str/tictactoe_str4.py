@@ -86,12 +86,12 @@ def ai_ruch(RUCH):
 
     # sprawdź, czy komputer może wygrać
     pole = sprawdz_pola(uklady_wygrywam)
-    if pole:
+    if pole is not None:
         return postaw_znak(pole, RUCH)
 
     # jeżeli komputer nie może wygrać, blokuj gracza
     pole = sprawdz_pola(uklady_blokuje)
-    if pole:
+    if pole is not None:
         return postaw_znak(pole, RUCH)
 
     # jeżeli nie można wygrać i gracza nie trzeba blokować, wylosuj pole
@@ -129,10 +129,10 @@ def drukuj_wynik(WYGRANY):
         tekst = u'Wygrał komputer!'
     elif WYGRANY == 3:
         tekst = 'Remis!'
-    text_surf = fontObj.render(tekst, True, (20,255,20))
-    text_rect = text_surf.get_rect()
-    text_rect.center = (75, 75)
-    OKNOGRY.blit(text_surf, text_rect)
+    tekst_obr = fontObj.render(tekst, True, (20,255,20))
+    tekst_prost = tekst_obr.get_rect()
+    tekst_prost.center = (75, 75)
+    OKNOGRY.blit(tekst_obr, tekst_prost)
 
 # pętla główna programu
 while True:
@@ -148,7 +148,7 @@ while True:
                 if event.type == MOUSEBUTTONDOWN:
                     if event.button == 1: # jeżeli naciśnięto pierwszy przycisk
                         mouseX, mouseY = event.pos # rozpakowanie tupli
-                        pole = ((mouseY//50)*3)+(mouseX//50) # wylicz indeks klikniętego pola
+                        pole = ((mouseY/50)*3)+(mouseX/50) # wylicz indeks klikniętego pola
                         RUCH = postaw_znak(pole, RUCH)
             elif RUCH == 2:
                 RUCH = ai_ruch(RUCH)

@@ -58,7 +58,7 @@ Za sposób gry komputera odpowiada funkcja ``ai_ruch()`` (*ai* – ang. *artific
 
 Podstawą działania funkcji ``sprawdz_pola()`` jest lista ``POLA_INDEKSY`` zawierająca jako elementy listy indeksów pól tworzących wiersze, kolumny i przekątne ``POLA_GRY`` (czyli planszy). Pętla ``for lista in POLA_INDEKSY:`` pobiera kolejne listy, tworzy w liście pomocniczej kol trójkę wartości odczytanych z ``POLA_GRY`` i próbuje ją dopasować do przekazanego jako argument układu wygrywającego lub blokującego. Jeżeli znajdzie dopasowanie zwraca liczbę oznaczającą gracza lub komputer, o ile opcjonalny argument ``WYGRANY`` ma wartość inną niż ``None``, w przeciwnym razie zwracany jest indeks ``POLA_GRY``, na którym komputer powinien postawić swój znak.
 
-Jeżeli indeks zwrócony przez funkcję ``sprawdz_pola()`` jest pozytywny, przekazywany jest do funkcji ``postaw_znak()``, której zadaniem jest zapisanie w ``POLU_GRY`` pod otrzymanym indeksem wartości symbolizującej znak komputera (czyli 2) oraz nadanie i zwrócenie zmiennej RUCH wskazującej na gracza (wartość 1).
+Jeżeli indeks zwrócony przez funkcję ``sprawdz_pola()`` jest inny niż ``None``, przekazywany jest do funkcji ``postaw_znak()``, której zadaniem jest zapisanie w ``POLU_GRY`` pod otrzymanym indeksem wartości symbolizującej znak komputera (czyli 2) oraz nadanie i zwrócenie zmiennej RUCH wskazującej na gracza (wartość 1).
 
 O ile na planszy nie ma układu wygrywającego lub nie ma konieczności blokowania gracza, komputer w pętli losuje przypadkowe pole (``random.randrange(0,9)``), dopóki nie znajdzie pustego, i przekazuje jego indeks do funkcji ``postaw_znak()``.
 
@@ -110,6 +110,24 @@ Poćwicz sam
 
 * :download:`tictactoe_str.zip <tictactoe_str.zip>`
 * :download:`tictactoe_str.pdf <../pdf/tictactoe_str.pdf>`
+
+Kolejne wersje tworzenego kodu można pobierać wydając polecenia:
+
+.. code-block:: bash
+
+    ~/python101$ git checkout -f tic/str1
+    ~/python101$ git checkout -f tic/str2
+    ~/python101$ git checkout -f tic/str3
+    ~/python101$ git checkout -f tic/str4
+
+Uruchamiamy je wydając polecenie:
+
+.. code-block:: bash
+
+    ~/python101$ cd docs/tictactoe_str
+    ~/python101/docs/tictactoe_str$ python tictactoe_strx.py
+
+\- gdzie *x* jest numerem kolejnej wersji kodu.
 
 Słownik
 ^^^^^^^^

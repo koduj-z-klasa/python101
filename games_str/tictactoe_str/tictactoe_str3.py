@@ -86,12 +86,12 @@ def ai_ruch(RUCH):
 
     # sprawdź, czy komputer może wygrać
     pole = sprawdz_pola(uklady_wygrywam)
-    if pole:
+    if pole is not None:
         return postaw_znak(pole, RUCH)
 
     # jeżeli komputer nie może wygrać, blokuj gracza
     pole = sprawdz_pola(uklady_blokuje)
-    if pole:
+    if pole is not None:
         return postaw_znak(pole, RUCH)
 
     # jeżeli nie można wygrać i gracza nie trzeba blokować, wylosuj pole
