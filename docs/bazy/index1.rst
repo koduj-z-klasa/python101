@@ -1,0 +1,256 @@
+Bazy danych w Pythonie
+============================
+
+Tworzenie i zarządzanie bazami danymi za pomocą Pythona z wykorzystaniem
+wbudowanego modułu `sqlite3 DB-API`_, a także zewnętrznych bibliotek ORM:
+`Peewee`_ oraz `SQLAlchemy`_
+
+.. _sqlite3 DB-API: https://docs.python.org/2/library/sqlite3.html
+.. _Peewee: http://peewee.readthedocs.org/en/latest/index.html
+.. _SQLAlchemy: http://www.sqlalchemy.org
+
+.. note::
+
+    Poniższe przykłady wykorzystywać będą prostą, wydajną, wykorzystywaną
+    zarówno w prostych, jak i zaawansowanych projektach, `bazę danych SQLite3`_.
+    Gdy zajdzie potrzeba, można je jednak wyorzystać w pracy z innymi
+    bazami, takimi jak np. MySQL, MariaDB czy PostgresSQL.
+    Do testowania baz danych SQLite można wykorzystać przygotowane przez
+    jej twórców konsolowe narzędzie `sqlite3`_. W linuksach opartych na Debianie
+    (m. in. Ubuntu i pochodne) instalujemy je poleceniem typu:
+    ``apt-get install sqlite3``; w systemach Windows natomiast rozpakowujemy
+    z pobranego `archiwum`_.
+
+.. _bazę danych SQLite3: http://www.sqlite.org/
+.. _sqlite3: http://www.sqlite.org/cli.html
+.. _archiwum: http://www.sqlite.org/download.html
+
+SQL
+-------------------
+
+Jak wiadomo, do obsługi bazy danych wykorzystywany jest strukturalny
+język zapytań `SQL`_ Jest on m.in. przedmiotem nauki na lekcjach informatyki
+na poziomie rozszerzonym w szkołach ponadgimnazjalnych. Używając Pythona
+można łatwo i efektywnie pokazać używanie SQL-a, zarówno z poziomu wiersza
+poleceń, jak również z poziomu aplikacji internetowych WWW. Na początku
+zajmiemy się skryptem konsolowym, co pozwala przećwiczyć "surowe" polecenia SQL-a.
+
+.. _SQL: http://pl.wikipedia.org/wiki/SQL
+
+Połączenie z bazą
+^^^^^^^^^^^^^^^^^^^^
+
+W ulubionym edytorze tworzymy plik `sqlraw.py` i umieszczamy w nim poniższy kod:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: sqlraw01.py
+    :linenos:
+
+Przede wszystkim importujemy moduł `sqlite3` do obsługi baz SQLite3. Następnie w zmiennej ``con``
+tworzymy połączenie z bazą danych przechowywaną w pliku na dysku (``test.db``, nazwa pliku
+jest dowolona) lub w pamięci, jeśli podamy ``':memory:'``. Kolejna instrukcja ustawia właściwość
+``row_factory`` na wartość ``sqlite3.Row``, aby możliwy był dostęp do kolumn (pól tabel) nie tylko
+przez indeksy, ale również przez nazwy. Jest to bardzo przydatne podczas odczytu danych.
+
+Aby móc wykonywać operacje na bazie, potrzebujemy obiektu tzw. kursora, tworzymy go
+poleceniem ``cur = con.cursor()``. I tyle potrzeba, żeby rozpocząć pracę z bazą.
+Skrypt możemy uruchomić poleceniem podanym niżej, ale na razie nic się jeszcze nie stanie...
+
+.. code:: bash
+
+    ~ $ python sqlraw.py
+
+Model bazy
+^^^^^^^^^^^^^^^^^^^^
+
+Zanim będziemy mogli wykonywać podstaowe operacje na bazie danych określane skrótem
+:term:`CRUD` – *Create* (tworzenie), *Read* (odczyt), *Update* (aktualizacja), *Delete* (usuwanie) -
+musimy utworzyć tabele i relacje między nimi według zaprojektowanego schematu.
+Do naszego pliku dopisujemy więc następujący kod:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: sqlraw02.py
+    :linenos:
+
+Jak widać pojedyncze polecenia SQL-a wykonujemy za pomocą metody ``execute()`` obiektu kursora.
+Warto zwrócić uwagę, że w zależności od długości i stopnia skomplikowania instrukcji SQL,
+możemy je zapisywać w różny sposób. Proste polecenia podajemy w cudzysłowach, bardziej
+rozbudowane lub kilka instrukcji razem otaczamy potrójnymi cudzysłowami. Ale uwaga:
+wiele instrukcji wykonujemy za pomocą metody ``.executescript()``.
+
+Powyższe polecenia SQL-a tworzą dwie tabele. Tabela "klasa" przechowuje nazwę i profil klasy,
+natomiast tabela "uczen" zawiera pola przechowujące imię i nazwisko ucznia oraz identyfikator
+klasy (pole "klasa_id", tzw. klucz obcy), do której należy uczeń. Między tabelami zachodzi
+relacja jeden-do-wielu, tzn. do jednej klasy może chodzić wielu uczniów.
+
+Po wykonaniu wprowadzonego kodu w katalogu ze skryptem powinien pojawić się plik ``test.db``,
+czyli nasza baza danych. Możemy sprawdzić jej zawartość przy użyciu wspomnianego interpretera
+``sqlite3`` (``sqlite3.exe`` w Windows).
+
+.. note::
+
+    W katalogu z bazą danych wydajemy polecenie ``sqlite3 test.db``, w ten sposób wczytujemy
+    bazę do interpretera. Do dyspozycji mamy polecenia:
+    * ``.databases`` – pokazuje aktualną bazę danych;
+    * ``.schema`` – pokazuje schemat bazy danych, czyli polecenia SQL tworzące tabele i relacje;
+    * ``.table`` – pokaże tabele w bazie;
+    * ``.quit`` – wychodzimy z powłoki interpretera.
+    Możemy również wydawać wszelkie polecenia SQL-a operujące na bazie, np.
+    ``SELECT * FROM klasa;`` – polecenia te zawsze kończymy średnikiem.
+
+.. figure:: sqlite3.png
+
+Wstawianie danych
+^^^^^^^^^^^^^^^^^^^^
+
+Do skryptu dopisujemy poniższy kod:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: sqlraw03.py
+    :linenos:
+
+Do wstawiania pojedynczych rekordów używamy odpowiednich poleceń SQL-a jako
+argumentów wspominanej metody ``.execute()``, możemy też dodawać wiele rekordów
+na raz posługując się funkcją ``.executemany()``. Zarówno w jednym, jak i drugim
+przypadku wartości pól nie należy umieszczać bezpośrednio w zapytaniu SQL
+ze względu na możliwe błędy lub ataki typu SQL injection ("wstrzyknięcia" kodu SQL).
+Zamiast tego używamy zastępników (ang. *placeholder*) w postaci znaków zapytania.
+Wartości przekazujemy w tupli lub tuplach jako drugi argument.
+
+Warto zwrócić uwagę, na trudności wynikające z relacyjnej struktury bazy danych.
+Aby dopisać informacje o uczniach do tabeli "Uczeń", musimy znać identyfikator
+(klucz podstawowy) klasy. Bezpośrednio po zapisaniu danych klasy, możemy go uzyskać
+dzięki funkcji ``.lastrowid()``, która zwraca ostatni *rowid* (unikalny identyfikator rekordu),
+ale tylko po wykonaniu pojedynczego polecenia *INSERT*. W innych przypadkach
+trzeba wykonać kwerendę SQL z odpowiednim warunkiem *WHERE*, w którym również
+stosujemy zastępniki.
+
+Metoda ``.commit()`` zatwierdza, tzn. zapisuje w bazie danych, operacje danej transakcji,
+czyli grupy operacji, które albo powinny zostać wykonane razem, albo powinny
+zostać odrzucone ze względu na naruszenie zasad `ACID`_ (Atomicity, Consistency,
+Isolation, Durability – Atomowość, Spójność, Izolacja, Trwałość).
+
+.. _ACID: http://pl.wikipedia.org/wiki/Transakcja_%28informatyka%29
+
+Pobieranie danych
+^^^^^^^^^^^^^^^^^^^^
+
+Pobieranie danych (czyli :term:`kwerenda`) wymaga polecenia *SELECT* języka SQL.
+Dopisujemy więc do naszego skryptu funkcję, która wyświetli listę uczniów oraz
+klas, do których należą: 
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: sqlraw04.py
+    :linenos:
+
+Funkcja ``czytajdane()`` wykonuje zapytanie SQL pobierające wszystkie dane z dwóch
+powiązanych tabel: "uczen" i "klasa". Wydobywamy *id ucznia*, *imię* i *nazwisko*,
+a także *nazwę* klasy na podstawie warunku w klauzuli *WHERE*. Wynik, czyli wszystkie
+pasujące rekordy zwrócone przez metodę ``.fetchall()``, zapisujemy w zmiennej ``uczniowie``
+w postaci tupli. Jej elementy odczytujemy w pętli ``for`` jako listę ``uczen``.
+Dzięki ustawieniu właściwości ``.row_factory`` połączenia z bazą na ``sqlite3.Row``
+odczytujemy poszczególne pola podając nazwy zamiast indeksów, np. ``uczen['imie']``.
+
+Modyfikacja i usuwanie danych
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Do skryptu dodajemy jeszcze kilka linii:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: sqlraw05.py
+    :linenos:
+
+Aby zmienić przypisanie ucznia do klasy, pobieramy identyfikor klasy za pomocą
+metody ``.execute()`` i polecenia *SELECT* SQL-a z odpowiednim warunkiem.
+Póżniej konstruujemy zapytanie *UPDATE* wykorzystując zastępniki i wartości
+przekazywane w tupli (zwróć uwagę na dodatkowy przecinek(!)) – w efekcie zmieniamy
+przypisanie ucznia do klasy.
+
+Nastęþnie usuwamy dane ucznia o identyfikatorze 3, używając polecenia SQL
+*DELETE*. Wywołanie funkcji ``czytajdane()`` wyśwetla zawartość bazy po zmianach.
+
+Na koniec zamykamy połącznie z bazą, wywołując metodę ``.close()``, dzięki
+czemu zapisujemy dokonane zmiany i zwalniamy zarezerwowane przez skrypt zasoby.
+
+Systemy ORM
+-------------------
+
+To be continued...
+
+Materiały
+^^^^^^^^^^^^^
+
+1. Dokumentacja modułu sqlite3 Pythona: https://docs.python.org/2/library/sqlite3.html
+2. Dokumentacja bazy SQLite3: http://www.sqlite.org/ 
+3. O języku SQL: http://pl.wikipedia.org/wiki/SQL
+
+Pojęcia
+^^^^^^^^^^^^^
+
+.. glossary::
+
+    SQL
+        strukturalny język zapytań używany do tworzenia i zarządzania bazą danych.
+
+    SQLite3
+        silnik bezserwerowej, nie wymagającej dodatkowej konfiguracji, transakcyjnej bazy danych
+        implementującej standard SQL.
+
+    CRUD
+        skrót opisujący podstawowe operacje na bazie danych z wykorzystaniem języka SQL,
+        *Create* (tworzenie) odpowiada zapytaniom *INSERT*, *Read* (odczyt) - zapytaniom
+        *SELECT*, *Update* (aktualizacja) - *UPDATE*, *Delete* (usuwanie) - *DELETE*.
+
+    Transakcja
+        zbiór powiązanych logicznie operacji na bazie danych, który powinien być
+        albo w całości zapisany, albo odrzucony ze względu na naruszenie zasad
+        spójności (ACID).
+
+    ACID
+        Atomicity, Consistency, Isolation, Durability – Atomowość, Spójność, Izolacja, Trwałość;
+        zasady określające kryteria poprawnego zapisu danych w bazie.
+        Zob.: http://pl.wikipedia.org/wiki/ACID
+        
+    kwerenda
+        Zapytanie do bazy danych zazwyczaj w oparciu o dodatkowe kryteria,
+        którego celem jest wydobycie z bazy określonych danych lub ich modyfikacja.
+
+Źródła
+^^^^^^^^^^^^^
+
+* :download:`sqlraw.zip <sqlraw.zip>`
+
+Metryka
+^^^^^^^
+
+:Autorzy: Robert Bednarz (ecg@ecg.vot.pl)
+
+:Utworzony: |date| o |time|
+
+.. |date| date::
+.. |time| date:: %H:%M
+
+.. raw:: html
+
+    <style>
+        div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
+        div.highlight, div.highlight-python { margin-top: 0px; }
+    </style>
+
+
+.. include:: ../copyright.rst

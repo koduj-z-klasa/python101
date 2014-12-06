@@ -65,6 +65,7 @@ Zaczynamy!
     tictactoe/index
     life_str/index
     life/index
+    bazy/index1
     quiz/index
     todo/index
     chatter/index
