@@ -95,6 +95,23 @@ Poćwicz sam
 * :download:`life_str.zip <life_str.zip>`
 * :download:`life_str.pdf <../pdf/life_str.pdf>`
 
+Kolejne wersje tworzenego kodu można pobierać wydając polecenia:
+
+.. code-block:: bash
+
+    ~/python101$ git checkout -f life/str1
+    ~/python101$ git checkout -f life/str2
+    ~/python101$ git checkout -f life/str3
+
+Uruchamiamy je wydając polecenie:
+
+.. code-block:: bash
+
+    ~/python101$ cd docs/life_str
+    ~/python101/docs/life_str$ python life_strx.py
+
+\- gdzie *x* jest numerem kolejnej wersji kodu.
+
 Słownik
 ^^^^^^^^
 

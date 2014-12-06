@@ -11,7 +11,7 @@ wbudowanego modułu `sqlite3 DB-API`_, a także zewnętrznych bibliotek ORM:
 
 .. note::
 
-    Poniższe przykłady wykorzystywać będą prostą, wydajną, wykorzystywaną
+    Poniższe przykłady wykorzystywać będą prostą, wydajną, stosowaną
     zarówno w prostych, jak i zaawansowanych projektach, `bazę danych SQLite3`_.
     Gdy zajdzie potrzeba, można je jednak wyorzystać w pracy z innymi
     bazami, takimi jak np. MySQL, MariaDB czy PostgresSQL.
@@ -29,7 +29,7 @@ SQL
 -------------------
 
 Jak wiadomo, do obsługi bazy danych wykorzystywany jest strukturalny
-język zapytań `SQL`_ Jest on m.in. przedmiotem nauki na lekcjach informatyki
+język zapytań `SQL`_. Jest on m.in. przedmiotem nauki na lekcjach informatyki
 na poziomie rozszerzonym w szkołach ponadgimnazjalnych. Używając Pythona
 można łatwo i efektywnie pokazać używanie SQL-a, zarówno z poziomu wiersza
 poleceń, jak również z poziomu aplikacji internetowych WWW. Na początku
@@ -66,7 +66,7 @@ Skrypt możemy uruchomić poleceniem podanym niżej, ale na razie nic się jeszc
 Model bazy
 ^^^^^^^^^^^^^^^^^^^^
 
-Zanim będziemy mogli wykonywać podstaowe operacje na bazie danych określane skrótem
+Zanim będziemy mogli wykonywać podstawowe operacje na bazie danych określane skrótem
 :term:`CRUD` – *Create* (tworzenie), *Read* (odczyt), *Update* (aktualizacja), *Delete* (usuwanie) -
 musimy utworzyć tabele i relacje między nimi według zaprojektowanego schematu.
 Do naszego pliku dopisujemy więc następujący kod:
@@ -128,7 +128,7 @@ Do wstawiania pojedynczych rekordów używamy odpowiednich poleceń SQL-a jako
 argumentów wspominanej metody ``.execute()``, możemy też dodawać wiele rekordów
 na raz posługując się funkcją ``.executemany()``. Zarówno w jednym, jak i drugim
 przypadku wartości pól nie należy umieszczać bezpośrednio w zapytaniu SQL
-ze względu na możliwe błędy lub ataki typu SQL injection ("wstrzyknięcia" kodu SQL).
+ze względu na możliwe błędy lub ataki typu `SQL injection <http://pl.wikipedia.org/wiki/SQL_injection>` ("wstrzyknięcia" kodu SQL).
 Zamiast tego używamy zastępników (ang. *placeholder*) w postaci znaków zapytania.
 Wartości przekazujemy w tupli lub tuplach jako drugi argument.
 
@@ -191,8 +191,8 @@ Póżniej konstruujemy zapytanie *UPDATE* wykorzystując zastępniki i wartości
 przekazywane w tupli (zwróć uwagę na dodatkowy przecinek(!)) – w efekcie zmieniamy
 przypisanie ucznia do klasy.
 
-Nastęþnie usuwamy dane ucznia o identyfikatorze 3, używając polecenia SQL
-*DELETE*. Wywołanie funkcji ``czytajdane()`` wyśwetla zawartość bazy po zmianach.
+Następnie usuwamy dane ucznia o identyfikatorze 3, używając polecenia SQL
+*DELETE*. Wywołanie funkcji ``czytajdane()`` wyświetla zawartość bazy po zmianach.
 
 Na koniec zamykamy połącznie z bazą, wywołując metodę ``.close()``, dzięki
 czemu zapisujemy dokonane zmiany i zwalniamy zarezerwowane przez skrypt zasoby.
@@ -244,6 +244,25 @@ Pojęcia
 ^^^^^^^^^^^^^
 
 * :download:`sqlraw.zip <sqlraw.zip>`
+
+Kolejne wersje tworzenego kodu można pobierać wydając polecenia:
+
+.. code-block:: bash
+
+    ~/python101$ git checkout -f sqlraw1
+    ~/python101$ git checkout -f sqlraw2
+    ~/python101$ git checkout -f sqlraw3
+    ~/python101$ git checkout -f sqlraw4
+    ~/python101$ git checkout -f sqlraw5
+
+Uruchamiamy je wydając polecenie:
+
+.. code-block:: bash
+
+    ~/python101$ cd docs/bazy
+    ~/python101/docs/bazy$ python sqlrawx.py
+
+\- gdzie *x* jest numerem kolejnej wersji kodu.
 
 Metryka
 ^^^^^^^

@@ -112,6 +112,25 @@ Poćwicz sam
 * :download:`pong_str.zip <pong_str.zip>`
 * :download:`pong_str.pdf <../pdf/pong_str.pdf>`
 
+Kolejne wersje tworzenego kodu można pobierać wydając polecenia:
+
+.. code-block:: bash
+
+    ~/python101$ git checkout -f pong/str1
+    ~/python101$ git checkout -f pong/str2
+    ~/python101$ git checkout -f pong/str3
+    ~/python101$ git checkout -f pong/str4
+    ~/python101$ git checkout -f pong/str5
+
+Uruchamiamy je wydając polecenie:
+
+.. code-block:: bash
+
+    ~/python101$ cd docs/pong_str
+    ~/python101/docs/pong_str$ python pong_strx.py
+
+\- gdzie *x* jest numerem kolejnej wersji kodu.
+
 Słownik
 ^^^^^^^^
 
