@@ -77,8 +77,10 @@ Do naszego pliku dopisujemy więc następujący kod:
 
 .. literalinclude:: sqlraw02.py
     :linenos:
+    :lineno-start: 16
+    :lines: 16-
 
-Jak widać pojedyncze polecenia SQL-a wykonujemy za pomocą metody ``execute()`` obiektu kursora.
+Jak widać pojedyncze polecenia SQL-a wykonujemy za pomocą metody ``.execute()`` obiektu kursora.
 Warto zwrócić uwagę, że w zależności od długości i stopnia skomplikowania instrukcji SQL,
 możemy je zapisywać w różny sposób. Proste polecenia podajemy w cudzysłowach, bardziej
 rozbudowane lub kilka instrukcji razem otaczamy potrójnymi cudzysłowami. Ale uwaga:
@@ -97,10 +99,12 @@ czyli nasza baza danych. Możemy sprawdzić jej zawartość przy użyciu wspomni
 
     W katalogu z bazą danych wydajemy polecenie ``sqlite3 test.db``, w ten sposób wczytujemy
     bazę do interpretera. Do dyspozycji mamy polecenia:
-    * ``.databases`` – pokazuje aktualną bazę danych;
-    * ``.schema`` – pokazuje schemat bazy danych, czyli polecenia SQL tworzące tabele i relacje;
-    * ``.table`` – pokaże tabele w bazie;
-    * ``.quit`` – wychodzimy z powłoki interpretera.
+    
+    - ``.databases`` – pokazuje aktualną bazę danych;
+    - ``.schema`` – pokazuje schemat bazy danych, czyli polecenia SQL tworzące tabele i relacje;
+    - ``.table`` – pokaże tabele w bazie;
+    - ``.quit`` – wychodzimy z powłoki interpretera.
+    
     Możemy również wydawać wszelkie polecenia SQL-a operujące na bazie, np.
     ``SELECT * FROM klasa;`` – polecenia te zawsze kończymy średnikiem.
 
@@ -117,6 +121,8 @@ Do skryptu dopisujemy poniższy kod:
 
 .. literalinclude:: sqlraw03.py
     :linenos:
+    :lineno-start: 36
+    :lines: 36-
 
 Do wstawiania pojedynczych rekordów używamy odpowiednich poleceń SQL-a jako
 argumentów wspominanej metody ``.execute()``, możemy też dodawać wiele rekordów
@@ -154,6 +160,8 @@ klas, do których należą:
 
 .. literalinclude:: sqlraw04.py
     :linenos:
+    :lineno-start: 57
+    :lines: 57-
 
 Funkcja ``czytajdane()`` wykonuje zapytanie SQL pobierające wszystkie dane z dwóch
 powiązanych tabel: "uczen" i "klasa". Wydobywamy *id ucznia*, *imię* i *nazwisko*,
@@ -174,6 +182,8 @@ Do skryptu dodajemy jeszcze kilka linii:
 
 .. literalinclude:: sqlraw05.py
     :linenos:
+    :lineno-start: 67
+    :lines: 67-
 
 Aby zmienić przypisanie ucznia do klasy, pobieramy identyfikor klasy za pomocą
 metody ``.execute()`` i polecenia *SELECT* SQL-a z odpowiednim warunkiem.
