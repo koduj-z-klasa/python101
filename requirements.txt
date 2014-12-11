@@ -1,1 +1,7 @@
-pygame==1.9.1
+hg+https://bitbucket.org/birkenfeld/sphinx#egg=sphinx
+sphinx_rtd_theme 
+# pip ma problem z instalacją pod windows, trzeba znaleźć obejście
+# pygame
+# turtle
+
+
