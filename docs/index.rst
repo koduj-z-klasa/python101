@@ -43,7 +43,7 @@ Przed szkoleniem warto przygotować i sprawdzić swój komputer.
     :maxdepth: 1
 
     env
-    git
+    source_code
 
 Zaczynamy!
 ----------
