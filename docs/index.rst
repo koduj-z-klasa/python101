@@ -69,6 +69,7 @@ Zaczynamy!
     quiz/index
     todo/index
     chatter/index
+    git/git
     faq/index.rst
 
 Indices and tables
