@@ -76,11 +76,23 @@ Modyfikacje i budowa dokumentacji offline
 Materiały szkoleniowe są przygotowywane z pomocą oprogramowania [Sphinx w
 wersji 1.3][3]. Jeżeli chcemy lokalnie generować dokumentację, instalujemy Sphinksa z kodów źródlowych.
 
-    $ sudo pip install sphinx_rtd_theme hg+https://bitbucket.org/birkenfeld/sphinx#sphinx
+    ~/python101$ sudo apt-get install python mercurial git python-dev python-pip python-virtualenv
+    ~/python101$ virtualenv .pve
+    ~/python101$ source .pve/bin/activate
+    ~/python101$ pip install sphinx_rtd_theme hg+https://bitbucket.org/birkenfeld/sphinx#sphinx
         
 Po instalacji możemy w folderze dokumentacji możemy uruchomić make:
   
     ~/python101/docs$ make html
+
+Autorzy
+-------
+
+- Robert Bednarz <ecg@ecg.vot.pl>
+- Dorota Rybicka 
+- Adam Jurkiewicz <biuro@cyfrowaszkola.waw.pl>
+- Grzegorz Wilczek <grzegorz.wilczek@ceo.org.pl>
+- Janusz Skonieczny <js@bravelabs.pl>
 
   [1]: http://www.ceo.org.pl/koduj
   [2]: http://www.ceo.org.pl/
