@@ -89,7 +89,7 @@ Autorzy
 -------
 
 - Robert Bednarz <ecg@ecg.vot.pl>
-- Dorota Rybicka 
+- Dorota Rybicka <rybicka.dorota@gmail.com>
 - Adam Jurkiewicz <biuro@cyfrowaszkola.waw.pl>
 - Grzegorz Wilczek <grzegorz.wilczek@ceo.org.pl>
 - Janusz Skonieczny <js@bravelabs.pl>
