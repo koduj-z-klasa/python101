@@ -61,7 +61,6 @@ Zaczynamy!
     basic/basic6
     pong_str/index
     pong/index
-    tictactoe_str/index
     tictactoe/index
     life_str/index
     life/index
