@@ -140,6 +140,22 @@ ale tylko po wykonaniu pojedynczego polecenia *INSERT*. W innych przypadkach
 trzeba wykonać kwerendę SQL z odpowiednim warunkiem *WHERE*, w którym również
 stosujemy zastępniki.
 
+Metoda ``.fechone()`` kursora zwraca listę zawierającą pola wybranego rekordu.
+Jeżeli interesuje nas pierwszy, i w tym wypadku jedyny, element tej listy dopisujemy ``[0]``.
+
+.. note::
+
+    - Wartość ``NULL`` w poleceniach SQL-a i ``None`` w tupli z danymi uczniów
+      odpowiadające kluczom głównym umieszczamy po to, aby baza danych utworzyła
+      je automatycznie. Można by je pominąć, ale wtedy w poleceniu wstawiania danych
+      musimy wymienić nazwy pól,
+      np. ``INSERT INTO klasa (nazwa, profil) VALUES (?, ?), ('1C', 'biologiczny')``.
+    
+    - Jeżeli podajemy jedną wartość w tupli jako argument metody .execute(), musimy
+      pamiętać o umieszczeniu dodatkowgo przecinka, np. ``('1A',)``, ponieważ
+      w ten sposób tworzymy w Pythonie 1-elementowe tuple. W przypadku wielu
+      wartości przecinek nie jest wymagany.
+
 Metoda ``.commit()`` zatwierdza, tzn. zapisuje w bazie danych, operacje danej transakcji,
 czyli grupy operacji, które albo powinny zostać wykonane razem, albo powinny
 zostać odrzucone ze względu na naruszenie zasad `ACID`_ (Atomicity, Consistency,
@@ -197,10 +213,48 @@ Następnie usuwamy dane ucznia o identyfikatorze 3, używając polecenia SQL
 Na koniec zamykamy połącznie z bazą, wywołując metodę ``.close()``, dzięki
 czemu zapisujemy dokonane zmiany i zwalniamy zarezerwowane przez skrypt zasoby.
 
-Systemy ORM
--------------------
+Dane z pliku
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To be continued...
+Dane z tabel w bazach MS Accessa lub LibreOffice Base'a możemy eksportować
+do formatu *csv*, czyli pliku tekstowego, w którym każda linia repreazentuje
+pojedynczy rekord, a wartości pól oddzielone są jakimś separatorem, najczęściej
+przecinkiem. Załóżmy więc, że mamy plik ``uczniowie.csv`` zawierający dane uczniów
+w formacie: ``Jan,Nowak,2``.
+
+Przed metodą ``.close()`` zamykającą połączenie z bazą dopiszmy następujący kod:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: sqlraw06.py
+    :linenos:
+    :lineno-start: 77
+    :lines: 77-95
+
+Na początku funkcji ``czytaj_dane()`` sprawdzamy, czy istnieje plik
+podany jako argumet. Wykorzystujemy metodę ``isfile()`` z modułu ``os``,
+który należy wcześniej zaimportować. Następnie w konstrukci ``with``
+otwieramy plik i wczytujemy jego treść do zmiennej ``zawartosc``.
+Pętla ``for`` pobiera kolejne linie, które oczyszczamy ze znaków końca linii
+(``.replace('\n','')``) i dekodujemy jako zapisane w standardzie *utf-8*.
+Poszczególne wartości oddzielone przecinkiem wyodrębniamy (``.split(',')``)
+do tupli, którą dodajemy do zdefiniowanej wcześniej tablicy (``dane.append()``).
+Na koniec funkcja zwraca listę przekształconą na tuplę (a więc zagnieżdzone tuple),
+która po przypisaniu do zmiennej ``uczniowie`` użyta zostanie, dokładnie
+tak jak robiliśmy to już wczesniej, jako argument metody ``.executemany()``.
+
+.. note::
+
+    Znaki w pliku wejściowym powinny być zakodowane w standardzie ``utf-8``.
+
+Poćwicz sam
+^^^^^^^^^^^^
+    
+    Spróbuj napisać prosty konsolowy interfejs do zarządzania bazą danych.
+    Wykorzystaj omówiony kod, aby umożliwić użytkownikowi: przeglądanie,
+    wstawianie nowych danych z klawiatury, modyfikowanie i ich usuwanie.
 
 Materiały
 ^^^^^^^^^^^^^
@@ -208,6 +262,15 @@ Materiały
 1. Dokumentacja modułu sqlite3 Pythona: https://docs.python.org/2/library/sqlite3.html
 2. Dokumentacja bazy SQLite3: http://www.sqlite.org/ 
 3. O języku SQL: http://pl.wikipedia.org/wiki/SQL
+
+Systemy ORM
+-------------------
+
+Znajomość języka SQL jest oczywiście niezbędna, aby korzystać z wszystkich
+możliwości baz danych, niemniej w wielu niespecjalistycznych projektach można
+je obsługiwać inaczej, tj. za pomocą systemów ORM (ang. Object-Relational Mapping
+– mapowanie obiektowo-relacyjne). Pozwalają one traktować tabele w sposób
+obiektowy, co bywa wygodniejsze w budowaniu logiki aplikacji.
 
 Pojęcia
 ^^^^^^^^^^^^^
@@ -245,24 +308,15 @@ Pojęcia
 
 * :download:`sqlraw.zip <sqlraw.zip>`
 
-Kolejne wersje tworzenego kodu można pobierać wydając polecenia:
-
-.. code-block:: bash
-
-    ~/python101$ git checkout -f sqlraw1
-    ~/python101$ git checkout -f sqlraw2
-    ~/python101$ git checkout -f sqlraw3
-    ~/python101$ git checkout -f sqlraw4
-    ~/python101$ git checkout -f sqlraw5
-
-Uruchamiamy je wydając polecenie:
+Kolejne wersje tworzenego kodu znajdziesz w katalogu ``~/python101/docs/bazy``.
+Uruchamiamy je wydając polecenia:
 
 .. code-block:: bash
 
     ~/python101$ cd docs/bazy
-    ~/python101/docs/bazy$ python sqlrawx.py
+    ~/python101/docs/bazy$ python sqlraw0x.py
 
-\- gdzie *x* jest numerem kolejnej wersji kodu.
+\- gdzie *x* jest numerem kolejnej wersji kodu (1-6).
 
 Metryka
 ^^^^^^^
