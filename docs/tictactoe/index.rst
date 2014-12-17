@@ -178,7 +178,7 @@ Metryka
 :Autorzy: 
     - Wersja strukturalna: Robert Bednarz <ecg@ecg.vot.pl>, Łukasz Zarzecki
     
-    - Wersja obiektowa: Janusz Skonieczny <js@bravelabs.pl>
+    - Wersja obiektowa: `Janusz Skonieczny <https://plus.google.com/+JanuszSkonieczny/>`_,
 
 :Utworzony: |date| o |time|
 

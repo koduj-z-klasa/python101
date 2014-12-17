@@ -163,19 +163,19 @@ Klon repozytorium zawiera całą historię zmian projektu:
     ~/python101$ git log
 
     commit 510611a351c7c3ff60e2506d8704e3f786fcedb7
-    Author: Janusz Skonieczny <js+sourcetree@bravelabs.pl>
+    Author: Janusz Skonieczny <...>
     Date:   Thu Dec 11 15:37:46 2014 +0100
 
         git > source_code
 
     commit f7019bc1f433eb4a6c2c88f8f48337c77e5e415e
-    Author: Janusz Skonieczny <js+sourcetree@bravelabs.pl>
+    Author: Janusz Skonieczny <...>
     Date:   Thu Dec 11 15:26:16 2014 +0100
 
         req
 
     commit 302fb3a974954ad936a825ba37519e145c148290
-    Author: wilku-ceo <grzegorz.wilczek@ceo.org.pl>
+    Author: wilku-ceo <...>
     Date:   Thu Dec 11 11:05:43 2014 +0100
 
         poprawiona nazwa CEO
@@ -358,7 +358,7 @@ Ta komenda ściągnie historię zmian z centralnego repozytorium i zaktualizuje 
 Metryka
 ^^^^^^^
 
-:Autorzy: Janusz Skonieczny <js@bravelabs.pl>,
+:Autorzy: `Janusz Skonieczny <https://plus.google.com/+JanuszSkonieczny/>`_,
 
 :Utworzony: |date| o |time|
 

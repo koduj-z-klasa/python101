@@ -440,7 +440,7 @@ Słowniczek
 Metryka
 ^^^^^^^
 
-:Autorzy: Janusz Skonieczny <js@bravelabs.pl>,
+:Autorzy: `Janusz Skonieczny <https://plus.google.com/+JanuszSkonieczny/>`_,
           Robert Bednarz
 
 :Utworzony: |date| o |time|

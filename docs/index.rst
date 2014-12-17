@@ -49,7 +49,7 @@ Zaczynamy!
 ----------
 
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 2
     :numbered:
 
     basic/basic
@@ -68,8 +68,14 @@ Zaczynamy!
     quiz/index
     todo/index
     chatter/index
+
+Dodatkowe informacje
+--------------------
+..  toctree::
+    :maxdepth: 1
+
+    faq/index
     git/git
-    faq/index.rst
 
 
 .. include:: authors.rst
