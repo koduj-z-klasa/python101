@@ -347,7 +347,7 @@ Pobieramy zmiany z centralnego repozytorium
 
 Jeśli już mamy klona repozytorium i chcemy upewnić się że mamy lokalnie najnowsze wersje plików
 (np. gdy nauczyciel zaktualizował przykłady lub dodał nowe pliki), to ciągniemy zmiany
- z centralnego repozytorium:
+z centralnego repozytorium:
 
 .. code-block:: bash
 
@@ -373,4 +373,4 @@ Metryka
         div.highlight, div.highlight-python { margin-top: 0px; }
     </style>
 
-.. include:: copyright.rst
+.. include:: ../copyright.rst
