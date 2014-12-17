@@ -72,6 +72,9 @@ Zaczynamy!
     git/git
     faq/index.rst
 
+
+.. include:: authors.rst
+
 Indices and tables
 ~~~~~~~~~~~~~~~~~~
 

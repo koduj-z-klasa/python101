@@ -373,4 +373,4 @@ Metryka
         div.highlight, div.highlight-python { margin-top: 0px; }
     </style>
 
-.. include:: copyright.rst
+.. include:: ../copyright.rst
