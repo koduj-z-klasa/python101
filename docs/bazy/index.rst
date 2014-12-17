@@ -272,6 +272,132 @@ je obsługiwać inaczej, tj. za pomocą systemów ORM (ang. Object-Relational Ma
 – mapowanie obiektowo-relacyjne). Pozwalają one traktować tabele w sposób
 obiektowy, co bywa wygodniejsze w budowaniu logiki aplikacji.
 
+Używanie systemów ORM, takich jak :term:`Peewee` czy :term:`SQLAlchemy`,
+w prostych projektach sprowadza się do schematu, który poglądowo można opisać
+w trzech krokach:
+
+1. Nawiązanie połączenia z bazą
+2. Deklaracja modelu opisującego bazę i utworzenie struktury bazy
+3. Wykonywanie operacji :term:`CRUD`
+
+Poniżej spróbujemy pokazać, jak operacje wykonywane przy użyciu wbudowanego
+w Pythona modułu sqlite3, zrealizować przy użyciu technik ORM.
+
+.. note::
+
+    Wyjaśnienia podanego niżej kodu są w wielu miejscach uproszczone,
+    ze względu na przejrzystość i poglądowość instrukcji nie wgłębiamy
+    się w techniczne różnice w implementacji technik ORM w obydwu omawianych
+    rozwiązaniach. Również terminy, których używamy, nie zawsze ściśle
+    odpowiadają opisywanym mechanizmom.
+
+Połączenie z bazą
+^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="code_no">Peewee nr <script>var code_no2 = code_no2 || 1; document.write(code_no2++);</script></div>
+
+.. literalinclude:: ormpw01.py
+    :linenos:
+
+.. raw:: html
+
+    <div class="code_no">SQLAlchemy nr <script>var code_no3 = code_no3 || 1; document.write(code_no3++);</script></div>
+
+.. literalinclude:: ormsa01.py
+    :linenos:
+
+W jednym i drugim przypadku importujemy najpierw potrzebne klasy.
+Następnie tworzymy instancje ``baza`` służące do nawiązania połączeń
+z bazą przechowywaną w pliku ``test.db``. Jeżeli zamiast nazwy pliku,
+podamy ``:memory:`` bazy umieszczone zostaną w pamięci RAM (przydatne
+podczas testowania).
+
+.. note::
+    
+    Moduły ``os`` i ``sys`` nie są niezbędne do działania prezentowanego kodu,
+    ale można z nich skorzystać, kiedy chcemy sprawdzić obecność pliku na
+    dysku (``os.path.ispath()``) lub zatrzymać wykonywanie skryptu w dowolnym
+    miejscu (``sys.exit()``). W podanych przykładach usuwamy plik bazy,
+    jeżeli znajduje się na dysku, aby zapewnić bezproblemowe działanie
+    kompletnych skryptów.
+
+Model danych i baza
+^^^^^^^^^^^^^^^^^^^^^
+
+Przez model rozumiemy tutaj definicje tablic, pól, ich typów oraz wzajemnych
+relacji za pomocą podejścia obiektowego, czyli deklaracji klas i ich właściwości (atrybutów).
+Wzajemne powiązanie klas i ich właściwości z tabelami i kolumnami w bazie stanowi
+właśnie istotę mapowania relacyjno-obiektowego, a systemy ORM zapewniają
+mechanizmy obsługujące te związki.
+
+.. raw:: html
+
+    <div class="code_no">Peewee nr <script>var code_no2 = code_no2 || 1; document.write(code_no2++);</script></div>
+
+.. literalinclude:: ormpw02.py
+    :linenos:
+    :lineno-start: 12
+    :lines: 12-29
+
+.. raw:: html
+
+    <div class="code_no">SQLAlchemy nr <script>var code_no3 = code_no3 || 1; document.write(code_no3++);</script></div>
+
+.. literalinclude:: ormsa02.py
+    :linenos:
+    :lineno-start: 14
+    :lines: 14-34
+
+W obydwu przypadkach deklarowanie modelu opiera się na pewnej "klasie" podstawowej,
+którą nazwaliśmy ``BazaModel``. Dziedzicząc z niej, deklarujemy następnie
+własne klasy o nazwach *Klasa* i *Uczen* reprezentujące tabele w bazie.
+Właściwości tych klas odpowiadają kolumnom; w SQLAlchemy używamy nawet
+klasy o nazwie ``Column()``, która wyraźnie wskazuje na rodzaj tworzonego atrybutu.
+Obydwa systemy wymagają określenia *typu danych* definiowanych pól. Służą temu odpowiednie
+klasy, np. ``CharField()`` lub ``String()``. Możemy również definiować dodatkowe
+cechy pól, takie jak np. nie zezwalanie na wartości puste (``null=False`` lub ``nullable=False``)
+lub określenie wartości domyślnych (``default=''``).
+
+Warto zwrócić uwagę, na sposób określania relacji. W *Peewee* używamy 
+konstruktora klasy: ``ForeignKeyField(Klasa, related_name = 'uczniowie')``.
+Przyjmuje on nazwę klasy powiązanej, z którą tworzymy relację, i nazwę atrybutu
+określającego relację zwrotną w powiązanej klasie. Dzięki temu
+wywołanie w postaci ``Klasa.uczniowie`` da nam dostęp do obiektów
+reprezentujących uczniów przypisanych do danej klasy. Zuważmy, że *Peewee*
+nie wymaga definiowania kluczy głównych, są tworzone automatycznie
+pod nazwą ``id``.
+
+W SQLAlchemy dla odmiany nie tylko jawnie określamy klucze główne
+(``primary_key=True``), ale i podajemy nazwy tabel (``__tablename__ = 'klasa'``).
+Klucz obcy oznaczamy odpowiednim parametrem w klasie definiującej pole
+(``Column(Integer, ForeignKey('klasa.id'))``). Relację zwrotną
+tworzymy za pomocą konstruktora ``relationship('Uczen', backref='klasa')``,
+w którym podajemy nazwę powiązanej klasy i nazwę atrybutu tworzącego
+powiązanie. W tym wypadku wywołanie typu ``uczen.klasa`` udostępni obiekt
+reprezentujący klasę, do której przypisano ucznia.
+
+Po zdefiniowaniu przemyślanego modelu, co jest relatywnie najtrudniejsze, 
+trzeba przetestować działanie mechanizmów ORM w praktyce, czyli utworzyć
+tabele i kolumny w bazie. W ``Peewee`` łączymy się z bazą i wywołujemy
+metodę ``.create_tables()``, której podajemy nazwy klas reprezentujących
+tabele. Dodatkowy parametr ``True`` powoduje sprawdzenie przed utworzeniem,
+czy tablic w bazie już nie ma. SQLAlchemy wymaga tylko wywołania metody
+``.create_all()`` kontenera metadata zawartego w klasie bazowej.
+
+Podane kody można już uruchomić, oba powinny utworzyć bazę ``test.db``
+w katalogu, z którego uruchamiamy skrypt.
+
+.. note::
+
+    Wspominaliśmy już o interpreterze ``sqlite3`` pozwalającym pracować
+    w konsoli z bazą. Warto go wykorzystać i sprawdzić, jak wygląda
+    kod tworzący tabele wygenerowany przez ORM-y. Poniżej przykład
+    ilustrujący SQLAlchemy.
+
+.. figure:: sqlite3_2.png
+
 Pojęcia
 ^^^^^^^^^^^^^
 
@@ -302,6 +428,30 @@ Pojęcia
     kwerenda
         Zapytanie do bazy danych zazwyczaj w oparciu o dodatkowe kryteria,
         którego celem jest wydobycie z bazy określonych danych lub ich modyfikacja.
+
+    obiekt
+        podstawowe pojęcie programowania obiektowego, struktura zawierająca
+        dane i metody (funkcje), za pomocą których wykonuje ṣię na nich operacje.
+
+    klasa
+        definicja obiektu zawierająca opis struktury danych i jej interfejs
+        (metody).
+
+    instancja
+        obiekt stworzony na podstawie klasy.
+
+    ORM
+        (ang. Object-Relational Mapping) – mapowanie obiektowo-relacyjne,
+        czyli sposób odwzorowania obiektów na struktury bazy danych.
+        
+    Peewee
+        prosty i mały system ORM, wspiera Pythona w wersji 2 i 3, obsługuje
+        bazy SQLite3, MySQL, Posgresql.
+    
+    SQLAlchemy
+        rozbudowany zestaw narzędzi i system ORM umożliwiający wykorzystanie
+        wszystkich możliwości SQL-a, obsługuje bazy SQLite3, MySQL, Postgresql,
+        Oracle, MS SQL Server i inne.
 
 Źródła
 ^^^^^^^^^^^^^

@@ -27,7 +27,7 @@ w folderze ``~/Pulpit/python-101-html``:
     wget -O python-101-html.zip http://koduj-z-klasa.github.io/python101/python-101-html.zip
     unzip python-101-html.zip -d ~/Pulpit/
 
-Te materiały można także pobrać i zmodyfikować i `przygotować według instrukcji w repozytorium`_
+Materiały można także pobrać i zmodyfikować i `przygotować według instrukcji w repozytorium`_
 
 .. _Koduj z Klasą: http://www.ceo.org.pl/koduj
 .. _Centrum Edukacji Obywatelskiej: http://www.ceo.org.pl/
