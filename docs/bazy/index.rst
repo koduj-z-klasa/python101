@@ -479,7 +479,6 @@ Metody SQLAlchemy:
 
 .. note::
     
-    
     Mechanizm sesji jest unikalny dla SQLAlchemy, pozwala m. in. zarządzać
     transakcjami i połączeniami z wieloma bazami. Stanowi "przechowalnię"
     dla tworzonych obiektów, zapamiętuje wykonywane na nich operacje,
