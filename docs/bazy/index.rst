@@ -250,18 +250,14 @@ tak jak robiliśmy to już wczesniej, jako argument metody ``.executemany()``.
     Znaki w pliku wejściowym powinny być zakodowane w standardzie ``utf-8``.
 
 Poćwicz sam
-^^^^^^^^^^^^
-    
-    Spróbuj napisać prosty konsolowy interfejs do zarządzania bazą danych.
-    Wykorzystaj omówiony kod, aby umożliwić użytkownikowi: przeglądanie,
-    wstawianie nowych danych z klawiatury, modyfikowanie i ich usuwanie.
-
-Materiały
 ^^^^^^^^^^^^^
 
-1. Dokumentacja modułu sqlite3 Pythona: https://docs.python.org/2/library/sqlite3.html
-2. Dokumentacja bazy SQLite3: http://www.sqlite.org/ 
-3. O języku SQL: http://pl.wikipedia.org/wiki/SQL
+    Postaraj się przedstawioną aplikację wyposażyć w konsolowy interfejs,
+    który umożliwi operacje odczytu, zapisu, modyfikowania i usuwania rekordów.
+    Dane powinny być pobierane z klawiatury od użytkownika.
+
+    Zobacz, jak zintegrować obsługę bazy danych przy użyciu modułu *sqlite3*
+    Pythona z aplikacją internetową na przykładzie scenariusza "ToDo".
 
 Systemy ORM
 -------------------
@@ -285,11 +281,13 @@ w Pythona modułu sqlite3, zrealizować przy użyciu technik ORM.
 
 .. note::
 
-    Wyjaśnienia podanego niżej kodu są w wielu miejscach uproszczone,
-    ze względu na przejrzystość i poglądowość instrukcji nie wgłębiamy
-    się w techniczne różnice w implementacji technik ORM w obydwu omawianych
-    rozwiązaniach. Również terminy, których używamy, nie zawsze ściśle
-    odpowiadają opisywanym mechanizmom.
+    Wyjaśnienia podanego niżej kodu są w wielu miejscach uproszczone.
+    Ze względu na przejrzystość i poglądowość instrukcji nie wgłębiamy
+    się w techniczne różnice w implementacji technik ORM w obydwu
+    rozwiązaniach. Poznanie ich interfejsu jest wystarczające, aby
+    efektywnie obsługiwać bazy danych. Co ciekawe, dopóki używamy
+    bazy SQLite3, systemy ORM można traktować jako swego rodzaju
+    nakładkę na owmówiony wyżej moduł *sqlite3* wbudowany w Pythona.
 
 Połączenie z bazą
 ^^^^^^^^^^^^^^^^^^^^^
@@ -380,11 +378,11 @@ reprezentujący klasę, do której przypisano ucznia.
 
 Po zdefiniowaniu przemyślanego modelu, co jest relatywnie najtrudniejsze, 
 trzeba przetestować działanie mechanizmów ORM w praktyce, czyli utworzyć
-tabele i kolumny w bazie. W ``Peewee`` łączymy się z bazą i wywołujemy
+tabele i kolumny w bazie. W Peewee łączymy się z bazą i wywołujemy
 metodę ``.create_tables()``, której podajemy nazwy klas reprezentujących
 tabele. Dodatkowy parametr ``True`` powoduje sprawdzenie przed utworzeniem,
 czy tablic w bazie już nie ma. SQLAlchemy wymaga tylko wywołania metody
-``.create_all()`` kontenera metadata zawartego w klasie bazowej.
+``.create_all()`` kontenera *metadata* zawartego w klasie bazowej.
 
 Podane kody można już uruchomić, oba powinny utworzyć bazę ``test.db``
 w katalogu, z którego uruchamiamy skrypt.
@@ -397,6 +395,163 @@ w katalogu, z którego uruchamiamy skrypt.
     ilustrujący SQLAlchemy.
 
 .. figure:: sqlite3_2.png
+
+Operacje CRUD
+^^^^^^^^^^^^^^^^
+
+Wstawianie i odczytywanie danych
+*********************************
+
+Podstawowe operacje wykonywane na bazie, np, wstawianie i odczytywanie danych,
+w Peewee wykonywane są za pomocą obiektów reprezentujących rekordy
+zdefiniowanych tabel oraz ich metod. W SQLAlchemy oprócz obiektów
+wykorzystujemy metody sesji, w ramach której komunikujemy się z bazą.
+
+.. raw:: html
+
+    <div class="code_no">Peewee nr <script>var code_no2 = code_no2 || 1; document.write(code_no2++);</script></div>
+
+.. literalinclude:: ormpw03.py
+    :linenos:
+    :lineno-start: 31
+    :lines: 31-57
+
+.. raw:: html
+
+    <div class="code_no">SQLAlchemy nr <script>var code_no3 = code_no3 || 1; document.write(code_no3++);</script></div>
+
+.. literalinclude:: ormsa03.py
+    :linenos:
+    :lineno-start: 36
+    :lines: 36-60
+
+Dodawanie informacji w systemach ORM polega na utworzeniu instancji odpowiedniego
+obiektu i podaniu w jego konstruktorze wartości atrybutów reprezentujących pola rekordu:
+``Klasa(nazwa = '1A', profil = 'matematyczny')``. Utworzony rekord zapisujemy metodą
+``.save()`` obiektu w Peewee lub metodą ``.add()`` :ref:`sesji <sesja>` w SQLAlchemy.
+Można również dodawać wiele rekordów na raz. Peewee oferuje metodę ``.insert_many()``,
+która jako parametr przyjmuje listę słowników zawierających dane w formacie
+"klucz":"wartość", przy czym kluczem jest nazwa pola klasy (tabeli).
+SQLAlchemy ma metodę ``.add_all()`` wymagającą listy konstruktorów obiektów,
+które chcemy dodać.
+
+Zanim dodamy pierwsze informacje sprawdzamy, czy w tabeli *klasa* są jakieś wpisy, a więc
+wykonujemy prostą kwerendę zliczającą. Peewee używa
+metod odpowiednich obiektów: ``Klasa().select().count()``, natomiast
+SQLAlchemy korzysta metody ``.query()`` sesji, która pozwala pobierać dane
+z określonej jako klasa tabeli. Obydwa rozwiązania umożliwiają łańcuchowe
+wywoływanie charakterytycznych dla kwerend operacji poprzez "doklejanie"
+kolejnych metod, np. ``sesja.query(Klasa).count()``.
+
+Tak właśnie konstruujemy kwerendy warunkowe. W Peewee definiujemy warunki jako
+prametry metody ``.where(Klasa.nazwa == '1A')``. Podobnie w SQLAlchemy,
+tyle, że metody sesji inaczej się nazywają i przyjmują postać
+``.filter_by(nazwa = '1A')`` lub ``.filter(Klasa.nazwa == '1A')``. Pierwsza
+wymaga podania warunku w formacie "klucz"="wartość", druga w postaci
+wyrażenia SQL (należy uważać na użycie poprawnego operatora ``==``).
+
+Pobieranie danych z wielu tabel połączonych relacjami może być w porównaniu
+do zapytań SQL-a bardzo proste. W zależności od ORM-a wystarcza polecenie:
+``Uczen.select()`` lub ``sesja.query(Uczen).all()``, ale przy próbie
+odczytu klasy, do której przypisano ucznia (``uczen.klasa.nazwa``),
+wykonane zostanie dodatkowe zapytanie, co nie jest efektywne.
+Dlatego lepiej otwarcie wskazywać na powiązania między obiektami,
+czyli w zależności od ORM-u używać:
+``Uczen.select().join(Klasa)`` lub ``sesja.query(Uczen).join(Klasa).all()``.
+Tak właśnie postępujemy w bliźniaczych funkcjach ``czytajdane()``, które
+pokazują, jak pobierać i wyświetlać wszystkie rekordy z tabel powiązanych
+relacjami.
+
+Systemy ORM oferują pewne ułatwiania w zależności od tego, ile rekordów lub pól
+i w jakiej formie chcemy wydobyć. Metody w Peewee:
+
+    - ``.get()`` - zwraca pojedynczy rekord pasujący do zapytania lub wyjątek ``DoesNotExist``, jeżeli go brak;
+    - ``.first()`` - zwróci z kolei pierwszy rekord ze wszystkich pasujących.
+
+Metody SQLAlchemy:
+
+    - ``.get(id)`` - zwraca pojedynczy rekord na podstawie podanego identyfikatora;
+    - ``.one()`` - zwraca pojedynczy rekord pasujący do zapytania lub wyjątek ``DoesNotExist``, jeżeli go brak;
+    - ``.scalar()`` - zwraca pierwszy element pierwszego zwróconego rekordu lub wyjątek ``MultipleResultsFound``;
+    - ``.all()`` - zwraca pasujące rekordy w postaci listy.
+
+.. _sesja:
+
+.. note::
+    
+    
+    Mechanizm sesji jest unikalny dla SQLAlchemy, pozwala m. in. zarządzać
+    transakcjami i połączeniami z wieloma bazami. Stanowi "przechowalnię"
+    dla tworzonych obiektów, zapamiętuje wykonywane na nich operacje,
+    które mogą zostać zapisane w bazie (tzw. ``commit``) lub w razie potrzeby odrzucone.
+    W prostych aplikacjach wykorzystuje się jedną instancję sesji,
+    w bardziej złożonych można korzystać z wielu.
+    Instancja sesji (``sesja = BDSesja()``) tworzona jest na podstawie klasy, która z kolei
+    powstaje przez wywołanie konstruktora z opcjonalnym parametrem
+    wskazującym bazę: ``BDSesja = sessionmaker(bind=baza)``. Jak pokazano
+    wyżej, obiekt sesji zawiera metody pozwalające komunikować się
+    z bazą.
+
+Modyfikowanie i usuwanie danych
+*********************************
+
+Systemy ORM ułatwiają modyfikowanie i usuwanie danych z bazy, ponieważ
+operacje te sprowadzają się do zmiany wartości pól klasy reprezentującej
+tabelę lub do usunięcia instancji danej klasy.
+
+.. raw:: html
+
+    <div class="code_no">Peewee nr <script>var code_no2 = code_no2 || 1; document.write(code_no2++);</script></div>
+
+.. literalinclude:: ormpw04.py
+    :linenos:
+    :lineno-start: 59
+    :lines: 59-64
+
+.. raw:: html
+
+    <div class="code_no">SQLAlchemy nr <script>var code_no3 = code_no3 || 1; document.write(code_no3++);</script></div>
+
+.. literalinclude:: ormsa04.py
+    :linenos:
+    :lineno-start: 62
+    :lines: 62-67
+
+Załóżmy, że chcemy zmienić przypisanie ucznia do klasy. W obydwu systemach
+tworzymy więc obiekt reprezentujący ucznia o identyfikatorze "2". Stosujemy
+omówione wyżej metody zapytań. W następnym kroku modyfikujemy odpowiednie
+pole tworzące relację z tabelą "klasy", do którego przypisujemy
+pobrany w zapytaniu obiekt (Peewee) lub identyfikator (SQLAlchemy).
+Różnice, tzn. przypisywanie obiektu lub identyfikatora, wynikają ze sposobu
+definiowania modeli w obu rozwiązanich.
+
+Usuwanie jest jeszcze prostsze. W Peewee wystarczy do zapytania zwracającego
+obiekt reprezentujący ucznia o podanym id "dokleić" odpowiednią metodę:
+``Uczen.select().where(Uczen.id == 3).get().delete_instance()``.
+W SQLAlchemy korzystamy jak zwykle z metody sesji, której przekazujemy 
+obiekt reprezentujący ucznia: ``sesja.delete(sesja.query(Uczen).get(3))``.
+
+Materiały
+-------------------
+
+Dokumentacja
+^^^^^^^^^^^^^^^^^
+
+1. `Moduł sqlite3 Pythona`_
+2. `Baza SQLite3`_
+3. `Język SQL`_
+4. `Peewee (ang.)`_
+5. `Tutorial Peewee (ang.)`_
+6. `SQLAlchemy ORM Tutorial (ang.)`_
+7. `Tutorial SQLAlchemy (ang.)`_
+
+.. _Moduł sqlite3 Pythona: https://docs.python.org/2/library/sqlite3.html
+.. _Baza SQLite3: http://www.sqlite.org/
+.. _Język SQL: http://pl.wikipedia.org/wiki/SQL
+.. _Peewee (ang.): http://peewee.readthedocs.org/en/latest/index.html
+.. _Tutorial Peewee (ang.): http://www.blog.pythonlibrary.org/2014/07/17/an-intro-to-peewee-another-python-orm/
+.. _SQLAlchemy ORM Tutorial (ang.): http://www.sqlalchemy.org/ 
+.. _Tutorial SQLAlchemy (ang.): http://www.pythoncentral.io/introductory-tutorial-python-sqlalchemy/
 
 Pojęcia
 ^^^^^^^^^^^^^
@@ -439,6 +594,10 @@ Pojęcia
 
     instancja
         obiekt stworzony na podstawie klasy.
+        
+    konstruktor
+        metoda wywoływana podczas tworzenia instancji (obiektu) klasy, zazwyczaj
+        przyjmuje jako argumenty inicjalne wartości zdefiniowanych w klasie atrybutów.
 
     ORM
         (ang. Object-Relational Mapping) – mapowanie obiektowo-relacyjne,
@@ -453,10 +612,26 @@ Pojęcia
         wszystkich możliwości SQL-a, obsługuje bazy SQLite3, MySQL, Postgresql,
         Oracle, MS SQL Server i inne.
 
+Poćwicz sam
+^^^^^^^^^^^^^
+
+    Spróbuj dodać do bazy korzystając z systemu Peewee lub SQLAlchemy 
+    wiele rekordów na raz pobranych z pliku. W tym celu zmodyfikuj
+    funkcję opisaną wcześniej przy omawianiu modułu *sqlite3* Pythona.
+    
+    Postaraj się przedstawione aplikacje wyposażyć w konsolowy interfejs,
+    który umożliwi operacje odczytu, zapisu, modyfikowania i usuwania rekordów.
+    Dane powinny być pobierane z klawiatury od użytkownika.
+
+    Przedstawione rozwiązania warto użyć w aplikacjach internetowych
+    jako relatywnie szybki i łatwy sposób obsługi danych. Zobacz,
+    jak to zrobić na przykładzie scenariusza aplikacji "Quiz 2".
+
 Źródła
 ^^^^^^^^^^^^^
 
 * :download:`sqlraw.zip <sqlraw.zip>`
+* :download:`orm.zip <orm.zip>`
 
 Kolejne wersje tworzenego kodu znajdziesz w katalogu ``~/python101/docs/bazy``.
 Uruchamiamy je wydając polecenia:
@@ -465,8 +640,10 @@ Uruchamiamy je wydając polecenia:
 
     ~/python101$ cd docs/bazy
     ~/python101/docs/bazy$ python sqlraw0x.py
+    ~/python101/docs/bazy$ python ormpw0x.py
+    ~/python101/docs/bazy$ python ormsa0x.py
 
-\- gdzie *x* jest numerem kolejnej wersji kodu (1-6).
+\- gdzie *x* jest numerem kolejnej wersji kodu.
 
 Metryka
 ^^^^^^^

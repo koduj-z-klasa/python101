@@ -106,7 +106,7 @@ bez zachowania zmian poszczególnych uczestników:
 
     $ git checkout -f pong/z1
 
-Jeśli uczestnicy chą wcześniej zachować swoje modyfikacje, mogą je zapisać
+Jeśli uczestnicy chcą wcześniej zachować swoje modyfikacje, mogą je zapisać
 w swoim lokalnym repozytorium (wykonują tzw. commit).
 
 
