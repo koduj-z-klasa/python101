@@ -6,59 +6,65 @@ Realizacja aplikacji internetowej Quiz w oparciu o mikro-framework Flask.
 Struktura katalogów
 -------------------
 
-W katalogu użytkownika tworzymy nowy katalog dla aplikacji :file:`quiz`, a w nim plik główny :file:`quiz.py`:
+W katalogu użytkownika tworzymy nowy katalog dla aplikacji :file:`quiz`,
+a w nim plik główny :file:`quiz.py`:
 
 .. raw:: html
 
-    <div class="code_no">Terminal nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Terminal nr <script>var code_t = code_t || 1; document.write(code_t++);</script></div>
 
 .. code-block:: bash
 
     ~$ mkdir quiz; cd quiz; touch quiz.py
 
-Aplikacja na przykładzie quizu – użytkownik zaznacza w formularzu poprawne odpowiedzi na pytania i otrzymuje ocenę – ma pokazać podstawową strukturę frameworka Flask.
+Aplikacja na przykładzie quizu – użytkownik zaznacza w formularzu
+poprawne odpowiedzi na pytania, przesyła je i otrzymuje informację
+o wynikach – ma pokazać podstawy używania frameworka Flask.
 
 Szkielet aplikacji
 ------------------
 
-Utworzenie minimalnej aplikacji Flask pozwoli na uruchomienie serwera deweloperskiego, umożliwiającego wygodne rozwijanie kodu. W pliku :file:`quiz.py` wpisujemy:
+Utworzenie minimalnej aplikacji Flask pozwoli na uruchomienie testowego serwera www,
+umożliwiającego wygodne rozwijanie kodu. W pliku :file:`quiz.py` wpisujemy:
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code-block:: python
+.. literalinclude:: quiz1.py
     :linenos:
-
-    # -*- coding: utf-8 -*-
-    # todo/todo.py
-
-    from flask import Flask
-
-    app = Flask(__name__)
-
-    if __name__ == '__main__':
-        app.run(debug=True)
 
 Serwer uruchamiamy komendą:
 
 .. raw:: html
 
-    <div class="code_no">Terminal nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Terminal nr <script>var code_t = code_t || 1; document.write(code_t++);</script></div>
 
 .. code-block:: bash
 
-    ~/python101/modul3/zadanie1$ python todo.py
+    ~/quiz$ python quiz.py
 
-.. figure:: img/start_serwera.png
+.. figure:: serwer.png
 
-Domyślnie serwer uruchamia się pod adresem *http://127.0.0.1:5000*. Po wpisaniu adresu do przeglądarki internetowej otrzymamy stronę z błędem HTTP 404, co wynika z faktu, że nasza aplikacja nie ma jeszcze zdefiniowanego żadnego zachowania (widoku) dla tego adresu. W
-uproszczeniu możemy widok utożsamiać z pojedynczą stroną w ramach aplikacji internetowej.
+Domyślnie serwer uruchamia się pod adresem *http://127.0.0.1:5000*.
+Po wpisaniu go do przeglądarki internetowej otrzymamy stronę z błędem HTTP 404,
+co wynika z faktu, że nasza aplikacja nie ma jeszcze zdefiniowanego żadnego zachowania
+(czy też widoku) dla tego adresu.
 
-Definiowanie widoków – strona główna
-------------------------------------
+Widok (strona główna)
+----------------------
 
-:term:`Widoki` to funkcje Pythona powiązane z określonymi adresami URL za pomocą tzw. dekoratorów. Widoki pozwalają nam obsługiwać żądania GET i POST, a także, przy wykorzystaniu szablonów, generować i zwracać żądane przez klienta strony WWW. W szablonach oprócz znaczników HTML możemy umieszczać różne dane. Flask renderuje (łączy) kod HTML z danymi i odsyła do przeglądarki.
+Jeżeli chcemy, aby nasza aplikacja zwracała użytkownikowi jakieś strony www,
+używamy widoków. :term:`Widok` to funkcja Pythona powiązana z określonymi
+adresami URL za pomocą tzw. dekoratorów. Widoki pozwalają name obsługiwać
+żądania GET, kiedy (upraszczając nieco) użytkownik chce po prostu zobaczyć
+stronę, i POST, kiedy użytkownik przesyła jakieś dane za pomocą formularza,
+nasza aplikacja coś z nimi robi, a następnie odsyła odpowiedź.
+
+Dzięki tzw. szablonom odpowiedź ta może zawierać oprócz stałych znaczników HTML
+różne zmieniające się dane, np. wyniki quizu.
+W widokach możemy nakazać, aby Flask renderował (łączył) kod HTML
+z danymi i odsyłał do przeglądarki.
 
 W pliku :file:`todo.py` umieścimy funkcję ``index()``, widok naszej strony głównej:
 
@@ -66,123 +72,104 @@ W pliku :file:`todo.py` umieścimy funkcję ``index()``, widok naszej strony gł
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code-block:: python
+.. literalinclude:: quiz2.py
     :linenos:
-    :emphasize-lines: 9-15
+    :emphasize-lines: 5,9-15
 
-    # -*- coding: utf-8 -*-
-    # todo/todo.py
+Zauważmy, że widok (czyli funkcję) ``index()`` za pomocą dekoratora ``@app.route('/')``
+wiążemy z adresem głównym (/), a więc jeżeli użytkownik wpisze w przeglądarce adres
+serwera i wciśnie Enter, jego żądanie (typu GET) zostanie przechwycone i obsłużone
+właśnie w tej funkcji.
 
-    from flask import Flask
-    from flask import render_template
-
-    app = Flask(__name__)
-
-    # dekorator laczacy adres glowny z widokiem index
-    @app.route('/')
-    def index():
-        # gdybyśmy chcieli wyświetlić prosty tekst, użyjemy funkcji poniżej
-        #return 'Hello, SWOI'
-        # zwracamy wyrenderowany szablon index.html:
-        return render_templpate('index.html')
-
-    if __name__ == '__main__':
-        app.run(debug=True)
-        
-
-Zauważmy, że widok ``index()`` za pomocą dekoratora ``@app.route('/')`` związaliśmy z adresem głównym (/). Dalej w katalogu :file:`quiz` tworzymy podkatalog :file:`templates`, a w nim szablon :file:`index.html`, wydajemy polecenia w terminalu:
+Najprostszą formą zwrócenia użytkownikowi odpowiedzi
+mogłaby by być instrukcja ``return 'Cześć, tu Python!'``, która odeśle
+podany tekst do przeglądarki, a ta wyświetli go użytkownikowi.
+Zazwyczaj będziemy jednak chcieli prezentować bardziej skomplikowane
+dane, w dodatku sformatowane pod względem wizualnym. Potrzebujemy więc
+szablonu. W katalogu :file:`quiz` tworzymy podkatalog :file:`templates`,
+a w nim szablon :file:`index.html`. Można to zrobić w terminalu:
 
 .. raw:: html
 
-    <div class="code_no">Terminal nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Terminal nr <script>var code_t = code_t || 1; document.write(code_t++);</script></div>
 
 .. code-block:: bash
 
-    ~/python101/modul3/zadanie1$ mkdir templates; cd templates; touch index.html
+    ~/quiz$ mkdir templates; cd templates; touch index.html
 
-Do pliku :file:`index.html` wstawiamy przykładowy kod HTML:
+Do pliku :file:`index.html` wstawiamy poniższy kod HTML:
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: templates/index_z1.html
+.. literalinclude:: templates/index2.html
     :linenos:
 
 Po odwiedzeniu adresu *http://127.0.0.1:5000*, otrzymamy stronę HTML.
 
-.. figure:: img/h1.png
+.. figure:: quiz2.png
 
-Pokaż dane aplikacji – pytania i odpowiedzi
--------------------------------------------
+Pytania i odpowiedzi
+---------------------------
 
-Dane naszej aplikacji, a więc pytania i odpowiedzi, umieścimy w liście ``QUESTIONS`` w postaci słowników zawierających: treść pytania, listę
-możliwych odpowiedzi oraz poprawną odpowiedź. W pliku :file:`quiz.py` wstawiamy listę pytań, aktualizujemy widok ``index()``, przekazując do szablonu pytania w zmiennej ``questions``.
+Dane naszej aplikacji, a więc pytania i odpowiedzi, umieścimy w liście
+``PYTANIA`` w postaci słowników zawierających: treść pytania,
+listę możliwych odpowiedzi oraz poprawną odpowiedź.
 
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. literalinclude:: quiz_z2.py
-    :linenos:
-    :emphasize-lines: 9-37
-
-Dodatkowo dodaliśmy konfigurację aplikacji, ustalając sekretny klucz, który przyda nam się w późniejszej części. Aktualizujemy szablon :file:`index.html`, aby wyświetlić listę pytań w postaci formularza HTML.
+W pliku :file:`quiz.py` wstawiamy listę pytań i aktualizujemy widok ``index()``,
+przekazując do szablonu ``index.html`` pytania w zmiennej ``pytania``.
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: templates/index_z2.html
+.. literalinclude:: quiz3.py
+    :linenos:
+    :emphasize-lines: 9-39
+
+Dodaliśmy konfigurację aplikacji w postaci słownika, ustalając sekretny klucz,
+który przyda nam się w później podczas sprawdzania odpowiedzi.
+Teraz zaktualizujemy szablon :file:`index.html`, aby wyświetlić listę pytań w postaci formularza HTML.
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: templates/index3.html
     :linenos:
 
-Wewnątrz szablonu przeglądamy pytania zawarte w zmiennej questions za pomocą instrukcji ``{% for entry in questions %}``, tworzymy formularz
-HTML składający się z treści pytania ``{{ entry.question }}`` i listy odpowiedzi (kolejna pętla ``{% for answer in entry.answers %}``) w
-postaci grupy opcji nazywanych dla odróżnienia kolejnymi indeksami pytań liczonymi od 0 (``{% set question_number = loop.index0 %}``).
+Wewnątrz szablonu przeglądamy pytania zawarte w zmiennej ``pytania``
+za pomocą instrukcji ``{% for p in pytania %}``; dalej tworzymy
+formularz HTML składający się z treści pytania ``{{ p.pytanie }}``
+i listy odpowiedzi (kolejna pętla ``{% for o in p.odpowiedz %}``)
+w postaci grupy opcji. Każda grupa odpowiedzi nazywana jest dla odróżnienia
+numerem pytania liczonym od 0. Odpowiednią zmienną ustawiamy
+w instrukcji ``{% set pnr = loop.index0 %}``, a używamy w kodzie ``name="{{ pnr }}"``.
+Dzięki temu przyporządkujemy przesłane odpowiedzi do kolejnych pytań
+podczas ich sprawdzania.
 
-W efekcie powinniśmy otrzymać następującą stronę internetową:
+Warto zauważyć, że jeżeli potrzebujemy w szablonie instrukcji sterującej,
+umieszczamy ją w znacznikach ``{% %}``, natomiast kiedy chcemy
+wyświetlić jakąś zmienną używamy notacji ``{{ }}``.
 
-.. figure:: img/quiz.png
+Po ponownym uruchomieniu serwera powinniśmy otrzymać następującą stronę internetową:
+
+.. figure:: quiz3.png
 
 Oceniamy odpowiedzi
--------------------
+--------------------
 
-Mechanizm sprawdzana liczby poprawnych odpowiedzi umieścimy w pliku :file:`quiz.py`, modyfikując widok ``index()``:
+Mechanizm sprawdzana liczby poprawnych odpowiedzi umieścimy
+w funkcji ``index()``. Uzupełniamy więc plik :file:`quiz.py`:
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code-block:: python
+.. literalinclude:: quiz4.py
     :linenos:
-
-    # uzupelniamy importy
-    from flask import request
-    from flask import redirect, url_for
-    from flask import flash
-
-
-    # rozszerzamy widok
-    @app.route('/', methods=['GET', 'POST'])
-    def index():
-        # jezeli zadanie jest typu POST, to znaczy, ze ktos przeslal odpowiedzi do sprawdzenia
-        if request.method == 'POST':
-            score = 0 # liczba poprawnych odpowiedzi
-            answers = request.form # zapamietujemy slownik z odpowiedziami
-            # sprawdzamy odpowiedzi:
-            for question_number, user_answer in answers.items():
-                # pobieramy z listy informacje o poprawnej odpowiedzi
-                correct_answer = QUESTIONS[int(question_number)]['correct_answer']
-                if user_answer == correct_answer: # porownujemy odpowiedzi
-                    score += 1 # zwiekszamy wynik
-            # przygotowujemy informacje o wyniku
-            flash(u'Liczba poprawnych odpowiedzi, to: {0}'.format(score))
-            # po POST przekierowujemy na strone glowna
-            return redirect(url_for('index'))
-
-        # jezeli zadanie jest typu GET, renderujemy index.html
-        return render_template('index.html', questions=QUESTIONS)
-        
+    :emphasize-lines: 5, 35, 37-49
 
 W szablonie :file:`index.html` po znaczniku ``<h1>`` wstawiamy instrukcje wyświetlające wynik:
 
@@ -190,37 +177,51 @@ W szablonie :file:`index.html` po znaczniku ``<h1>`` wstawiamy instrukcje wyświ
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code-block:: html
+.. literalinclude:: templates/index4.html
     :linenos:
-
-    <!-- umieszczamy informacje ustawiona za pomoca funkcji flash -->
-    <p>
-        {% for message in get_flashed_messages() %}
-            <strong class="success">{{ message }}</strong>
-        {% endfor %}
-    </p>
+    :lineno-start: 9
+    :lines: 9-14
 
 Jak to działa
 ^^^^^^^^^^^^^
 
-Uzupełniliśmy dekorator app.route, aby obsługiwał zarówno żądania :term:`GET` (wejście na stronę główną po wpisaniu adresu => pokazujemy
-pytania), jak i :term:`POST` (przesłanie odpowiedzi z formularza pytań => oceniamy odpowiedzi).
+Uzupełniliśmy dekorator ``app.route()``, aby obsługiwał zarówno żądania :term:`GET`
+(wejście na stronę główną, po wpisaniu adresu => pokazujemy pytania),
+jak i :term:`POST` (przesłanie odpowiedzi z formularza pytań => oceniamy odpowiedzi).
 
-W widoku ``index()`` dodaliśmy instrukcję warunkową ``if request.method == 'POST':``, która wykrywa żądania POST i wykonuje blok kodu zliczający poprawne odpowiedzi. Zliczanie wykonywane jest w pętli ``for question_number, user_answer in answers.items()``.
+W widoku ``index()`` dodaliśmy instrukcję warunkową ``if request.method == 'POST':``,
+która wykrywa żądania POST i wykonuje blok kodu zliczający poprawne odpowiedzi.
+Przesłane dane zapisujemy w zmiennej: ``odpowiedzi = request.form``.
+Następnie w pętli ``for pnr, odp_u in odpowiedzi.items()`` odczytujemy
+kolejne pary danych, czyli numer pytania i udzieloną odpowiedź.
 
-W tym celu iterujemy po przesłanych odpowiedziach i sprawdzamy, czy nadesłana odpowiedź jest zgodna z tą, którą przechowujemy w polu ``correct_answer`` konkretnego pytania. Dzięki temu, że w szablonie dodaliśmy do każdego pytania jego numer (zmienna ``question_number``), to możemy teraz po tym numerze odwołać się do konkretnego pytania na naszej liście.
+Następnie w instrukcji ``if odp_u == PYTANIA[int(pnr)]['odpok']:`` sprawdzamy,
+czy nadesłana odpowiedź jest zgodna z poprawną, którą wydobywamy z
+listy pytań za pomocą zmiennej ``pnr`` i klucza ``odpok``. Zwróćmy uwagę,
+że wartości zmiennej ``pnr``, czyli numery pytań liczone od zera,
+ustaliliśmy wcześniej w szablonie.
 
-Jeżeli nadesłana odpowiedź jest zgodna z tym, co mamy zapisane w pytaniu, to naliczamy punkt. Informacje o wyniku przekazujemy do użytkownika za pomocą funkcji ``flash``, która korzysta z sesji HTTP (właśnie dlatego musieliśmy ustalić ``SECRET_KEY`` dla naszej aplikacji).
+Jeżeli nadesłana odpowiedź jest poprawna, doliczamy punkt.
+Informacje o wyniku przekazujemy użytkownikowi za pomocą funkcji ``flash()``,
+która korzysta z tzw. sesji HTTP (właśnie dlatego musieliśmy ustalić
+``SECRET_KEY`` dla naszej aplikacji), czyli mechanizmu pozwalającego
+na rozróżnianie żądań przychodzących od różnych użytkowników.
 
-W efekcie otrzymujemy aplikację Quiz.
+Po uruchomieniu aplikacji, zaznaczeniu odpowiedzi i ich przesłaniu
+otrzymujemy ocenę.
+
+.. figure:: quiz4.png
 
 Materiały
-^^^^^^^^^^^^^
+---------------------
 
-1. Strona projektu Flask http://flask.pocoo.org/
-2. Co to jest framework? http://pl.wikipedia.org/wiki/Framework
-3. Co nieco o HTTP i żądaniach GET i POST
-   http://pl.wikipedia.org/wiki/Http
+1. `Strona projektu Flask`_
+2. `Co to jest framework?`_
+3. `Protokół HTTP`_ (żądania GET i POST)
+
+.. _Strona projektu Flask: http://flask.pocoo.org/
+.. _Co to jest framework?: http://pl.wikipedia.org/wiki/Framework
+.. _Protokół HTTP: http://pl.wikipedia.org/wiki/Http
 
 Pojęcia
 ^^^^^^^^^^^^^
@@ -231,10 +232,8 @@ Pojęcia
         program komputerowy.
 
     Framework
-        zestaw komponentów i bibliotek wykorzystywany do budowy aplikacji.
-
-    GET
-        typ żądania HTTP, służący do pobierania zasobów z serwera WWW.
+        zestaw komponentów i bibliotek wykorzystywany do budowy aplikacji,
+        przykładem jest biblioteka Pythona Flask.
 
     HTML
         język znaczników wykorzystywany do formatowania dokumentów, zwłaszcza stron WWW.
@@ -242,36 +241,48 @@ Pojęcia
     HTTP
         protokół przesyłania dokumentów WWW.
 
+    GET
+        typ żądania HTTP, służący do pobierania zasobów z serwera WWW.
+
     POST
         typ żądania HTTP, służący do umieszczania zasobów na serwerze WWW.
 
-    Serwer deweloperski
-        serwer używany w czasie prac nad oprogramowaniem.
+    Serwer deweloperski (testowy)
+        serwer www używany w czasie prac nad oprogramowaniem.
 
     Serwer WWW
         serwer obsługujący protokół HTTP.
 
-    Templatka
-        szablon strony WWW wykorzystywany przez Flask do renderowania widoków.
+    Szablon
+        wzorzec (nazywany czasem templatką) strony WWW wykorzystywany do renderowania widoków.
 
     URL
-        ustandaryzowany format adresowania zasobów w internecie (przykład: http://pl.wikipedia.org/wiki/Uniform_Resource_Locator).
+        ustandaryzowany format adresowania zasobów w internecie (`przykład <http://pl.wikipedia.org/wiki/Uniform_Resource_Locator>`_).
 
     Widok
-        fragment danych, który jest reprezentowany użytkownikowi.
+        we Flasku jest to funkcja, która obsługuje żądania wysyłane przez użytkownika
+        i na ich podstawie przygotowuje dane zwracane do przeglądarki, najczęściej  w formie strony www.
 
 Źródła
 ^^^^^^^^^^^^^
 
-* :download:`quiz_all.zip <quiz_all.zip>`
+* :download:`quiz.zip <quiz.zip>`
 * :download:`quiz_flask.pdf <../pdf/quiz_flask.pdf>`
+
+Kolejne wersje tworzenego kodu znajdziesz w katalogu ``~/python101/docs/quiz``.
+Uruchamiamy je wydając polecenia:
+
+.. code-block:: bash
+
+    ~/python101$ cd docs/quiz
+    ~/python101/docs/bazy$ python quizx.py
+
+\- gdzie *x* jest numerem kolejnej wersji kodu.
 
 Metryka
 ^^^^^^^
 
-:Autorzy: Tomasz Nowacki,
-          Robert Bednarz,
-          Janusz Skonieczny
+:Autorzy: Tomasz Nowacki, Robert Bednarz (ecg@ecg.vot.pl)
 
 :Utworzony: |date| o |time|
 
@@ -284,6 +295,5 @@ Metryka
         div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
         div.highlight, div.highlight-python { margin-top: 0px; }
     </style>
-
 
 .. include:: ../copyright.rst
