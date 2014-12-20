@@ -482,14 +482,16 @@ Metody SQLAlchemy:
     Mechanizm sesji jest unikalny dla SQLAlchemy, pozwala m. in. zarządzać
     transakcjami i połączeniami z wieloma bazami. Stanowi "przechowalnię"
     dla tworzonych obiektów, zapamiętuje wykonywane na nich operacje,
-    które mogą zostać zapisane w bazie (tzw. ``commit``) lub w razie potrzeby odrzucone.
+    które mogą zostać zapisane w bazie lub w razie potrzeby odrzucone.
     W prostych aplikacjach wykorzystuje się jedną instancję sesji,
     w bardziej złożonych można korzystać z wielu.
     Instancja sesji (``sesja = BDSesja()``) tworzona jest na podstawie klasy, która z kolei
     powstaje przez wywołanie konstruktora z opcjonalnym parametrem
     wskazującym bazę: ``BDSesja = sessionmaker(bind=baza)``. Jak pokazano
     wyżej, obiekt sesji zawiera metody pozwalające komunikować się
-    z bazą.
+    z bazą. Warto również zauważyć, że po wykonaniu wszystkich zamierzonych
+    operacji w ramach sesji zapisujemy dane do bazy wywołując polecenie
+    ``sesja.commit()``.
 
 Modyfikowanie i usuwanie danych
 *********************************
@@ -505,7 +507,7 @@ tabelę lub do usunięcia instancji danej klasy.
 .. literalinclude:: ormpw04.py
     :linenos:
     :lineno-start: 59
-    :lines: 59-64
+    :lines: 59-
 
 .. raw:: html
 
@@ -514,7 +516,7 @@ tabelę lub do usunięcia instancji danej klasy.
 .. literalinclude:: ormsa04.py
     :linenos:
     :lineno-start: 62
-    :lines: 62-67
+    :lines: 62-
 
 Załóżmy, że chcemy zmienić przypisanie ucznia do klasy. W obydwu systemach
 tworzymy więc obiekt reprezentujący ucznia o identyfikatorze "2". Stosujemy
@@ -529,6 +531,12 @@ obiekt reprezentujący ucznia o podanym id "dokleić" odpowiednią metodę:
 ``Uczen.select().where(Uczen.id == 3).get().delete_instance()``.
 W SQLAlchemy korzystamy jak zwykle z metody sesji, której przekazujemy 
 obiekt reprezentujący ucznia: ``sesja.delete(sesja.query(Uczen).get(3))``.
+
+Po zakończeniu operacji wykonywanych na danych powinniśmy pamiętać o zamknięciu
+połączenia, robimy to używając metody obiektu bazy ``baza.close()`` (Peewee)
+lub sesji ``sesja.close()`` (SQLAlchemy). UWAGA: operacje dokonywane
+podczas sesji w SQLAlchemy muszą zostać zapisane w bazie, dlatego przed
+zamknięciem połączenia trzeba umieścić polecenie ``sesja.commit()``.
 
 Materiały
 -------------------
