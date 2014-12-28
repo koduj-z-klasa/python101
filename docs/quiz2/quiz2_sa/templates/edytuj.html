@@ -1,0 +1,25 @@
+<!-- quiz2sa/templates/edytuj.html -->
+{% extends "szkielet.html" %}
+{% block tytul %}Edycja{% endblock%}
+{% block h1 %}Quiz 2 &#8211; edycja pytań{% endblock%}
+{% block tresc %}
+    <!-- pętla odczytująca kolejne pytania z listy -->
+    <ol>
+    {% for p in pytania %}
+        <li>
+            <!-- wypisujemy pytanie -->
+            <input type="text" value="{{ p.pytanie }}" name="pyt[]" />
+                <form method="POST" action="{{ url_for('edytuj') }}">
+                    <!-- wstawiamy id pytania -->
+                    <input type="hidden" name="id" value="{{ p.id }}"/>
+                    <button type="submit">Edytuj</button>
+                </form>
+                <form method="POST" action="{{ url_for('usun') }}">
+                    <!-- wstawiamy id pytania -->
+                    <input type="hidden" name="id" value="{{ p.id }}"/>
+                    <button type="submit">Usuń</button>
+                </form>
+        </li>
+    {% endfor %}
+    </ol>
+{% endblock %}

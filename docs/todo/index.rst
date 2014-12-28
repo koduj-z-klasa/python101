@@ -1,6 +1,8 @@
 ToDo – aplikacja internetowa
 ==========================================
 
+.. _todo:
+
 .. highlight:: python
 
 Realizacja prostej listy ToDo (lista zadań do zrobienia) jako aplikacji internetowej, z wykorzystaniem Pythona i frameworka Flask w wersji 0.10.1.

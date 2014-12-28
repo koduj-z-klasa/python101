@@ -67,6 +67,7 @@ Zaczynamy!
     bazy/index
     quiz/index
     todo/index
+    quiz2/index
     chatter/index
 
 Dodatkowe informacje
