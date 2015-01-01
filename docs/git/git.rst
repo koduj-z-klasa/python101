@@ -1,7 +1,9 @@
 Git - wersjonowanie kodów źródłowych
 ====================================
 
-Pokażemy tutaj jak nauczyciele mogą wykorzystać profesjonalne i bezpłatne narzędzia do wersjonowania
+.. _git-howto:
+
+Pokażemy tutaj, jak nauczyciele mogą wykorzystać profesjonalne i bezpłatne narzędzia do wersjonowania
 kodów źródłowych i wszystkich innych plików.
 
 System kontroli wersji śledzi wszystkie zmiany dokonywane na pliku (lub plikach)
@@ -31,7 +33,7 @@ Każdy z uczniów może meć lokalną kopię całej historii zmian w plikach,
 będzie mógł modyfikować swoje przykłady, ale w kluczowym momencie nauczyciel
 może poprosić by wszyscy zsynchronizowali swoje kopie do jednej sprawdzonej wersji.
 
-Okresowa synchronizacja przykładów które uczniowie z założenia zmieniają
+Okresowa synchronizacja przykładów, które uczniowie z założenia zmieniają
 podczas zajęć pozwala wykluczyć pomyłki i wyeliminować problemy wynikające z różnic
 we wprowadzonych zmianach.
 
@@ -103,6 +105,8 @@ nam się pobawić narzędziami na istniejącym projekcie.
 
 Instalujemy narzędzie GIT
 -------------------------
+
+.. _git-install:
 
 Do korzystania z naszego repozytorium lokalnie na naszym komputerze musimy doinstalować niezbędne oprogramowanie.
 

@@ -13,31 +13,30 @@ Fundację `Centrum Edukacji Obywatelskiej`_.
 
 Krótki link do tej strony: `bit.ly/kzk-py <http://bit.ly/kzk-py>`_
 
-
 Pobieranie tej dokumentacji
 ---------------------------
 
 Materiały można `pobrać do czytania w wersji offline
 <http://koduj-z-klasa.github.io/python101/python-101-html.zip>`_.
-Poniższa komendy pobiorą dokumentację i rozpakują pliki na pulpicie
-w folderze ``~/Pulpit/python-101-html``:
+Za pomocą poniższych poleceń pobierzemy dokumentację i rozpakujemy
+do folderu ``~/Pulpit/python-101-html``:
 
 .. code-block:: bash
 
-    wget -O python-101-html.zip http://koduj-z-klasa.github.io/python101/python-101-html.zip
-    unzip python-101-html.zip -d ~/Pulpit/
+    ~$ wget -O python-101-html.zip http://koduj-z-klasa.github.io/python101/python-101-html.zip
+    ~$ unzip python-101-html.zip -d ~/Pulpit/
 
-Materiały można także pobrać i zmodyfikować i `przygotować według instrukcji w repozytorium`_
+Materiały można także pobrać, zmodyfikować i przygotować według `instrukcji w repozytorium`_
 
 .. _Koduj z Klasą: http://www.ceo.org.pl/koduj
 .. _Centrum Edukacji Obywatelskiej: http://www.ceo.org.pl/
-.. _przygotować według instrukcji w repozytorium: https://github.com/koduj-z-klasa/python101
+.. _instrukcji w repozytorium: https://github.com/koduj-z-klasa/python101
 
 
 Przygotowanie do szkolenia
 --------------------------
 
-Przed szkoleniem warto przygotować i sprawdzić swój komputer.
+Przed szkoleniem warto przygotować swój komputer.
 
 ..  toctree::
     :maxdepth: 1
