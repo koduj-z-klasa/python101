@@ -258,7 +258,7 @@ w trybie debugowania. Czas więc uruchomić nasz testowy serwer:
 
 .. figure:: quiz2_1.png
 
-Po wpisaniu w przeglądarce adresu 127.0.0.1:5000 powinniśmy zobaczyć: 
+Po wpisaniu w przeglądarce adresu 127.0.0.1:5000 powinniśmy zobaczyć:
 
 .. figure:: quiz2_2.png
 
@@ -629,8 +629,8 @@ Kompletne wersje kodu znajdziesz w powyższym archiwum lub w katalogu
 *sa* dla SQLALchemy.
 
 .. tip::
-    
-    Jeżeli po uruchmoeniu aplikacji do bazy mają być wprowadzone początkowe
+
+    Jeżeli po uruchomieniu aplikacji do bazy mają być wprowadzone początkowe
     dane, pamiętaj, aby odkomentować odpowiednie linie w pliku
     ``main.py`` z katalogu ``quiz_pw``.
 
