@@ -2,7 +2,7 @@ FAQ
 ===============================
 
 
-1) Jak utworzyć rozruchowy nośnik z dystrybucją SRU? Zajrzyj tu: :ref:`usb-creator`
+1) Jak utworzyć rozruchowy nośnik USB z dystrybucją Linux? :ref:`»»» <usb-creator>`
 
 2) ...
 

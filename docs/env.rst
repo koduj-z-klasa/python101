@@ -77,10 +77,10 @@ na dysku twardym, a chcemy mieć możliwość przećwiczenia wszystkich scenariu
 .. _SRU: http://sru.e-swoi.pl/sru-test-37.iso
 .. _Koduj z Klasą: http://kodujzklasa.pl
 
+.. _usb-creator:
+
 Rozruchowy klucz USB
 ---------------------
-
-.. _usb-creator:
 
 Klucz USB umożliwiający uruchomienie komputera można przygotować na kilka
 sposobów:
@@ -111,11 +111,11 @@ Przygotowując klucz USB w oparciu o obraz *iso*, postępujemy następująco:
 .. code-block:: bash
 
     ~$ sudo apt-get update && sudo apt-get install usb-gtk-creator
-    
+
 W systemach MS Windows proponujemy instalację programu `Linux Live USB Creator`_.
 Można też skorzystać z programu `Universal USB Installer`_, który polecany
 jest w instrukcji zamieszczonej na stronach `producenta Ubuntu`_.
-    
+
 .. _Linux Live USB Creator: http://www.linuxliveusb.com/en/download
 .. _Universal USB Installer: http://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3/#button
 .. _producenta Ubuntu: http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-windows
@@ -224,7 +224,7 @@ to dowolna nazwa pliku, do którego zapisujemy odczytaną zawartość.
     Pierwsze z nich wyświetli w końcowych liniach ostatnio dodane napędy
     w postaci ciągu typu ``sdb:sdb1``. Podobne wyniki powinno zwrócić
     polecenie drugie.
-    
+
 .. code-block:: bash
 
     ~$ mount | grep /dev/sd
@@ -398,7 +398,7 @@ Edytory kodu
 
 Skrypty Pythona można zapisywać w dowolnym edytorze tekstu, ale oczywiście
 wygodniej jest używać programów, które potrafią przynajmniej odpowiednio
-podświetlać kod. Proponujemy do wyboru proste 
+podświetlać kod. Proponujemy do wyboru proste
 
 Geany
 ^^^^^^^^^^
@@ -406,10 +406,10 @@ Geany
 `Geany <http://www.geany.org>`_ to proste i lekkie środowisko IDE dostępne na licencji
 `GNU General Public Licence <http://pl.wikipedia.org/wiki/GNU_General_Public_License>`_.
 Geany oferuje kolorowanie składni dla najpopularniejszych języków,
-m.in. C, C++, C#, Java, PHP, HTML, Python, Perl i Pascal, 
-wsparcie dla kodowania w ponad 50 standardach, dopełnianie poleceń, mechanizmy automatycznego zamykanie tagów dla HTML\XML, 
-auto-wcięć, pracy na kartach i wiele, wiele więcej. Podczas pisania kodu przydatny okazuje się brudnopis, 
-pozwalający tworzyć dowolne notatki, a także możliwość kompilacji plików źródłowych 
+m.in. C, C++, C#, Java, PHP, HTML, Python, Perl i Pascal,
+wsparcie dla kodowania w ponad 50 standardach, dopełnianie poleceń, mechanizmy automatycznego zamykanie tagów dla HTML\XML,
+auto-wcięć, pracy na kartach i wiele, wiele więcej. Podczas pisania kodu przydatny okazuje się brudnopis,
+pozwalający tworzyć dowolne notatki, a także możliwość kompilacji plików źródłowych
 bezpośrednio z poziomu programu.
 
 Instalacja
