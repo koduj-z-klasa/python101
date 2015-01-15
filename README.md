@@ -92,8 +92,9 @@ Autorzy
 - Dorota Rybicka <rybicka.dorota@gmail.com>
 - Adam Jurkiewicz <biuro@cyfrowaszkola.waw.pl>
 - Grzegorz Wilczek <grzegorz.wilczek@ceo.org.pl>
-- `Janusz Skonieczny <http://plus.google.com/+JanuszSkonieczny/>`_
+- [Janusz Skonieczny][4]
 
   [1]: http://www.ceo.org.pl/koduj
   [2]: http://www.ceo.org.pl/
   [3]: http://sphinx-doc.org/latest/
+  [4]: http://plus.google.com/+JanuszSkonieczny/
