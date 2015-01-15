@@ -92,7 +92,7 @@ Autorzy
 - Dorota Rybicka <rybicka.dorota@gmail.com>
 - Adam Jurkiewicz <biuro@cyfrowaszkola.waw.pl>
 - Grzegorz Wilczek <grzegorz.wilczek@ceo.org.pl>
-- Janusz Skonieczny <js@bravelabs.pl>
+- `Janusz Skonieczny <https://plus.google.com/+JanuszSkonieczny>`
 
   [1]: http://www.ceo.org.pl/koduj
   [2]: http://www.ceo.org.pl/
