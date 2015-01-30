@@ -360,7 +360,7 @@ Następnie instalujemy program ``pip`` do zarządzania dodatkowymi bibliotekami 
 
     python -c "exec('try: from urllib2 import urlopen \nexcept: from urllib.request import urlopen');f=urlopen('https://raw.github.com/pypa/pip/master/contrib/get-pip.py').read();exec(f)"
 
-Gdyby jakieś wywołania pythona nie działały, warto ustawić zmienną systemową ``PATH`` tak,
+Gdyby jakieś wywołania Pythona nie działały, warto ustawić zmienną systemową ``PATH`` tak,
 aby zawierała ścieżki do interpretera i polecenia ``pip``:
 
 .. code-block:: bat

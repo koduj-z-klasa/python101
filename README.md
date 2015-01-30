@@ -22,10 +22,10 @@ skoków pomiędzy etapami które zostały wskazane w materiałach szkoleniowych.
 
 https://github.com/koduj-z-klasa/python101/archive/master.zip
 
-Linki do zapamiętania dla uczestników
+Linki do zapamiętania
 -------------------------------------
 
-Polecamy do zajrzenia na poniższe strony jeśli będziecie szukać informacji po szkoleniu.
+Polecamy poniższe strony jako źródła dodatkowych materiałów dla uczestników szkoleń:
 
 - GitHub: Bezpłatne publiczne repozytoria kodu źródłowego  
   https://github.com/
