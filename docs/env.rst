@@ -289,53 +289,83 @@ Po imporcie plik OVA można skasować.
 * `VirtualBox - wersja dla Windows <http://download.virtualbox.org/virtualbox/4.3.8/VirtualBox-4.3.8-92456-Win.exe>`_
 * `Maszyna wirtualna SRU <http://www.cyfrowaszkola.waw.pl/_python/SRU_FWIOO.ova>`_
 
-Interpreter i biblioteki
+Interpreter Pythona
 ---------------------------
 
 Podstawą szkolenia jest, jak zaznaczono na początku, interpreter Pythona w wersji 2.7.x,
-który standardowo dostępny jest w dystrybucjach linuksowych. Siła tego języka
-tkwi m. in. w wielu rozszerzeniach zapewnianych przez instalację dodatkowych
-modułów.
+który standardowo dostępny jest w dystrybucjach linuksowych. Można jednak korzystać
+z interpretera w wersji 3.4.x, czyli najnowszej stabilnej, pamiętając że:
+
+* funkcja wejścia ``input_raw()`` została zastąpiona przez funkcję ``input()``,
+  zachowanie poprzednie można emulować używając ``eval(input())``, co nie
+  jest jednak zalecane;
+
+* wyrażenie wyjścia ``print`` zostało zastąpione funkcją ``print()``, a więc
+  wystarczy dodać nawiasy...
+
+* dodatkowe moduły trzeba zainstalować osobno dla wersji 3.4.x
+
+Siła Pythona tkwi m. in. w standardowej bibliotece udostępniającej wiele
+funkcjonalności, a także w wielu rozszerzeniach zapewnianych przez instalację
+dodatkowych modułów. W Pythonie łatwo stworzymy aplikacje konsolowe, wyposażone
+w interfejs graficzny, sieciowe, bazodanowe, multimedialne itd.
 
 Instalacja w Linuksie
 ^^^^^^^^^^^^^^^^^^^^^^
 
-W systemach opierających się na Debianie (m. in. wszystkie wersje Ubuntu,
-LinuxMint itd.), korzystamy z menedżera pakietów ``apt-get``:
+W systemach linuksowych Python 2 jest zainstalowany domyślnie, wersję 3 również
+zazwyczaj znajdziemy. Instalację dodatkowych modułów w systemach opierających się na Debianie
+(m. in. wszystkie wersje Ubuntu, LinuxMint itd.), przeprowadzamy przy użyciu
+menedżera pakietów ``apt-get``; systemy oparte na Arch Linuksie (Bridge Linux, Manjaro)
+wykorzystują menedżer ``pacman``. W zależności od dystrybucji wydajemy polecenia:
 
 .. code-block:: bash
 
+    ~$ sudo apt-get update
     ~$ sudo apt-get install ipython python-pip python-virtualenv git
     ~$ sudo apt-get install python-flask python-django python-pygame
 
+    ~# pacman -Syu
+    ~# pacman -S ipython2 python2-pip python2-virtualenv git
+    ~# pacman -S install python2-flask python2-django python2-pygame
+
 W pierwszej kolejności zainstalowane zostaną narzędzia, czyli rozrzerzona
 konsola ``ipython``, instalator modułów ``pip`` czy narzędzie pozwalające
-ściągnąć i używać niniejszych materiałów, czyli ``git``.
+ściągnąć i używać niniejsze materiały, czyli ``git``.
+
+.. note::
+
+    W systemach opartych na Debianie instalacja modułów dla interpretera
+    w wersji 3.x wymaga dodania do nazw cyfry 3, np. ``python3 -pip`` itd.
+    W Arch Linuksie i pochodnych jest odwrotnie, domyślną wersją jest Python 3,
+    jeżeli chcemy używać wersji 2.x dodajemy odpowiednią cyfrę.
+    Warto również zauważyć, że systemy oparte na Archu mogą nie wykorzystywać
+    mechanizmu podnoszenia uprawnień zwykłego użytkownika ``sudo``,
+    wtedy instalujemy z konta ``roota``, stąd znak ``~#`` w kodzie.
 
 Biblioteki potrzebne do obsługi baz danych za pomocą ORM-ów można
 zainstalować za pomocą menedżera systemowego lub (w razie niedostępności
-danego pakietu) instalora Pythona:
+danego pakietu) instalora Pythona ``pip``:
 
 .. code-block:: bash
 
     ~$ sudo apt-get install python-peewee python-sqlalchemy python-flask-sqlalchemy
     ~$ sudo pip install peewee sqlalchemy flask-sqlalchemy
 
-W innych systemach linuksowych należy korzystać z dedykowanych
-menedżerów systemowych (np. ``pacman`` w Arch Linuksie) lub wspomnianego
+    ~# pacman -S python2-peewee  python2-sqlalchemy python2-flask-sqlalchemy
+    ~# pip2 install peewee sqlalchemy flask-sqlalchemy
+
+W innych systemach linuksowych należy korzystać z dedykowanych lub wspomnianego
 instalatora Pythona (``pip``).
 
 .. note::
 
     Uwaga: nazwy pakietów w różnych dystrybucjach mogą się nieco różnić od podanych.
-    Obok wersji 2.x rozwijana jest wersja 3.x Pythona, która nie w pełni
-    jest kompatybilna z poprzednią. Różnic nie ma aż tak wiele, podane
-    kody można więc łatwo dostosować.
 
 Instalacja w MS Windows
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Punktem wyjścia jest instalacja interpretera Pythona. Można to szybko zrobić
+Punktem wyjścia jest instalacja interpretera Pythona. Wersję 2.7.8 szybko zainstalujemy
 za pomocą konsoli PowerShell (oznaczonej niebieską ikoną i niebieskim tłem). Wystarczy skopiować
 poniższy kod linia po linii, wkleić i wykonać:
 
@@ -347,8 +377,9 @@ poniższy kod linia po linii, wkleić i wykonać:
     (new-object System.Net.WebClient).DownloadFile("https://raw.github.com/pypa/pip/master/contrib/get-pip.py", "$pwd\get-pip.py")
     C:\Python27\python.exe get-pip.py virtualenv
 
-Jeżeli w naszej wersji Windows nie ma PowerShella, ściągamy `interpreter Pythona`_
-i instalujemy ręcznie, pamiętając o zaznaczeniu opcji "Add Python.exe to Path".
+
+Jeżeli w naszej wersji Windows nie ma PowerShella, ściągamy `interpreter Pythona`_ w wybranej
+wersji (2.7.x lub 3.4.x) i instalujemy ręcznie, pamiętając o zaznaczeniu opcji "Add Python.exe to Path".
 
 .. _interpreter Pythona: https://www.python.org/downloads/
 
@@ -360,12 +391,26 @@ Następnie instalujemy program ``pip`` do zarządzania dodatkowymi bibliotekami 
 
     python -c "exec('try: from urllib2 import urlopen \nexcept: from urllib.request import urlopen');f=urlopen('https://raw.github.com/pypa/pip/master/contrib/get-pip.py').read();exec(f)"
 
-Gdyby jakieś wywołania Pythona nie działały, warto ustawić zmienną systemową ``PATH`` tak,
-aby zawierała ścieżki do interpretera i polecenia ``pip``:
+Gdyby jakieś wywołania Pythona nie działały, warto do zmiennej ``PATH`` (użytkownika
+lub systemowej) dodać ścieżki do interpretera i polecenia ``pip``. W oknie "Uruchamianie" (:kbd:`WIN+R`)
+wpisujemy polecenie wywołujące okno "Zmienne środowiskowe" – można je również
+uruchomić z okna właściwości komputera:
+
+.. figure:: img/winpath01.jpg
+.. figure:: img/winpath02.jpg
+
+Następnie klikamy przycisk "Nowa" i wpisujemy: ``PATH=%PATH%;c:\Python27\;c:\Python27\Scripts\``;
+w przypadku zmiennej systemowej klikamy "Edytuj", a ścieżki ``c:\Python27\;c:\Python27\Scripts\``
+dopisujemy po średniku. Dla pojedynczej sesji (do momentu przelogowania się) możemy użyć
+polecenia w konsoli tekstowej:
 
 .. code-block:: bat
 
     set PATH=%PATH%;c:\Python27\;c:\Python27\Scripts\
+
+.. tip::
+
+    Dla wersji 3.x trzeba odpowiednio dostosować ścieżki.
 
 Pozostaje instalacja bibliotek wymaganych przez scenariusze.
 Moduł wymagany przez gry pobieramy z katalogu `/arch/` zawartego w repozytorium
@@ -383,18 +428,19 @@ Pozostałe biblioteki instalujemy za pomocą polecenia ``pip``:
     pip install peewee sqlalchemy flask-sqlalchemy
 
 Jeżeli chcemy pod Windowsem korzystać z mechanizmów oferowanych przez serwis
-GitHub, musimy zainstalować odpowiedniego :ref:`klienta <git-install>`. Zagadnienia te omówione
-zostały w osobnym :ref:`dokumencie <git-howto>`. Instalacja Git-a
-nie jest wymagana, aby pracować na przygotowanych scenariuszach.
+GitHub, musimy zainstalować odpowiedniego :ref:`klienta <git-install>`.
+Zagadnienia te omówione zostały w osobnym :ref:`dokumencie <git-howto>`,
+który warto przejrzeć.
+Instalacja Git-a nie jest wymagana, aby pracować na przygotowanych scenariuszach.
 
 .. note::
 
-    Pamiętaj, by zmieniać znaki `/` (slash) na `\\` (backslash) w ścieżkach
-    podawanych w scenariuszach, natomiast w miejscu komend systemu Linux
-    użyj odpowiedników z Windows.
+    Pamiętaj, by w systemie Windows zmieniać znaki `/` (slash) na `\\` (backslash) w ścieżkach
+    podawanych w scenariuszach, podobnie pozamieniaj komendy systemu Linux
+    na odpowiedniki wiersza poleceń Windows.
 
-Edytory kodu
--------------
+Edytory (IDE) kodu
+-----------------------
 
 Skrypty Pythona można zapisywać w dowolnym edytorze tekstu, ale oczywiście
 wygodniej jest używać programów, które potrafią przynajmniej odpowiednio
