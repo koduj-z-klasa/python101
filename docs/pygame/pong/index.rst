@@ -1,5 +1,5 @@
-Gra w Ponga (obj)
-=================
+Pong (obj)
+##################
 
 .. highlight:: python
 
@@ -8,10 +8,14 @@ Biblioteka PyGame ułatwia tworzenie aplikacji multimedialnych, w tym gier.
 
 .. _PyGame: http://www.pygame.org/wiki/tutorials
 
+.. contents::
+    :depth: 1
+    :local:
+
 .. figure:: pong_0.png
 
 Przygotowanie
--------------
+**********************
 
 Do rozpoczęcia pracy z przykładem pobieramy szczątkowy kod źródłowy:
 
@@ -20,7 +24,7 @@ Do rozpoczęcia pracy z przykładem pobieramy szczątkowy kod źródłowy:
     ~/python101$ git checkout -f pong/z1
 
 Okienko gry
------------
+**********************
 
 Na wstępie w pliku ``~/python101/pong/pong.py`` otrzymujemy kod który przygotuje okienko naszej gry:
 
@@ -107,7 +111,7 @@ Gotowy kod możemy wyciągnąć komendą:
     ~/python101$ git checkout -f pong/z2
 
 Piłeczka
---------
+**********************
 
 Czas dodać piłkę do gry. *Piłeczką* będzie kolorowe kółko które z każdym przejściem
 naszej pętli przesuniemy o kilka punktów w osi X i Y, zgodnie wektorem prędkości.
@@ -144,7 +148,6 @@ konstruktora ``Ball`` wywołujemy konstruktorr klasy bazowej:
 
         super(Ball, self).__init__(width, height, x, y, color)
 
-
 Teraz musimy naszą piłeczkę zintegrować z resztą gry:
 
 .. raw:: html
@@ -178,7 +181,7 @@ Gotowy kod możemy wyciągnąć komendą:
 
 
 Odbijanie piłeczki
-------------------
+**********************
 
 Uruchommy naszą "grę" ;)
 
@@ -261,7 +264,7 @@ Gotowy kod możemy wyciągnąć komendą:
 
 
 Odbijamy piłeczkę rakietką
---------------------------
+*******************************
 
 Dodajmy "rakietkę" od przy pomocy której będziemy mogli odbijać piłeczkę.
 Dodajmy zwykły prostokąt, który będziemy przesuwać przy pomocy myszki.
@@ -350,7 +353,7 @@ Gotowy kod możemy wyciągnąć komendą:
 
 
 Gramy przeciwko komputerowi
----------------------------
+******************************
 
 Dodajemy przeciwnika, nasz przeciwnik będzie mistrzem, będzie dokładnie
 śledził piłeczkę i zawsze starał się utrzymać rakietkę gotową do odbicia piłeczki.
@@ -383,7 +386,7 @@ od niej odbijać.
 
 
 Pokazujemy punkty
------------------
+**********************
 
 Dodajmy klasę sędziego, który patrząc na poszczególne elementy gry będzie
 decydował czy graczom należą się punkty i będzie ustawiał piłkę w początkowym położeniu.
@@ -409,8 +412,8 @@ Tradycyjnie dodajemy instancję nowej klasy do gry:
     :emphasize-lines: 16, 29
     :lineno-start: 38
 
-Zadania dodatkowe i rzeczy które można poprawić
------------------------------------------------
+Zadania dodatkowe
+**********************
 
 #. Piłeczka "odbija się" po zewnętrznej prawej i dolnej krawędzi. Można to poprawić.
 #. Metoda ``Ball.move`` otrzymuje w argumentach planszę i rakietki. Te elementy można
@@ -421,9 +424,11 @@ Zadania dodatkowe i rzeczy które można poprawić
 #. Gdy piłeczka odbija się od boków rakietki powinna odbijać się w osi X.
 #. Gra dwuosobowa z użyciem komunikacji po sieci.
 
+Materiały
+**********************
 
 Słowniczek
-----------
+================
 
 .. glossary::
 
@@ -438,10 +443,10 @@ Słowniczek
         z klasy nadrzędnej rozszerzając lub całkowicie zmieniając jej działanie
 
 Metryka
-^^^^^^^
+================
 
 :Autorzy: `Janusz Skonieczny <https://plus.google.com/+JanuszSkonieczny/>`_,
-          Robert Bednarz
+          Robert Bednarz <ecg@ecg.vot.pl>
 
 :Utworzony: |date| o |time|
 
@@ -456,4 +461,4 @@ Metryka
     </style>
 
 
-.. include:: ../copyright.rst
+.. include:: ../../copyright.rst

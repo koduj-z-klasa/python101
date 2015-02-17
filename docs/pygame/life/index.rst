@@ -1,15 +1,19 @@
-Gra w życie Conwaya (obj)
-=========================
+Życie Conwaya (obj)
+###################
 
 `Gra w życie`_ zrealizowana z użyciem biblioteki `PyGame`_.
 
 .. _PyGame: http://www.pygame.org/wiki/tutorials
 .. _Gra w życie: http://pl.wikipedia.org/wiki/Gra_w_życie
 
+.. contents::
+    :depth: 1
+    :local:
+
 .. figure:: screen1.png
 
 Przygotowanie
--------------
+***************
 
 Do rozpoczęcia pracy z przykładem pobieramy szczątkowy kod źródłowy:
 
@@ -19,7 +23,7 @@ Do rozpoczęcia pracy z przykładem pobieramy szczątkowy kod źródłowy:
 
 
 Okienko gry
------------
+***************
 
 Na wstępie w pliku ``~/python101/games/life.py`` otrzymujemy kod który przygotuje okienko naszej gry:
 
@@ -47,7 +51,7 @@ W powyższym kodzie mamy podstawy potrzebne do uruchomienia gry:
 
 
 Tworzymy matrycę życia
-----------------------
+************************
 
 Nasza gra polega na ułożenia komórek na planszy i obserwacji jak w kolejnych generacjach
 życie się zmienia, które komórki giną, gdzie się rozmnażają i wywołują efektowną wędrówkę
@@ -184,7 +188,7 @@ zamiast 7 z przykładu z podwójną pętlą:
     [[DEAD for y in xrange(self.height)] for x in xrange(self.width)]
 
 Układamy żywe komórki na planszy
---------------------------------
+**********************************
 
 Teraz przygotujemy kod który dzięki wykorzystaniu myszki umożliwi nam
 ułożenie planszy, będziemy wybierać gdzie na planszy będą żywe komórki.
@@ -256,7 +260,7 @@ zostaną *wygenerowane* i zwrócone na zewnątrz wartości ``x, y``. Za każdym 
 
 
 Dodajemy populację do kontrolera gry
-------------------------------------
+*************************************
 
 Czas by rozwinąć nasz kontroler gry, klasę ``GameOfLife`` o instancję klasy ``Population``
 
@@ -278,7 +282,7 @@ Gotowy kod możemy wyciągnąć komendą:
 
 
 Szukamy żyjących sąsiadów
--------------------------
+*************************************
 
 Podstawą do określenia tego czy w danym miejscu na planszy (w współrzędnych x i y macierzy)
 powstanie nowe życie, przetrwa lub zginie istniejące życie; jest określenie liczby żywych
@@ -323,13 +327,16 @@ Gotowy kod możemy wyciągnąć komendą:
     ~/python101$ git checkout -f life/z3
 
 
-Zadania dodatkowe i rzeczy które można poprawić
------------------------------------------------
+Zadania dodatkowe
+*******************
 
 #. TODO
 
+Materiały
+**********************
+
 Słowniczek
-----------
+============
 
 .. glossary::
 
@@ -353,10 +360,10 @@ Słowniczek
 
 
 Metryka
-^^^^^^^
+=============
 
 :Autorzy: `Janusz Skonieczny <https://plus.google.com/+JanuszSkonieczny/>`_,
-          Robert Bednarz
+          Robert Bednarz <ecg@ecg.vot.pl>
 
 :Utworzony: |date| o |time|
 
@@ -370,4 +377,4 @@ Metryka
         div.highlight, div.highlight-python { margin-top: 0px; }
     </style>
 
-.. include:: ../copyright.rst
+.. include:: ../../copyright.rst

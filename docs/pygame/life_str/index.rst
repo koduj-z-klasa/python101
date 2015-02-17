@@ -1,5 +1,5 @@
-Gra w życie Conwaya (str)
-=========================
+Życie Conwaya (str)
+#####################
 
 .. highlight:: python
 
@@ -9,10 +9,14 @@ Biblioteka PyGame ułatwia tworzenie aplikacji multimedialnych, w tym gier.
 .. _PyGame: http://www.pygame.org/wiki/tutorials
 .. _Gra w życie: http://pl.wikipedia.org/wiki/Gra_w_życie
 
+.. contents::
+    :depth: 1
+    :local:
+
 .. figure:: life.png
 
 Zmienne i plansza gry
----------------------
+****************************
 
 Tworzymy plik ``life.py`` w terminalu lub w wybranym edytorze i zaczynamy od zdefiniowania zmiennych określających właściwości obiektów w naszej grze.
 
@@ -26,7 +30,7 @@ Tworzymy plik ``life.py`` w terminalu lub w wybranym edytorze i zaczynamy od zde
 W instrukcji ``pygame.display.set_mode()`` inicjalizujemy okno gry o rozmiarach 800x400 pikseli i 32-bitowej głębi kolorów. Tworzymy w ten sposób powierzchnię główną do rysowania zapisaną w zmiennej ``OKNOGRY``. Ilość możliwych do narysowania komórek, reprezentowanych przez kwadraty o boku 10 pikseli, wyliczamy w zmiennych ``KOM_POZIOM`` i ``KOM_PION``. Najważniejszą strukturą w naszej grze jest ``POLE_GRY``, dwuwymiarowa lista elementów reprezentujących "żywe" i "martwe" komórki, czyli populację. Tworzymy ją w dwóch krokach, na początku inicjujemy zerami jednowymiarową listę o rozmiarze odpowiadającym ilości komórek w poziomie (``POLE_GRY = [KOM_MARTWA] * KOM_POZIOM``). Następnie do każdego elementu listy przypisujemy listę zawierającą tyle zer, ile jest komórek w pionie.
 
 Populacja komórek
----------------------
+****************************
 
 Kolejnym krokiem będzie zdefiniowanie funkcji przygotowującej i rysującej populację komórek.
 
@@ -51,7 +55,7 @@ Funkcja iteruje po każdym elemencie ``POLA_GRY`` i sprawdza stan sąsiadów ka�
 Zadaniem funkcji ``rysuj_populacje()`` jest narysowanie kwadratów (obiekty :term:`Rect`) o białych bokach w rozmiarze 10 pikseli dla pól (elementów), które w liście ``POLE_GRY`` są żywe (mają wartość 1).
 
 Główna pętla programu
----------------------
+****************************
 
 Programy interaktywne, w tym gry, reagujące na działania użytkownika, takie jak ruchy czy kliknięcia myszą, działają w pętli, której zadaniem jest:
 
@@ -83,17 +87,20 @@ Grę możemy uruchomić poleceniem wpisanym w terminalu:
     $ python life_str.py
 
 Poćwicz sam
------------
+****************************
 
     Spróbuj inaczej zaimplementować funkcję ``przygotuj_populacje``.
     Spróbuj zmodyfikować kod tak, aby plansza gry była biała, a komórki rysowane były
     jako kolorowe kwadraty o różniącym się od wypełnienia obramowaniu.
 
+Materiały
+****************************
+
 Źródła
-^^^^^^^^
+===================
 
 * :download:`life_str.zip <life_str.zip>`
-* :download:`life_str.pdf <../pdf/life_str.pdf>`
+* :download:`life_str.pdf <../../pdf/life_str.pdf>`
 
 Kolejne wersje tworzenego kodu można pobierać wydając polecenia:
 
@@ -113,12 +120,12 @@ Uruchamiamy je wydając polecenie:
 \- gdzie *x* jest numerem kolejnej wersji kodu.
 
 Słownik
-^^^^^^^^
+===================
 
-.. include:: ../glos_pygame.rst
+.. include:: ../glossary.rst
 
 Metryka
-^^^^^^^
+===================
 
 :Autorzy: Łukasz Zarzecki, Robert Bednarz <ecg@ecg.vot.pl>
 
@@ -135,4 +142,4 @@ Metryka
     </style>
 
 
-.. include:: ../copyright.rst
+.. include:: ../../copyright.rst

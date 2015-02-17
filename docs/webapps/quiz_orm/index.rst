@@ -1,5 +1,7 @@
-Quiz 2 ORM
-============================
+Quiz ORM
+#####################
+
+.. highlight:: python
 
 Realizacja aplikacji internetowej Quiz w oparciu o mikro-framework `Flask`_
 i bazę danych `SQLite`_ zarządzaną systemem ORM `Peewee`_ lub `SQLAlchemy`_.
@@ -9,8 +11,12 @@ i bazę danych `SQLite`_ zarządzaną systemem ORM `Peewee`_ lub `SQLAlchemy`_.
 .. _Peewee: http://peewee.readthedocs.org/en/latest
 .. _SQLAlchemy: http://www.sqlalchemy.org
 
+.. contents::
+    :depth: 1
+    :local:
+
 Wymagania
------------------------
+*******************
 
 Dobre zrozumienie omawianych tu zagadnień wymaga przyswojenia podstaw Pythona
 omówionych w scenariuszu "Python w przykładach" (tematy 2-6), obsługi bazy
@@ -29,7 +35,7 @@ lub instalatora ``pip`` (wydajemy albo pierwsze albo drugie polecenie):
     ~$ sudo pip install peewee sqlalchemy flask-sqlalchemy
 
 Modularyzacja
--------------------
+*******************
 
 Scenariusze "Quiz" i "ToDo" pokazują możliwość umieszczenia całego kodu
 aplikacji obsługiwanej przez Flaska w jednym pliku. O ile dla celów
@@ -65,7 +71,7 @@ można wydawać w miarę rozbudowywania aplikacji. Można oczywiście korzystać
 z wybranego edytora.
 
 Aplikacja i baza
------------------
+*******************
 
 .. raw:: html
 
@@ -101,7 +107,7 @@ bazy powiązaną z konkretną aplkacją Flaska dzięki prostemu wywołaniu
 odpowiedniego konstruktora (``baza = SQLAlchemy(app)``).
 
 Modele
-----------
+*******************
 
 .. raw:: html
 
@@ -139,7 +145,7 @@ wszystkie klasy i metody SQLAlchemy. Druga rzecz to miejsce, w którym określam
 relację zwrotną. Inaczej niż w Peewee robimy to w klasie ``Pytanie``.
 
 Widoki
-----------
+*******************
 
 Przypomnijmy, że widoki to funkcje obsługujące przypisane im adresy url.
 Najczęściej po wykonaniu określonych operacji zawierają również wywołanie
@@ -151,7 +157,7 @@ przywoływać we fragmentach. Warto również zaznaczyć,
 że wykorzystywane szablony dla obu systemów są takie same.
 
 Strona główna i szablony
-^^^^^^^^^^^^^^^^^^^^^^^^^
+============================
 
 Widok obsługujący stronę główną w obu przypadkach jest taki sam:
 
@@ -223,7 +229,7 @@ w katalogu ``static`` i określającego wygląd naszej aplikacji.
     :linenos:
 
 Powiązanie modułów
--------------------
+***********************
 
 Po zdefiniowaniu aplikacji, bazy, modelu, widoków i wykorzystywanych
 przez nie szablonów, trzeba wszystkie moduły połączyć w całość.
@@ -263,13 +269,13 @@ Po wpisaniu w przeglądarce adresu 127.0.0.1:5000 powinniśmy zobaczyć:
 .. figure:: quiz2_2.png
 
 Widoki CRUD
------------------
+*********************
 
 Skrót :term:`CRUD` (*Create* (tworzenie), *Read* (odczyt), *Update* (aktualizacja), *Delete* (usuwanie))
 oznacza, jak wyjaśniono, podstawowe operacje wykonywane na bazie danych.
 
 Dane początkowe
-^^^^^^^^^^^^^^^^^^^
+====================
 
 .. tip::
 
@@ -336,7 +342,7 @@ wykorzystujemy identyfikatory zapisanych wcześniej pytań
 (``odp = Odpowiedz(pnr = pyt.id, odpowiedz = o.strip())``).
 
 Odczyt
-^^^^^^^^^^^^^^^^^^^^
+====================
 
 Zaczniemy od widoku wyświetlającego pobrane z bazy dane w formie quizu
 i sprawdzającego udzielone przez użytkownika odpowiedzi.
@@ -386,7 +392,7 @@ poprawności zwiększamy wynik.
 .. figure:: quiz2_3.png
 
 Dodawanie i aktualizacja
-^^^^^^^^^^^^^^^^^^^^^^^^^
+=============================
 
 Możliwość dodawania nowych pytań i odpowiedzi wymaga stworzenia nowego
 widoku powiązanego z określonym adresem url, jak i szablonu, który
@@ -481,7 +487,7 @@ danej informacji: ``<span class="{{ kategoria }}">{{ komunikat }}</span>``.
 .. figure:: quiz2_4.png
 
 Widok edycji i usuwanie
-^^^^^^^^^^^^^^^^^^^^^^^^
+==========================
 
 Można zadać pytanie, jak do szablonu ``dodaj.html`` trafiają pytania, które
 chcemy edytować. Odpowiada za to widok ``edytuj()``
@@ -548,8 +554,19 @@ Na koniec wywołujemy za pomocą tzw. przekierowania widok strony głównej
 
 .. figure:: quiz2_5.png
 
+Poćwicz sam
+===============
+
+    Spróbuj napisać wersję omówionej w innym scenariuszu aplikacji :ref:`ToDo <todo>`
+    przy wykorzystaniu wybranego systemu ORM, tj. Peewee lub SQLAlchemy.
+
 Materiały
----------------------
+*************************
+
+Słownik
+===================
+
+.. include:: ../glossary.rst
 
 1. `Strona projektu Flask`_
 2. `Co to jest framework?`_
@@ -566,54 +583,8 @@ Materiały
 .. _Peewee: http://peewee.readthedocs.org/en/latest
 .. _SQLAlchemy: http://www.sqlalchemy.org
 
-Pojęcia
-^^^^^^^^^^^^^
-
-.. glossary::
-
-    Aplikacja
-        program komputerowy.
-
-    Framework
-        zestaw komponentów i bibliotek wykorzystywany do budowy aplikacji,
-        przykładem jest biblioteka Pythona Flask.
-
-    HTML
-        język znaczników wykorzystywany do formatowania dokumentów, zwłaszcza stron WWW.
-
-    HTTP
-        protokół przesyłania dokumentów WWW.
-
-    GET
-        typ żądania HTTP, służący do pobierania zasobów z serwera WWW.
-
-    POST
-        typ żądania HTTP, służący do umieszczania zasobów na serwerze WWW.
-
-    Serwer deweloperski (testowy)
-        serwer www używany w czasie prac nad oprogramowaniem.
-
-    Serwer WWW
-        serwer obsługujący protokół HTTP.
-
-    Szablon
-        wzorzec (nazywany czasem templatką) strony WWW wykorzystywany do renderowania widoków.
-
-    URL
-        ustandaryzowany format adresowania zasobów w internecie (`przykład <http://pl.wikipedia.org/wiki/Uniform_Resource_Locator>`_).
-
-    Widok
-        we Flasku jest to funkcja, która obsługuje żądania wysyłane przez użytkownika
-        i na ich podstawie przygotowuje dane zwracane do przeglądarki, najczęściej  w formie strony www.
-
-Poćwicz sam
-^^^^^^^^^^^^^
-
-    Spróbuj napisać wersję omówionej w innym scenariuszu aplikacji :ref:`ToDo <todo>`
-    przy wykorzystaniu wybranego systemu ORM, tj. Peewee lub SQLAlchemy.
-
 Źródła
-^^^^^^^^^^^^^
+====================
 
 * :download:`quiz2.zip <quiz2.zip>`
 
@@ -635,7 +606,7 @@ Kompletne wersje kodu znajdziesz w powyższym archiwum lub w katalogu
     ``main.py`` z katalogu ``quiz_pw``.
 
 Metryka
-^^^^^^^
+====================
 
 :Autor: Robert Bednarz (ecg@ecg.vot.pl)
 
@@ -651,4 +622,4 @@ Metryka
         div.highlight, div.highlight-python { margin-top: 0px; }
     </style>
 
-.. include:: ../copyright.rst
+.. include:: ../../copyright.rst

@@ -1,5 +1,5 @@
-Gra w Ponga (str)
-=================
+Pong (str)
+###################
 
 .. highlight:: python
 
@@ -8,10 +8,14 @@ Biblioteka PyGame ułatwia tworzenie aplikacji multimedialnych, w tym gier.
 
 .. _PyGame: http://www.pygame.org/wiki/tutorials
 
+.. contents::
+    :depth: 1
+    :local:
+
 .. figure:: pong.png
 
 Zmienne i plansza gry
----------------------
+***********************
 
 Tworzymy plik ``pong_str.py`` w terminalu lub w wybranym edytorze, zapisujemy na dysku i zaczynamy od zdefiniowania zmiennych określających właściwości obiektów w naszej grze.
 
@@ -25,7 +29,7 @@ Tworzymy plik ``pong_str.py`` w terminalu lub w wybranym edytorze, zapisujemy na
 W instrukcji ``pygame.display.set_mode()`` inicjalizujemy okno gry o rozmiarach 800x400 pikseli i 32 bitowej głębi kolorów. Tworzymy w ten sposób powierzchnię główną do rysowania zapisaną w zmiennej OKNOGRY. Definujemy również kolory w formacie RGB (Red, Green, Blue) podając składowe poszczegónych kanałów w tuplach, np. ``(0, 0, 255)``.
 
 Obiekty graficzne
----------------------
+***********************
 
 W dalszej kolejności zamiemy się określeniem właściwości i inicjalizacją paletek i piłki.
 
@@ -41,7 +45,7 @@ W dalszej kolejności zamiemy się określeniem właściwości i inicjalizacją 
 Schemat dodawania obiektów graficznych jest prosty. Po określeniu wymiarów obiektu (szerokości i wysokości), tworzymy powierzchnię (``pygame.Surface``), którą wypełniamy odpowiednim kolorem (``.fill()``). W przypadku piłki do metody ``Surface()`` przekazujemy dodatkowe argumenty (``pygame.SRCALPHA``) umożliwiające uzyskanie powierzchni z przezroczystymi pikselami (z kanałem alpha), na której rysujemy koło (``pygame.draw.ellipse()``) o podanym kolorze, środku i rozmiarach. W kolejnym kroku pobieramy prostokąt (np. ``paletka1_prost = paletka1_obr.get_rect()``) zajmowany przez obiekt, za pomocą którego łatwiej ustawić wstępne położenie obiektu, a później nim manipulować (właściwości ``.x`` i ``.y`` obiektu :term:`Rect` zwróconego przez metodę ``.get_rect()``).
 
 Wyświetlanie tekstu
----------------------
+***********************
 
 W grze chcemy wyświetlać punkty zdobywane przez graczy. Dopisujemy więc poniższy kod:
 
@@ -60,7 +64,7 @@ Po zdefiniowaniu zmiennych przechowujących punkty graczy, tworzymy obiekt czcio
     Plik wykorzystywany do wyświetlania tekstu (``freesansbold.ttf``) musi znaleźć się w katalogu ze skryptem.
 
 Główna pętla programu
----------------------
+***********************
 
 Programy interaktywne, w tym gry, reagujące na działania użytkownika, takie jak ruchy czy kliknięcia myszą, działają w pętli, której zadaniem jest:
 
@@ -100,17 +104,20 @@ Grę możemy uruchomić poleceniem wpisanym w terminalu:
     $ python pong_str.py
 
 Poćwicz sam
------------
+***********************
 
     Zmodyfikuj właściwości obiektów (paletek, piłki) takie jak rozmiar, kolor, początkowa pozycja.
     Zmień położenie paletek tak aby znalazły przy lewej i prawej krawędzi okna, wprowadź potrzebne zmiany w kodzie, aby umożliwić rozgrywkę.
     Dodaj trzecią paletkę, która co jakiś czas będzie "przelatywać" przez środek planszy i zmieniać w przypadku kolizji tor i kolor piłki.
 
+Materiały
+**************
+
 Źródła
-^^^^^^^^
+==============
 
 * :download:`pong_str.zip <pong_str.zip>`
-* :download:`pong_str.pdf <../pdf/pong_str.pdf>`
+* :download:`pong_str.pdf <../../pdf/pong_str.pdf>`
 
 Kolejne wersje tworzenego kodu można pobierać wydając polecenia:
 
@@ -132,12 +139,12 @@ Uruchamiamy je wydając polecenie:
 \- gdzie *x* jest numerem kolejnej wersji kodu.
 
 Słownik
-^^^^^^^^
+==============
 
-.. include:: ../glos_pygame.rst
+.. include:: ../glossary.rst
 
 Metryka
-^^^^^^^
+==============
 
 :Autorzy: Łukasz Zarzecki, Robert Bednarz <ecg@ecg.vot.pl>
 
@@ -154,4 +161,4 @@ Metryka
     </style>
 
 
-.. include:: ../copyright.rst
+.. include:: ../../copyright.rst

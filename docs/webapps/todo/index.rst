@@ -1,5 +1,5 @@
-ToDo – aplikacja internetowa
-==========================================
+ToDo
+##########################
 
 .. _todo:
 
@@ -7,8 +7,12 @@ ToDo – aplikacja internetowa
 
 Realizacja prostej listy ToDo (lista zadań do zrobienia) jako aplikacji internetowej, z wykorzystaniem Pythona i frameworka Flask w wersji 0.10.1.
 
-Katalog, plik i przeznaczenie aplikacji
----------------------------------------
+.. contents::
+    :depth: 1
+    :local:
+
+Struktura katalogów
+**********************
 
 Zaczynamy od utworzenia katalogu projektu ToDo w katalogu domowym użytkownika, a w nim pliku :file:`todo.py`:
 
@@ -23,7 +27,7 @@ Zaczynamy od utworzenia katalogu projektu ToDo w katalogu domowym użytkownika, 
 Aplikacja ma pozwalać na dodawanie z określoną datą, przeglądanie i oznaczanie jako wykonane różnych zadań, które zapisywane będą w bazie danych SQLite.
 
 Szkielet aplikacji
----------------------------------------
+*********************
 
 Utworzenie minimalnej aplikacji Flask pozwoli na uruchomienie serwera deweloperskiego, umożliwiającego wygodne rozwijanie kodu. W pliku :file:`todo.py` wpisujemy:
 
@@ -38,12 +42,16 @@ Serwer uruchamiamy komendą: ``python todo.py``
 
 .. figure:: img/serwerrun.png
 
-Domyślnie serwer uruchamia się pod adresem *127.0.0.1:5000*. Po wpisaniu adresu do przeglądarki internetowej otrzymamy stronę z błędem HTTP 404, co wynika z faktu, że nasza aplikacja nie ma jeszcze zdefiniowanego żadnego zachowania (widoku) dla tego adresu. :term:`Widok` to funkcja obsługująca wywołania powiązanego z nim adresu. Widok (funkcja) zwraca najczęściej użytkownikowi wyrenderowaną z szablonu stronę internetową.
+Domyślnie serwer uruchamia się pod adresem *127.0.0.1:5000*. Po wpisaniu adresu do przeglądarki internetowej
+otrzymamy stronę z błędem HTTP 404, ponieważ nasza aplikacja
+nie ma jeszcze zdefiniowanego żadnej odpowiedzi dla tego adresu.
+Odpowiedź taka, tzw. :term:`widok`, to funkcja obsługująca wywołania powiązanego z nim adresu.
+Widok (funkcja) zwraca najczęściej użytkownikowi wyrenderowaną z szablonu stronę internetową.
 
 .. figure:: img/notfound.png
 
 Definiowanie widoków
----------------------------------------
+*********************
 
 W pliku :file:`todo.py` umieścimy funkcję ``index()``, domyślny widok naszej strony:
 
@@ -57,7 +65,7 @@ W pliku :file:`todo.py` umieścimy funkcję ``index()``, domyślny widok naszej 
 Widok ``index()`` za pomocą dekoratora związaliśmy z adresem głównym (/). Po odświeżeniu adresu *127.0.0.1:5000* zamiast błędu powinniśmy zobaczyć napis: "Witaj na moim serwerze!"
 
 Model bazy danych
----------------------------------------
+*********************
 
 W katalogu aplikacji tworzymy plik :file:`schema.sql`, który zawiera opis struktury tabeli z zadaniami. Do tabeli wprowadzimy przykładowe dane.
 
@@ -85,7 +93,7 @@ Tworzymy bazę danych w pliku :file:`db.sqlite`, łączymy się z nią i próbuj
 Pracę z bazą kończymy poleceniem ``.quit``.
 
 Połączenie z bazą danych
----------------------------------------
+*************************
 
 Bazę danych już mamy, teraz pora napisać funkcje umożiwiające łączenie się z nią z poziomu naszej aplikacji. W pliku :file:`todo.py` dodajemy:
 
@@ -99,7 +107,7 @@ Bazę danych już mamy, teraz pora napisać funkcje umożiwiające łączenie si
 Dodaliśmy sekretny klucz zabezpieczający mechanizm sesji, ustawiliśmy ścieżkę do pliku bazy danych w katalogu aplikacji (stąd użycie funkcji ``app.root_path``) oraz nazwę aplikacji. Utworzyliśmy trzy funkcje odpowiedzialne za nawiązywanie (``connect_db``, ``get_db``) i kończenie (``close_db``) połączenia z bazą danych.
 
 Pobieranie i wyświetlanie danych
----------------------------------------
+*********************************
 
 Wyświetlanie danych umożliwia wbudowany we Flask system szablonów (templatek), czyli mechanizm renderowania kodu HTML na podstawie plików zawierających instrukcje wstawiające wybrane dane z aplikacji oraz znaczniki HTML. Modyfikujemy funkcję ``index()`` w pliku :file:`todo.py`:
 
@@ -136,7 +144,7 @@ Wewnątrz szablonu przeglądamy wszystkie wpisy (`entries`) i umieszczamy je na 
 .. figure:: img/listatodo1.png
 
 Formularz dodawania zadań
----------------------------------------
+**************************
 
 Aby umożliwić dodawanie i zapisywanie w bazie nowych zadań, modyfikujemy widok ``index()``, tak aby obsługiwał żądania POST, które zawierają dane wysłane z formularza na serwer.
 
@@ -195,7 +203,7 @@ W szablonie dodaliśmy formularz oraz informację o błędzie lub sukcesie przy 
 .. figure:: img/listatodo2.png
 
 Wygląd aplikacji (opcja)
----------------------------------------
+************************
 
 Wygląd aplikacji możemy zdefiniować w arkuszu stylów CSS o nazwie :file:`style.css`, który zapisujemy w podkatalogu :file:`static` aplikacji:
 
@@ -223,8 +231,8 @@ Dzięki temu nasza aplikacja nabierze nieco lepszego wyglądu.
 
 .. figure:: img/listatodo3.png
 
-Oznaczanie zadań jako wykonane (opcja)
----------------------------------------
+Zadania wykonane (opcja)
+**************************
 
 Do każdego zadania dodamy formularz, którego wysłanie będzie oznaczało, że wykonaliśmy dane zadanie, czyli zmienimy atrybut ``is_done`` wpisu z *0* (niewykonane) na *1* (wykonane). Odpowiednie żądanie typu POST obsłuży nowy widok w pliku :file:`todo.py`. W szablonie :file:`show_entries.html` dodamy kod wyróżniający zadania wykonane.
 
@@ -287,59 +295,20 @@ Aplikację można uznać za skończoną. Możemy dodawać zadania oraz zmieniać
 
 .. figure:: img/listatodo4.png
 
-POĆWICZ SAM
----------------------------------------
+Zadania dodatkowe
+===========================
 
     Dodaj możliwość usuwania zadań.
     Dodaj mechanizm logowania użytkownika tak, aby użytkownik mógł dodawać i edytować tylko swoją listę zadań.
     Wprowadź osobne listy zadań dla każdego użytkownika.
 
-Pojęcia
-^^^^^^^^^^^^^^^^^^^
-
-.. glossary::
-
-    Aplikacja
-        program komputerowy.
-
-    Baza danych
-        program przeznaczony do przechowywania i przetwarzania danych.
-
-    CSS
-        język służący do opisu formy prezentacji stron WWW.
-
-    Framework
-        zestaw komponentów i bibliotek wykorzystywany do budowy aplikacji.
-
-    GET
-        typ żądania HTTP, służący do pobierania zasobów z serwera WWW.
-
-    HTML
-        język znaczników wykorzystywany do formatowania dokumentów, zwłaszcza stron WWW.
-
-    HTTP
-        protokół przesyłania dokumentów WWW.
-
-    POST
-        typ żądania HTTP, służący do umieszczania zasobów na serwerze WWW.
-
-    Serwer deweloperski
-        serwer używany w czasie prac nad oprogramowaniem.
-
-    Serwer WWW
-        serwer obsługujący protokół HTTP.
-
-    Templatka
-        szablon strony WWW wykorzystywany przez Flask do renderowania widoków.
-
-    URL
-        ustandaryzowany format adresowania zasobów w internecie (przykład: http://pl.wikipedia.org/wiki/Uniform_Resource_Locator).
-
-    Widok
-        funkcja obsługująca żądania przychodzące na powiązany z nią adres, zazwyczaj zwraca użytkownikowi żądaną stronę html wyrenderowaną ze wskazanego szablonu.
-
 Materiały
-^^^^^^^^^^^^^^^^^^^
+************************
+
+Słownik
+====================
+
+.. include:: ../glossary.rst
 
 1. Strona projektu Flask http://flask.pocoo.org/
 2. Informacje o SQLite http://pl.wikipedia.org/wiki/SQLite
@@ -347,16 +316,15 @@ Materiały
 4. Co nieco o HTTP i żądaniach GET i POST http://pl.wikipedia.org/wiki/Http
 
 Źródła
-^^^^^^^^^^^^^
+=====================
 
 * :download:`todo_all.zip <todo_all.zip>`
-* :download:`todo_flask_sqlite.pdf <../pdf/todo_flask_sqlite.pdf>`
+* :download:`todo_flask_sqlite.pdf <../../pdf/todo_flask_sqlite.pdf>`
 
 Metryka
-^^^^^^^
+==============
 
-:Autorzy: Tomasz Nowacki,
-          Robert Bednarz
+:Autorzy: Robert Bednarz (ecg@ecg.vot.pl), Tomasz Nowacki
 
 :Utworzony: |date| o |time|
 
@@ -370,5 +338,4 @@ Metryka
         div.highlight, div.highlight-python { margin-top: 0px; }
     </style>
 
-
-.. include:: ../copyright.rst
+.. include:: ../../copyright.rst

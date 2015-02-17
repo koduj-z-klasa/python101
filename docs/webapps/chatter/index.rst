@@ -1,12 +1,16 @@
-Chatter – aplikacja internetowa
-==========================================
+Chatter
+#########################
 
 .. highlight:: python
 
-Zastosowanie Pythona i frameworka Django (wersja 1.6.5) do stworzenia aplikacji internetowej Chatter; prostego czata, w którym zarejestrowani użytkownicy będą mogli wymieniać się krótkimi wiadomościami.
+Zastosowanie Pythona i frameworka Django do stworzenia aplikacji internetowej Chatter; prostego czata, w którym zarejestrowani użytkownicy będą mogli wymieniać się krótkimi wiadomościami.
+
+.. contents::
+    :depth: 1
+    :local:
 
 Projekt i aplikacja
----------------------------------------
+**********************
 
 Tworzymy nowy projekt Django, a następnie uruchamiamy lokalny serwer, który pozwoli śledzić postęp pracy. W katalogu domowym wydajemy polecenia w terminalu:
 
@@ -56,21 +60,21 @@ Teraz zmodyfikujemy ustawienia projektu, aby korzystał z polskiej wersji język
     TIME_ZONE = 'Europe/Warsaw' # ustawienia daty i czasu
 
 Model – Widok – Kontroler
----------------------------------------
+**************************
 
 W projektowaniu aplikacji internetowych za pomocą Django odwołujemy się do wzorca M(odel)V(iew)C(ontroller), czyli Model–Widok–Kontroler [#]_, co pozwala na oddzielenie danych od ich prezentacji oraz logiki aplikacji. Funkcje kolejnych elementów są następujące:
 
-* :term:`Modele` – w Django reprezentują źródło informacji, są to klasy Pythona, które zawierają pola, właściwości i zachowania danych, odwzorowują pojedyncze tabele w bazie danych [#]_. Definiowane są w pliku :file:`models.py`.
-* :term:`Widoki` – w Django są to funkcje Pythona, które na podstawie żądań www (dla danych adresów URL) zwracają odpowiedź w postaci kodu HTML generowanego w szablonach (templates), przekierowania, dokumentu XML czy obrazka. Definiowane są w pliku :file:`views.py`.
-* :term:`Kontroler` – to mechanizm kierujący kolejne żądania do odpowiednich widoków na podstawie konfiguracji adresów URL zawartej w pliku :file:`urls.py`.
+* Modele – :term:`model` w Django reprezentuje źródło informacji; są to klasy Pythona, które zawierają pola, właściwości i zachowania danych, odwzorowują pojedyncze tabele w bazie danych [#]_. Definiowane są w pliku :file:`models.py`.
+* Widoki – :term:`widok` w Django to funkcja Pythona, która na podstawie żądań www (dla danych adresów URL) zwracaja odpowiedź w postaci kodu HTML generowanego w szablonach (templates), przekierowania, dokumentu XML czy obrazka. Definiowane są w pliku :file:`views.py`.
+* Kontroler – :term:`kontroler` to mechanizm kierujący kolejne żądania do odpowiednich widoków na podstawie konfiguracji adresów URL zawartej w pliku :file:`urls.py`.
 
 .. [#] Twórcy Django traktują jednak ten wzorzec elastycznie, mówiąc że ich framework wykorzystuje wzorzec MTV, czyli model (model), szablon (template), widok (view).
 .. [#] Takie odwzorowanie nosi nazwę mapowania obiektowo-relacyjnego (ORM). ORM odwzorowuje strukturę bazy na obiekty Pythona.
 
 Model danych i baza
----------------------------------------
+**********************
 
-:term:`Model`, jak zostało powiedziane, jest klasą Pythona opisującą dane naszej aplikacji, czyli wiadomości. Instancje tej klasy będą konkretnymi wiadomościami napisanymi przez użytkowników systemu. Każda wiadomość  będzie zwierała treść, datę dodania oraz autora wiadomości (użytkownika).
+Jak zostało wyjaśnione, :term:`model` jest klasą Pythona opisującą dane naszej aplikacji, czyli wiadomości. Instancje tej klasy będą konkretnymi wiadomościami napisanymi przez użytkowników systemu. Każda wiadomość  będzie zwierała treść, datę dodania oraz autora wiadomości (użytkownika).
 
 W katalogu :file:`chatter/chatter` w pliku :file:`models.py` wpisujemy:
 
@@ -94,7 +98,7 @@ Po skonfigurowaniu projektu i zdefiniowaniu modelu danych możemy utworzyć baz�
 .. [#] Domyślnie Django korzysta z bazy SQLite, która przechowywana jest w jednym pliku :file:`db.sqlite3` w katalogu aplikacji.
 
 Panel administracyjny
----------------------------------------
+**********************
 
 Django pozwala szybko utworzyć panel administratora dla naszego projektu. Rejestrujemy więc model danych jako element panelu w nowo utworzonym pliku :file:`admin.py` w katalogu :file:`chatter/chatter`:
 
@@ -113,8 +117,8 @@ Po ewentualnym ponownum uruchomieniu serwera wchodzimy na adres *127.0.0.1:8080/
 
 .. figure:: img/admin2.png
 
-Strona główna – widoki i szablony
----------------------------------------
+Widoki i szablony
+**********************
 
 Dodawanie stron w Django polega na tworzeniu widoków, czyli funkcji Pythona powiązanych z określonymi adresami url. Widoki najczęściej zwracały będą kod HTML wyrenderowany na podstawie szablonów, do których możemy przekazywać dodatkowe dane [#]_, np. z bazy. Dla przejrzystości przyjęto, że w katalogu aplikacji (:file:`chatter/chatter`):
 
@@ -168,7 +172,7 @@ Po wpisaniu adresu *127.0.0.1:8080/* zobaczymy tekst, który zwróciliśmy z wid
 .. figure:: img/chatter2.png
 
 Logowanie użytkowników
----------------------------------------
+***********************
 
 Dodanie formularza logowania dla użytkowników polega na:
 
@@ -227,7 +231,7 @@ JAK TO DZIAŁA:  Po przejściu pod adres *127.0.0.1:8080/login/*, powiązany z w
 Po wypełnieniu formularza danymi i kliknięciu przycisku "Zaloguj", do serwera zostanie wysłane żądanie typu POST. W widoku ``my_login()`` obsługujemy taki przypadek za pomocą instrukcji ``if``. Sprawdzamy poprawność przesłanych danych (walidacja), logujemy użytkownika w systemie i zwracamy przekierowanie na stronę główną, która wyświetla nazwę zalogowanego użytkownika. Jeżeli dane nie są poprawne, zwracana jest informacja o błędach. Przetestuj!
 
 Dodawanie i wyświetlanie wiadomości
----------------------------------------
+***********************************
 
 Chcemy, by zalogowani użytkownicy mogli przeglądać wiadomości od innych użytkowników i dodawać własne. Utworzymy widok ``messages()``, który wyświetli wszystkie wiadomości (żądanie GET) i ewentualnie zapisze nową wiadomość nadesłaną przez użytkownika (żądanie POST). Widok skorzysta z nowego szablonu :file:`messages.html` i powiązany zostanie z adresem */messages*. Zaczynamy od zmian w :file:`views.py`.
 
@@ -316,7 +320,7 @@ JAK TO DZIAŁA: W widoku ``messages()``, podobnie jak w widoku ``login()``, mamy
 POST zawiera z kolei treść nowej wiadomości, której długość sprawdzamy i jeżeli wszystko jest w porządku, tworzymy nową wiadomość (instancję klasy *Message*, czyli obiekt ``msg``) i zapisujemy ją w bazie danych (wywołujemy metodę obiektu: ``msg.save()``).
 
 Rejestrowanie użytkowników
----------------------------------------
+***************************
 
 Utworzymy nowy widok ``my_register()``, szablon :file:`register.html` i nowy adres URL */register*, który skieruje użytkownika do formularza rejestracji, wymagającego podania nazwy i hasła. Zaczynamy od dodania widoku w pliku :file:`views.py`.
 
@@ -392,7 +396,7 @@ JAK TO DZIAŁA: Zasada działania jest taka sama jak w przypadku pozostałych wi
 .. figure:: img/register.png
 
 Wylogowywanie użytkowników
----------------------------------------
+****************************
 
 Django ma wbudowaną również funkcję wylogowującą. Utworzymy zatem nowy widok ``my_logut()`` i powiążemy go z adresem :file:`/logout`. Do pliku :file:`views.py` dodajemy:
 
@@ -408,66 +412,21 @@ Django ma wbudowaną również funkcję wylogowującą. Utworzymy zatem nowy wid
         # przekierowujemy na strone glowna
         return redirect(reverse('index'))
 
-POĆWICZ SAM
----------------------------------------
+Zadania dodatkowe
+==================
+
     Powiąż widok ``my_logut`` z adresem *logout/* dopisując regułę w odpowiednim pliku. Powiązanie nazwij "logout".
     Wylogowywanie nie wymaga osobnego szablonu, dodaj jednak link wylogowujący do 1) szablonu :file:`index.html` po linku "Zobacz wiadomości" oraz do 2) szablonu :file:`messages.html` po nagłówku ``<h1>``.
 
 .. figure:: img/chatter3.png
 
-Pojęcia
-^^^^^^^^^^^^^^^^^^^
-
-.. glossary::
-
-    Aplikacja
-        program komputerowy.
-
-    Framework
-        zestaw komponentów i bibliotek wykorzystywany do budowy aplikacji.
-
-    GET
-        typ żądania HTTP, służący do pobierania zasobów z serwera WWW.
-
-    HTML
-        język znaczników wykorzystywany do formatowania dokumentów,
-        zwłaszcza stron WWW.
-
-    HTTP
-        protokół przesyłania dokumentów WWW.
-        
-    Kontroler
-        logika aplikacji, w Django zawarta w funkcji obsługującej widok.
-
-    Logowanie
-        proces autoryzacji i uwierzytelniania użytkownika w systemie.
-
-    Model
-        schematy i źródła danych aplikacji.
-
-    ORM
-        mapowanie obiektowo-relacyjne, oprogramowanie służące do przekształcania struktur bazy danych na obiekty klasy danego języka oprogramowania.
-
-    POST
-        typ żądania HTTP, służący do umieszczania zasobów na serwerze WWW.
-
-    Serwer deweloperski
-        serwer używany w czasie prac nad oprogramowaniem.
-
-    Serwer WWW
-        serwer obsługujący protokół HTTP.
-
-    Templatka
-        szablon strony WWW wykorzystywany przez Django do renderowania widoków.
-
-    URL
-        ustandaryzowany format adresowania zasobów w internecie (przykład: http://pl.wikipedia.org/wiki/Uniform_Resource_Locator).
-
-    Widok
-        funkcja obsługująca żądania przychodzące na powiązany z nią adres, zazwyczaj zwraca użytkownikowi żądaną stronę html wyrenderowaną ze wskazanego szablonu.
-
 Materiały
-^^^^^^^^^^^^^^^^^^^
+***************
+
+Słownik
+================
+
+.. include:: ../glossary.rst
 
 1. O Django http://pl.wikipedia.org/wiki/Django_(informatyka)
 2. Strona projektu Django https://www.djangoproject.com/
@@ -475,13 +434,13 @@ Materiały
 4. Co nieco o HTTP i żądaniach GET i POST http://pl.wikipedia.org/wiki/Http
 
 Źródła
-^^^^^^^^^^^^^
+===========
 
 * :download:`chatter_all.zip <chatter_all.zip>`
-* :download:`chatter_django.pdf <../pdf/chatter_django.pdf>`
+* :download:`chatter_django.pdf <../../pdf/chatter_django.pdf>`
 
 Metryka
-^^^^^^^
+===============
 
 :Autorzy: Tomasz Nowacki,
           Robert Bednarz
@@ -499,4 +458,4 @@ Metryka
     </style>
 
 
-.. include:: ../copyright.rst
+.. include:: ../../copyright.rst

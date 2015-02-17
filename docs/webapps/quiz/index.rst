@@ -1,10 +1,14 @@
-Quiz – aplikacja internetowa
-============================
+Quiz
+#######################
 
 Realizacja aplikacji internetowej Quiz w oparciu o mikro-framework Flask.
 
+.. contents::
+    :depth: 1
+    :local:
+
 Struktura katalogów
--------------------
+*********************
 
 W katalogu użytkownika tworzymy nowy katalog dla aplikacji :file:`quiz`,
 a w nim plik główny :file:`quiz.py`:
@@ -22,7 +26,7 @@ poprawne odpowiedzi na pytania, przesyła je i otrzymuje informację
 o wynikach – ma pokazać podstawy używania frameworka Flask.
 
 Szkielet aplikacji
-------------------
+*********************
 
 Utworzenie minimalnej aplikacji Flask pozwoli na uruchomienie testowego serwera www,
 umożliwiającego wygodne rozwijanie kodu. W pliku :file:`quiz.py` wpisujemy:
@@ -52,10 +56,10 @@ co wynika z faktu, że nasza aplikacja nie ma jeszcze zdefiniowanego żadnego za
 (czy też widoku) dla tego adresu.
 
 Widok (strona główna)
-----------------------
+*********************
 
 Jeżeli chcemy, aby nasza aplikacja zwracała użytkownikowi jakieś strony www,
-używamy widoków. :term:`Widok` to funkcja Pythona powiązana z określonymi
+tworzymy tzw. :term:`widok`. Jest to funkcja Pythona powiązana z określonymi
 adresami URL za pomocą tzw. dekoratorów. Widoki pozwalają name obsługiwać
 żądania GET, kiedy (upraszczając nieco) użytkownik chce po prostu zobaczyć
 stronę, i POST, kiedy użytkownik przesyła jakieś dane za pomocą formularza,
@@ -111,7 +115,7 @@ Po odwiedzeniu adresu *http://127.0.0.1:5000*, otrzymamy stronę HTML.
 .. figure:: quiz2.png
 
 Pytania i odpowiedzi
----------------------------
+*********************
 
 Dane naszej aplikacji, a więc pytania i odpowiedzi, umieścimy w liście
 ``PYTANIA`` w postaci słowników zawierających: treść pytania,
@@ -158,7 +162,7 @@ Po ponownym uruchomieniu serwera powinniśmy otrzymać następującą stronę in
 .. figure:: quiz3.png
 
 Oceniamy odpowiedzi
---------------------
+*********************
 
 Mechanizm sprawdzana liczby poprawnych odpowiedzi umieścimy
 w funkcji ``index()``. Uzupełniamy więc plik :file:`quiz.py`:
@@ -183,7 +187,7 @@ W szablonie :file:`index.html` po znaczniku ``<h1>`` wstawiamy instrukcje wyświ
     :lines: 9-14
 
 Jak to działa
-^^^^^^^^^^^^^
+=========================
 
 Uzupełniliśmy dekorator ``app.route()``, aby obsługiwał zarówno żądania :term:`GET`
 (wejście na stronę główną, po wpisaniu adresu => pokazujemy pytania),
@@ -213,7 +217,12 @@ otrzymujemy ocenę.
 .. figure:: quiz4.png
 
 Materiały
----------------------
+*******************************
+
+Słownik
+===============
+
+.. include:: ../glossary.rst
 
 1. `Strona projektu Flask`_
 2. `Co to jest framework?`_
@@ -223,51 +232,11 @@ Materiały
 .. _Co to jest framework?: http://pl.wikipedia.org/wiki/Framework
 .. _Protokół HTTP: http://pl.wikipedia.org/wiki/Http
 
-Pojęcia
-^^^^^^^^^^^^^
-
-.. glossary::
-
-    Aplikacja
-        program komputerowy.
-
-    Framework
-        zestaw komponentów i bibliotek wykorzystywany do budowy aplikacji,
-        przykładem jest biblioteka Pythona Flask.
-
-    HTML
-        język znaczników wykorzystywany do formatowania dokumentów, zwłaszcza stron WWW.
-
-    HTTP
-        protokół przesyłania dokumentów WWW.
-
-    GET
-        typ żądania HTTP, służący do pobierania zasobów z serwera WWW.
-
-    POST
-        typ żądania HTTP, służący do umieszczania zasobów na serwerze WWW.
-
-    Serwer deweloperski (testowy)
-        serwer www używany w czasie prac nad oprogramowaniem.
-
-    Serwer WWW
-        serwer obsługujący protokół HTTP.
-
-    Szablon
-        wzorzec (nazywany czasem templatką) strony WWW wykorzystywany do renderowania widoków.
-
-    URL
-        ustandaryzowany format adresowania zasobów w internecie (`przykład <http://pl.wikipedia.org/wiki/Uniform_Resource_Locator>`_).
-
-    Widok
-        we Flasku jest to funkcja, która obsługuje żądania wysyłane przez użytkownika
-        i na ich podstawie przygotowuje dane zwracane do przeglądarki, najczęściej  w formie strony www.
-
 Źródła
-^^^^^^^^^^^^^
+===============
 
 * :download:`quiz.zip <quiz.zip>`
-* :download:`quiz_flask.pdf <../pdf/quiz_flask.pdf>`
+* :download:`quiz_flask.pdf <../../pdf/quiz_flask.pdf>`
 
 Kolejne wersje tworzenego kodu znajdziesz w katalogu ``~/python101/docs/quiz``.
 Uruchamiamy je wydając polecenia:
@@ -280,9 +249,9 @@ Uruchamiamy je wydając polecenia:
 \- gdzie *x* jest numerem kolejnej wersji kodu.
 
 Metryka
-^^^^^^^
+===============
 
-:Autorzy: Tomasz Nowacki, Robert Bednarz (ecg@ecg.vot.pl)
+:Autorzy: Robert Bednarz (ecg@ecg.vot.pl), Tomasz Nowacki
 
 :Utworzony: |date| o |time|
 
@@ -296,4 +265,4 @@ Metryka
         div.highlight, div.highlight-python { margin-top: 0px; }
     </style>
 
-.. include:: ../copyright.rst
+.. include:: ../../copyright.rst

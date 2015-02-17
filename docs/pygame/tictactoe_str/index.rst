@@ -1,26 +1,20 @@
-Gra w Kółko i krzyżyk
-===========================
+Kółko i krzyżyk (str)
+############################
 
 .. highlight:: python
 
 Klasyczna gra w kółko i krzyżyk zrealizowana przy pomocy  `PyGame`_.
-Biblioteka *PyGame* ułatwia tworzenie aplikacji multimedialnych, w tym gier.
 
 .. _PyGame: http://www.pygame.org/wiki/tutorials
 
-.. note::
-
-    Prezentujemy dwie wersje :ref:`strukturalną <tic-str>` i :ref:`obiektową <tic-obj>`.
-
-.. _tic-str:
-
-Wersja strukturalna
----------------------
+.. contents::
+    :depth: 1
+    :local:
 
 .. figure:: tictactoe.png
 
 Zmienne i plansza gry
----------------------
+************************
 
 Tworzymy plik ``tictactoe.py`` w terminalu lub w wybranym edytorze i zaczynamy od zdefiniowania zmiennych określających właściwości obiektów w naszej grze.
 
@@ -34,7 +28,7 @@ Tworzymy plik ``tictactoe.py`` w terminalu lub w wybranym edytorze i zaczynamy o
 W instrukcji ``pygame.display.set_mode()`` inicjalizujemy okno gry o rozmiarach 150x150 pikseli i 32 bitowej głębi kolorów. Tworzymy w ten sposób powierzchnię główną do rysowania zapisaną w zmiennej ``OKNOGRY``. ``POLE_GRY`` to lista elementów reprezentujących pola planszy, które mogą być puste (wartość 0), zawierać kółka gracza (wartość 1) lub komputera (wartość 2). Pozostałe zmienne określają, do kogo należy następny ruch, kto wygrał i czy nastąpił koniec gry.
 
 Rysuj planszę gry
----------------------
+************************
 
 Planszę można narysować na wiele sposobów, np. tak:
 
@@ -50,7 +44,7 @@ Planszę można narysować na wiele sposobów, np. tak:
 Pierwsza funkcja, ``rysuj_plansze()``, wykorzystując zagnieżdżone pętle, rysuje nam 9 kwadratów o białym obramowaniu i szerokości 50 pikseli (formalnie są to obiekty :term:`Rect` zwracane przez metodę ``pygame.draw.rect()``). Zadaniem funkcji ``rysuj_pole_gry()`` jest narysowanie w zależności od stanu planszy gry zapisanego w liście ``POLE_GRY`` kółek o niebieskim (gracz) lub czerwonym (komputer) kolorze za pomocą metody ``pygame.draw.circle()``.
 
 Sztuczna inteligencja
----------------------
+************************
 
 Decydującą rolę w grze odgrywa komputer, od którego inteligencji zależy, czy rozgrywka przyniesie jakąś satysfakcję. Dopisujemy więc funkcje obsługujące sztuczną inteligencję:
 
@@ -64,15 +58,12 @@ Decydującą rolę w grze odgrywa komputer, od którego inteligencji zależy, cz
     :lines: 46-
 
 Za sposób gry komputera odpowiada funkcja ``ai_ruch()`` (*ai* – ang. *artificial intelligence*, sztuczna inteligencja). Na początku zawiera ona definicje dwóch list (``uklady_wygrywam, uklady_blokuje``), zawierających układy wartości, dla których komputer wygrywa oraz które powinien zablokować, aby nie wygrał gracz. O tym, które pole należy zaznaczyć, decyduje funkcja ``sprawdz_pola()`` przyjmująca jako argument najpierw układy wygrywające, później blokujące.
-
 Podstawą działania funkcji ``sprawdz_pola()`` jest lista ``POLA_INDEKSY`` zawierająca jako elementy listy indeksów pól tworzących wiersze, kolumny i przekątne ``POLA_GRY`` (czyli planszy). Pętla ``for lista in POLA_INDEKSY:`` pobiera kolejne listy, tworzy w liście pomocniczej kol trójkę wartości odczytanych z ``POLA_GRY`` i próbuje ją dopasować do przekazanego jako argument układu wygrywającego lub blokującego. Jeżeli znajdzie dopasowanie zwraca liczbę oznaczającą gracza lub komputer, o ile opcjonalny argument ``WYGRANY`` ma wartość inną niż ``None``, w przeciwnym razie zwracany jest indeks ``POLA_GRY``, na którym komputer powinien postawić swój znak.
-
 Jeżeli indeks zwrócony przez funkcję ``sprawdz_pola()`` jest inny niż ``None``, przekazywany jest do funkcji ``postaw_znak()``, której zadaniem jest zapisanie w ``POLU_GRY`` pod otrzymanym indeksem wartości symbolizującej znak komputera (czyli 2) oraz nadanie i zwrócenie zmiennej RUCH wskazującej na gracza (wartość 1).
-
 O ile na planszy nie ma układu wygrywającego lub nie ma konieczności blokowania gracza, komputer w pętli losuje przypadkowe pole (``random.randrange(0,9)``), dopóki nie znajdzie pustego, i przekazuje jego indeks do funkcji ``postaw_znak()``.
 
 Główna pętla programu
----------------------
+************************
 
 Programy interaktywne, w tym gry, reagujące na działania użytkownika, takie jak ruchy czy kliknięcia myszą, działają w pętli, której zadaniem jest:
 
@@ -107,18 +98,21 @@ Grę możemy uruchomić poleceniem wpisanym w terminalu:
 
     $ python tictactoe.py
 
+Materiały
+************************
+
 Poćwicz sam
------------
+===================
 
     Zmień grę tak, aby zaczynał ją komputer.
     Dodaj do gry możliwość rozgrywki wielokrotnej bez konieczności ponownego uruchamiania skryptu.
     Zmodyfikuj funkcję rysującą pole gry tak, aby komputer rysował krzyżyki, a nie kółka.
 
 Źródła
-^^^^^^^^
+===================
 
 * :download:`tictactoe_str.zip <tictactoe_str.zip>`
-* :download:`tictactoe_str.pdf <../pdf/tictactoe_str.pdf>`
+* :download:`tictactoe_str.pdf <../../pdf/tictactoe_str.pdf>`
 
 Kolejne wersje tworzonego kodu można znaleźć w katalogu ``~/python101/docs/tictactoe``.
 Uruchamiamy je wydając polecenie:
@@ -131,54 +125,17 @@ Uruchamiamy je wydając polecenie:
 \- gdzie *x* jest numerem kolejnej wersji kodu.
 
 Słownik
-^^^^^^^^
+===================
 
-.. include:: ../glos_pygame.rst
+.. include:: ../glossary.rst
 
 .. _tic-obj:
 
-Wersja obiektowa
------------------
-
-.. figure:: screen1.png
-
-Okienko gry
------------
-
-Na wstępie w pliku ``~/python101/games/tic_tac_toe.py`` otrzymujemy kod który przygotuje okienko naszej gry:
-
-.. note::
-
-    Ten przykład zakłada wcześniejsze zrealizowanie przykładu: :doc:`../life/index`,
-    opisy niektórych cech wspólnych zostały tutaj wyraźnie pominięte.
-    W tym przykładzie wykorzystujemy np. podobne mechanizmy do tworzenia okna i
-    zarządzania główną pętlą naszej gry.
-
-.. warning::
-
-    TODO: Wymaga ewentualnego rozbicia i uzupełnienia opisów.
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. literalinclude:: code0.py
-    :linenos:
-
-
-W powyższym kodzie mamy podstawy potrzebne do uruchomienia gry:
-
-.. code-block:: bash
-
-    ~/python101$ python games/tic_tac_toe.py
-
 Metryka
-^^^^^^^
+=======================
 
 :Autorzy: 
-    - Wersja strukturalna: Robert Bednarz <ecg@ecg.vot.pl>, Łukasz Zarzecki
-    
-    - Wersja obiektowa: `Janusz Skonieczny <https://plus.google.com/+JanuszSkonieczny/>`_,
+    Robert Bednarz <ecg@ecg.vot.pl>, Łukasz Zarzecki
 
 :Utworzony: |date| o |time|
 
@@ -192,5 +149,4 @@ Metryka
         div.highlight, div.highlight-python { margin-top: 0px; }
     </style>
 
-
-.. include:: ../copyright.rst
+.. include:: ../../copyright.rst

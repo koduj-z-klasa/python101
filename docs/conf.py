@@ -269,3 +269,6 @@ try:
     html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 except:
     pass
+
+def setup(app): 
+    app.add_javascript('custom.js') 

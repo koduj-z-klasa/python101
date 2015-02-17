@@ -58,16 +58,9 @@ Zaczynamy!
     basic/basic4
     basic/basic5
     basic/basic6
-    pong_str/index
-    pong/index
-    tictactoe/index
-    life_str/index
-    life/index
+    pygame/index
     bazy/index
-    quiz/index
-    todo/index
-    quiz2/index
-    chatter/index
+    webapps/index
 
 Dodatkowe informacje
 --------------------
