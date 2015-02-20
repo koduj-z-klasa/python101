@@ -1,5 +1,5 @@
 Bazy danych w Pythonie
-============================
+#######################
 
 Tworzenie i zarządzanie bazami danymi za pomocą Pythona z wykorzystaniem
 wbudowanego modułu `sqlite3 DB-API`_, a także zewnętrznych bibliotek ORM:
@@ -26,7 +26,7 @@ wbudowanego modułu `sqlite3 DB-API`_, a także zewnętrznych bibliotek ORM:
 .. _archiwum: http://www.sqlite.org/download.html
 
 SQL
--------------------
+*****************
 
 Jak wiadomo, do obsługi bazy danych wykorzystywany jest strukturalny
 język zapytań `SQL`_. Jest on m.in. przedmiotem nauki na lekcjach informatyki
@@ -38,7 +38,7 @@ zajmiemy się skryptem konsolowym, co pozwala przećwiczyć "surowe" polecenia S
 .. _SQL: http://pl.wikipedia.org/wiki/SQL
 
 Połączenie z bazą
-^^^^^^^^^^^^^^^^^^^^
+==================
 
 W ulubionym edytorze tworzymy plik `sqlraw.py` i umieszczamy w nim poniższy kod:
 
@@ -64,7 +64,7 @@ Skrypt możemy uruchomić poleceniem podanym niżej, ale na razie nic się jeszc
     ~ $ python sqlraw.py
 
 Model bazy
-^^^^^^^^^^^^^^^^^^^^
+=====================
 
 Zanim będziemy mogli wykonywać podstawowe operacje na bazie danych określane skrótem
 :term:`CRUD` – *Create* (tworzenie), *Read* (odczyt), *Update* (aktualizacja), *Delete* (usuwanie) -
@@ -99,19 +99,19 @@ czyli nasza baza danych. Możemy sprawdzić jej zawartość przy użyciu wspomni
 
     W katalogu z bazą danych wydajemy polecenie ``sqlite3 test.db``, w ten sposób wczytujemy
     bazę do interpretera. Do dyspozycji mamy polecenia:
-    
+
     - ``.databases`` – pokazuje aktualną bazę danych;
     - ``.schema`` – pokazuje schemat bazy danych, czyli polecenia SQL tworzące tabele i relacje;
     - ``.table`` – pokaże tabele w bazie;
     - ``.quit`` – wychodzimy z powłoki interpretera.
-    
+
     Możemy również wydawać wszelkie polecenia SQL-a operujące na bazie, np.
     ``SELECT * FROM klasa;`` – polecenia te zawsze kończymy średnikiem.
 
 .. figure:: sqlite3.png
 
 Wstawianie danych
-^^^^^^^^^^^^^^^^^^^^
+=====================
 
 Do skryptu dopisujemy poniższy kod:
 
@@ -150,7 +150,7 @@ Jeżeli interesuje nas pierwszy, i w tym wypadku jedyny, element tej listy dopis
       je automatycznie. Można by je pominąć, ale wtedy w poleceniu wstawiania danych
       musimy wymienić nazwy pól,
       np. ``INSERT INTO klasa (nazwa, profil) VALUES (?, ?), ('1C', 'biologiczny')``.
-    
+
     - Jeżeli podajemy jedną wartość w tupli jako argument metody .execute(), musimy
       pamiętać o umieszczeniu dodatkowgo przecinka, np. ``('1A',)``, ponieważ
       w ten sposób tworzymy w Pythonie 1-elementowe tuple. W przypadku wielu
@@ -164,11 +164,11 @@ Isolation, Durability – Atomowość, Spójność, Izolacja, Trwałość).
 .. _ACID: http://pl.wikipedia.org/wiki/Transakcja_%28informatyka%29
 
 Pobieranie danych
-^^^^^^^^^^^^^^^^^^^^
+====================
 
 Pobieranie danych (czyli :term:`kwerenda`) wymaga polecenia *SELECT* języka SQL.
 Dopisujemy więc do naszego skryptu funkcję, która wyświetli listę uczniów oraz
-klas, do których należą: 
+klas, do których należą:
 
 .. raw:: html
 
@@ -188,7 +188,7 @@ Dzięki ustawieniu właściwości ``.row_factory`` połączenia z bazą na ``sql
 odczytujemy poszczególne pola podając nazwy zamiast indeksów, np. ``uczen['imie']``.
 
 Modyfikacja i usuwanie danych
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=============================
 
 Do skryptu dodajemy jeszcze kilka linii:
 
@@ -214,7 +214,7 @@ Na koniec zamykamy połącznie z bazą, wywołując metodę ``.close()``, dzięk
 czemu zapisujemy dokonane zmiany i zwalniamy zarezerwowane przez skrypt zasoby.
 
 Dane z pliku
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=================
 
 Dane z tabel w bazach MS Accessa lub LibreOffice Base'a możemy eksportować
 do formatu *csv*, czyli pliku tekstowego, w którym każda linia repreazentuje
@@ -250,7 +250,7 @@ tak jak robiliśmy to już wczesniej, jako argument metody ``.executemany()``.
     Znaki w pliku wejściowym powinny być zakodowane w standardzie ``utf-8``.
 
 Poćwicz sam
-^^^^^^^^^^^^^
+============
 
     Postaraj się przedstawioną aplikację wyposażyć w konsolowy interfejs,
     który umożliwi operacje odczytu, zapisu, modyfikowania i usuwania rekordów.
@@ -260,7 +260,7 @@ Poćwicz sam
     Pythona z aplikacją internetową na przykładzie scenariusza "ToDo".
 
 Systemy ORM
--------------------
+*********************
 
 Znajomość języka SQL jest oczywiście niezbędna, aby korzystać z wszystkich
 możliwości baz danych, niemniej w wielu niespecjalistycznych projektach można
@@ -290,7 +290,7 @@ w Pythona modułu sqlite3, zrealizować przy użyciu technik ORM.
     nakładkę na owmówiony wyżej moduł *sqlite3* wbudowany w Pythona.
 
 Połączenie z bazą
-^^^^^^^^^^^^^^^^^^^^^
+==================
 
 .. raw:: html
 
@@ -313,7 +313,7 @@ podamy ``:memory:`` bazy umieszczone zostaną w pamięci RAM (przydatne
 podczas testowania).
 
 .. note::
-    
+
     Moduły ``os`` i ``sys`` nie są niezbędne do działania prezentowanego kodu,
     ale można z nich skorzystać, kiedy chcemy sprawdzić obecność pliku na
     dysku (``os.path.ispath()``) lub zatrzymać wykonywanie skryptu w dowolnym
@@ -322,7 +322,7 @@ podczas testowania).
     kompletnych skryptów.
 
 Model danych i baza
-^^^^^^^^^^^^^^^^^^^^^
+====================
 
 Przez model rozumiemy tutaj definicje tablic, pól, ich typów oraz wzajemnych
 relacji za pomocą podejścia obiektowego, czyli deklaracji klas i ich właściwości (atrybutów).
@@ -358,7 +358,7 @@ klasy, np. ``CharField()`` lub ``String()``. Możemy również definiować dodat
 cechy pól, takie jak np. nie zezwalanie na wartości puste (``null=False`` lub ``nullable=False``)
 lub określenie wartości domyślnych (``default=''``).
 
-Warto zwrócić uwagę, na sposób określania relacji. W *Peewee* używamy 
+Warto zwrócić uwagę, na sposób określania relacji. W *Peewee* używamy
 konstruktora klasy: ``ForeignKeyField(Klasa, related_name = 'uczniowie')``.
 Przyjmuje on nazwę klasy powiązanej, z którą tworzymy relację, i nazwę atrybutu
 określającego relację zwrotną w powiązanej klasie. Dzięki temu
@@ -376,7 +376,7 @@ w którym podajemy nazwę powiązanej klasy i nazwę atrybutu tworzącego
 powiązanie. W tym wypadku wywołanie typu ``uczen.klasa`` udostępni obiekt
 reprezentujący klasę, do której przypisano ucznia.
 
-Po zdefiniowaniu przemyślanego modelu, co jest relatywnie najtrudniejsze, 
+Po zdefiniowaniu przemyślanego modelu, co jest relatywnie najtrudniejsze,
 trzeba przetestować działanie mechanizmów ORM w praktyce, czyli utworzyć
 tabele i kolumny w bazie. W Peewee łączymy się z bazą i wywołujemy
 metodę ``.create_tables()``, której podajemy nazwy klas reprezentujących
@@ -397,10 +397,10 @@ w katalogu, z którego uruchamiamy skrypt.
 .. figure:: sqlite3_2.png
 
 Operacje CRUD
-^^^^^^^^^^^^^^^^
+=================
 
 Wstawianie i odczytywanie danych
-*********************************
+---------------------------------
 
 Podstawowe operacje wykonywane na bazie, np, wstawianie i odczytywanie danych,
 w Peewee wykonywane są za pomocą obiektów reprezentujących rekordy
@@ -478,7 +478,7 @@ Metody SQLAlchemy:
 .. _sesja:
 
 .. note::
-    
+
     Mechanizm sesji jest unikalny dla SQLAlchemy, pozwala m. in. zarządzać
     transakcjami i połączeniami z wieloma bazami. Stanowi "przechowalnię"
     dla tworzonych obiektów, zapamiętuje wykonywane na nich operacje,
@@ -494,7 +494,7 @@ Metody SQLAlchemy:
     ``sesja.commit()``.
 
 Modyfikowanie i usuwanie danych
-*********************************
+--------------------------------
 
 Systemy ORM ułatwiają modyfikowanie i usuwanie danych z bazy, ponieważ
 operacje te sprowadzają się do zmiany wartości pól klasy reprezentującej
@@ -529,7 +529,7 @@ definiowania modeli w obu rozwiązanich.
 Usuwanie jest jeszcze prostsze. W Peewee wystarczy do zapytania zwracającego
 obiekt reprezentujący ucznia o podanym id "dokleić" odpowiednią metodę:
 ``Uczen.select().where(Uczen.id == 3).get().delete_instance()``.
-W SQLAlchemy korzystamy jak zwykle z metody sesji, której przekazujemy 
+W SQLAlchemy korzystamy jak zwykle z metody sesji, której przekazujemy
 obiekt reprezentujący ucznia: ``sesja.delete(sesja.query(Uczen).get(3))``.
 
 Po zakończeniu operacji wykonywanych na danych powinniśmy pamiętać o zamknięciu
@@ -539,10 +539,7 @@ podczas sesji w SQLAlchemy muszą zostać zapisane w bazie, dlatego przed
 zamknięciem połączenia trzeba umieścić polecenie ``sesja.commit()``.
 
 Materiały
--------------------
-
-Dokumentacja
-^^^^^^^^^^^^^^^^^
+**************
 
 1. `Moduł sqlite3 Pythona`_
 2. `Baza SQLite3`_
@@ -557,11 +554,11 @@ Dokumentacja
 .. _Język SQL: http://pl.wikipedia.org/wiki/SQL
 .. _Peewee (ang.): http://peewee.readthedocs.org/en/latest/index.html
 .. _Tutorial Peewee (ang.): http://www.blog.pythonlibrary.org/2014/07/17/an-intro-to-peewee-another-python-orm/
-.. _SQLAlchemy ORM Tutorial (ang.): http://www.sqlalchemy.org/ 
+.. _SQLAlchemy ORM Tutorial (ang.): http://www.sqlalchemy.org/
 .. _Tutorial SQLAlchemy (ang.): http://www.pythoncentral.io/introductory-tutorial-python-sqlalchemy/
 
-Pojęcia
-^^^^^^^^^^^^^
+Słownik
+===============
 
 .. glossary::
 
@@ -586,7 +583,7 @@ Pojęcia
         Atomicity, Consistency, Isolation, Durability – Atomowość, Spójność, Izolacja, Trwałość;
         zasady określające kryteria poprawnego zapisu danych w bazie.
         Zob.: http://pl.wikipedia.org/wiki/ACID
-        
+
     kwerenda
         Zapytanie do bazy danych zazwyczaj w oparciu o dodatkowe kryteria,
         którego celem jest wydobycie z bazy określonych danych lub ich modyfikacja.
@@ -601,7 +598,7 @@ Pojęcia
 
     instancja
         obiekt stworzony na podstawie klasy.
-        
+
     konstruktor
         metoda wywoływana podczas tworzenia instancji (obiektu) klasy, zazwyczaj
         przyjmuje jako argumenty inicjalne wartości zdefiniowanych w klasie atrybutów.
@@ -609,23 +606,23 @@ Pojęcia
     ORM
         (ang. Object-Relational Mapping) – mapowanie obiektowo-relacyjne,
         czyli sposób odwzorowania obiektów na struktury bazy danych.
-        
+
     Peewee
         prosty i mały system ORM, wspiera Pythona w wersji 2 i 3, obsługuje
         bazy SQLite3, MySQL, Posgresql.
-    
+
     SQLAlchemy
         rozbudowany zestaw narzędzi i system ORM umożliwiający wykorzystanie
         wszystkich możliwości SQL-a, obsługuje bazy SQLite3, MySQL, Postgresql,
         Oracle, MS SQL Server i inne.
 
-Poćwicz sam
-^^^^^^^^^^^^^
+Zadania dodatkowe
+==================
 
-    Spróbuj dodać do bazy korzystając z systemu Peewee lub SQLAlchemy 
+    Spróbuj dodać do bazy korzystając z systemu Peewee lub SQLAlchemy
     wiele rekordów na raz pobranych z pliku. W tym celu zmodyfikuj
     funkcję opisaną wcześniej przy omawianiu modułu *sqlite3* Pythona.
-    
+
     Postaraj się przedstawione aplikacje wyposażyć w konsolowy interfejs,
     który umożliwi operacje odczytu, zapisu, modyfikowania i usuwania rekordów.
     Dane powinny być pobierane z klawiatury od użytkownika.
@@ -635,7 +632,7 @@ Poćwicz sam
     jak to zrobić na przykładzie scenariusza aplikacji "Quiz 2".
 
 Źródła
-^^^^^^^^^^^^^
+============
 
 * :download:`sqlraw.zip <sqlraw.zip>`
 * :download:`orm.zip <orm.zip>`
@@ -653,7 +650,7 @@ Uruchamiamy je wydając polecenia:
 \- gdzie *x* jest numerem kolejnej wersji kodu.
 
 Metryka
-^^^^^^^
+===========
 
 :Autorzy: Robert Bednarz (ecg@ecg.vot.pl)
 

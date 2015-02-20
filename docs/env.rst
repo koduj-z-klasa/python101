@@ -1,8 +1,8 @@
 System i oprogramowanie
-========================
+#########################
 
 System operacyjny
---------------------------
+*************************
 
 Nasze materiały zakładają wykorzystanie systemu :term:`Linux` i języka :term:`Python` w wersji 2.7.x,
 który jest częścią wszystkich desktopowych dystrybucji. Oprócz interpretera języka, który
@@ -46,7 +46,7 @@ płyt w systemie Linux lub MS Windows, można go też wgrać na klucz USB.
     nie ma oczywiście znaczenia.
 
 Tryb *live*
------------------------
+==========================
 
 Płyta LiveDVD lub klucz startowy USB z systemem w wersji *live* pozwalają
 na uruchomienie komputera, testowanie i pracę bez ingerowania w dane
@@ -80,7 +80,7 @@ na dysku twardym, a chcemy mieć możliwość przećwiczenia wszystkich scenariu
 .. _usb-creator:
 
 Rozruchowy klucz USB
----------------------
+==========================
 
 Klucz USB umożliwiający uruchomienie komputera można przygotować na kilka
 sposobów:
@@ -95,7 +95,7 @@ sposobów:
     przez USB, a więc kartach pamięci, dyskach twardych itp.
 
 Nagrywamy obraz *iso*
-^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------
 
 Przygotowując klucz USB w oparciu o obraz *iso*, postępujemy następująco:
 
@@ -179,7 +179,7 @@ przygotowane przez nas scenariusze.
 .. _eCG: http://ecg.vot.pl/?id=usb-boot
 
 System na kluczu USB
-^^^^^^^^^^^^^^^^^^^^^^
+---------------------------
 
 Jeżeli dysponujemy startowym nośnikiem z systemem Xubuntu (lub innym),
 możemy uruchomić normalną instalację, podpiąć nośnik USB, założyć na nim
@@ -201,7 +201,7 @@ Można system aktualizować, można instalować nowe oprogramowanie i zapisywać
 swoje pliki.
 
 Kopia klucza USB
-^^^^^^^^^^^^^^^^^^
+---------------------------
 
 Jeżeli dysponujemy już nośnikiem startowym USB, możemy łatwo go skopiować.
 Żeby operację przyśpieszyć, zwłaszcza jeśli chcemy wykonać kilka kopii,
@@ -257,7 +257,7 @@ Za ich pomocą utworzymy obraz, który później nagramy na wskazane klucze.
 .. _USB Image Tool: http://www.alexpage.de/usb-image-tool/download/
 
 Windows 8 i BIOS UEFI
--------------------------
+***************************
 
 Niestety, uruchomienie płyt Live DVD lub startowych kluczy USB z systemem
 Xubuntu (SRU) na nowszych (od 2012 r.) komputerach z biosem UEFI i systemem Windows 8
@@ -289,8 +289,10 @@ Po imporcie plik OVA można skasować.
 * `VirtualBox - wersja dla Windows <http://download.virtualbox.org/virtualbox/4.3.8/VirtualBox-4.3.8-92456-Win.exe>`_
 * `Maszyna wirtualna SRU <http://www.cyfrowaszkola.waw.pl/_python/SRU_FWIOO.ova>`_
 
+.. _ins-python:
+
 Interpreter Pythona
----------------------------
+***************************
 
 Podstawą szkolenia jest, jak zaznaczono na początku, interpreter Pythona w wersji 2.7.x,
 który standardowo dostępny jest w dystrybucjach linuksowych. Można jednak korzystać
@@ -311,7 +313,7 @@ dodatkowych modułów. W Pythonie łatwo stworzymy aplikacje konsolowe, wyposaż
 w interfejs graficzny, sieciowe, bazodanowe, multimedialne itd.
 
 Instalacja w Linuksie
-^^^^^^^^^^^^^^^^^^^^^^
+==========================
 
 W systemach linuksowych Python 2 jest zainstalowany domyślnie, wersję 3 również
 zazwyczaj znajdziemy. Instalację dodatkowych modułów w systemach opierających się na Debianie
@@ -363,7 +365,7 @@ instalatora Pythona (``pip``).
     Uwaga: nazwy pakietów w różnych dystrybucjach mogą się nieco różnić od podanych.
 
 Instalacja w MS Windows
-^^^^^^^^^^^^^^^^^^^^^^^
+==========================
 
 Punktem wyjścia jest instalacja interpretera Pythona. Wersję 2.7.8 szybko zainstalujemy
 za pomocą konsoli PowerShell (oznaczonej niebieską ikoną i niebieskim tłem). Wystarczy skopiować
@@ -440,14 +442,16 @@ Instalacja Git-a nie jest wymagana, aby pracować na przygotowanych scenariuszac
     na odpowiedniki wiersza poleceń Windows.
 
 Edytory (IDE) kodu
------------------------
+***********************
 
 Skrypty Pythona można zapisywać w dowolnym edytorze tekstu, ale oczywiście
 wygodniej jest używać programów, które potrafią przynajmniej odpowiednio
 podświetlać kod. Proponujemy do wyboru proste
 
+.. _geany-python:
+
 Geany
-^^^^^^^^^^
+=====================
 
 `Geany <http://www.geany.org>`_ to proste i lekkie środowisko IDE dostępne na licencji
 `GNU General Public Licence <http://pl.wikipedia.org/wiki/GNU_General_Public_License>`_.
@@ -459,7 +463,7 @@ pozwalający tworzyć dowolne notatki, a także możliwość kompilacji plików 
 bezpośrednio z poziomu programu.
 
 Instalacja
-*****************
+---------------------
 
 W systemach linuksowych korzystamy z dedykowanych menedżerów, np. w Xubuntu
 (i innych debianopochodnych) wystarczy wpisać w terminalu:
@@ -493,8 +497,10 @@ naciskając :kbd:`CTRL+U`.
 
 .. figure:: img/geany_windows01.jpg
 
+.. _pycharm-python:
+
 PyCharm
-^^^^^^^^^^^^^^^
+====================
 
 PyCharm to profesjonalne, komercyjne środowisko programistyczne dostępne
 za darmo do celów szkoleniowych. Interfejs nie został na razie spolszczony.
@@ -505,7 +511,7 @@ czasu będą spędzać na szukaniu problemów, a więcej na poznawaniu tajników
 programowania.
 
 Instalacja
-***********
+--------------------
 
 Zarówno w systemach Linux, jak i MS Windows najlepiej pobrać
 ostatnią wersję testową, czyli  `Professional Edition <http://www.jetbrains.com/pycharm/download/>`_
@@ -525,14 +531,14 @@ a uruchamiamy go drugim z podanych poleceń.
 Wersję pod Windows instalujemy standardowo.
 
 Bezpłatna licencja
-*******************
+---------------------------
 
 Każdy nauczyciel może wystąpić o klucz licencyjny przy pomocy `formularza
 <http://www.jetbrains.com/eforms/classroomRequest.action?licenseRequest=PCP04LS#>`_
 dostępnego na stronie producenta.
 
 Polski słownik ortograficzny
-****************************
+------------------------------
 
 W programie możemy włączyć sprawdzanie polskiej pisowni, jednak potrzebne
 jest wskazanie pliku słownika. Pod linuksem możemy sobie wyprowadukować słownik dla PyCharm komendą:
@@ -549,10 +555,10 @@ W ustawieniach :kbd:`Ctrl+Alt+S` szukamy `spell` i dodajemy
 .. figure:: img/pyCharm4.png
 
 Materiały
-------------------
+*************
 
 Pojęcia
-^^^^^^^^^^
+=============
 
 .. glossary::
 
@@ -608,7 +614,7 @@ Pojęcia
 .. _Bash: http://pl.wikipedia.org/wiki/Bash
 
 Metryka
-^^^^^^^
+===============
 
 :Autorzy: Robert Bednarz (ecg@ecg.vot.pl), `Janusz Skonieczny <https://plus.google.com/+JanuszSkonieczny/>`_
 

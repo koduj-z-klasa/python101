@@ -5,7 +5,7 @@
 
 
 Szkolenie Python 101
-====================
+#######################
 
 Niniejsze materiały to dokumentacja do szkolenia z języka Python realizowanego
 w ramach projektu `Koduj z Klasą`_ prowadzonego przez
@@ -14,9 +14,9 @@ Fundację `Centrum Edukacji Obywatelskiej`_.
 Krótki link do tej strony: `bit.ly/kzk-py <http://bit.ly/kzk-py>`_
 
 Pobieranie tej dokumentacji
----------------------------
+****************************
 
-Materiały można `pobrać do czytania w wersji offline
+Materiały można pobrać do czytania w `wersji offline
 <http://koduj-z-klasa.github.io/python101/python-101-html.zip>`_.
 Za pomocą poniższych poleceń pobierzemy dokumentację i rozpakujemy
 do folderu ``~/Pulpit/python-101-html``:
@@ -34,47 +34,41 @@ Materiały można także pobrać, zmodyfikować i przygotować według `instrukc
 
 
 Przygotowanie do szkolenia
---------------------------
+****************************
 
 Przed szkoleniem warto przygotować swój komputer.
 
 ..  toctree::
-    :maxdepth: 1
+    :maxdepth: 2
 
     env
     source_code
 
 Zaczynamy!
-----------
+=================
 
 .. toctree::
     :maxdepth: 2
     :numbered:
 
-    basic/basic
-    basic/basic1
-    basic/basic2
-    basic/basic3
-    basic/basic4
-    basic/basic5
-    basic/basic6
+    podstawy/index
     pygame/index
     bazy/index
     webapps/index
 
 Dodatkowe informacje
---------------------
+=====================
+
 ..  toctree::
     :maxdepth: 1
 
     faq/index
     git/git
 
-
 .. include:: authors.rst
 
 Indices and tables
-~~~~~~~~~~~~~~~~~~
+----------------------
 
 * :ref:`genindex`
 * :ref:`modindex`

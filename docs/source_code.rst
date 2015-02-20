@@ -1,13 +1,13 @@
 Przygotowanie katalogu projektu
-===============================
+################################
 
 Poszczególne zadania zakładają wykorzystanie wspólnego katalogu projektu
 ``python101`` znajdującego się w katalogu domowym użytkownika.
 
 Pobieranie materiałów
----------------------
+************************
 
-Materiały szkoleniowe zostały umieszczone w repozytorium GIT w serwisie GitHub
+Materiały szkoleniowe zostały umieszczone w repozytorium **Git** w serwisie GitHub
 dzięki temu każdy może w łatwy sposób pobrać, zmieniać, a także zsynchronizować
 swoją lokalną kopię.
 
@@ -33,8 +33,8 @@ W efekcie otrzymamy katalog ``python101`` z kodami źródłowymi materiałów.
     Komendy można wklejać do terminala środkowym klawiszem myszki.
 
 
-Korzystanie z kodu źródłowego w opisie przykładów
--------------------------------------------------
+Korzystanie z kodu źródłowego
+******************************
 
 W materiałach będą pojawiać się przykłady kodu źródłowego jak ten poniżej.
 Te przykłady pokazują jak nasz kod może się rozwijać.
@@ -54,7 +54,6 @@ Przykładowo kod poniżej powinien zostać wklejony w linii ``51`` omawianego pl
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-
 .. code-block:: python
     :lineno-start: 51
 
@@ -69,14 +68,12 @@ Przykładowo kod poniżej powinien zostać wklejony w linii ``51`` omawianego pl
             )
             self.fps_clock.tick(30)
 
-
 Podczas przepisywania kodu można pominąć kawałki dokumentujące kod,
 to znaczy tzw. *komentarze*. Komentarzem są teksty zaczynające się od
 znaku ``#`` oraz teksty zamknięte pomiędzy potrójnymi cudzysłowami ``"""``.
 
-
-Synchronizacja kodu pomiędzy etapami przykładów
------------------------------------------------
+Synchronizacja kodu
+**********************
 
 .. note::
 
@@ -109,6 +106,15 @@ bez zachowania zmian poszczególnych uczestników:
 Jeśli uczestnicy chcą wcześniej zachować swoje modyfikacje, mogą je zapisać
 w swoim lokalnym repozytorium (wykonują tzw. commit).
 
+Metryka
+===============
+
+:Autor: `Janusz Skonieczny <https://plus.google.com/+JanuszSkonieczny/>`_
+
+:Utworzony: |date| o |time|
+
+.. |date| date::
+.. |time| date:: %H:%M
 
 .. raw:: html
 
@@ -116,5 +122,6 @@ w swoim lokalnym repozytorium (wykonują tzw. commit).
         div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
         div.highlight, div.highlight-python { margin-top: 0px; }
     </style>
+
 
 .. include:: copyright.rst

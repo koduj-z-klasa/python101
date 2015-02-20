@@ -1,43 +1,12 @@
-Python - Podstawy programowania
-===============================
+Wprowadzenie do Pythona
+########################
 
-Python jest dynamicznym językiem interpretowanym.
-
-Interpretowany tzn. że kod, który napiszemy możemy natychmiast wykonać bez
-potrzeby tłumaczenia (kompilowania) kodu programistycznego na język maszynowy (czyli na
-formę zrozumiałą przez komputer).
-
-Interpreter tłumaczy (kompiluje w locie) nasz kod oraz natychmiast go uruchamia.
-Interpreter może również być używany w trybie interaktywnym do testowania ``kawałków``
-kodu (np. IPython omawiany w kolejnych scenariuszach).
-
-Naukę zaczynamy od poznania interpretera. Interpreter uruchamiamy z konsoli poleceniem
-
-.. code:: bash
-
-    $ python
-
-Po uruchomieniu interpretera komputer powinien wypisać trzy linie tekstu a w czwartej tak zwany
-znak zachęty, po którym wpisujemy komendy. Standardowym znakiem zachęty w interpreterze
-Pythona jest ``>>>``.
-
-.. note::
-
-    Przykłady zawierające znak zachęty ``$`` oznaczają komendy
-    do wykonania w terminalu systemu operacyjnego (uruchom przez :kbd:`Win+T`).
-
-    Komendy należy kopiować i wklejać bez znaku zachęty ``$`` i poprzedzającego tekstu.
-    Komendy można wklejać do terminala środkowym klawiszem myszki.
-
-Źródła
---------------------
-
-Poniższy dokument możesz pobrać w formacie *odt* lub *pdf*:
-:download:`T1.odt <T1.odt>`
-:download:`T1.pdf <T1.pdf>`
+.. contents::
+    :depth: 1
+    :local:
 
 Zmienne
--------
+********************
 
 W interpreterze wpisz poniższy przykład:
 
@@ -146,7 +115,7 @@ funkcji ``int``.
     Grupy mniej zaawansowane mogą poświęcić czas na eksperymenty z operacjami na zmiennych podawanych z klawiatury.
 
 Funkcje
-^^^^^^^
+********************
 
 Funkcje są to wcześniej zdefiniowane kawałki kodu, których możemy później użyć do wykonania
 określonej czynności, zamiast wpisywać ten sam kod po raz kolejny.
@@ -165,10 +134,10 @@ zapisać z rozszerzeniem ``.py``. Aby uruchomić tak zapisany program należy b�
 
 .. code-block:: bash
 
-    $python nazwa-pliku.py
+    $ python nazwa-pliku.py
 
 Wyrażenia warunkowe
--------------------
+********************
 
 Do podejmowania decyzji w programowaniu służy instrukcja warunkowa ``if``.
 
@@ -227,7 +196,7 @@ Jak również widać porównanie w Pythonie, wykonujemy poprzez podwójne użyci
 równości: ``==``. Matematyczne wyrażenie ``nie równe`` (≠) w Pythonie zapisujemy jako ``!=``.
 
 Gra w "zgadnij liczbę"
-----------------------
+***********************
 
 Napisz program, w którym:
 
@@ -254,7 +223,7 @@ Napisz program, w którym:
 
 
 Zadania dodatkowe
------------------
+=========================
 
 #. Za pomocą poznanych narzędzi stwórz program będący kalkulatorem.
 #. Napisz program rozwiązujący równania kwadratowe (:ref:`kwadratowe`).
@@ -271,7 +240,7 @@ Zadania dodatkowe
 .. _kwadratowe:
 
 Przykład równania kwadratowego
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------
 
 .. raw:: html
 
@@ -295,8 +264,8 @@ Przykład równania kwadratowego
     else:
         print 'brak rozwiązań'
 
-Pętla WHILE
------------
+Pętla **while**
+********************
 
 Pętla while służy do konstrukcji bloku instrukcji, które będą wykonywane warunkowo. W programie
 najpierw będzie sprawdzane czy warunek jest spełniony – jeśli tak, to wykonane będą wszystkie
@@ -338,8 +307,8 @@ wartość logiczną ``True`` (z angielskiego prawda). W momencie, w którym uży
 liczbę zmienna przyjmie wartość logiczną ``False`` (z angielskiego fałsz), co spowoduje zakończenie
 wykonywania pętli while.
 
-Wyrażenia break i continue
---------------------------
+Wyrażenia **break** i **continue**
+===================================
 
 Wyrażenie ``break`` powoduje natychmiastowe zakończenie wykonywania pętli.
 
@@ -389,7 +358,7 @@ rozpoczyna ponowne wykonanie pętli.
     print("Koniec programu.")
 
 Zadania dodatkowe
-^^^^^^^^^^^^^^^^^
+======================
 
 1. Napisz program, który sumuje liczby dodatnie podawane przez użytkownika – pętla pozwala
    użytkownikowi podawać liczby dopóki nie poda liczby niedodatniej.
@@ -399,8 +368,8 @@ Zadania dodatkowe
 2. Na podstawie wcześniejszego zadania napisz program obliczający średnią liczb dodatnich, a
    następnie zmodyfikuj go tak, aby obliczana była średnia również dla liczb ujemnych.
 
-Pętla FOR
----------
+Pętla **for**
+********************
 
 Pętla for służy do wykonywania tego samego bloku operacji dla każdego elementu z pewnej listy.
 Ilość wykonań tego bloku jest równa liczbie elementów tej listy. Wywoływana w pętli zmienna
@@ -436,7 +405,7 @@ listy.
         print("element listy: ", liczba)
 
 Zadania dodatkowe
-^^^^^^^^^^^^^^^^^
+======================
 
 1. Napisz dwa programy, które wypisują liczby naturalne od 1 do 15. W pierwszym programie
    wykonaj pętlę for, a w drugim while.
@@ -447,8 +416,11 @@ Zadania dodatkowe
 
 4. Oblicz sumę kwadratów liczb naturalnych z zakresu od 1 do 100.
 
-Słowniczek
-----------
+Materiały
+*********************
+
+Słownik
+======================
 
 .. glossary::
 
@@ -476,7 +448,7 @@ Słowniczek
         rodzaj danych, który przypisany jest do zmiennej w momencie jej tworzenia.
 
 Metryka
-^^^^^^^
+=====================
 
 :Autorzy: Dorota Rybicka, Grzegorz Wilczek
 
@@ -491,3 +463,6 @@ Metryka
         div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
         div.highlight, div.highlight-python { margin-top: 0px; }
     </style>
+
+
+.. include:: ../../copyright.rst

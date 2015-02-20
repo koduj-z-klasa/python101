@@ -1,8 +1,12 @@
 Znam Pythona?
-=================
+#######################
+
+.. contents::
+    :depth: 1
+    :local:
 
 Trójkąt
--------------
+***********************
 
     **ZADANIE**: Napisz program, który na podstawie danych pobranych od użytkownika, czyli długości boków, sprawdza, czy da się zbudować trójkąt
     i czy jest to trójkąt prostokątny. Jeżeli da się zbudować trójkąt, należy wydrukować jego obwód i pole, w przeciwnym wypadku
@@ -15,8 +19,8 @@ Trójkąt
 .. literalinclude:: 07_trojkat_01.py
     :linenos:
 
-JAK TO DZIAŁA
-^^^^^^^^^^^^^^
+Jak to działa
+===================
 
 Pętla ``while`` wykonuje się dopóki warunek jest prawdziwy, czyli zmienna kontrolna "op" różna jest od "n". Dzięki temu użytkownik może wielokrotnie wprowadzać wartości boków tworzące trójkąt.
 	
@@ -36,13 +40,13 @@ Wyrażenie ``x**y`` oznacza podnoszenie podstawy ``x`` do potęgi ``y``.
 Funkcja ``sqrt()`` (pierwiastek kwadratowy) zawarta jest w module ``math``, który na początku
 programu trzeba zaimportować.
 
-POĆWICZ SAM
-^^^^^^^^^^^^^^
+Zadania dodatkowe
+===================
 
     Zmień program tak, aby użytkownik w przypadku podania boków, z których trójkąta zbudować się nie da, mógł spróbować kolejny raz.
 
 Szyfr Cezara
--------------
+***********************
 
     **ZADANIE**: Napisz program, który podany przez użytkownika ciąg znaków szyfruje przy użyciu szyfru Cezara i wyświetla zaszyfrowany tekst.
 
@@ -53,8 +57,8 @@ Szyfr Cezara
 .. literalinclude:: 07_szyfr_02.py
     :linenos:
 
-JAK TO DZIAŁA
-^^^^^^^^^^^^^^
+Jak to działa
+===================
 
 W programie możemy wykorzystywać zmienne globalne, np. KLUCZ.
 ``def nazwa_funkcji(argumenty)`` - tak definiujemy funkcje, które
@@ -65,8 +69,8 @@ Funkcja ``len(str)`` zwraca długość napisu, wykorzystana jako argument funkcj
 ``range()`` pozwala iterować po znakach napisu.
 Operator ``+=`` oznacza dodanie argumentu z prawej strony do wartości z lewej.
 
-POĆWICZ SAM
-^^^^^^^^^^^^^^
+Zadania dodatkowe
+===================
 
     Napisz funkcję deszyfrującą ``deszyfruj(txt)``. Dodaj do funkcji ``szyfruj(), deszyfruj()`` drugi parametr w postaci długości klucza podawanej przez użytkownika. Dodaj poprawne szyfrowanie dużych liter, obsługę białych znaków i znaków interpunkcyjnych.
 
@@ -86,7 +90,7 @@ Przykład funkcji deszyfrującej:
         return dtxt
 
 Metryka
-^^^^^^^
+===================
 
 :Autor: Robert Bednarz <ecg@ecg.vot.pl>
 
@@ -102,5 +106,4 @@ Metryka
         div.highlight, div.highlight-python { margin-top: 0px; }
     </style>
 
-
-.. include:: ../copyright.rst
+.. include:: ../../copyright.rst

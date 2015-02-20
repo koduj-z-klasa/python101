@@ -1,5 +1,9 @@
 Nie znam Pythona... jeszcze
-=================================
+################################
+
+.. contents::
+    :depth: 1
+    :local:
 
 Python jest językiem wydajnym i zwartym dzięki wbudowanym mechanizmom
 ułatwiającym wykonywanie typowych i częstych zadań programistycznych.
@@ -11,7 +15,7 @@ uruchamiamy poleceniem w terminalu:
     ~$ python
     
 Operatory **\*** i **\*\***
-----------------------------
+********************************
 
 Operator ``*`` służy rozpakowaniu listy zawierającej wiele argumentów, które chcemy
 przekazać do funkcji:
@@ -43,12 +47,36 @@ nazwanych argumentów (ang. *keyword argument*):
     slownik = {"data" : "10.02.2015", "wydarzenie" : "szkolenie"}
     kalendarz(**slownik)
 
-Iteratory
----------------
+Pętle
+************************
 
-Iteratory to obiekty reprezentujące strumień danych, z którego zwracają
-tylko jedną kolejną wartość na raz za pomocą metody ``__next()__``. Jeżeli
-w strumieniu nie ma więcej danych wywoływany jest wyjątek ``StopIteration``.
+Pętla to podstawowa konstrukcja wykorzystywana w językach programowania.
+Pozwala wielokrotnie powtarzać wykonywanie jakiegoś kodu. Aby była skończona,
+powinna zawierać jakiś warunek zakończenia. W wiekszości języków programowania
+słowem kluczowym pętli jest ``for``:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block:: python
+    :linenos:
+    
+    kwadraty = []
+    for x in range(10):
+        kwadraty.append(x**2)
+
+Python oferuje różne sposoby powtarzania wykonywania określonych operacji,
+niekiedy wygodniejsze lub zwięźlejsze niż pętle. Są to przede wszystkim
+generatory wyrażeń i wyrażenia listowe, a także funkcje ``map()`` i ``filter()``.
+
+Iteratory
+***************
+
+Obiekty, z których pętle odczytują kolejne dane to :term:`iteratory` (ang. *iterators*)
+Reprezentują one strumień danych, z którego zwracają tylko jedną kolejną
+wartość na raz za pomocą metody ``__next()__``. Jeżeli w strumieniu nie ma
+więcej danych, wywoływany jest wyjątek ``StopIteration``.
 
 Wbudowana funkcja ``iter()`` zwraca iterator utworzony z dowolnego iterowalnego
 obiektu. Iteratory wykorzystujemy do przeglądania list, tupli, słowników czy plików
@@ -84,11 +112,12 @@ do utworzenia słownika, np.:
     dict(lista)
 
 Generatory wyrażeń
--------------------
+************************
 
-Jeżeli potrzebujemy wykonać jakąś operację na każdym elemencie sekwencji lub
-chcemy wybrać podzespół elementów spełniający określone warunki, stosujemy
-generatory wyrażeń (ang. *generator expressions*), które zwracają iteratory, np.:
+Jeżeli chcemy wykonać jakąś operację na każdym elemencie sekwencji lub
+wybrać podzespół elementów spełniający określone warunki, stosujemy
+:term:`generatory wyrażeń` (ang. *generator expressions*), które zwracają iteratory.
+Poniższy przykład wydrukuje wszystkie imiona z dużej litery:
 
 .. code-block:: python
     :linenos:
@@ -98,8 +127,15 @@ generatory wyrażeń (ang. *generator expressions*), które zwracają iteratory,
     for imie in imiona:
         print imie
 
-Powyższy wydrukuje wszystkie imiona z dużej litery. Gdybyśmy chcieli wybrać
-tylko imiona 3-literowe w wyrażeniu użylibyśmy opcjonalnej klauzuli ``if (warunek)``:
+Schemat składniowy generatora jest następujący:
+``( wyrażenie for wyr in sekwencja if warunek )`` – przy czym:
+
+- ``wyrażenie`` – powinno zawierać zmienną z pętli for
+- ``if warunek`` – klauzula ta jest opcjonalna i działa jak filtr eliminujący
+  wartości nie spełniające warunku
+
+Gdybyśmy chcieli wybrać tylko imiona 3-literowe w wyrażeniu, użyjemy wspomnianej
+opcjonalnej klauzuli ``if warunek``:
 
 .. raw:: html
 
@@ -113,10 +149,10 @@ tylko imiona 3-literowe w wyrażeniu użylibyśmy opcjonalnej klauzuli ``if (war
 Omawiane wyrażenia można zagnieżdzać. Przykłady podajemy niżej.
 
 Wyrażenia listowe
--------------------
+***********************
 
 Jeżeli nawiasy okrągłe w generatorze wyrażeń zamienimy na kwadratowe dostaniemy
-wyrażenie listowe (ang. *list comprehensions*), które – jak wskazuje nazwa –
+:term:`wyrażenia listowe` (ang. *list comprehensions*), które – jak wskazuje nazwa –
 zwracają listy:
 
 .. raw:: html
@@ -126,6 +162,9 @@ zwracają listy:
 .. code-block:: python
     :linenos:
 
+    # wszystkie poniższe wyrażenia listowe możemy przypisać do zmiennych,
+    # aby móc później korzystać z utworzonych list
+    
     # lista kwadratów liczb od 0 do 9
     [x**2 for x in range(10)]
 
@@ -135,6 +174,18 @@ zwracają listy:
 
     # lista krotek (x, y), przy czym x != y
     [(x, y) for x in [1,2,3] for y in [3,1,4] if x != y]
+    
+    # utworzenie listy 3-literowych imion i ich pierwszych liter
+    wyrazy = ['anna', 'ala', 'ela', 'wiola', 'ola']
+    [ [imie, imie[0]] for imie in wyrazy if len(imie) == 3 ]
+
+    # zagnieżdzone wyrażenie listowe tworzące listę współrzędnych
+    # opisujących tabelę
+    [ (x,y) for x in range(5) for y in range(3) ]
+    
+    # zagnieżdzone wyrażenie listowe wykorzystujące filtrowanie danych
+    # lista kwadratów z zakresu {5;50}
+    [ y for y in [ x**2 for x in range(10) ] if y > 5 and y < 50 ]
 
 Wyrażenia listowe w elegancki i wydajny sposób zastępują takie rozwiązania, jak:
     
@@ -143,23 +194,8 @@ Wyrażenia listowe w elegancki i wydajny sposób zastępują takie rozwiązania,
     * :term:`wyrażenia lambda`
     * :term:`filtrowanie danych`
 
-Pętle
-^^^^^^^^^^^^^^^
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. code-block:: python
-    :linenos:
-    
-    kwadraty = []
-    for x in range(10):
-        kwadraty.append(x**2)
-
-
 Mapowanie funkcji
-^^^^^^^^^^^^^^^^^^^^
+==========================
 
 Funkcja ``map()`` funkcję podaną jako pierwszy argument stosuje do każdego elementu sekwencji
 podanej jako argument drugi:
@@ -177,7 +213,7 @@ podanej jako argument drugi:
     kwadraty = map(kwadrat, range(10))
 
 Wyrażenia lambda
-^^^^^^^^^^^^^^^^^^
+==========================
 
 Słowa kluczowe ``lambda`` pozwala utworzyć zwięzły odpowiednik prostej, jednowyrażeniowej
 funkcji. Poniższy przykład należy rozumieć następująco: do każdej liczby wygenerowanej
@@ -194,7 +230,7 @@ wartość do kwadratu, a uzyskane wartości zapisz w liście ``kwadraty``.
     kwadraty = map(lambda x: x**2, range(10))
 
 Filtrowanie danych
-^^^^^^^^^^^^^^^^^^^
+==========================
 
 Funkcja ``filter()`` jako pierwszy argument pobiera funkcję zwracającą ``True`` lub ``False``,
 stosuje ją do każdego elementu sekwencji podanej jako argument drugi i zwraca tylko te,
@@ -211,12 +247,32 @@ które spełniają założony warunek:
     imiona = filter(lambda imie: len(imie) == 3, wyrazy)
 
 Generatory
--------------------
+**************************
 
-    Objaśnienie mechanizmów generatorów.
+Generatory (ang. *generators*) to funkcje ułatwiające tworzenie iteratorów.
+Od zwykłych funkcji różnią się tym, że:
 
+    - zwracają iterator za pomocą słowa kluczowego ``yield``,
+    - zapamiętują swój stan z momentu ostatniego wywołania, są więc wznawialne (ang. *resumable*),
+    - zwracają następną wartość ze strumienia danych podczas kolejnych wywołań
+      metody ``next()``.
+
+Najprostszy przykład generatora zwracającego kolejne liczby parzyste:
+
+.. code-block:: python
+
+    def gen_parzyste(N):
+        for i in range(N):
+            if i % 2 == 0
+                yield i
+    
+    gen = gen_parzyste(10)
+    gen.next()
+    gen.next()
+    ...
+    
 Pliki
------------------
+**************************
 
 Przećwicz alternatywne sposoby otwierania plików:
 
@@ -240,10 +296,8 @@ Przećwicz alternatywne sposoby otwierania plików:
         print line[0]
 
 
-Materiały w sieci
---------------------
-
-Warto odwiedzić:
+Materiały
+**************************
 
 1. http://pl.wikibooks.org/wiki/Zanurkuj_w_Pythonie
 2. http://brain.fuw.edu.pl/edu/TI:Programowanie_z_Pythonem
@@ -256,13 +310,28 @@ Warto odwiedzić:
 9. https://www.coursera.org
 
 Słownik
-^^^^^^^^
+===============
 
 .. glossary::
 
     pętle
         podstawowa konstrukcja w programowania strukturalnego pozwalająca
         wielokrotnie wykonywać zawarte w niej instrukcje
+        
+    iteratory
+        (ang. *iterators*) – obiekt reprezentujący sekwencję danych,
+        zwracający z niej po jednym elemencie na raz przy użyciu metody
+        ``next()``; jeżeli nie ma następnego elementu, zwracany jest wyjątek
+        ``StopIteration``. Funkcja ``iter()`` potrafi zwrócić iterator
+        z podanego obiektu.
+
+    generatory wyrażeń
+        (ang. *generator expressions*) – zwięzły w notacji sposób tworzenia
+        iteratorów według składni: ``( wyrażenie for wyraz in sekwencja if warunek )``
+
+    wyrażenia listowe
+        (ang. list comprehensive) – zwięzły w notacji sposób tworzenia list
+        według składni: ``[ wyrażenie for wyraz in sekwencja if warunek ]``
         
     mapowanie funkcji
         w kontekście funkcji ``map()`` oznacza zastosowanie danej funkcji
@@ -276,7 +345,7 @@ Słownik
         selekcja danych na podstawie jakichś kryteriów
 
 Metryka
-^^^^^^^
+=============
 
 :Autor: Robert Bednarz <ecg@ecg.vot.pl>
 
@@ -292,5 +361,4 @@ Metryka
         div.highlight, div.highlight-python { margin-top: 0px; }
     </style>
 
-
-.. include:: ../copyright.rst
+.. include:: ../../copyright.rst

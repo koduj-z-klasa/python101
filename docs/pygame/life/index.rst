@@ -21,7 +21,6 @@ Do rozpoczęcia pracy z przykładem pobieramy szczątkowy kod źródłowy:
 
     ~/python101$ git checkout -f life/z1
 
-
 Okienko gry
 ***************
 

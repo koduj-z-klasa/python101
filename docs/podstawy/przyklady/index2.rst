@@ -1,8 +1,12 @@
 Listy, tuple i funkcje
-==================================
+########################
+
+.. contents::
+    :depth: 1
+    :local:
 
 Pobierz *n* liczb
------------------
+*******************
 
     **ZADANIE**: Pobierz od użytkownika *n* liczb i zapisz je w liście. Wydrukuj: elementy listy i ich indeksy, elementy w odwrotnej kolejności, posortowane elementy. Usuń z listy pierwsze wystąpienie elementu podanego przez użytkownika. Usuń z listy element o podanym indeksie. Podaj ilość wystąpień oraz indeks pierwszego wystąpienia podanego elementu. Wybierz z listy elementy od indeksu *i* do *j*.
     
@@ -17,8 +21,8 @@ Wszystkie poniższe przykłady proponujemy wykonać w konsoli Pythona. Nie umies
 .. literalinclude:: 04_listy_01.py
     :linenos:
 
-JAK TO DZIAŁA
-^^^^^^^^^^^^^^
+Jak to działa
+===================
 
 Funkcja ``input()`` pobiera dane wprowadzone przez użytkownika
 (tak jak ``raw_input()``), ale próbuje zinterpretować je jako kod Pythona.
@@ -47,15 +51,15 @@ wydobywać fragmenty dzięki notacji *slice* (wycinek). W najprostszym przypadku
 ona na podaniu początkowego i końcowego (wyłącznie) indeksu elementów, które chcemy
 wydobyć, np. ``lista[1:4]``.
 
-POĆWICZ SAM
-^^^^^^^^^^^^^^
+Zadania dodatkowe
+===================
 
     Utwórz w konsoli Pythona dowolną listę i przećwicz notację *slice*. Sprawdź działanie indeksów pustych
     i ujemnych, np. ``lista[2:], lista[:4], lista[-2], lista[-2:]``.
     Posortuj dowolną listę malejąco. Wskazówka: wykorzystaj metodę ``.sort(reverse=True)``.
 
 Ciąg Fibonacciego
------------------
+*********************
 
     **ZADANIE**: Wypisz ciąg Fibonacciego aż do *n*-ego wyrazu podanego przez użytkownika.
     Ciąg Fibonacciego to ciąg liczb naturalnych, którego każdy wyraz poza dwoma
@@ -70,8 +74,8 @@ Ciąg Fibonacciego
 .. literalinclude:: 04_funkcja_02.py
     :linenos:
 
-JAK TO DZIAŁA
-^^^^^^^^^^^^^^
+Jak to działa
+===================
 
 Definicja funkcji w Pythonie polega na użyciu słowa kluczowego ``def``,
 podaniu nazwy funkcji i w nawiasach okrągłych ewentualnej listy argumentów.
@@ -86,13 +90,13 @@ przypisania wielokrotnego stosujemy w kodzie ``a, b = b, b+a``. Jak widać, ilo�
 zmiennych z lewej strony musi odpowiadać liczbie wartości rozpakowywanych z tupli
 lub liczbie wartości podawanych wprost z prawej strony.
 
-POĆWICZ SAM
-^^^^^^^^^^^^^^
+Zadania dodatkowe
+===================
 
     Zmień funkcję ``fibonnacci()`` tak, aby zwracała wartość *n*-tego wyrazu. Wydrukuj tylko tę wartość w programie.
 
 Metryka
-^^^^^^^
+===================
 
 :Autor: Robert Bednarz <ecg@ecg.vot.pl>
 
@@ -109,4 +113,4 @@ Metryka
     </style>
 
 
-.. include:: ../copyright.rst
+.. include:: ../../copyright.rst

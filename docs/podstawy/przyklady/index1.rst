@@ -1,8 +1,12 @@
 Warunki i pętle
-=================
+##################
+
+.. contents::
+    :depth: 1
+    :local:
 
 Trzy liczby
--------------
+**************
 
     **ZADANIE**: Pobierz od użytkownika trzy liczby, sprawdź, która jest najmniejsza i wydrukuj ją na ekranie.
     
@@ -15,8 +19,8 @@ Trzy liczby
 .. literalinclude:: 02_if.py
     :linenos:
 
-JAK TO DZIAŁA
-^^^^^^^^^^^^^^
+Jak to działa
+==============
 
 Pętla ``while`` umożliwia powtarzanie określonych operacji, czyli pozwala użytkownikowi wprowadzać
 kolejne serie liczb. Definiując pętle określamy warunek powtarzania kodu. Dopóki jest prawdziwy,
@@ -34,14 +38,14 @@ metody ``split()`` typu string.
 Instrukcje warunkowe (``if``), jak i pętle, można zagnieżdżać stosując wcięcia.
 W jednej złożonej instrukcji warunkowej można sprawdzać wiele warunków (``elif:``).
 
-POĆWICZ SAM
-^^^^^^^^^^^^^^
+Zadania dodatkowe
+==================
 
     Sprawdź, co się stanie, jeśli podasz liczby oddzielone przecinkiem lub podasz
     za mało liczb. Zmień program tak, aby poprawnie interpretował dane oddzielane przecinkami.
 
 Wydrukuj alfabet
------------------
+********************
 
     **ZADANIE**: Wydrukuj alfabet w porządku naturalnym, a następnie odwróconym w formacie:
     "mała => duża litera". W jednym wierszu trzeba wydrukować po pięć takich grup.
@@ -55,8 +59,8 @@ Wydrukuj alfabet
 .. literalinclude:: 03_petle_02.py
     :linenos:
 
-JAK TO DZIAŁA
-^^^^^^^^^^^^^^
+Jak to działa
+==============
 
 Pętla for wykorzystuje zmienną i, która przybiera wartości z listy liczb całkowitych zwróconej przez funkcję ``range()``. Parametry tej funkcji określają wartość początkową i końcową listy, przy czym wartość końcowa nie wchodzi do listy. Kod ``range(122,96,-1)`` generuje listę wartości malejących od 122 do 97(!) z krokiem -1.
 
@@ -73,15 +77,15 @@ Poniżej podano wybrane operatory dostępne w Pythonie.
 * **Zawierania**: in, not in
 * **Porównania**: ==, >, <, <>, <=, >= != (jest różne)
 
-POĆWICZ SAM
-^^^^^^^^^^^^^^
+Zadania dodatkowe
+==================
 
     Uprość warunek w pierwszej pętli ``for`` drukującej alfabet w porządku naturalnym tak, aby nie używać operatora modulo.
     Wydrukuj co n-tą grupę liter alfabetu, przy czym wartość *n* podaje użytkownik. Wskazówka: użyj opcjonalnego, trzeciego argumentu funkcji ``range()``.
     Sprawdź działanie różnych operatorów Pythona w konsoli.
 
 Metryka
-^^^^^^^
+=============
 
 :Autor: Robert Bednarz <ecg@ecg.vot.pl>
 
@@ -98,4 +102,4 @@ Metryka
     </style>
 
 
-.. include:: ../copyright.rst
+.. include:: ../../copyright.rst
