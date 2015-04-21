@@ -55,6 +55,7 @@ Przykładowo kod poniżej powinien zostać wklejony w linii ``51`` omawianego pl
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
+    :linenos:
     :lineno-start: 51
 
     def run(self):
@@ -67,6 +68,7 @@ Przykładowo kod poniżej powinien zostać wklejony w linii ``51`` omawianego pl
                 self.ball,
             )
             self.fps_clock.tick(30)
+
 
 Podczas przepisywania kodu można pominąć kawałki dokumentujące kod,
 to znaczy tzw. *komentarze*. Komentarzem są teksty zaczynające się od
