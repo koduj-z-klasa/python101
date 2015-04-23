@@ -1,0 +1,21 @@
+<!-- czat/czat/templates/czat/index.html -->
+<html>
+    <head></head>
+    <body>
+        <h1>Witaj w aplikacji Czat!</h1>
+
+        {% if messages %}
+            <ul>
+            {% for komunikat in messages %}
+                <li>{{ komunikat|capfirst }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+      
+        {% if user.is_authenticated %}
+            <p>Jesteś zalogowany jako {{ user.username }}.</p>
+        {% else %}
+            <p><a href="{% url 'rejestruj' %}">Zarejestruj się</a></p>
+        {% endif %}
+    </body>
+</html>

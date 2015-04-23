@@ -18,9 +18,6 @@ nie musimy instalować żadnych dodatkowych narzędzi typu LAMP (WAMP).
     wprowadzamy do obsługi baz danych z wykorzystaniem systemów ORM Peewee i SQLAlchemy
     (Quiz ORM), na końcu zbieramy wszystko w scenariuszu omawiającym rozbudowany,
     co nie znaczy trudny, system Django wykorzystujący wszystkie powyższe mechanizmy.
-    Scenariusz podstawowy daje pojęcie o filozofii działania frameworka,
-    natomiast wersja rozszerzona pokazuje więcej gotowych mechanizmów ułatwiających
-    tworzenie aplikacji internetowych.
 
 .. toctree::
     :maxdepth: 2
@@ -28,7 +25,7 @@ nie musimy instalować żadnych dodatkowych narzędzi typu LAMP (WAMP).
     quiz/index
     todo/index
     quiz_orm/index
-    chatter/index
+    czat/index
 
 Materiały
 ***************
