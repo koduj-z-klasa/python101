@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
-# chatter/chatter/views.py
+# czat/czat/views.py
 
 # HttpResponse pozwala zwracac proste wiadomości tekstowe
 from django.http import HttpResponse
-# render pozwala zwracac szablony
-from django.shortcuts import render
+from django.shortcuts import render # render pozwala zwracac szablony
 
 def index(request):
     """Strona glowna aplikacji."""

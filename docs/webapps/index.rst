@@ -5,7 +5,7 @@ Aplikacje internetowe
 dzięki takim rozszerzeniom jak micro-framework `Flask <http://flask.pocoo.org/>`_ czy bardziej
 rozbudowany framework `Django <https://www.djangoproject.com/>`_. Obydwa rozwiązania
 upraszczają projektowanie oferując gotowe rozwiązania wielu pracochłonnych
-mechanizmów wymaganych serwisach internetowych. Co więcej, w obydwu przypadkach,
+mechanizmów wymaganych w serwisach internetowych. Co więcej, w obydwu przypadkach,
 dostajemy do dyspozycji gotowe środowisko testowe, czyli deweloperski serwer WWW,
 nie musimy instalować żadnych dodatkowych narzędzi typu LAMP (WAMP).
 
@@ -18,10 +18,12 @@ nie musimy instalować żadnych dodatkowych narzędzi typu LAMP (WAMP).
     wprowadzamy do obsługi baz danych z wykorzystaniem systemów ORM Peewee i SQLAlchemy
     (Quiz ORM), na końcu zbieramy wszystko w scenariuszu omawiającym rozbudowany,
     co nie znaczy trudny, system Django wykorzystujący wszystkie powyższe mechanizmy.
+    Scenariusz podstawowy daje pojęcie o filozofii działania frameworka,
+    natomiast wersja rozszerzona pokazuje więcej gotowych mechanizmów ułatwiających
+    tworzenie aplikacji internetowych.
 
 .. toctree::
     :maxdepth: 2
-    :numbered:
 
     quiz/index
     todo/index

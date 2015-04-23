@@ -14,7 +14,6 @@ Działa na wielu platformach i systemach operacyjnych.
 
 .. toctree::
     :maxdepth: 2
-    :numbered:
 
     pong_str/index
     pong/index

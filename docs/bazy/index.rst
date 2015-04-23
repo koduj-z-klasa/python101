@@ -27,7 +27,6 @@ wbudowanego modułu `sqlite3 DB-API`_, a także zewnętrznych bibliotek ORM:
 
 .. toctree::
     :maxdepth: 2
-    :numbered:
 
     sql/index
     orm/index

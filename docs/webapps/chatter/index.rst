@@ -1,9 +1,10 @@
-Chatter
-#########################
+Czat (wersja podstawowa)
+###########################
 
 .. highlight:: python
 
-Zastosowanie Pythona i frameworka Django do stworzenia aplikacji internetowej Chatter; prostego czata, w którym zarejestrowani użytkownicy będą mogli wymieniać się krótkimi wiadomościami.
+Zastosowanie Pythona i frameworka Django do stworzenia aplikacji internetowej
+Czat; prostego czata, w którym zarejestrowani użytkownicy będą mogli wymieniać się krótkimi wiadomościami.
 
 .. contents::
     :depth: 1
@@ -12,7 +13,8 @@ Zastosowanie Pythona i frameworka Django do stworzenia aplikacji internetowej Ch
 Projekt i aplikacja
 **********************
 
-Tworzymy nowy projekt Django, a następnie uruchamiamy lokalny serwer, który pozwoli śledzić postęp pracy. W katalogu domowym wydajemy polecenia w terminalu:
+Tworzymy nowy projekt Django, a następnie uruchamiamy lokalny serwer,
+który pozwoli śledzić postęp pracy. W katalogu domowym wydajemy polecenia w terminalu:
 
 .. raw:: html
 
@@ -20,11 +22,12 @@ Tworzymy nowy projekt Django, a następnie uruchamiamy lokalny serwer, który po
 
 .. code-block:: bash
 
-    ~ $ django-admin.py startproject chatter
-    ~ $ cd chatter
-    ~/chatter $ python manage.py runserver 127.0.0.1:8080
+    ~ $ django-admin.py startproject czat
+    ~ $ cd czat
+    ~/czat $ python manage.py runserver 127.0.0.1:8080
 
-Powstanie katalog projektu :file:`chatter` i aplikacja o nazwie :file:`chatter`. Pod adresem *127.0.0.1:8080* w przeglądarce zobaczymy stronę powitalną.
+Powstanie katalog projektu :file:`czat` i podkatalog aplikacji o nazwie :file:`czat`.
+Pod adresem *127.0.0.1:8080* w przeglądarce zobaczymy stronę powitalną.
 
 .. figure:: img/chatter1.png
 
@@ -33,7 +36,9 @@ Powstanie katalog projektu :file:`chatter` i aplikacja o nazwie :file:`chatter`.
     Jeden projekt może zawierać wiele aplikacji zapisywanych w osobnych podkatalogach katalogu projektu.
     Lokalny serwer deweloperski można zatrzymać za pomocą skrótu Ctrl+C.
 
-Teraz zmodyfikujemy ustawienia projektu, aby korzystał z polskiej wersji językowej oraz lokalnych ustawień daty i czasu. Musimy również zarejestrować naszą aplikację w projekcie. W pliku :file:`setting.py` zmieniamy następujące linie:
+Teraz zmodyfikujemy ustawienia projektu, aby korzystał z polskiej wersji
+językowej oraz lokalnych ustawień daty i czasu. Musimy również zarejestrować
+naszą aplikację w projekcie. W pliku :file:`setting.py` zmieniamy następujące linie:
 
 .. raw:: html
 
@@ -41,7 +46,7 @@ Teraz zmodyfikujemy ustawienia projektu, aby korzystał z polskiej wersji język
 
 .. code-block:: python
 
-    # chatter/chatter/settnigs.py
+    # czat/czat/settings.py
 
     # rejestrujemy aplikacje
     INSTALLED_APPS = (
@@ -52,7 +57,7 @@ Teraz zmodyfikujemy ustawienia projektu, aby korzystał z polskiej wersji język
         'django.contrib.messages',
         'django.contrib.staticfiles',
 
-        'chatter', # nasza aplikacja
+        'czat', # nasza aplikacja
     )
 
     LANGUAGE_CODE = 'pl' # ustawienia jezyka
@@ -76,7 +81,7 @@ Model danych i baza
 
 Jak zostało wyjaśnione, :term:`model` jest klasą Pythona opisującą dane naszej aplikacji, czyli wiadomości. Instancje tej klasy będą konkretnymi wiadomościami napisanymi przez użytkowników systemu. Każda wiadomość  będzie zwierała treść, datę dodania oraz autora wiadomości (użytkownika).
 
-W katalogu :file:`chatter/chatter` w pliku :file:`models.py` wpisujemy:
+W katalogu :file:`czat/czat` w pliku :file:`models.py` wpisujemy:
 
 .. raw:: html
 
@@ -93,14 +98,14 @@ Po skonfigurowaniu projektu i zdefiniowaniu modelu danych możemy utworzyć baz�
 
 .. code-block:: bash
 
-    ~/chatter $ python manage.py syncdb
+    ~/czat $ python manage.py syncdb
 
 .. [#] Domyślnie Django korzysta z bazy SQLite, która przechowywana jest w jednym pliku :file:`db.sqlite3` w katalogu aplikacji.
 
 Panel administracyjny
 **********************
 
-Django pozwala szybko utworzyć panel administratora dla naszego projektu. Rejestrujemy więc model danych jako element panelu w nowo utworzonym pliku :file:`admin.py` w katalogu :file:`chatter/chatter`:
+Django pozwala szybko utworzyć panel administratora dla naszego projektu. Rejestrujemy więc model danych jako element panelu w nowo utworzonym pliku :file:`admin.py` w katalogu :file:`czat/czat`:
 
 .. raw:: html
 
@@ -120,15 +125,17 @@ Po ewentualnym ponownum uruchomieniu serwera wchodzimy na adres *127.0.0.1:8080/
 Widoki i szablony
 **********************
 
-Dodawanie stron w Django polega na tworzeniu widoków, czyli funkcji Pythona powiązanych z określonymi adresami url. Widoki najczęściej zwracały będą kod HTML wyrenderowany na podstawie szablonów, do których możemy przekazywać dodatkowe dane [#]_, np. z bazy. Dla przejrzystości przyjęto, że w katalogu aplikacji (:file:`chatter/chatter`):
+Dodawanie stron w Django polega na tworzeniu widoków, czyli funkcji Pythona powiązanych z określonymi adresami url. Widoki najczęściej zwracały będą kod HTML wyrenderowany na podstawie szablonów, do których możemy przekazywać dodatkowe dane [#]_, np. z bazy. Dla przejrzystości przyjęto, że w katalogu aplikacji (:file:`czat/czat`):
 
 1. plik :file:`views.py` zawiera definicję widoków, w tym wywołania szablonów,
 2. plik :file:`url.py` zawiera reguły łączące widoki z adresami url,
-3. w katalogu :file:`chatter/chatter/templates/chatter` zapisujemy szablony (templatki) pod nazwami określonymi w wywołujących je widokach, np. :file:`index.html`.
+3. w katalogu :file:`czat/czat/templates/czat` zapisujemy szablony (templatki) pod nazwami określonymi w wywołujących je widokach, np. :file:`index.html`.
 
-.. [#] Danych z bazy przekazywane są do szablonów za pomocą Pythonowego słownika. Renderowanie polega na odszukaniu pliku szablonu, zastąpieniu przekazanych zmiennych danymi i odesłaniu całości (HTML + dane) do użytkownika.
+.. [#] Dane z bazy przekazywane są do szablonów za pomocą Pythonowego słownika.
+       Renderowanie polega na odszukaniu pliku szablonu, zastąpieniu przekazanych zmiennych danymi i odesłaniu całości (HTML + dane) do użytkownika.
 
-Aby utworzyć stronę główną, stworzymy pierwszy widok, czyli funkcję ``index()`` [#]_, którą powiążemy z adres URL głównej strony (/). Widok zwracał będzie kod wyrenderowany na podsatwie szablonu :file:`index.html`. W pliku :file:`views.py` umieszczamy:
+Aby utworzyć stronę główną, stworzymy pierwszy widok, czyli funkcję ``index()`` [#]_,
+którą powiążemy z adreseme URL głównej strony (/). Widok zwracał będzie kod wyrenderowany na podsatwie szablonu :file:`index.html`. W pliku :file:`views.py` umieszczamy:
 
 .. [#] Nazwa ``index()`` jest przykładowa, funkcja mogłaby się nazywać inaczej.
 
@@ -156,9 +163,9 @@ Tworzymy katalog dla szablonów wydając polecenie:
 
 .. code-block:: bash
 
-    ~/chatter/chatter $ mkdir -p templates/chatter
+    ~/czat/czat $ mkdir -p templates/czat
 
-Tworzymy szablon, plik :file:`chatter/chatter/templates/chatter/index.html`, który zawiera:
+Tworzymy szablon, plik :file:`czat/czat/templates/czat/index.html`, który zawiera:
 
 .. raw:: html
 
@@ -167,7 +174,7 @@ Tworzymy szablon, plik :file:`chatter/chatter/templates/chatter/index.html`, kt�
 .. literalinclude:: index_z1.html
     :linenos:
 
-Po wpisaniu adresu *127.0.0.1:8080/* zobaczymy tekst, który zwróciliśmy z widoku, czyli "Witaj w systemie Chatter".
+Po wpisaniu adresu *127.0.0.1:8080/* zobaczymy tekst, który zwróciliśmy z widoku, czyli "Witaj w systemie Czat".
 
 .. figure:: img/chatter2.png
 
@@ -176,7 +183,7 @@ Logowanie użytkowników
 
 Dodanie formularza logowania dla użytkowników polega na:
 
-1. dodaniu w pliku :file:`views.py` nowego widoku ``my_login()``, który wywoływać będzie szablon zapisany w pliku :file:`templates/chatter/login.html`,
+1. dodaniu w pliku :file:`views.py` nowego widoku ``my_login()``, który wywoływać będzie szablon zapisany w pliku :file:`templates/czat/login.html`,
 2. powiązaniu w pliku urls.py nowego widoku z adresem :file:`/login`.
 
 Django upraszcza zadanie, ponieważ zawiera odpowiednie formularze i model reprezentujący użytkowników w systemie, z którego – nota bene – skorzystaliśmy już podczas tworzenia bazy danych.
@@ -204,7 +211,7 @@ W pliku :file:`urls.py` dopisujemy regułę łączącą url */login* z widokiem 
     # adres logowania (/login) o nazwie login powiazany z widokiem my_login
     url(r'^login/$', views.my_login, name='login'),
 
-Tworzymy nowy szablon :file:`login.html` w katalogu :file:`templates/chatter/`:
+Tworzymy nowy szablon :file:`login.html` w katalogu :file:`templates/czat/`:
 
 .. raw:: html
 
@@ -243,10 +250,10 @@ Chcemy, by zalogowani użytkownicy mogli przeglądać wiadomości od innych uży
 
     # -*- coding: utf 8 -*-
 
-    # chatter/chatter/views.py
+    # czat/czat/views.py
 
     # dodajemy nowe importy
-    from chatter.models import Message
+    from czat.models import Message
     from django.utils import timezone
     from django.contrib.auth.decorators import login_required
 
@@ -278,9 +285,9 @@ Chcemy, by zalogowani użytkownicy mogli przeglądać wiadomości od innych uży
         # ustawiamy zmienne przekazywane do szablonu
         context = {'user': user, 'messages': messages, 'error': error}
         # renderujemy templatke wiadomosci
-        return render(request, 'chatter/messages.html', context)
+        return render(request, 'czat/messages.html', context)
 
-Teraz tworzymy nowy szablon :file:`messages.html` w katalogu :file:`templates/chatter/`.
+Teraz tworzymy nowy szablon :file:`messages.html` w katalogu :file:`templates/czat/`.
 
 .. raw:: html
 
@@ -330,7 +337,7 @@ Utworzymy nowy widok ``my_register()``, szablon :file:`register.html` i nowy adr
 
 .. code-block:: python
 
-    # chatter/chatter/views.py
+    # czat/czat/views.py
 
     # pozostale widoki
 
@@ -360,9 +367,9 @@ Utworzymy nowy widok ``my_register()``, szablon :file:`register.html` i nowy adr
         # ustawiamy zmienne przekazywane do szablonu
         context = {'form': form}
         # renderujemy templatke rejestracji
-        return render(request, 'chatter/register.html', context)
+        return render(request, 'czat/register.html', context)
 
-Tworzymy nowy szablon :file:`register.html` w katalogu :file:`templates/chatter`:
+Tworzymy nowy szablon :file:`register.html` w katalogu :file:`templates/czat`:
 
 .. raw:: html
 
