@@ -41,7 +41,7 @@ Przed szkoleniem warto przygotować swój komputer.
 ..  toctree::
     :maxdepth: 2
 
-    env
+    env/index
     source_code
 
 Zaczynamy!
