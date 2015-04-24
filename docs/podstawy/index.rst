@@ -6,17 +6,25 @@ wysokiego poziomu. Cechuje się czytelnością i zwięzłością kodu. Stworzony
 przez Guido van Rossuma, nazwa zaś pochodzi od tytułu serialu komediowego
 emitowanego w BBC pt. "Latający cyrk Monty Pythona".
 
-W systemach opartych na Linuksie :term:`interpreter` Pythona jest standardowo zainstalowany,
-ponieważ duża część oprogramowania na nim bazuje. W systemach Microsoft Windows Pythona
-należy :ref:`doinstalować <ins-python>`. Interpreter tłumaczy (kompiluje w locie) kod i od razu go wykonuje.
-Interpreter Pythona może być używany w trybie interaktywnym do nauki i testowania
-kodu.
-
 Funkcjonalność Pythona może być dowolnie rozszerzana dzięki licznym
 bibliotekom pozwalającym tworzyć aplikacje okienkowe (`PyQt <http://pl.wikipedia.org/wiki/PyQt>`_, `PyGTK <http://pl.wikipedia.org/wiki/PyGTK>`_, `wxPython <http://pl.wikipedia.org/wiki/WxPython>`_),
 internetowe (`Flask <http://flask.pocoo.org/>`_, `Django <http://django.pl/>`_) czy multimedialne i gry (`Pygame <http://pl.wikipedia.org/wiki/Pygame>`_). Istnieją również
 kompleksowe projekty oparte na Pythonie wspomagające naukową analizę, obliczenia
 i przetwarzanie danych, np.: `Anaconda <https://store.continuum.io/cshop/anaconda/>`_ czy `Enthought Canopy <https://www.enthought.com/products/canopy/>`_.
+
+Interpreter Pythona
+===================
+
+Siła Pythona tkwi m. in. w standardowej bibliotece udostępniającej wiele
+funkcjonalności, a także w wielu rozszerzeniach zapewnianych przez instalację
+dodatkowych modułów. W Pythonie łatwo stworzymy aplikacje konsolowe, wyposażone
+w interfejs graficzny, sieciowe, bazodanowe, multimedialne itd.
+
+W systemach opartych na Linuksie :term:`interpreter` Pythona jest standardowo zainstalowany,
+ponieważ duża część oprogramowania na nim bazuje. W systemach Microsoft Windows Pythona
+należy :ref:`doinstalować <ins-python>`. Interpreter tłumaczy (kompiluje w locie) kod i od razu go wykonuje.
+Interpreter Pythona może być używany w trybie interaktywnym do nauki i testowania
+kodu.
 
 Prosty kod można testować w interpreterze, do tworzenia bardziej rozbudowanych
 skryptów wykorzystać możemy dowolny edytor tekstowy. Ze względów praktycznych
