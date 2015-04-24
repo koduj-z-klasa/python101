@@ -8,3 +8,4 @@ Autorzy
 - Adam Jurkiewicz <biuro@cyfrowaszkola.waw.pl>
 - Grzegorz Wilczek <grzegorz.wilczek@ceo.org.pl>
 - `Janusz Skonieczny <https://plus.google.com/+JanuszSkonieczny/>`_
+- Łukasz Zarzecki

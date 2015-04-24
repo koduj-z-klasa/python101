@@ -262,6 +262,20 @@ texinfo_documents = [
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
 
+import sphinx
+
+rst_epilog = """
+.. include:: /copyright.rst
+
+.. raw:: html
+
+    <style>
+        div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
+        div.highlight, div.highlight-python { margin-top: 0px; }
+    </style>
+
+%s
+""" % sphinx.__version__
 
 try:
     import sphinx_rtd_theme
@@ -272,3 +286,4 @@ except:
 
 def setup(app): 
     app.add_javascript('custom.js')
+
