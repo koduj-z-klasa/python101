@@ -1,11 +1,11 @@
 Przygotowanie katalogu projektu
-################################
+###############################
 
 Poszczególne zadania zakładają wykorzystanie wspólnego katalogu projektu
 ``python101`` znajdującego się w katalogu domowym użytkownika.
 
 Pobieranie materiałów
-************************
+*********************
 
 Materiały szkoleniowe zostały umieszczone w repozytorium **Git** w serwisie GitHub
 dzięki temu każdy może w łatwy sposób pobrać, zmieniać, a także zsynchronizować
@@ -34,7 +34,7 @@ W efekcie otrzymamy katalog ``python101`` z kodami źródłowymi materiałów.
 
 
 Korzystanie z kodu źródłowego
-******************************
+*****************************
 
 W materiałach będą pojawiać się przykłady kodu źródłowego jak ten poniżej.
 Te przykłady pokazują jak nasz kod może się rozwijać.
@@ -75,7 +75,7 @@ to znaczy tzw. *komentarze*. Komentarzem są teksty zaczynające się od
 znaku ``#`` oraz teksty zamknięte pomiędzy potrójnymi cudzysłowami ``"""``.
 
 Synchronizacja kodu
-**********************
+*******************
 
 .. note::
 

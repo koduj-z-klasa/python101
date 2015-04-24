@@ -1,6 +1,5 @@
-:orphan:
-
 .. raw:: html
+
     <hr/>
     <p>
         <a style="float:left; margin: 0.3em 1em 1em 0" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
