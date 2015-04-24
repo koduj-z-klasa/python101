@@ -51,6 +51,8 @@ Po wpisaniu go do przeglądarki internetowej otrzymamy stronę z błędem HTTP 4
 co wynika z faktu, że nasza aplikacja nie ma jeszcze zdefiniowanego żadnego zachowania
 (czy też widoku) dla tego adresu.
 
+.. figure:: img/quiz1.png
+
 Widok (strona główna)
 *********************
 
@@ -84,10 +86,12 @@ Najprostszą odpowiedzią na żądanie GET jest zwrócenie jakiegoś tekstu.
 Tak też robimy wywołując funkcję ``return 'Cześć, tu Python!'``, która odeśle
 podany tekst do przeglądarki, a ta wyświetli go użytkownikowi.
 
+.. figure:: img/quiz2.png
+
 Zazwyczaj będziemy prezentować bardziej skomplikowane dane, w dodatku
 sformatowane wizualnie. Potrzebujemy więc szablonu.
 Tworzymy więc plik :file:`~/quiz/templates/index.html`.
-Można to zrobić w terminalu:
+Można to zrobić w terminalu po ewentualnym zatrzymaniu serwera (CTRL+C):
 
 .. raw:: html
 
@@ -95,7 +99,7 @@ Można to zrobić w terminalu:
 
 .. code-block:: bash
 
-    ~/quiz$ mkdir templates; cd templates; touch index.html
+    ~/quiz$ mkdir templates; touch templates/index.html
 
 Jak widać szablony umieszczamy w podkatalogu :file:`tempaltes` aplikacji.
 Do pliku :file:`index.html` wstawiamy poniższy kod HTML:
@@ -117,7 +121,7 @@ Na koniec modyfikujemy widok ``index()``:
 .. highlight:: python
 .. literalinclude:: quiz3.py
     :linenos:
-    :emphasize-lines: 5, 12-13
+    :emphasize-lines: 5, 11-12
 
 Po zaimportowaniu (!) potrzebnej funkcji używamy jej do wyrenderowania
 podanego jako argument szablonu: ``return render_template('index.html')``.
@@ -195,8 +199,8 @@ w funkcji ``index()``. Uzupełniamy więc plik :file:`quiz.py`:
 .. highlight:: python
 .. literalinclude:: quiz5.py
     :linenos:
-    :lineno-start: 34
-    :lines: 34-50
+    :lineno-start: 32
+    :lines: 32-49
 
 Przede wszystkim importujemy potrzebne funkcje. Następnie
 uzupełniamy dekorator ``app.route()``, aby obsługiwał zarówno żądania :term:`GET`

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# quiz/quiz4.py
+# quiz/quiz.py
 
 from flask import Flask
 from flask import render_template

@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
-# quiz/quiz3.py
+# quiz/quiz.py
 
 from flask import Flask
 from flask import render_template
 
 app = Flask(__name__)
 
-# dekorator łączący adres główny z widokiem index
 @app.route('/')
 def index():
     #return 'Cześć, tu Python!'

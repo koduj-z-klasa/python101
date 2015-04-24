@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
+# quiz/quiz.py
 
-# niezbędne importy
 from flask import Flask
 from flask import render_template
 
 app = Flask(__name__)
 
-# konfiguracja aplikacji
 app.config.update(dict(
-    # nieznany nikomu sekret
     SECRET_KEY='bradzosekretnawartosc',
 ))
 
@@ -47,6 +45,7 @@ def index():
         flash(u'Liczba poprawnych odpowiedzi, to: {0}'.format(punkty))
         return redirect(url_for('index'))
 
+    #return 'Cześć, tu Python!'
     return render_template('index.html', pytania=PYTANIA)
 
 if __name__ == '__main__':
