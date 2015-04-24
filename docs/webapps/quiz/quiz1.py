@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# quiz/quiz1.py
+# quiz/quiz.py
 
 from flask import Flask
 
