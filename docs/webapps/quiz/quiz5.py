@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-# quiz/quiz4.py
 
+# niezbędne importy
 from flask import Flask
 from flask import render_template
 
@@ -8,6 +8,7 @@ app = Flask(__name__)
 
 # konfiguracja aplikacji
 app.config.update(dict(
+    # nieznany nikomu sekret
     SECRET_KEY='bradzosekretnawartosc',
 ))
 
@@ -30,9 +31,22 @@ PYTANIA = [
     }
 ]
 
-@app.route('/')
+from flask import request, redirect, url_for, flash
+
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    #return 'Cześć, tu Python!'
+
+    if request.method == 'POST':
+        punkty = 0
+        odpowiedzi = request.form
+
+        for pnr, odp_u in odpowiedzi.items():
+            if odp_u == PYTANIA[int(pnr)]['odpok']:
+                punkty += 1
+
+        flash(u'Liczba poprawnych odpowiedzi, to: {0}'.format(punkty))
+        return redirect(url_for('index'))
+
     return render_template('index.html', pytania=PYTANIA)
 
 if __name__ == '__main__':
