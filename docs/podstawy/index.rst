@@ -67,7 +67,6 @@ znak zachęty ``>>>``.
 
 .. toctree::
     :maxdepth: 2
-    :numbered:
 
     podstawy/index.rst
     przyklady/index.rst
