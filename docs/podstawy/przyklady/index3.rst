@@ -112,21 +112,3 @@ Zadania dodatkowe
     Spróbuj zmienić program tak, aby umożliwiał usuwanie wpisów.
     Dodaj do programu możliwość uczenia się zapisanych w słowniku słówek. Niech program wyświetla kolejne słowa obce i pobiera od użytkownika możliwe znaczenia. Następnie powinien wyświetlać, które z nich są poprawne.
 
-Metryka
-===================
-
-:Autor: Robert Bednarz <ecg@ecg.vot.pl>
-
-:Utworzony: |date| o |time|
-
-.. |date| date::
-.. |time| date:: %H:%M
-
-.. raw:: html
-
-    <style>
-        div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
-        div.highlight, div.highlight-python { margin-top: 0px; }
-    </style>
-
-.. include:: ../../copyright.rst

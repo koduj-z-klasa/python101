@@ -1,5 +1,7 @@
-.. raw:: html
+:orphan:
 
+.. raw:: html
+    <hr/>
     <p>
         <a style="float:left; margin: 0.3em 1em 1em 0" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
             <img alt="Licencja Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
@@ -20,3 +22,4 @@
       ga('create', 'UA-55172998-1', 'auto');
       ga('send', 'pageview');
     </script>
+

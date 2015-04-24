@@ -441,24 +441,3 @@ Słowniczek
     przesłanianie
         w programowaniu obiektowym możemy w klasie dziedziczącej przesłonić metody
         z klasy nadrzędnej rozszerzając lub całkowicie zmieniając jej działanie
-
-Metryka
-================
-
-:Autorzy: `Janusz Skonieczny <https://plus.google.com/+JanuszSkonieczny/>`_,
-          Robert Bednarz <ecg@ecg.vot.pl>
-
-:Utworzony: |date| o |time|
-
-.. |date| date::
-.. |time| date:: %H:%M
-
-.. raw:: html
-
-    <style>
-        div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
-        div.highlight, div.highlight-python { margin-top: 0px; }
-    </style>
-
-
-.. include:: ../../copyright.rst

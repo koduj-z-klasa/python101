@@ -38,7 +38,7 @@ wersji (2.7.x lub 3.4.x) i instalujemy ręcznie.
 
 .. tip::
 
-Warto jest zaznaczyć opcję "Add Python.exe to Path", która domyślnie nie jest włączona.
+    Warto jest zaznaczyć opcję "Add Python.exe to Path", która domyślnie nie jest włączona.
 
 .. _interpreter Pythona: https://www.python.org/downloads/
 

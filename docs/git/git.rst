@@ -12,7 +12,7 @@ Nauczyciele pracujący z plikami które zmieniają się z przykładu na przykła
 z ćwiczenia na ćwiczenie mogą np. skorzystać z systemu kontroli wersji do
 synchronizacji przykładów na poszczególnych etapach swojej pracy.
 
-.. figure:: http://git-scm.com/figures/18333fig0104-tn.png
+.. figure:: git-scm.png
 
 Dzięki takim narzędziom możemy porzucić przesyłanie i rozpakowywanie archiwów,
 kopiowanie plików na rzecz komend które szybko doprowadzą
@@ -358,23 +358,3 @@ z centralnego repozytorium:
     ~/python101$ git pull
 
 Ta komenda ściągnie historię zmian z centralnego repozytorium i zaktualizuje naszą kopię roboczą plików.
-
-Metryka
-^^^^^^^
-
-:Autorzy: `Janusz Skonieczny <https://plus.google.com/+JanuszSkonieczny/>`_,
-
-:Utworzony: |date| o |time|
-
-.. |date| date::
-.. |time| date:: %H:%M
-
-
-.. raw:: html
-
-    <style>
-        div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
-        div.highlight, div.highlight-python { margin-top: 0px; }
-    </style>
-
-.. include:: ../copyright.rst

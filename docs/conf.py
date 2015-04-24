@@ -270,12 +270,18 @@ rst_epilog = """
 .. raw:: html
 
     <style>
-        div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
-        div.highlight, div.highlight-python { margin-top: 0px; }
+        div.code_no {{ text-align: right; background: #e3e3e3; padding: 6px 12px; }}
+        div.highlight, div.highlight-python {{ margin-top: 0px; }}
     </style>
 
-%s
-""" % sphinx.__version__
+.. |date| date::
+.. |time| date:: %H:%M
+.. |sphinx_version| replace:: {}
+
+:Utworzony: |date| o |time|
+:Autorzy: :doc:`Patrz plik "Autorzy" </authors>`
+
+""".format(sphinx.__version__)
 
 try:
     import sphinx_rtd_theme

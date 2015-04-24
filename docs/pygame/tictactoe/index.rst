@@ -42,23 +42,3 @@ W powyższym kodzie mamy podstawy potrzebne do uruchomienia gry:
 .. code-block:: bash
 
     ~/python101$ python games/tic_tac_toe.py
-
-Metryka
-**************************
-
-:Autor: 
-    `Janusz Skonieczny <https://plus.google.com/+JanuszSkonieczny/>`_,
-
-:Utworzony: |date| o |time|
-
-.. |date| date::
-.. |time| date:: %H:%M
-
-.. raw:: html
-
-    <style>
-        div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
-        div.highlight, div.highlight-python { margin-top: 0px; }
-    </style>
-
-.. include:: ../../copyright.rst

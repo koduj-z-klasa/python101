@@ -49,22 +49,3 @@ Słownik
 .. _Peewee: http://peewee.readthedocs.org/en/latest
 .. _SQLAlchemy: http://www.sqlalchemy.org
 
-Metryka
-========
-
-:Autorzy: Robert Bednarz (ecg@ecg.vot.pl), `Janusz Skonieczny <https://plus.google.com/+JanuszSkonieczny/>`_,
-          Łukasz Zarzecki
-
-:Utworzony: |date| o |time|
-
-.. |date| date::
-.. |time| date:: %H:%M
-
-.. raw:: html
-
-    <style>
-        div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
-        div.highlight, div.highlight-python { margin-top: 0px; }
-    </style>
-
-.. include:: ../copyright.rst

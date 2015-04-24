@@ -118,12 +118,3 @@ Pojęcia
 .. _XFCE: http://www.xfce.org/
 .. _Bash: http://pl.wikipedia.org/wiki/Bash
 
-.. raw:: html
-
-    <style>
-        div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
-        div.highlight, div.highlight-python { margin-top: 0px; }
-    </style>
-
-
-

@@ -1,3 +1,5 @@
+:orphan:
+
 .. glossary::
 
     Klatki na sekundę (FPS)

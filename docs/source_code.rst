@@ -107,23 +107,3 @@ bez zachowania zmian poszczególnych uczestników:
 
 Jeśli uczestnicy chcą wcześniej zachować swoje modyfikacje, mogą je zapisać
 w swoim lokalnym repozytorium (wykonują tzw. commit).
-
-Metryka
-===============
-
-:Autor: `Janusz Skonieczny <https://plus.google.com/+JanuszSkonieczny/>`_
-
-:Utworzony: |date| o |time|
-
-.. |date| date::
-.. |time| date:: %H:%M
-
-.. raw:: html
-
-    <style>
-        div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
-        div.highlight, div.highlight-python { margin-top: 0px; }
-    </style>
-
-
-.. include:: copyright.rst
