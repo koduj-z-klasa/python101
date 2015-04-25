@@ -1,18 +1,21 @@
-<!-- todo/templates/show_entries.html -->
+<!-- todo/templates/zadania_lista.html -->
 <html>
     <head>
-    <!-- automatycznie przekazana informacja z konfiguracji aplikacji -->
+    <!-- nazwa aplikacji pobrana z ustawień -->
         <title>{{ config.SITE_NAME }}</title>
+    <!-- ładujemy arkusz CSS -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     </head>
     <body>
         <h1>{{ config.SITE_NAME }}:</h1>
+
         <!-- formularz dodawania zadania -->
         <form class="add-form" method="POST" action="{{ url_for('index') }}">
-            <input name="entry" value=""/>
+            <input name="zadanie" value=""/>
             <button type="submit">Dodaj zadanie</button>
         </form>
 
-        <!-- informacje o sukcesie lub bledzie -->
+        <!-- informacje o sukcesie lub błędzie -->
         <p>
             {% if error %}
                 <strong class="error">Błąd: {{ error }}</strong>
@@ -22,11 +25,12 @@
                 <strong class="success">{{ message }}</strong>
             {% endfor %}
         </p>
+
         <ol>
-            <!-- wypisujemy kolejno wszystkie zdania -->
-            {% for entry in entries %}
+            <!-- wypisujemy kolejno wszystkie zadania -->
+            {% for zadanie in zadania %}
                 <li>
-                    {{ entry.title }}<em>{{ entry.created_at }}</em>
+                    {{ zadanie.zadanie }} – <em>{{ zadanie.data_pub }}</em>
                 </li>
             {% endfor %}
         </ol>

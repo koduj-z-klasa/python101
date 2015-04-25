@@ -1,106 +1,97 @@
 # -*- coding: utf-8 -*-
-
 # todo/todo.py
 
-import os
-import sqlite3
-from datetime import datetime
+# wymagane importy
 from flask import Flask, g
 from flask import render_template
+from datetime import datetime
 from flask import flash, redirect, url_for, request
 
 app = Flask(__name__)
 
+# import modułów do obsługi bazy sqlite
+import os
+import sqlite3
+
 # konfiguracja aplikacji
 app.config.update(dict(
-    # nieznany nikomu sekret
-    SECRET_KEY='bradzosekretnawartosc',
-    # polozenie naszej bazy
-    DATABASE=os.path.join(app.root_path, 'db.sqlite'),
+    # klucz zabezpieczający sesje
+    SECRET_KEY = 'bardzosekretnawartosc',
+    # położenie pliku bazy
+    DATABASE = os.path.join(app.root_path, 'db.sqlite'),
     # nazwa aplikacji
-    SITE_NAME = 'Moja lista ToDo'
+    SITE_NAME = 'Moje zadania'
 ))
 
 def connect_db():
-    """Nawiazaywanie polaczenia z baza danych okreslona w konfiguracji."""
+    """Nawiazywanie połaczenia z bazą danych określoną w konfiguracji."""
+    """http://flask.pocoo.org/docs/0.10/patterns/sqlite3/"""
     rv = sqlite3.connect(app.config['DATABASE'])
     rv.row_factory = sqlite3.Row
     return rv
 
 def get_db():
-    """Funkcja pomocnicza, ktora tworzy polaczenia z baza przy pierwszym
-    wywolaniu i umieszcza ja w kontekscie aplikacji (obiekt g). W kolejnych
-    wywolaniach zwraca polaczenie z kontekstu."""
-    if not hasattr(g, 'db'):
-        # jezeli kontekst nie zawiera informacji o polaczeniu to je tworzymy
+    """Funkcja pomocnicza, ktora tworzy połączenia z bazą przy pierwszym
+    wywołaniu i umieszcza ją w kontekście aplikacji (obiekt g). W kolejnych
+    wywołaniach zwraca połączenie z kontekstu."""
+    if not hasattr(g, 'db'): # jeżeli brak połączenia, to je tworzymy
         g.db = connect_db()
-    # zwracamy polaczenie z baza
-    return g.db
+    return g.db # zwracamy połączenie z bazą
 
-# dekorator sprawiajacy, ze dana funkcja zostaje wykonana po wyslaniu
-# odpowiedzi do klienta
+# dekorator wykonujący funkcje po wysłaniu odpowiedzi do klienta
 @app.teardown_request
 def close_db(error):
-    """Zamykanie polaczenia z baza."""
+    """Zamykanie połączenia z bazą."""
     if hasattr(g, 'db'):
         g.db.close()
 
-
-# poza powiazaniem adresu / z funkcja index, dodajemy mozliwosc akcpetacji
-# zadan HTTP GET i POST (domyslnie dozwolone sa tyko zadania GET)
+# dekorator łączący adres główny z widokiem index
+# dodajemy obsługę żądań POST (domyślnie tyko GET)
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    """Glowny widok strony. Obsluguje wyswietlanie i dodawanie zadan."""
-    # zmienna przechowujaca informacje o ewentualnych bledach
+    """Główny widok strony. Obsługuje wyświetlanie i dodawanie zadań."""
+    #return 'Cześć, tu Python!'
+
     error = None
 
-    # sprawdzamy, czy zadanie jest POSTem, jezeli tak to dodajemy nowe zadanie
+    # jeżeli otrzymujemy dane POST z formularza, dodajemy nowe zadanie
     if request.method == 'POST':
-        # sprawdzamy poprawnosc przeslanych danych
-        if len(request.form['entry']) > 0:
-            # nawiazujemy polazcenie z baza danych
+        # sprawdzamy poprawność przesłanych danych
+        if len(request.form['zadanie']) > 0:
+            # pobieramy treść zadania z przesłanego formularza
+            zadanie = request.form['zadanie']
+            zrobione = '0' # zadanie nie jest jeszcze wykonane
+            data_pub = datetime.now() # data dodania
             db = get_db()
-            # wyciagamy tresc zadania z przeslanego formularza
-            new_entry = request.form['entry']
-            # ustalamy, ze nowo dodane zadanie nie jest jeszcze wykonane
-            is_done = '0'
-            # data dodania
-            created_at = datetime.now()
-            # konfigurujemy zapytanie do bazy, ktyore wstawi nowy wiersz z danymi
-            db.execute('insert into entries (title, is_done, created_at) values (?, ?, ?);',
-                        [new_entry, is_done, created_at])
-            # wykonujemy zapytanie
-            db.commit()
-            # ustawiamy informacje o pomyslnym dodaniu nowego zadnaia
-            flash('Dodano nowe zadanie')
-            # po udanym zapisie zawsze przekierowujemy na strone glowna
+            # zapytanie do bazy, które wstawia nowy wiersz z danymi
+            db.execute('insert into zadania (zadanie, zrobione, data_pub) values (?, ?, ?);',
+                        [zadanie, zrobione, data_pub])
+            db.commit() # wykonujemy zapytanie
+            # informacja dla użytkownika o pomyślnym dodaniu nowego zadania
+            flash('Dodano nowe zadanie!')
+            # przekierowujemy użytkownika na stronę główną - żądanie GET!
             return redirect(url_for('index'))
-        # ustawiamy tresc komunikatu o bledzie
-        error = u'Nie możesz dodać pustego zadania'
 
-    # przygotowanie danych do wyswietlenia
-    db = get_db()
-    # wyciagniecie wszystkich wpisow
-    cur = db.execute('select id, title, is_done, created_at from entries order by created_at desc;')
-    entries = cur.fetchall()
-    # zwracamy wyrenderowana tempaltke
-    return render_template('show_entries.html', entries=entries, error=error)
+        error = u'Nie możesz dodać pustego zadania!' # komunikat o błędzie
 
-# nadajemy osobny adres, oraz zezwalamy jedynie na zadania typu POST
-@app.route('/mark_as_done', methods=['POST'])
-def mark_as_done():
+    db = get_db() # łaczymy sią z bazą
+    # pobieramy wszystkie wpisy z bazy:
+    kursor = db.execute('select * from zadania order by data_pub desc;')
+    zadania = kursor.fetchall()
+    # do szablonu przekazujemy pobrane zadania i zwracamy odpowiedź
+    return render_template('zadania_lista.html', zadania=zadania, error=error)
+
+# adres /zrobione wiążemy z widokiem zrobione(), obsługujemy tylko żądania POST
+@app.route('/zrobione', methods=['POST'])
+def zrobione():
     """Zmiana statusu zadania na wykonane."""
-    # z przeslanego formularza pobieramy indentyfikator zadania
-    entry_id = request.form['id']
-    # laczymy sie z baza danych
+    # z przeslanego formularza pobieramy identyfikator zadania
+    zadanie_id = request.form['id']
     db = get_db()
-    # przygotowujeym zapytanie aktualizujace pole is_done zadania o danym identyfikatorze
-    db.execute('update entries set is_done=1 where id=?', [entry_id,])
-    # zapisujemy nowe dane
+    # przygotowujemy zapytanie aktualizujące pole zarobione zadania o danym identyfikatorze
+    db.execute('update zadania set zrobione=1 where id=?', [zadanie_id,])
     db.commit()
-    # na koniec przekierowujemy na liste wszystkich zadan
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
-

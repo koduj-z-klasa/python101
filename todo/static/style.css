@@ -1,13 +1,13 @@
 /* todo/static/style.css */
 
-body { margin-top: 20px; }
+body { margin-top: 20px; background-color: lightgreen; }
 h1, p { margin-left: 20px; }
 .add-form { margin-left: 20px; }
 ol { text-align: left; }
 em { font-size: 11px; margin-left: 10px; }
 form { display: inline-block; margin-bottom: 0;}
-input[name="entry"] { width: 300px; }
-input[name="entry"]:focus {
+input[name="zadanie"] { width: 300px; }
+input[name="zadanie"]:focus {
     border-color: blue;
     border-radius: 5px;
 }

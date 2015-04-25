@@ -3,7 +3,7 @@ IDE - Edytory kodu
 
 Skrypty Pythona można zapisywać w dowolnym edytorze tekstu, ale oczywiście
 wygodniej jest używać programów, które potrafią przynajmniej odpowiednio
-podświetlać kod. Proponujemy do wyboru proste
+podświetlać kod.
 
 
 .. contents:: Spis treści
@@ -127,4 +127,3 @@ jest wskazanie pliku słownika. Pod linuksem możemy sobie wyprodukować słowni
 W ustawieniach :kbd:`Ctrl+Alt+S` szukamy `spell` i dodajemy
 ``custom dictionaries folder`` wskazując na ``/usr/share/dictionaries-common/``
 (lokalizacja w Xubuntu).
-
