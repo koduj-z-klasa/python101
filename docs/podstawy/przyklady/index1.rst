@@ -83,4 +83,3 @@ Zadania dodatkowe
     Uprość warunek w pierwszej pętli ``for`` drukującej alfabet w porządku naturalnym tak, aby nie używać operatora modulo.
     Wydrukuj co n-tą grupę liter alfabetu, przy czym wartość *n* podaje użytkownik. Wskazówka: użyj opcjonalnego, trzeciego argumentu funkcji ``range()``.
     Sprawdź działanie różnych operatorów Pythona w konsoli.
-
