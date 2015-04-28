@@ -14,7 +14,7 @@ Instalacji brakujących elementów wykonujemy przy pomocy systemowego instalator
 
 
 Instalacja apt-get
------------------
+------------------
 
 Instalację dodatkowych modułów w systemach opierających się na Debianie
 (m. in. wszystkie wersje Ubuntu, LinuxMint itd.), przeprowadzamy przy użyciu
@@ -68,6 +68,5 @@ danego pakietu) instalora Pythona ``pip``:
     ~# pacman -S python2-peewee  python2-sqlalchemy python2-flask-sqlalchemy
     ~# pip2 install peewee sqlalchemy flask-sqlalchemy
 
-W innych systemach linuksowych należy korzystać z dedykowanych lub wspomnianego
-instalatora Pythona (``pip``).
-
+W innych systemach linuksowych należy korzystać z dedykowanych menedżerów
+lub wspomnianego instalatora Pythona (``pip``).

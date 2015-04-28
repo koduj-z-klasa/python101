@@ -60,5 +60,14 @@ def index():
     zadania = kursor.fetchall()
     return render_template('zadania_lista.html', zadania=zadania, error=error)
 
+@app.route('/zrobione', methods=['POST'])
+def zrobione():
+    """Zmiana statusu zadania na wykonane."""
+    zadanie_id = request.form['id']
+    db = get_db()
+    db.execute('update zadania set zrobione=1 where id=?', [zadanie_id,])
+    db.commit()
+    return redirect(url_for('index'))
+
 if __name__ == '__main__':
     app.run(debug=True)

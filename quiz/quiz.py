@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
+# quiz/quiz.py
 
-# niezbędne importy
 from flask import Flask
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template
 
 app = Flask(__name__)
 
 # konfiguracja aplikacji
 app.config.update(dict(
-    # nieznany nikomu sekret
     SECRET_KEY='bradzosekretnawartosc',
 ))
 
@@ -31,27 +30,24 @@ PYTANIA = [
     }
 ]
 
+from flask import request, redirect, url_for, flash
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    # jeżeli żądanie jest typu POST, tzn. że przesłano odpowiedzi do sprawdzenia
+
     if request.method == 'POST':
-        punkty = 0 # liczba poprawnych odpowiedzi
-        odpowiedzi = request.form # zapamiętujemy przesłane odpowiedzi
-        # sprawdzamy odpowiedzi
+        punkty = 0
+        odpowiedzi = request.form
+
         for pnr, odp_u in odpowiedzi.items():
-            # porównujemy przesłaną odpowiedź z poprawną
             if odp_u == PYTANIA[int(pnr)]['odpok']:
-                punkty += 1 # zwiększamy wynik
-        # przygotowujemy informację o wyniku
+                punkty += 1
+
         flash(u'Liczba poprawnych odpowiedzi, to: {0}'.format(punkty))
-        # przekierowujemy na stronę główną
         return redirect(url_for('index'))
 
-    # jeżeli zadanie jest typu GET, to renderujemy szablon index.html,
-    # do którego przekazujemy tablicę pytań w zmiennej "pytania"
+    #return 'Cześć, tu Python!'
     return render_template('index.html', pytania=PYTANIA)
-
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -50,7 +50,7 @@ Zaczynamy!
 =================
 
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 2
     :numbered:
 
     podstawy/index
@@ -75,5 +75,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
-
