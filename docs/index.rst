@@ -5,19 +5,21 @@
 
 
 Szkolenie Python 101
-#######################
+####################
+
+.. title:: Python 101 materiały Koduj z Klasą
 
 Niniejsze materiały to dokumentacja do szkolenia z języka Python realizowanego
 w ramach projektu `Koduj z Klasą`_ prowadzonego przez
 Fundację `Centrum Edukacji Obywatelskiej`_.
 
-Krótki link do tej strony: `bit.ly/kzk-py <http://bit.ly/kzk-py>`_
+Krótki link do tej strony: `bit.ly/py-101 <http://bit.ly/py-101>`_
 
 Pobieranie tej dokumentacji
-****************************
+***************************
 
 Materiały można pobrać do czytania w `wersji offline
-<http://koduj-z-klasa.github.io/python101/python-101-html.zip>`_.
+<http://readthedocs.org/projects/python101/downloads/htmlzip/latest/>`_.
 Za pomocą poniższych poleceń pobierzemy dokumentację i rozpakujemy
 do folderu ``~/Pulpit/python-101-html``:
 
