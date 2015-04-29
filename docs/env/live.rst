@@ -11,6 +11,17 @@ pozostałe wymagają doinstalowania bibliotek. Zmiany dokonane w systemie,
 np. doinstalowanie bibliotek, nie są zachowywane, można natomiast zapisywać
 na dysku lub pendrajwie pliki tworzone przez użytkownika.
 
+Klucz USB umożliwiający uruchomienie komputera można przygotować na kilka
+sposobów:
+
+1. na podstawie obrazu *iso*;
+2. poprzez zainstalowanie systemu bezpośrednio na pendrajwie;
+3. w opraciu o gotowy klucz startowy USB - sporządzenie kopii.
+
+.. tip::
+
+    Poniższe instrukcje powinny działać na wszystkich nośnikach podłączanych
+    przez USB, a więc kartach pamięci, dyskach twardych itp.
 
 .. contents:: Spis treści
     :backlinks: none
@@ -76,38 +87,32 @@ Po imporcie plik OVA można skasować.
 
 .. _ins-python:
 
-Rozruchowy klucz USB
-====================
+ISO na dysku USB
+================
 
-Klucz USB umożliwiający uruchomienie komputera można przygotować na kilka
-sposobów:
+Przygotowując klucz USB w oparciu o obraz *iso*, według poniższych instrukcji
 
-1. na podstawie obrazu *iso*;
-2. poprzez zainstalowanie systemu bezpośrednio na pendrajwie;
-3. w opraciu o gotowy klucz startowy USB - sporządzenie kopii.
-
-.. tip::
-
-    Poniższe instrukcje powinny działać na wszystkich nośnikach podłączanych
-    przez USB, a więc kartach pamięci, dyskach twardych itp.
-
-Nagrywamy obraz *iso*
----------------------
-
-Przygotowując klucz USB w oparciu o obraz *iso*, postępujemy następująco:
-
-1. Pobieramy :term:`obraz iso` (np. `SRU v.37`_ lub `Xubuntu 14.04.1 32-bit`_) systemu i zapisujemy na dysku.
+Na początktu pobieramy :term:`obraz iso` (np. `SRU v.37`_ lub `Xubuntu 14.04.1 32-bit`_) systemu i zapisujemy na dysku.
 
 .. _SRU v.37: http://sru.e-swoi.pl/sru-test-37.iso
 .. _Xubuntu 14.04.1 32-bit: http://se.archive.ubuntu.com/mirror/cdimage.ubuntu.com/xubuntu/releases/14.04/release/xubuntu-14.04.1-desktop-i386.iso
 
+Tak przygotowane pendrajwy przechowują zmiany, tzn. pliki utworzone przez
+użytkownika. Dodatkowo, jeżeli zaznaczyliśmy "Przechowywanie pracy" lub "Persystencję",
+czyli utworzenie pliku "casper-rw" zachowane zostaną zainstalowane przez nas
+biblioteki czy programy, co pozwoli na takich systemach zrealizować wszystkie
+przygotowane przez nas scenariusze.
 
-2. W systemie z rodziny Ubuntu instalujemy program **usb-creator-gtk**. Można
-   to zrobić przez "Centrum oprogramowania" lub w terminalu:
+.. tip::
 
-.. code-block:: bash
+    Niżej pokazujemy, jak zainstalować dodatkowe biblioteki.
+    Dodatkowe materiały na temat przygotowywania nośników USB, w tym galerię ilustrującą
+    kolejne kroki znajdziecie w serwisie eCG_.
 
-    ~$ sudo apt-get update && sudo apt-get install usb-gtk-creator
+.. _eCG: http://ecg.vot.pl/?id=usb-boot
+
+Wypalamy USB w Windows
+----------------------
 
 W systemach MS Windows proponujemy instalację programu `Linux Live USB Creator`_.
 Można też skorzystać z programu `Universal USB Installer`_, który polecany
@@ -117,15 +122,43 @@ jest w instrukcji zamieszczonej na stronach `producenta Ubuntu`_.
 .. _Universal USB Installer: http://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3/#button
 .. _producenta Ubuntu: http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-windows
 
-3. Podpinamy pendrajw docelowy o pojemności min. 4GB. Napęd powienien zawierać
-   przynajmniej 1 partycję główną Fat32, wtedy do przechowywania danych użytkownika
-   wykorzystany zostanie specjalny plik "casper-rw".
+
+Po instalacji i uruchomieniu programu "Lnux Live USB Creator"
+polecamy kliknąć przycisk "Opcje" i wybrać polski język interfejsu, następnie konfigurujemy
+ustawienia zgodnie z podanym zrzutem, czyli wskazujemy klucz USB, wybieramy obraz iso
+i określamy rozmiar pliku "casper-rw".
+
+Podstawowa instalacja Xubuntu 14.04 zajmuje
+na pendrajwie ok. 1,2 GB, a więc resztę miejsca można przeznaczyć na nasze dane.
+
+.. figure:: img/lluc.jpg
+
+Pozostaje naciśnięcie, w zależności od programu, przycisku "Utwórz..." lub ikony błyskawicy
+i uzbrojenie się w cierpliwość, po rozpakowaniu plików na partycję główną program może
+poprosić o wpisanie hasła, aby wgrać sektor rozruchowy. W systemach ubuntopodobnych
+podajemy hasło naszego użytkownika, w MS Windows - jeżeli trzeba - hasło administratora.
+
+Wypalamy USB w Linux
+--------------------
+
+W systemie z rodziny Ubuntu instalujemy program **usb-creator-gtk**. Można
+   to zrobić przez "Centrum oprogramowania" lub w terminalu:
+
+
+.. code-block:: bash
+
+    ~$ sudo apt-get update && sudo apt-get install usb-gtk-creator
+
+Podpinamy pendrajw docelowy o pojemności min. 4GB. Napęd powinien zawierać
+przynajmniej 1 partycję główną Fat32, wtedy do przechowywania danych użytkownika
+wykorzystany zostanie specjalny plik "casper-rw".
 
 .. note::
     Jeżeli korzystamy z obrazu systemu opartego na Ubuntu, możemy na pendrajwie
     utworzyć dwie partycje: pierwszą podstawową Fat32 o pojemności min. 3GB
     i dowolonej etykiecie np. "linux"; oraz drugą typu Ext4 o dowolnej pojemności,
     ale obowiązkowej etykiecie "home-rw".
+
     Czynności te można wykonać przy użyciu programu **gparted**, który zainstalujemy
     za pomocą "Centrum oprogramowania" lub w terminalu: ``sudo apt-get update &&
     sudo apt-get install gparted``. Niestety za pomocą standardowych narzędzi
@@ -148,35 +181,8 @@ jest w instrukcji zamieszczonej na stronach `producenta Ubuntu`_.
 .. figure:: img/sru_usb09.png
 
 
-    W środowisku MS Windows po instalacji i uruchomieniu programu "Lnux Live USB Creator"
-    polecamy kliknąć przycisk "Opcje" i wybrać polski język interfejsu, następnie konfigurujemy
-    ustawienia zgodnie z podanym zrzutem, czyli wskazujemy klucz USB, wybieramy obraz iso
-    i określamy rozmiar pliku "casper-rw". Podstawowa instalacja Xubuntu 14.04 zajmuje
-    na pendrajwie ok. 1,2 GB, a więc resztę miejsca można przeznaczyć na nasze dane.
-
-.. figure:: img/lluc.jpg
-
-5. Pozostaje naciśnięcie, w zależności od programu, przycisku "Utwórz..." lub ikony błyskawicy
-   i uzbrojenie się w cierpliwość, po rozpakowaniu plików na partycję główną program może
-   poprosić o wpisanie hasła, aby wgrać sektor rozruchowy. W systemach ubuntopodobnych
-   podajemy hasło naszego użytkownika, w MS Windows - jeżeli trzeba - hasło administratora.
-
-Tak przygotowane pendrajwy przechowują zmiany, tzn. pliki utworzone przez
-użytkownika. Dodatkowo, jeżeli zaznaczyliśmy "Przechowywanie pracy" lub "Persystencję",
-czyli utworzenie pliku "casper-rw" zachowane zostaną zainstalowane przez nas
-biblioteki czy programy, co pozwoli na takich systemach zrealizować wszystkie
-przygotowane przez nas scenariusze.
-
-.. tip::
-
-    Niżej pokazujemy, jak zainstalować dodatkowe biblioteki.
-    Dodatkowe materiały na temat przygotowywania nośników USB, w tym galerię ilustrującą
-    kolejne kroki znajdziecie w serwisie eCG_.
-
-.. _eCG: http://ecg.vot.pl/?id=usb-boot
-
 System na kluczu USB
---------------------
+====================
 
 Jeżeli dysponujemy startowym nośnikiem z systemem Xubuntu (lub innym),
 możemy uruchomić normalną instalację, podpiąć nośnik USB, założyć na nim
@@ -198,7 +204,7 @@ Można system aktualizować, można instalować nowe oprogramowanie i zapisywać
 swoje pliki.
 
 Kopia klucza USB
-----------------
+================
 
 Jeżeli dysponujemy już nośnikiem startowym USB, możemy łatwo go skopiować.
 Żeby operację przyśpieszyć, zwłaszcza jeśli chcemy wykonać kilka kopii,
