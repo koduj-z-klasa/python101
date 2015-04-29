@@ -24,7 +24,7 @@ menedżera pakietów ``apt-get``.
 .. code-block:: bash
 
     ~$ sudo apt-get update
-    ~$ sudo apt-get install ipython python-pip python-virtualenv git
+    ~$ sudo apt-get install ipython python-pip python-virtualenv python-dev git
     ~$ sudo apt-get install python-flask python-django python-pygame
 
 W pierwszej kolejności zainstalowane zostaną narzędzia, czyli rozszerzona
