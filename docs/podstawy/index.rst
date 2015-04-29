@@ -31,14 +31,14 @@ i przetwarzanie danych, np.: `Anaconda <https://store.continuum.io/cshop/anacond
     przyklady/index5.rst
 
 Materiały
-***************
+*********
 
 #. `Python`_
 
 .. Python_: https://www.python.org/
 
 Słownik
-====================
+=======
 
 .. glossary::
 
@@ -52,7 +52,7 @@ Słownik
         po stronie klienta WWW (JavaScript) lub serwera (np. Python, PHP).
 
 Źródła
-====================
+======
 
 Wersje "Podstaw Pythona" w formacie *odt* lub *pdf*:
 

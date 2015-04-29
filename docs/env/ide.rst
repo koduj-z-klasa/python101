@@ -99,11 +99,20 @@ W systemach Linux alternatywnie można użyć poleceń w terminalu:
 
 .. code-block:: bash
 
-    $ wget http://download.jetbrains.com/python/pycharm-professional-4.0.3.tar.gz -O - | tar -xz
-    $ ./pycharm-4.0.3/bin/pycharm.sh
+    wget http://download.jetbrains.com/python/pycharm-professional-4.0.6.tar.gz -O - | tar -xz
+    ./pycharm-4.0.6/bin/pycharm.sh
 
 Jak widać, program zostanie zainstalowany w katalogu domowym użytkownika,
 a uruchamiamy go drugim z podanych poleceń.
+
+Jeśli w naszym systemie brakuje oprogramowania JAVA to musimy jeszcze je doinstalować"
+
+.. code-block:: bash
+
+    sudo apt-get install python-software-properties
+    sudo add-apt-repository ppa:webupd8team/java
+    sudo apt-get update
+    sudo apt-get install oracle-java8-installer
 
 
 Bezpłatna licencja
