@@ -105,7 +105,13 @@ W systemach Linux alternatywnie można użyć poleceń w terminalu:
 Jak widać, program zostanie zainstalowany w katalogu domowym użytkownika,
 a uruchamiamy go drugim z podanych poleceń.
 
-Jeśli w naszym systemie brakuje oprogramowania JAVA to musimy jeszcze je doinstalować"
+Jeśli w naszym systemie brakuje oprogramowania JAVA to musimy zainstalować Open JDK:
+
+.. code-block:: bash
+
+    sudo apt-get install openjdk-7-jre
+
+Lub zamiast Open JDK zainstalować wersję firmy Oracle:
 
 .. code-block:: bash
 
