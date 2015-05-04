@@ -136,8 +136,8 @@ jest wskazanie pliku słownika. Pod linuksem możemy sobie wyprodukować słowni
 
 .. code-block:: bash
 
-    $ aspell --lang pl dump master | aspell --lang pl expand | tr ' ' '\n' > polish.dic
-    $ sudo mv polish.dic ``/usr/share/dictionaries-common/``
+    aspell --lang pl dump master | aspell --lang pl expand | tr ' ' '\n' > polish.dic
+    sudo mv polish.dic ``/usr/share/dictionaries-common/``
 
 W ustawieniach :kbd:`Ctrl+Alt+S` szukamy `spell` i dodajemy
 ``custom dictionaries folder`` wskazując na ``/usr/share/dictionaries-common/``
