@@ -23,14 +23,13 @@ menedżera pakietów ``apt-get``.
 
 .. code-block:: bash
 
-    ~$ sudo apt-get update
-    ~$ sudo apt-get install ipython python-pip python-virtualenv python-dev git
-    ~$ sudo apt-get install python-flask python-django python-pygame
+    sudo apt-get update
+    sudo apt-get install ipython python-pip python-virtualenv python-dev git
+    sudo apt-get install python-flask python-django python-pygame
 
 W pierwszej kolejności zainstalowane zostaną narzędzia, czyli rozszerzona
 konsola ``ipython``, instalator modułów ``pip`` czy narzędzie pozwalające
 ściągnąć i używać niniejsze materiały, czyli ``git``.
-
 
 Biblioteki potrzebne do obsługi baz danych za pomocą ORM-ów można
 zainstalować za pomocą menedżera systemowego lub (w razie niedostępności
@@ -38,8 +37,13 @@ danego pakietu) instalora Pythona ``pip``:
 
 .. code-block:: bash
 
-    ~$ sudo apt-get install python-peewee python-sqlalchemy python-flask-sqlalchemy
-    ~$ sudo pip install peewee sqlalchemy flask-sqlalchemy
+    sudo apt-get install python-peewee python-sqlalchemy python-flask-sqlalchemy
+    sudo pip install peewee sqlalchemy flask-sqlalchemy
+
+Jeśli napotykamy na propblemy z brakiem pakietów, możliwe że musimy włączyć więcej
+źródeł oprogramowania:
+
+ .. figure:: img/universe.png
 
 
 Instalacja pacman

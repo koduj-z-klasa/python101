@@ -23,11 +23,23 @@ poniższy kod linia po linii, wkleić i wykonać:
 
 .. code-block:: posh
 
-    (new-object System.Net.WebClient).DownloadFile("https://www.python.org/ftp/python/2.7.8/python-2.7.8.msi", "$pwd\python-2.7.8.msi")
-    msiexec /i python-2.7.8.msi TARGETDIR=C:\Python27
-    [Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27\;C:\Python27\Scripts\", "User")
+    (new-object System.Net.WebClient).DownloadFile("https://www.python.org/ftp/python/2.7.9/python-2.7.9.msi", "$pwd\python-2.7.9.msi")
+    msiexec /i python-2.7.9.msi TARGETDIR=C:\Python27
     (new-object System.Net.WebClient).DownloadFile("https://raw.github.com/pypa/pip/master/contrib/get-pip.py", "$pwd\get-pip.py")
     C:\Python27\python.exe get-pip.py virtualenv
+
+Wygodnie jest rozszerzyć zmienną systemową ``PATH`` swojego użytkownika o ścieżkę do ``python.exe``:
+
+.. code-block:: posh
+
+    [Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27\;C:\Python27\Scripts\", "User")
+
+Ewentualnie jeśli posiadamy uprawnienia administracyjne, możemy zmienić zmienną ``PATH`` wszystkim użytkownikom:
+
+.. code-block:: posh
+
+    $CurrentPath=[Environment]::GetEnvironmentVariable("Path", "Machine")
+    [Environment]::SetEnvironmentVariable("Path", "$CurrentPath;C:\Python27\;C:\Python27\Scripts\", "Machine")
 
 
 Instalacja ręczna
