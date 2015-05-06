@@ -264,7 +264,15 @@ texinfo_documents = [
 
 import sphinx
 
-rst_epilog = """
+rst_prolog = u"""
+.. raw:: html
+
+    <!-- Domyślnie ładowane fonty nie zawierają Latin Ext -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+"""
+
+rst_epilog = u"""
 .. include:: /copyright.rst
 
 .. raw:: html
