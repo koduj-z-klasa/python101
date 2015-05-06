@@ -116,7 +116,7 @@ Pod linuksem:
 
     $ sudo apt-get install git
 
-Pod windows polecamy zainstalować SourceTree_:
+Pod windows polecamy zainstalować SourceTree_, aplikację okienkową i narzędzia konsolowe:
 
 .. _SourceTree: http://www.sourcetreeapp.com/
 
@@ -126,6 +126,13 @@ Pod windows polecamy zainstalować SourceTree_:
     > choco install sourcetree
 
 Jeśli nie mamy PowerShell'a `możemy sciągnąć i zainstalować <http://www.sourcetreeapp.com/download>`_ narzędzie ręcznie.
+
+Ewentualnie możemy zainstalować tylko GIT dla konsoli:
+
+.. code-block:: bat
+
+    > @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
+    > choco install git
 
 Przed pierwszym użyciem warto jeszcze skonfigurować dwie informacje identyfikujące ciebie jako autora zmian.
 W komendach poniżej wstaw swoje dane.
