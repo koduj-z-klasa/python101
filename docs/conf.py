@@ -286,7 +286,7 @@ rst_epilog = u"""
 .. |time| date:: %H:%M
 .. |sphinx_version| replace:: {}
 
-:Utworzony: |date| o |time|
+:Utworzony: |date| o |time| w Sphinx |sphinx_version|
 :Autorzy: :doc:`Patrz plik "Autorzy" </authors>`
 
 """.format(sphinx.__version__)
