@@ -278,8 +278,9 @@ rst_epilog = u"""
 .. raw:: html
 
     <style>
-        div.code_no {{ text-align: right; background: #e3e3e3; padding: 6px 12px; }}
-        div.highlight, div.highlight-python {{ margin-top: 0px; }}
+        div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
+        div.highlight, div.highlight-python { margin-top: 0px; }
+        .rst-content code { color: #E74C3C; }
     </style>
 
 .. |date| date::
@@ -298,6 +299,5 @@ try:
 except:
     pass
 
-def setup(app): 
+def setup(app):
     app.add_javascript('custom.js')
-
