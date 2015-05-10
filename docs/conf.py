@@ -290,7 +290,7 @@ rst_epilog = u"""
 :Utworzony: |date| o |time| w Sphinx |sphinx_version|
 :Autorzy: :doc:`Patrz plik "Autorzy" </authors>`
 
-""".format(sphinx.__version__)
+"""
 
 try:
     import sphinx_rtd_theme
@@ -299,4 +299,4 @@ try:
 except:
     pass
 
-def setup(app):
+#def setup(app):
