@@ -300,4 +300,3 @@ except:
     pass
 
 def setup(app):
-#    app.add_javascript('custom.js')
