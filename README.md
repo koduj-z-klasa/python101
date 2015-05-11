@@ -79,7 +79,7 @@ wersji 1.3][3]. Jeżeli chcemy lokalnie generować dokumentację, instalujemy Sp
     ~/python101$ sudo apt-get install python mercurial git python-dev python-pip python-virtualenv
     ~/python101$ virtualenv .pve
     ~/python101$ source .pve/bin/activate
-    ~/python101$ pip install sphinx_rtd_theme hg+https://bitbucket.org/birkenfeld/sphinx#sphinx
+    ~/python101$ pip install sphinx
         
 Po instalacji możemy w folderze dokumentacji możemy uruchomić make:
   
