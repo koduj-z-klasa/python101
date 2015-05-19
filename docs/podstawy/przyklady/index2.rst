@@ -8,11 +8,18 @@ Listy, tuple i funkcje
 Pobierz *n* liczb
 *******************
 
-    **ZADANIE**: Pobierz od użytkownika *n* liczb i zapisz je w liście. Wydrukuj: elementy listy i ich indeksy, elementy w odwrotnej kolejności, posortowane elementy. Usuń z listy pierwsze wystąpienie elementu podanego przez użytkownika. Usuń z listy element o podanym indeksie. Podaj ilość wystąpień oraz indeks pierwszego wystąpienia podanego elementu. Wybierz z listy elementy od indeksu *i* do *j*.
-    
-    **POJĘCIA**: *tupla, lista, metoda.*
+    **ZADANIE**: Pobierz od użytkownika *n* liczb i zapisz je w liście.
+    Wydrukuj: elementy listy i ich indeksy, elementy w odwrotnej kolejności,
+    posortowane elementy. Usuń z listy pierwsze wystąpienie elementu podanego
+    przez użytkownika. Usuń z listy element o podanym indeksie.
+    Podaj ilość wystąpień oraz indeks pierwszego wystąpienia podanego elementu.
+    Wybierz z listy elementy od indeksu *i* do *j*.
 
-Wszystkie poniższe przykłady proponujemy wykonać w konsoli Pythona. Nie umieszczaj w konsoli komentarzy, możesz też pominąć lub skrócić komunikaty funkcji ``print``. Można również wpisać poniższy kod do pliku i go uruchomić.
+    **POJĘCIA**: *tupla, lista, metoda*.
+
+Wszystkie poniższe przykłady warto wykonać w konsoli Pythona.
+Treść komunikatów w funkcjach ``print`` można skrócić.
+Można również wpisywać kolejne polecenia do pliku i sukcesywanie go uruchomiać.
 
 .. raw:: html
 
@@ -24,15 +31,18 @@ Wszystkie poniższe przykłady proponujemy wykonać w konsoli Pythona. Nie umies
 Jak to działa
 ===================
 
-Funkcja ``input()`` pobiera dane wprowadzone przez użytkownika
-(tak jak ``raw_input()``), ale próbuje zinterpretować je jako kod Pythona.
+Funkcja ``input()`` pobiera dane wprowadzone przez użytkownika podobnie jak
+jak ``raw_input()``, ale próbuje zinterpretować je jako kod Pythona.
+
 Podane na wejściu liczby oddzielone przecinkami zostają więc spakowane jako
-**tupla** (krotka). Jest to uporządkowana sekwencja poindeksowanych danych,
-przypominająca tablicę, której wartości nie można zmieniać. Gdybyśmy chcieli
-wpisać do tupli wartości od razu w kodzie, napisalibyśmy: ``tupla = (4, 3, 5)``.
-Listy to również uporządkowane sekwencje indeksowanych danych, zazwyczaj tego samego typu, które jednak możemy zmieniać.
+:term:`tupla` (krotka). Jest to uporządkowana sekwencja poindeksowanych danych,
+przypominająca tablicę, której wartości nie można zmieniać. Zainicjowanie
+tupli wartościami od razu w kodzie jest proste: ``tupla = (4, 3, 5)``.
+
+Lista to również uporządkowane sekwencje indeksowanych danych, zazwyczaj tego samego typu, które jednak możemy zmieniać.
 
 .. note::
+
     W definicji tupli nawiasy są opcjonalne, można więc pisać tak: ``tupla = 3, 2, 5, 8.``
 
 Dostęp do elementów tupli lub listy uzyskujemy podając nazwę i indeks, np. ``lista[0]``.
@@ -64,7 +74,7 @@ Ciąg Fibonacciego
     **ZADANIE**: Wypisz ciąg Fibonacciego aż do *n*-ego wyrazu podanego przez użytkownika.
     Ciąg Fibonacciego to ciąg liczb naturalnych, którego każdy wyraz poza dwoma
     pierwszymi jest sumą dwóch wyrazów poprzednich. Początkowe wyrazy tego ciągu to: 0 1 1 2 3 5 8 13 21.
-    
+
     **POJĘCIA**: *funkcja, zwracanie wartości, tupla, rozpakowanie tupli, przypisanie wielokrotne*.
 
 .. raw:: html
@@ -94,4 +104,3 @@ Zadania dodatkowe
 ===================
 
     Zmień funkcję ``fibonnacci()`` tak, aby zwracała wartość *n*-tego wyrazu. Wydrukuj tylko tę wartość w programie.
-

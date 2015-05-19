@@ -9,7 +9,7 @@ Trzy liczby
 **************
 
     **ZADANIE**: Pobierz od użytkownika trzy liczby, sprawdź, która jest najmniejsza i wydrukuj ją na ekranie.
-    
+
     **POJĘCIA**: *pętla, obiekt, metoda, instrukcja warunkowa zagnieżdżona, formatowanie kodu*.
 
 .. raw:: html
@@ -29,6 +29,7 @@ i innych instrukcji (np. ``if``) stosujemy wcięcia. Formatując kod, możemy u�
 jak i spacji, ważne aby w obrębie pliku było to konsekwentne.
 
 .. note::
+
     Dobry styl programowania sugeruje używanie do wcięć 4 spacji.
 
 W Pythonie wszystko jest obiektem, czyli typy wbudowane, np. napisy, posiadają metody (funkcje)
@@ -49,7 +50,7 @@ Wydrukuj alfabet
 
     **ZADANIE**: Wydrukuj alfabet w porządku naturalnym, a następnie odwróconym w formacie:
     "mała => duża litera". W jednym wierszu trzeba wydrukować po pięć takich grup.
-    
+
     **POJĘCIA**: *iteracja, pętla, kod ASCII, lista, inkrementacja, operatory arytmetyczne, logiczne, przypisania i zawierania*.
 
 .. raw:: html
@@ -62,7 +63,7 @@ Wydrukuj alfabet
 Jak to działa
 ==============
 
-Pętla for wykorzystuje zmienną i, która przybiera wartości z listy liczb całkowitych zwróconej przez funkcję ``range()``. Parametry tej funkcji określają wartość początkową i końcową listy, przy czym wartość końcowa nie wchodzi do listy. Kod ``range(122,96,-1)`` generuje listę wartości malejących od 122 do 97(!) z krokiem -1.
+Pętla for wykorzystuje zmienną ``i``, która przybiera wartości z listy liczb całkowitych zwróconej przez funkcję ``range()``. Parametry tej funkcji określają wartość początkową i końcową listy, przy czym wartość końcowa nie wchodzi do listy. Kod ``range(122,96,-1)`` generuje listę wartości malejących od 122 do 97(!) z krokiem -1.
 
 Funkcja ``chr()`` zwraca znak, którego kod ASCII, czyli liczbę całkowitą, przyjmuje jako argument. Metoda ``lower()`` typu string (napisu) zwraca małą literę, ``upper()`` – dużą. Wyrażenie przypisywane zmiennej *tmp* pokazuje, jak można łączyć napisy (konkatenacja).
 

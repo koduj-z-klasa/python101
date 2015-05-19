@@ -8,9 +8,13 @@ Zbiory i słowniki
 Oceny z przedmiotów
 ***********************
 
-    **ZADANIE**: Napisz program, który umożliwi wprowadzanie ocen z podanego przedmiotu ścisłego (np. fizyki), następnie policzy i wyświetla średnią, medianę i odchylenie standardowe wprowadzonych ocen. Funkcje pomocnicze i statystyczne umieść w osobnym module.
-    
-    **POJĘCIA**: *import, moduł, zbiór, przechwytywanie wyjątków, formatowanie napisów i danych na wyjściu, argumenty funkcji, zwracanie wartości*.
+    **ZADANIE**: Napisz program, który umożliwi wprowadzanie ocen z podanego
+    przedmiotu ścisłego (np. fizyki), następnie policzy i wyświetla średnią,
+    medianę i odchylenie standardowe wprowadzonych ocen.
+    Funkcje pomocnicze i statystyczne umieść w osobnym module.
+
+    **POJĘCIA**: *import, moduł, zbiór, przechwytywanie wyjątków,
+    formatowanie napisów i danych na wyjściu, argumenty funkcji, zwracanie wartości*.
 
 .. raw:: html
 
@@ -22,7 +26,12 @@ Oceny z przedmiotów
 Jak to działa
 ===================
 
-Klauza ``from moduł import funkcja`` umożliwia wykorzystanie w programie funkcji zdefiniowanych w innych modułach i zapisanych w osobnych plikach. Dzięki temu utrzymujemy przejrzystość programu głównego, a jednocześnie możemy funkcje z modułów wykorzystywać, importując je w innych programach. Nazwa modułu to nazwa pliku z kodem pozbawiona jednak rozszerzenia *.py*. Moduł musi być dostępny w ścieżce przeszukiwania, aby można go było poprawnie dołączyć.
+Klauza ``from moduł import funkcja`` umożliwia wykorzystanie w programie
+funkcji zdefiniowanych w innych modułach i zapisanych w osobnych plikach.
+Dzięki temu utrzymujemy przejrzystość programu głównego, a jednocześnie
+możemy funkcje z modułów wykorzystywać, importując je w innych programach.
+Nazwa modułu to nazwa pliku z kodem pozbawiona jednak rozszerzenia *.py*.
+Moduł musi być dostępny w ścieżce przeszukiwania, aby można go było poprawnie dołączyć.
 
 .. note::
     W przypadku prostych programów zapisuj moduły w tym samym katalogu co program główny.
@@ -80,7 +89,7 @@ Słownik słówek
 ***********************
 
     **ZADANIE**: Przygotuj słownik zawierający obce wyrazy oraz ich możliwe znaczenia. Pobierz od użytkownika dane w formacie: *wyraz obcy: znaczenie1, znaczenie2, ...* itd. Pobieranie danych kończy wpisanie słowa "koniec". Podane dane zapisz w pliku. Użytkownik powinien mieć możliwość dodawania nowych i zmieniania zapisanych danych.
-    
+
     **POJĘCIA**: *słownik, odczyt i zapis plików, formatowanie napisów.*
 
 .. raw:: html
@@ -93,7 +102,7 @@ Słownik słówek
 Jak to działa
 ===================
 
-Słownik to struktura nieposortowanych danych w formacie klucz:wartość. Kluczami są najczęściej napisy, które wskazują na wartości dowolnego typu, np. inne napisy, liczby, listy, tuple itd. Notacja ``oceny = { 'polski':'1,4,2', 'fizyka':'4,3,1' }`` utworzy nam słownik ocen z poszczególnych przedmiotów.  Aby zapisać coś w słowniku stosujemy notację ``oceny['biologia'] = 4,2,5``. Aby odczytać wartość używamy po prostu: ``oceny['polski']``.
+Słownik to struktura nieuporządkowanych danych w formacie klucz:wartość. Kluczami są najczęściej napisy, które wskazują na wartości dowolnego typu, np. inne napisy, liczby, listy, tuple itd. Notacja ``oceny = { 'polski':'1,4,2', 'fizyka':'4,3,1' }`` utworzy nam słownik ocen z poszczególnych przedmiotów.  Aby zapisać coś w słowniku stosujemy notację ``oceny['biologia'] = 4,2,5``. Aby odczytać wartość używamy po prostu: ``oceny['polski']``.
 
 W programie wykorzystujemy słownik, którego kluczami są obce wyrazy, natomiast wartościami są listy możliwych znaczeń. Przykładowy element naszego słownika wygląda więc tak: ``{ 'go':'iść,pojechać' }``. Natomiast ten sam element zapisany w pliku będzie miał format: *wyraz_obcy:znaczenie1,znaczeni2,...*. Dlatego funkcja ``otworz()`` przekształca format pliku na słownik, a funkcja ``zapisz()`` słownik na format pliku.
 
@@ -111,4 +120,3 @@ Zadania dodatkowe
     Kod drukujący słownik zamień w funkcję. Wykorzystaj ją do wydrukowania słownika odczytanego z dysku i słownika uzupełnionego przez użytkownika.
     Spróbuj zmienić program tak, aby umożliwiał usuwanie wpisów.
     Dodaj do programu możliwość uczenia się zapisanych w słowniku słówek. Niech program wyświetla kolejne słowa obce i pobiera od użytkownika możliwe znaczenia. Następnie powinien wyświetlać, które z nich są poprawne.
-

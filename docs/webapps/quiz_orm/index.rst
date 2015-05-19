@@ -293,7 +293,7 @@ Moduł ``dane.py``:
 .. literalinclude:: quiz2_pw/dane.py
     :linenos:
     :lineno-start: 1
-    :lines: 1-13
+    :lines: 1-21
 
 Plik z danymi:
 
@@ -604,4 +604,3 @@ Kompletne wersje kodu znajdziesz w powyższym archiwum lub w katalogu
     Jeżeli po uruchomieniu aplikacji do bazy mają być wprowadzone początkowe
     dane, pamiętaj, aby odkomentować odpowiednie linie w pliku
     ``main.py`` z katalogu ``quiz_pw``.
-
