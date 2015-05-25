@@ -99,8 +99,8 @@ W systemach Linux alternatywnie można użyć poleceń w terminalu:
 
 .. code-block:: bash
 
-    wget http://download.jetbrains.com/python/pycharm-professional-4.0.6.tar.gz -O - | tar -xz
-    ./pycharm-4.0.6/bin/pycharm.sh
+    wget http://download.jetbrains.com/python/pycharm-professional-4.5.tar.gz -O - | tar -xz
+    ./pycharm-4.5/bin/pycharm.sh
 
 Jak widać, program zostanie zainstalowany w katalogu domowym użytkownika,
 a uruchamiamy go drugim z podanych poleceń.
