@@ -47,13 +47,13 @@ def index():
             zrobione = '0'
             data_pub = datetime.now()
             db = get_db()
-            db.execute('insert into entries (title, is_done, created_at) values (?, ?, ?);',
-                        [new_entry, is_done, created_at])
+            db.execute('insert into zadania (zadanie, zrobione, data_pub) values (?, ?, ?);',
+                        [zadanie, zrobione, data_pub])
             db.commit()
             flash('Dodano nowe zadanie.')
             return redirect(url_for('index'))
 
-        error = u'Nie możesz dodać pustego zadania!' # komunikat o bledzie
+        error = u'Nie możesz dodać pustego zadania!' # komunikat o błędzie
 
     db = get_db()
     kursor = db.execute('select * from zadania order by data_pub desc;')

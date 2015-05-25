@@ -44,7 +44,7 @@ wygodniej logicznie roddzielić poszczególne części aplikacji i umieścić
 je w osobnych plikach, których nazwy określają ich przeznaczenie.
 Podejście takie usprawnia rozwijanie aplikacji, ale również ułatwia
 poznawanie bardziej rozbudowanych systemów, takich jak Django, przedstawione
-w scenariuszu "Chatter".
+w scenariuszu "Czat".
 
 Tak więc kod rozmieścimy następująco:
 
