@@ -33,13 +33,13 @@ Jak to działa
 
 Funkcja ``input()`` pobiera dane wprowadzone przez użytkownika podobnie jak
 jak ``raw_input()``, ale próbuje zinterpretować je jako kod Pythona.
-
-Podane na wejściu liczby oddzielone przecinkami zostają więc spakowane jako
+Podane na wejściu liczby oddzielone przecinkami zostają spakowane jako
 :term:`tupla` (krotka). Jest to uporządkowana sekwencja poindeksowanych danych,
 przypominająca tablicę, której wartości nie można zmieniać. Zainicjowanie
 tupli wartościami od razu w kodzie jest proste: ``tupla = (4, 3, 5)``.
 
-Lista to również uporządkowane sekwencje indeksowanych danych, zazwyczaj tego samego typu, które jednak możemy zmieniać.
+Lista to również uporządkowane sekwencje indeksowanych danych, zazwyczaj
+tego samego typu, które jednak możemy zmieniać.
 
 .. note::
 
@@ -47,18 +47,25 @@ Lista to również uporządkowane sekwencje indeksowanych danych, zazwyczaj tego
 
 Dostęp do elementów tupli lub listy uzyskujemy podając nazwę i indeks, np. ``lista[0]``.
 Elementy indeksowane są od 0 (zera!). Funkcja ``len()`` zwraca ilość elementów w tupli/liście.
-Funkcja ``enumerate()`` zwraca obiekt zawierający indeksy i elementy sekwencji (np. tupli lub listy) podanej jako atrybut.
-Funkcja ``reversed()`` zwraca odwróconą sekwencję.
+Funkcja ``enumerate()`` zwraca obiekt zawierający indeksy i elementy sekwencji
+(np. tupli lub listy) podanej jako atrybut. Funkcja ``reversed()`` zwraca
+odwróconą sekwencję.
 
-Lista ma wiele użytecznych metod: ``.append(x)`` – dodaje x do listy; ``.remove(x)`` – usuwa pierwszy x z listy;
-``.insert(i, x)`` – wstawia x przed indeksem i; ``.count(x)`` – zwraca ilość wystąpień x;
-``.index(x)`` – zwraca indeks pierwszego wystąpienia x; ``.pop()``
-– usuwa i zwraca ostatni element listy. Funkcja ``reversed(lista)`` zwraca kopię listy w odwróconym porządku,
+Lista ma wiele użytecznych metod: ``.append(x)`` – dodaje x do listy;
+``.remove(x)`` – usuwa pierwszy x z listy;
+``.insert(i, x)`` – wstawia x przed indeksem i;
+``.count(x)`` – zwraca ilość wystąpień x;
+``.index(x)`` – zwraca indeks pierwszego wystąpienia x;
+``.pop()`` – usuwa i zwraca ostatni element listy.
+
+Funkcja ``reversed(lista)`` zwraca kopię listy w odwróconym porządku,
 natomiast ``sorted(lista)`` zwraca kopię listy posortowanej rosnąco.
 Jeżeli chcemy trwale odwrócić lub posortować elementy listy stosujemy metody:
-``.reverse()`` i ``.sort()``. Z każdej sekwencji (napisu, tupli czy listy) możemy
-wydobywać fragmenty dzięki notacji *slice* (wycinek). W najprostszym przypadku polega
-ona na podaniu początkowego i końcowego (wyłącznie) indeksu elementów, które chcemy
+``.reverse()`` i ``.sort()``.
+
+Z każdej sekwencji (napisu, tupli czy listy) możemy wydobywać fragmenty
+dzięki notacji *slice* (wycinek). W najprostszym przypadku polega ona
+na podaniu początkowego i końcowego (wyłącznie) indeksu elementów, które chcemy
 wydobyć, np. ``lista[1:4]``.
 
 Zadania dodatkowe
@@ -71,7 +78,7 @@ Zadania dodatkowe
 Ciąg Fibonacciego
 *********************
 
-    **ZADANIE**: Wypisz ciąg Fibonacciego aż do *n*-ego wyrazu podanego przez użytkownika.
+    **ZADANIE**: Wypisz ciąg Fibonacciego aż do *n*-tego wyrazu podanego przez użytkownika.
     Ciąg Fibonacciego to ciąg liczb naturalnych, którego każdy wyraz poza dwoma
     pierwszymi jest sumą dwóch wyrazów poprzednich. Początkowe wyrazy tego ciągu to: 0 1 1 2 3 5 8 13 21.
 
@@ -88,7 +95,7 @@ Jak to działa
 ===================
 
 Definicja funkcji w Pythonie polega na użyciu słowa kluczowego ``def``,
-podaniu nazwy funkcji i w nawiasach okrągłych ewentualnej listy argumentów.
+podaniu nazwy funkcji i w nawiasach okrągłych ewentualnej listy parametrów.
 Definicję kończymy znakiem dwukropka, po którym wpisujemy w następnych liniach,
 pamiętając o wcięciach, ciało funkcji. Funkcja może, ale nie musi zwracać wartości.
 Jeżeli chcemy zwrócić jakąś wartość używamy polecenia return wartość.

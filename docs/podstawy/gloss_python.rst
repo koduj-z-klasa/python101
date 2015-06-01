@@ -1,3 +1,5 @@
+Słownik Pythona
+################
 
 .. glossary::
 
@@ -21,7 +23,7 @@
         jest stosowanie takich samych wcięć w obrębie pliku, np. 4 spacji
         i ich wielokrotności. Wcięcia odpowiadają nawiasom w innych językach,
         służą grupowaniu instrukcji i wydzielaniu bloków kodu.
-        Błędy wcięć zgłaszane są jako ``IndentationError``.
+        Błędy wcięć zgłaszane są jako wyjątki ``IndentationError``.
 
     zmienna
         nazwa określająca jakąś zapamiętywaną i wykorzystywaną w programie wartość
@@ -30,10 +32,21 @@
         danych, np.: ``imiona = ('Ala', 'Ola', 'Ela')``. W nazwach zmiennych
         nie używamy znaków narodowych, nie rozpoczynamy ich od cyfr.
 
+    typy danych
+        Wszystkie dane w Pythonie są obiektami i jako takie przynależą do
+        określonego typu, który determinuje możliwe na nich operacje. W pewnym
+        uproszczeniu podstawowe typy danych to:
+        *string* – napis (łańcuch znaków), podtyp sekwencji;
+        *integer* – dodatnie i ujemne liczby całkowite;
+        *float* – liczba zmiennoprzecinkowa (separatorem jest kropka);
+        *boolean* – wartość logiczna True (prawda, 1) lub False (fałsz, 0), podtyp
+        typu całkowitego.
+
     lista
         jedna z podstawowych struktur danych, indeksowana sekwencja takich samych
         lub różnych elementów, które można zmieniać. Przypomina tabele z innych
         języków programowania. Np. ``imiona = ['Ala', 'Ola', 'Ela']``.
+        Deklaracja pustej listy: ``lista = []``.
 
     tupla
         podbnie jak lista, zawiera indeksowaną sekwencję takich samych lub
@@ -46,13 +59,16 @@
         nieuporządkowany, nieindeksowany zestaw elementów tego samego lub
         różnych typów, nie może zawierać duplikatów, obsługuje charakterystyczne
         dla zbiorów operacje: sumę, iloczyn oraz różnicę.
-        Np. ``imiona = set(['Ala', 'Ola', 'Ela'])``.
+        Np. ``imiona = set(['Ala', 'Ola', 'Ela'])``. Deklaracja pustego zbioru:
+        ``zbior = set()``.
 
     słownik
-        zestaw par elementów w postaci klucz:wartość. Zarówno klucze,
-        jak i wartości mogą być tego samego lub różnych typów. Największą
-        zaletą słownika jest to, że klucze mogą być ciągami znaków.
-        Np. ``osoby = {'Ala': 'Lipiec' , 'Ola': 'Maj', 'Ela': 'Styczeń'}``.
+        typ mapowania, zestaw par elementów w postaci "klucz: wartość". Kluczami mogą być
+        liczby, ciągi znaków czy tuple. Wartości mogą być tego samego lub
+        różnych typów. Np. ``osoby = {'Ala': 'Lipiec' , 'Ola': 'Maj', 'Ela': 'Styczeń'}``.
+        Dane ze słownika łatwo wydobyć: ``slownik['klucz']``,
+        lub zmienić: ``slownik['klucz'] = wartosc``.
+        Deklaracja pustego słownika: ``slownik = dict()``.
 
     instrukcja warunkowa
         podstawowa konstrukcja w programowaniu, wykorzystuje wyrażenie logiczne
@@ -67,12 +83,38 @@
     else:
         print "Zapraszamy"
 
+.. glossary::
+
     pętla
         podstawowa konstrukcja w programowaniu, umożliwia powtarzanie fragmentów
         kodu zadaną ilość razy (pętla ``for``) lub dopóki podane wyrażenie
-        logiczne jest prawdziwe (pętla ``while``).
+        logiczne jest prawdziwe (pętla ``while``). Np.:
 
 .. code-block:: python
 
     for i in range(11):
         print i
+
+.. glossary::
+
+    wyrażenie listowe
+        [todo]
+
+    wyjątki
+        to komunikaty zgłaszane przez interpreter Pythona, pozwalające ustalić
+        przyczyny błędnego działania kodu.
+
+    funkcja
+        blok często wykonywanego kodu wydzielony słowem kluczowym ``def``,
+        opatrzony unikalną w danym zasięgu nazwą; może przyjmować dane
+        i zwracać wartości za pomocą słowa kluczowego ``return``.
+
+    moduł
+        plik zawierający wiele zazwyczaj często używanych w wielu programach
+        funkcji lub klas; zanim skorzystamy z zawartych w nim fragmentów kodu,
+        trzeba je lub cały moduł zaimportować za pomocą słowa kluczowego
+        ``import``.
+
+    serializacja
+        proces przekształcania obiektów w strumień znaków lub bajtów,
+        który można zapisać w pliku (bazie) lub przekazać do innego programu.

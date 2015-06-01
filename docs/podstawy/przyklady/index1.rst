@@ -10,7 +10,7 @@ Trzy liczby
 
     **ZADANIE**: Pobierz od użytkownika trzy liczby, sprawdź, która jest najmniejsza i wydrukuj ją na ekranie.
 
-    **POJĘCIA**: *pętla, obiekt, metoda, instrukcja warunkowa zagnieżdżona, formatowanie kodu*.
+    **POJĘCIA**: *pętla, obiekt, metoda, instrukcja warunkowa zagnieżdżona*.
 
 .. raw:: html
 
@@ -24,18 +24,15 @@ Jak to działa
 
 Pętla ``while`` umożliwia powtarzanie określonych operacji, czyli pozwala użytkownikowi wprowadzać
 kolejne serie liczb. Definiując pętle określamy warunek powtarzania kodu. Dopóki jest prawdziwy,
-czyli dopóki zmienna *op* ma wartość "t" pętla działa. Do wydzielania kodu przynależnego do pętli
-i innych instrukcji (np. ``if``) stosujemy wcięcia. Formatując kod, możemy używać zarówno tabulatorów,
-jak i spacji, ważne aby w obrębie pliku było to konsekwentne.
+czyli dopóki zmienna *op* ma wartość "t" pętla działa.
 
-.. note::
+W Pythonie wszystko jest obiektem przynależącym do określonego typu, który
+determinuje, jakie operacje można wykonać na wartości danego obiektu.
+Np. napisy, posiadają metody (funkcje) wykonujące określone operacje na nich.
+W podanym kodzie funkcja ``raw_input()`` zwraca ciąg znaków (typ string)
+wprowadzony przez użytkownika, z którego wydobywamy poszczególne słowa
+za pomocą metody ``split()``.
 
-    Dobry styl programowania sugeruje używanie do wcięć 4 spacji.
-
-W Pythonie wszystko jest obiektem, czyli typy wbudowane, np. napisy, posiadają metody (funkcje)
-wykonujące określone operacje na wartościach. W podanym kodzie funkcja ``raw_input()`` zwraca
-ciąg znaków wprowadzony przez użytkownika, z którego wydobywamy poszczególne słowa za pomocą
-metody ``split()`` typu string.
 Instrukcje warunkowe (``if``), jak i pętle, można zagnieżdżać stosując wcięcia.
 W jednej złożonej instrukcji warunkowej można sprawdzać wiele warunków (``elif:``).
 
@@ -63,11 +60,23 @@ Wydrukuj alfabet
 Jak to działa
 ==============
 
-Pętla for wykorzystuje zmienną ``i``, która przybiera wartości z listy liczb całkowitych zwróconej przez funkcję ``range()``. Parametry tej funkcji określają wartość początkową i końcową listy, przy czym wartość końcowa nie wchodzi do listy. Kod ``range(122,96,-1)`` generuje listę wartości malejących od 122 do 97(!) z krokiem -1.
+Pętla ``for`` wykorzystuje zmienną iteracyjną ``i``, która przybiera wartości
+z listy liczb całkowitych zwróconej przez funkcję ``range()``. Parametry
+tej funkcji określają wartość początkową i końcową listy, przy czym wartość
+końcowa nie wchodzi do listy. Kod ``range(122,96,-1)`` generuje listę wartości
+malejących od 122 do 97(!) z krokiem -1.
 
-Funkcja ``chr()`` zwraca znak, którego kod ASCII, czyli liczbę całkowitą, przyjmuje jako argument. Metoda ``lower()`` typu string (napisu) zwraca małą literę, ``upper()`` – dużą. Wyrażenie przypisywane zmiennej *tmp* pokazuje, jak można łączyć napisy (konkatenacja).
+Funkcja ``chr()`` zwraca znak, którego kod ASCII, czyli liczbę całkowitą,
+przyjmuje jako argument. Metoda ``lower()`` typu string (napisu) zwraca
+małą literę, ``upper()`` – dużą. Wyrażenie przypisywane zmiennej ``tmp``
+pokazuje, jak można łączyć napisy (konkatenacja).
 
-Zmienna pomocnicza ``x`` jest zwiększana (inkrementacja) w pętlach o 1. Wyrażenie ``x += 1`` odpowiada wyrażeniu ``x = x + 1``. Pierwszy warunek wykorzystuje operator logiczny ``and`` (koniunkcję) i operator modulo ``%`` (zwraca resztę z dzielenia), aby do ciągu znaków w zmiennej ``tmp`` dodać znak końca linii (``\n``) za pomocą operatora ``+=``. W drugim warunku używamy operatora porównania ``==``.
+Zmienna pomocnicza ``x`` jest zwiększana (inkrementacja) w pętlach o 1.
+Wyrażenie ``x += 1`` odpowiada wyrażeniu ``x = x + 1``. Pierwszy warunek
+wykorzystuje operator logiczny ``and`` (koniunkcję) i operator modulo ``%``
+(zwraca resztę z dzielenia), aby do ciągu znaków w zmiennej ``tmp`` dodać
+znak końca linii (``\n``) za pomocą operatora ``+=``.
+W drugim warunku używamy operatora porównania ``==``.
 
 Poniżej podano wybrane operatory dostępne w Pythonie.
 
@@ -81,6 +90,8 @@ Poniżej podano wybrane operatory dostępne w Pythonie.
 Zadania dodatkowe
 ==================
 
-    Uprość warunek w pierwszej pętli ``for`` drukującej alfabet w porządku naturalnym tak, aby nie używać operatora modulo.
-    Wydrukuj co n-tą grupę liter alfabetu, przy czym wartość *n* podaje użytkownik. Wskazówka: użyj opcjonalnego, trzeciego argumentu funkcji ``range()``.
+    Uprość warunek w pierwszej pętli ``for`` drukującej alfabet w porządku
+    naturalnym tak, aby nie używać operatora modulo. Wydrukuj co n-tą grupę
+    liter alfabetu, przy czym wartość *n* podaje użytkownik.
+    Wskazówka: użyj opcjonalnego, trzeciego argumentu funkcji ``range()``.
     Sprawdź działanie różnych operatorów Pythona w konsoli.

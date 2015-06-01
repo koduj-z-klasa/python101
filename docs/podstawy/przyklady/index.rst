@@ -8,7 +8,6 @@ Python w przykładach
 Poznawanie Pythona zrealizujemy poprzez rozwiązywanie prostych zadań,
 które pozwolą zaprezentować elastyczność i łatwość tego języka.
 Nazwy kolejnych skryptów umieszczone są jako komentarz zawsze w czwartej linii kodu.
-Pliki zawierające skrypty Pythona mają zazwyczaj rozszerzenie **py**.
 
 Bardzo przydatnym narzędziem podczas kodowania w Pythonie, o czym wspomniano we wstępie,
 jest konsola interpretera, którą uruchomimy wydając w terminalu polecenie ``python`` lub ``ipython``.
@@ -43,9 +42,7 @@ czyli działań arytmetycznych lub logicznych.
     Niekiedy mówi się, że w Pythonie zmiennych nie ma, są natomiast wartości określonego typu.
 
 Funkcja ``raw_input()`` zwraca pobrane z klawiatury znaki jako napis, czyli typ **string**.
-
 Funkcja ``int()`` umożliwia konwersję napisu na liczbę całkowitą, czyli typ **integer**.
-
 Funkcja ``print`` drukuje podane argumenty oddzielone przecinkami. Komunikaty tekstowe ujmujemy
 w cudzysłowy podwójne lub pojedyncze. Przecinek oddziela kolejne argumenty spacjami.
 
@@ -61,4 +58,3 @@ Zadania dodatkowe
 ====================
 
 - Zmień program tak, aby zmienna *aktRok* (aktualny rok) była podawana przez użytkownika na początku programu.
-
