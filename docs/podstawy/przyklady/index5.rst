@@ -13,7 +13,7 @@ uruchamiamy poleceniem w terminalu:
 .. code-block:: bash
 
     ~$ python
-    
+
 Operatory **\*** i **\*\***
 ********************************
 
@@ -26,8 +26,8 @@ przekazać do funkcji:
 
 .. code-block:: python
     :linenos:
-    
-    #wygeneruj liczby parzyste od 2 do 10
+
+    # wygeneruj liczby parzyste od 2 do 10
     lista = [2,11,2]
     range(*lista)
 
@@ -40,10 +40,10 @@ nazwanych argumentów (ang. *keyword argument*):
 
 .. code-block:: python
     :linenos:
-    
+
     def kalendarz(data, wydarzenie):
         print "Data:", data,"\nWydarzenie:", wydarzenie
-    
+
     slownik = {"data" : "10.02.2015", "wydarzenie" : "szkolenie"}
     kalendarz(**slownik)
 
@@ -51,9 +51,9 @@ Pętle
 ************************
 
 Pętla to podstawowa konstrukcja wykorzystywana w językach programowania.
-Pozwala wielokrotnie powtarzać wykonywanie jakiegoś kodu. Aby była skończona,
-powinna zawierać jakiś warunek zakończenia. W wiekszości języków programowania
-słowem kluczowym pętli jest ``for``:
+Python oferuje różne sposoby powtarzania wykonywania określonych operacji,
+niekiedy wygodniejsze lub zwięźlejsze niż pętle. Są to przede wszystkim
+generatory wyrażeń i wyrażenia listowe, a także funkcje ``map()`` i ``filter()``.
 
 .. raw:: html
 
@@ -61,14 +61,10 @@ słowem kluczowym pętli jest ``for``:
 
 .. code-block:: python
     :linenos:
-    
+
     kwadraty = []
     for x in range(10):
         kwadraty.append(x**2)
-
-Python oferuje różne sposoby powtarzania wykonywania określonych operacji,
-niekiedy wygodniejsze lub zwięźlejsze niż pętle. Są to przede wszystkim
-generatory wyrażeń i wyrażenia listowe, a także funkcje ``map()`` i ``filter()``.
 
 Iteratory
 ***************
@@ -164,7 +160,7 @@ zwracają listy:
 
     # wszystkie poniższe wyrażenia listowe możemy przypisać do zmiennych,
     # aby móc później korzystać z utworzonych list
-    
+
     # lista kwadratów liczb od 0 do 9
     [x**2 for x in range(10)]
 
@@ -174,7 +170,7 @@ zwracają listy:
 
     # lista krotek (x, y), przy czym x != y
     [(x, y) for x in [1,2,3] for y in [3,1,4] if x != y]
-    
+
     # utworzenie listy 3-literowych imion i ich pierwszych liter
     wyrazy = ['anna', 'ala', 'ela', 'wiola', 'ola']
     [ [imie, imie[0]] for imie in wyrazy if len(imie) == 3 ]
@@ -182,13 +178,13 @@ zwracają listy:
     # zagnieżdzone wyrażenie listowe tworzące listę współrzędnych
     # opisujących tabelę
     [ (x,y) for x in range(5) for y in range(3) ]
-    
+
     # zagnieżdzone wyrażenie listowe wykorzystujące filtrowanie danych
     # lista kwadratów z zakresu {5;50}
     [ y for y in [ x**2 for x in range(10) ] if y > 5 and y < 50 ]
 
 Wyrażenia listowe w elegancki i wydajny sposób zastępują takie rozwiązania, jak:
-    
+
     * :term:`pętle`
     * :term:`mapowanie funkcji`
     * :term:`wyrażenia lambda`
@@ -209,7 +205,7 @@ podanej jako argument drugi:
 
     def kwadrat(x):
         return x**2
-    
+
     kwadraty = map(kwadrat, range(10))
 
 Wyrażenia lambda
@@ -265,12 +261,12 @@ Najprostszy przykład generatora zwracającego kolejne liczby parzyste:
         for i in range(N):
             if i % 2 == 0
                 yield i
-    
+
     gen = gen_parzyste(10)
     gen.next()
     gen.next()
     ...
-    
+
 Pliki
 **************************
 
@@ -317,7 +313,7 @@ Słownik
     pętle
         podstawowa konstrukcja w programowania strukturalnego pozwalająca
         wielokrotnie wykonywać zawarte w niej instrukcje
-        
+
     iteratory
         (ang. *iterators*) – obiekt reprezentujący sekwencję danych,
         zwracający z niej po jednym elemencie na raz przy użyciu metody
@@ -332,15 +328,15 @@ Słownik
     wyrażenia listowe
         (ang. list comprehensive) – zwięzły w notacji sposób tworzenia list
         według składni: ``[ wyrażenie for wyraz in sekwencja if warunek ]``
-        
+
     mapowanie funkcji
         w kontekście funkcji ``map()`` oznacza zastosowanie danej funkcji
         do wszystkich dostarczonych wartości
-        
+
     wyrażenia lambda
         zwane czasem *funkcjami lambda*, mechanizm pozwalający zwięźle
         zapisywać proste funkcje w postaci pojedynczych wyrażeń
-        
+
     filtrowanie danych
         selekcja danych na podstawie jakichś kryteriów
 

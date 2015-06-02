@@ -42,6 +42,16 @@ Słownik Pythona
         *boolean* – wartość logiczna True (prawda, 1) lub False (fałsz, 0), podtyp
         typu całkowitego.
 
+    operatory
+        **Arytmetyczne**: +, -, \*, /, //, %, \*\* (potęgowanie); znak + znak (konkatenacja napisów); znak * 10 (powielenie znaków);
+        **Przypisania**: =, +=, -=, \*=, /=, %=, \*\*=, //=;
+        **Logiczne**: and, or, not; Fałszem logicznym są: liczby zero (0, 0.0), False, None (null), puste kolekcje ([], (), {}, set()), puste napisy. Wszystko inne jest prawdą logiczną.
+        **Zawierania**: in, not in;
+        **Porównania**: ==, >, <, <>, <=, >= != (jest różne).
+
+        Operator * rozpakowuję listę paramterów przekazaną funkcji.
+        Operator ** rozpakuje słownik.
+
     lista
         jedna z podstawowych struktur danych, indeksowana sekwencja takich samych
         lub różnych elementów, które można zmieniać. Przypomina tabele z innych
@@ -88,7 +98,9 @@ Słownik Pythona
     pętla
         podstawowa konstrukcja w programowaniu, umożliwia powtarzanie fragmentów
         kodu zadaną ilość razy (pętla ``for``) lub dopóki podane wyrażenie
-        logiczne jest prawdziwe (pętla ``while``). Np.:
+        logiczne jest prawdziwe (pętla ``while``). Należy zadbać, aby pętla
+        była skończona za pomocą odpowiedniego warunku lub instrukcji przeywającej
+        powtarzanie. Np.:
 
 .. code-block:: python
 
@@ -97,8 +109,16 @@ Słownik Pythona
 
 .. glossary::
 
+    zmienna iteracyjna
+        zmienna występująca w pętli, której wartość zmienia się, najczęściej
+        jest zwiększana (inkremntacja) o 1, w każdym wykonaniu pętli.
+        Może pełnić rolę "licznika" powtórzeń lub być elementem wyrażenia
+        logicznego wyznaczającego koniec działania pętli.
+
     wyrażenie listowe
-        [todo]
+        (ang. *list comprehensions*) – efektywny sposób tworzenia list na podstawie
+        elementów dowolnych sekwencji, na których wykonywane są te same operacje
+        i które opcjonalnie spełniają określone warunki.
 
     wyjątki
         to komunikaty zgłaszane przez interpreter Pythona, pozwalające ustalić

@@ -22,16 +22,14 @@ Trzy liczby
 Jak to działa
 ==============
 
-Pętla ``while`` umożliwia powtarzanie określonych operacji, czyli pozwala użytkownikowi wprowadzać
-kolejne serie liczb. Definiując pętle określamy warunek powtarzania kodu. Dopóki jest prawdziwy,
+Pętla ``while`` umożliwia powtarzanie określonych operacji, np. pozwala użytkownikowi wprowadzać
+kolejne serie liczb. Definiując pętlę określamy warunek powtarzania kodu. Dopóki jest prawdziwy,
 czyli dopóki zmienna *op* ma wartość "t" pętla działa.
 
-W Pythonie wszystko jest obiektem przynależącym do określonego typu, który
-determinuje, jakie operacje można wykonać na wartości danego obiektu.
-Np. napisy, posiadają metody (funkcje) wykonujące określone operacje na nich.
-W podanym kodzie funkcja ``raw_input()`` zwraca ciąg znaków (typ string)
-wprowadzony przez użytkownika, z którego wydobywamy poszczególne słowa
-za pomocą metody ``split()``.
+W Pythonie wszystko jest obiektem. Każdy obiekt przynależy do jakiego typu
+i ma jakąś wartość. Typ determinuje, jakie operacje można wykonać na wartości danego obiektu.
+Np. w podanym kodzie zmienna ``op`` jest napisem (typ string), z którego
+możemy wyłuskać poszczególne słowa za pomocą metody ``split()``.
 
 Instrukcje warunkowe (``if``), jak i pętle, można zagnieżdżać stosując wcięcia.
 W jednej złożonej instrukcji warunkowej można sprawdzać wiele warunków (``elif:``).
@@ -78,14 +76,7 @@ wykorzystuje operator logiczny ``and`` (koniunkcję) i operator modulo ``%``
 znak końca linii (``\n``) za pomocą operatora ``+=``.
 W drugim warunku używamy operatora porównania ``==``.
 
-Poniżej podano wybrane operatory dostępne w Pythonie.
-
-* **Arytmetyczne**: +, -, \*, /, //, %, \*\* (potęgowanie); znak + znak (konkatenacja napisów); znak * 10 (powielenie znaków)
-* **Przypisania**: =, +=, -=, \*=, /=, %=, \*\*=, //=
-* **Logiczne**: and, or, not
-    Fałszem logicznym są: liczby zero (0, 0.0), False, None (null), puste kolekcje ([], (), {}, set()), puste napisy. Wszystko inne jest prawdą logiczną.
-* **Zawierania**: in, not in
-* **Porównania**: ==, >, <, <>, <=, >= != (jest różne)
+Zob.: :term:`operatory` dostępne w Pythonie.
 
 Zadania dodatkowe
 ==================

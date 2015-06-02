@@ -39,6 +39,7 @@ za pomocą operatora przypisania "=". Zmiennym często przypisujemy wartości za
 czyli działań arytmetycznych lub logicznych.
 
 .. note::
+
     Niekiedy mówi się, że w Pythonie zmiennych nie ma, są natomiast wartości określonego typu.
 
 Funkcja ``raw_input()`` zwraca pobrane z klawiatury znaki jako napis, czyli typ **string**.
@@ -47,9 +48,9 @@ Funkcja ``print`` drukuje podane argumenty oddzielone przecinkami. Komunikaty te
 w cudzysłowy podwójne lub pojedyncze. Przecinek oddziela kolejne argumenty spacjami.
 
 Instrukcja ``if`` (jeżeli) pozwala na warunkowe wykonanie kodu. Jeżeli podane wyrażenie
-jest prawdziwe (przyjmuje wartość ``True``) wykonywana jest pierwsza instrukcja,
+jest prawdziwe (przyjmuje wartość ``True``), wykonywana jest pierwsza instrukcja,
 w przeciwnym wypadku (``else``), kiedy wyrażenie jest fałszywe (wartość ``False``),
-wykonywana jest instrukcja druga. Warto zauważyć, że polecenia instrukcji warunkowej kończymy dwukropkiem.
+wykonywana jest instrukcja druga. Części instrukcji warunkowej kończymy dwukropkiem.
 
 Charakterystyczną cechą Pythona jest używanie wcięć do zaznaczania bloków kodu.
 Komentarze wprowadzamy po znaku ``#``.
