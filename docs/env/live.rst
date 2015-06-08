@@ -42,11 +42,13 @@ Polecane dystrybucje
   środowiskiem XFCE. Zawiera dużo dodatkowego oprogramowania. Wymaga
   zainstalowania części narzędzi i bibliotek. Obraz iso: `FREE_DESKTOP_CEO v.02 32-bit <http://cyfrowaszkola.waw.pl/_pliki/FREE_Desktop_CEO_02.iso>`_ (2,1GB).
 
-* `LxPupTahr 15.05.01` – system zaprojektowany od podstaw jako *live* z możliwością
-  zapisywania zmian oprogramownaia, konfiguracji i plików użytkownika. Oparty
-  na stabilnym Ubuntu 14.04 LTS. Środowisko graficzne LXDE. Zawiera wiele
-  dodatkowych narzędzi. Wymaga doinstalowania bibliotek (narzędzia i edytory są).
+* `LxPupTahr 15.05.01 <http://lx-pup.weebly.com/>` – system zaprojektowany
+  od podstaw jako *live* z możliwością zapisywania zmian oprogramownaia,
+  konfiguracji i plików użytkownika. Oparty na stabilnym Ubuntu 14.04 LTS.
+  Środowisko graficzne LXDE. Zawiera wiele dodatkowych narzędzi.
+  Wymaga doinstalowania bibliotek (narzędzia i edytory są).
   Spersonalizowany obraz iso: `LxPupTahr 15.05.01 32-bit <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/kzkbox_20150605_pc.iso?download=1>`_ (452MB).
+  Zanim użyjesz nagranego USB przeczytaj materiał `Pierwsze uruchomienie <http://linetc.readthedocs.org/pl/latest/tools/linux.html#pierwsze-uruchomienie>`.
 
 .. _Szkolny Remiks Ucznia: http://sru.e-swoi.pl
 .. _Koduj z Klasą: http://kodujzklasa.pl
