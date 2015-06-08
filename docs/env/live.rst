@@ -1,3 +1,5 @@
+.. _linux-live:
+
 Linux Live
 ###########
 
@@ -16,7 +18,7 @@ doinstalowania bibliotek.
 .. note::
 
     Przygotowanie bootowalnej płyty sprowadza się do pobrania obrazu *iso*
-    (zob. :term:`obraz iso`) wybranej dystrybucji i nagranie jej za pomocą
+    (zob. :term:`obraz iso`) wybranej dystrybucji i nagrania jej za pomocą
     dowolnego programu na nośniku.  Niestety, tak przygotowany system
     nie zapamięta żadnych zmian konfiguracyjnych ani plików użytkownika,
     chyba że zapiszemy je na dysku twardym lub pendrajwie.
@@ -42,13 +44,13 @@ Polecane dystrybucje
   środowiskiem XFCE. Zawiera dużo dodatkowego oprogramowania. Wymaga
   zainstalowania części narzędzi i bibliotek. Obraz iso: `FREE_DESKTOP_CEO v.02 32-bit <http://cyfrowaszkola.waw.pl/_pliki/FREE_Desktop_CEO_02.iso>`_ (2,1GB).
 
-* `LxPupTahr 15.05.01 <http://lx-pup.weebly.com/>` – system zaprojektowany
+* `LxPupTahr 15.05.01 <http://lx-pup.weebly.com/>`_ – system zaprojektowany
   od podstaw jako *live* z możliwością zapisywania zmian oprogramownaia,
   konfiguracji i plików użytkownika. Oparty na stabilnym Ubuntu 14.04 LTS.
   Środowisko graficzne LXDE. Zawiera wiele dodatkowych narzędzi.
   Wymaga doinstalowania bibliotek (narzędzia i edytory są).
   Spersonalizowany obraz iso: `LxPupTahr 15.05.01 32-bit <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/kzkbox_20150605_pc.iso?download=1>`_ (452MB).
-  Zanim użyjesz nagranego USB przeczytaj materiał `Pierwsze uruchomienie <http://linetc.readthedocs.org/pl/latest/tools/linux.html#pierwsze-uruchomienie>`.
+  Zanim użyjesz nagranego USB przeczytaj materiał `Pierwsze uruchomienie <http://linetc.readthedocs.org/pl/latest/tools/linux.html#pierwsze-uruchomienie>`_.
 
 .. _Szkolny Remiks Ucznia: http://sru.e-swoi.pl
 .. _Koduj z Klasą: http://kodujzklasa.pl

@@ -21,32 +21,29 @@ Poniżej znajdziesz pomoc w przygotowaniu i konfiguracji środowiska do pracy z 
 
 
 Przygotowane scenariusze zakładają również, że pracujemy w **katalogu domowym** użytkownika.
-W systemach linuksowych jest to folder o nazwie użytkownika zalogowanego
-znajdujący w katalogu ``/home``, np. ``/home/xubuntu``. W poleceniach wydawanych
-w terminalu ścieżkę do tego katalogu symbolizuje znak ``~``. :term:`Terminal`
-to inaczej konsola tekstowa, której w Linuksie często używa się, aby szybciej
-wykonywać wiele operacji. W polecanym systemie uruchomimy ją za pomocą skrótu :kbd:`Win+T`.
-Niekiedy podawany kod zawierać będzie sekwencje typu ``~/quiz2$``. Oznacza to,
-że dane polecenie należy wykonać w katalogu ``quiz2`` znajdującym się
-w katalogu domowym użytkownika. Znak ``$`` oznacza, że komendy wydajemy
-jako zwykły użytkownik.
+W systemach Linux jest to folder o nazwie zalogowanego użytkownika w katalogu ``/home``,
+np. ``/home/xubuntu``. W poleceniach wydawanych w terminalu (zob. :term:`terminal`)
+ścieżkę do tego katalogu symbolizuje znak ``~``.
+
+Zapis typu ``~/quiz2$`` oznacza, że dane polecenie należy wykonać w podkatalogu ``quiz2``
+katalogu domowego użytkownika. Znak ``$`` oznacza, że komendy wydajemy
+jako zwykły użytkownik, natomiast ``#`` – jako root, czyli administrator.
 
 .. note::
 
-    Omówione założenia nie znaczą, że materiału nie da się przećwiczyć
-    na innych systemach, np. MS Windows. Da się, wystarczy doinstalować
-    interpreter Pythona i potrzebne biblioteki, co zostanie omówione
-    dalej.
+    Materiały da się bez większych problemów realizować również w systemach MS Windows.
 
+Najwygodniej pracować w systemie zainstalowanym na stałe. Polecamy:
 
+* `Xubuntu`_ 14.04 LTS. – stabilna odmiana `Ubuntu`_, zawiera proste i wydajne
+  :term:`środowisko graficzne` `XFCE`_. Zob. `Instalacja Lubuntu <http://ecg.vot.pl/?id=lubuntu>`_
+  (instalacja jest taka sama).
 
-Najwygodniej pracować w systemie zainstalowanym na stałe. Polecamy
-`Xubuntu`_ 14.04 LTS. To :term:`dystrybucja Linuksa` będąca odmianą `Ubuntu`_ opartą o tradycyjne,
-proste i wydajne :term:`środowisko graficzne` `XFCE`_. Instalacja i obsługa tego systemu
-są intuicyjne. Aby zainstalować system, trzeba pobrać :term:`obraz iso`
-z wybranego serwera wskazanego na stronie http://xubuntu.org/getxubuntu,
-a następnie wypalić go na płycie DVD za pomocą dowolnego programu do nagrywania
-płyt w systemie Linux lub MS Windows, można go też wgrać na klucz USB.
+* `Debian Jessie 8` – ostatnia stabilna wersja, również proponujemy wersję ze środowiskiem
+  `XFCE`_. Zob.: `Instalacja Debian Jessie <http://ecg.vot.pl/?id=debian-stable-install>`_.
+
+Instalacja wymaga pobrania odpowiedniego obrazu dystrybucji (zob. :term:`obraz iso`)
+i nagrania go na nośnik startowy, CD/DVD lub klucz USB. Zob.: :ref:`Linux Live <linux-live>`.
 
 .. note::
 
