@@ -14,11 +14,13 @@ Cały kod działa tak samo, jednak niektóre biblioteki trzeba ściągnąć i za
 .. contents:: Spis treści
     :backlinks: none
 
+.. _ins-python:
+
 Instalacja przez PowerShell
 ===========================
 
-Punktem wyjścia jest instalacja interpretera Pythona. Wersję 2.7.8 szybko zainstalujemy
-za pomocą konsoli PowerShell (oznaczonej niebieską ikoną i niebieskim tłem). Wystarczy skopiować
+Interpreter Pythona w wersji 2.7.8 szybko zainstalujemy za pomocą konsoli
+PowerShell (oznaczonej niebieską ikoną i niebieskim tłem). Wystarczy skopiować
 poniższy kod linia po linii, wkleić i wykonać:
 
 .. code-block:: posh
@@ -28,25 +30,11 @@ poniższy kod linia po linii, wkleić i wykonać:
     (new-object System.Net.WebClient).DownloadFile("https://raw.github.com/pypa/pip/master/contrib/get-pip.py", "$pwd\get-pip.py")
     C:\Python27\python.exe get-pip.py virtualenv
 
-Wygodnie jest rozszerzyć zmienną systemową ``PATH`` swojego użytkownika o ścieżkę do ``python.exe``:
-
-.. code-block:: posh
-
-    [Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27\;C:\Python27\Scripts\", "User")
-
-Ewentualnie jeśli posiadamy uprawnienia administracyjne, możemy zmienić zmienną ``PATH`` wszystkim użytkownikom:
-
-.. code-block:: posh
-
-    $CurrentPath=[Environment]::GetEnvironmentVariable("Path", "Machine")
-    [Environment]::SetEnvironmentVariable("Path", "$CurrentPath;C:\Python27\;C:\Python27\Scripts\", "Machine")
-
-
 Instalacja ręczna
 =================
 
-Jeżeli w naszej wersji Windows nie ma PowerShella, ściągamy `interpreter Pythona`_ w wybranej
-wersji (2.7.x lub 3.4.x) i instalujemy ręcznie.
+Jeżeli w naszej wersji Windows nie ma PowerShella, ściągamy `interpreter Pythona`_
+w wersji 2.7.x i instalujemy ręcznie.
 
 .. tip::
 
@@ -65,11 +53,25 @@ Następnie instalujemy program ``pip`` do zarządzania dodatkowymi bibliotekami 
 
     python -c "exec('try: from urllib2 import urlopen \nexcept: from urllib.request import urlopen');f=urlopen('https://raw.github.com/pypa/pip/master/contrib/get-pip.py').read();exec(f)"
 
-Brak Pythona na ścieżce wywołań?
-================================
+Brak Pythona?
+=============
 
-Gdyby jakieś wywołania Pythona nie działały, warto do zmiennej ``PATH`` (użytkownika
-lub systemowej) dodać ścieżki do interpretera i polecenia ``pip``. W oknie "Uruchamianie" (:kbd:`WIN+R`)
+Jeżeli nie możemy wywołać interpretera lub instalatora ``pip`` w terminalu,
+musimy rozszerzyć zmienną systemową ``PATH`` swojego użytkownika o ścieżkę do ``python.exe``:
+Najwygodniej wykorzystać konsolę PowerShell:
+
+.. code-block:: posh
+
+    [Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27\;C:\Python27\Scripts\", "User")
+
+Ewentualnie jeśli posiadamy uprawnienia administracyjne, możemy zmienić zmienną ``PATH`` wszystkim użytkownikom:
+
+.. code-block:: posh
+
+    $CurrentPath=[Environment]::GetEnvironmentVariable("Path", "Machine")
+    [Environment]::SetEnvironmentVariable("Path", "$CurrentPath;C:\Python27\;C:\Python27\Scripts\", "Machine")
+
+Jeżeli nie mamy dostępu do konsoli PowerShell, w oknie "Uruchamianie" (:kbd:`WIN+R`)
 wpisujemy polecenie wywołujące okno "Zmienne środowiskowe" – można je również
 uruchomić z okna właściwości komputera:
 
@@ -93,8 +95,8 @@ polecenia w konsoli tekstowej:
 
     set PATH=%PATH%;c:\Python27\;c:\Python27\Scripts\
 
-Instalacja bibliotek wymaganych przez scenariusze
-=================================================
+Instalacja bibliotek
+=====================
 
 Biblioteki instalujemy za pomocą polecenia ``pip``:
 
@@ -120,4 +122,3 @@ GitHub, musimy zainstalować odpowiedniego :ref:`klienta <git-install>`.
 Zagadnienia te omówione zostały w osobnym :ref:`dokumencie <git-howto>`,
 który warto przejrzeć.
 Instalacja Git-a nie jest wymagana, aby pracować na przygotowanych scenariuszach.
-

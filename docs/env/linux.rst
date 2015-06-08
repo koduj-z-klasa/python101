@@ -1,75 +1,62 @@
 Przygotowanie systemu Linux
 ###########################
 
-W systemach linuksowych Python 2 jest zainstalowany domyślnie, wersję 3 również
-zazwyczaj znajdziemy.
-Instalacji brakujących elementów wykonujemy przy pomocy systemowego instalatora pakietów.
+W systemach linuksowych Python 2.7.x zainstalowany jest domyślnie,
+wersję 3 również. Potrzebne narzędzia instalujemy przy użyciu systemowego
+menedżera pakietów, natomiast biblioteki wykorzystywane w materiałach za pomocą
+instalatora pakietów Pythona ``pip``.
+
+Narzędzia:
+
+* pip – instalator pakietów Pythona
+* virtualenv – menedżer wirtualnych środowisk
+* git – narzędzie umożliwiające korzystanie z zasobów serwisu `Github <https://github.com/>`
+* ipython – rozszerzona interaktywna konsola Pythona
 
 .. contents:: Spis treści
     :backlinks: none
 
 .. note::
 
-    Uwaga: nazwy pakietów w różnych dystrybucjach mogą się nieco różnić od podanych.
+    * Nazwy pakietów w różnych dystrybucjach mogą się nieco różnić od podanych.
+    * *Pygame* to jedyna biblioteka, którą trzeba instalować za pomocą systemowego
+      menedżera pakietów.
+    * Systemy Debian i Arch Linux w domyślnej konfiguracji nie wykorzytują
+      mechanizmu podnoszenia uprawnień ``sudo``, dlatego polecenia instalacji
+      należy wydawać z konta użytkownika root (w kodzie oznaczane znakami ``~#``).
 
+Debian, Ubuntu i pochodne
+-------------------------
 
-Instalacja apt-get
-------------------
-
-Instalację dodatkowych modułów w systemach opierających się na Debianie
-(m. in. wszystkie wersje Ubuntu, LinuxMint itd.), przeprowadzamy przy użyciu
-menedżera pakietów ``apt-get``.
-
-
-.. code-block:: bash
-
-    sudo apt-get update
-    sudo apt-get install ipython python-pip python-virtualenv python-dev git
-    sudo apt-get install python-flask python-django python-pygame
-
-W pierwszej kolejności zainstalowane zostaną narzędzia, czyli rozszerzona
-konsola ``ipython``, instalator modułów ``pip`` czy narzędzie pozwalające
-ściągnąć i używać niniejsze materiały, czyli ``git``.
-
-Biblioteki potrzebne do obsługi baz danych za pomocą ORM-ów można
-zainstalować za pomocą menedżera systemowego lub (w razie niedostępności
-danego pakietu) instalora Pythona ``pip``:
+W systemach opartych na Debianie (m. in. wszystkie wersje Ubuntu, LinuxMint itd.)
+używamy menedżera ``apt-get`` i w terminalu wydajemy następujące polecenia:
 
 .. code-block:: bash
 
-    sudo apt-get install python-peewee python-sqlalchemy python-flask-sqlalchemy
-    sudo pip install peewee sqlalchemy flask-sqlalchemy
+    ~$ sudo apt-get update
+    ~$ sudo apt-get install python-pip python-virtualenv git ipython
+    ~$ sudo apt-get install python-pygame
+    ~$ sudo pip install --upgrade install
+    ~$ sudo pip install Flask Django
+    ~$ sudo pip install peewee sqlalchemy flask-sqlalchemy
 
-Jeśli napotykamy na propblemy z brakiem pakietów, możliwe że musimy włączyć więcej
-źródeł oprogramowania:
+Jeśli ``apt-get`` zgłosi problem z dostępnością pakietu, w systemach Ubuntu i pochodnych
+należy spróbować włączyć dodatkowe źródła oprogramowania:
 
- .. figure:: img/universe.png
+.. figure:: img/universe.png
 
-
-Instalacja pacman
------------------
+Arch Linux i pochodne
+---------------------
 
 W systemach opartych na Arch Linuksie (Bridge Linux, Manjaro)
-wykorzystują menedżer ``pacman``. W zależności od dystrybucji wydajemy polecenia:
+wykorzystują menedżer ``pacman``. Odpowiednie polecenia mają postać:
 
 .. code-block:: bash
 
-    ~# pacman -Syu
-    ~# pacman -S ipython2 python2-pip python2-virtualenv git
-    ~# pacman -S install python2-flask python2-django python2-pygame
-
-W pierwszej kolejności zainstalowane zostaną narzędzia, czyli rozszerzona
-konsola ``ipython``, instalator modułów ``pip`` czy narzędzie pozwalające
-ściągnąć i używać niniejsze materiały, czyli ``git``.
-
-
-Biblioteki potrzebne do obsługi baz danych za pomocą ORM-ów można
-zainstalować za pomocą menedżera systemowego lub (w razie niedostępności
-danego pakietu) instalora Pythona ``pip``:
-
-.. code-block:: bash
-
-    ~# pacman -S python2-peewee  python2-sqlalchemy python2-flask-sqlalchemy
+    ~# pacman -Syyu
+    ~# pacman -S python2-pip python2-virtualenv git ipython2
+    ~# pacman -S python2-pygame
+    ~# pip2 install Flask Django
     ~# pip2 install peewee sqlalchemy flask-sqlalchemy
 
 W innych systemach linuksowych należy korzystać z dedykowanych menedżerów

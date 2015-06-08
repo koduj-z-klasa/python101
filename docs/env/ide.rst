@@ -1,4 +1,4 @@
-IDE - Edytory kodu
+IDE – edytory kodu
 ##################
 
 Skrypty Pythona można zapisywać w dowolnym edytorze tekstu, ale oczywiście
@@ -111,7 +111,8 @@ Jeśli w naszym systemie brakuje oprogramowania JAVA to musimy zainstalować Ope
 
     sudo apt-get install openjdk-7-jre
 
-Lub zamiast Open JDK zainstalować wersję firmy Oracle:
+Lub zamiast Open JDK zainstalować wersję firmy Oracle. W systemach Ubuntu
+i pochodnych używamy poleceń:
 
 .. code-block:: bash
 

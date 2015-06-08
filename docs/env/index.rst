@@ -51,16 +51,9 @@ płyt w systemie Linux lub MS Windows, można go też wgrać na klucz USB.
 .. note::
 
     Xubuntu jest jedną z wielu dystrybucji Linuksa. Scenariusze można
-    realizować w oparciu o dowolną dystrybucję, wystarczy doinstalować
-    potrzebne biblioteki i korzystać z Pythona 2. Scenariusze testowano
-    m. in. na takich dystrybucjach, jak: Debian (Wheezy, Jessie), który
-    *nota-bene* jest podstawą Ubuntu, i Arch Linux. Środowisko graficzne
-    nie ma oczywiście znaczenia.
-
-
-
-
-
+    realizować w oparciu o dowolną inną. Scenariusze testowano
+    na takich dystrybucjach, jak: Debian (Wheezy, Jessie), (X)Ubuntu 12.04, 14.04,
+    Arch Linux. Środowisko graficzne nie ma oczywiście znaczenia.
 
 Pojęcia
 =============
@@ -117,4 +110,3 @@ Pojęcia
 .. _Mate: http://pl.wikipedia.org/wiki/MATE
 .. _XFCE: http://www.xfce.org/
 .. _Bash: http://pl.wikipedia.org/wiki/Bash
-
