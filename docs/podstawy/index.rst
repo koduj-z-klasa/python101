@@ -26,16 +26,12 @@ analizę, obliczenia i przetwarzanie danych, np.: `Anaconda <https://store.conti
 czy `Enthought Canopy <https://www.enthought.com/products/canopy/>`_.
 
 .. toctree::
-    :maxdepth: 2
+    :titlesonly:
 
-    interpreter.rst
-    przyklady/index.rst
-    przyklady/index1.rst
-    przyklady/index2.rst
-    przyklady/index3.rst
-    przyklady/index4.rst
-    przyklady/index5.rst
-    gloss_python.rst
+    interpreter
+    przyklady/index
+    przyklady/index5
+    gloss_python
 
 Materiały
 *********

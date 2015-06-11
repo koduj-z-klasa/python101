@@ -115,10 +115,33 @@ Słownik Pythona
         Może pełnić rolę "licznika" powtórzeń lub być elementem wyrażenia
         logicznego wyznaczającego koniec działania pętli.
 
+    iteratory
+        (ang. *iterators*) – obiekt reprezentujący sekwencję danych,
+        zwracający z niej po jednym elemencie na raz przy użyciu metody
+        ``next()``; jeżeli nie ma następnego elementu, zwracany jest wyjątek
+        ``StopIteration``. Funkcja ``iter()`` potrafi zwrócić iterator
+        z podanego obiektu.
+
+    generatory wyrażeń
+        (ang. *generator expressions*) – zwięzły w notacji sposób tworzenia
+        iteratorów według składni: ``( wyrażenie for wyraz in sekwencja if warunek )``
+
     wyrażenie listowe
         (ang. *list comprehensions*) – efektywny sposób tworzenia list na podstawie
         elementów dowolnych sekwencji, na których wykonywane są te same operacje
-        i które opcjonalnie spełniają określone warunki.
+        i które opcjonalnie spełniają określone warunki. Składnia:
+        ``[ wyrażenie for wyraz in sekwencja if warunek ]``
+
+    mapowanie funkcji
+        w kontekście funkcji ``map()`` oznacza zastosowanie danej funkcji
+        do wszystkich dostarczonych wartości
+
+    wyrażenia lambda
+        zwane czasem *funkcjami lambda*, mechanizm pozwalający zwięźle
+        zapisywać proste funkcje w postaci pojedynczych wyrażeń
+
+    filtrowanie danych
+        selekcja danych na podstawie jakichś kryteriów
 
     wyjątki
         to komunikaty zgłaszane przez interpreter Pythona, pozwalające ustalić

@@ -1,5 +1,5 @@
-Nie znam Pythona... jeszcze
-################################
+Pythonizmy
+###########
 
 .. contents::
     :depth: 1
@@ -148,8 +148,8 @@ Wyrażenia listowe
 ***********************
 
 Jeżeli nawiasy okrągłe w generatorze wyrażeń zamienimy na kwadratowe dostaniemy
-:term:`wyrażenia listowe` (ang. *list comprehensions*), które – jak wskazuje nazwa –
-zwracają listy:
+:term:`wyrażenie listowe` (ang. *list comprehensions*), które – jak wskazuje nazwa –
+zwraca listę:
 
 .. raw:: html
 
@@ -185,7 +185,7 @@ zwracają listy:
 
 Wyrażenia listowe w elegancki i wydajny sposób zastępują takie rozwiązania, jak:
 
-    * :term:`pętle`
+    * :term:`pętla`
     * :term:`mapowanie funkcji`
     * :term:`wyrażenia lambda`
     * :term:`filtrowanie danych`
@@ -304,39 +304,3 @@ Materiały
 7. http://www.checkio.org
 8. http://www.codecademy.com
 9. https://www.coursera.org
-
-Słownik
-===============
-
-.. glossary::
-
-    pętle
-        podstawowa konstrukcja w programowania strukturalnego pozwalająca
-        wielokrotnie wykonywać zawarte w niej instrukcje
-
-    iteratory
-        (ang. *iterators*) – obiekt reprezentujący sekwencję danych,
-        zwracający z niej po jednym elemencie na raz przy użyciu metody
-        ``next()``; jeżeli nie ma następnego elementu, zwracany jest wyjątek
-        ``StopIteration``. Funkcja ``iter()`` potrafi zwrócić iterator
-        z podanego obiektu.
-
-    generatory wyrażeń
-        (ang. *generator expressions*) – zwięzły w notacji sposób tworzenia
-        iteratorów według składni: ``( wyrażenie for wyraz in sekwencja if warunek )``
-
-    wyrażenia listowe
-        (ang. list comprehensive) – zwięzły w notacji sposób tworzenia list
-        według składni: ``[ wyrażenie for wyraz in sekwencja if warunek ]``
-
-    mapowanie funkcji
-        w kontekście funkcji ``map()`` oznacza zastosowanie danej funkcji
-        do wszystkich dostarczonych wartości
-
-    wyrażenia lambda
-        zwane czasem *funkcjami lambda*, mechanizm pozwalający zwięźle
-        zapisywać proste funkcje w postaci pojedynczych wyrażeń
-
-    filtrowanie danych
-        selekcja danych na podstawie jakichś kryteriów
-
