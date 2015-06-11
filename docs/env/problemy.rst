@@ -38,6 +38,8 @@ Jeśli nie da się uruchomić komputera za pomocą przygotowanego klucza, przecz
 
    .. figure:: img/lluc.jpg
 
+.. _rufustool:
+
 7. W Windows wypróbuj narzędzie `Rufus <https://rufus.akeo.ie/>`_. Użyj go
    do nagrania dystrybucji *LxPupTahr*. Po uruchomieniu z uprawnieniami administratora(!)
    skonfiguruj program: z listy "Urządzenie" wybierz pendrajwa, zaznacz opcję

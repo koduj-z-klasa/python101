@@ -49,7 +49,7 @@ Polecane dystrybucje
   konfiguracji i plików użytkownika. Oparty na stabilnym Ubuntu 14.04 LTS.
   Środowisko graficzne LXDE. Zawiera wiele dodatkowych narzędzi.
   Wymaga doinstalowania bibliotek (narzędzia i edytory są).
-  Spersonalizowany obraz iso: `LxPupTahr 15.05.01 32-bit <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/kzkbox_20150605_pc.iso?download=1>`_ (452MB).
+  Spersonalizowany obraz iso: `LxPupTahr 15.05.01 32-bit <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/kzkbox_20150611_pc.iso?download=1>`_ (468MB).
   Zanim użyjesz nagranego USB przeczytaj materiał `Pierwsze uruchomienie <http://linetc.readthedocs.org/pl/latest/tools/linux.html#pierwsze-uruchomienie>`_.
 
 .. _Szkolny Remiks Ucznia: http://sru.e-swoi.pl
@@ -79,6 +79,11 @@ Klucz Live USB
   dystrybucji i prędkości klucza USB od 1-20 minut.
 
 .. figure:: img/unetbootin_win_lxpup.jpg
+
+.. tip::
+
+    Jeżeli zdecydujesz się na system *LxPupTahr*, sugerujemy użycie programu
+    :ref:`Rufus <rufustool>` do jego nagrania na klucz USB.
 
 Linux na maszynie wirtualnej
 ----------------------------
