@@ -208,10 +208,12 @@ podanej jako argument drugi:
 
     kwadraty = map(kwadrat, range(10))
 
+.. _lambda:
+
 Wyrażenia lambda
 ==========================
 
-Słowa kluczowe ``lambda`` pozwala utworzyć zwięzły odpowiednik prostej, jednowyrażeniowej
+Słowo kluczowe ``lambda`` pozwala utworzyć zwięzły odpowiednik prostej, jednowyrażeniowej
 funkcji. Poniższy przykład należy rozumieć następująco: do każdej liczby wygenerowanej
 przez funkcję ``range()`` zastosuj funkcję w postaci wyrażenia lambda podnoszącą
 wartość do kwadratu, a uzyskane wartości zapisz w liście ``kwadraty``.
@@ -224,6 +226,29 @@ wartość do kwadratu, a uzyskane wartości zapisz w liście ``kwadraty``.
     :linenos:
 
     kwadraty = map(lambda x: x**2, range(10))
+
+Funkcje *lambda* często stosowane są w poleceniach sortowania jako wyrażenie
+zwracające klucz (wartość), wg którego mają zostać posortowane elementy.
+Jeżeli np. mamy listę tupli opisującą uczniów:
+
+.. code-block:: python
+    :linenos:
+
+    uczniowie = [
+        ('jan','Nowak','1A',15),
+        ('ola','Kujawiak','3B',17),
+        ('andrzej','bilski','2F',16),
+        ('kamil','czuja','1B',14)
+    ]
+
+–  wywołanie ``sorted(uczniowie)`` zwróci nam listę posortowaną wg pierwszego elementu
+każdej tupli, czyli imienia. Jeżeli jednak chcemy sortować wg np. klasy,
+użyjemy parametru ``key``, który przyjmuje jednoargumentową funkcję zwracającą
+odpowiedni klucz do sortowania, np.: ``sorted(uczniowie, key=lambda x: x[2])``.
+
+W funkcjach ``min()``, ``max()`` podobnie używamy wyrażeń *lambda* jako argumentu
+parametru ``key``, aby wskazać wartości, dla których wyszukujemy minimum i maksimum, np.:
+``max(uczniowie, key=lambda x: x[3])`` – zwróci najstarszego ucznia.
 
 Filtrowanie danych
 ==========================
