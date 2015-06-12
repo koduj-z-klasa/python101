@@ -6,7 +6,16 @@ Git - wersjonowanie kodów źródłowych
 Pokażemy tutaj, jak nauczyciele mogą wykorzystać profesjonalne i bezpłatne narzędzia do wersjonowania
 kodów źródłowych i wszystkich innych plików.
 
-System kontroli wersji śledzi wszystkie zmiany dokonywane na pliku (lub plikach)
+Przybliżamy tutaj jak GIT jest wykorzystywany w naszym materiałach i zachęcamy do wykorzystania go podczas zajęć w szkole. 
+
+Ta strona nie jest wprowadzeniem do GIT per se, nie ma sensu na nowo odkrywać koła. 
+Szczegółowe wprowadzenie i przykłady użycia znajdziecie
+w dostępnej online i do pobrania polskiej wersji książki `Pro Git`_ .
+Polecamy także `cheat sheet z podręcznymi komendami <https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf>`_.
+
+Co to jest GIT?
+
+GIT to system kontroli wersji, śledzi wszystkie zmiany dokonywane na pliku (lub plikach)
 i umożliwia przywołanie dowolnej wcześniejszej wersji.
 Nauczyciele pracujący z plikami które zmieniają się z przykładu na przykład,
 z ćwiczenia na ćwiczenie mogą np. skorzystać z systemu kontroli wersji do
@@ -17,12 +26,6 @@ synchronizacji przykładów na poszczególnych etapach swojej pracy.
 Dzięki takim narzędziom możemy porzucić przesyłanie i rozpakowywanie archiwów,
 kopiowanie plików na rzecz komend które szybko doprowadzą
 ujednolicą stan plików naszych uczniów.
-
-.. tip::
-
-    Bardziej szczegółową dokumentację i przykłady użycia znajdziecie
-    w dostępnej online i do pobrania polskiej wersji książki `Pro Git`_ .
-    Polecamy także `cheat sheet z podręcznymi komendami <https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf>`_.
 
 .. _Pro Git: http://git-scm.com/book/pl
 
