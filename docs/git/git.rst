@@ -14,6 +14,7 @@ w dostępnej online i do pobrania polskiej wersji książki `Pro Git`_ .
 Polecamy także `cheat sheet z podręcznymi komendami <https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf>`_.
 
 Co to jest GIT?
+---------------
 
 GIT to system kontroli wersji, śledzi wszystkie zmiany dokonywane na pliku (lub plikach)
 i umożliwia przywołanie dowolnej wcześniejszej wersji.
