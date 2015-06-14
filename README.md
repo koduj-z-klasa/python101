@@ -22,6 +22,13 @@ skoków pomiędzy etapami które zostały wskazane w materiałach szkoleniowych.
 
 https://github.com/koduj-z-klasa/python101/archive/master.zip
 
+Dyskusje i pytania na temat tych materiałów
+-------------------------------------------
+
+Zachęcamy do dyskusji i zadawania pytań na naszym forum:
+
+http://discourse.kodujzklasa.pl/
+
 Linki do zapamiętania
 ---------------------
 
