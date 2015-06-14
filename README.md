@@ -25,7 +25,7 @@ https://github.com/koduj-z-klasa/python101/archive/master.zip
 Dyskusje i pytania na temat tych materiałów
 -------------------------------------------
 
-Zachęcamy do dyskusji i zadawania pytań na naszym forum:
+Zachęcamy do dyskusji i zadawania pytań na forum Koduj z Klasą:
 
 http://discourse.kodujzklasa.pl/
 
@@ -51,9 +51,6 @@ Polecamy poniższe strony jako źródła dodatkowych materiałów dla uczestnik�
 
 - Strona główna programu KZK dla Python  
   http://www.ceo.org.pl/pl/kodujzklasa/python
-
-- Forum KZK  
-  http://forum.kodujzklasa.pl/
 
 - Proste przykłady OEIiZK dla pythona  
   http://python.oeiizk.edu.pl/
