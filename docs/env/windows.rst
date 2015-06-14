@@ -96,7 +96,7 @@ polecenia w konsoli tekstowej:
     set PATH=%PATH%;c:\Python27\;c:\Python27\Scripts\
 
 Instalacja bibliotek
-=====================
+====================
 
 Biblioteki instalujemy za pomocą polecenia ``pip``:
 
