@@ -51,7 +51,7 @@ Polecamy poniższe strony jako źródła dodatkowych materiałów dla uczestnik�
 - Proste przykłady OEIiZK dla pythona  
   http://python.oeiizk.edu.pl/
 
-- Darmowy soft i usługi dla uczniów (w tym 100$ na serwer w internecie, hosting na ~1,5 roku)  
+- Darmowy soft i usługi dla uczniów (w tym 100$ na serwer w internecie, hosting na ok. 1,5 roku)  
   https://education.github.com/pack
 
 - Dokumentacja Python'a i bibliotek standardowych  
