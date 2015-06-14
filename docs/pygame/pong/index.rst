@@ -26,7 +26,7 @@ Do rozpoczęcia pracy z przykładem pobieramy szczątkowy kod źródłowy:
 Okienko gry
 **********************
 
-Na wstępie w pliku ``~/python101/pong/pong.py`` otrzymujemy kod który przygotuje okienko naszej gry:
+Na wstępie w pliku ``~/python101/games/pong.py`` otrzymujemy kod który przygotuje okienko naszej gry:
 
 .. raw:: html
 
@@ -61,7 +61,7 @@ Nasz program możemy uruchomić komendą:
 
 .. code-block:: bash
 
-    ~/python101$ python pong/pong.py
+    ~/python101$ python games/pong.py
 
 Mrugnęło? Program się wykonał i zakończył działanie :). Żeby zobaczyć efekt na dłużej,
 możemy na końcu chwilkę uśpić nasz program:
@@ -187,7 +187,7 @@ Uruchommy naszą "grę" ;)
 
 .. code-block:: bash
 
-    ~/python101$ python pong/pong.py
+    ~/python101$ python games/pong.py
 
 .. figure:: pong_3.png
 
@@ -254,7 +254,7 @@ Sprawdzamy piłka się odbija, uruchamiamy nasz program:
 
 .. code-block:: bash
 
-    ~/python101$ python pong/pong.py
+    ~/python101$ python games/pong.py
 
 Gotowy kod możemy wyciągnąć komendą:
 
