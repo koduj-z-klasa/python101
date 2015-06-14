@@ -23,7 +23,7 @@ skoków pomiędzy etapami które zostały wskazane w materiałach szkoleniowych.
 https://github.com/koduj-z-klasa/python101/archive/master.zip
 
 Linki do zapamiętania
--------------------------------------
+---------------------
 
 Polecamy poniższe strony jako źródła dodatkowych materiałów dla uczestników szkoleń:
 
