@@ -29,6 +29,7 @@ czy `Enthought Canopy <https://www.enthought.com/products/canopy/>`_.
     :titlesonly:
 
     interpreter
+    podstawy/index
     przyklady/index
     przyklady/index5
     gloss_python

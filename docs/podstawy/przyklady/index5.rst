@@ -190,6 +190,8 @@ Wyrażenia listowe w elegancki i wydajny sposób zastępują takie rozwiązania,
     * :term:`wyrażenia lambda`
     * :term:`filtrowanie danych`
 
+.. _map-fun:
+
 Mapowanie funkcji
 ==========================
 
