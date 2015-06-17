@@ -30,6 +30,7 @@ czy `Enthought Canopy <https://www.enthought.com/products/canopy/>`_.
 
     interpreter
     podstawy/index
+    pylab/index
     przyklady/index
     przyklady/index5
     gloss_python

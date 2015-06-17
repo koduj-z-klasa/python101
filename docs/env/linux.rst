@@ -1,6 +1,10 @@
 Przygotowanie systemu Linux
 ###########################
 
+Jeżeli nie masz zainstalowanego systemu Linux, możesz wykorzystać wersję
+Live, która po nagraniu na pendrajwa pozwol uruchomić komputer. Zob. :ref:`Linux Live <linux-live>`.
+Jeżeli masz Linuksa lub planujesz go zainstalować na dysku, czytaj dalej.
+
 W systemach linuksowych Python 2.7.x zainstalowany jest domyślnie,
 wersję 3 również. Potrzebne narzędzia instalujemy przy użyciu systemowego
 menedżera pakietów, natomiast biblioteki wykorzystywane w materiałach za pomocą

@@ -41,13 +41,7 @@ Jeśli nie da się uruchomić komputera za pomocą przygotowanego klucza, przecz
 .. _rufustool:
 
 7. W Windows wypróbuj narzędzie `Rufus <https://rufus.akeo.ie/>`_. Użyj go
-   do nagrania dystrybucji *LxPupTahr*. Po uruchomieniu z uprawnieniami administratora(!)
-   skonfiguruj program: z listy "Urządzenie" wybierz pendrajwa, zaznacz opcję
-   "Utwórz bootowalny dysk używając" -> "Obraz ISO", kliknij ikonę obok
-   i wskaż ściągnięty obraz iso, wybierz "Opcje formatowania" i zaznacz
-   "Dodaj łatkę dla starych biosów"; kliknij "Start" i poczakekaj na napis "Gotowe".
-
-   .. figure:: img/rufus02.jpg
+   do nagrania dystrybucji *LxPupTahr*. 
 
 8. W Windows możesz wypróbować narzędzie `Universal USB Installer <http://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3/#button>`_
    polecane przez `producenta Ubuntu <http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-windows>`_,
