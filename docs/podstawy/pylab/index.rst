@@ -215,9 +215,3 @@ wartości współczynników: *a = 1, b = -3, c = 1*.
 Uzyskany wykres powinien wyglądać następująco:
 
 .. figure:: img/pylab01.png
-
-.. raw:: html
-
-    <hr />
-
-Jeżli masz ochotę na więcej, daj znać!
