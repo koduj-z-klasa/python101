@@ -37,6 +37,10 @@ Polecane dystrybucje
   Środowisko graficzne LXDE. Zawiera dodatkowe narzędzia i wymagane biblioteki.
   **Polecany do realizowania scenariuszy na warsztatach.**
 
+.. figure:: lxpupimg/lxpuptahr.png
+
+   System LxPupTahr
+
 * `Xubutnu 14.04.2 LTS <http://xubuntu.org/>`_ to ostatnia stabilna wersja Ubuntu
   z środowiskiem graficznym XFCE; wspierana będzie do roku 2019.
   Wymaga doinstalowania narzędzi i bibliotek.
