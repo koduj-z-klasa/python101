@@ -59,6 +59,7 @@ Zaczynamy!
     :numbered:
 
     podstawy/index
+    rg/index
     pygame/index
     bazy/index
     webapps/index
