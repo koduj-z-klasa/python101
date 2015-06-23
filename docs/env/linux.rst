@@ -2,7 +2,7 @@ Przygotowanie systemu Linux
 ###########################
 
 Jeżeli nie masz zainstalowanego systemu Linux, możesz wykorzystać wersję
-Live, która po nagraniu na pendrajwa pozwol uruchomić komputer. Zob. :ref:`Linux Live <linux-live>`.
+:ref:`Linux Live <linux-live>`, która po nagraniu na pendrajwa pozwoli uruchomić komputer.
 Jeżeli masz Linuksa lub planujesz go zainstalować na dysku, czytaj dalej.
 
 W systemach linuksowych Python 2.7.x zainstalowany jest domyślnie,
@@ -39,7 +39,7 @@ używamy menedżera ``apt-get`` i w terminalu wydajemy następujące polecenia:
 
     ~$ sudo apt-get update
     ~$ sudo apt-get install python-pip python-virtualenv git ipython
-    ~$ sudo apt-get install python-pygame
+    ~$ sudo apt-get install python-pygame sqlite3
     ~$ sudo pip install --upgrade install
     ~$ sudo pip install Flask Django
     ~$ sudo pip install peewee sqlalchemy flask-sqlalchemy
@@ -59,7 +59,7 @@ wykorzystują menedżer ``pacman``. Odpowiednie polecenia mają postać:
 
     ~# pacman -Syyu
     ~# pacman -S python2-pip python2-virtualenv git ipython2
-    ~# pacman -S python2-pygame
+    ~# pacman -S python2-pygame sqlite
     ~# pip2 install Flask Django
     ~# pip2 install peewee sqlalchemy flask-sqlalchemy
 

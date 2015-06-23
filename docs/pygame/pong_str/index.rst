@@ -103,7 +103,7 @@ Grę możemy uruchomić poleceniem wpisanym w terminalu:
 
     $ python pong_str.py
 
-Poćwicz sam
+Zadania dodatkowe
 ***********************
 
     Zmodyfikuj właściwości obiektów (paletek, piłki) takie jak rozmiar, kolor, początkowa pozycja.
@@ -113,8 +113,7 @@ Poćwicz sam
 Materiały
 **************
 
-Źródła
-==============
+**Źródła:**
 
 * :download:`pong_str.zip <pong_str.zip>`
 * :download:`pong_str.pdf <../../pdf/pong_str.pdf>`
@@ -137,9 +136,3 @@ Uruchamiamy je wydając polecenie:
     ~/python101/docs/pong_str$ python pong_strx.py
 
 \- gdzie *x* jest numerem kolejnej wersji kodu.
-
-Słownik
-==============
-
-.. include:: ../glossary.rst
-

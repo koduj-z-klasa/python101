@@ -563,11 +563,6 @@ Poćwicz sam
 Materiały
 *************************
 
-Słownik
-===================
-
-.. include:: ../glossary.rst
-
 1. `Strona projektu Flask`_
 2. `Co to jest framework?`_
 3. `Protokół HTTP`_ (żądania GET i POST)
@@ -583,8 +578,7 @@ Słownik
 .. _Peewee: http://peewee.readthedocs.org/en/latest
 .. _SQLAlchemy: http://www.sqlalchemy.org
 
-Źródła
-====================
+**Źródła:**
 
 * :download:`quiz2.zip <quiz2.zip>`
 

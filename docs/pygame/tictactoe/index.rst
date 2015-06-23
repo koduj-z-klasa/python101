@@ -36,7 +36,6 @@ Na wstępie w pliku ``~/python101/games/tic_tac_toe.py`` otrzymujemy kod który 
 .. literalinclude:: code0.py
     :linenos:
 
-
 W powyższym kodzie mamy podstawy potrzebne do uruchomienia gry:
 
 .. code-block:: bash

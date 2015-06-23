@@ -247,11 +247,6 @@ otrzymujemy ocenę.
 Materiały
 *******************************
 
-Słownik
-===============
-
-.. include:: ../glossary.rst
-
 1. `Strona projektu Flask`_
 2. `Co to jest framework?`_
 3. `Protokół HTTP`_ (żądania GET i POST)
@@ -260,8 +255,7 @@ Słownik
 .. _Co to jest framework?: http://pl.wikipedia.org/wiki/Framework
 .. _Protokół HTTP: http://pl.wikipedia.org/wiki/Http
 
-Źródła
-===============
+**Źródła:**
 
 * :download:`quiz.zip <quiz.zip>`
 * :download:`quiz_flask.pdf <../../pdf/quiz_flask.pdf>`

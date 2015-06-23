@@ -1,3 +1,6 @@
+Słownik baz danych
+###################
+
 .. glossary::
 
     SQL

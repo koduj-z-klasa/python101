@@ -98,18 +98,17 @@ Grę możemy uruchomić poleceniem wpisanym w terminalu:
 
     $ python tictactoe.py
 
-Materiały
-************************
-
-Poćwicz sam
-===================
+Zadania dodatkowe
+******************
 
     Zmień grę tak, aby zaczynał ją komputer.
     Dodaj do gry możliwość rozgrywki wielokrotnej bez konieczności ponownego uruchamiania skryptu.
     Zmodyfikuj funkcję rysującą pole gry tak, aby komputer rysował krzyżyki, a nie kółka.
 
-Źródła
-===================
+Materiały
+************************
+
+**Źródła:**
 
 * :download:`tictactoe_str.zip <tictactoe_str.zip>`
 * :download:`tictactoe_str.pdf <../../pdf/tictactoe_str.pdf>`
@@ -123,11 +122,3 @@ Uruchamiamy je wydając polecenie:
     ~/python101/docs/tictactoe$ python tictactoe_strx.py
 
 \- gdzie *x* jest numerem kolejnej wersji kodu.
-
-Słownik
-===================
-
-.. include:: ../glossary.rst
-
-.. _tic-obj:
-

@@ -281,16 +281,8 @@ lub sesji ``sesja.close()`` (SQLAlchemy). UWAGA: operacje dokonywane
 podczas sesji w SQLAlchemy muszą zostać zapisane w bazie, dlatego przed
 zamknięciem połączenia trzeba umieścić polecenie ``sesja.commit()``.
 
-Materiały
-*******************
-
-Słownik
-=====================
-
-.. include:: ../glossary.rst
-
 Zadania dodatkowe
-=====================
+******************
 
     Spróbuj dodać do bazy korzystając z systemu Peewee lub SQLAlchemy
     wiele rekordów na raz pobranych z pliku. W tym celu zmodyfikuj
@@ -304,8 +296,10 @@ Zadania dodatkowe
     jako relatywnie szybki i łatwy sposób obsługi danych. Zobacz,
     jak to zrobić na przykładzie scenariusza aplikacji "Quiz 2".
 
-Źródła
-============
+Materiały
+*******************
+
+**Źródła:**
 
 * :download:`orm.zip <orm.zip>`
 

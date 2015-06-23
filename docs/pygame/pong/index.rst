@@ -423,21 +423,3 @@ Zadania dodatkowe
    być kontynuowany także gdy myszka jest bezczynna.
 #. Gdy piłeczka odbija się od boków rakietki powinna odbijać się w osi X.
 #. Gra dwuosobowa z użyciem komunikacji po sieci.
-
-Materiały
-**********************
-
-Słowniczek
-================
-
-.. glossary::
-
-    dziedziczenie
-        w programowaniu obiektowym nazywamy mechanizm współdzielenia funkcjonalności
-        między klasami. Klasa może dziedziczyć po innej klasie, co oznacza,
-        że oprócz swoich własnych atrybutów oraz zachowań, uzyskuje także te pochodzące
-        z klasy, z której dziedziczy.
-
-    przesłanianie
-        w programowaniu obiektowym możemy w klasie dziedziczącej przesłonić metody
-        z klasy nadrzędnej rozszerzając lub całkowicie zmieniając jej działanie

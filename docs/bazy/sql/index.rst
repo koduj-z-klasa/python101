@@ -226,16 +226,8 @@ tak jak robiliśmy to już wczesniej, jako argument metody ``.executemany()``.
 
     Znaki w pliku wejściowym powinny być zakodowane w standardzie ``utf-8``.
 
-Materiały
-*******************
-
-Słownik
-=====================
-
-.. include:: ../glossary.rst
-
 Zadania dodatkowe
-=====================
+*******************
 
     Postaraj się przedstawioną aplikację wyposażyć w konsolowy interfejs,
     który umożliwi operacje odczytu, zapisu, modyfikowania i usuwania rekordów.
@@ -244,8 +236,10 @@ Zadania dodatkowe
     Zobacz, jak zintegrować obsługę bazy danych przy użyciu modułu *sqlite3*
     Pythona z aplikacją internetową na przykładzie scenariusza "ToDo".
 
-Żródła
-=====================
+Materiały
+*******************
+
+**Źródła:**
 
 * :download:`sqlraw.zip <sqlraw.zip>`
 

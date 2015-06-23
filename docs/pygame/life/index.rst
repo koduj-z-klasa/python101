@@ -330,30 +330,3 @@ Zadania dodatkowe
 *******************
 
 #. TODO
-
-Materiały
-**********************
-
-Słowniczek
-============
-
-.. glossary::
-
-    magiczne liczby
-        to takie same wartości liczbowe wielokrotnie używane w kodzie, za każdym
-        razem oznaczające to samo. Stosowanie magicznych liczby jest uważane
-        za złą praktykę ponieważ ich utrudniają czytanie i zrozumienie działania kodu.
-
-    stała
-        to zmienna której wartości po początkowym ustaleniu nie będziemy zmieniać.
-        Python nie ma mechanizmów które wymuszają takie zachowanie, jednak
-        przyjmuje się, że zmienne zadeklarowane WIELKIMI_LITERAMI zwykle służą do
-        przechowywania wartości stałych.
-
-    generator
-        zwraca jakąś wartość za każdym wywołaniem. Dla świata zewnętrznego
-        generatory zachowują się jak listy (możemy po nich iterować) jedna różnica polega
-        na użyciu pamięci. Listy w całości znajdują się pamięci podczas gdy generatory
-        "tworzą" wartość na zawołanie.
-        Czasem tak samo nazywane są funkcje zwracające generator (ang. generator function).
-

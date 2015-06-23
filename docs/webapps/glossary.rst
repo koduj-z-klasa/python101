@@ -1,3 +1,6 @@
+Słownik aplikacji internetowych
+###############################
+
 .. glossary::
 
     aplikacja

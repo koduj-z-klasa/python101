@@ -4,7 +4,16 @@ Czat (wersja podstawowa)
 .. highlight:: python
 
 Zastosowanie Pythona i frameworka Django do stworzenia aplikacji internetowej
-Czat; prostego czata, w którym zarejestrowani użytkownicy będą mogli wymieniać się krótkimi wiadomościami.
+Czat; prostego czata, w którym zarejestrowani użytkownicy będą mogli wymieniać się
+krótkimi wiadomościami.
+
+.. attention::
+
+    **Wymagane oprogramowanie**:
+
+      * Python v. 2.7.x
+      * Django v. 1.8.x
+      * Interpreter bazy SQLite3
 
 .. contents::
     :depth: 1
@@ -24,6 +33,7 @@ który pozwoli śledzić postęp pracy. W katalogu domowym wydajemy polecenia w 
 
     ~$ django-admin.py startproject czat
     ~$ cd czat
+    ~$ python manage.py migrate
     ~/czat$ python manage.py runserver
 
 Powstanie katalog projektu :file:`czat` i podkatalog aplikacji o takiej samej nazwie :file:`chatter`.
@@ -107,10 +117,10 @@ Funkcje kolejnych elementów są następujące:
 Model danych i baza
 **********************
 
-Pisanie aplikacji zaczynamy od zdefiniowania modelu, czyli klasy opisującej
-tabelę zawierającą wiadomości. Instancje tej klasy będą konkretnymi wiadomościami
-utworzonymi przez użytkowników systemu.
-Każda wiadomość będzie zwierała treść, datę dodania oraz autora wiadomości (użytkownika).
+Zaczynamy od zdefiniowania modelu, czyli klasy opisującej tabelę zawierającą
+wiadomości. Instancje tej klasy będą konkretnymi wiadomościami utworzonymi
+przez użytkowników systemu. Każda wiadomość będzie zwierała treść,
+datę dodania oraz wskazanie autora (użytkownika).
 
 W pliku :file:`~/czat/czat/models.py`, który musimy utworzyć, wpisujemy:
 
@@ -122,10 +132,10 @@ W pliku :file:`~/czat/czat/models.py`, który musimy utworzyć, wpisujemy:
 .. literalinclude:: models_z1.py
     :linenos:
 
-Jak widać, podczas opisywania klasy ``Wiadomosc`` podajemy nazwy poszczególnych
+Opisując klasę ``Wiadomosc`` podajemy nazwy poszczególnych
 właściwości (pól) oraz typy przechowywanych w nich danych.
-Po zdefiniowaniu przynajmniej jednego modelu możemy utworzyć bazę danych
-dla naszej aplikacji, czyli wszystkie potrzebne tabele.
+Po zdefiniowaniu przynajmniej jednego modelu możemy utworzyć bazę danych,
+czyli wszystkie potrzebne tabele.
 Podczas tworzenia bazy Django pyta o nazwę, email i hasło administratora.
 Podajemy te dane po wydaniu w katalogu projektu w terminalu polecenia:
 
@@ -141,14 +151,12 @@ Podajemy te dane po wydaniu w katalogu projektu w terminalu polecenia:
 
 .. note::
 
-    Domyślnie Django korzysta z bazy SQLite, która przechowywana jest w jednym pliku :file:`db.sqlite3` w katalogu aplikacji.
-    Warto zobaczyć, jak wygląda. Potrzebny będzie jednak interpreter, który w razie
-    potrzeby doinstalujemy poleceniem ``apt-get install sqlite3``. Następnie
-    W terminalu wydajemy polecenie ``python manage.py dbshell``,
-    które uruchamia interpreter bazy. Następnie możemy wylistować utworzone tabele
-    poleceniem ``.tables``. Możemy również zobaczyć jakie instrukcje SQL-a
-    zostały użyte do utworzenia naszej tabeli: ``.schema czat_wiadomosc``.
-    Z interpretera wychodzimy poleceniem ``.quit``.
+    Domyślnie Django korzysta z bazy SQLite zapisanej w pliku :file:`db.sqlite3`.
+    Warto zobaczyć, jak wygląda. W terminalu wydajemy polecenie ``python manage.py dbshell``,
+    które otworzy bazę w interpreterze ``sqlite3``. Wydajemy polecenia:
+    * ``.tables`` - pokaże listę tabel;
+    * ``.schema czat_wiadomosc`` - pokaże instrukcje SQL-a użyte do utworzenia podanej tabeli
+    * ``.quit`` - wyjście z interpretera.
 
 .. figure:: img/czat03ter.png
 
@@ -174,7 +182,7 @@ i rejestrujemy w nim nasz model jako element panelu administracyjnego:
     :file:`urls.py` przed deklaracją zmiennej ``urlpatterns``. (Zobacz kod nr 7
     poniżej.)
 
-Po ewentualnym ponownym uruchomieniu serwera wchodzimy na adres *127.0.0.1:8080/admin/*.
+Po ewentualnym ponownym uruchomieniu serwera wchodzimy na adres *127.0.0.1:8000/admin/*.
 Logujemy się podając dane wprowadzone podczas tworzenia bazy.
 Otrzymamy dostęp do panelu administracyjnego, w którym możemy dodawać nowych użytkowników i wiadomości [#]_.
 
@@ -198,6 +206,7 @@ dopisujemy:
 .. highlight:: python
 .. literalinclude:: models_z2.py
     :linenos:
+    :emphasize-lines: 9-10, 13-16
 
 Jak widać, w definicjach każdego pola jako pierwszy argument możemy dopisać
 spolszczoną etykietę, np. ``u'data publikacji'``. W podklasie ``Meta`` podajemy natomiast
@@ -321,9 +330,9 @@ strona zapisana w języku HTML. Szablony takich stron umieszczamy w podkatalogu
 
 .. code-block:: bash
 
-    ~/czat/czat$ mkdir -p templates/czat
+    ~/czat$ mkdir -p czat/templates/czat
 
-Następnie tworzymy szablon, czyli plik :file:`~/czat/czat/templates/czat/index.html`, który zawiera:
+Następnie tworzymy szablon :file:`~/czat/czat/templates/czat/index.html`, który zawiera:
 
 .. raw:: html
 
@@ -431,7 +440,7 @@ Modyfikujemy również szablon strony głównej:
     :linenos:
 
 W szablonach dostępne są podstawowe instrukcje sterujące, takie jak np.
-``{% for %}`` czy ``{% if %}``. Tę pierwszą wykorzystamy do wyświetlenia
+pętla ``{% for %}`` czy instrukcja warunkowa ``{% if %}``. Tę pierwszą wykorzystamy do wyświetlenia
 komunikatów użytkownikowi, drugą m. in. do sprawdzenia, czy stronę odwiedza
 użytkownik uwierzytelniony. Dane przekazane do szablonu możemy wyświetlać
 stosując odpowiednią notację, np.: ``{{ user.username }}``.
@@ -633,18 +642,12 @@ Poniższe zrzuty prezentują efekty naszej pracy:
 Materiały
 ***************
 
-Słownik
-================
-
-.. include:: ../glossary.rst
-
 1. O Django http://pl.wikipedia.org/wiki/Django_(informatyka)
 2. Strona projektu Django https://www.djangoproject.com/
 3. Co to jest framework? http://pl.wikipedia.org/wiki/Framework
 4. Co nieco o HTTP i żądaniach GET i POST http://pl.wikipedia.org/wiki/Http
 
-Źródła
-===========
+**Źródła:**
 
 * :download:`czat_pp.zip <czat_pp.zip>`
 

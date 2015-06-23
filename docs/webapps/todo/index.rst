@@ -325,17 +325,11 @@ Zadania dodatkowe
 Materiały
 ************************
 
-Słownik
-====================
-
-.. include:: ../glossary.rst
-
 1. Strona projektu Flask http://flask.pocoo.org/
 2. Informacje o SQLite http://pl.wikipedia.org/wiki/SQLite
 3. Co to jest framework? http://pl.wikipedia.org/wiki/Framework
 4. Co nieco o HTTP i żądaniach GET i POST http://pl.wikipedia.org/wiki/Http
 
-Źródła
-=====================
+**Źródła:**
 
 * :download:`todo.zip <todo.zip>`
