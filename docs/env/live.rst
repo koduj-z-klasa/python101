@@ -11,10 +11,6 @@ na uruchomienie komputera, testowanie i pracę bez ingerowania w dane
 zgromadzone na twardym dysku (np. inne systemy). Dystrybujce *live* można
 zainstalować na dysku twardym lub wykorzystać do odzyskiwania danych.
 
-W "czystym" systemie *live* można przećwiczyć scenariusze podstawowe,
-ponieważ zawierają interpreter Pythona, natomiast pozostałe wymagają
-doinstalowania bibliotek.
-
 .. note::
 
     Przygotowanie bootowalnej płyty sprowadza się do pobrania obrazu *iso*
@@ -23,8 +19,11 @@ doinstalowania bibliotek.
     nie zapamięta żadnych zmian konfiguracyjnych ani plików użytkownika,
     chyba że zapiszemy je na dysku twardym lub pendrajwie.
 
-Najlepszym rozwiązaniem jest przygotowanie klucza USB z plikiem zapisu
-(tzw. tryb persystencji) przechowującym dokonywane w systemie zmiany.
+W "czystym" systemie *live* można przećwiczyć scenariusze podstawowe,
+pozostałe wymagają doinstalowania bibliotek. Dlatego najlepszym rozwiązaniem
+jest przygotowanie klucza Live USB z plikiem zapisu (tzw. tryb persystencji)
+przechowującym dokonywane w systemie zmiany (doinstalowane programy, konfiguracja
+i pliki użytkownika).
 
 .. _dystrybucje:
 
@@ -32,18 +31,17 @@ Polecane dystrybucje
 ---------------------
 
 * `LxPupTahr 15.05.01 <http://lx-pup.weebly.com/>`_ – system zaprojektowany
-  od podstaw jako *live* z możliwością zapisywania zmian oprogramownaia,
-  konfiguracji i plików użytkownika. Oparty na stabilnym Ubuntu 14.04 LTS.
-  Środowisko graficzne LXDE. Zawiera dodatkowe narzędzia i wymagane biblioteki.
-  **Polecany do realizowania scenariuszy na warsztatach.**
+  od podstaw jako *live* z możliwością zapisywania zmian. Oparty na stabilnym
+  Ubuntu 14.04 LTS. Środowisko graficzne LXDE. Zawiera wszystkie dodatkowe
+  narzędzia i wymagane biblioteki. **Polecany do realizowania scenariuszy na warsztatach.**
 
 .. figure:: lxpupimg/lxpuptahr.png
 
    System LxPupTahr
 
-* `Xubutnu 14.04.2 LTS <http://xubuntu.org/>`_ to ostatnia stabilna wersja Ubuntu
-  z środowiskiem graficznym XFCE; wspierana będzie do roku 2019.
-  Wymaga doinstalowania narzędzi i bibliotek.
+* `Xubutnu 14.04.2 LTS <http://xubuntu.org/>`_ – ostatnia stabilna wersja Ubuntu,
+  wspierana do roku 2019. Środowisko graficzne XFCE. Wymaga doinstalowania
+  narzędzi i bibliotek.
 
 * `Szkolny Remiks Ucznia v.37 <Szkolny Remiks Ucznia: http://sru.e-swoi.pl>`_
   – to spersonalizowana wersja stabilnego Xubuntu (zob. wyżej), środowisko XFCE.
@@ -66,13 +64,14 @@ Klucz Live USB
 
 * Pobieramy :term:`obraz iso` wybranej :ref:`dystrybucji <dystrybucje>`:
 
-  - `LxPupTahr <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/kzkbox_20150617_pc.iso?download=1>`_ (474MB)
+  - `LxPupTahr <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/kzkbox_20150716.iso?download=1>`_ (375MB)
   - `Xubuntu <http://se.archive.ubuntu.com/mirror/cdimage.ubuntu.com/xubuntu/releases/14.04/release/xubuntu-14.04.2-desktop-i386.iso>`_ (975MB)
   - `SRU v.37 32-bit <http://iso.sru.e-swoi.pl/SRU_MT-14.04-37.iso>`_ (2,4GB)
   - `FREE_DESKTOP_CEO <http://cyfrowaszkola.waw.pl/_pliki/FREE_Desktop_CEO_02.iso>`_ (2,1GB)
 
 * W przypadku *LxPupTahr* pobieramy program `Rufus <https://rufus.akeo.ie/>`_.
   Dla pozostałych: `program Unetbootin <http://unetbootin.sourceforge.net/unetbootin-windows-latest.exe>`_.
+
 * Wpinamy pendrajwa o pojemności min. 2GB dla dystrybucji *LxPupTahr*, 4GB – dla pozostałych.
   Pendrajw powinien mieć przynajmniej jedną główną i aktywną partycję FAT32 – tak jest zazwyczaj.
 

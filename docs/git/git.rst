@@ -1,5 +1,5 @@
 Git - wersjonowanie kodów źródłowych
-====================================
+######################################
 
 .. _git-howto:
 
@@ -638,7 +638,7 @@ z centralnego repozytorium:
 
 Ta komenda ściągnie historię zmian z centralnego repozytorium i zaktualizuje naszą kopię roboczą plików.
 
-# Konfiguracja SSH pod windowsJesli korzystamy z narzedzia KeePass do przechowywania hasel i kluczy SSH, to dobrze jest polaczyć je z GITem przez narzedzie Plink, do tego celu musimy dodać zmienna systemowa podmieniajaca domyslne narzedzie SSH. 
+# Konfiguracja SSH pod windowsJesli korzystamy z narzedzia KeePass do przechowywania hasel i kluczy SSH, to dobrze jest polaczyć je z GITem przez narzedzie Plink, do tego celu musimy dodać zmienna systemowa podmieniajaca domyslne narzedzie SSH.
 
 Uruchamiamy konsole PowerShell z uprawnieniami administracyjnymi:
 

@@ -22,13 +22,11 @@ System w dostosowanej wersji zawiera:
   (otwartoźrodłówa, oparta na Firefoksie);
 * fonty Ubuntu oraz podstawowe z Windows;
 * pakiety *python-pip*, *python-virtualenv*, *git* oraz bibliotekę *Pygame*;
-* skonfigurowane mini środowisko programistyczne *Geany IDE*;
-* środowisko *PyCharm IDE Proffesional Trial*;
+* wszystkie biblioteki Pythona wymagane w poszczególnych scenariuszach;
+* skonfigurowane środowiska programistyczne *Geany IDE* oraz Sublime Text 3;
+* możliwość doinstalowania środowiska :ref:`*PyCharm IDE Proffesional* <ins-pycharm>`;
 * skonfigurowane elementy interfejsu LXDE;
 * skonfigurowane skróty klawiszowe.
-
-Wszystkie pozostałe biblioteki potrzebne do realizacji `Szkolenia z Pythona
-Kzk <http://python101.readthedocs.org>`_ zainstalujemy przy użyciu narzędzia *pip*.
 
 Połączenie z internetem
 =========================
@@ -122,7 +120,7 @@ dostępne np. na stronie `pet_packages-tahr <http://distro.ibiblio.org/puppylinu
 Drugim formatem stosowanym dla dużych pakietów, które używamy od czasu
 do czasu, jest format `SFS <http://puppylinux.org/wikka/SquashFS>`_.
 Spakowane w ten sposób oprogramowanie możemy dodawać "w locie" w trakcie
-działania systemu. Korzystamy z narzędzia *SFS-Load w locie* (Start/Konfiguracja).
+działania systemu. Korzystamy z narzędzia *SFS-Ładuj w locie* (Start/Konfiguracja).
 
 .. tip::
 
@@ -130,9 +128,35 @@ działania systemu. Korzystamy z narzędzia *SFS-Load w locie* (Start/Konfigurac
     :file:`/root`, ale w katalogu głównym startowego pendrajwa. Jest on
     łatwo dostępny podczas pracy z systemem w ścieżce :file:`/initrd/mnt/dev_save/`,
     łatwo go również otworzyć z lewego panelu w menedżerze plików.
-    Zazwyczaj oznaczony będzie ``sdb1``.
+    Zazwyczaj oznaczony będzie jako ``sdb1``.
 
 .. figure:: lxpupimg/pcmanfm01.png
+
+.. _ins-pycharm:
+
+Instalacja PyCharm Professional
+================================
+
+Jeżeli nawiązaliśmy połączenie z internetem, w terminalu wydajemy polecenie:
+
+.. code-block:: bash
+
+    ~# install-pycharm.sh ver
+
+– gdzie *ver* oznacza wersję, którą chcemy zainstalować, np. `4.5.3`.
+Skrypt spróbuje pobrać odpowiednie archiwum. W przypadku niepowodzenia
+można podać inną wersję lub ściągnąć instalator ze `strony <https://www.jetbrains.com/pycharm/download/>`_,
+na której można też sprawdzić oznaczenie najnowszej wersji. Pobrane
+archiwum, np. ``pycharm-professional-4.5.3.tar.gz``, należy umieścić w katalogu
+:file:`~/Pobrane` lub – jeżeli pobieramy w innym systemie – w katalogu :file:`Dodatki`
+na pendrajwie z LxPupTahr. Skrypt spróbuje zainstalować program z wymienionych lokalizacji.
+
+PyCharm wymaga do działania środowiska JRE (Java Runtime Environment), które
+dostępne jest w pliku SFS umieszczonym w katalogu "Dodatki" na pendrajwie.
+Najnowsza wersja Javy dostępna jest również `w sieci <https://copy.com/9WzmbHVn8T8UxsSN>`_.
+Plik SFS instalujemy za pomocą polecenia w terminalu ``sfs_load`` lub
+*Start/Konfiguracja/SFS-Ładowanie w locie*. Na koniec restartujemy menedżer
+okien: *Start/Zamknij/Restart WM* lub ponownie uruchamiamy system.
 
 .. _klawiatura:
 
@@ -163,6 +187,7 @@ Oznaczenia: C – Control, A – Alt, W - Windows (SuperKey).
 * **W+f** – menedżer plików (pcmanfm)
 * **W+t** – terminal (LXTerminal)
 * **W+e** – Geany IDE
+* **W+s** – Sublime Text 3
 * **W+p** – PyCharm IDE
 * **W+w** – przeglądarka WWW (Palemoon)
 * **W+Góra**, **W+Dół**, **W+Lewo**, **W+Prawo**, **W+C**, **W+Alt+Lewo**,
