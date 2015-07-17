@@ -647,4 +647,3 @@ z centralnego repozytorium:
     ~/python101$ git pull
 
 Ta komenda ściągnie historię zmian z centralnego repozytorium i zaktualizuje naszą kopię roboczą plików.
-

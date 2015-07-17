@@ -38,11 +38,9 @@ używamy menedżera ``apt-get`` i w terminalu wydajemy następujące polecenia:
 .. code-block:: bash
 
     ~$ sudo apt-get update
-    ~$ sudo apt-get install python-pip python-virtualenv git ipython
-    ~$ sudo apt-get install python-pygame sqlite3
+    ~$ sudo apt-get install python-pip python-virtualenv git ipython python-pygame sqlite3
     ~$ sudo pip install --upgrade install
-    ~$ sudo pip install Flask Django
-    ~$ sudo pip install peewee sqlalchemy flask-sqlalchemy
+    ~$ sudo pip install Flask Django peewee sqlalchemy flask-sqlalchemy
 
 Jeśli ``apt-get`` zgłosi problem z dostępnością pakietu, w systemach Ubuntu i pochodnych
 należy spróbować włączyć dodatkowe źródła oprogramowania:
@@ -58,10 +56,8 @@ wykorzystują menedżer ``pacman``. Odpowiednie polecenia mają postać:
 .. code-block:: bash
 
     ~# pacman -Syyu
-    ~# pacman -S python2-pip python2-virtualenv git ipython2
-    ~# pacman -S python2-pygame sqlite
-    ~# pip2 install Flask Django
-    ~# pip2 install peewee sqlalchemy flask-sqlalchemy
+    ~# pacman -S python2-pip python2-virtualenv git ipython2 python2-pygame sqlite
+    ~# pip2 install Flask Django peewee sqlalchemy flask-sqlalchemy
 
 W innych systemach linuksowych należy korzystać z dedykowanych menedżerów
 lub wspomnianego instalatora Pythona (``pip``).
