@@ -18,6 +18,7 @@ Poniżej znajdziesz pomoc w przygotowaniu i konfiguracji środowiska do pracy z 
     ide
     live
     py3
+    git/git
 
 
 Przygotowane scenariusze zakładają również, że pracujemy w **katalogu domowym** użytkownika.

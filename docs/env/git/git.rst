@@ -96,6 +96,16 @@ Ewentualnie możemy zainstalować tylko GIT dla konsoli:
     > @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
     > choco install git
 
+Jeśli korzystamy z narzędzia `KeePass <http://keepass.info/>`_ do przechowywania haseł i kluczy SSH,
+to dobrze jest połączyć je z GITem przez narzędzie `Plink <http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html>`_.
+Do tego celu musimy dodać zmienna systemowa podmieniająca domyślne narzędzie SSH.
+
+Uruchamiamy konsole PowerShell z uprawnieniami administracyjnymi:
+
+.. code-block:: ps
+
+    [Environment]::SetEnvironmentVariable("GIT_SSH", "d:\usr\tools\PuTTY\plink.exe", "User")
+
 
 Konfiguracja i pierwsze uruchomienie
 ------------------------------------
@@ -638,10 +648,3 @@ z centralnego repozytorium:
 
 Ta komenda ściągnie historię zmian z centralnego repozytorium i zaktualizuje naszą kopię roboczą plików.
 
-# Konfiguracja SSH pod windowsJesli korzystamy z narzedzia KeePass do przechowywania hasel i kluczy SSH, to dobrze jest polaczyć je z GITem przez narzedzie Plink, do tego celu musimy dodać zmienna systemowa podmieniajaca domyslne narzedzie SSH. 
-
-Uruchamiamy konsole PowerShell z uprawnieniami administracyjnymi:
-
-.. code-block:: ps
-
-    [Environment]::SetEnvironmentVariable("GIT_SSH", "d:\usr\tools\PuTTY\plink.exe", "User")

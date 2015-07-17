@@ -71,7 +71,6 @@ Dodatkowe informacje
     :maxdepth: 1
 
     faq/index
-    git/git
 
 .. include:: authors.rst
 
