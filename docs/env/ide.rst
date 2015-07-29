@@ -99,28 +99,27 @@ W systemach Linux alternatywnie można użyć poleceń w terminalu:
 
 .. code-block:: bash
 
-    wget http://download.jetbrains.com/python/pycharm-professional-4.5.1.tar.gz -O - | tar -xz
-    ./pycharm-4.5.1/bin/pycharm.sh
+    ~$ wget http://download.jetbrains.com/python/pycharm-professional-4.5.3.tar.gz -O - | tar -xz
+    ~$ ./pycharm-4.5.3/bin/pycharm.sh
 
 Jak widać, program zostanie zainstalowany w katalogu domowym użytkownika,
 a uruchamiamy go drugim z podanych poleceń.
 
-Jeśli w naszym systemie brakuje oprogramowania JAVA to musimy zainstalować Open JDK:
+Jeśli w naszym systemie brakuje środowiska Java Run Time, musimy je doinstalować:
 
 .. code-block:: bash
 
-    sudo apt-get install openjdk-7-jre
+    ~$ sudo apt-get install openjdk-7-jre # Debian i pochodne, np. (X)Ubuntu
+    ~# pacman -S jre7-openjdk # Arch Linux i pochodne
 
-Lub zamiast Open JDK zainstalować wersję firmy Oracle. W systemach Ubuntu
-i pochodnych używamy poleceń:
+.. note::
+
+    Aby poprawić wygląd czcionek w PyCharm, warto w pliku :file:`~/.bashrc` (Debian i pochodne)
+    lub :file:`~/.bash_profile` (Arch Linux i pochodne) dodać poniższą linię:
 
 .. code-block:: bash
 
-    sudo apt-get install python-software-properties
-    sudo add-apt-repository ppa:webupd8team/java
-    sudo apt-get update
-    sudo apt-get install oracle-java8-installer
-
+    export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
 Bezpłatna licencja
 ------------------
