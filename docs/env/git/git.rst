@@ -45,7 +45,7 @@ podczas zajęć pozwala wykluczyć pomyłki i wyeliminować problemy wynikające
 we wprowadzonych zmianach.
 
 Poniżej mamy przykład komendy która otworzy pliki w `wersji 5` dla `zadania 2` .
-Nazwy `zadanie2` oraz `wersja5` sa tylko przykładem, mogą być dowolnie wybrane przez autora.
+Nazwy ``zadanie2`` oraz ``wersja5`` sa tylko przykładem, mogą być dowolnie wybrane przez autora.
 
 .. code-block:: bash
 
@@ -144,7 +144,7 @@ inicjalizujemy GITa w katalogu tego projektu. Tworzymy lokalne repozytorium pole
     ~/git101$ git init
     Initialized empty Git repository in ~/git101/.git/
 
-W wyniku w naszym katalogu projektu (na razie pustym) pojawi się katalog `.git`
+W wyniku w naszym katalogu projektu (na razie pustym) pojawi się katalog ``.git``
 w nim narzędzie będzie miało swój schowek.
 
 
@@ -162,7 +162,7 @@ W każdym momencie możemy sprawdzić status naszego repozytorium:
 
     nothing to commit (create/copy files and use "git add" to track)
 
-Kluczowe jest `nothing to commit`, oznacza to że narzędzie nie wykryło
+Kluczowe jest ``nothing to commit``, oznacza to że narzędzie nie wykryło
 zmian w stosunku do tego co jest zapisane w repozytorium.
 Słusznie, bo katalog jest pusty. Dodajmy jakieś pliki:
 
@@ -182,7 +182,7 @@ Słusznie, bo katalog jest pusty. Dodajmy jakieś pliki:
 
     nothing added to commit but untracked files present (use "git add" to track)
 
-W powyższym komunikacie kluczowe jest `untracked files present`,
+W powyższym komunikacie kluczowe jest ``untracked files present``,
 narzędzie wykryło pliki które jeszcze nie są śledzone, możemy rozpocząć
 ich śledzenie wykonując polecenie podane we wskazówce:
 
@@ -214,7 +214,7 @@ nie decyduje o tym za nas.
 Zapamiętujemy wersję plików
 ---------------------------
 
-Zamiany w plikach zapisujemy wykonując komendę `git commit`:
+Zamiany w plikach zapisujemy wykonując komendę ``git commit``:
 
 .. code-block:: bash
 
@@ -224,7 +224,7 @@ Zamiany w plikach zapisujemy wykonując komendę `git commit`:
      create mode 100644 README
      create mode 100644 hello.py
 
-Parametr `-m` pozwala wprowadzić komentarz który pojawi się w historii zmian.
+Parametr ``-m`` pozwala wprowadzić komentarz który pojawi się w historii zmian.
 
 .. note::
 
@@ -255,24 +255,24 @@ Sprawdźmy status a następnie zmodyfikujmy jeden z plików:
 
     no changes added to commit (use "git add" and/or "git commit -a")
 
-GIT poprawnie wskazał, że nie ma zmian, następnie wykrył zmianę w pliki `README`
+GIT poprawnie wskazał, że nie ma zmian, następnie wykrył zmianę w pliki ``README``
 oraz pojawienie się nowego jeszcze nie śledzonego pliku.
 
 .. note::
 
-    Wskazówka zawiera tekst: `no changes added to commit (use "git add" and/or "git commit -a")`,
-    wskazując na użycie komendy `git add`. Wcześniej mówiliśmy że nie trzeba
+    Wskazówka zawiera tekst: ``no changes added to commit (use "git add" and/or "git commit -a")``,
+    wskazując na użycie komendy ``git add``. Wcześniej mówiliśmy że nie trzeba
     operacji dodawania powtarzać za każdym razem - otóż nie trzeba, ale można.
 
     Dzięki temu możemy wybierać pliki które wersje nie zostaną zapisane, tworząc
     tzw. staging (poczekalnia), w poczekalni przygotowujemy zestaw plików,
-    który zostanie zapisany w historii zmian w monecie wykonania `git commit`.
+    który zostanie zapisany w historii zmian w monecie wykonania ``git commit``.
 
     Na razie nie zawracajmy sobie tym głowy, a po więcej informacji zapraszamy
     `do rozdziału o poczekalni <http://git-scm.com/book/pl/v1/Podstawy-Gita-Rejestrowanie-zmian-w-repozytorium#Dodawanie-zmodyfikowanych-plików-do-poczekalni>`_
 
 
-Zapamiętajmy zmiany pliku 'README' w repozytorium przy pomocy komendy `git commit -a` z wskazówki:
+Zapamiętajmy zmiany pliku 'README' w repozytorium przy pomocy komendy ``git commit -a`` z wskazówki:
 
 .. code-block:: bash
 
@@ -329,7 +329,7 @@ Sprawdźmy co sobie zapisaliśmy w repozytorium.
 
         Moja pierwsza wersja plików
 
-Teraz sprawdźmy co się kryje w naszym pliku `README` i wyciągnijmy jego pierwsza wersję:
+Teraz sprawdźmy co się kryje w naszym pliku ``README`` i wyciągnijmy jego pierwsza wersję:
 
 .. code-block:: bash
 
@@ -356,15 +356,15 @@ Teraz sprawdźmy co się kryje w naszym pliku `README` i wyciągnijmy jego pierw
     To jest piaskownica Git101.
 
 Działo się! Zwróćmy uwagę jak wskazaliśmy wersję z historii zmian,
-podaliśmy początek skrótu `e9cffa4b65487f9c5291fa1b9607b1e75e394bc1`,
-czyli tego opisanego komentarzem `Moja pierwsza wersja plików` do komendy `git checkout`.
+podaliśmy początek skrótu ``e9cffa4b65487f9c5291fa1b9607b1e75e394bc1``,
+czyli tego opisanego komentarzem ``Moja pierwsza wersja plików`` do komendy ``git checkout``.
 
-Następnie przywróciliśmy najnowsze wersje plików z gałęzi `master`.
+Następnie przywróciliśmy najnowsze wersje plików z gałęzi ``master``.
 Wyjaśnienia co są gałęzie, zostawmy na później, tymczasem wystarczy nam to,
-że komenda `git checkout master` zapisze nasze pliki w najnowszych wersjach
+że komenda ``git checkout master`` zapisze nasze pliki w najnowszych wersjach
 zapamiętanych w repozytorium.
 
-Na razie nie przejmujemy się także ostrzeżeniem `You are in 'detached HEAD' state.`,
+Na razie nie przejmujemy się także ostrzeżeniem ``You are in 'detached HEAD' state.``,
 to także zostawiamy na później.
 
 Spróbujcie teraz poćwiczyć wprowadzanie zmian i zapisywanie ich w repozytorium.
@@ -399,6 +399,8 @@ pomoże w nauce, dlatego początkującym proponujemy założenie konta w serwisi
 
 .. figure:: github1.png
 
+Dodatkowo dla dalszej pracy z tymi przykładami warto jest skonfigurować sobie `uwierzytelnianie przy pomocy
+kluczy SSH <https://help.github.com/articles/generating-ssh-keys/>`_.
 
 Forkujemy pierwszy projekt
 --------------------------
