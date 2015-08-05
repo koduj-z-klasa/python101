@@ -1,7 +1,7 @@
 Quiz
 #######################
 
-Realizacja aplikacji internetowej Quiz w oparciu o mikro-framework Flask.
+Realizacja aplikacji internetowej Quiz w oparciu o :term:`framework` Flask.
 Na stronie wyświetlamy pytania, użytkownik zaznacza poprawne odpowiedzi,
 przesyła je na serwer i otrzymuje informację o wynikach.
 
@@ -47,9 +47,9 @@ Serwer uruchamiamy komendą:
 .. figure:: img/serwer.png
 
 Domyślnie serwer uruchamia się pod adresem *http://127.0.0.1:5000*.
-Po wpisaniu go do przeglądarki internetowej otrzymamy stronę z błędem HTTP 404,
-co wynika z faktu, że nasza aplikacja nie ma jeszcze zdefiniowanego żadnego zachowania
-(czy też widoku) dla tego adresu.
+Po wpisaniu go do przeglądarki internetowej otrzymamy :term:`kod odpowiedzi HTTP` 404,
+tj. błąd "nie znaleziono", co wynika z faktu, że nasza aplikacja nie ma jeszcze zdefiniowanego żadnego
+widoku dla tego adresu.
 
 .. figure:: img/quiz1.png
 
@@ -58,15 +58,16 @@ Widok (strona główna)
 
 Jeżeli chcemy, aby nasza aplikacja zwracała użytkownikowi jakieś strony www,
 tworzymy tzw. :term:`widok`. Jest to funkcja Pythona powiązana z określonymi
-adresami URL za pomocą tzw. dekoratorów. Widoki pozwalają name obsługiwać
-żądania GET, wysyłane przez przeglądarkę, kiedy użytkownik chce zobaczyć
-stronę, i POST, kiedy użytkownik przesyła dane na serwer za pomocą formularza.
+adresami URL za pomocą tzw. dekoratorów. Widoki pozwalają name obsługiwać podstawowe
+żądania protokołu :term:`HTTP`, czyli: :term:`GET`, wysyłane przez przeglądarkę,
+kiedy użytkownik chce zobaczyć stronę, i :term:`POST`, kiedy użytkownik przesyła dane
+na serwer za pomocą formularza.
 
-W odpowiedzi na żądania aplikacja odsyłać może różne dane. Najczęściej
-będą to znaczniki HTML oraz dane, np. wyniki quizu. Flask ułatwia
+W odpowiedzi aplikacja może odsyłać różne dane. Najczęściej
+będą to znaczniki :term:`HTML` oraz żądane treści, np. wyniki quizu. Flask ułatwia
 tworzenie takich dokumentów za pomocą tzw. szablonów.
 
-W pliku :file:`todo.py` umieszcamy funkcję ``index()``, widok strony głównej:
+W pliku :file:`todo.py` umieszczamy funkcję ``index()``, widok strony głównej:
 
 .. raw:: html
 
@@ -247,14 +248,6 @@ otrzymujemy ocenę.
 Materiały
 *******************************
 
-1. `Strona projektu Flask`_
-2. `Co to jest framework?`_
-3. `Protokół HTTP`_ (żądania GET i POST)
-
-.. _Strona projektu Flask: http://flask.pocoo.org/
-.. _Co to jest framework?: http://pl.wikipedia.org/wiki/Framework
-.. _Protokół HTTP: http://pl.wikipedia.org/wiki/Http
-
 **Źródła:**
 
 * :download:`quiz.zip <quiz.zip>`
@@ -269,4 +262,3 @@ Uruchamiamy je wydając polecenia:
     ~/python101/docs/bazy$ python quizx.py
 
 \- gdzie *x* jest numerem kolejnej wersji kodu.
-

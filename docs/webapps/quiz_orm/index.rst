@@ -3,7 +3,7 @@ Quiz ORM
 
 .. highlight:: python
 
-Realizacja aplikacji internetowej Quiz w oparciu o mikro-framework `Flask`_
+Realizacja aplikacji internetowej Quiz w oparciu o :term:`framework` `Flask`_
 i bazę danych `SQLite`_ zarządzaną systemem ORM `Peewee`_ lub `SQLAlchemy`_.
 
 .. _Flask: http://flask.pocoo.org
@@ -562,21 +562,6 @@ Poćwicz sam
 
 Materiały
 *************************
-
-1. `Strona projektu Flask`_
-2. `Co to jest framework?`_
-3. `Protokół HTTP`_ (żądania GET i POST)
-4. Baza `SQLite`_
-5. ORM `Peewee`_
-6. ORM `SQLAlchemy`_
-
-.. _Strona projektu Flask: http://flask.pocoo.org/
-.. _Co to jest framework?: http://pl.wikipedia.org/wiki/Framework
-.. _Protokół HTTP: http://pl.wikipedia.org/wiki/Http
-.. _Flask: http://flask.pocoo.org
-.. _SQLite: http://www.sqlite.org
-.. _Peewee: http://peewee.readthedocs.org/en/latest
-.. _SQLAlchemy: http://www.sqlalchemy.org
 
 **Źródła:**
 

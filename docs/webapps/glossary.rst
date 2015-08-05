@@ -17,13 +17,16 @@ Słownik aplikacji internetowych
         język służący do opisu formy prezentacji stron WWW.
 
     HTTP
-        protokół przesyłania dokumentów WWW.
+        protokół przesyłania dokumentów WWW. `Więcej o HTTP <http://pl.wikipedia.org/wiki/Http>`_
 
     GET
-        typ żądania HTTP, służący do pobierania zasobów z serwera WWW.
+        typ żądania HTTP, służący do pobierania zasobów z serwera WWW. `Więcej o GET <https://pl.wikipedia.org/wiki/GET_%28metoda%29>`_
 
     POST
-        typ żądania HTTP, służący do umieszczania zasobów na serwerze WWW.
+        typ żądania HTTP, służący do umieszczania zasobów na serwerze WWW. `Więcej o POST <https://pl.wikipedia.org/wiki/POST_%28metoda%29>`_
+
+    Kod odpowiedzi HTTP
+    		numeryczne oznaczenie stanu realizacji zapytania klienta, np. `200 (OK)` lub `404 (Not Found)`. `Więcej o kodach HTTP <https://pl.wikipedia.org/wiki/Kod_odpowiedzi_HTTP>`_
 
     logowanie
         proces autoryzacji i uwierzytelniania użytkownika w systemie.
