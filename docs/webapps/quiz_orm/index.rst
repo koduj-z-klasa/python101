@@ -560,10 +560,8 @@ Poćwicz sam
     Spróbuj napisać wersję omówionej w innym scenariuszu aplikacji :ref:`ToDo <todo>`
     przy wykorzystaniu wybranego systemu ORM, tj. Peewee lub SQLAlchemy.
 
-Materiały
+Źródła
 *************************
-
-**Źródła:**
 
 * :download:`quiz2.zip <quiz2.zip>`
 

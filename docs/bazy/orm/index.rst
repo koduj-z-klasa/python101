@@ -296,10 +296,8 @@ Zadania dodatkowe
     jako relatywnie szybki i łatwy sposób obsługi danych. Zobacz,
     jak to zrobić na przykładzie scenariusza aplikacji "Quiz 2".
 
-Materiały
+Źródła
 *******************
-
-**Źródła:**
 
 * :download:`orm.zip <orm.zip>`
 
@@ -308,9 +306,9 @@ Uruchamiamy je wydając polecenia:
 
 .. code-block:: bash
 
-    ~/python101$ cd docs/bazy
-    ~/python101/docs/bazy$ python ormpw0x.py
-    ~/python101/docs/bazy$ python ormsa0x.py
+    ~/python101$ cd docs/bazy/orm
+    ~/python101/docs/bazy/orm$ python ormpw0x.py
+    ~/python101/docs/bazy/orm$ python ormsa0x.py
 
 \- gdzie *x* jest numerem kolejnej wersji kodu.
 

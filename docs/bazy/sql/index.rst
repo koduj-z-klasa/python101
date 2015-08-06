@@ -236,20 +236,17 @@ Zadania dodatkowe
     Zobacz, jak zintegrować obsługę bazy danych przy użyciu modułu *sqlite3*
     Pythona z aplikacją internetową na przykładzie scenariusza "ToDo".
 
-Materiały
+Źródła
 *******************
-
-**Źródła:**
 
 * :download:`sqlraw.zip <sqlraw.zip>`
 
-Kolejne wersje tworzenego kodu znajdziesz w katalogu ``~/python101/docs/bazy``.
+Kolejne wersje tworzenego kodu znajdziesz w katalogu ``~/python101/docs/bazy/sql``.
 Uruchamiamy je wydając polecenia:
 
 .. code-block:: bash
 
-    ~/python101$ cd docs/bazy
-    ~/python101/docs/bazy$ python sqlraw0x.py
+    ~/python101$ cd docs/bazy/sql
+    ~/python101/docs/bazy/sql$ python sqlraw0x.py
 
 \- gdzie *x* jest numerem kolejnej wersji kodu.
-

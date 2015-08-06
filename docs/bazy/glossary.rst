@@ -22,8 +22,7 @@ Słownik baz danych
 
     ACID
         Atomicity, Consistency, Isolation, Durability – Atomowość, Spójność, Izolacja, Trwałość;
-        zasady określające kryteria poprawnego zapisu danych w bazie.
-        Zob.: http://pl.wikipedia.org/wiki/ACID
+        zasady określające kryteria poprawnego zapisu danych w bazie. `Więcej o ACID »»» <http://pl.wikipedia.org/wiki/ACID>`_
 
     kwerenda
         Zapytanie do bazy danych zazwyczaj w oparciu o dodatkowe kryteria,
@@ -45,8 +44,8 @@ Słownik baz danych
         przyjmuje jako argumenty inicjalne wartości zdefiniowanych w klasie atrybutów.
 
     ORM
-        (ang. Object-Relational Mapping) – mapowanie obiektowo-relacyjne,
-        czyli sposób odwzorowania obiektów na struktury bazy danych.
+        (ang. Object-Relational Mapping) – mapowanie obiektowo-relacyjne, oprogramowanie
+        odwzorowujące strukturę relacyjnej bazy danych na obiekty danego języka oprogramowania.
 
     Peewee
         prosty i mały system ORM, wspiera Pythona w wersji 2 i 3, obsługuje

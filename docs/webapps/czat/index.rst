@@ -90,29 +90,25 @@ W pliku :file:`setting.py` zmieniamy następujące linie:
 Model – Widok – Kontroler
 **************************
 
-W projektowaniu aplikacji internetowych za pomocą Django odwołujemy się do wzorca M(odel)V(iew)C(ontroller),
-czyli Model–Widok–Kontroler [#]_, co pozwala na oddzielenie danych od ich prezentacji oraz logiki aplikacji.
+W projektowaniu aplikacji internetowych odwołujemy się do wzorca M(odel)V(iew)C(ontroller),
+czyli Model–Widok–Kontroler, co pozwala na oddzielenie danych od ich prezentacji oraz logiki aplikacji.
 Funkcje kolejnych elementów są następujące:
 
-* Modele – :term:`model` w Django reprezentuje źródło informacji;
-  są to klasy Pythona odwzorowujące pojedyncze tabele w bazie danych [#]_;
-  każda klasa zawiera właściwości odpowiadające polom tabeli,
-  może też zawierać funkcje wykonujące operacje na danych.
-  Instancja takiej klasy odpowiada rekordowi danych.
-  Modele definiujemy w pliku :file:`models.py`.
-* Widoki – :term:`widok` w Django to funkcja czy klasa Pythona, która na podstawie żądań www
-  (dla danych adresów URL) zwraca odpowiedź, najczęściej w postaci kodu HTML
-  generowanego w szablonach (templates); odpowiedzią może być również
-  przekierowanie na inny adres, jakiś dokument lub obrazek.
-  Django zawiera wiele widoków wbudowanych. Widoki modyfikujemy
-  lub definiujemy w pliku :file:`views.py`.
-* Kontroler – :term:`kontroler` to mechanizm kierujący kolejne żądania
+* **Modele** – :term:`model` w Django reprezentuje źródło informacji;
+  są to klasy Pythona opisujące pojedyncze tabele w bazie danych (zob. :term:`ORM`);
+  atrybuty klasy odpowiadają polom tabeli, ewentualne funkcje wykonują operacje na danych.
+  Instancja klasy odpowiada rekordowi danych. Modele definiujemy w pliku :file:`models.py`.
+
+* **Widoki** – :term:`widok` w Django to funkcja lub klasa Pythona, która odpowiada
+  na żądania www, np. zwraca kod HTML generowany w szablonie (ang. *Template*),
+  jakiś dokument, obrazek lub przekierowuje na inny adres.
+  Django zawiera wiele widoków wbudowanych. Widoki definiujemy w pliku :file:`views.py`.
+
+* **Kontroler** – :term:`kontroler` to mechanizm kierujący kolejne żądania
   do odpowiednich widoków na podstawie wzorców adresów URL zawartych w pliku :file:`urls.py`.
 
-.. [#] Twórcy Django traktują jednak ten wzorzec elastycznie, mówiąc że ich
-   framework wykorzystuje wzorzec MTV, czyli model (model), szablon (template), widok (view).
-.. [#] Takie odwzorowanie nosi nazwę mapowania obiektowo-relacyjnego (ORM).
-   ORM odwzorowuje strukturę bazy na obiekty Pythona.
+Twórcy Django traktują ten wzorzec elastycznie, twierdząc że ich framework wykorzystuje wzorzec MTV,
+czyli model (Model), szablon (Template), widok (View).
 
 Model danych i baza
 **********************
