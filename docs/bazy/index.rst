@@ -30,6 +30,9 @@ wbudowanego modułu `sqlite3 DB-API`_, a także zewnętrznych bibliotek ORM:
 
     sql/index
     orm/index
+    sqlorm/index
+    sql/dane
+    sqlite3
     glossary
 
 Materiały

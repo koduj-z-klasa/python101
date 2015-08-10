@@ -9,4 +9,4 @@ from sqlalchemy.orm import relationship, sessionmaker
 if os.path.exists('test.db'):
     os.remove('test.db')
 # tworzymy instancję klasy Engine do obsługi bazy
-baza = create_engine('sqlite:///test.db') # ':memory:'
+baza = create_engine('sqlite:///test.db')  # ':memory:'

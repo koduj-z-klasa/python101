@@ -1,3 +1,5 @@
+.. _czat_app:
+
 Czat (wersja podstawowa)
 ###########################
 
