@@ -58,16 +58,16 @@ Widok (strona główna)
 
 Jeżeli chcemy, aby nasza aplikacja zwracała użytkownikowi jakieś strony www,
 tworzymy tzw. :term:`widok`. Jest to funkcja Pythona powiązana z określonymi
-adresami URL za pomocą tzw. dekoratorów. Widoki pozwalają name obsługiwać podstawowe
+adresami URL za pomocą tzw. dekoratorów. Widoki pozwalają nam obsługiwać podstawowe
 żądania protokołu :term:`HTTP`, czyli: :term:`GET`, wysyłane przez przeglądarkę,
 kiedy użytkownik chce zobaczyć stronę, i :term:`POST`, kiedy użytkownik przesyła dane
 na serwer za pomocą formularza.
 
 W odpowiedzi aplikacja może odsyłać różne dane. Najczęściej
 będą to znaczniki :term:`HTML` oraz żądane treści, np. wyniki quizu. Flask ułatwia
-tworzenie takich dokumentów za pomocą tzw. szablonów.
+tworzenie takich dokumentów za pomocą szablonów.
 
-W pliku :file:`todo.py` umieszczamy funkcję ``index()``, widok strony głównej:
+W pliku :file:`todo.py` umieszczamy funkcję ``index()``, czyli widok strony głównej:
 
 .. raw:: html
 
@@ -78,9 +78,9 @@ W pliku :file:`todo.py` umieszczamy funkcję ``index()``, widok strony głównej
     :linenos:
     :emphasize-lines: 8-11
 
-Zauważmy, że widok (czyli funkcję) ``index()`` wiążemy z adresem głównym (/)
+Widok (czyli funkcja) ``index()`` powiązana jest z adresem głównym (/)
 za pomocą dekoratora ``@app.route('/')``. Dzięki temu, jeżeli użytkownik
-wpisze w przeglądarce adres serwera i wciśnie Enter, jego żądanie (GET)
+wpisze w przeglądarce adres serwera, jego żądanie (GET)
 zostanie przechwycone i obsłużone właśnie w tej funkcji.
 
 Najprostszą odpowiedzią na żądanie GET jest zwrócenie jakiegoś tekstu.
@@ -90,7 +90,7 @@ podany tekst do przeglądarki, a ta wyświetli go użytkownikowi.
 .. figure:: img/quiz2.png
 
 Zazwyczaj będziemy prezentować bardziej skomplikowane dane, w dodatku
-sformatowane wizualnie. Potrzebujemy więc szablonu.
+sformatowane wizualnie. Potrzebujemy szablonu.
 Tworzymy więc plik :file:`~/quiz/templates/index.html`.
 Można to zrobić w terminalu po ewentualnym zatrzymaniu serwera (CTRL+C):
 
@@ -126,7 +126,7 @@ Na koniec modyfikujemy widok ``index()``:
 
 Po zaimportowaniu (!) potrzebnej funkcji używamy jej do wyrenderowania
 podanego jako argument szablonu: ``return render_template('index.html')``.
-Pod adresem *http://127.0.0.1:5000* strony głównej, otrzymamy stronę HTML:
+Pod adresem *http://127.0.0.1:5000* strony głównej, zobaczymy dokument HTML:
 
 .. figure:: img/quiz3.png
 
@@ -168,20 +168,19 @@ Do szablonu :file:`index.html` wstawiamy poniższy kod po nagłówku ``<h1>``.
 
 Znaczniki HTML w powyższym kodzie tworzą formularz (``<form>``).
 Natomiast tagi, czyli polececnia dostępne w szablonach, pozwalają
-wypełnić go danymi.  Z przekazaneej do szablonu listy pytań, czyli ze
-zmiennej ``pytania`` odczytujemy w pętli ``{% for p in pytania %}``
-kolejne słowniki; dalej tworzymy elementy formularza, czyli wyświetlamy
-treść pytania ``{{ p.pytanie }}``, a w kolejnej pętli ``{% for o in p.odpowiedz %}``
-odpowiedzi w postaci grupy opcji typu radio.
+wypełnić go danymi. Warto zapamiętać, że jeżeli potrzebujemy w szablonie instrukcji sterującej,
+umieszczamy ją w znacznikach ``{% %}``, natomiast kiedy chcemy
+wyświetlić jakąś zmienną używamy notacji ``{{ }}``.
+
+Z przekazaneej do szablonu listy pytań, czyli ze zmiennej ``pytania`` odczytujemy
+w pętli ``{% for p in pytania %}`` kolejne słowniki; dalej tworzymy elementy formularza,
+czyli wyświetlamy treść pytania ``{{ p.pytanie }}``,
+a w kolejnej pętli ``{% for o in p.odpowiedz %}`` odpowiedzi w postaci grupy opcji typu radio.
 
 Każda grupa odpowiedzi nazywana jest dla odróżnienia numerem pytania liczonym od 0.
 Odpowiednią zmienną ustawiamy w instrukcji ``{% set pnr = loop.index0 %}``,
-a używamy w kodzie ``name="{{ pnr }}"``. Dzięki temu przyporządkujemy
+a używamy w postaci ``name="{{ pnr }}"``. Dzięki temu przyporządkujemy
 przesłane odpowiedzi do kolejnych pytań podczas ich sprawdzania.
-
-Warto zauważyć, że jeżeli potrzebujemy w szablonie instrukcji sterującej,
-umieszczamy ją w znacznikach ``{% %}``, natomiast kiedy chcemy
-wyświetlić jakąś zmienną używamy notacji ``{{ }}``.
 
 Po ponownym uruchomieniu serwera powinniśmy otrzymać następującą stronę internetową:
 
@@ -208,9 +207,9 @@ uzupełniamy dekorator ``app.route()``, aby obsługiwał zarówno żądania :ter
 (odesłanie żądanej strony), jak i :term:`POST` (ocena przesłanych odpowiedzi
 i odesłanie wyniku).
 
-W widoku ``index()`` dodaliśmy instrukcję warunkową ``if request.method == 'POST':``,
-która wykrywa żądania POST i wykonuje blok kodu zliczający poprawne odpowiedzi.
-Przesłane dane pobieramy z przesłanego formularza i zapisujemy w zmiennej:
+Instrukcja warunkowa ``if request.method == 'POST':`` wykrywa żądania POST
+i wykonuje blok kodu zliczający poprawne odpowiedzi.
+Dane pobieramy z przesłanego formularza i zapisujemy w zmiennej:
 ``odpowiedzi = request.form``. Następnie w pętli
 ``for pnr, odp_u in odpowiedzi.items()`` odczytujemy
 kolejne pary danych, czyli numer pytania i udzieloną odpowiedź.

@@ -44,8 +44,8 @@ Słownik aplikacji internetowych
         wszystkich możliwości SQL-a, obsługuje bazy SQLite3, MySQL, Postgresql,
         Oracle, MS SQL Server i inne.
 
-    serwer deweloperski (testowy)
-        serwer www używany w czasie prac nad oprogramowaniem.
+    serwer deweloperski
+        testowy serwer www używany w czasie prac nad oprogramowaniem.
 
     serwer WWW
         serwer obsługujący protokół HTTP.
