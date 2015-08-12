@@ -1,0 +1,28 @@
+<!-- czatpro/czat/templates/czat/index.html -->
+<html>
+  <head></head>
+  <body>
+      <h1>Witaj w aplikacji Czat!</h1>
+
+      {% if messages %}
+        <ul>
+        {% for komunikat in messages %}
+           <li>{{ komunikat|capfirst }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if not user.is_authenticated %}
+      	<ul>
+      		<li><a href="{% url 'czat:loguj' %}">Zaloguj się</a></li>
+       	</ul>
+      {% else %}
+        <p>Jesteś zalogowany jako {{ user.username }}</p>
+        <ul>
+          <li><a href="{% url 'czat:wiadomosci' %}">Wiadomości</a></li>
+         	<li><a href="{% url 'czat:wyloguj' %}">Wyloguj</a></li>
+        </ul>
+      {% endif %}
+
+  </body>
+</html>
