@@ -319,7 +319,7 @@ Następnie tworzymy szablon :file:`~/czatpro/czat/templates/czat/index.html`, kt
 
 .. raw:: html
 
-    <div class="code_no">Plik index.html nr <script>var plik_no = plik_no || 1; document.write(plik_no++);</script></div>
+    <div class="code_no">Plik index.html. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: index_z2.html
@@ -400,7 +400,7 @@ Dalej potrzebny nam **szablon logowania** :file:`~/czatpro/czat/templates/czat/l
 
 .. raw:: html
 
-    <div class="code_no">Plik loguj.html nr <script>var plik_no = plik_no || 1; document.write(plik_no++);</script></div>
+    <div class="code_no">Plik loguj.html. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: loguj_z3.html
@@ -423,7 +423,7 @@ uzupełnieniu szablonu :file:`index.html`. Po znaczniku ``<h1>`` wstawiamy poni�
 
 .. raw:: html
 
-    <div class="code_no">Plik index.html nr <script>var plik_no = plik_no || 1; document.write(plik_no++);</script></div>
+    <div class="code_no">Plik index.html. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: index.html
@@ -447,8 +447,8 @@ Pozostaje **skojarzenie widoków z adresami URL**. W pliku :file:`czat/urls.py` 
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 9
-    :lines: 9-10
+    :lineno-start: 10
+    :lines: 10-11
 
 Możesz przetestować działanie dodanych funkcji wywołując w przeglądarce adresy:
 ``127.0.0.1:8000/loguj`` i ``127.0.0.1:8000/wyloguj``. Przykładowy formularz
@@ -493,8 +493,8 @@ Do pliku :file:`views.py` dodajemy importy i kod funkcji:
 .. highlight:: python
 .. literalinclude:: views.py
     :linenos:
-    :lineno-start: 41
-    :lines: 41-
+    :lineno-start: 42
+    :lines: 42-60
 
 Po sprawdzeniu typu żądania wydobywamy treść przesłanej wiadomości
 ze słownika ``request.POST`` za pomocą metody ``get('tekst', '')``. Jej pierwszy argument
@@ -518,7 +518,7 @@ i listy wiadomości.
 
 .. raw:: html
 
-    <div class="code_no">Plik wiadomosci.html nr <script>var plik_no = plik_no || 1; document.write(plik_no++);</script></div>
+    <div class="code_no">Plik wiadomosci.html. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: wiadomosci_z4.html
@@ -539,8 +539,8 @@ nadając mu nazwę *wiadomosci*:
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 11
-    :lines: 11
+    :lineno-start: 12
+    :lines: 12
 
 Ćwiczenie 3
 =============
@@ -685,6 +685,7 @@ widok ``DeleteView``. Do pliku :file:`views.py` dodajemy:
     :linenos:
     :lineno-start: 87
     :lines: 87-91
+    :emphasize-lines: 4
 
 Tu widzimy zastosowanie wspomnianego wcześniej atrybutu ``template_name``.
 
@@ -704,7 +705,7 @@ Potrzebujemy szablonu zapisanego w podanym w widoku pliku: :file:`czatpro/czat/t
 
 .. raw:: html
 
-    <div class="code_no">Plik wiadomosc_usun.html nr <script>var plik_no = plik_no || 1; document.write(plik_no++);</script></div>
+    <div class="code_no">Plik wiadomosc_usun.html. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: wiadomosc_usun.html
@@ -718,14 +719,14 @@ usuwania wiadomości, o ile jest to wiadomość utworzona przez zalogowanego uż
 
 .. raw:: html
 
-    <div class="code_no">Plik wiadomosc_form.html nr <script>var plik_no = plik_no || 1; document.write(plik_no++);</script></div>
+    <div class="code_no">Plik wiadomosc_form.html. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: wiadomosc_form.html
     :linenos:
     :lineno-start: 24
     :lines: 24-32
-    :emphasize-lines: 4-6
+    :emphasize-lines: 5-7
 
 W efekcie pod adresem *127.0.0.1:8000/wiadomosc* powinniśmy zobaczyć strony podobne do poniższych:
 
