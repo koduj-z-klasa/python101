@@ -1,0 +1,38 @@
+<!-- czatpro/czat/templates/czat/wiadomosc_form.html -->
+<html>
+  <head></head>
+  <body>
+    <h1>Witaj w aplikacji Czat!</h1>
+
+    {% if messages %}
+      <ul>
+        {% for komunikat in messages %}
+           <li>{{ komunikat|capfirst }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    <h2>Dodaj wiadomość</h2>
+    <form action="." method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Zapisz" />
+    </form>
+
+    <h2>Lista wiadomości:</h2>
+    <ol>
+      {% for wiadomosc in wiadomosci %}
+        <li>
+          <strong>{{ wiadomosc.autor.username }}</strong> ({{ wiadomosc.data_pub }}):
+          <br /> {{ wiadomosc.tekst }}
+          {% if wiadomosc.autor.username == user.username %}
+            &bull; <a href="{% url 'czat:wiadomosc-usun' wiadomosc.id %}">Usuń</a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+
+  <p><a href="{% url 'czat:index' %}">Strona główna</a></p>
+
+  </body>
+</html>

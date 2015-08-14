@@ -40,9 +40,6 @@ Tworzymy nowy projekt Django oraz szkielet naszej aplikacji. W katalogu domowym 
 Powstanie katalog projektu :file:`czatpro` z **podkatalogiem ustawień** o takiej samej nazwie :file:`czatpro`.
 Utworzona zostanie również inicjalna baza danych z tabelami wykorzystywanymi przez Django.
 
-Projekt, czyli strona internetowa, składać się może z wielu aplikacji, takich jak np. weblog czy ankiety.
-Ostatnie polecenie utworzy katalog :file:`czat`, zawierający szkielet naszej aplikacji do czatowania.
-
 Dostosowujemy ustawienia projektu: rejestrujemy naszą aplikację w projekcie, ustawiamy polską wersję językową oraz lokalizujemy
 datę i czas. Edytujemy plik :file:`czatpro/setting.py`:
 
@@ -68,6 +65,11 @@ datę i czas. Edytujemy plik :file:`czatpro/setting.py`:
     LANGUAGE_CODE = 'pl'  # ustawienie języka
 
     TIME_ZONE = 'Europe/Warsaw'  # ustawienie strefy czasowej
+
+.. note::
+
+    Jeżeli w jakimkolwiek pliku, np. ``settings.py`` chcemy używać polskich znaków,
+    musimy na początku wstawić deklarację kodowania: ``# -*- coding: utf-8 -*-``
 
 Teraz uruchomimy :term:`serwer deweloperski`, wydając polecenie:
 
@@ -142,7 +144,7 @@ Panel administracyjny
 **********************
 
 Utworzymy panel administratora dla projektu, dzięki czemu będziemy mogli zacząć
-dodawać użytkowików i wprowadzać dane. Otwieramy więc plik :file:`~/czat/czat/admin.py`
+dodawać użytkowników i wprowadzać dane. Otwieramy więc plik :file:`~/czat/czat/admin.py`
 i rejestrujemy w nim nasz model jako element panelu:
 
 .. raw:: html
@@ -152,8 +154,14 @@ i rejestrujemy w nim nasz model jako element panelu:
 .. highlight:: python
 .. literalinclude:: admin.py
     :linenos:
+    :emphasize-lines: 5, 8
 
-Do celów administracyjnych potrzebne nam będzie odpowiednien konto. Tworzymy
+.. note::
+
+    Warto zapamiętać, że każdy model, funkcję, formularz czy widok, których chcemy użyć,
+    musimy najpierw zaimportować za pomocą klauzuli typu ``from <skąd> import <co>``.
+
+Do celów administracyjnych potrzebne nam będzie odpowiednie konto. Tworzymy
 je, wydając w terminalu poniższe polecenie. Django zapyta o nazwę, email i hasło administratora.
 Podajemy: "admin", "", "admin".
 
@@ -175,51 +183,31 @@ Otrzymamy dostęp do panelu administracyjnego, w którym możemy dodawać nowych
 
 .. figure:: img/czat04.png
 
-.. figure:: img/czat05.png
-
-W panelu administratora widać, że etykiety oznaczające pojedynczą wiadomość
-jak i wiele wiadomości nie są spolszczone, podobnie pole daty oznaczone
-jest etykietą "Data pub". Aby w pełni spolszczyć nasz model, w pliku :file:`models.py`
-dopisujemy:
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: python
-.. literalinclude:: models.py
-    :linenos:
-    :emphasize-lines: 2-3, 6-9
-    :lineno-start: 10
-    :lines: 10-18
-
-W definicji każdego pola jako pierwszy argument możemy dopisać
-spolszczoną etykietę, np. ``u'data publikacji'``. W podklasie ``Meta`` podajemy natomiast
-nazwy modelu w liczbie pojedynczej i mnogiej. Po odświeżeniu panelu
-administracyjnego (np. klawiszem :kbd:`F5`) nazwy zostaną spolszczone.
-
-.. note::
-
-    Prefix ``u`` wymagany w Pythonie v.2 przed łańcuchami znaków oznacza
-    kodowanie w unikodzie (ang. *unicode*) umożliwiające wyświetlanie m.in. znaków narodowych.
-
 Ćwiczenie 1
 ============
 
 Po zalogowaniu na konto administratora dodaj użytkownika "adam".
 Na stronie szczegółów, która wyświetli się po jego utworzeniu, zaznacz
 opcję "W zespole", następnie w panelu "Dostępne uprawnienia" zaznacz opcje
-dodawania (add), zmieniania (change) oraz usuwania (del) wiadomości
+dodawania (*add*), zmieniania (*change*) oraz usuwania (*del*) wiadomości
 (wpisy typu: "czat | wiadomosc | Can add wiadomosc") i przypisz je
 użytkownikowi naciskając strzałkę w prawo.
 
 .. figure:: img/czat06.png
 
-Przeloguj się na konto "adam" i dodaj kilka przykładowych wiadomości.
-Dodane wiadomości wyświetlają się na liście jako "Wiadomosc object".
-Aby to poprawić, uzupełnij definicję modelu o funkcję,
-której zadaniem jest "autoprezentacja", czyli wyświetlenie treści wiadomości.
-W pliku :file:`models.py` dopisz zachowując wcięcia (!):
+Przeloguj się na konto "adam" i dodaj dwie przykładowe wiadomości.
+Następnie utwórz w opisany wyżej sposób kolejnego użytkownika o nazwie "ewa"
+i po przelogowaniu się dodaj co najmniej 1 wiadomość.
+
+.. figure:: img/czat05.png
+
+.. raw:: html
+
+    <hr />
+
+W formularzu dodawania wiadomości widać, że etykiety nie są spolszczone, z kolei
+dodane wiadomości wyświetlają się na liście jako "Wiadomosc object".
+Aby poprawić te niedoskonałości, uzupełniamy plik :file:`models.py`:
 
 .. raw:: html
 
@@ -228,10 +216,27 @@ W pliku :file:`models.py` dopisz zachowując wcięcia (!):
 .. highlight:: python
 .. literalinclude:: models.py
     :linenos:
-    :lineno-start: 20
-    :lines: 20-21
+    :emphasize-lines: 2-3
+    :lineno-start: 10
+    :lines: 10-21
+
+W definicji każdego pola jako pierwszy argument dopisujemy spolszczoną etykietę,
+np. ``u'data publikacji'``. W podklasie ``Meta`` podajemy nazwy modelu w liczbie
+pojedynczej i mnogiej. Dodajemy też funkcję ``__unicode__``, której zadaniem
+jest "autoprezentacja" klasy, czyli wyświetlenie treści wiadomości.
+Po odświeżeniu panelu administracyjnego (np. klawiszem :kbd:`F5`) nazwy zostaną spolszczone.
+
+.. note::
+
+    Prefiks ``u`` wymagany w Pythonie v.2 przed łańcuchami znaków oznacza
+    kodowanie w unikodzie (ang. *unicode*) umożliwiające wyświetlanie m.in. znaków narodowych.
+
+.. tip::
+
+    W Pythonie v.3 zamiast nazwy funkcji ``_unicode__`` należy użyć ``str``.
 
 .. figure:: img/czat09.png
+
 
 Widoki i szablony
 *******************
@@ -264,14 +269,14 @@ dopiszemy import ustawień z naszej aplikacji:
 .. highlight:: python
 .. literalinclude:: urls_p1.py
     :linenos:
-    :emphasize-lines: 5-6
-    :lineno-start: 16
-    :lines: 16-
+    :emphasize-lines: 2-3
+    :lineno-start: 19
+    :lines: 19-
 
 Parametr ``namespace='czat'`` definiuje przestrzeń nazw, w której dostępne będą zdefiniowane
 dla naszej aplikacji mapowania między adresami url a widokami.
 
-Następnie tworzymy plik :file:`czat/urls.py` o następującej treści:
+Następnie **tworzymy (!)** plik :file:`czat/urls.py` o następującej treści:
 
 .. raw:: html
 
@@ -282,22 +287,21 @@ Następnie tworzymy plik :file:`czat/urls.py` o następującej treści:
     :linenos:
     :emphasize-lines: 5, 8
 
-Podstawową funkcją wiążącą adres z widokiem jest ``url()``. Kako pierwszy parametr przyjmuje wyrażenie
+Podstawową funkcją wiążącą adres z widokiem jest ``url()``. Jako pierwszy parametr przyjmuje wyrażenie
 regularne oznaczane ``r`` przed łańcuchem dopasowania. Symbol ``^`` to początek,
 ``$`` – koniec łańcucha. Zapis ``u'^$'`` to adres główny serwera.
 Drugi parametr wskazuje widok (funkcję), która ma obsłużyć dany adres.
 Trzeci parametr ``name`` pozwala zapamiętać skojarzenie url-a i widoku pod nazwą,
 której będzie można użyć np. do wygenerowania adresu linku.
 
-.. note::
-
-    Warto zapamiętać, że każdą funkcję, formularz czy widok, których chcemy użyć,
-    musimy najpierw zaimportować za pomocą klauzuli typu ``from <skąd> import <co>``.
-
 Przetestujmy nasz widok wywołując adres ``127.0.0.1:8000``. Powinniśmy zobaczyć tekst
 podany jako argument funkcji ``HttpResponse()``:
 
 .. figure:: img/czat10.png
+
+.. raw:: html
+
+    <hr />
 
 Zazwyczaj odpowiedzią na wywołanie jakiegoś adresu URL będzie jednak jakaś
 strona zapisana w języku HTML. **Szablony** takich stron umieszczamy w podkatalogu
@@ -335,10 +339,10 @@ W pliku :file:`views.py` zmieniamy instrukcje odpowiedzi:
     :lines: 4-11
 
 Po zaimportowaniu funkcji ``render()`` używamy jej do zwrócenia szablonu.
-Jako pierwszy argument podajemy obiekt typu ``HttpRequest`` zawierający informcje o żądaniu,
+Jako pierwszy argument podajemy obiekt typu ``HttpRequest`` zawierający informacje o żądaniu,
 a jako drugi nazwę szablonu z katalogiem nadrzędnym.
 
-Po wpisaniu adresu *127.0.0.1:8000* zobaczymy tekst, który umieściliśmy w szablonie:
+Po uruchomieniu serwera i wpisaniu adresu *127.0.0.1:8000* zobaczymy tekst, który umieściliśmy w szablonie:
 
 .. figure:: img/czat11.png
 
@@ -369,7 +373,7 @@ później dodajemy widoki ``loguj()`` i ``wyloguj()``:
 
 Widoki mogą obsługiwać zarówno żądania typu :term:`GET`, kiedy użytkownik chce tylko zobaczyć
 jakieś dane na stronie, oraz :term:`POST`, gdy wysyła informacje poprzez formularz, aby np. zostały zapisane.
-Typ żądania rozponajemy w instrukcji warunkowej ``if request.method == 'POST':``.
+Typ żądania rozpoznajemy w instrukcji warunkowej ``if request.method == 'POST':``.
 
 W **widoku logowania** korzystamy z wbudowanego w Django formularza ``AuthenticationForm``,
 dzięki temu nie musimy "ręcznie" sprawdzać poprawności przesłanych danych. Po wypełnieniu
@@ -456,9 +460,9 @@ wygląda tak:
 =================
 
 Adresów logowania i wylogowywania nikt w serwisach nie wpisuje ręcznie.
-Wstaw zatem odpowiednie linki do szablonu strony głównej. Użytkownik
-niezalogowany powinien zobaczyć odnośnik *Zaloguj*, użytkownik
-zalogowany – *Wyloguj*. Przykładowe strony mogą wyglądać tak:
+Wstaw zatem odpowiednie linki do szablonu strony głównej po bloku wyświetlającym
+komunikaty. Użytkownik niezalogowany powinien zobaczyć odnośnik *Zaloguj*,
+użytkownik zalogowany – *Wyloguj*. Przykładowe działanie stron może wyglądać tak:
 
 .. figure:: img/czat13.png
 
@@ -472,7 +476,7 @@ a także przeglądać wiadomości innych.
 
 Jak zwykle, **zaczynamy od widoku** o nazwie np. ``wiadomosci()`` powiązanego z adresem */wiadomosci*,
 który zwróci szablon :file:`wiadomosci.html`. W odpowiedzi na żądanie GET wyświetlimy
-fomularz dodawania oraz listę wiadomości. Kiedy dostaniemy żądanie typu POST
+formularz dodawania oraz listę wiadomości. Kiedy dostaniemy żądanie typu POST
 (tzn. kiedy użytkownik wyśle formularz), spróbujemy zapisać nową wiadomość w bazie.
 Do pliku :file:`views.py` dodajemy importy i kod funkcji:
 
@@ -542,7 +546,7 @@ nadając mu nazwę *wiadomosci*:
 =============
 
 * W szablonie widoku strony głównej dodaj link do wiadomości dla zalogowanych użytkowników.
-* W szablonie wiadomosci dodaj link do strony głównej.
+* W szablonie wiadomości dodaj link do strony głównej.
 * Zaloguj się i przetestuj wyświetlanie [#]_ i dodawanie wiadomości pod adresem
   *127.0.0.1:8000/wiadomosci/*. Sprawdź, co się stanie po wysłaniu pustej
   wiadomości.
@@ -556,6 +560,181 @@ Poniższe zrzuty prezentują efekty naszej pracy:
 
 .. figure:: img/czat16.png
 
+
+Widoki wbudowane
+******************
+
+Dodawanie, edycja, usuwanie czy przeglądanie danych zgromadzonych w bazie
+są typowymi czynnościami w aplikacjach internetowych. Utworzony dotychczas
+kod ilustruje "ręczną" obsługę żądań GET i POST, w tym tworzenie formularzy,
+walidację danych itp. Django zawiera jednak gotowe mechanizmy, których
+użycie skraca i ulepsza programistyczną pracę eliminując potencjalne błędy.
+
+Obsługę wiadomości zrealizujemy teraz za pomocą tzw. widoków wbudowanych opartych
+na klasach (ang. `class-based generic views <https://docs.djangoproject.com/en/1.4/topics/class-based-views/>`_ ).
+Na początku wykorzystamy widok ``CreateView`` służący do dodawania danych.
+
+W pliku :file:`views.py` dopisujemy:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: views.py
+    :linenos:
+    :lineno-start: 12
+    :lines: 12
+
+.. highlight:: python
+.. literalinclude:: views_z5.py
+    :linenos:
+    :lineno-start: 63
+    :lines: 63-67
+
+Po zaimportowaniu widoku tworzymy na jego podstawie klasę ``class UtworzWiadomosc(CreateView):``,
+która obsłuży dodawanie wiadomości. Podstawowe argumenty to:
+
+* ``model`` – nazwa modelu, na podstawie którego Django utworzy formularz i sprawdzi poprawność danych;
+* ``fields`` – lista pól, które mają pojawić się w formularzu;
+* ``success_url`` – adres, na który przekierowujemy użytkownika po dodaniu wiadomości
+
+Do pliku :file:`urls.py` dopisujemy:
+
+.. highlight:: python
+.. literalinclude:: urls.py
+    :linenos:
+    :lineno-start: 6
+    :lines: 6
+
+.. highlight:: python
+.. literalinclude:: urls.py
+    :linenos:
+    :lineno-start: 13
+    :lines: 13-15
+
+Funkcja ``login_required()`` umożliwi nam ograniczenie dostępu do widoku tylko
+dla użytkowników zalogowanych, użytkownicy niezalogowani zostaną przekierowani
+na stronę podaną w parametrze ``login_url``. Pierwszym argumentem funkcji
+``views.UtworzWiadomosc.as_view()`` jest nasz widok, który jako klasa musi być
+wywołany metodą ``as_view()``.
+
+Wreszcie tworzymy szablon. Najłatwiej będzie otworzyć poprzednio edytowany plik :file:`wiadomosci.html`
+i zapisać go pod nazwą :file:`wiadomosc_form.html`. Następnie zmieniamy kod ``<input type="text" name="tekst" />``
+na ``{{ form.as_p }}``, czyli tag generujący formularz.
+
+.. note::
+
+    Widok ``CreateView`` szuka formularza o domyślnej nazwie tworzonej wg
+    wzoru ``nazwa_modelu_form.html``. Nazwę tę można zmienić za pomocą
+    atrybutu, np.: ``template_name='wiadomosc.html'``.
+
+Ćwiczenie 4
+===========
+
+Dodaj link do utworzonego widoku na stronie głównej, uruchom serwer, zaloguj się i wejdź
+na adres ``127.0.0.1:8000/wiadomosc``. Spróbuj dodać jakąś wiadomość. Zobacz, co się
+dzieje, gdy pozostawisz któreś z pól puste.
+
+.. figure:: img/czat17.png
+
+.. raw:: html
+
+    <hr />
+
+Mamy już działający formularz z obsługą błędów, jednak w porównaniu do poprzedniego
+rozwiązania nie jest on wygodny, wymagając uzupełniania wszystkich pól. Nie wyświetla
+się również lista wiadomości. Dostosujemy go zatem do naszych potrzeb.
+W pliku :file:`views.py` zmieniamy i dopisujemy kod:
+
+.. raw:: html
+
+     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: views.py
+    :linenos:
+    :lineno-start: 63
+    :lines: 63-84
+    :emphasize-lines: 4
+
+Metoda ``get_initial(self)`` umożliwia nam zainicjowanie pól formularza wartościami
+domyślnymi, ustawiamy więc aktualną datę publikacji, którą użytkownik będzie mógł
+zmienić.
+
+Nadpisanie metody ``get_context_data()`` umożliwia przekazanie do szablonu dodatkowych
+danych. W naszym przypadku kod ``context['wiadomosci'] = Wiadomosc.objects.all()``
+udostępnia w szablonie wszystkie dodane wiadomości.
+
+Metoda ``form_valid()`` sprawdza poprawność danych w formularzu. Nadpisujemy ją,
+aby dodać informację o autorze ``wiadomosc.autor = self.request.user``.
+
+.. raw:: html
+
+    <hr />
+
+Pozostaje nam dodanie możliwości usuwania wiadomości. W tym celu wykorzystamy
+widok ``DeleteView``. Do pliku :file:`views.py` dodajemy:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: views.py
+    :linenos:
+    :lineno-start: 87
+    :lines: 87-91
+
+Tu widzimy zastosowanie wspomnianego wcześniej atrybutu ``template_name``.
+
+Do pliku :file:`urls.py` dopisujemy:
+
+.. highlight:: python
+.. literalinclude:: urls.py
+    :linenos:
+    :lineno-start: 16
+    :lines: 16-18
+
+Tu na uwagę zasługuje wzorzec ``r'^wiadomosc-usun/(?P<pk>\d+)/$'`` określający adres url wiązany z widokiem.
+Wyrażenie ``(?P<pk>\d+)`` opisuje liczbę dziesiętną, która zostanie przekazana do widoku pod
+nazwą ``pk`` (ang. *primary key*) oznaczającą identyfikator wiadomości.
+
+Potrzebujemy szablonu zapisanego w podanym w widoku pliku: :file:`czatpro/czat/templates/czat/wiadomosc_usun.html`:
+
+.. raw:: html
+
+    <div class="code_no">Plik wiadomosc_usun.html nr <script>var plik_no = plik_no || 1; document.write(plik_no++);</script></div>
+
+.. highlight:: html
+.. literalinclude:: wiadomosc_usun.html
+    :linenos:
+
+Usuwany obiekt, a właściwie jego autoprezentację zwróconą przez metodę ``__unicode__``
+modelu, wyświetlamy w tagu ``{{ object }}``.
+
+Pozostaje dodanie do szablonu :file:`wiadomos_form.html` linku wywołującego widok
+usuwania wiadomości, o ile jest to wiadomość utworzona przez zalogowanego użytkownika:
+
+.. raw:: html
+
+    <div class="code_no">Plik wiadomosc_form.html nr <script>var plik_no = plik_no || 1; document.write(plik_no++);</script></div>
+
+.. highlight:: html
+.. literalinclude:: wiadomosc_form.html
+    :linenos:
+    :lineno-start: 24
+    :lines: 24-32
+    :emphasize-lines: 4-6
+
+W efekcie pod adresem *127.0.0.1:8000/wiadomosc* powinniśmy zobaczyć strony podobne do poniższych:
+
+.. figure:: img/czat18.png
+
+.. figure:: img/czat19.png
+
+**Przetestuj działanie aplikacji!**
+
 Materiały
 ***************
 
@@ -566,5 +745,4 @@ Materiały
 
 **Źródła:**
 
-* :download:`czat_pp.zip <czat_pp.zip>`
-
+* :download:`czatpro_cz1.zip <czatpro_cz1.zip>`
