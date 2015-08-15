@@ -39,7 +39,8 @@ używamy menedżera ``apt-get`` i w terminalu wydajemy następujące polecenia:
 
     ~$ sudo apt-get update
     ~$ sudo apt-get install python-pip python-virtualenv git ipython python-pygame sqlite3
-    ~$ sudo pip install --upgrade install
+    ~$ sudo pip install --upgrade pip
+    ~$ sudo pip install --upgrade virtualenv
     ~$ sudo pip install Flask Django peewee sqlalchemy flask-sqlalchemy
 
 Jeśli ``apt-get`` zgłosi problem z dostępnością pakietu, w systemach Ubuntu i pochodnych
