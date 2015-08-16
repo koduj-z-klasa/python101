@@ -59,6 +59,12 @@ System ORM Peewee inicjujemy w pliku :file:`peewee.py` tworząc klasę bazową, 
         class Meta:
             database = baza
 
+.. note::
+
+    Parametr ``:memory:`` powduje utworzenie bazy danych w pamięci operacyjnej,
+    która istnieje tylko w czasie wykonywania programu. Aby utworzyć trwałą bazę,
+    zastąp omawiany prametr nazwę pliku, np. :file:`test.db`.
+
 Model bazy
 ***********************
 
@@ -111,6 +117,19 @@ ich instancje reprezentować będą z kolei rekordy.
 
     baza.connect()
     baza.create_tables([Klasa, Uczen], True)
+
+Ćwiczenie 1
+============
+
+Utwórz za pomocą tworzonych skryptów bazy w plikach o nazwach :file:`sqlraw.db` oraz
+:file:`peewee.db`. Następnie otwórz te bazy w `interpreterze *Sqlite* <sqlite3>`_  i wykonaj
+podane niżej polecenia. Porównaj struktury utworzonych tabel.
+
+.. code-block:: bash
+
+    sqlite> .table
+    sqlite> .schema klasa
+    sqlite> .schema uczen
 
 Wstawianie danych
 ***********************
