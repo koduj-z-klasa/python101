@@ -252,12 +252,12 @@ Materiały
 * :download:`quiz.zip <quiz.zip>`
 * :download:`quiz_flask.pdf <../../pdf/quiz_flask.pdf>`
 
-Kolejne wersje tworzenego kodu znajdziesz w katalogu ``~/python101/docs/quiz``.
+Kolejne wersje tworzenego kodu znajdziesz w katalogu ``~/python101/docs/webapps/quiz``.
 Uruchamiamy je wydając polecenia:
 
 .. code-block:: bash
 
-    ~/python101$ cd docs/quiz
-    ~/python101/docs/bazy$ python quizx.py
+    ~/python101$ cd docs/webapps/quiz
+    ~/python101/docs/webapps/bazy$ python quizx.py
 
 \- gdzie *x* jest numerem kolejnej wersji kodu.

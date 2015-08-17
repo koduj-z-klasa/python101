@@ -568,12 +568,13 @@ Poćwicz sam
 * :download:`quiz2.zip <quiz2.zip>`
 
 Kompletne wersje kodu znajdziesz w powyższym archiwum lub w katalogu
-``~/python101/docs/quiz2``. Uruchamiamy je poleceniami:
+:file:`~/python101/docs/webapps/quiz_orm` w podkatalogach :file:`quiz2_pw`
+i :file:`quiz2_sa`. Uruchamiamy je poleceniami:
 
 .. code-block:: bash
 
-    ~/python101$ cd docs/quiz2
-    ~/python101/docs/quiz2$ cd quiz2_orm; python main.py
+    ~/python101$ cd docs/webapps/quiz_orm
+    ~/python101/docs/webapps/quiz_orm$ cd quiz2_orm; python main.py
 
 \- gdzie *orm* jest oznaczeniem modułu obsługi bazy danych, *pw* dla Peewee,
 *sa* dla SQLALchemy.
@@ -582,4 +583,4 @@ Kompletne wersje kodu znajdziesz w powyższym archiwum lub w katalogu
 
     Jeżeli po uruchomieniu aplikacji do bazy mają być wprowadzone początkowe
     dane, pamiętaj, aby odkomentować odpowiednie linie w pliku
-    ``main.py`` z katalogu ``quiz_pw``.
+    ``main.py`` z katalogu ``quiz2_pw``.
