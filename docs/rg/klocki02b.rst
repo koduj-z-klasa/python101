@@ -3,6 +3,8 @@
 *RG* – klocki 2B
 ################
 
+Wersja **B** oparta jest na zbiorach i operacjach na nich.
+
 .. tip::
 
     * Każdy "klocek" można testować osobno, a później w połączeniu z innymi.
@@ -22,7 +24,7 @@ Czy to wejście?
 
 .. raw:: html
 
-    <div class="code_no"><strong>Wersja <em>B</em></strong> (oparta na zbiorach). Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -52,7 +54,7 @@ Wersja oparta na zbiorach wykorzystuje różnicę i cześć wspólną zbiorów.
 
 .. raw:: html
 
-    <div class="code_no"><strong>Wersja <em>B</em></strong> (oparta na zbiorach). Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -104,7 +106,7 @@ Przykładowa implementacja może wyglądać następująco:
 
 .. raw:: html
 
-    <div class="code_no"><strong>Wersja <em>B</em></strong> (oparta na zbiorach). Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
 .. literalinclude:: rgkod05b.py
@@ -135,7 +137,7 @@ z poniższych "klocków":
 
 .. raw:: html
 
-    <div class="code_no"><strong>Wersja <em>B</em>.</strong> Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -183,7 +185,7 @@ do nas zbliżyć.
 
 .. raw:: html
 
-    <div class="code_no"><strong>Wersja <em>B</em>.</strong> Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -210,7 +212,7 @@ W wersji **B** opartej na zbiorach:
 
 .. raw:: html
 
-    <div class="code_no"><strong>Wersja <em>B</em></strong> (oparta na zbiorach). Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
 .. literalinclude:: rgkod09b.py
@@ -228,7 +230,7 @@ Atakuj najsłabszego
 
 .. raw:: html
 
-    <div class="code_no"><strong>Wersja <em>B</em>.</strong> Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -274,6 +276,3 @@ Inne
 Proponujemy, żebyś sam zaczął wprowadzać i testować zasugerowane ulepszenia.
 Możesz też zajrzeć do :ref:`trzeciego <klocki03b>` zestawu klocków.
 
-.. raw:: html
-
-    <hr />

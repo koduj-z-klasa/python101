@@ -214,7 +214,3 @@ robota. Weź pod uwagę fakt, że roboty pojawiają się w losowych punktach,
 oraz to, że strategia przeciwnika może być inna od zakładanej. Zaproponowane
 połączenie klocków nie musi być optymalne. Przetestuj kolejne wersje robotów,
 ustal ich zalety i wady, eksperymentuj, aby znaleźć lepsze rozwiązania.
-
-.. raw:: html
-
-    <hr />

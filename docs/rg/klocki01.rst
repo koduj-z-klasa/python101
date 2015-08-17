@@ -123,7 +123,3 @@ technik kodowania. Proponujemy więc :ref:`wersję **A** <klocki02a>` opartą na
 i listach oraz :ref:`wersję **B** <klocki02b>` opartą na zbiorach. Obie wersje implementują
 te same reguły, jednak efekt końcowy nie wcale nie musi być identyczny.
 Przetestuj i przekonaj się sam.
-
-.. raw:: html
-
-    <hr />

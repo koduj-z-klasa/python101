@@ -3,6 +3,8 @@
 *RG* – klocki 2A
 ################
 
+Wersja **A** oparta jest na funkcjach, czyli metodach klasy ``Robot``.
+
 .. tip::
 
     * Każdy "klocek" można testować osobno, a później w połączeniu z innymi.
@@ -21,7 +23,7 @@ Czy to wejście?
 
 .. raw:: html
 
-    <div class="code_no"><strong>Wersja <em>A</em></strong> (oparta na funkcjach). Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -45,7 +47,7 @@ Czy obok jest wróg?
 
 .. raw:: html
 
-    <div class="code_no"><strong>Wersja <em>A</em></strong> (oparta na funkcjach). Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -99,7 +101,7 @@ Przykładowa implementacja może wyglądać następująco:
 
 .. raw:: html
 
-    <div class="code_no"><strong>Wersja <em>A</em></strong> (oparta na funkcjach). Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
 .. literalinclude:: rgkod05a.py
@@ -124,7 +126,7 @@ z poniższych "klocków":
 
 .. raw:: html
 
-    <div class="code_no"><strong>Wersja <em>A</em>.</strong> Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -154,7 +156,7 @@ punktem wejścia.
 
 .. raw:: html
 
-    <div class="code_no"><strong>Wersja <em>A</em>.</strong> Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -184,11 +186,10 @@ do nas zbliżyć.
 
 .. raw:: html
 
-    <div class="code_no"><strong>Wersja <em>A</em> i <em>B</em>.</strong> Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
-    # WERSJA A
     # funkcja zwróci prawdę, jeżeli w odległości 2 kroków z przodu jest wróg
     def zprzodu(l1, l2):
         if rg.wdist(l1, l2) == 2:
@@ -228,7 +229,7 @@ Omówione reguły można poskładać w różny sposób, np. tak:
 
 .. raw:: html
 
-    <div class="code_no"><strong>Wersja <em>A</em></strong> (oparta na funkcjach). Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
 .. literalinclude:: rgkod09a.py
@@ -246,11 +247,10 @@ Atakuj najsłabszego
 
 .. raw:: html
 
-    <div class="code_no"><strong>Wersja <em>A</em>.</strong> Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
-    # wersja A
     # funkcja zwracająca atak na najsłabszego wroga obok
     def atakuj():
         r = wrogowie_obok[0]
@@ -270,7 +270,3 @@ Inne
 Proponujemy, żebyś sam zaczął wprowadzać i testować zasugerowane ulepszenia.
 Możesz też zajrzeć do drugiego :ref:`drugiego <klocki02b>` i :ref:`trzeciego <klocki03b>`
 zestawu klocków opartych na zbiorach.
-
-.. raw:: html
-
-    <hr />
