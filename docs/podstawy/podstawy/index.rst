@@ -601,7 +601,7 @@ Powtarzany w pętli ``for`` kod warto przenieść do funkcji zapisanej w module
 programu i nazwanej np. ``wyniki()``. Zastanów się, jakie argumenty należy
 jej przekazać i co powinna zwracać.
 
-Ustawienia 
+Ustawienia
 ***********
 
 Uruchamiając wielokrotnie program, musimy podawać wiele danych, aby zadziałał.
@@ -750,21 +750,20 @@ którego poszczególne linie zawierałyby dane jednego losowania, np.:
 
 Funkcja zapisująca dane mogłaby wyglądać np. tak:
 
-.. code-block: python
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block:: python
 
     def zapisz_str(nazwapliku, dane):
         """Funkcja zapisuje dane w formacie txt do pliku"""
         with open(nazwapliku, "w") as plik:
             for slownik in dane:
                 linia =[k+":"+str(w) for k, w in slownik.iteritems()]
-                linia = ";".join(linia) 
+                linia = ";".join(linia)
                 # plik.write(linia+"\n") – zamiast tak, można:
                 print >>plik, linia
 
 Napisz funkcję ``czytaj_str()`` odczytującą tak zapisane dane. Funkcja
 powinna zwrócić listę słowników.
-
-Wydruk historii
-****************
-
-[todo]
