@@ -13,9 +13,6 @@ Wydrukuj alfabet
 .. literalinclude:: 03_petle_02.py
     :linenos:
 
-Jak to działa
-**************
-
 Pętla ``for`` wykorzystuje zmienną iteracyjną ``i``, która przybiera wartości
 z listy liczb całkowitych zwróconej przez funkcję ``range()``. Parametry
 tej funkcji określają wartość początkową i końcową listy, przy czym wartość

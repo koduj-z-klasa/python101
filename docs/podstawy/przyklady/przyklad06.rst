@@ -1,5 +1,5 @@
 Słownik słówek
-***********************
+##############
 
 **ZADANIE**: Przygotuj słownik zawierający obce wyrazy oraz ich możliwe znaczenia. Pobierz od użytkownika dane w formacie: *wyraz obcy: znaczenie1, znaczenie2, ...* itd. Pobieranie danych kończy wpisanie słowa "koniec". Podane dane zapisz w pliku. Użytkownik powinien mieć możliwość dodawania nowych i zmieniania zapisanych danych.
 
@@ -11,9 +11,6 @@ Słownik słówek
 
 .. literalinclude:: 06_slownik_02.py
     :linenos:
-
-Jak to działa
-===================
 
 Słownik to struktura nieuporządkowanych danych w formacie klucz:wartość. Kluczami są najczęściej napisy, które wskazują na wartości dowolnego typu, np. inne napisy, liczby, listy, tuple itd. Notacja ``oceny = { 'polski':'1,4,2', 'fizyka':'4,3,1' }`` utworzy nam słownik ocen z poszczególnych przedmiotów.  Aby zapisać coś w słowniku stosujemy notację ``oceny['biologia'] = 4,2,5``. Aby odczytać wartość używamy po prostu: ``oceny['polski']``.
 
@@ -28,8 +25,8 @@ W pętli głównej programu pobrane dane rozbite na wyraz obcy i jego znaczenia 
 Na końcu drukujemy nasz słownik. Specyfikacja ``{0: <15}{1: <40}`` oznacza, że pierwszy argument umieszczony w funkcji ``format()``, drukowany ma być wyrównany do lewej (<) w polu o szerokości 15 znaków, drugi argument, również wyrównany do lewej, w polu o szerokości 40 znaków.
 
 Zadania dodatkowe
-===================
+*****************
 
-Kod drukujący słownik zamień w funkcję. Wykorzystaj ją do wydrukowania słownika odczytanego z dysku i słownika uzupełnionego przez użytkownika.
-Spróbuj zmienić program tak, aby umożliwiał usuwanie wpisów.
-Dodaj do programu możliwość uczenia się zapisanych w słowniku słówek. Niech program wyświetla kolejne słowa obce i pobiera od użytkownika możliwe znaczenia. Następnie powinien wyświetlać, które z nich są poprawne.
+- Kod drukujący słownik zamień w funkcję. Wykorzystaj ją do wydrukowania słownika odczytanego z dysku i słownika uzupełnionego przez użytkownika.
+- Spróbuj zmienić program tak, aby umożliwiał usuwanie wpisów.
+- Dodaj do programu możliwość uczenia się zapisanych w słowniku słówek. Niech program wyświetla kolejne słowa obce i pobiera od użytkownika możliwe znaczenia. Następnie powinien wyświetlać, które z nich są poprawne.

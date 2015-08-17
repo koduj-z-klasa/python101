@@ -1,7 +1,7 @@
-Toto Lotek – Python od podstaw
-##############################
+Toto Lotek
+###########
 
-W Toto Lotku trzeba zgadywać liczby. Napiszmy prosty program, w którym
+W *Toto Lotku* trzeba zgadywać liczby. Napiszmy prosty program, w którym
 będziemy mieli podobne zadanie. Użyjemy języka Python.
 
 .. contents::

@@ -1,5 +1,5 @@
 Oceny z przedmiotów
-***********************
+###################
 
 **ZADANIE**: Napisz program, który umożliwi wprowadzanie ocen z podanego
 przedmiotu ścisłego (np. fizyki), następnie policzy i wyświetla średnią,
@@ -27,7 +27,7 @@ Nazwa modułu to nazwa pliku z kodem pozbawiona jednak rozszerzenia *.py*.
 Moduł musi być dostępny w ścieżce przeszukiwania, aby można go było poprawnie dołączyć.
 
 .. note::
-    W przypadku prostych programów zapisuj moduły w tym samym katalogu co program główny.
+	W przypadku prostych programów zapisuj moduły w tym samym katalogu co program główny.
 
 Instrukcja ``set()`` tworzy zbiór, czyli nieuporządkowany zestaw niepowtarzalnych (!) elementów. Instrukcje ``if przedmiot in przedmioty`` i ``if przedmiot not in przedmioty`` za pomocą operatorów zawierania ``(not) in`` sprawdzają, czy podany przedmiot już jest lub nie w zbiorze. Polecenie ``przedmioty.add()`` pozwala dodawać elementy do zbioru, przy czym jeżeli element jest już w zbiorze, nie zostanie dodany. Polecenie ``przedmioty.remove()`` usunnie podany jako argument element ze zbioru.
 
@@ -37,7 +37,11 @@ Metoda ``.capitalize()`` pozwala wydrukować podany napis dużą literą.
 
 W funkcji ``print(...).format(s,m,o)`` zastosowano formatowanie drukowanych wartości, do których odwołujemy się w specyfikacji ``{0:5.2f}``. Pierwsza cyfra wskazuje, którą wartość z numerowanej od 0 (zera) listy, umieszczonej w funkcji ``format()``, wydrukować; np. aby wydrukować drugą wartość, trzeba by użyć kodu ``{1:}``.Po dwukropku podajemy szerokość pola przeznaczonego na wydruk, po kropce ilość miejsc po przecinku, symbol *f* oznacza natomiast liczbę zmiennoprzecinkową stałej precyzji.
 
-**FUNKCJE** wykorzystywane w programie **oceny**, umieszczamy w osobnym pliku ``ocenyfun.py``.
+.. raw:: html
+
+    <hr />
+
+**Funkcje** wykorzystywane w programie **oceny**, umieszczamy w osobnym pliku :file:`ocenyfun.py`.
 
 .. raw:: html
 
@@ -45,9 +49,6 @@ W funkcji ``print(...).format(s,m,o)`` zastosowano formatowanie drukowanych wart
 
 .. literalinclude:: ocenyfun.py
     :linenos:
-
-Jak to działa
-===================
 
 Klauzula ``import math`` udostępnia w pliku wszystkie metody z modułu
 matematycznego, dlatego musimy odwoływać się do nich za pomocą notacji
@@ -73,7 +74,7 @@ z listy, przy czym wyrażenie ``half = len(oceny)/2`` wylicza nam indeks drugieg
 W funkcja ``wariancja()`` pętla for odczytuje kolejne oceny i w kodzie ``sigma += (ocena-srednia)**2`` korzysta z operatorów skróconego dodawania (+=) i potęgowania (**), aby wyliczyć sumę kwadratów różnic kolejnych ocen i średniej.
 
 Zadania dodatkowe
-===================
+*****************
 
-W konsoli Pythona utwórz listę ``wyrazy`` zawierającą elementy: *abrakadabra* i *kordoba*. Utwórz zbiór *w1* poleceniem ``set(wyrazy[0])``. Oraz zbiór *w2* poleceniem ``set(wyrazy[1])``. Wykonaj kolejno polecenia: ``print w1 – w2; print w1 | w2; print w1 & w2; print w1 ^ w2``. Przykłady te ilustrują użycie klasycznych operatorów na zbiorach, czyli: różnica (-) , suma (|), przecięcie (część wspólna, &) i elementy unikalne (^).
-W pliku ``ocenyfun.py`` dopisz funkcję, która wyświetli wszystkie oceny oraz ich odchylenia od wartości średniej.
+- W konsoli Pythona utwórz listę ``wyrazy`` zawierającą elementy: *abrakadabra* i *kordoba*. Utwórz zbiór *w1* poleceniem ``set(wyrazy[0])``. Oraz zbiór *w2* poleceniem ``set(wyrazy[1])``. Wykonaj kolejno polecenia: ``print w1 – w2; print w1 | w2; print w1 & w2; print w1 ^ w2``. Przykłady te ilustrują użycie klasycznych operatorów na zbiorach, czyli: różnica (-) , suma (|), przecięcie (część wspólna, &) i elementy unikalne (^).
+- W pliku :file:`ocenyfun.py` dopisz funkcję, która wyświetli wszystkie oceny oraz ich odchylenia od wartości średniej.

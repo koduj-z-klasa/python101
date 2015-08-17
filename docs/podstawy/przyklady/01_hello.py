@@ -1,8 +1,6 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# ~/python/01_hello.py
-
 # deklarujemy i inicjalizujemy zmienne
 aktRok = 2014
 pythonRok = 1989

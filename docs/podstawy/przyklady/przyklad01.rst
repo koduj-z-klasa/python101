@@ -12,9 +12,6 @@ Trzy liczby
 .. literalinclude:: 02_if.py
     :linenos:
 
-Jak to działa
-**************
-
 Pętla ``while`` umożliwia powtarzanie określonych operacji, np. pozwala użytkownikowi wprowadzać
 kolejne serie liczb. Definiując pętlę określamy warunek powtarzania kodu. Dopóki jest prawdziwy,
 czyli dopóki zmienna *op* ma wartość "t" pętla działa.

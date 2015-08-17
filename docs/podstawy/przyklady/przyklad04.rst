@@ -1,5 +1,5 @@
 Ciąg Fibonacciego
-*********************
+#################
 
 **ZADANIE**: Wypisz ciąg Fibonacciego aż do *n*-tego wyrazu podanego przez użytkownika.
 Ciąg Fibonacciego to ciąg liczb naturalnych, którego każdy wyraz poza dwoma
@@ -13,9 +13,6 @@ pierwszymi jest sumą dwóch wyrazów poprzednich. Początkowe wyrazy tego ciąg
 
 .. literalinclude:: 04_funkcja_02.py
     :linenos:
-
-Jak to działa
-===================
 
 Definicja funkcji w Pythonie polega na użyciu słowa kluczowego ``def``,
 podaniu nazwy funkcji i w nawiasach okrągłych ewentualnej listy parametrów.
@@ -31,6 +28,7 @@ zmiennych z lewej strony musi odpowiadać liczbie wartości rozpakowywanych z tu
 lub liczbie wartości podawanych wprost z prawej strony.
 
 Zadania dodatkowe
-===================
+*****************
 
-Zmień funkcję ``fibonnacci()`` tak, aby zwracała wartość *n*-tego wyrazu. Wydrukuj tylko tę wartość w programie.
+- Zmień funkcję ``fibonnacci()`` tak, aby zwracała wartość *n*-tego wyrazu. Wydrukuj tylko tę wartość w programie.
+- Spróbuj napisać wersję rekurencyjną tej funkcji.

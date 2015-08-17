@@ -1,8 +1,6 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# ~/python/01_if.py
-
 op = "t"
 while op == "t":
     a, b, c = raw_input("Podaj trzy liczby oddzielone spacjami: ").split(" ")

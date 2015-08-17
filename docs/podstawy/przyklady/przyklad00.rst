@@ -15,9 +15,6 @@ Jesteś starszy(młodszy) ode mnie."
 .. literalinclude:: 01_hello.py
     :linenos:
 
-Jak to działa
-**************
-
 Deklaracja zmiennej w Pythonie nie jest wymagana, wystarczy podanej nazwie przypisać jakąś wartość
 za pomocą operatora przypisania "=". Zmiennym często przypisujemy wartości za pomocą wyrażeń,
 czyli działań arytmetycznych lub logicznych.

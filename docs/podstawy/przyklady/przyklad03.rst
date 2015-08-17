@@ -1,5 +1,5 @@
 Pobierz *n* liczb
-*******************
+#################
 
 **ZADANIE**: Pobierz od użytkownika *n* liczb i zapisz je w liście.
 Wydrukuj: elementy listy i ich indeksy, elementy w odwrotnej kolejności,
@@ -20,9 +20,6 @@ Można również wpisywać kolejne polecenia do pliku i sukcesywanie go uruchomi
 
 .. literalinclude:: 04_listy_01.py
     :linenos:
-
-Jak to działa
-===================
 
 Funkcja ``input()`` pobiera dane wprowadzone przez użytkownika podobnie jak
 jak ``raw_input()``, ale próbuje zinterpretować je jako kod Pythona.
@@ -62,7 +59,7 @@ na podaniu początkowego i końcowego (wyłącznie) indeksu elementów, które c
 wydobyć, np. ``lista[1:4]``.
 
 Zadania dodatkowe
-===================
+*****************
 
 Utwórz w konsoli Pythona dowolną listę i przećwicz notację *slice*. Sprawdź działanie indeksów pustych
 i ujemnych, np. ``lista[2:], lista[:4], lista[-2], lista[-2:]``.
