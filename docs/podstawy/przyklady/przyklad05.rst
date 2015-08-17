@@ -1,3 +1,5 @@
+.. _oceny:
+
 Oceny z przedmiotów
 ###################
 

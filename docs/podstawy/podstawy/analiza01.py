@@ -11,7 +11,7 @@ ilerazy = 20
 nazwapliku = "automat.json"
 
 losowania = czytaj(nazwapliku)
-    
+
 iletrafien = 0
 for i, slownik in enumerate(losowania):
     print i,"->",slownik

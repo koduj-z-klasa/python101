@@ -1,3 +1,5 @@
+.. _przyklady:
+
 Python w przykładach
 #####################
 

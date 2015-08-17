@@ -71,6 +71,7 @@ Dodatkowe informacje
     :maxdepth: 1
 
     faq/index
+    warsztaty/index
 
 .. include:: authors.rst
 

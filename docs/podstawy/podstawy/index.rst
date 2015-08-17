@@ -1,3 +1,5 @@
+.. _toto-lotek:
+
 Toto Lotek
 ###########
 
@@ -7,6 +9,8 @@ będziemy mieli podobne zadanie. Użyjemy języka Python.
 .. contents::
     :depth: 1
     :local:
+
+.. _maly-lotek:
 
 Mały Lotek
 **************
@@ -214,6 +218,8 @@ i wcięciami (!), aby po 3 nieudanej próbie wyświetlić komunikat:
 Ostateczny wynik działania naszego programu prezentuje się tak:
 
 .. figure:: img/toto07.png
+
+.. _duzy-lotek:
 
 Duży Lotek
 ************

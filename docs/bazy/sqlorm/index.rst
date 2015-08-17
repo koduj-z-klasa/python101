@@ -1,3 +1,5 @@
+.. _sql-orm:
+
 SQL v. ORM
 ##################
 
@@ -278,10 +280,10 @@ podstawowym składnikiem, np. *Django*.
 Zadania dodatkowe
 *******************
 
-- Wykonajscenariusz aplikacji :ref:`Quiz ORM <quiz_orm>`, aby zobaczyć przykład wykorzystania systemów ORM
+- Wykonajscenariusz aplikacji :ref:`Quiz ORM <quiz-orm>`, aby zobaczyć przykład wykorzystania systemów ORM
   w aplikacjach internetowych.
 
-- Przejrzyj scenariusz aplikacji internetowej :ref:`Czat <czat_app>`, zbudowanej z wykorzystaniem
+- Przejrzyj scenariusz aplikacji internetowej :ref:`Czat <czat-app>`, zbudowanej z wykorzystaniem
   frameworku *Django*, korzystającego z własnego modelu ORM.
 
 Źródła

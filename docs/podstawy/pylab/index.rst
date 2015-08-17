@@ -1,3 +1,5 @@
+.. _pylab:
+
 Python kreśli
 ################
 
@@ -56,7 +58,7 @@ wartości. W powyższym przypadku generujemy listę wartości *x* za pomocą fun
 ``range()`` – co warto przetestować w interaktywnej konsoli Pythona.
 Wartości *y* wyliczamy w pętli i zapisujemy w liście.
 
-Dodatkowe metody: ``title()`` ustawia tytuł wykresu, ``grid()`` włącza wyświetlanie
+Dodatkowe **Metody**: ``title()`` ustawia tytuł wykresu, ``grid()`` włącza wyświetlanie
 pomocniczej siatki. Uruchom program.
 
 Ćwiczenie 1

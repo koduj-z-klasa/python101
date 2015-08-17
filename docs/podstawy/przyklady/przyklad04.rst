@@ -1,3 +1,5 @@
+.. _fibonacci:
+
 Ciąg Fibonacciego
 #################
 

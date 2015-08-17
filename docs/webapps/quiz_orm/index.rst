@@ -1,4 +1,4 @@
-.. _quiz_orm:
+.. _quiz-orm:
 
 Quiz ORM
 #####################

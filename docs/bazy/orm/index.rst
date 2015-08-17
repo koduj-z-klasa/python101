@@ -295,9 +295,9 @@ Zadania dodatkowe
 
 - Przedstawione rozwiązania warto użyć w aplikacjach internetowych
   jako relatywnie szybki i łatwy sposób obsługi danych. Zobacz,
-  jak to zrobić na przykładzie scenariusza aplikacji :ref:`Quiz ORM <quiz_orm>`.
+  jak to zrobić na przykładzie scenariusza aplikacji :ref:`Quiz ORM <quiz-orm>`.
 
-- Przejrzyj scenariusz aplikacji internetowej :ref:`Czat <czat_app>`, zbudowanej z wykorzystaniem
+- Przejrzyj scenariusz aplikacji internetowej :ref:`Czat <czat-app>`, zbudowanej z wykorzystaniem
   frameworku *Django*, korzystającego z własnego modelu ORM.
 
 Źródła
@@ -305,7 +305,7 @@ Zadania dodatkowe
 
 * :download:`orm.zip <orm.zip>`
 
-Kolejne wersje tworzenego kodu znajdziesz w katalogu ``~/python101/docs/bazy``.
+Kolejne wersje tworzenego kodu znajdziesz w katalogu ``~/python101/docs/bazy/orm``.
 Uruchamiamy je wydając polecenia:
 
 .. code-block:: bash

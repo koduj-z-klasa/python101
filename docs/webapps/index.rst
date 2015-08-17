@@ -1,3 +1,5 @@
+.. _webapps:
+
 Aplikacje internetowe
 #######################
 

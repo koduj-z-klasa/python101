@@ -1,3 +1,5 @@
+.. _szyfr-cezara:
+
 Szyfr Cezara
 ############
 

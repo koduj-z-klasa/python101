@@ -1,3 +1,5 @@
+.. _robot-game:
+
 Gra robotów
 ############
 
