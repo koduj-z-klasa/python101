@@ -9,12 +9,13 @@ korzystanie z omawianej biblioteki na wzór środowiska `Matlab <http://pl.wikip
 Poniżej pokazujemy, jak łatwo przy użyciu Pythona wizualizować wykresy różnych
 funkcji.
 
-Najłatwiej zainstalować wymaganą bibliotekę wydając polecenie z uprawnieniami
-roota w terminalu:
+W systemach Linux instalacja biblioteki sprowadza się do użycia polecenia:
 
 .. code-block:: bash
 
-    ~# pip install matplotlib
+    ~$ sudo pip install matplotlib
+
+W systemach Windows bibliotekę instalacjujemy zgodnie z opisem :ref:`przygotowania środowiska <windows-env>`.
 
 .. contents::
     :depth: 1

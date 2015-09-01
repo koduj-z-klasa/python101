@@ -1,3 +1,5 @@
+.. _windows-env:
+
 Przygotowanie systemu Windows
 #############################
 
@@ -38,7 +40,7 @@ w wersji 2.7.x i instalujemy ręcznie.
 
 .. tip::
 
-    Warto jest zaznaczyć opcję "Add Python.exe to Path", która domyślnie nie jest włączona.
+    Warto zaznaczyć opcję "Add Python.exe to Path", która domyślnie nie jest włączona.
 
 .. _interpreter Pythona: https://www.python.org/downloads/
 
@@ -102,10 +104,37 @@ Biblioteki instalujemy za pomocą polecenia ``pip``:
 
 .. code-block:: bash
 
-    pip install flask django
-    pip install peewee sqlalchemy flask-sqlalchemy
+    pip install flask django peewee sqlalchemy flask-sqlalchemy
 
-Pozostaje instalacja bibliotek wymaganych przez scenariusze.
+Wersję zainstalowanych modułów sprawdzimy za pomocą polecenia:
+
+.. code-block:: bash
+
+    pip list
+
+Aby zaktualizować jakiś moduł, wydajemy polecenie typu:
+
+.. code-block:: bash
+
+    pip install --upgrade django
+
+Część bibliotek wymaganych przez scenariusze wymaga innej instalacji.
+
+Matplotlib
+----------
+
+Aby zainstalować ``matplotlib``, wchodzimy na stronę `http://www.lfd.uci.edu/~gohlke/pythonlibs <http://www.lfd.uci.edu/~gohlke/pythonlibs>`_ i pobieramy pakiety ``numpy`` oraz ``matplotlib`` w formacie ``whl`` dostosowane do naszej wersji Pythona i Windows. Np. jeżeli zainstalowaliśmy *Pythona v. 2.7.10* i mamy *Windows 7 64-bit*, pobierzemy:
+``numpy‑1.10.0b1+mkl‑cp27‑none‑win_amd64.whl`` i ``matplotlib‑1.4.3‑cp27‑none‑win_amd64.whl``. Następnie
+otwieramy terminal w katalogu z pobranymi pakietami i instalujemy je przy użyciu instalatora:
+
+.. code-block:: bash
+
+    pip install numpy‑1.10.0b1+mkl‑cp27‑none‑win_amd64.whl
+    pip install matplotlib‑1.4.3‑cp27‑none‑win_amd64.whl
+
+PyGame
+------
+
 Moduł wymagany przez gry pobieramy z katalogu `/arch/` zawartego w repozytorium
 lub ze strony `PyGame`_ i instalujemy:
 

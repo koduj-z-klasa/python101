@@ -1,3 +1,5 @@
+.. _linux-env:
+
 Przygotowanie systemu Linux
 ###########################
 
@@ -41,7 +43,7 @@ używamy menedżera ``apt-get`` i w terminalu wydajemy następujące polecenia:
     ~$ sudo apt-get install python-pip python-virtualenv git ipython python-pygame sqlite3
     ~$ sudo pip install --upgrade pip
     ~$ sudo pip install --upgrade virtualenv
-    ~$ sudo pip install Flask Django peewee sqlalchemy flask-sqlalchemy
+    ~$ sudo pip install Flask Django peewee sqlalchemy flask-sqlalchemy matplotlib
 
 Jeśli ``apt-get`` zgłosi problem z dostępnością pakietu, w systemach Ubuntu i pochodnych
 należy spróbować włączyć dodatkowe źródła oprogramowania:
@@ -58,7 +60,26 @@ wykorzystują menedżer ``pacman``. Odpowiednie polecenia mają postać:
 
     ~# pacman -Syyu
     ~# pacman -S python2-pip python2-virtualenv git ipython2 python2-pygame sqlite
-    ~# pip2 install Flask Django peewee sqlalchemy flask-sqlalchemy
+    ~# pip2 install Flask Django peewee sqlalchemy flask-sqlalchemy matplotlib
 
 W innych systemach linuksowych należy korzystać z dedykowanych menedżerów
 lub wspomnianego instalatora Pythona (``pip``).
+
+Narzędzie ``pip``
+-----------------
+
+Aby sprawdzić listę zainstalowanych modułów, wydajemy polecenie:
+
+.. code-block:: bash
+
+    ~$ pip list
+
+Aby zaktualizować jakiś pakiet:
+
+.. code-block:: bash
+
+    ~$ pip install --upgrade Django
+
+.. note::
+    W zależności od konfigracji polecenie te należy wydać z uprawnieniami
+    administratora, np. z użyciem ``sudo`` lub z konta roota.
