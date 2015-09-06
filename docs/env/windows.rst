@@ -133,7 +133,7 @@ otwieramy terminal w katalogu z pobranymi pakietami i instalujemy je przy użyci
     pip install matplotlib‑1.4.3‑cp27‑none‑win_amd64.whl
 
 PyGame
-------
+-------
 
 Moduł wymagany przez gry pobieramy z katalogu `/arch/` zawartego w repozytorium
 lub ze strony `PyGame`_ i instalujemy:
@@ -150,4 +150,5 @@ Jeżeli chcemy pod Windowsem korzystać z mechanizmów oferowanych przez serwis
 GitHub, musimy zainstalować odpowiedniego :ref:`klienta <git-install>`.
 Zagadnienia te omówione zostały w osobnym :ref:`dokumencie <git-howto>`,
 który warto przejrzeć.
+
 Instalacja Git-a nie jest wymagana, aby pracować na przygotowanych scenariuszach.
