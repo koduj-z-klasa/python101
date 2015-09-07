@@ -8,5 +8,5 @@ Flask==0.10.1
 Flask-SQLAlchemy
 SQLAlchemy
 django
-matplotlib
+matplotlib.whl
 peewee
