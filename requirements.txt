@@ -8,5 +8,6 @@ Flask==0.10.1
 Flask-SQLAlchemy
 SQLAlchemy
 django
-matplotlib.whl
+# Instalacja matplotlib z requirements nie dziala
+# matplotlib
 peewee
