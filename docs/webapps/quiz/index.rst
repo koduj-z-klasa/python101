@@ -69,7 +69,7 @@ W odpowiedzi aplikacja może odsyłać różne dane. Najczęściej
 będą to znaczniki :term:`HTML` oraz żądane treści, np. wyniki quizu. Flask ułatwia
 tworzenie takich dokumentów za pomocą szablonów.
 
-W pliku :file:`todo.py` umieszczamy funkcję ``index()``, czyli widok strony głównej:
+W pliku :file:`quiz.py` umieszczamy funkcję ``index()``, czyli widok strony głównej:
 
 .. raw:: html
 
