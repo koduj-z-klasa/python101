@@ -104,7 +104,7 @@ Można to zrobić w terminalu po ewentualnym zatrzymaniu serwera (CTRL+C):
 
     ~/quiz$ mkdir templates; touch templates/index.html
 
-Jak widać szablony umieszczamy w podkatalogu :file:`tempaltes` aplikacji.
+Jak widać szablony umieszczamy w podkatalogu :file:`templates` aplikacji.
 Do pliku :file:`index.html` wstawiamy poniższy kod HTML:
 
 .. raw:: html
