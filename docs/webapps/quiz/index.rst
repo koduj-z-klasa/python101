@@ -115,7 +115,7 @@ Do pliku :file:`index.html` wstawiamy poniższy kod HTML:
 .. literalinclude:: templates/index3.html
     :linenos:
 
-Na koniec modyfikujemy widok ``index()``:
+Na koniec modyfikujemy funkcje ``index()`` w pliku quiz.py:
 
 .. raw:: html
 
