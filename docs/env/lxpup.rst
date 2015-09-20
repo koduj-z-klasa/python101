@@ -23,8 +23,7 @@ System w dostosowanej wersji zawiera:
 * fonty Ubuntu oraz podstawowe z Windows;
 * pakiety *python-pip*, *python-virtualenv*, *git* oraz bibliotekę *Pygame*;
 * wszystkie biblioteki Pythona wymagane w poszczególnych scenariuszach;
-* skonfigurowane środowiska programistyczne *Geany IDE* oraz Sublime Text 3;
-* możliwość doinstalowania środowiska :ref:`*PyCharm IDE Proffesional* <ins-pycharm>`;
+* skonfigurowane środowiska programistyczne: *Geany IDE*, w wersji *Full* obrazu iso PyCharm Professional 4.5.4 i Sublime Text 3;
 * skonfigurowane elementy interfejsu LXDE;
 * skonfigurowane skróty klawiszowe.
 
