@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# ZADANIE: wykonaj wykres funkcji f(x), gdzie x = <-10;10> z krokiem 1
+# ZADANIE: wykonaj wykres funkcji f(x), gdzie x = <-10;10> z krokiem 0.5
 # f(x) = x*x/3 dla x < 1 i x > 0
 # f(x) = x/-3 + a dla x <= 0
 

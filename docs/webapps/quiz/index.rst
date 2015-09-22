@@ -69,7 +69,7 @@ W odpowiedzi aplikacja może odsyłać różne dane. Najczęściej
 będą to znaczniki :term:`HTML` oraz żądane treści, np. wyniki quizu. Flask ułatwia
 tworzenie takich dokumentów za pomocą szablonów.
 
-W pliku :file:`todo.py` umieszczamy funkcję ``index()``, czyli widok strony głównej:
+W pliku :file:`quiz.py` umieszczamy funkcję ``index()``, czyli widok strony głównej:
 
 .. raw:: html
 
@@ -104,7 +104,7 @@ Można to zrobić w terminalu po ewentualnym zatrzymaniu serwera (CTRL+C):
 
     ~/quiz$ mkdir templates; touch templates/index.html
 
-Jak widać szablony umieszczamy w podkatalogu :file:`tempaltes` aplikacji.
+Jak widać szablony umieszczamy w podkatalogu :file:`templates` aplikacji.
 Do pliku :file:`index.html` wstawiamy poniższy kod HTML:
 
 .. raw:: html
@@ -115,7 +115,7 @@ Do pliku :file:`index.html` wstawiamy poniższy kod HTML:
 .. literalinclude:: templates/index3.html
     :linenos:
 
-Na koniec modyfikujemy widok ``index()``:
+Na koniec modyfikujemy funkcje ``index()`` w pliku quiz.py:
 
 .. raw:: html
 

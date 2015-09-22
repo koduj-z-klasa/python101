@@ -85,7 +85,8 @@ itd. Będziemy mogli je uruchamiać lub testować za pomocą poleceń:
     (env)~/robot$ rgrun bots/stupid26.py robot01.py
     (env)~/robot$ python ./symuluj robot01.py robot02.py
 
-**Obsługa symulatora:**
+Obsługa symulatora
+******************
 
 * Klawisz **F**: utworzenie robota-przyjaciela w zaznaczonym polu.
 * Klawisz **E**: utworzenie robota-wroga w zaznaczonym polu.
