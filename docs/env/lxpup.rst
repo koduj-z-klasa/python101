@@ -1,18 +1,66 @@
 .. _lxpuptahr:
 
-*LxPupTahr* – pierwsze uruchomienie
-####################################
-
-Po pierwszym uruchomieniu zatwierdź okno kreatora ustawień przyciskiem "Ok"
-i zamknij kreator połączenia z internetem. Następnie:
-
-* :ref:`skonfiguruj typ klawiatury <klawiatura>`, aby działały skróty klawiszowe;
-* zamknij system, aby zapisać ustawienia i :ref:`utworzyć plik zapisu <plikzapisu>`.
-
-Po ponownym uruchomieniu system gotowy będzie do pracy :-)
-
 *LxPupTahr* – obsługa
-***********************
+######################
+
+Pierwsze uruchomienie
+*********************
+
+Po pierwszym uruchomieniu zatwierdzamy okno kreatora ustawień przyciskiem "Ok"
+i zamykamy kreatora połączenia z internetem. Następnie:
+
+* **Konfigurujemy typ klawiatury**:
+
+  Procedura jest bardzo prosta. Uruchamiamy "Ustawienia Puppy" (pierwsza ikona obok przycisku Start,
+  lub "Start/Konfiguracja/Wizard Kreator"), wybieramy "Mysz/Klawiatura". W następnym
+  oknie "Zaawansowana konfiguracja", potwierdzamy "OK", dalej "Model klawiatury"
+  i na koniec zaznaczamy "pc105". Pozostaje potwierdzenie "OK" i jeszcze
+  kliknięcie przycisku "Tak" w poprzednim oknie, aby aktywować ustawienia.
+
+.. figure:: lxpupimg/lxpup_ustawienia.png
+.. figure:: lxpupimg/lxpup_klawiatura01.png
+.. figure:: lxpupimg/lxpup_klawiatura02.png
+.. figure:: lxpupimg/lxpup_klawiatura03.png
+
+
+Dzięki tym zabiegom będą działały :ref:`skróty klawiszowe <klawiatura>`.
+
+* **Zamykamy system i tworzymy plik zapisu**:
+
+  .. _plikzapisu:
+
+Podczas pierwszego zamknięcia system prosi o utworzenie `pliku zapisu <http://puppylinux.org/wikka/SaveFile>`_
+(ang. *savefile*), w którym przechowywane będą wprowadzane przez nas zmiany:
+konfiguracja, instalacja programów, utworzone dokumenty.
+
+Na początku może pojawić się pytanie o przetłumaczenie informacji rozruchowych,
+wybieramy "Yes" i potwierdzamy kolejny komunikat.
+
+.. figure:: lxpupimg/lxpsave01.png
+
+W następnym oknie klikamy "Zapisz", następnie "administrator".
+Wybieramy partycję oznaczającą pendrajwa: w konfiguracjach z 1 dyskiem twardym
+będzie ona oznaczona najczęsciej `sdb1` (kierujemy się rozmiarem i typem plików: vfat).
+
+.. figure:: lxpupimg/lxpsave03.png
+.. figure:: lxpupimg/lxpsave04.png
+.. figure:: lxpupimg/lxpsave05.png
+
+Następnie wybieramy ewentualnie szyfrowanie i system plików. Sugerujemy
+`ext2` – najszybszy, wymagany przy szyfrowaniu, lub `ext4` – bezpieczniejszy i domyślny.
+Minimalny rozmiar to 32MB, zalecamy **512MB** lub więcej.
+
+.. figure:: lxpupimg/lxpsave06.png
+.. figure:: lxpupimg/lxpsave07.png
+.. figure:: lxpupimg/lxpsave08.png
+
+Opcjonalnie rozszerzamy domyślną nazwę i potwierdzamy zapis.
+
+.. figure:: lxpupimg/lxpsave09.png
+.. figure:: lxpupimg/lxpsave10.png
+
+Należy spokojnie poczekać na utworzenie pliku i wyłącznie komputera.
+Po ponownym uruchomieniu system będzie gotowy do pracy :-)
 
 System w dostosowanej wersji zawiera:
 
@@ -28,7 +76,7 @@ System w dostosowanej wersji zawiera:
 * skonfigurowane skróty klawiszowe.
 
 Połączenie z internetem
-=========================
+************************
 
 System *LxPupTahr* domyślnie wczytuje się w całości do pamięci RAM i uruchamia
 środowisko graficzne LXDE z zalogowanym użytkownikiem *root*, czyli administratorem
@@ -56,24 +104,25 @@ informacyjnym "Ok".
 .. figure:: lxpupimg/internet05.png
 
 Przeglądarka WWW
-==================
+************************
 
 Domyślną przeglądarką jest `PaleMoon <https://www.palemoon.org/>`_, otwartoźródłowa
 odmiana oparta na Firefoksie. Od czasu do czasu warto ją zaktualizować.
 
 Domyślne katalogi
-==================
+************************
 
 * :file:`/root/my-documents` lub :file:`/root/Dokumenty`
 * :file:`/root/my-documents/clipart` lub :file:`/root/Pobrane` - tu zapisywane są pliki pobierane z internetu
 * :file:`/root/my-documents/clipart` lub :file:`/root/Obrazy`
 * :file:`/root/my-documents/tmp` lub :file:`/root/tmp` - katalogi tymczasowe
+* :file:`/root/LxPupUSB` - skrót do głównego katalogu napędu USB, zadziała dopiero po "pierwszym uruchomieniu"
 * :file:`/usr/share/fonts/default/TTF/` – dodatkowe czcionki TrueType, np. z MS Windows
 
 .. _instalacjaprog:
 
 Instalacja programów
-====================
+************************
 
 Jeżeli chcemy coś doinstalować, uruchamiamy **Quickpet tahr**
 z menu "Start/Konfiguracja". Na początku klikamy "tahrpup updates",
@@ -134,9 +183,10 @@ działania systemu. Korzystamy z narzędzia *SFS-Ładuj w locie* (Start/Konfigur
 .. _ins-pycharm:
 
 Instalacja PyCharm Professional
-================================
+===============================
 
-Jeżeli nawiązaliśmy połączenie z internetem, w terminalu wydajemy polecenie:
+W wersji "full" PyCharm jest już zainstalowany. W wersji podstawowej
+jeżeli nawiązaliśmy połączenie z internetem, w terminalu wydajemy polecenie:
 
 .. code-block:: bash
 
@@ -160,21 +210,12 @@ okien: *Start/Zamknij/Restart WM* lub ponownie uruchamiamy system.
 .. _klawiatura:
 
 Skróty klawiaturowe
-====================
+************************
 
 .. attention::
 
     Poniższe skróty zadziałają, jeżeli ustawimy odpowiedni typ klawiatury.
-    Procedura jest bardzo prosta. Uruchamiamy "Ustawienia Puppy" (pierwsza ikona obok przycisku Start,
-    lub Start/Konfiguracja/Wizard Kreator), wybieramy "Mysz/Klawiatura". W następnym
-    oknie "Zaawansowana konfiguracja", potwierdzamy "OK", dalej "Model klawiatury"
-    i na koniec zaznaczamy "pc105". Pozostaje potwierdzenie "OK" i jeszcze
-    kliknięcie przycisku "Tak" w poprzednim oknie, aby aktywować ustawienia.
-
-.. figure:: lxpupimg/lxpup_ustawienia.png
-.. figure:: lxpupimg/lxpup_klawiatura01.png
-.. figure:: lxpupimg/lxpup_klawiatura02.png
-.. figure:: lxpupimg/lxpup_klawiatura03.png
+    Zob. wyżej: :ref:`Pierwsze uruchomienie <lxpuptahr>`.
 
 Oznaczenia: C – Control, A – Alt, W - Windows (SuperKey).
 
@@ -193,7 +234,7 @@ Oznaczenia: C – Control, A – Alt, W - Windows (SuperKey).
   **W+Alt+Prawo** – sterowanie rozmiarem i położeniem okien
 
 Konfiguracja LXDE
-=================
+************************
 
 * **Wygląd, Ikony, Tapeta, Panel**: Start/Pulpit/Zmiana wyglądu.
 * **Ekran(y)**: Start/System/System/Ustawienia wyświetlania.
@@ -214,46 +255,12 @@ Konfiguracja LXDE
 * **Ustawienie daty i czasu**: Start/Pulpit
 
 Wskazówki
-==========
+************************
 
 1. Dwukrotne kliknięcie – menedżer plików PcManFm domyślnie otwiera pliki
    i katalogi po pojedynczym kliknięciu. Jeżeli chcielibyśmy to zmienić,
    wybieramy "Edycja/Preferencje".
-
-.. _plikzapisu:
-
-Plik zapisu
-************
-
-Podczas pierwszego zamknięcia system prosi o utworzenie `pliku zapisu <http://puppylinux.org/wikka/SaveFile>`_
-(ang. *savefile*), w którym zapisywane będą wprowadzane przez nas zmiany:
-konfiguracja, instalacja programów, utworzone dokumenty.
-
-Na początku może pojawić się pytanie o przetłumaczenie informacji rozruchowych,
-wybieramy "Yes" i potwierdzamy kolejny komunikat. (Gdyby pytanie to pojawiło się
-następnym razem, wybierz "No".)
-
-.. figure:: lxpupimg/lxpsave01.png
-.. figure:: lxpupimg/lxpsave02.png
-
-W następnym oknie klikamy "Zapisz", następnie "administrator".
-Wybieramy partycję oznaczającą pendrajwa: w konfiguracjach z 1 dyskiem twardym
-będzie ona oznaczona najczęsciej `sdb1` (kierujemy się rozmiarem i typem plików: vfat).
-
-.. figure:: lxpupimg/lxpsave03.png
-.. figure:: lxpupimg/lxpsave04.png
-.. figure:: lxpupimg/lxpsave05.png
-
-Następnie wybieramy ewentualnie szyfrowanie i system plików. Sugerujemy
-`ext2` – najszybszy. Minimalny rozmiar to 32MB, zalecamy 512MB lub więcej.
-
-.. figure:: lxpupimg/lxpsave06.png
-.. figure:: lxpupimg/lxpsave07.png
-.. figure:: lxpupimg/lxpsave08.png
-
-Opcjonalnie rozszerzamy domyślną nazwę i potwierdzamy zapis.
-
-.. figure:: lxpupimg/lxpsave09.png
-.. figure:: lxpupimg/lxpsave10.png
-
-Należy spokojnie poczekać na utworzenie pliku i wyłącznie komputera.
+2. Jeżeli po uruchomieniu system nie wykrywa podłączonego monitora czy rzutnika,
+   wybieramy "Start/Zamknij/Restart WM" – po restarcie menedżera okien obraz
+   powinien pojawić się automatycznie. Możemy go dostosować wybierając
+   "Start/System/Sytem/Ustawienia wyświetlania".
