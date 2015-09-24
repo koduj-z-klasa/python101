@@ -25,6 +25,13 @@ i zamykamy kreatora połączenia z internetem. Następnie:
 
 Dzięki tym zabiegom będą działały :ref:`skróty klawiszowe <klawiatura>`.
 
+* **Ustawiamy wygładzanie czcionek**:
+
+Wybieramy "Start/Pulpit/Desktop/Manager Czcionki" i na zakładce "Wygląd"
+ustawiamy wartość *1* jako "Styl hintingu".
+
+.. figure:: lxpupimg/lxpfonts.png
+
 * **Zamykamy system i tworzymy plik zapisu**:
 
   .. _plikzapisu:
@@ -58,6 +65,7 @@ Opcjonalnie rozszerzamy domyślną nazwę i potwierdzamy zapis.
 
 .. figure:: lxpupimg/lxpsave09.png
 .. figure:: lxpupimg/lxpsave10.png
+.. figure:: lxpupimg/lxpsave11.png
 
 Należy spokojnie poczekać na utworzenie pliku i wyłącznie komputera.
 Po ponownym uruchomieniu system będzie gotowy do pracy :-)
