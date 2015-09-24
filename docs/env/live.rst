@@ -50,7 +50,7 @@ W Windows
 * Pobieramy :term:`obraz iso` wybranej :ref:`dystrybucji <dystrybucje>`:
 
   - `LxPupTahr <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/kzkbox_20150921.iso?download=1>`_ (320MB)
-  - `LxPupTahr Full <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/kzkbox_20150921_full.iso?download=1>`_ (520MB, zawiera edytory PyCharm Professional 4.5.4 i SublimeText 3)
+  - `LxPupTahr Full <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/kzkbox_full.iso?download=1>`_ (500MB, zawiera edytory PyCharm Professional 4.5.4 i SublimeText 3)
   - lub: `Xubuntu <http://se.archive.ubuntu.com/mirror/cdimage.ubuntu.com/xubuntu/releases/14.04/release/xubuntu-14.04.2-desktop-i386.iso>`_ (975MB), `SRU v.37 32-bit <http://iso.sru.e-swoi.pl/SRU_MT-14.04-37.iso>`_ (2,4GB), `FREE_DESKTOP_CEO <http://cyfrowaszkola.waw.pl/_pliki/FREE_Desktop_CEO_02.iso>`_ (2,1GB)
 
 * Do wgrania *LxPupTahr* pobieramy program `Rufus <https://rufus.akeo.ie/>`_.
