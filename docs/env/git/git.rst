@@ -78,6 +78,13 @@ W linuksie do instalacji użyjemy menadżera pakietów, np. apt-get:
 Pod windows
 -----------
 
+Zaczynamy od isntalacji narzdzia GIT dla konsoli:
+
+.. code-block:: bat
+
+    > @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
+    > choco install git
+
 Pod windows polecamy zainstalować SourceTree_, aplikację okienkową i narzędzia konsolowe:
 
 .. _SourceTree: http://www.sourcetreeapp.com/
@@ -89,13 +96,6 @@ Pod windows polecamy zainstalować SourceTree_, aplikację okienkową i narzędz
 
 Jeśli nie mamy PowerShell'a `możemy sciągnąć i zainstalować <http://www.sourcetreeapp.com/download>`_ narzędzie ręcznie.
 
-Ewentualnie możemy zainstalować tylko GIT dla konsoli:
-
-.. code-block:: bat
-
-    > @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
-    > choco install git
-
 Jeśli korzystamy z narzędzia `KeePass <http://keepass.info/>`_ do przechowywania haseł i kluczy SSH,
 to dobrze jest połączyć je z GITem przez narzędzie `Plink <http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html>`_.
 Do tego celu musimy dodać zmienna systemowa podmieniająca domyślne narzędzie SSH.
@@ -105,6 +105,7 @@ Uruchamiamy konsole PowerShell z uprawnieniami administracyjnymi:
 .. code-block:: ps
 
     [Environment]::SetEnvironmentVariable("GIT_SSH", "d:\usr\tools\PuTTY\plink.exe", "User")
+
 
 
 Konfiguracja i pierwsze uruchomienie
