@@ -1,260 +1,237 @@
-LiveCD lub LiveUSB
-##################
+.. _linux-live:
 
-Płyta LiveDVD lub klucz startowy USB z systemem w wersji *live* pozwalają
-na uruchomienie komputera, testowanie i pracę bez ingerowania w dane
-zgromadzone na twardym dysku (np. inne systemy). Mogą posłużyć również do
-instalacji lub odzyskiwania danych.
+Linux Live
+###########
 
-W "czystym" systemie *live* można przećwiczyć scenariusze podstawowe,
-pozostałe wymagają doinstalowania bibliotek. Zmiany dokonane w systemie,
-np. doinstalowanie bibliotek, nie są zachowywane, można natomiast zapisywać
-na dysku lub pendrajwie pliki tworzone przez użytkownika.
+Klucz Live USB
+===============
 
-Klucz USB umożliwiający uruchomienie komputera można przygotować na kilka
-sposobów:
-
-1. na podstawie obrazu *iso*;
-2. poprzez zainstalowanie systemu bezpośrednio na pendrajwie;
-3. w opraciu o gotowy klucz startowy USB - sporządzenie kopii.
-
-.. tip::
-
-    Poniższe instrukcje powinny działać na wszystkich nośnikach podłączanych
-    przez USB, a więc kartach pamięci, dyskach twardych itp.
-
-.. contents:: Spis treści
-    :backlinks: none
-
-
-SRU - Szkolny Remix Ucznia
-==========================
-
-W ramach programu `Koduj z Klasą`_ przekazywaliśmy pamięci USB zawierające
-spersonalizowaną odmianę Xubuntu pod nazwą `SRU`_, która zawierała wszystkie
-potrzebne biblioteki. Obraz ostatniej wersji ma numer 37 i można go
-pobrać z podanego adresu. Projekt ten nie jest w tym momencie dalej rozwijany.
-Można jednak z niego nadal korzystać, oparty jest bowiem właśnie na Xubuntu
-w wersji 14.04 LTS, która wspierana będzie do roku 2019.
-Polecamy go zwłaszcza w przypadku, kiedy nie chcemy instalować linuksa
-na dysku twardym, a chcemy mieć możliwość przećwiczenia wszystkich scenariuszy.
-
+Klucz startowy USB z systemem w wersji *live* pozwala na uruchomienie
+komputera, testowanie i pracę bez ingerowania w dane zgromadzone na
+twardym dysku (np. inne systemy). Dystrybujce *live* można zainstalować
+również w maszynie wirtualnej, na dysku twardym lub wykorzystać do odzyskiwania danych.
 
 .. note::
 
-    Ponieważ materiał nt. ORM-ów dodany został już po przygotowaniu
-    ostatniej wersji SRU, do jego testowania potrzebne jest doinstalowanie
-    po każdym uruchomieniu (!) odpowiednich bibliotek. Omawiamy to
-    poniżej.
+    Bootowalna płyta CD/DVD z systemem Linux w wersji *live* nada się do instalacji
+    systemu na twardym dysku, ale nie do realizacji scenariuszy. Nie będzie zawierać
+    wymaganych bibliotek i nie umożliwi łatwego zachowywania utworzonych
+    dokumentów.
 
-.. _SRU: http://sru.e-swoi.pl/sru-test-37.iso
-.. _Koduj z Klasą: http://kodujzklasa.pl
+Poniżej opisujemy instalację *Linux Live* na kluczu USB oraz w maszynie wirtualnej tak,
+aby można było instalować oprogramowanie, zapisywać ustawienia i tworzone dokumenty.
+
+.. _dystrybucje:
+
+Polecane dystrybucje
+---------------------
+
+* `LxPupTahr 15.05.02 <http://lx-pup.weebly.com/>`_ – system zaprojektowany
+  od podstaw jako *live* z możliwością zapisywania zmian. Oparty na stabilnym
+  Ubuntu 14.04 LTS. Środowisko graficzne LXDE. Nasza dostosowana wersja zawiera
+  wszystkie dodatkowe narzędzia i wymagane biblioteki.
+  **System ten polecamy do realizowania scenariuszy na warsztatach i nie tylko.**
+
+.. figure:: lxpupimg/lxpuptahr.png
+
+   System LxPupTahr
+
+W trybie live mogą być również zainstalowane inne dystrybucje, np.:
+`Xubutnu 14.04 LTS <http://xubuntu.org/>`_, `Szkolny Remiks Ucznia v.37 <Szkolny Remiks Ucznia: http://sru.e-swoi.pl>`_
+czy `FREE_DESKTOP v.02 <http://cyfrowaszkola.waw.pl/free_desktop-edukacyjny-remiks-dla-wszystkich/>`_.
+Są one oparte na stabilnych wydaniach Ubuntu i oferują środowisko graficzne XFCE.
+Do realizowania naszych scenariuszy wymagają doinstalowania części narzędzi i bibliotek.
 
 .. _usb-creator:
 
-Problemy z uruchamianiem pod Windows 8 i BIOS UEFI
-==================================================
+W Windows
+===================
 
-Uruchomienie płyt Live DVD lub startowych kluczy USB z systemem
-Xubuntu (SRU) na nowszych (od 2012 r.) komputerach z biosem UEFI i systemem Windows 8
-bywa kłopotliwe. Odpowiada za to mechanizm `secure boot`_.
+* Pobieramy :term:`obraz iso` wybranej :ref:`dystrybucji <dystrybucje>`:
 
-Najprościej jest omawiane zabezpieczenie wyłączyć według instrukcji:
+  - `LxPupTahr <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/kzkbox.iso?download=1>`_ (320MB)
+  - `LxPupTahr Full <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/kzkbox_full.iso?download=1>`_ (500MB, zawiera edytory PyCharm Professional 4.5.4 i SublimeText 3)
+  - lub: `Xubuntu <http://se.archive.ubuntu.com/mirror/cdimage.ubuntu.com/xubuntu/releases/14.04/release/xubuntu-14.04.2-desktop-i386.iso>`_ (975MB), `SRU v.37 32-bit <http://iso.sru.e-swoi.pl/SRU_MT-14.04-37.iso>`_ (2,4GB), `FREE_DESKTOP_CEO <http://cyfrowaszkola.waw.pl/_pliki/FREE_Desktop_CEO_02.iso>`_ (2,1GB)
 
-- `pomoc Ubuntu`_
-- `pomoc Microsoft`_
-- `wsparcie HP`_
+* Do wgrania *LxPupTahr* pobieramy program `Rufus <https://rufus.akeo.ie/>`_.
+  Dla pozostałych: `program Unetbootin <http://unetbootin.sourceforge.net/unetbootin-windows-latest.exe>`_.
 
-.. _secure boot: http://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface#Secure_boot
-.. _poprzednie wersje Windows: http://technet.microsoft.com/en-us/library/dn481258.aspx
-.. _pomoc Ubuntu: https://help.ubuntu.com/community/UEFI#SecureBoot
-.. _pomoc Microsoft: http://technet.microsoft.com/en-us/library/dn481258.aspx
-.. _wsparcie HP: http://h10025.www1.hp.com/ewfrf/wc/document?cc=pl&lc=pl&dlc=pl&docname=c03679388
+* Wpinamy pendrajwa o pojemności min. 2GB dla dystrybucji *LxPupTahr*, 4GB – dla pozostałych.
+  Pendrajw powinien mieć przynajmniej jedną główną i aktywną partycję FAT32 – tak jest zazwyczaj.
 
-Uruchamiamy Linux na maszynie wirtualnej
-========================================
+* **LxPupTahr**: po uruchomieniu *Rufusa* z uprawnieniami administratora z listy "Urządzenie" wybierz pendrajwa,
+  zaznacz opcję "Utwórz bootowalny dysk używając" -> "Obraz ISO", kliknij ikonę obok
+  i wskaż ściągnięty obraz iso, wybierz "Opcje formatowania" i zaznacz
+  "Dodaj łatkę dla starych biosów"; kliknij "Start" i poczekaj do 5 min. na napis "Gotowe".
 
-Drugim rozwiązaniem jest użycie oprogramowania VirtualBox, dzięki któremu
-można tworzyć wirtualne maszyny i instalować na nich wybrane systemy i aplikacje.
-Można też uruchamiać gotowe obrazy maszyn wirtualnych, np. w formacie OVA.
-Po ściągnięciu obrazu i uruchomieniu VirtualBoksa wydajemy polecenie "Plik/Importuj
-urządzenie proghramowe" i postepujemy według wskazówek wyświetlanych przez kreatora.
-Po wykonanym imporcie, możemy uruchomić maszynę w VirtualBoksie.
-Po imporcie plik OVA można skasować.
-
-* `VirtualBox - wersja dla Windows <http://download.virtualbox.org/virtualbox/4.3.8/VirtualBox-4.3.8-92456-Win.exe>`_
-* `Maszyna wirtualna SRU <http://www.cyfrowaszkola.waw.pl/_python/SRU_FWIOO.ova>`_
-
-.. _ins-python:
-
-ISO na dysku USB
-================
-
-Przygotowując klucz USB w oparciu o obraz *iso*, według poniższych instrukcji
-
-Na początktu pobieramy :term:`obraz iso` (np. `SRU v.37`_ lub `Xubuntu 14.04.1 32-bit`_) systemu i zapisujemy na dysku.
-
-.. _SRU v.37: http://sru.e-swoi.pl/sru-test-37.iso
-.. _Xubuntu 14.04.1 32-bit: http://se.archive.ubuntu.com/mirror/cdimage.ubuntu.com/xubuntu/releases/14.04/release/xubuntu-14.04.1-desktop-i386.iso
-
-Tak przygotowane pendrajwy przechowują zmiany, tzn. pliki utworzone przez
-użytkownika. Dodatkowo, jeżeli zaznaczyliśmy "Przechowywanie pracy" lub "Persystencję",
-czyli utworzenie pliku "casper-rw" zachowane zostaną zainstalowane przez nas
-biblioteki czy programy, co pozwoli na takich systemach zrealizować wszystkie
-przygotowane przez nas scenariusze.
+.. figure:: img/rufus02.jpg
 
 .. tip::
 
-    Niżej pokazujemy, jak zainstalować dodatkowe biblioteki.
-    Dodatkowe materiały na temat przygotowywania nośników USB, w tym galerię ilustrującą
-    kolejne kroki znajdziecie w serwisie eCG_.
+    Jeżeli wybrałeś system *LxPupTahr*, przeczytaj :ref:`Pierwsze uruchomienie <lxpuptahr>`!!!
 
-.. _eCG: http://ecg.vot.pl/?id=usb-boot
+* *Xubuntu*, *SRU*, *FREE DESKTOP*: po uruchomieniu programu *Unetbootin*
+  zaznaczamy opcję "Obraz dysku", klikamy przycisk "..." i wskazujemy
+  pobrany obraz. W polu "Przestrzeń używana do zachowania plików..."
+  wpisujemy min. **512**. W polu "Napęd:" wskazujemy pendrajwa i klikamy "OK".
+  Czekamy w zależności od wybranej dystrybucji i prędkości klucza USB od 5-25 minut.
 
-Wypalamy USB w Windows
-----------------------
+.. figure:: img/unetbootin_win_lxpup.jpg
 
-W systemach MS Windows proponujemy instalację programu `Linux Live USB Creator`_.
-Można też skorzystać z programu `Universal USB Installer`_, który polecany
-jest w instrukcji zamieszczonej na stronach `producenta Ubuntu`_.
+W Linuksie
+===========
 
-.. _Linux Live USB Creator: http://www.linuxliveusb.com/en/download
-.. _Universal USB Installer: http://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3/#button
-.. _producenta Ubuntu: http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-windows
-
-
-Po instalacji i uruchomieniu programu "Lnux Live USB Creator"
-polecamy kliknąć przycisk "Opcje" i wybrać polski język interfejsu, następnie konfigurujemy
-ustawienia zgodnie z podanym zrzutem, czyli wskazujemy klucz USB, wybieramy obraz iso
-i określamy rozmiar pliku "casper-rw".
-
-Podstawowa instalacja Xubuntu 14.04 zajmuje
-na pendrajwie ok. 1,2 GB, a więc resztę miejsca można przeznaczyć na nasze dane.
-
-.. figure:: img/lluc.jpg
-
-Pozostaje naciśnięcie, w zależności od programu, przycisku "Utwórz..." lub ikony błyskawicy
-i uzbrojenie się w cierpliwość, po rozpakowaniu plików na partycję główną program może
-poprosić o wpisanie hasła, aby wgrać sektor rozruchowy. W systemach ubuntopodobnych
-podajemy hasło naszego użytkownika, w MS Windows - jeżeli trzeba - hasło administratora.
-
-Wypalamy USB w Linux
---------------------
-
-W systemie z rodziny Ubuntu instalujemy program **usb-creator-gtk**. Można
-   to zrobić przez "Centrum oprogramowania" lub w terminalu:
-
+* W Ubuntu i pochodnych instalujemy program `Unetbootin <http://unetbootin.sourceforge.net>`_ poleceniami:
 
 .. code-block:: bash
 
-    ~$ sudo apt-get update && sudo apt-get install usb-gtk-creator
+    ~$ sudo apt-add-repository ppa:gezakovacs/ppa
+    ~$ sudo apt-get update
+    ~$ sudo apt-get install unetbootin
 
-Podpinamy pendrajw docelowy o pojemności min. 4GB. Napęd powinien zawierać
-przynajmniej 1 partycję główną Fat32, wtedy do przechowywania danych użytkownika
-wykorzystany zostanie specjalny plik "casper-rw".
+* W Debianie Jessie 8 ściągamy pakiet `unetbootin_608-1_i386.deb <http://ftp.pl.debian.org/debian/pool/main/u/unetbootin/unetbootin_608-1_i386.deb>`_,
+  a następnie w katalogu z pobranym plikiem wydajemy polecenia jako root:
+
+.. code-block:: bash
+
+    ~# dpkg -i unetbootin_608-1_i386.deb
+    ~# apt-get install -f
+
+*  W Arch Linuksie i pochodnych jako root wydajemy polecenia:
+
+.. code-block:: bash
+
+    ~# pacman -Syu
+    ~# pacman -S unetbootin
+
+* Wpinamy pendrajwa o pojemności min. 4GB dla dystrybucji *SRU* (*Xubuntu*). Pendrajw
+  powinien mieć przynajmniej jedną główną i aktywną partycję FAT32 – tak jest zazwyczaj.
+* Po uruchomieniu programu "Unetbootin" zaznaczamy opcję "Obraz dysku", klikamy
+  przycisk "..." i wskazujemy pobrany obraz.
+* Jeżeli wybraliśmy *LxPupTahr*, przechodzimy do następnego punktu.
+  Jeżeli wybraliśmy obraz *Xubuntu*, *SRU* lub *FREE_DESKTOP*, w polu "Przestrzeń
+  używana do zachowania plików..." wpisujemy min. **512**.
+* Upewniamy się, że w polu "Napęd:" wyświetlona jest litera przydzielona
+  właściwemu pendrajwowi i klikamy "OK". Czekamy w zależności od wybranej
+  dystrybucji i prędkości klucza USB od 1-20 minut.
+
+.. figure:: img/unetbootin_win_free.jpg
 
 .. note::
-    Jeżeli korzystamy z obrazu systemu opartego na Ubuntu, możemy na pendrajwie
-    utworzyć dwie partycje: pierwszą podstawową Fat32 o pojemności min. 3GB
-    i dowolonej etykiecie np. "linux"; oraz drugą typu Ext4 o dowolnej pojemności,
-    ale obowiązkowej etykiecie "home-rw".
 
-    Czynności te można wykonać przy użyciu programu **gparted**, który zainstalujemy
-    za pomocą "Centrum oprogramowania" lub w terminalu: ``sudo apt-get update &&
-    sudo apt-get install gparted``. Niestety za pomocą standardowych narzędzi
-    MS Windows nie utworzymy partycji Ext4. Ostateczny układ partycji powinien
-    wyglądać tak jak na poniższym zrzucie:
+    Jeżeli nagrywamy obraz *Xubuntu*, *SRU* lub *FREE_DESKTOP* możemy na pendrajwie
+    utworzyć dodatkową partycję typu Ext4 o dowolnej pojemności, ale obowiązkowej
+    etykiecie "home-rw". Zostanie ona wykorzystana jako miejsce montowania
+    i zapisywania plików użytkownika. W takim wypadku pole "Przestrzeń używana
+    do zachowania plików..." pozostawiamy puste!
+
+    Dodatkową partycję utworzysz przy użyciu programu **gparted**. Instalacja:
+    ``sudo apt-get update && sudo apt-get install gparted``.
+    Niestety za pomocą standardowych narzędzi MS Windows nie utworzymy partycji Ext4.
+    Ostateczny układ partycji powinien wyglądać tak jak na poniższym zrzucie:
 
 .. figure:: img/sru_usb08.png
 
-4. Po przygotowaniu pendrajwa uruchamiamy kreator dysku usb poleceniem ``usb-creator-gtk``
-   wydanym w terminalu. (Jeżeli pracujemy w Xubuntu ze środowiskiem XFCE4 możemy użyć
-   również menu programów (:kbd:`CTRL+ESC`) lub okna uruchamiania programów (:kbd:`ALT+F2`).)
-   Przycisk "Inny" w górnej części okna pozwoli wskazać :term:`obraz iso`
-   wybranego systemu, dalej upewniamy się, że w polu "Nośnik docelowy"
-   widnieje nazwa partycji podstawowej naszego pendrajwa (np. /dev/sdb1, zwróćmy też uwagę
-   na etykietę!), na koniec wybieramy opcję "Przechowywanie pracy..." jeżeli dane użytkownika
-   mają być przechowywane w pliku i na pendrajwie nie tworzyliśmy dodatkowej partycji,
-   w przeciwnym wypadku zaznaczamy opcję drugą "Porzucone podczas wyłączania...", która
-   mimo nazwy spowoduje zapisywanie ustawień na dodatkowej partycji ext4 o etykiecie "home-rw".
+W maszynie wirtualnej
+=====================
 
-.. figure:: img/sru_usb09.png
+Dystrybucję *LxPupTahr* łatwo zainstalować i uruchamiać w Windows (lub w Linuksie!) za pomocą
+tzw. maszyny wirtualnej.
 
+Do zarządzania maszynami wirtualnymi wykorzystamy program VirtualBox, który pobieramy w wersji
+dla naszego systemu ze strony `VirtualBox <https://www.virtualbox.org/wiki/Downloads>`_ i instalujemy.
+Następnie uruchamiamy aplikację i tworzymy nową maszynę wirtualną:
 
-System na kluczu USB
-====================
+* nazwa – np. "LxPup", typ – *Linux*, wersja – *Ubuntu (32-bit)*;
+* rozmiar pamięci – min. 1024MB
+* tworzymy dysk twardy VDI o stałym rozmiarze min. 1024MB
 
-Jeżeli dysponujemy startowym nośnikiem z systemem Xubuntu (lub innym),
-możemy uruchomić normalną instalację, podpiąć nośnik USB, założyć na nim
-(w trakcie instalacji) partycję Ext4 i wskazać ją jako miejsce instalacji
-systemu. Trzeba również zainstalować menedżer startowy GRUB w MBR takiego napędu.
+Po utworzeniu maszyny w sekcji "Storage" jako dysk rozruchowy wskazujemy ściągnięty :term:`obraz iso` dystrybucji,
+np. ``kzkbox_20150921_full.iso``:
+
+.. figure:: vboximg/vbox05.jpg
+
+Uruchamiamy maszynę, ale na ekranie roruchowym systemu podajemy dodatkowe
+parametry uruchomieniowe: ``puppy pmedia=cd``:
+
+.. figure:: vboximg/vbox06.jpg
+
+Po uruchomieniu systemu zamykamy kreatora konfiguracji, w przypadku problemów z rozdzielczością
+przechodzimy do trybu pełnoekranowego (:kbd:`HOST+F` lub menu *View/Full screen Mode*)
+i uruchamiamy instalatora poleceniem *Start/Konfiguracja/Puppy uniwersalny instalator*.
+
+1) W oknie "Instaluj" wybieramy *Uniwersalny instalator*;
+2) W kolejnym wybieramy *Wewnętrzny (IDE lub SATA) dysk twardy*;
+3) Następnie wskaujemy dysk *sda ATA VBOX HARDDISK* za pomocą ikony;
+4) Kolejne okno umożliwi uruchomienie edytora GParted, za pomocą którego
+   założymy i sformatujemy partycję systemową;
+
+.. figure:: vboximg/puppy_vb04.png
+
+5) W edytorze GParted wybieramy kolejno:
+
+   a) w menu *Urządzenie/Utwórz tablicę partycji*, kolejne okno potwierdzamy *Zastosuj*;
+   b) Klikamy nieprzydzielone miejsce prawym klawiszem i wybieramy *Nowa*, wybieramy
+      "Partycja główna" i system "Ext4", zatwierdzamy *Dodaj*;
+   c) Następnie wybieramy *Edycja/Zastosj wszystkie działania* lub klikamy ikonę "zielonego ptaszka";
+   d) Na koniec klikamy utworzoną partycję prawym klawiszem, wybieramy *Zarządzaj flagami*,
+      zaznaczamy opcję "boot" i zatwierdzamy *Zamknij*; w efekcie powinniśmy zobaczyć
+      co następuje:
+
+.. figure:: vboximg/puppy_vb07.png
+
+6) Po zamknięciu edytora GParted, ponownie wskazujemy dysk "sda",
+   a w kolejnym, powtórzonym oknie klikamy ikonę w prawym górnym rogu obok
+   napisu "Instaluj Puppy na sda1";
+7) W kolejnym oknie potwierdzamy instalację przyciskiem *OK*;
+8) W następnym klikamy przycisk *CD*, aby wskazać położenie plików systemowych,
+   i jeszcze raz potwierdzamy przyciskiem "OK";
+9) W kolejnym oknie wybieramy *OSZCZĘDNY* tryb instalacji – system będzie zachowywał się
+   tak, jakby był zainstalowany na pendrajwie; następne wyjaśnienia potwierdzamy *OK*;
+10) Podajemy nazwę katalogu, w którym znajdą się pliki systemowe, np. "lxpup";
+11) Po skopiowaniu plików wybieramy instalację bootmenedżera *grub4dos* przyciskiem *Tak*;
+12) W oknie instalacyjnym Grub4Dos zaznaczamy opcje zgodnie ze zrzutem:
+
+.. figure:: vboximg/puppy_vb10.png
+
+13) W kolejnym oknie zatwierdzamy listę wykrytych systemów *OK*,
+    a w następnym potwierdzamy instalację bootmenedżera w MBR;
+14) Na koniec zamykamy informację o udanej instalacji:
+
+.. figure:: vboximg/puppy_vb12.png
+
+Zamykamy LxPup (*Start/Zamknij*), usuwamy plik obrazu iso z wirtualnego napędu
+i możemy uruchomić LxPupTahr w maszynie wirtualnej:
+
+.. figure:: vboximg/vbox07.jpg
+
+System zainstalowany w ten sposób działa tak samo jak zainstalowany na kluczu USB,
+a więc wymaga potwierdzenia konfiguracji wstępnej i utworzenia pliku zapisu.
+Zob.: :ref:`Pierwsze uruchomienie <lxpuptahr>`!!!
 
 .. tip::
 
-    Załóżmy, że uruchamiamy Xubuntu z płyty DVD na komputerze z jednym twardym dyskiem.
-    Instalator oznaczy go jako ``sda(x)``, a podłączony klucz USB jako ``sdb(x)``,
-    co poznać będzie można po rozmiarze i obecnych na nich partycjach.
-    Na dysku ``sdb`` tworzymy co najmniej jedną partycję Ext4, jako cel
-    instalacji systemu, czyli punkt montowania katalogu głównego ``/``
-    wskazujemy partycję ``/dev/sdb1``, natomiast jako miejsce instalacji GRUB-a
-    wybieramy ``/dev/sdb``.
+  Za pomocą VirtualBoksa można zainstalować dowolną inną dystrybucję Linuksa
+  z pobranego obrazu *iso*. Taka instalacja zadziała jak "normalny" system,
+  a więc umożliwi aktualizację i instalację oprogramowania, a także zapis
+  tworzonych dokumentów.
 
-Po uruchomieniu tak zainstalowanego systemu wszystkie dokonywane zmiany będą zapamiętywane.
-Można system aktualizować, można instalować nowe oprogramowanie i zapisywać
-swoje pliki.
+.. tip::
 
-Kopia klucza USB
-================
+  W przypadku problemów z działaniem myszy w wirtualnym systemie,
+  warto spróbować wyłączyć ewentualną automatyczną integrację kursora
+  za pomocą skrótu :kbd:`HOST+I`. Klawisz ``HOST`` to wskazany w menu
+  *File/Preferences/Input/Virtual Machine* klawisz umożliwiający
+  sterowanie wirtualną maszyną. Dla polskiej klawiatury można
+  ustawić np. prawy CTRL.
 
-Jeżeli dysponujemy już nośnikiem startowym USB, możemy łatwo go skopiować.
-Żeby operację przyśpieszyć, zwłaszcza jeśli chcemy wykonać kilka kopii,
-warto na początku utworzyć obraz danych zawartych na pendrajwie.
-W Linuksie posługujemy się poleceniem ``dd`` wydanym w katalogu domowym:
+Materiały
+========================
 
-.. code-block:: bash
+.. toctree::
+    :maxdepth: 2
+    :numbered:
 
-    ~$ sudo dd if=/dev/sdb of=obrazusb.img bs=1M
-
-Ciąg ``/dev/sdb`` w powyższym poleceniu oznacza napęd źródłowy, ``obrazusb.img``
-to dowolna nazwa pliku, do którego zapisujemy odczytaną zawartość.
-
-.. note::
-
-    Linux oznacza wykryte napędy jako ``/dev/sd[a-z]``, a więc pierwszy dysk twardy
-    oznaczony zostanie jako ``sda``. Po podłączeniu klucza USB otrzyma on nazwę
-    ``sdb``. Kolejny podłączony napęd USB będzie dostępny jako ``sdc``.
-    Nazwę napędu USB możemy sprawdzić po wydaniu podanych niżej poleceń.
-    Pierwsze z nich wyświetli w końcowych liniach ostatnio dodane napędy
-    w postaci ciągu typu ``sdb:sdb1``. Podobne wyniki powinno zwrócić
-    polecenie drugie.
-
-.. code-block:: bash
-
-    ~$ mount | grep /dev/sd
-    ~$ dmesg | grep /dev/sd
-
-Po utworzeniu obrazu podłączamy napęd docelowy i dokładnie ustalamy jego oznaczenie,
-ponieważ wcześniejesze **dane z napędu docelowego zostaną usunięte**. Jeżeli napęd
-został zamontowany, czyli jego zawartość została automatycznie pokaza w menedżerze
-plików, musimy go odmontować za pomocą polecenia ``Odmontuj`` (nie mylić z ``Wysuń``!).
-Następnie wydajemy polecenie:
-
-.. code-block:: bash
-
-    ~$ sudo dd if=obrazusb.img of=/dev/sdc bs=4M; sync
-
-Etap tworzenia obrazu na dysku możemy pominąć. Po podłączeniu napędu
-źródłowego i docelowego, ustaleniu ich nazw i ewentualnym odmontowaniu
-napędu przeznaczenia, możemy wydać polecenie:
-
-.. code-block:: bash
-
-    ~$ sudo dd if=/dev/sdb of=/dev/sdc bs=4M; sync
-
-- gdzie ``sdb`` to nazwa napędu źródłowego, a ``sdc`` to oznaczenie napędu docelowego.
-
-W MS Windows możemy użyć np. narzędzia `Image USB`_ lub 'USB Image Tool'_.
-Za ich pomocą utworzymy obraz, który później nagramy na wskazane klucze.
-
-.. _Image USB: http://www.osforensics.com/tools/write-usb-images.html
-.. _USB Image Tool: http://www.alexpage.de/usb-image-tool/download/
+    lxpup.rst
+    problemy.rst
+    opcje.rst

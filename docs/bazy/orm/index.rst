@@ -1,3 +1,5 @@
+.. _systemy_orm:
+
 Systemy ORM
 ##################
 
@@ -51,7 +53,7 @@ Połączenie z bazą
 
 W jednym i drugim przypadku importujemy najpierw potrzebne klasy.
 Następnie tworzymy instancje ``baza`` służące do nawiązania połączeń
-z bazą przechowywaną w pliku ``test.db``. Jeżeli zamiast nazwy pliku,
+z bazą przechowywaną w pliku :file:`test.db`. Jeżeli zamiast nazwy pliku,
 podamy ``:memory:`` bazy umieszczone zostaną w pamięci RAM (przydatne
 podczas testowania).
 
@@ -79,8 +81,8 @@ mechanizmy obsługujące te związki.
 
 .. literalinclude:: ormpw02.py
     :linenos:
-    :lineno-start: 12
-    :lines: 12-29
+    :lineno-start: 13
+    :lines: 13-34
 
 .. raw:: html
 
@@ -89,7 +91,7 @@ mechanizmy obsługujące te związki.
 .. literalinclude:: ormsa02.py
     :linenos:
     :lineno-start: 14
-    :lines: 14-34
+    :lines: 14-37
 
 W obydwu przypadkach deklarowanie modelu opiera się na pewnej "klasie" podstawowej,
 którą nazwaliśmy ``BazaModel``. Dziedzicząc z niej, deklarujemy następnie
@@ -132,10 +134,9 @@ w katalogu, z którego uruchamiamy skrypt.
 
 .. note::
 
-    Wspominaliśmy już o interpreterze ``sqlite3`` pozwalającym pracować
-    w konsoli z bazą. Warto go wykorzystać i sprawdzić, jak wygląda
-    kod tworzący tabele wygenerowany przez ORM-y. Poniżej przykład
-    ilustrujący SQLAlchemy.
+    Warto wykorzystać :ref:`interpreter sqlite3 <sqlite3>`
+    i sprawdzić, jak wygląda kod tworzący tabele wygenerowany przez ORM-y.
+    Poniżej przykład ilustrujący SQLAlchemy.
 
 .. figure:: sqlite3_2.png
 
@@ -156,8 +157,8 @@ wykorzystujemy metody sesji, w ramach której komunikujemy się z bazą.
 
 .. literalinclude:: ormpw03.py
     :linenos:
-    :lineno-start: 31
-    :lines: 31-57
+    :lineno-start: 36
+    :lines: 36-62
 
 .. raw:: html
 
@@ -165,8 +166,8 @@ wykorzystujemy metody sesji, w ramach której komunikujemy się z bazą.
 
 .. literalinclude:: ormsa03.py
     :linenos:
-    :lineno-start: 36
-    :lines: 36-60
+    :lineno-start: 39
+    :lines: 39-64
 
 Dodawanie informacji w systemach ORM polega na utworzeniu instancji odpowiedniego
 obiektu i podaniu w jego konstruktorze wartości atrybutów reprezentujących pola rekordu:
@@ -249,8 +250,8 @@ tabelę lub do usunięcia instancji danej klasy.
 
 .. literalinclude:: ormpw04.py
     :linenos:
-    :lineno-start: 59
-    :lines: 59-
+    :lineno-start: 64
+    :lines: 64-
 
 .. raw:: html
 
@@ -258,8 +259,8 @@ tabelę lub do usunięcia instancji danej klasy.
 
 .. literalinclude:: ormsa04.py
     :linenos:
-    :lineno-start: 62
-    :lines: 62-
+    :lineno-start: 66
+    :lines: 66-
 
 Załóżmy, że chcemy zmienić przypisanie ucznia do klasy. W obydwu systemach
 tworzymy więc obiekt reprezentujący ucznia o identyfikatorze "2". Stosujemy
@@ -281,42 +282,37 @@ lub sesji ``sesja.close()`` (SQLAlchemy). UWAGA: operacje dokonywane
 podczas sesji w SQLAlchemy muszą zostać zapisane w bazie, dlatego przed
 zamknięciem połączenia trzeba umieścić polecenie ``sesja.commit()``.
 
-Materiały
-*******************
-
-Słownik
-=====================
-
-.. include:: ../glossary.rst
-
 Zadania dodatkowe
-=====================
+******************
 
-    Spróbuj dodać do bazy korzystając z systemu Peewee lub SQLAlchemy
-    wiele rekordów na raz pobranych z pliku. W tym celu zmodyfikuj
-    funkcję opisaną wcześniej przy omawianiu modułu *sqlite3* Pythona.
+- Spróbuj dodać do bazy korzystając z systemu Peewee lub SQLAlchemy
+  wiele rekordów na raz pobranych z pliku. Wykorzystaj i zmodyfikuj
+  funkcję ``pobierz_dane()`` opisaną w materiale :ref:`Dane z pliku <dane_z_pliku>`.
 
-    Postaraj się przedstawione aplikacje wyposażyć w konsolowy interfejs,
-    który umożliwi operacje odczytu, zapisu, modyfikowania i usuwania rekordów.
-    Dane powinny być pobierane z klawiatury od użytkownika.
+- Postaraj się przedstawione aplikacje wyposażyć w konsolowy interfejs,
+  który umożliwi operacje odczytu, zapisu, modyfikowania i usuwania rekordów.
+  Dane powinny być pobierane z klawiatury od użytkownika.
 
-    Przedstawione rozwiązania warto użyć w aplikacjach internetowych
-    jako relatywnie szybki i łatwy sposób obsługi danych. Zobacz,
-    jak to zrobić na przykładzie scenariusza aplikacji "Quiz 2".
+- Przedstawione rozwiązania warto użyć w aplikacjach internetowych
+  jako relatywnie szybki i łatwy sposób obsługi danych. Zobacz,
+  jak to zrobić na przykładzie scenariusza aplikacji :ref:`Quiz ORM <quiz-orm>`.
+
+- Przejrzyj scenariusz aplikacji internetowej :ref:`Czat <czat-app>`, zbudowanej z wykorzystaniem
+  frameworku *Django*, korzystającego z własnego modelu ORM.
 
 Źródła
-============
+*******************
 
 * :download:`orm.zip <orm.zip>`
 
-Kolejne wersje tworzenego kodu znajdziesz w katalogu ``~/python101/docs/bazy``.
+Kolejne wersje tworzenego kodu znajdziesz w katalogu ``~/python101/docs/bazy/orm``.
 Uruchamiamy je wydając polecenia:
 
 .. code-block:: bash
 
-    ~/python101$ cd docs/bazy
-    ~/python101/docs/bazy$ python ormpw0x.py
-    ~/python101/docs/bazy$ python ormsa0x.py
+    ~/python101$ cd docs/bazy/orm
+    ~/python101/docs/bazy/orm$ python ormpw0x.py
+    ~/python101/docs/bazy/orm$ python ormsa0x.py
 
 \- gdzie *x* jest numerem kolejnej wersji kodu.
 

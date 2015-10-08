@@ -1,3 +1,5 @@
+.. _pong-obj:
+
 Pong (obj)
 ##################
 
@@ -26,7 +28,7 @@ Do rozpoczęcia pracy z przykładem pobieramy szczątkowy kod źródłowy:
 Okienko gry
 **********************
 
-Na wstępie w pliku ``~/python101/pong/pong.py`` otrzymujemy kod który przygotuje okienko naszej gry:
+Na wstępie w pliku ``~/python101/games/pong.py`` otrzymujemy kod który przygotuje okienko naszej gry:
 
 .. raw:: html
 
@@ -61,7 +63,7 @@ Nasz program możemy uruchomić komendą:
 
 .. code-block:: bash
 
-    ~/python101$ python pong/pong.py
+    ~/python101$ python games/pong.py
 
 Mrugnęło? Program się wykonał i zakończył działanie :). Żeby zobaczyć efekt na dłużej,
 możemy na końcu chwilkę uśpić nasz program:
@@ -187,7 +189,7 @@ Uruchommy naszą "grę" ;)
 
 .. code-block:: bash
 
-    ~/python101$ python pong/pong.py
+    ~/python101$ python games/pong.py
 
 .. figure:: pong_3.png
 
@@ -254,7 +256,7 @@ Sprawdzamy piłka się odbija, uruchamiamy nasz program:
 
 .. code-block:: bash
 
-    ~/python101$ python pong/pong.py
+    ~/python101$ python games/pong.py
 
 Gotowy kod możemy wyciągnąć komendą:
 
@@ -423,21 +425,3 @@ Zadania dodatkowe
    być kontynuowany także gdy myszka jest bezczynna.
 #. Gdy piłeczka odbija się od boków rakietki powinna odbijać się w osi X.
 #. Gra dwuosobowa z użyciem komunikacji po sieci.
-
-Materiały
-**********************
-
-Słowniczek
-================
-
-.. glossary::
-
-    dziedziczenie
-        w programowaniu obiektowym nazywamy mechanizm współdzielenia funkcjonalności
-        między klasami. Klasa może dziedziczyć po innej klasie, co oznacza,
-        że oprócz swoich własnych atrybutów oraz zachowań, uzyskuje także te pochodzące
-        z klasy, z której dziedziczy.
-
-    przesłanianie
-        w programowaniu obiektowym możemy w klasie dziedziczącej przesłonić metody
-        z klasy nadrzędnej rozszerzając lub całkowicie zmieniając jej działanie

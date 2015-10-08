@@ -22,8 +22,15 @@ skoków pomiędzy etapami które zostały wskazane w materiałach szkoleniowych.
 
 https://github.com/koduj-z-klasa/python101/archive/master.zip
 
+Dyskusje i pytania na temat tych materiałów
+-------------------------------------------
+
+Zachęcamy do dyskusji i zadawania pytań na forum Koduj z Klasą:
+
+http://discourse.kodujzklasa.pl/
+
 Linki do zapamiętania
--------------------------------------
+---------------------
 
 Polecamy poniższe strony jako źródła dodatkowych materiałów dla uczestników szkoleń:
 
@@ -45,13 +52,10 @@ Polecamy poniższe strony jako źródła dodatkowych materiałów dla uczestnik�
 - Strona główna programu KZK dla Python  
   http://www.ceo.org.pl/pl/kodujzklasa/python
 
-- Forum KZK  
-  http://forum.kodujzklasa.pl/
-
 - Proste przykłady OEIiZK dla pythona  
   http://python.oeiizk.edu.pl/
 
-- Darmowy soft i usługi dla uczniów (w tym 100$ na serwer w internecie, hosting na ~1,5 roku)  
+- Darmowy soft i usługi dla uczniów (w tym 100$ na serwer w internecie, hosting na ok. 1,5 roku)  
   https://education.github.com/pack
 
 - Dokumentacja Python'a i bibliotek standardowych  

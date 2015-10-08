@@ -15,6 +15,11 @@ Fundację `Centrum Edukacji Obywatelskiej`_.
 
 Krótki link do tej strony: `bit.ly/py-101 <http://bit.ly/py-101>`_
 
+Pytania do tych materiałów
+**************************
+
+Zachęcamy do dyskusji i zadawania pytań `na naszym forum <http://discourse.kodujzklasa.pl/>`_
+
 Pobieranie tej dokumentacji
 ***************************
 
@@ -54,6 +59,7 @@ Zaczynamy!
     :numbered:
 
     podstawy/index
+    rg/index
     pygame/index
     bazy/index
     webapps/index
@@ -65,7 +71,7 @@ Dodatkowe informacje
     :maxdepth: 1
 
     faq/index
-    git/git
+    warsztaty/index
 
 .. include:: authors.rst
 

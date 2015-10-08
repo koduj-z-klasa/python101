@@ -86,7 +86,7 @@ Grę możemy uruchomić poleceniem wpisanym w terminalu:
 
     $ python life_str.py
 
-Poćwicz sam
+Zadania dodatkowe
 ****************************
 
     Spróbuj inaczej zaimplementować funkcję ``przygotuj_populacje``.
@@ -96,8 +96,7 @@ Poćwicz sam
 Materiały
 ****************************
 
-Źródła
-===================
+**Źródła:**
 
 * :download:`life_str.zip <life_str.zip>`
 * :download:`life_str.pdf <../../pdf/life_str.pdf>`
@@ -118,9 +117,3 @@ Uruchamiamy je wydając polecenie:
     ~/python101/docs/life_str$ python life_strx.py
 
 \- gdzie *x* jest numerem kolejnej wersji kodu.
-
-Słownik
-===================
-
-.. include:: ../glossary.rst
-

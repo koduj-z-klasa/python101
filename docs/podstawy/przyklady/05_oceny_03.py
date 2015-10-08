@@ -1,7 +1,5 @@
 #! /usr/bin/env python
-# -*- coding: UTF-8 -*-
-
-# ~/python/05_oceny_03.py
+# -*- coding: utf-8 -*-
 
 # importujemy funkcje z modułu ocenyfun zapisanego w pliku ocenyfun.py
 from ocenyfun import drukuj
@@ -9,26 +7,26 @@ from ocenyfun import srednia
 from ocenyfun import mediana
 from ocenyfun import odchylenie
 
-przedmioty = set(['polski','angielski']) #definicja zbioru
+przedmioty = set(['polski', 'angielski'])  # definicja zbioru
 drukuj(przedmioty, "Lista przedmiotów zawiera: ")
 
 print "\nAby przerwać wprowadzanie przedmiotów, naciśnij Enter."
 while True:
     przedmiot = raw_input("Podaj nazwę przedmiotu: ")
     if len(przedmiot):
-        if przedmiot in przedmioty: #czy przedmiot jest w zbiorze?
+        if przedmiot in przedmioty:  # czy przedmiot jest w zbiorze?
             print "Ten przedmiot już mamy :-)"
-        przedmioty.add(przedmiot) #dodaj przedmiot do zbioru
+        przedmioty.add(przedmiot)  # dodaj przedmiot do zbioru
     else:
-        drukuj(przedmioty,"\nTwoje przedmioty: ")
+        drukuj(przedmioty, "\nTwoje przedmioty: ")
         przedmiot = raw_input("\nZ którego przedmiotu wprowadzisz oceny? ")
-        if przedmiot not in przedmioty: #jeżeli przedmiotu nie ma w zbiorze
+        if przedmiot not in przedmioty:  # jeżeli przedmiotu nie ma w zbiorze
             print "Brak takiego przedmiotu, możesz go dodać."
         else:
-            break # wyjście z pętli
+            break  # wyjście z pętli
 
-oceny = [] # pusta lista ocen
-ocena = None # zmienna sterująca pętlą i do pobierania ocen
+oceny = []  # pusta lista ocen
+ocena = None  # zmienna sterująca pętlą i do pobierania ocen
 print "\nAby przerwać wprowadzanie ocen, podaj 0 (zero)."
 
 while not ocena:
@@ -44,8 +42,8 @@ while not ocena:
     except ValueError:
         print "Błędne dane!"
 
-drukuj(oceny,przedmiot.capitalize()+" - wprowadzone oceny: ")
-s = srednia(oceny) # wywołanie funkcji z modułu ocenyfun
-m = mediana(oceny) # wywołanie funkcji z modułu ocenyfun
-o = odchylenie(oceny,s) # wywołanie funkcji z modułu ocenyfun
-print "\nŚrednia: {0:5.2f}\nMediana: {1:5.2f}\nOdchylenie: {2:5.2f}".format(s,m,o)
+drukuj(oceny, przedmiot.capitalize() + " - wprowadzone oceny: ")
+s = srednia(oceny)  # wywołanie funkcji z modułu ocenyfun
+m = mediana(oceny)  # wywołanie funkcji z modułu ocenyfun
+o = odchylenie(oceny, s)  # wywołanie funkcji z modułu ocenyfun
+print "\nŚrednia: {0:5.2f}\nMediana: {1:5.2f}\nOdchylenie: {2:5.2f}".format(s, m, o)

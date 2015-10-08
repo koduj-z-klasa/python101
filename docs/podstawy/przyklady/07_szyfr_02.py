@@ -1,9 +1,8 @@
 #! /usr/bin/env python
-# -*- coding: UTF-8 -*-
-
-# ~/python/07_2_szyfr_cezara.py
+# -*- coding: utf-8 -*-
 
 KLUCZ = 3
+
 
 def szyfruj(txt):
     stxt = ""
@@ -12,7 +11,7 @@ def szyfruj(txt):
             stxt += chr(ord(txt[i]) + KLUCZ - 26)
         else:
             stxt += chr(ord(txt[i]) + KLUCZ)
-    return stxt;
+    return stxt
 
 utxt = raw_input("Podaj ciąg do zaszyfrowania:\n")
 stxt = szyfruj(utxt)

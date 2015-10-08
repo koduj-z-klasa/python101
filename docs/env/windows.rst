@@ -1,3 +1,5 @@
+.. _windows-env:
+
 Przygotowanie systemu Windows
 #############################
 
@@ -14,43 +16,31 @@ Cały kod działa tak samo, jednak niektóre biblioteki trzeba ściągnąć i za
 .. contents:: Spis treści
     :backlinks: none
 
+.. _ins-python:
+
 Instalacja przez PowerShell
 ===========================
 
-Punktem wyjścia jest instalacja interpretera Pythona. Wersję 2.7.8 szybko zainstalujemy
-za pomocą konsoli PowerShell (oznaczonej niebieską ikoną i niebieskim tłem). Wystarczy skopiować
+Interpreter Pythona w wersji 2.7 szybko zainstalujemy za pomocą konsoli
+PowerShell (oznaczonej niebieską ikoną i niebieskim tłem). Wystarczy skopiować
 poniższy kod linia po linii, wkleić i wykonać:
 
 .. code-block:: posh
 
-    (new-object System.Net.WebClient).DownloadFile("https://www.python.org/ftp/python/2.7.9/python-2.7.9.msi", "$pwd\python-2.7.9.msi")
-    msiexec /i python-2.7.9.msi TARGETDIR=C:\Python27
+    (new-object System.Net.WebClient).DownloadFile("https://www.python.org/ftp/python/2.7.10/python-2.7.10.msi", "$pwd\python-2.7.10.msi")
+    msiexec /i python-2.7.10.msi TARGETDIR=C:\Python27
     (new-object System.Net.WebClient).DownloadFile("https://raw.github.com/pypa/pip/master/contrib/get-pip.py", "$pwd\get-pip.py")
     C:\Python27\python.exe get-pip.py virtualenv
-
-Wygodnie jest rozszerzyć zmienną systemową ``PATH`` swojego użytkownika o ścieżkę do ``python.exe``:
-
-.. code-block:: posh
-
-    [Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27\;C:\Python27\Scripts\", "User")
-
-Ewentualnie jeśli posiadamy uprawnienia administracyjne, możemy zmienić zmienną ``PATH`` wszystkim użytkownikom:
-
-.. code-block:: posh
-
-    $CurrentPath=[Environment]::GetEnvironmentVariable("Path", "Machine")
-    [Environment]::SetEnvironmentVariable("Path", "$CurrentPath;C:\Python27\;C:\Python27\Scripts\", "Machine")
-
 
 Instalacja ręczna
 =================
 
-Jeżeli w naszej wersji Windows nie ma PowerShella, ściągamy `interpreter Pythona`_ w wybranej
-wersji (2.7.x lub 3.4.x) i instalujemy ręcznie.
+Jeżeli w naszej wersji Windows nie ma PowerShella, ściągamy `interpreter Pythona`_
+w wersji 2.7.x i instalujemy ręcznie.
 
 .. tip::
 
-    Warto jest zaznaczyć opcję "Add Python.exe to Path", która domyślnie nie jest włączona.
+    Warto zaznaczyć opcję "Add Python.exe to Path", która domyślnie nie jest włączona.
 
 .. _interpreter Pythona: https://www.python.org/downloads/
 
@@ -65,11 +55,25 @@ Następnie instalujemy program ``pip`` do zarządzania dodatkowymi bibliotekami 
 
     python -c "exec('try: from urllib2 import urlopen \nexcept: from urllib.request import urlopen');f=urlopen('https://raw.github.com/pypa/pip/master/contrib/get-pip.py').read();exec(f)"
 
-Brak Pythona na ścieżce wywołań?
-================================
+Brak Pythona?
+=============
 
-Gdyby jakieś wywołania Pythona nie działały, warto do zmiennej ``PATH`` (użytkownika
-lub systemowej) dodać ścieżki do interpretera i polecenia ``pip``. W oknie "Uruchamianie" (:kbd:`WIN+R`)
+Jeżeli nie możemy wywołać interpretera lub instalatora ``pip`` w terminalu,
+musimy rozszerzyć zmienną systemową ``PATH`` swojego użytkownika o ścieżkę do ``python.exe``:
+Najwygodniej wykorzystać konsolę PowerShell:
+
+.. code-block:: posh
+
+    [Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27\;C:\Python27\Scripts\", "User")
+
+Ewentualnie jeśli posiadamy uprawnienia administracyjne, możemy zmienić zmienną ``PATH`` wszystkim użytkownikom:
+
+.. code-block:: posh
+
+    $CurrentPath=[Environment]::GetEnvironmentVariable("Path", "Machine")
+    [Environment]::SetEnvironmentVariable("Path", "$CurrentPath;C:\Python27\;C:\Python27\Scripts\", "Machine")
+
+Jeżeli nie mamy dostępu do konsoli PowerShell, w oknie "Uruchamianie" (:kbd:`WIN+R`)
 wpisujemy polecenie wywołujące okno "Zmienne środowiskowe" – można je również
 uruchomić z okna właściwości komputera:
 
@@ -93,17 +97,44 @@ polecenia w konsoli tekstowej:
 
     set PATH=%PATH%;c:\Python27\;c:\Python27\Scripts\
 
-Instalacja bibliotek wymaganych przez scenariusze
-=================================================
+Instalacja bibliotek
+====================
 
 Biblioteki instalujemy za pomocą polecenia ``pip``:
 
 .. code-block:: bash
 
-    pip install flask django
-    pip install peewee sqlalchemy flask-sqlalchemy
+    pip install flask django peewee sqlalchemy flask-sqlalchemy
 
-Pozostaje instalacja bibliotek wymaganych przez scenariusze.
+Wersję zainstalowanych modułów sprawdzimy za pomocą polecenia:
+
+.. code-block:: bash
+
+    pip list
+
+Aby zaktualizować jakiś moduł, wydajemy polecenie typu:
+
+.. code-block:: bash
+
+    pip install --upgrade django
+
+Część bibliotek wymaganych przez scenariusze wymaga innej instalacji.
+
+Matplotlib
+----------
+
+Aby zainstalować ``matplotlib``, wchodzimy na stronę `http://www.lfd.uci.edu/~gohlke/pythonlibs <http://www.lfd.uci.edu/~gohlke/pythonlibs>`_ i pobieramy pakiety ``numpy`` oraz ``matplotlib`` w formacie ``whl`` dostosowane do naszej wersji Pythona i Windows. Np. jeżeli zainstalowaliśmy *Pythona v. 2.7.10* i mamy *Windows 7 64-bit*, pobierzemy:
+``numpy‑1.10.0b1+mkl‑cp27‑none‑win_amd64.whl`` i ``matplotlib‑1.4.3‑cp27‑none‑win_amd64.whl``. Następnie
+otwieramy terminal w katalogu z pobranymi pakietami i instalujemy je przy użyciu instalatora:
+
+.. code-block:: bash
+
+    pip install numpy‑1.10.0b1+mkl‑cp27‑none‑win_amd64.whl
+    pip install matplotlib‑1.4.3‑cp27‑none‑win_amd64.whl
+
+PyGame
+-------
+
 Moduł wymagany przez gry pobieramy z katalogu `/arch/` zawartego w repozytorium
 lub ze strony `PyGame`_ i instalujemy:
 
@@ -119,5 +150,5 @@ Jeżeli chcemy pod Windowsem korzystać z mechanizmów oferowanych przez serwis
 GitHub, musimy zainstalować odpowiedniego :ref:`klienta <git-install>`.
 Zagadnienia te omówione zostały w osobnym :ref:`dokumencie <git-howto>`,
 który warto przejrzeć.
-Instalacja Git-a nie jest wymagana, aby pracować na przygotowanych scenariuszach.
 
+Instalacja Git-a nie jest wymagana, aby pracować na przygotowanych scenariuszach.

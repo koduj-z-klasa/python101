@@ -14,13 +14,17 @@ z interpretera w wersji 3.4.x, czyli najnowszej stabilnej, pamiętając że:
 
 * dodatkowe moduły trzeba zainstalować osobno dla wersji 3.4.x
 
-Instalacja w systemie Linux
-===========================
+Instalacja Windows
+==================
 
-W systemach opartych na Debianie instalacja modułów dla interpretera
-w wersji 3.x wymaga dodania do nazw cyfry 3, np. ``python3 -pip`` itd.
+Ściągamy `interpreter Pythona` w wersji 3.4.x i instalujemy ręcznie.
+
+Instalacja Linux
+================
+
+W systemach opartych na Debianie (m. in. Ubuntu i pochodne) instalacja
+modułów dla interpretera w wersji 3.x wymaga dodania do nazw cyfry 3,
+np. ``python3-pip`` itd.
+
 W Arch Linuksie i pochodnych jest odwrotnie, domyślną wersją jest Python 3,
 jeżeli chcemy używać wersji 2.x dodajemy odpowiednią cyfrę.
-Warto również zauważyć, że systemy oparte na Archu mogą nie wykorzystywać
-mechanizmu podnoszenia uprawnień zwykłego użytkownika ``sudo``,
-wtedy instalujemy z konta ``roota``, stąd znak ``~#`` w kodzie.

@@ -1,7 +1,5 @@
 #! /usr/bin/env python
-# -*- coding: UTF-8 -*-
-
-# ~/python/01_hello.py
+# -*- coding: utf-8 -*-
 
 # deklarujemy i inicjalizujemy zmienne
 aktRok = 2014
@@ -13,7 +11,7 @@ wiekPythona = aktRok - pythonRok
 imie = raw_input('Jak się nazywasz? ')
 wiek = int(raw_input('Ile masz lat? '))
 
-print "Witaj w moim świecie",imie
+print "Witaj",imie
 print "Mów mi Python, mam",wiekPythona,"lat."
 
 # instrukcja warunkowa

@@ -1,3 +1,5 @@
+.. _webapps:
+
 Aplikacje internetowe
 #######################
 
@@ -26,14 +28,11 @@ nie musimy instalować żadnych dodatkowych narzędzi typu LAMP (WAMP).
     todo/index
     quiz_orm/index
     czat/index
+    mvc
+    glossary
 
 Materiały
 ***************
-
-Słownik
-========
-
-.. include:: glossary.rst
 
 #. `Python`_
 #. `Flask`_

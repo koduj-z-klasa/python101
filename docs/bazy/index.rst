@@ -30,6 +30,10 @@ wbudowanego modułu `sqlite3 DB-API`_, a także zewnętrznych bibliotek ORM:
 
     sql/index
     orm/index
+    sqlorm/index
+    sql/dane
+    sqlite3
+    glossary
 
 Materiały
 ***************
@@ -49,8 +53,3 @@ Materiały
 .. _Tutorial Peewee (ang.): http://www.blog.pythonlibrary.org/2014/07/17/an-intro-to-peewee-another-python-orm/
 .. _SQLAlchemy ORM Tutorial (ang.): http://www.sqlalchemy.org/
 .. _Tutorial SQLAlchemy (ang.): http://www.pythoncentral.io/introductory-tutorial-python-sqlalchemy/
-
-Słownik
-========
-
-.. include:: glossary.rst

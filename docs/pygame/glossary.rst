@@ -1,3 +1,6 @@
+Słownik PyGame
+###############
+
 .. glossary::
 
     Klatki na sekundę (FPS)
@@ -14,7 +17,7 @@
 
     Zdarzenie (ang. event)
         zapis zajścia w systemie komputerowym określonej sytuacji, np. poruszenie myszką, kliknięcie, naciśnięcie klawisza.
-    
+
     pygame.locals
         moduła zawierający różne stałe używane przez Pygame, np. typy zdarzeń, identyfikatory naciśniętych klawiszy itp.
 
@@ -47,3 +50,31 @@
 
     Rect
         obiekt pygame.Rect przechowujący współrzędne prostokąta; ``.centerx, .x, .y, .top, .bottom, .left, .right`` – wirtualne własności obiektu prostokąta określające jego położenie; ``.colliderect()`` – metoda sprawdza czy dwa prostokąty nachodzą na siebie.
+
+    magiczne liczby
+        to takie same wartości liczbowe wielokrotnie używane w kodzie, za każdym
+        razem oznaczające to samo. Stosowanie magicznych liczby jest uważane
+        za złą praktykę ponieważ ich utrudniają czytanie i zrozumienie działania kodu.
+
+    stała
+        to zmienna której wartości po początkowym ustaleniu nie będziemy zmieniać.
+        Python nie ma mechanizmów które wymuszają takie zachowanie, jednak
+        przyjmuje się, że zmienne zadeklarowane WIELKIMI_LITERAMI zwykle służą do
+        przechowywania wartości stałych.
+
+    generator
+        zwraca jakąś wartość za każdym wywołaniem. Dla świata zewnętrznego
+        generatory zachowują się jak listy (możemy po nich iterować) jedna różnica polega
+        na użyciu pamięci. Listy w całości znajdują się pamięci podczas gdy generatory
+        "tworzą" wartość na zawołanie.
+        Czasem tak samo nazywane są funkcje zwracające generator (ang. generator function).
+
+    dziedziczenie
+        w programowaniu obiektowym nazywamy mechanizm współdzielenia funkcjonalności
+        między klasami. Klasa może dziedziczyć po innej klasie, co oznacza,
+        że oprócz swoich własnych atrybutów oraz zachowań, uzyskuje także te pochodzące
+        z klasy, z której dziedziczy.
+
+    przesłanianie
+        w programowaniu obiektowym możemy w klasie dziedziczącej przesłonić metody
+        z klasy nadrzędnej rozszerzając lub całkowicie zmieniając jej działanie

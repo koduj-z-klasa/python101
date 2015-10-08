@@ -1,9 +1,11 @@
+.. _quiz-orm:
+
 Quiz ORM
 #####################
 
 .. highlight:: python
 
-Realizacja aplikacji internetowej Quiz w oparciu o mikro-framework `Flask`_
+Realizacja aplikacji internetowej Quiz w oparciu o :term:`framework` `Flask`_
 i bazę danych `SQLite`_ zarządzaną systemem ORM `Peewee`_ lub `SQLAlchemy`_.
 
 .. _Flask: http://flask.pocoo.org
@@ -44,7 +46,7 @@ wygodniej logicznie roddzielić poszczególne części aplikacji i umieścić
 je w osobnych plikach, których nazwy określają ich przeznaczenie.
 Podejście takie usprawnia rozwijanie aplikacji, ale również ułatwia
 poznawanie bardziej rozbudowanych systemów, takich jak Django, przedstawione
-w scenariuszu "Chatter".
+w scenariuszu "Czat".
 
 Tak więc kod rozmieścimy następująco:
 
@@ -560,41 +562,19 @@ Poćwicz sam
     Spróbuj napisać wersję omówionej w innym scenariuszu aplikacji :ref:`ToDo <todo>`
     przy wykorzystaniu wybranego systemu ORM, tj. Peewee lub SQLAlchemy.
 
-Materiały
-*************************
-
-Słownik
-===================
-
-.. include:: ../glossary.rst
-
-1. `Strona projektu Flask`_
-2. `Co to jest framework?`_
-3. `Protokół HTTP`_ (żądania GET i POST)
-4. Baza `SQLite`_
-5. ORM `Peewee`_
-6. ORM `SQLAlchemy`_
-
-.. _Strona projektu Flask: http://flask.pocoo.org/
-.. _Co to jest framework?: http://pl.wikipedia.org/wiki/Framework
-.. _Protokół HTTP: http://pl.wikipedia.org/wiki/Http
-.. _Flask: http://flask.pocoo.org
-.. _SQLite: http://www.sqlite.org
-.. _Peewee: http://peewee.readthedocs.org/en/latest
-.. _SQLAlchemy: http://www.sqlalchemy.org
-
 Źródła
-====================
+*************************
 
 * :download:`quiz2.zip <quiz2.zip>`
 
 Kompletne wersje kodu znajdziesz w powyższym archiwum lub w katalogu
-``~/python101/docs/quiz2``. Uruchamiamy je poleceniami:
+:file:`~/python101/docs/webapps/quiz_orm` w podkatalogach :file:`quiz2_pw`
+i :file:`quiz2_sa`. Uruchamiamy je poleceniami:
 
 .. code-block:: bash
 
-    ~/python101$ cd docs/quiz2
-    ~/python101/docs/quiz2$ cd quiz2_orm; python main.py
+    ~/python101$ cd docs/webapps/quiz_orm
+    ~/python101/docs/webapps/quiz_orm$ cd quiz2_orm; python main.py
 
 \- gdzie *orm* jest oznaczeniem modułu obsługi bazy danych, *pw* dla Peewee,
 *sa* dla SQLALchemy.
@@ -603,4 +583,4 @@ Kompletne wersje kodu znajdziesz w powyższym archiwum lub w katalogu
 
     Jeżeli po uruchomieniu aplikacji do bazy mają być wprowadzone początkowe
     dane, pamiętaj, aby odkomentować odpowiednie linie w pliku
-    ``main.py`` z katalogu ``quiz_pw``.
+    ``main.py`` z katalogu ``quiz2_pw``.

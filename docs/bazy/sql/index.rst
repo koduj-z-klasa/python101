@@ -1,3 +1,5 @@
+.. _sql_raw:
+
 SQL
 ##################
 
@@ -17,7 +19,7 @@ zajmiemy się skryptem konsolowym, co pozwala przećwiczyć "surowe" polecenia S
 Połączenie z bazą
 ***********************
 
-W ulubionym edytorze tworzymy plik `sqlraw.py` i umieszczamy w nim poniższy kod:
+W ulubionym edytorze tworzymy plik :file:`sqlraw.py` i umieszczamy w nim poniższy kod:
 
 .. raw:: html
 
@@ -26,7 +28,7 @@ W ulubionym edytorze tworzymy plik `sqlraw.py` i umieszczamy w nim poniższy kod
 .. literalinclude:: sqlraw01.py
     :linenos:
 
-Przede wszystkim importujemy moduł `sqlite3` do obsługi baz SQLite3. Następnie w zmiennej ``con``
+Przede wszystkim importujemy moduł ``sqlite3`` do obsługi baz SQLite3. Następnie w zmiennej ``con``
 tworzymy połączenie z bazą danych przechowywaną w pliku na dysku (``test.db``, nazwa pliku
 jest dowolona) lub w pamięci, jeśli podamy ``':memory:'``. Kolejna instrukcja ustawia właściwość
 ``row_factory`` na wartość ``sqlite3.Row``, aby możliwy był dostęp do kolumn (pól tabel) nie tylko
@@ -68,24 +70,8 @@ natomiast tabela "uczen" zawiera pola przechowujące imię i nazwisko ucznia ora
 klasy (pole "klasa_id", tzw. klucz obcy), do której należy uczeń. Między tabelami zachodzi
 relacja jeden-do-wielu, tzn. do jednej klasy może chodzić wielu uczniów.
 
-Po wykonaniu wprowadzonego kodu w katalogu ze skryptem powinien pojawić się plik ``test.db``,
-czyli nasza baza danych. Możemy sprawdzić jej zawartość przy użyciu wspomnianego interpretera
-``sqlite3`` (``sqlite3.exe`` w Windows).
-
-.. note::
-
-    W katalogu z bazą danych wydajemy polecenie ``sqlite3 test.db``, w ten sposób wczytujemy
-    bazę do interpretera. Do dyspozycji mamy polecenia:
-
-    - ``.databases`` – pokazuje aktualną bazę danych;
-    - ``.schema`` – pokazuje schemat bazy danych, czyli polecenia SQL tworzące tabele i relacje;
-    - ``.table`` – pokaże tabele w bazie;
-    - ``.quit`` – wychodzimy z powłoki interpretera.
-
-    Możemy również wydawać wszelkie polecenia SQL-a operujące na bazie, np.
-    ``SELECT * FROM klasa;`` – polecenia te zawsze kończymy średnikiem.
-
-.. figure:: sqlite3.png
+Po wykonaniu wprowadzonego kodu w katalogu ze skryptem powinien pojawić się plik :file:`test.db`,
+czyli nasza baza danych. Możemy sprawdzić jej zawartość przy użyciu interpretera :ref:`interpretera sqlite3 <sqlite3>`.
 
 Wstawianie danych
 ***********************
@@ -153,8 +139,8 @@ klas, do których należą:
 
 .. literalinclude:: sqlraw04.py
     :linenos:
-    :lineno-start: 57
-    :lines: 57-
+    :lineno-start: 58
+    :lines: 58-
 
 Funkcja ``czytajdane()`` wykonuje zapytanie SQL pobierające wszystkie dane z dwóch
 powiązanych tabel: "uczen" i "klasa". Wydobywamy *id ucznia*, *imię* i *nazwisko*,
@@ -175,8 +161,8 @@ Do skryptu dodajemy jeszcze kilka linii:
 
 .. literalinclude:: sqlraw05.py
     :linenos:
-    :lineno-start: 67
-    :lines: 67-
+    :lineno-start: 71
+    :lines: 71-
 
 Aby zmienić przypisanie ucznia do klasy, pobieramy identyfikor klasy za pomocą
 metody ``.execute()`` i polecenia *SELECT* SQL-a z odpowiednim warunkiem.
@@ -190,72 +176,31 @@ Następnie usuwamy dane ucznia o identyfikatorze 3, używając polecenia SQL
 Na koniec zamykamy połącznie z bazą, wywołując metodę ``.close()``, dzięki
 czemu zapisujemy dokonane zmiany i zwalniamy zarezerwowane przez skrypt zasoby.
 
-Dane z pliku
-***********************
-
-Dane z tabel w bazach MS Accessa lub LibreOffice Base'a możemy eksportować
-do formatu *csv*, czyli pliku tekstowego, w którym każda linia repreazentuje
-pojedynczy rekord, a wartości pól oddzielone są jakimś separatorem, najczęściej
-przecinkiem. Załóżmy więc, że mamy plik ``uczniowie.csv`` zawierający dane uczniów
-w formacie: ``Jan,Nowak,2``.
-
-Przed metodą ``.close()`` zamykającą połączenie z bazą dopiszmy następujący kod:
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. literalinclude:: sqlraw06.py
-    :linenos:
-    :lineno-start: 77
-    :lines: 77-95
-
-Na początku funkcji ``czytaj_dane()`` sprawdzamy, czy istnieje plik
-podany jako argumet. Wykorzystujemy metodę ``isfile()`` z modułu ``os``,
-który należy wcześniej zaimportować. Następnie w konstrukci ``with``
-otwieramy plik i wczytujemy jego treść do zmiennej ``zawartosc``.
-Pętla ``for`` pobiera kolejne linie, które oczyszczamy ze znaków końca linii
-(``.replace('\n','')``) i dekodujemy jako zapisane w standardzie *utf-8*.
-Poszczególne wartości oddzielone przecinkiem wyodrębniamy (``.split(',')``)
-do tupli, którą dodajemy do zdefiniowanej wcześniej tablicy (``dane.append()``).
-Na koniec funkcja zwraca listę przekształconą na tuplę (a więc zagnieżdzone tuple),
-która po przypisaniu do zmiennej ``uczniowie`` użyta zostanie, dokładnie
-tak jak robiliśmy to już wczesniej, jako argument metody ``.executemany()``.
-
-.. note::
-
-    Znaki w pliku wejściowym powinny być zakodowane w standardzie ``utf-8``.
-
-Materiały
+Zadania dodatkowe
 *******************
 
-Słownik
-=====================
+- Przeczytaj opis przykładowej funkcji pobierającej dane z pliku tekstowego
+  w formacie *csv*. W skrypcie ``sqlraw.py`` zaimportuj tę funkcję i wykorzystaj
+  do pobrania i wstawienia danych do bazy.
 
-.. include:: ../glossary.rst
+- Postaraj się przedstawioną aplikację wyposażyć w konsolowy interfejs,
+  który umożliwi operacje odczytu, zapisu, modyfikowania i usuwania rekordów.
+  Dane powinny być pobierane z klawiatury od użytkownika.
 
-Zadania dodatkowe
-=====================
+- Zobacz, jak zintegrować obsługę bazy danych przy użyciu modułu *sqlite3*
+  Pythona z aplikacją internetową na przykładzie scenariusza "ToDo".
 
-    Postaraj się przedstawioną aplikację wyposażyć w konsolowy interfejs,
-    który umożliwi operacje odczytu, zapisu, modyfikowania i usuwania rekordów.
-    Dane powinny być pobierane z klawiatury od użytkownika.
-
-    Zobacz, jak zintegrować obsługę bazy danych przy użyciu modułu *sqlite3*
-    Pythona z aplikacją internetową na przykładzie scenariusza "ToDo".
-
-Żródła
-=====================
+Źródła
+*******************
 
 * :download:`sqlraw.zip <sqlraw.zip>`
 
-Kolejne wersje tworzenego kodu znajdziesz w katalogu ``~/python101/docs/bazy``.
+Kolejne wersje tworzenego kodu znajdziesz w katalogu ``~/python101/docs/bazy/sql``.
 Uruchamiamy je wydając polecenia:
 
 .. code-block:: bash
 
-    ~/python101$ cd docs/bazy
-    ~/python101/docs/bazy$ python sqlraw0x.py
+    ~/python101$ cd docs/bazy/sql
+    ~/python101/docs/bazy/sql$ python sqlraw0x.py
 
 \- gdzie *x* jest numerem kolejnej wersji kodu.
-

@@ -1,0 +1,99 @@
+Live USB – inne opcje
+######################
+
+System na kluczu USB
+====================
+
+Jeżeli dysponujemy startowym nośnikiem (np. CD/DVD) z systemem Xubuntu, SRU,
+czy FREE_DESKTOP możemy uruchomić normalną instalację, podpiąć nośnik USB,
+założyć na nim (w trakcie instalacji) partycję Ext4 i wskazać ją jako miejsce instalacji
+systemu. Trzeba również zainstalować menedżer startowy GRUB w MBR takiego napędu.
+
+.. tip::
+
+    Załóżmy, że uruchamiamy Xubuntu z płyty DVD na komputerze z jednym twardym dyskiem.
+    Instalator oznaczy go jako ``sda(x)``, a podłączony klucz USB jako ``sdb(x)``,
+    co poznać będzie można po rozmiarze i obecnych na nich partycjach.
+    Na dysku ``sdb`` tworzymy co najmniej jedną partycję Ext4, jako cel
+    instalacji systemu, czyli punkt montowania katalogu głównego ``/``
+    wskazujemy partycję ``/dev/sdb1``, natomiast jako miejsce instalacji GRUB-a
+    wybieramy ``/dev/sdb``.
+
+Po uruchomieniu tak zainstalowanego systemu wszystkie dokonywane zmiany będą zapamiętywane.
+Można system aktualizować, można instalować nowe oprogramowanie i zapisywać
+swoje pliki.
+
+Kopia klucza USB
+================
+
+Jeżeli dysponujemy już nośnikiem startowym USB, możemy łatwo go skopiować.
+Żeby operację przyśpieszyć, zwłaszcza jeśli chcemy wykonać kilka kopii,
+można na początku utworzyć obraz danych zawartych na pendrajwie.
+
+W Linuksie
+-----------
+
+Posługujemy się poleceniem ``dd`` wydanym w katalogu domowym:
+
+.. code-block:: bash
+
+    ~$ sudo dd if=/dev/sdb of=obrazusb.img bs=1M
+
+Ciąg ``/dev/sdb`` w powyższym poleceniu oznacza napęd źródłowy, ``obrazusb.img``
+to dowolna nazwa pliku, do którego zapisujemy odczytaną zawartość.
+
+.. note::
+
+    Linux oznacza wykryte napędy jako ``/dev/sd[a-z]``, a więc pierwszy dysk twardy
+    oznaczony zostanie jako ``sda``. Po podłączeniu klucza USB otrzyma on nazwę
+    ``sdb``. Kolejny podłączony napęd USB będzie dostępny jako ``sdc``.
+    Nazwę napędu USB możemy sprawdzić po wydaniu podanych niżej poleceń.
+    Pierwsze z nich wyświetli w końcowych liniach ostatnio dodane napędy
+    w postaci ciągu typu ``sdb:sdb1``. Podobne wyniki powinno zwrócić
+    polecenie drugie.
+
+.. code-block:: bash
+
+    ~$ mount | grep /dev/sd
+    ~$ dmesg | grep /dev/sd
+
+Po utworzeniu obrazu podłączamy napęd docelowy i dokładnie ustalamy jego oznaczenie,
+ponieważ wcześniejesze **dane z napędu docelowego zostaną usunięte**. Jeżeli napęd
+został zamontowany, czyli jego zawartość została automatycznie pokaza w menedżerze
+plików, musimy go odmontować za pomocą polecenia ``Odmontuj`` (nie mylić z ``Wysuń``!).
+Następnie wydajemy polecenie:
+
+.. code-block:: bash
+
+    ~$ sudo dd if=obrazusb.img of=/dev/sdc bs=4M; sync
+
+Możliwe jest również **kopiowanie zawartości klucza USB od razu na drugi klucz**
+bez tworzenia obrazu na dysku. Po podłączeniu obu pendrajwów i ustaleniu
+ich oznaczeń wydajemy polecenie:
+
+.. code-block:: bash
+
+    ~$ sudo dd if=/dev/sdb of=/dev/sdc bs=4M; sync
+
+- gdzie ``sdb`` to nazwa napędu źródłowego, a ``sdc`` to oznaczenie napędu docelowego.
+
+W MS Widows
+--------------
+
+* `USB Image Tool <http://www.dobreprogramy.pl/USB-Image-Tool,Program,Windows,39717.html>`_
+  – narzędzie do robienia obrazów dysków USB i nagrywania ich na inne pendrajwy.
+
+.. figure:: img/usbimgtool.jpg
+
+* `Image USB <http://osforensics.com/tools/write-usb-images.html>`_ – świetny
+  program do tworzenia obrazów napędów USB i nagrywania ich na wiele
+  pendrajwów jednocześnie.
+
+.. figure:: img/imageusb.jpg
+
+.. tip::
+
+    Narzędzia udostępniane w serwisie *dobreprogramy.pl* domyślnie ściągane
+    są przy użyciu dodatkowej aplikacji ukrytej pod przycieskiem "Pobierz program".
+    Jest ona całkowicie zbędna, sugerujemy korzystanie z przycisku "Linki bezpośrednie"
+    i wybór odpowiedniej wersji (32-/64-bitowej), jeżeli jest dostępna.

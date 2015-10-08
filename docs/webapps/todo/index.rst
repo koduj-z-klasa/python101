@@ -8,7 +8,7 @@ ToDo
 Realizacja prostej listy ToDo (lista zadań do zrobienia) jako aplikacji
 internetowej, z wykorzystaniem Pythona i frameworka Flask w wersji 0.10.1.
 Aplikacja umożliwia dodawanie z określoną datą, przeglądanie i oznaczanie
-jako wykonane różnych zadań, które zapisywane będą w bazie danych SQLite.
+jako wykonane różnych zadań, które zapisywane będą w bazie danych `SQLite <http://pl.wikipedia.org/wiki/SQLite>`_.
 
 .. contents::
     :depth: 1
@@ -52,11 +52,11 @@ Serwer uruchamiamy komendą:
 .. figure:: img/serwer.png
 
 Domyślnie serwer uruchamia się pod adresem *http://127.0.0.1:5000*.
-Po wpisaniu go do przeglądarki internetowej otrzymamy stronę z błędem HTTP 404,
-co wynika z faktu, że nasza aplikacja nie ma jeszcze zdefiniowanego żadnego zachowania
-(czy też widoku) dla tego adresu.
+Po wpisaniu go do przeglądarki internetowej otrzymamy :term:`kod odpowiedzi HTTP` 404,
+tj. błąd "nie znaleziono", co wynika z faktu, że nasza aplikacja nie ma jeszcze
+zdefiniowanego żadnego widoku dla tego adresu.
 
-Odpowiedź taka, tzw. :term:`widok`, to funkcja obsługująca wywołania powiązanego z nim adresu.
+Odpowiedź aplikacji, tzw. :term:`widok`, to funkcja obsługująca wywołania powiązanego z nim adresu.
 Widok (funkcja) zwraca najczęściej użytkownikowi wyrenderowaną z szablonu stronę internetową.
 
 .. figure:: img/todo1.png
@@ -105,7 +105,7 @@ Pracę z bazą kończymy poleceniem ``.quit``.
 
     ~/todo$ sqlite3 db.sqlite < schema.sql
     ~/todo$ sqlite3 db.sqlite
-    ~/todo$ select * from entries;
+    ~/todo$ select * from zadania;
 
 .. figure:: img/sqlite.png
 
@@ -134,7 +134,7 @@ Lista zadań
 ************
 
 Wyświetlanie danych umożliwia wbudowany we Flask system szablonów,
-czyli mechanizm renderowania kodu HTML i żądanych danych.
+czyli mechanizm renderowania kodu :term:`HTML` i żądanych danych.
 Na początku pliku :file:`todo.py` dopisujemy wymagany import:
 
 .. raw:: html
@@ -184,10 +184,10 @@ Po odwiedzeniu strony *127.0.0.1:5000* powinniśmy zobaczyć listę zadań.
 Dodawanie zadań
 **************************
 
-Wpisując adres w polu adresu przeglądarki, wysyłamy do serwera żądanie typu GET,
+Wpisując adres w polu adresu przeglądarki, wysyłamy do serwera żądanie typu :term:`GET`,
 które obsługujemy zwracając klientowi odpowiednie dane (listę zadań).
 Dodawanie zadań wymaga przesłania danych z formularza na serwer – są to
-żądania typu POST, które modyfikują dane aplikacji.
+żądania typu :term:`POST`, które modyfikują dane aplikacji.
 
 Na początku pliku :file:`todo.py` trzeba, jak zwykle, zaimportować wymagane funkcje:
 
@@ -325,17 +325,6 @@ Zadania dodatkowe
 Materiały
 ************************
 
-Słownik
-====================
-
-.. include:: ../glossary.rst
-
-1. Strona projektu Flask http://flask.pocoo.org/
-2. Informacje o SQLite http://pl.wikipedia.org/wiki/SQLite
-3. Co to jest framework? http://pl.wikipedia.org/wiki/Framework
-4. Co nieco o HTTP i żądaniach GET i POST http://pl.wikipedia.org/wiki/Http
-
-Źródła
-=====================
+**Źródła:**
 
 * :download:`todo.zip <todo.zip>`
