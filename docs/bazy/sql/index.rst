@@ -151,7 +151,7 @@ Dzięki ustawieniu właściwości ``.row_factory`` połączenia z bazą na ``sql
 odczytujemy poszczególne pola podając nazwy zamiast indeksów, np. ``uczen['imie']``.
 
 Modyfikacja i usuwanie danych
-=============================
+*****************************
 
 Do skryptu dodajemy jeszcze kilka linii:
 
