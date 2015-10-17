@@ -101,7 +101,7 @@ Wykorzystajmy wyrażenie listowe w naszym programie:
     :linenos:
     :emphasize-lines: 1, 2, 6
     :lineno-start: 6
-    :lines: 6-11
+    :lines: 6-12
 
 Dwie funkcje
 *************
