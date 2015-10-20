@@ -6,38 +6,12 @@
 Pierwsze uruchomienie
 *********************
 
+.. _plikzapisu:
+
 Po pierwszym uruchomieniu zatwierdzamy okno kreatora ustawień przyciskiem "Ok"
-i zamykamy kreatora połączenia z internetem. Następnie:
-
-* **Konfigurujemy typ klawiatury**:
-
-  Procedura jest bardzo prosta. Uruchamiamy "Ustawienia Puppy" (pierwsza ikona obok przycisku Start,
-  lub "Start/Konfiguracja/Wizard Kreator"), wybieramy "Mysz/Klawiatura". W następnym
-  oknie "Zaawansowana konfiguracja", potwierdzamy "OK", dalej "Model klawiatury"
-  i na koniec zaznaczamy "pc105". Pozostaje potwierdzenie "OK" i jeszcze
-  kliknięcie przycisku "Tak" w poprzednim oknie, aby aktywować ustawienia.
-
-.. figure:: lxpupimg/lxpup_ustawienia.png
-.. figure:: lxpupimg/lxpup_klawiatura01.png
-.. figure:: lxpupimg/lxpup_klawiatura02.png
-.. figure:: lxpupimg/lxpup_klawiatura03.png
-
-
-Dzięki tym zabiegom będą działały :ref:`skróty klawiszowe <klawiatura>`.
-
-* **Ustawiamy wygładzanie czcionek**:
-
-Wybieramy "Start/Pulpit/Desktop/Manager Czcionki" i na zakładce "Wygląd"
-ustawiamy wartość *1* jako "Styl hintingu".
-
-.. figure:: lxpupimg/lxpfonts.png
-
-* **Zamykamy system i tworzymy plik zapisu**:
-
-  .. _plikzapisu:
-
-Podczas pierwszego zamknięcia system prosi o utworzenie `pliku zapisu <http://puppylinux.org/wikka/SaveFile>`_
-(ang. *savefile*), w którym przechowywane będą wprowadzane przez nas zmiany:
+i zamykamy kreatora połączenia z internetem. Następnie **zamykamy system i tworzymy**
+`pliku zapisu <http://puppylinux.org/wikka/SaveFile>`_ (ang. *savefile*),
+w którym przechowywane będą wprowadzane przez nas zmiany:
 konfiguracja, instalacja programów, utworzone dokumenty.
 
 Na początku może pojawić się pytanie o przetłumaczenie informacji rozruchowych,
@@ -220,11 +194,6 @@ okien: *Start/Zamknij/Restart WM* lub ponownie uruchamiamy system.
 Skróty klawiaturowe
 ************************
 
-.. attention::
-
-    Poniższe skróty zadziałają, jeżeli ustawimy odpowiedni typ klawiatury.
-    Zob. wyżej: :ref:`Pierwsze uruchomienie <lxpuptahr>`.
-
 Oznaczenia: C – Control, A – Alt, W - Windows (SuperKey).
 
 * **C+A+Left** – puplpit lewy
@@ -241,12 +210,27 @@ Oznaczenia: C – Control, A – Alt, W - Windows (SuperKey).
 * **W+Góra**, **W+Dół**, **W+Lewo**, **W+Prawo**, **W+C**, **W+Alt+Lewo**,
   **W+Alt+Prawo** – sterowanie rozmiarem i położeniem okien
 
+.. tip::
+
+  Jeżeli skróty nie działają, ustawiamy odpowiedni model klawiatury.
+  Procedura jest bardzo prosta. Uruchamiamy "Ustawienia Puppy" (pierwsza ikona obok przycisku Start,
+  lub "Start/Konfiguracja/Wizard Kreator"), wybieramy "Mysz/Klawiatura". W następnym
+  oknie "Zaawansowana konfiguracja", potwierdzamy "OK", dalej "Model klawiatury"
+  i na koniec zaznaczamy **pc105**. Pozostaje potwierdzenie "OK" i jeszcze
+  kliknięcie przycisku "Tak" w poprzednim oknie, aby aktywować ustawienia.
+
+.. figure:: lxpupimg/lxpup_ustawienia.png
+.. figure:: lxpupimg/lxpup_klawiatura01.png
+.. figure:: lxpupimg/lxpup_klawiatura02.png
+.. figure:: lxpupimg/lxpup_klawiatura03.png
+
 Konfiguracja LXDE
 ************************
 
 * **Wygląd, Ikony, Tapeta, Panel**: Start/Pulpit/Zmiana wyglądu.
 * **Ekran(y)**: Start/System/System/Ustawienia wyświetlania.
-* **Czcionki**: Start/Pulpit/Desktop/Manager Fontu.
+* **Czcionki**: Start/Pulpit/Desktop/Manager Czcionki.
+* **Wygładzanie czcionek**: Start/Pulpit/Desktop/Manager Czcionki, zakładka "Wygląd", "Styl hintingu" 1.
 * **Menedżer plików**: Edycja/Preferencje w programie.
 * **Ustawienia Puppy**: Start/Konfiguracja/Wizard Kreator
 * **Internet kreator połączenia**: Start/Konfiguracja
@@ -261,6 +245,10 @@ Konfiguracja LXDE
 * **Domyślne aplikacje**: Start/Pulpit/Preferowane programy
 * **Terminale** Start/Akcesoria
 * **Ustawienie daty i czasu**: Start/Pulpit
+
+.. figure:: lxpupimg/lxpfonts.png
+
+  Wygładzanie czcionek
 
 Wskazówki
 ************************
