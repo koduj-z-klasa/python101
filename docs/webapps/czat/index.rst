@@ -41,7 +41,7 @@ Powstanie katalog projektu :file:`czatpro` z **podkatalogiem ustawień** o takie
 Utworzona zostanie również inicjalna baza danych z tabelami wykorzystywanymi przez Django.
 
 Dostosowujemy ustawienia projektu: rejestrujemy naszą aplikację w projekcie, ustawiamy polską wersję językową oraz lokalizujemy
-datę i czas. Edytujemy plik :file:`czatpro/setting.py`:
+datę i czas. Edytujemy plik :file:`czatpro/settings.py`:
 
 .. raw:: html
 

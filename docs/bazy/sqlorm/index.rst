@@ -124,7 +124,7 @@ ich instancje reprezentować będą z kolei rekordy.
 ============
 
 Utwórz za pomocą tworzonych skryptów bazy w plikach o nazwach :file:`sqlraw.db` oraz
-:file:`peewee.db`. Następnie otwórz te bazy w `interpreterze *Sqlite* <sqlite3>`_  i wykonaj
+:file:`peewee.db`. Następnie otwórz te bazy w `interpreterze Sqlite <sqlite3>`_  i wykonaj
 podane niżej polecenia. Porównaj struktury utworzonych tabel.
 
 .. code-block:: bash
