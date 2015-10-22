@@ -31,7 +31,7 @@ i przygotowuje obiekt kursora, który posłuży nam do wydawania poleceń SQL:
 
 .. code:: python
 
-    #! /usr/bin/env python2
+    #! /usr/bin/env python
     # -*- coding: utf-8 -*-
 
     import sqlite3
@@ -40,11 +40,11 @@ i przygotowuje obiekt kursora, który posłuży nam do wydawania poleceń SQL:
     con.row_factory = sqlite3.Row
     cur = con.cursor()
 
-System ORM Peewee inicjujemy w pliku :file:`peewee.py` tworząc klasę bazową, która zapewni połączenie z bazą:
+System ORM Peewee inicjujemy w pliku :file:`ormpeewee.py` tworząc klasę bazową, która zapewni połączenie z bazą:
 
 .. raw:: html
 
-    <div class="code_no">Plik peewee.py. Kod nr <script>var code_nop = code_nop || 1; document.write(code_nop++);</script></div>
+    <div class="code_no">Plik ormpeewee.py. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code:: python
 
@@ -103,7 +103,7 @@ ich instancje reprezentować będą z kolei rekordy.
 
 .. raw:: html
 
-    <div class="code_no">Plik peewee.py. Kod nr <script>var code_nop = code_nop || 1; document.write(code_nop++);</script></div>
+    <div class="code_no">Plik ormpeewee.py. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code:: python
 
@@ -157,11 +157,11 @@ atrybutom i korzystamy z ich metody:
 
 .. raw:: html
 
-    <div class="code_no">Plik peewee.py. Kod nr <script>var code_nop = code_nop || 1; document.write(code_nop++);</script></div>
+    <div class="code_no">Plik ormpeewee.py. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code:: python
 
-    if Klasa().select().count() == 0:
+    if Klasa.select().count() == 0:
         klasa = Klasa(nazwa='1A', profil='matematyczny')
         klasa.save()
         klasa = Klasa(nazwa='1B', profil='humanistyczny')
@@ -189,15 +189,26 @@ Aby wyświetlić dane wszystkich uczniów zapisane w bazie użyjemy kodu:
         print uczen['id'], uczen['imie'], uczen['nazwisko'], uczen['nazwa']
     print ""
 
+W systemie ORM korzystamy z metody ``select()`` obiektu reprezentującego ucznia.
+Dostęp do danych przechowywanych w innych tabelach uzyskujemy dzięki wyrażeniom
+typu ``uczen.klasa.nazwa``, które generuje podzazpytanie zwracające nazwę
+klasy przypisanej uczniowi.
+
 .. raw:: html
 
-    <div class="code_no">Plik peewee.py. Kod nr <script>var code_nop = code_nop || 1; document.write(code_nop++);</script></div>
+    <div class="code_no">Plik ormpeewee.py. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code:: python
 
-    for uczen in Uczen.select().join(Klasa):
+    for uczen in Uczen.select():
         print uczen.id, uczen.imie, uczen.nazwisko, uczen.klasa.nazwa
     print ""
+
+.. tip::
+
+    Ze względów wydajnościowych pobieranie danych z innych tabel możemy
+    zasygnalizować już w głównej kwerendzie, używając metody ``join()``,
+    np.: ``Uczen.select().join(Klasa)``.
 
 Modyfikacja danych
 *****************************
@@ -221,11 +232,11 @@ W systemie ORM manipulujemy atrybutami obiektu reprezentującego ucznia:
 
 .. raw:: html
 
-    <div class="code_no">Plik peewee.py. Kod nr <script>var code_nop = code_nop || 1; document.write(code_nop++);</script></div>
+    <div class="code_no">Plik ormpeewee.py. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code:: python
 
-    uczen = Uczen().select().join(Klasa).where(Uczen.nazwisko == 'Nowak').get()
+    uczen = Uczen.select().join(Klasa).where(Uczen.nazwisko == 'Nowak').get()
     uczen.klasa = Klasa.select().where(Klasa.nazwa == '1B').get()
     uczen.save()  # zapisanie zmian w bazie
 
@@ -248,7 +259,7 @@ Usuwając dane w przypadku systemu ORM, usuwamy instancję wskazanego obiektu:
 
 .. raw:: html
 
-    <div class="code_no">Plik peewee.py. Kod nr <script>var code_nop = code_nop || 1; document.write(code_nop++);</script></div>
+    <div class="code_no">Plik ormpeewee.py. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code:: python
 

@@ -33,7 +33,7 @@ baza.connect()  # nawiązujemy połączenie z bazą
 baza.create_tables([Klasa, Uczen], True)  # tworzymy tabele
 
 # dodajemy dwie klasy, jeżeli tabela jest pusta
-if Klasa().select().count() == 0:
+if Klasa.select().count() == 0:
     klasa = Klasa(nazwa='1A', profil='matematyczny')
     klasa.save()
     klasa = Klasa(nazwa='1B', profil='humanistyczny')
@@ -45,12 +45,12 @@ uczen = Uczen(imie='Tomasz', nazwisko='Nowak', klasa=klasa)
 uczen.save()
 
 # odczytujemy dane z bazy
-for uczen in Uczen.select().join(Klasa):
+for uczen in Uczen.select(): # lub szybsze Uczen.select().join(Klasa)
     print uczen.id, uczen.imie, uczen.nazwisko, uczen.klasa.nazwa
 print ""
 
 # zmiana klasy ucznia o identyfikatorze 2
-uczen = Uczen().select().join(Klasa).where(Uczen.nazwisko == 'Nowak').get()
+uczen = Uczen.select().join(Klasa).where(Uczen.nazwisko == 'Nowak').get()
 uczen.klasa = Klasa.select().where(Klasa.nazwa == '1B').get()
 uczen.save()  # zapisanie zmian w bazie
 
