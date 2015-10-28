@@ -475,7 +475,7 @@ do wniosku, że nie da się wylosować np. 6 unikalnych liczb z zakresu 1-5.
 =============
 
 Dodaj odpowiednią instrukcję warunkową, która w przypadku gdy zmienna ``ileliczb``
-będzie mniejsza od zmiennej ``maksliczba`` wyświetli komunikat "Błędne dane!"
+będzie większa od zmiennej ``maksliczba`` wyświetli komunikat "Błędne dane!"
 i przerwie wykonywanie programu – użyj funkcji ``exit()``. Sprawdź działanie programu.
 
 Tetsujemy dalej. Uruchom program i zamiast liczby podaj tekst.
