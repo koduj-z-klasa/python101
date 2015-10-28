@@ -124,11 +124,11 @@ z nią z poziomu naszej aplikacji. W pliku :file:`todo.py` dodajemy:
     :linenos:
 
 Na początku uzpełniliśmy importy. Następnie w konfiguracji aplikacji dodaliśmy
-klucz zabezpieczający sesje, ustawiliśmy ścieżkę do pliku bazy danych
+klucz zabezpieczający sesję, ustawiliśmy ścieżkę do pliku bazy danych
 w katalogu aplikacji (stąd użycie funkcji ``app.root_path``) oraz nazwę aplikacji.
 
-Utworzyliśmy również trzy funkcje odpowiedzialne za nawiązywanie
-(``connect_db``, ``get_db``) i kończenie (``close_db``) połączenia z bazą danych.
+Utworzyliśmy również dwie funkcje odpowiedzialne za nawiązywanie
+(``get_db``) i kończenie (``close_db``) połączenia z bazą danych.
 
 Lista zadań
 ************
@@ -215,9 +215,8 @@ Następnie do widoku strony głównej dopisujemy kod obsługujący zapisywanie d
 
 W dekoratorze dodaliśmy obsługę żądań POST, w widoku ``index()`` natomiast
 instrukcję warunkową (``if``), która je wykrywa.
-Dlej sprawdzamy, czy przesłane pole formularza jest puste.
-Jeśli tak, ustawiamy zmienną ``error``.
-Jeśli nie przygotowujemy dane, łączymy się z bazą, zapisujemy nowe zadanie
+Dlej sprawdzamy, czy przesłane pole formularza jest puste. Jeśli tak, ustawiamy zmienną ``error``.
+Jeśli nie, przygotowujemy dane, łączymy się z bazą, zapisujemy nowe zadanie
 i tworzymy koumnikat potwierdzający.
 Na koniec przekierowujemy użytkownika do widoku głównego (``redirect(url_for('index'))``),
 ale tym razem z żądaniem GET, którego obsługa jest taka jak poprzednio,
@@ -295,8 +294,8 @@ głównym i przed kodem uruchamiającym aplikację (``if __name__ == '__main__':
 .. highlight:: python
 .. literalinclude:: todo_z7.py
     :linenos:
-    :lineno-start: 38
-    :lines: 63-70
+    :lineno-start: 64
+    :lines: 64-71
 
 W szablonie :file:`zadania_lista.html` modyfikujemy fragment wyświetlający
 listę zadań i dodajemy formularz:
