@@ -550,7 +550,7 @@ interpreter i kodowanie. Umieszczamy w nim następujący kod:
 .. highlight:: python
 .. literalinclude:: totomodul30.py
     :linenos:
-    :emphasize-lines: 6, 9, 17, 22, 31, 34, 49
+    :emphasize-lines: 7, 10, 18, 24, 33, 36, 51
 
 Kod odpowiedzialny za ustawienia gry, losowanie liczb i pobieranie typów
 użytkownika umieszczony został w osobnych funkcjach sygnalizowanych słowem
@@ -612,7 +612,7 @@ Ustawienia
 
 Uruchamiając wielokrotnie program, musimy podawać wiele danych, aby zadziałał.
 Dodamy więc możliwość zapamiętywania ustawień i ich zmiany. Dane zapisywać
-będziemy w zwykłym pliku tekstowym. W pliku :file:`toto2.py` uzupełniamy
+będziemy w zwykłym pliku tekstowym. W pliku :file:`toto2.py` dodajemy
 tylko jedną linię:
 
 .. raw:: html
@@ -626,7 +626,7 @@ tylko jedną linię:
     :lineno-start: 8
     :lines: 8-9
 
-W pliku :file:`totomodul.py` zmieniamy funkcję ``ustawienia()`` oraz dodajemy
+W pliku :file:`totomodul.py` zmieniamy funkcję ``ustawienia()`` oraz umieszczamy
 dwie nowe: ``czytaj_ust()`` i ``zapisz_ust()``.
 
 .. raw:: html
@@ -636,9 +636,9 @@ dwie nowe: ``czytaj_ust()`` i ``zapisz_ust()``.
 .. highlight:: python
 .. literalinclude:: totomodul32.py
     :linenos:
-    :emphasize-lines: 12, 21, 34, 38, 46
+    :emphasize-lines: 14, 23, 36, 41, 50
     :lineno-start: 1
-    :lines: 1-50
+    :lines: 1-54
 
 W funkcji ``ustawienia()`` pobieramy nick użytkownika i tworzymy nazwę pliku
 z ustawieniami, następnie próbujemy je odczytać wywołując funkcję ``czytaj_ust()``.
@@ -650,7 +650,7 @@ zwracamy ją jako listę ``gracz``.
 
 Jeżeli uda się odczytać zapisane ustawienia, drukujemy je, a następnie
 pytamy, czy użytkownik chce je zmienić. Jeżeli nie znaleźliśmy zapisanych
-ustawień lub użytkownik nacisnął klawisz "t" lub "T" wykonujemy poprzedni
+ustawień lub użytkownik nacisnął klawisz "t" lub "T", wykonujemy poprzedni
 kod. Na koniec zmiennej ``gracz`` przypisujemy listę ustwień przekazaną
 do zapisu funkcji ``zapisz_ust()``. Funkcja ta zapisuje dane złączone za
 pomocą średnika w jedną linię do pliku: ``plik.write(";".join(gracz))``.
@@ -723,8 +723,8 @@ Teraz zobaczmy, jak wyglądają funkcje ``czytaj_json()`` i ``zapisz_json()`` w 
 .. highlight:: python
 .. literalinclude:: totomodul33.py
     :linenos:
-    :lineno-start: 92
-    :lines: 92-
+    :lineno-start: 98
+    :lines: 98-
 
 Kiedy czytamy i zapisujemy dane, ważną sprawą staje się ich format. Najprościej
 zapisywać dane jako znaki, tak jak zrobiliśmy to z ustawieniami, jednak często
@@ -766,7 +766,7 @@ Funkcja zapisująca dane mogłaby wyglądać np. tak:
         """Funkcja zapisuje dane w formacie txt do pliku"""
         with open(nazwapliku, "w") as plik:
             for slownik in dane:
-                linia =[k+":"+str(w) for k, w in slownik.iteritems()]
+                linia = [k + ":" + str(w) for k, w in slownik.iteritems()]
                 linia = ";".join(linia)
                 # plik.write(linia+"\n") – zamiast tak, można:
                 print >>plik, linia

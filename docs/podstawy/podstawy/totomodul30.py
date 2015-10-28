@@ -3,6 +3,7 @@
 
 import random
 
+
 def ustawienia():
     """Funkcja pobiera ilość losowanych liczb, maksymalną losowaną wartość
     oraz ilość prób. Pozwala określić stopień trudności gry."""
@@ -19,6 +20,7 @@ def ustawienia():
             print "Błędne dane!"
             continue
 
+
 def losujliczby(ile, maks):
     """Funkcja losuje ile unikalnych liczb całkowitych od 1 do maks"""
     liczby = []
@@ -33,7 +35,7 @@ def losujliczby(ile, maks):
 
 def pobierztypy(ile, maks):
     """Funkcja pobiera od użytkownika jego typy wylosowanych liczb"""
-    print "Wytypuj",ile,"z",maks," liczb: "
+    print "Wytypuj", ile, "z", maks, " liczb: "
     typy = set()
     i = 0
     while i < ile:

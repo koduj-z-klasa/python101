@@ -16,4 +16,4 @@ for i in range(ilerazy):
     typy = pobierztypy(ileliczb, maksliczba)
     trafione = wyniki(set(liczby), typy)
 
-print "Wylosowane liczby:",liczby
+print "Wylosowane liczby:", liczby

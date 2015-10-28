@@ -4,4 +4,4 @@
 import random
 
 liczba = random.randint(1, 10)
-print "Wylosowana liczba:",liczba
+print "Wylosowana liczba:", liczba

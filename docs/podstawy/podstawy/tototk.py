@@ -1,8 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 import Tkinter as tk
 
+
 class Application(tk.Frame):
+
     def __init__(self, master=None):
         tk.Frame.__init__(self, master)
         self.grid()
@@ -10,7 +13,7 @@ class Application(tk.Frame):
 
     def createWidgets(self):
         self.quitButton = tk.Button(self, text='Koniec',
-            command=self.quit)
+                                    command=self.quit)
         self.quitButton.grid()
 
 app = Application()

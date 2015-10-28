@@ -5,10 +5,10 @@ import random
 
 ileliczb = int(raw_input("Podaj ilość typowanych liczb: "))
 maksliczba = int(raw_input("Podaj maksymalną losowaną liczbę: "))
-#print "Wytypuj",ileliczb,"z",makliczba," liczb: "
+# print "Wytypuj", ileliczb, "z", makliczba, " liczb: "
 
 liczby = []
-#for i in range(ileliczb):
+# for i in range(ileliczb):
 i = 0
 while i < ileliczb:
     liczba = random.randint(1, maksliczba)
@@ -16,4 +16,4 @@ while i < ileliczb:
         liczby.append(liczba)
         i = i + 1
 
-print "Wylosowane liczby:",liczby
+print "Wylosowane liczby:", liczby

@@ -3,6 +3,7 @@
 
 import random
 
+
 def ustawienia():
     """Funkcja pobiera ilość losowanych liczb, maksymalną losowaną wartość
     oraz ilość prób. Pozwala określić stopień trudności gry."""
@@ -19,6 +20,7 @@ def ustawienia():
             print "Błędne dane!"
             continue
 
+
 def losujliczby(ile, maks):
     """Funkcja losuje ile unikalnych liczb całkowitych od 1 do maks"""
     liczby = []
@@ -33,12 +35,12 @@ def losujliczby(ile, maks):
 
 def pobierztypy(ile, maks):
     """Funkcja pobiera od użytkownika jego typy wylosowanych liczb"""
-    print "Wytypuj",ile,"z",maks," liczb: "
+    print "Wytypuj", ile, "z", maks, " liczb: "
     typy = set()
     i = 0
     while i < ile:
         try:
-            typ = int(raw_input("Podaj liczbę "+str(i+1)+": "))
+            typ = int(raw_input("Podaj liczbę " + str(i + 1) + ": "))
         except ValueError:
             print "Błędne dane!"
             continue
@@ -48,13 +50,14 @@ def pobierztypy(ile, maks):
             i = i + 1
     return typy
 
+
 def wyniki(liczby, typy):
     trafione = liczby & typy
     if trafione:
-        print "\nIlość trafień: ",len(trafione)
-        print "Trafione liczby: ",trafione
+        print "\nIlość trafień: ", len(trafione)
+        print "Trafione liczby: ", trafione
     else:
         print "Brak trafień. Spróbuj jeszcze raz!"
-    print "\n"+"x"*40+"\n" # wydrukuj 40 znaków x
+    print "\n" + "x" * 40 + "\n"  # wydrukuj 40 znaków x
 
     return len(trafione)

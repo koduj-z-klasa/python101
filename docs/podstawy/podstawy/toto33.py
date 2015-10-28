@@ -30,5 +30,5 @@ losowania.append({
 
 zapisz_json(nazwapliku, losowania)
 
-print "Wylosowane liczby:",liczby
-print "\n",losowania
+print "Wylosowane liczby:", liczby
+print "\n", losowania

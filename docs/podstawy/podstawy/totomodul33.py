@@ -1,7 +1,9 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import random, os
+import random
+import os
+
 
 def ustawienia():
     """Funkcja pobiera nick użytkownika, ilość losowanych liczb, maksymalną
@@ -13,9 +15,9 @@ def ustawienia():
     odp = None
     if gracz:
         print "Twoje ustawienia:"
-        print "Liczb:",gracz[1]
-        print "Z Maks:",gracz[2]
-        print "Losowań:",gracz[3]
+        print "Liczb:", gracz[1]
+        print "Z Maks:", gracz[2]
+        print "Losowań:", gracz[3]
         odp = raw_input("Zmieniasz (t/n)? ")
 
     if not gracz or odp.lower() == "t":
@@ -35,6 +37,7 @@ def ustawienia():
 
     return gracz[0:1] + map(lambda x: int(x), gracz[1:4])
 
+
 def czytaj_ust(nazwapliku):
     if os.path.isfile(nazwapliku):
         plik = open(nazwapliku, "r")
@@ -43,11 +46,13 @@ def czytaj_ust(nazwapliku):
             return linia.split(";")
     return False
 
+
 def zapisz_ust(nazwapliku, gracz):
     plik = open(nazwapliku, "w")
     plik.write(";".join(gracz))
     plik.close()
     return gracz
+
 
 def losujliczby(ile, maks):
     """Funkcja losuje ile unikalnych liczb całkowitych od 1 do maks"""
@@ -63,12 +68,12 @@ def losujliczby(ile, maks):
 
 def pobierztypy(ile, maks):
     """Funkcja pobiera od użytkownika jego typy wylosowanych liczb"""
-    print "Wytypuj",ile,"z",maks," liczb: "
+    print "Wytypuj", ile, "z", maks, " liczb: "
     typy = set()
     i = 0
     while i < ile:
         try:
-            typ = int(raw_input("Podaj liczbę "+str(i+1)+": "))
+            typ = int(raw_input("Podaj liczbę " + str(i + 1) + ": "))
         except ValueError:
             print "Błędne dane!"
             continue
@@ -78,18 +83,20 @@ def pobierztypy(ile, maks):
             i = i + 1
     return typy
 
+
 def wyniki(liczby, typy):
     trafione = liczby & typy
     if trafione:
-        print "\nIlość trafień: ",len(trafione)
-        print "Trafione liczby: ",trafione
+        print "\nIlość trafień: ", len(trafione)
+        print "Trafione liczby: ", trafione
     else:
         print "Brak trafień. Spróbuj jeszcze raz!"
-    print "\n"+"x"*40+"\n" # wydrukuj 40 znaków x
+    print "\n" + "x" * 40 + "\n"  # wydrukuj 40 znaków x
 
     return len(trafione)
 
 import json
+
 
 def czytaj_json(nazwapliku):
     """Funkcja odczytuje dane w formacie json z pliku"""
@@ -98,6 +105,7 @@ def czytaj_json(nazwapliku):
         with open(nazwapliku, "r") as plik:
             dane = json.load(plik)
     return dane
+
 
 def zapisz_json(nazwapliku, dane):
     """Funkcja zapisuje dane w formacie json do pliku"""

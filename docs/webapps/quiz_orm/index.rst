@@ -58,7 +58,7 @@ Tak więc kod rozmieścimy następująco:
 
 Wszystkie powyższe pliki muszą znajdować się w katalogu aplikacji ``quiz2``.
 W podkatalogach ``templates`` umieścimy wszystkie szablony, czyli pliki
-z rozszerzeniem *html*, arkusz stylów o naziw ``style.css`` znajdzie się
+z rozszerzeniem *html*, arkusz stylów o nazwie ``style.css`` znajdzie się
 w podkatalogu ``static``. Potrzebną strukturę katalogów można utworzyć poleceniami:
 
 .. code-block:: bash
@@ -69,7 +69,7 @@ w podkatalogu ``static``. Potrzebną strukturę katalogów można utworzyć pole
     ~$ touch app.py
 
 Komendę z ostatniej linii, która tworzy pusty plik o podanej nazwie,
-można wydawać w miarę rozbudowywania aplikacji. Można oczywiście korzystać
+wydajemy w miarę rozbudowywania aplikacji. Można oczywiście korzystać
 z wybranego edytora.
 
 Aplikacja i baza
