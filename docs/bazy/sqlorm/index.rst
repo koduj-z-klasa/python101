@@ -27,7 +27,7 @@ i przygotowuje obiekt kursora, który posłuży nam do wydawania poleceń SQL:
 
 .. raw:: html
 
-    <div class="code_no">Plik sqlraw.py. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>sqlraw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code:: python
 
@@ -44,7 +44,7 @@ System ORM Peewee inicjujemy w pliku :file:`ormpeewee.py` tworząc klasę bazow�
 
 .. raw:: html
 
-    <div class="code_no">Plik ormpeewee.py. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>ormpeewee.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code:: python
 
@@ -76,7 +76,7 @@ musimy wydać następujące polecenia SQL:
 
 .. raw:: html
 
-    <div class="code_no">Plik sqlraw.py. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>sqlraw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code:: python
 
@@ -103,7 +103,7 @@ ich instancje reprezentować będą z kolei rekordy.
 
 .. raw:: html
 
-    <div class="code_no">Plik ormpeewee.py. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>ormpeewee.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code:: python
 
@@ -141,7 +141,7 @@ Korzystając z języka SQL użyjemy następujących poleceń:
 
 .. raw:: html
 
-    <div class="code_no">Plik sqlraw.py. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>sqlraw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -157,7 +157,7 @@ atrybutom i korzystamy z ich metody:
 
 .. raw:: html
 
-    <div class="code_no">Plik ormpeewee.py. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>ormpeewee.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code:: python
 
@@ -179,7 +179,7 @@ Aby wyświetlić dane wszystkich uczniów zapisane w bazie użyjemy kodu:
 
 .. raw:: html
 
-    <div class="code_no">Plik sqlraw.py. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>sqlraw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -196,7 +196,7 @@ klasy przypisanej uczniowi.
 
 .. raw:: html
 
-    <div class="code_no">Plik ormpeewee.py. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>ormpeewee.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code:: python
 
@@ -218,7 +218,7 @@ przepisać ucznia z klasy do klasy, musimy użyć następujących poleceń SQL:
 
 .. raw:: html
 
-    <div class="code_no">Plik sqlraw.py. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>sqlraw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -232,7 +232,7 @@ W systemie ORM manipulujemy atrybutami obiektu reprezentującego ucznia:
 
 .. raw:: html
 
-    <div class="code_no">Plik ormpeewee.py. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>ormpeewee.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code:: python
 
@@ -248,7 +248,7 @@ o identyfikatorze ``1``, użyjemy instrukcji:
 
 .. raw:: html
 
-    <div class="code_no">Plik sqlraw.py. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>sqlraw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -259,7 +259,7 @@ Usuwając dane w przypadku systemu ORM, usuwamy instancję wskazanego obiektu:
 
 .. raw:: html
 
-    <div class="code_no">Plik ormpeewee.py. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>ormpeewee.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code:: python
 

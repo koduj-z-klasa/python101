@@ -77,14 +77,14 @@ Aplikacja i baza
 
 .. raw:: html
 
-    <div class="code_no">Peewee nr <script>var code_no2 = code_no2 || 1; document.write(code_no2++);</script></div>
+    <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: quiz2_pw/app.py
     :linenos:
 
 .. raw:: html
 
-    <div class="code_no">SQLAlchemy nr <script>var code_no3 = code_no3 || 1; document.write(code_no3++);</script></div>
+    <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: quiz2_sa/app.py
     :linenos:
@@ -113,14 +113,14 @@ Modele
 
 .. raw:: html
 
-    <div class="code_no">Peewee nr <script>var code_no2 = code_no2 || 1; document.write(code_no2++);</script></div>
+    <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: quiz2_pw/models.py
     :linenos:
 
 .. raw:: html
 
-    <div class="code_no">SQLAlchemy nr <script>var code_no3 = code_no3 || 1; document.write(code_no3++);</script></div>
+    <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: quiz2_sa/models.py
     :linenos:
@@ -165,7 +165,7 @@ Widok obsługujący stronę główną w obu przypadkach jest taki sam:
 
 .. raw:: html
 
-    <div class="code_no">Peewee nr <script>var code_no2 = code_no2 || 1; document.write(code_no2++);</script></div>
+    <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: quiz2_pw/views.py
     :linenos:
@@ -184,7 +184,7 @@ do danego widoku. Wzorzec umieszczamy w katalogu ``templates`` pod nazwą
 
 .. raw:: html
 
-    <div class="code_no">Szablon nr <script>var code_no4 = code_no4 || 1; document.write(code_no4++);</script></div>
+    <div class="code_no">Szablon. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: quiz2_pw/templates/szkielet.html
@@ -209,7 +209,7 @@ zdefiniowane widoki możemy natomiast zmienić tytuł strony
 
 .. raw:: html
 
-    <div class="code_no">Szablon nr <script>var code_no4 = code_no4 || 1; document.write(code_no4++);</script></div>
+    <div class="code_no">Szablon. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: quiz2_pw/templates/index.html
@@ -224,7 +224,7 @@ w katalogu ``static`` i określającego wygląd naszej aplikacji.
 
 .. raw:: html
 
-    <div class="code_no">Szablon nr <script>var code_no4 = code_no4 || 1; document.write(code_no4++);</script></div>
+    <div class="code_no">Szablon. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: css
 .. literalinclude:: quiz2_pw/static/style.css
@@ -239,7 +239,7 @@ Posłuży nam do tego plik ``main.py``:
 
 .. raw:: html
 
-    <div class="code_no">Peewee nr <script>var code_no2 = code_no2 || 1; document.write(code_no2++);</script></div>
+    <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
 .. literalinclude:: quiz2_pw/main.py
@@ -289,7 +289,7 @@ Moduł ``dane.py``:
 
 .. raw:: html
 
-    <div class="code_no">Peewee nr <script>var code_no2 = code_no2 || 1; document.write(code_no2++);</script></div>
+    <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
 .. literalinclude:: quiz2_pw/dane.py
@@ -301,7 +301,7 @@ Plik z danymi:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>pytania.csv</i></div>
+    <div class="code_no">Plik <i>pytania.csv</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: quiz2_pw/pytania.csv
     :linenos:
@@ -316,7 +316,7 @@ drugiej funkcji ``dodaj_pytania()``.
 
 .. raw:: html
 
-    <div class="code_no">Peewee nr <script>var code_no2 = code_no2 || 1; document.write(code_no2++);</script></div>
+    <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
 .. literalinclude:: quiz2_pw/dane.py
@@ -326,7 +326,7 @@ drugiej funkcji ``dodaj_pytania()``.
 
 .. raw:: html
 
-    <div class="code_no">SQLAlchemy nr <script>var code_no3 = code_no3 || 1; document.write(code_no3++);</script></div>
+    <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
 .. literalinclude:: quiz2_sa/dane.py
@@ -351,7 +351,7 @@ i sprawdzającego udzielone przez użytkownika odpowiedzi.
 
 .. raw:: html
 
-    <div class="code_no">Peewee nr <script>var code_no2 = code_no2 || 1; document.write(code_no2++);</script></div>
+    <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
 .. literalinclude:: quiz2_pw/views.py
@@ -374,7 +374,7 @@ i możliwe odpowiedzi jako pola opcji typu radio button:
 
 .. raw:: html
 
-    <div class="code_no">Szablon nr <script>var code_no4 = code_no4 || 1; document.write(code_no4++);</script></div>
+    <div class="code_no">Szablon. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: quiz2_pw/templates/quiz.html
@@ -403,7 +403,7 @@ właśnie nim.
 
 .. raw:: html
 
-    <div class="code_no">Szablon nr <script>var code_no4 = code_no4 || 1; document.write(code_no4++);</script></div>
+    <div class="code_no">Szablon. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: quiz2_pw/templates/dodaj.html
@@ -428,7 +428,7 @@ wygląda ten widok:
 
 .. raw:: html
 
-    <div class="code_no">Peewee nr <script>var code_no2 = code_no2 || 1; document.write(code_no2++);</script></div>
+    <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
 .. literalinclude:: quiz2_pw/views.py
@@ -439,7 +439,7 @@ wygląda ten widok:
 
 .. raw:: html
 
-    <div class="code_no">SQLAlchemy nr <script>var code_no3 = code_no3 || 1; document.write(code_no3++);</script></div>
+    <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
 .. literalinclude:: quiz2_sa/views.py
@@ -496,7 +496,7 @@ chcemy edytować. Odpowiada za to widok ``edytuj()``
 
 .. raw:: html
 
-    <div class="code_no">Peewee nr <script>var code_no2 = code_no2 || 1; document.write(code_no2++);</script></div>
+    <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
 .. literalinclude:: quiz2_pw/views.py
@@ -511,7 +511,7 @@ przekazujemy pytania do szablonu ``edytuj.html``.
 
 .. raw:: html
 
-    <div class="code_no">Szablon nr <script>var code_no4 = code_no4 || 1; document.write(code_no4++);</script></div>
+    <div class="code_no">Szablon. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: quiz2_pw/templates/edytuj.html
@@ -535,7 +535,7 @@ trafia do widoku ``usun()``. Funkcja ta przedstawia się następująco:
 
 .. raw:: html
 
-    <div class="code_no">Peewee nr <script>var code_no2 = code_no2 || 1; document.write(code_no2++);</script></div>
+    <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
 .. literalinclude:: quiz2_pw/views.py

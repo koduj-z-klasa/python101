@@ -39,14 +39,14 @@ Połączenie z bazą
 
 .. raw:: html
 
-    <div class="code_no">Peewee nr <script>var code_no2 = code_no2 || 1; document.write(code_no2++);</script></div>
+    <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: ormpw01.py
     :linenos:
 
 .. raw:: html
 
-    <div class="code_no">SQLAlchemy nr <script>var code_no3 = code_no3 || 1; document.write(code_no3++);</script></div>
+    <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: ormsa01.py
     :linenos:
@@ -77,7 +77,7 @@ mechanizmy obsługujące te związki.
 
 .. raw:: html
 
-    <div class="code_no">Peewee nr <script>var code_no2 = code_no2 || 1; document.write(code_no2++);</script></div>
+    <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: ormpw02.py
     :linenos:
@@ -86,7 +86,7 @@ mechanizmy obsługujące te związki.
 
 .. raw:: html
 
-    <div class="code_no">SQLAlchemy nr <script>var code_no3 = code_no3 || 1; document.write(code_no3++);</script></div>
+    <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: ormsa02.py
     :linenos:
@@ -153,7 +153,7 @@ wykorzystujemy metody sesji, w ramach której komunikujemy się z bazą.
 
 .. raw:: html
 
-    <div class="code_no">Peewee nr <script>var code_no2 = code_no2 || 1; document.write(code_no2++);</script></div>
+    <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: ormpw03.py
     :linenos:
@@ -162,7 +162,7 @@ wykorzystujemy metody sesji, w ramach której komunikujemy się z bazą.
 
 .. raw:: html
 
-    <div class="code_no">SQLAlchemy nr <script>var code_no3 = code_no3 || 1; document.write(code_no3++);</script></div>
+    <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: ormsa03.py
     :linenos:
@@ -246,7 +246,7 @@ tabelę lub do usunięcia instancji danej klasy.
 
 .. raw:: html
 
-    <div class="code_no">Peewee nr <script>var code_no2 = code_no2 || 1; document.write(code_no2++);</script></div>
+    <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: ormpw04.py
     :linenos:
@@ -255,7 +255,7 @@ tabelę lub do usunięcia instancji danej klasy.
 
 .. raw:: html
 
-    <div class="code_no">SQLAlchemy nr <script>var code_no3 = code_no3 || 1; document.write(code_no3++);</script></div>
+    <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: ormsa04.py
     :linenos:

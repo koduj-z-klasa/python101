@@ -168,7 +168,7 @@ Szablon tworzymy w pliku :file:`~/todo/templates/zadania_lista.html`:
 
 .. raw:: html
 
-    <div class="code_no">Plik zadania_lista.html nr <script>var plik_no = plik_no || 1; document.write(plik_no++);</script></div>
+    <div class="code_no">Plik <i>zadania_lista.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: templates/zadania_lista_z4.html
@@ -231,7 +231,7 @@ oraz kod wyświetlający komunikaty:
 
 .. raw:: html
 
-    <div class="code_no">plik zadania_lista.html nr <script>var plik_no = plik_no || 1; document.write(plik_no++);</script></div>
+    <div class="code_no">Plik <i>zadania_lista.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: templates/zadania_lista_z5.html
@@ -255,7 +255,7 @@ definicjami:
 
 .. raw:: html
 
-    <div class="code_no">Plik style.css <script>var plik_no = plik_no || 1; document.write(plik_no++);</script></div>
+    <div class="code_no">Plik <i>style.css</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: css
 .. literalinclude:: static/style.css
@@ -265,7 +265,7 @@ Arkusz CSS podpinamy do pliku :file:`zadania_lista.html`, dodając w sekcji head
 
 .. raw:: html
 
-    <div class="code_no">Plik zadania_lista.html nr <script>var plik_no = plik_no || 1; document.write(plik_no++);</script></div>
+    <div class="code_no">Plik <i>zadania_lista.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: templates/zadania_lista_z6.html
@@ -302,7 +302,7 @@ listę zadań i dodajemy formularz:
 
 .. raw:: html
 
-    <div class="code_no">Plik zadania_lista.html nr <script>var plik_no = plik_no || 1; document.write(plik_no++);</script></div>
+    <div class="code_no">Plik <i>zadania_lista.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: templates/zadania_lista_z7.html

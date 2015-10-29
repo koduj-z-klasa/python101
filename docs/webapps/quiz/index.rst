@@ -109,7 +109,7 @@ Do pliku :file:`index.html` wstawiamy poniższy kod HTML:
 
 .. raw:: html
 
-    <div class="code_no">Plik index.html nr <script>var plik = plik || 1; document.write(plik++);</script></div>
+    <div class="code_no">Plik <i>index.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: templates/index3.html
@@ -161,7 +161,7 @@ Do szablonu :file:`index.html` wstawiamy poniższy kod po nagłówku ``<h1>``.
 
 .. raw:: html
 
-    <div class="code_no">Plik index.html nr <script>var plik_no = plik_no || 1; document.write(plik_no++);</script></div>
+    <div class="code_no">Plik <i>index.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: templates/index4.html
@@ -233,7 +233,7 @@ wstawiamy instrukcje wyświetlające wynik:
 
 .. raw:: html
 
-    <div class="code_no">Plik index.html <script>var plik_no = plik_no || 1; document.write(plik_no++);</script></div>
+    <div class="code_no">Plik <i>index.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: templates/index5.html
