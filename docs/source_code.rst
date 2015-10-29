@@ -19,18 +19,19 @@ W katalogu domowym użytkownika uruchamiamy komendę:
 
 W efekcie otrzymamy katalog ``python101`` z kodami źródłowymi materiałów.
 
-.. note::
+Znak zachęty i miejsce uruchomienia 
+***********************************
 
-    Przykłady zawierające znak zachęty ``$`` oznaczają komendy
-    do wykonania w terminalu systemu operacyjnego (uruchom przez :kbd:`Win+T`).
+Przykłady zawierające znak zachęty ``$`` oznaczają komendy
+do wykonania w terminalu systemu operacyjnego (w Linux uruchom przez :kbd:`Win+T`).
 
-    Oprócz znaku zachęty ``$`` przykłady mogą zawierać informację o
-    lokalizacji w jakiej należy wykonać komendę. Np. ``~/python101$`` oznacza
-    że komendę wykonujemy w folderze ``python101`` w katalogu domowym
-    użytkownika, czyli ``/home/sru/python101`` w środowisku SRU.
+Oprócz znaku zachęty ``$`` przykłady mogą zawierać informację o
+lokalizacji w jakiej należy wykonać komendę. Np. ``~/python101$`` oznacza
+że komendę wykonujemy w folderze ``python101`` w katalogu domowym
+użytkownika, czyli ``/home/sru/python101`` w środowisku linux (dla windows nie mamy domyśnej lokalizacji).
 
-    Komendy należy kopiować i wklejać bez znaku zachęty ``$`` i poprzedzającego tekstu.
-    Komendy można wklejać do terminala środkowym klawiszem myszki.
+Komendy należy kopiować i wklejać bez znaku zachęty ``$`` i poprzedzającego tekstu.
+Komendy można wklejać do terminala w systemie linux środkowym klawiszem myszki.
 
 
 Korzystanie z kodu źródłowego
