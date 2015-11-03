@@ -77,7 +77,7 @@ wartość na raz za pomocą metody ``__next()__``. Jeżeli w strumieniu nie ma
 więcej danych, wywoływany jest wyjątek ``StopIteration``.
 
 Wbudowana funkcja ``iter()`` zwraca iterator utworzony z dowolnego iterowalnego
-obiektu. Iteratory wykorzystujemy do przeglądania list, tupli, słowników czy plików
+obiektu. Iteratory wykorzystujemy do przeglądania **list**,** tupli**, **słowników** czy **plików**
 używając instrukcji ``for x in y``, w której *y* jest obiektem iterowalnym równoważnym
 wyrażeniu ``iter(y)``. Np.:
 
@@ -96,8 +96,7 @@ wyrażeniu ``iter(y)``. Np.:
     for x in slownik:
         print(x, slownik(x))
 
-Listę (czyli obiekt iterowalny), zawierającą tuple (klucz, wartość) można wykorzystać
-do utworzenia słownika, np.:
+Listy można przekształcać w inne iterowalne obiekty. Z dwóch list lub z jednej zawierającej tuple (klucz, wartość) można utworzyć słownik, np.:
 
 .. raw:: html
 
@@ -106,8 +105,21 @@ do utworzenia słownika, np.:
 .. code-block:: python
     :linenos:
 
+    panstwa = ['Polska', 'Niemcy', 'Francja']
+    stolice = ['Warszawa', 'Berlin', 'Paryż']
+    lista = zip(panstwa, stolice)
+    slownik = dict(lista)
+
     lista = [('Polska','Warszawa'), ('Berlin','Niemcy'), ('Francja','Paryż')]
-    dict(lista)
+    slownik = dict(lista)
+
+    slownik
+    slownik.items()
+    slownik.keys()
+    slownik.values()
+
+    for klucz, wartosc in slownik.iteritems():
+        print klucz, wartosc
 
 Generatory wyrażeń
 ************************
