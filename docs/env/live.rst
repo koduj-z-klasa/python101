@@ -144,7 +144,7 @@ Następnie uruchamiamy aplikację i tworzymy nową maszynę wirtualną:
 
 * nazwa – np. "LxPup", typ – *Linux*, wersja – *Ubuntu (32-bit)*;
 * rozmiar pamięci – min. 1024MB
-* tworzymy dysk twardy VDI o stałym rozmiarze min. 1024MB
+* tworzymy dysk twardy VDI o stałym rozmiarze min. 2048MB
 
 Po utworzeniu maszyny w sekcji "Storage" jako dysk rozruchowy wskazujemy ściągnięty :term:`obraz iso` dystrybucji,
 np. ``kzkbox_20150921_full.iso``:
@@ -152,7 +152,7 @@ np. ``kzkbox_20150921_full.iso``:
 .. figure:: vboximg/vbox05.jpg
 
 Uruchamiamy maszynę, ale na ekranie roruchowym systemu podajemy dodatkowe
-parametry uruchomieniowe: ``puppy pmedia=cd``:
+parametry uruchomieniowe: ``puppy pmedia=cd pfix=ram``:
 
 .. figure:: vboximg/vbox06.jpg
 
