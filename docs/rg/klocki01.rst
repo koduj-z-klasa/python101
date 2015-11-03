@@ -101,7 +101,7 @@ Dopiero na końcu zwracamy ustaloną akcję:
 .. highlight:: python
 .. literalinclude:: rgkod04b.py
     :linenos:
-    :emphasize-lines: 10, 13, 18, 20
+    :emphasize-lines: 11, 14, 19, 21
     :lineno-start: 1
     :lines: 1-
 
@@ -121,5 +121,23 @@ Możliwe ulepszenia
 Robota podstawowego można rozbudowywać na różne sposoby przy użyciu różnych
 technik kodowania. Proponujemy więc :ref:`wersję **A** <klocki02a>` opartą na funkcjach
 i listach oraz :ref:`wersję **B** <klocki02b>` opartą na zbiorach. Obie wersje implementują
-te same reguły, jednak efekt końcowy nie wcale nie musi być identyczny.
+te same reguły, jednak efekt końcowy wcale nie musi być identyczny.
 Przetestuj i przekonaj się sam.
+
+.. tip::
+
+    Przydatną rzeczą byłaby możliwość dokładniejszego śledzenia decyzji podejmowanych
+    przez robota. Najprościej można to osiągnąć używając polecenia ``print``
+    w kluczowych miejscach algorytmu. Poniższy kod dla przykładu wyświetla w terminalu
+    pozycję aktualnego i atakowanego robota:
+
+.. highlight:: python
+.. code-block:: python
+    :linenos:
+    :emphasize-lines: 4
+
+    for poz, robot in game.robots.iteritems():
+        if robot.player_id != self.player_id:
+            if rg.dist(poz, self.location) <= 1:
+                print "Atak", self.location, "=>", poz
+                return ['attack', poz]
