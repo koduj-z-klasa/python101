@@ -128,8 +128,14 @@ Przetestuj i przekonaj się sam.
 
     Przydatną rzeczą byłaby możliwość dokładniejszego śledzenia decyzji podejmowanych
     przez robota. Najprościej można to osiągnąć używając polecenia ``print``
-    w kluczowych miejscach algorytmu. Poniższy kod dla przykładu wyświetla w terminalu
-    pozycję aktualnego i atakowanego robota:
+    w kluczowych miejscach algorytmu. Podany niżej **Kod nr 6** wyświetla w terminalu
+    pozycję aktualnego i atakowanego robota. **Kod nr 7**, który nadaje się zwłaszcza
+    do wersji robota wykorzystującej pomocniczą zmienną *ruch*, umieszczony przed
+    instrukcją ``return`` pozwoli zobaczyć w terminalu kolejne ruchy naszego robota.
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
 .. code-block:: python
@@ -141,3 +147,16 @@ Przetestuj i przekonaj się sam.
             if rg.dist(poz, self.location) <= 1:
                 print "Atak", self.location, "=>", poz
                 return ['attack', poz]
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. code-block:: python
+
+    print ruch[0], self.location, "=>",
+    if (len(ruch) > 1):
+        print ruch[1]
+    else:
+        print
