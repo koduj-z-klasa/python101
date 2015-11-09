@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-# -*- coding: UTF-8 -*-
+# -*- coding: utf-8 -*-
 # Minimala powłoka SQLite
 # https://docs.python.org/2/library/sqlite3.html
 

@@ -55,15 +55,29 @@ cur.executemany('INSERT INTO uczen VALUES(?,?,?,?)', uczniowie)
 con.commit()
 
 
+# pobieranie danych z bazy
 def czytajdane():
-    """
-    Funkcja wybiera dane wszystkich uczniów z bazy i wyświetla je.
-    """
+    """Funkcja pobiera z bazy i wyświetla informacje o uczniach."""
     cur.execute(
-        'SELECT uczen.id,imie,nazwisko,nazwa FROM uczen,klasa WHERE uczen.klasa_id=klasa.id')
+        """
+        SELECT uczen.id,imie,nazwisko,nazwa FROM uczen,klasa
+        WHERE uczen.klasa_id=klasa.id
+        """)
     uczniowie = cur.fetchall()
     for uczen in uczniowie:
         print uczen['id'], uczen['imie'], uczen['nazwisko'], uczen['nazwa']
     print ""
 
 czytajdane()
+
+# zmiana klasy ucznia o identyfikatorze 2
+cur.execute('SELECT id FROM klasa WHERE nazwa = ?', ('1B',))
+klasa_id = cur.fetchone()[0]
+cur.execute('UPDATE uczen SET klasa_id=? WHERE id=?', (klasa_id, 2))
+
+# usunięcie ucznia o identyfikatorze 3
+cur.execute('DELETE FROM uczen WHERE id=?', (3,))
+
+czytajdane()
+
+con.close()

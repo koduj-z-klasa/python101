@@ -1,5 +1,5 @@
 #! /usr/bin/env python2
-# -*- coding: UTF-8 -*-
+# -*- coding: utf-8 -*-
 
 import sqlite3
 
@@ -34,18 +34,18 @@ cur.executescript("""
     )""")
 
 # wstawiamy jeden rekord danych
-cur.execute('INSERT INTO klasa VALUES(NULL, ?, ?);', ('1A','matematyczny'))
-cur.execute('INSERT INTO klasa VALUES(NULL, ?, ?);', ('1B','humanistyczny'))
+cur.execute('INSERT INTO klasa VALUES(NULL, ?, ?);', ('1A', 'matematyczny'))
+cur.execute('INSERT INTO klasa VALUES(NULL, ?, ?);', ('1B', 'humanistyczny'))
 
 # wykonujemy zapytanie SQL, które pobierze id klasy "1A" z tabeli "klasa".
-cur.execute('SELECT id FROM klasa WHERE nazwa = ?',('1A',))
+cur.execute('SELECT id FROM klasa WHERE nazwa = ?', ('1A',))
 klasa_id = cur.fetchone()[0]
 
 # tupla "uczniowie" zawiera tuple z danymi poszczególnych uczniów
 uczniowie = (
-    (None,'Tomasz','Nowak',klasa_id),
-    (None,'Jan','Kos',klasa_id),
-    (None,'Piotr','Kowalski',klasa_id)
+    (None, 'Tomasz', 'Nowak', klasa_id),
+    (None, 'Jan', 'Kos', klasa_id),
+    (None, 'Piotr', 'Kowalski', klasa_id)
 )
 
 # wstawiamy wiele rekordów
@@ -54,12 +54,18 @@ cur.executemany('INSERT INTO uczen VALUES(?,?,?,?)', uczniowie)
 # zatwierdzamy zmiany w bazie
 con.commit()
 
-# odczytujemy dane z bazy
+
+# pobieranie danych z bazy
 def czytajdane():
-    cur.execute('SELECT uczen.id,imie,nazwisko,nazwa FROM uczen,klasa WHERE uczen.klasa_id=klasa.id')
+    """Funkcja pobiera z bazy i wyświetla informacje o uczniach."""
+    cur.execute(
+        """
+        SELECT uczen.id,imie,nazwisko,nazwa FROM uczen,klasa
+        WHERE uczen.klasa_id=klasa.id
+        """)
     uczniowie = cur.fetchall()
     for uczen in uczniowie:
-        print uczen['id'],uczen['imie'],uczen['nazwisko'],uczen['nazwa']
+        print uczen['id'], uczen['imie'], uczen['nazwisko'], uczen['nazwa']
     print ""
 
 czytajdane()

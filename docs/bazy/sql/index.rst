@@ -25,8 +25,10 @@ W ulubionym edytorze tworzymy plik :file:`sqlraw.py` i umieszczamy w nim poniżs
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: sqlraw01.py
+.. literalinclude:: sqlraw.py
     :linenos:
+    :lineno-start: 1
+    :lines: 1-14
 
 Przede wszystkim importujemy moduł ``sqlite3`` do obsługi baz SQLite3. Następnie w zmiennej ``con``
 tworzymy połączenie z bazą danych przechowywaną w pliku na dysku (``test.db``, nazwa pliku
@@ -40,7 +42,7 @@ Skrypt możemy uruchomić poleceniem podanym niżej, ale na razie nic się jeszc
 
 .. code:: bash
 
-    ~ $ python sqlraw.py
+    ~$ python sqlraw.py
 
 Model bazy
 ***********************
@@ -54,10 +56,10 @@ Do naszego pliku dopisujemy więc następujący kod:
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: sqlraw02.py
+.. literalinclude:: sqlraw.py
     :linenos:
     :lineno-start: 16
-    :lines: 16-
+    :lines: 16-34
 
 Jak widać pojedyncze polecenia SQL-a wykonujemy za pomocą metody ``.execute()`` obiektu kursora.
 Warto zwrócić uwagę, że w zależności od długości i stopnia skomplikowania instrukcji SQL,
@@ -82,16 +84,17 @@ Do skryptu dopisujemy poniższy kod:
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: sqlraw03.py
+.. literalinclude:: sqlraw.py
     :linenos:
     :lineno-start: 36
-    :lines: 36-
+    :lines: 36-55
 
 Do wstawiania pojedynczych rekordów używamy odpowiednich poleceń SQL-a jako
 argumentów wspominanej metody ``.execute()``, możemy też dodawać wiele rekordów
 na raz posługując się funkcją ``.executemany()``. Zarówno w jednym, jak i drugim
 przypadku wartości pól nie należy umieszczać bezpośrednio w zapytaniu SQL
-ze względu na możliwe błędy lub ataki typu `SQL injection <http://pl.wikipedia.org/wiki/SQL_injection>` ("wstrzyknięcia" kodu SQL).
+ze względu na możliwe błędy lub ataki typu `SQL injection <http://pl.wikipedia.org/wiki/SQL_injection>`_
+("wstrzyknięcia" kodu SQL).
 Zamiast tego używamy zastępników (ang. *placeholder*) w postaci znaków zapytania.
 Wartości przekazujemy w tupli lub tuplach jako drugi argument.
 
@@ -137,10 +140,10 @@ klas, do których należą:
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: sqlraw04.py
+.. literalinclude:: sqlraw.py
     :linenos:
     :lineno-start: 58
-    :lines: 58-
+    :lines: 58-71
 
 Funkcja ``czytajdane()`` wykonuje zapytanie SQL pobierające wszystkie dane z dwóch
 powiązanych tabel: "uczen" i "klasa". Wydobywamy *id ucznia*, *imię* i *nazwisko*,
@@ -149,6 +152,13 @@ pasujące rekordy zwrócone przez metodę ``.fetchall()``, zapisujemy w zmiennej
 w postaci tupli. Jej elementy odczytujemy w pętli ``for`` jako listę ``uczen``.
 Dzięki ustawieniu właściwości ``.row_factory`` połączenia z bazą na ``sqlite3.Row``
 odczytujemy poszczególne pola podając nazwy zamiast indeksów, np. ``uczen['imie']``.
+
+.. note::
+
+  Warto zwrócić uwagę na wykorzystanie w powyższym kodzie potrójnych cudzysłowów (``"""..."""``).
+  Na początku funkcji umieszczono w nich opis jej działania, dalej wykorzystano
+  do zapisania długiego zapytania SQL-a.
+
 
 Modyfikacja i usuwanie danych
 *****************************
@@ -159,10 +169,10 @@ Do skryptu dodajemy jeszcze kilka linii:
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: sqlraw05.py
+.. literalinclude:: sqlraw.py
     :linenos:
-    :lineno-start: 71
-    :lines: 71-
+    :lineno-start: 73
+    :lines: 73-83
 
 Aby zmienić przypisanie ucznia do klasy, pobieramy identyfikor klasy za pomocą
 metody ``.execute()`` i polecenia *SELECT* SQL-a z odpowiednim warunkiem.
@@ -179,7 +189,7 @@ czemu zapisujemy dokonane zmiany i zwalniamy zarezerwowane przez skrypt zasoby.
 Zadania dodatkowe
 *******************
 
-- Przeczytaj opis przykładowej funkcji pobierającej dane z pliku tekstowego
+- Przeczytaj :ref:`opis przykładowej funkcji pobierającej dane <dane_z_pliku>` z pliku tekstowego
   w formacie *csv*. W skrypcie ``sqlraw.py`` zaimportuj tę funkcję i wykorzystaj
   do pobrania i wstawienia danych do bazy.
 
@@ -195,12 +205,12 @@ Zadania dodatkowe
 
 * :download:`sqlraw.zip <sqlraw.zip>`
 
-Kolejne wersje tworzenego kodu znajdziesz w katalogu ``~/python101/docs/bazy/sql``.
+Kolejne wersje tworzenego kodu znajdziesz w katalogu ``~/python101/bazy/sqlraw``.
 Uruchamiamy je wydając polecenia:
 
 .. code-block:: bash
 
-    ~/python101$ cd docs/bazy/sql
-    ~/python101/docs/bazy/sql$ python sqlraw0x.py
+    ~/python101$ cd bazy/sqlraw
+    ~/python101/bazy/sqlraw$ python sqlraw0x.py
 
 \- gdzie *x* jest numerem kolejnej wersji kodu.

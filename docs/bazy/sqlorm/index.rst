@@ -291,7 +291,7 @@ podstawowym składnikiem, np. *Django*.
 Zadania dodatkowe
 *******************
 
-- Wykonajscenariusz aplikacji :ref:`Quiz ORM <quiz-orm>`, aby zobaczyć przykład wykorzystania systemów ORM
+- Wykonajs cenariusz aplikacji :ref:`Quiz ORM <quiz-orm>`, aby zobaczyć przykład wykorzystania systemów ORM
   w aplikacjach internetowych.
 
 - Przejrzyj scenariusz aplikacji internetowej :ref:`Czat <czat-app>`, zbudowanej z wykorzystaniem

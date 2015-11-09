@@ -21,12 +21,12 @@ odczyta dane i zwróci je w użytecznej postaci:
 .. literalinclude:: dane.py
     :linenos:
 
-Na początku funkcji ``czytaj_dane()`` sprawdzamy, czy istnieje plik
+Na początku funkcji ``pobierz_dane()`` sprawdzamy, czy istnieje plik
 podany jako argumet. Wykorzystujemy metodę ``isfile()`` z modułu ``os``,
 który należy wcześniej zaimportować. Następnie w konstrukci ``with``
 otwieramy plik i wczytujemy jego treść do zmiennej ``zawartosc``.
 Pętla ``for`` pobiera kolejne linie, które oczyszczamy ze znaków końca linii
-(``.replace('\n','')``) i dekodujemy jako zapisane w standardzie *utf-8*.
+(``.replace('\n','')``, ``.replace('\r','')``) i dekodujemy jako zapisane w standardzie *utf-8*.
 Poszczególne wartości oddzielone przecinkiem wyodrębniamy (``.split(',')``)
 do tupli, którą dodajemy do zdefiniowanej wcześniej tablicy (``dane.append()``).
 

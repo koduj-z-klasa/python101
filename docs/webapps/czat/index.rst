@@ -319,7 +319,7 @@ Następnie tworzymy szablon :file:`~/czatpro/czat/templates/czat/index.html`, kt
 
 .. raw:: html
 
-    <div class="code_no">Plik index.html. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>index.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: index_z2.html
@@ -365,11 +365,15 @@ później dodajemy widoki ``loguj()`` i ``wyloguj()``:
     :lineno-start: 6
     :lines: 6-9
 
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. highlight:: python
 .. literalinclude:: views.py
     :linenos:
     :lineno-start: 20
-    :lines: 20-38
+    :lines: 20-39
 
 Widoki mogą obsługiwać zarówno żądania typu :term:`GET`, kiedy użytkownik chce tylko zobaczyć
 jakieś dane na stronie, oraz :term:`POST`, gdy wysyła informacje poprzez formularz, aby np. zostały zapisane.
@@ -400,7 +404,7 @@ Dalej potrzebny nam **szablon logowania** :file:`~/czatpro/czat/templates/czat/l
 
 .. raw:: html
 
-    <div class="code_no">Plik loguj.html. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>loguj.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: loguj_z3.html
@@ -423,7 +427,7 @@ uzupełnieniu szablonu :file:`index.html`. Po znaczniku ``<h1>`` wstawiamy poni�
 
 .. raw:: html
 
-    <div class="code_no">Plik index.html. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>index.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: index.html
@@ -490,6 +494,10 @@ Do pliku :file:`views.py` dodajemy importy i kod funkcji:
     :lineno-start: 10
     :lines: 10-11
 
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. highlight:: python
 .. literalinclude:: views.py
     :linenos:
@@ -518,7 +526,7 @@ i listy wiadomości.
 
 .. raw:: html
 
-    <div class="code_no">Plik wiadomosci.html. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>wiadomosci.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: wiadomosci_z4.html
@@ -586,6 +594,10 @@ W pliku :file:`views.py` dopisujemy:
     :lineno-start: 12
     :lines: 12
 
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. highlight:: python
 .. literalinclude:: views_z5.py
     :linenos:
@@ -601,11 +613,19 @@ która obsłuży dodawanie wiadomości. Podstawowe argumenty to:
 
 Do pliku :file:`urls.py` dopisujemy:
 
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
     :lineno-start: 6
     :lines: 6
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
 .. literalinclude:: urls.py
@@ -691,6 +711,10 @@ Tu widzimy zastosowanie wspomnianego wcześniej atrybutu ``template_name``.
 
 Do pliku :file:`urls.py` dopisujemy:
 
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
@@ -705,7 +729,7 @@ Potrzebujemy szablonu zapisanego w podanym w widoku pliku: :file:`czatpro/czat/t
 
 .. raw:: html
 
-    <div class="code_no">Plik wiadomosc_usun.html. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>wiadomosc_usun.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: wiadomosc_usun.html
@@ -719,7 +743,7 @@ usuwania wiadomości, o ile jest to wiadomość utworzona przez zalogowanego uż
 
 .. raw:: html
 
-    <div class="code_no">Plik wiadomosc_form.html. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>wiadomosc_form.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: wiadomosc_form.html
