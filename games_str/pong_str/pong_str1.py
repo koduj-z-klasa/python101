@@ -1,10 +1,12 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import pygame, sys
+import pygame
+import sys
 from pygame.locals import *
 
-# Przygotowanie zmiennych opisujących okno gry oraz obiekty gry i ich właściwości (paletki, piłeczka)
+# Przygotowanie zmiennych opisujących okno gry
+# oraz obiekty gry i ich właściwości (paletki, piłeczka)
 # Inicjacja modułu i obiektów Pygame'a
 
 # inicjacja modułu pygame
