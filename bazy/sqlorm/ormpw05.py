@@ -14,7 +14,6 @@ baza = SqliteDatabase('test.db')  # ':memory:'
 
 
 class BazaModel(Model):
-
     class Meta:
         database = baza
 
@@ -41,20 +40,29 @@ if Klasa.select().count() == 0:
 
 # tworzymy instancję klasy Klasa reprezentującą klasę "1A"
 klasa = Klasa.select().where(Klasa.nazwa == '1A').get()
+# dodajemy uczniów
 uczen = Uczen(imie='Tomasz', nazwisko='Nowak', klasa=klasa)
 uczen.save()
+uczen = Uczen(imie='Adam', nazwisko='Kowalski', klasa=klasa)
+uczen.save()
 
-# odczytujemy dane z bazy
-for uczen in Uczen.select(): # lub szybsze: Uczen.select().join(Klasa)
-    print uczen.id, uczen.imie, uczen.nazwisko, uczen.klasa.nazwa
-print ""
 
-# zmiana klasy ucznia o identyfikatorze 2
+def czytajdane():
+    """Funkcja pobiera i wyświetla dane z bazy"""
+    for uczen in Uczen.select():  # lub szybsze: Uczen.select().join(Klasa)
+        print uczen.id, uczen.imie, uczen.nazwisko, uczen.klasa.nazwa
+    print ""
+
+czytajdane()
+
+# przepisanie ucznia do innej klasy
 uczen = Uczen.select().join(Klasa).where(Uczen.nazwisko == 'Nowak').get()
 uczen.klasa = Klasa.select().where(Klasa.nazwa == '1B').get()
 uczen.save()  # zapisanie zmian w bazie
+czytajdane()
 
 # usunięcie ucznia o identyfikatorze 1
 Uczen.select().where(Uczen.id == 1).get().delete_instance()
+czytajdane()
 
 baza.close()

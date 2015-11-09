@@ -29,37 +29,21 @@ i przygotowuje obiekt kursora, który posłuży nam do wydawania poleceń SQL:
 
     <div class="code_no">Plik <i>sqlraw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code:: python
+.. literalinclude:: sqlraw.py
+    :linenos:
+    :lineno-start: 1
+    :lines: 1-13
 
-    #! /usr/bin/env python
-    # -*- coding: utf-8 -*-
-
-    import sqlite3
-
-    con = sqlite3.connect(':memory:')
-    con.row_factory = sqlite3.Row
-    cur = con.cursor()
-
-System ORM Peewee inicjujemy w pliku :file:`ormpeewee.py` tworząc klasę bazową, która zapewni połączenie z bazą:
+System ORM Peewee inicjujemy w pliku :file:`ormpw.py` tworząc klasę bazową, która zapewni połączenie z bazą:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>ormpeewee.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>ormpw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code:: python
-
-    #! /usr/bin/env python
-    # -*- coding: utf-8 -*-
-
-    import os
-    from peewee import *
-
-    baza = SqliteDatabase(':memory:')
-
-
-    class BazaModel(Model):
-        class Meta:
-            database = baza
+.. literalinclude:: ormpw.py
+    :linenos:
+    :lineno-start: 1
+    :lines: 1-18
 
 .. note::
 
@@ -78,23 +62,10 @@ musimy wydać następujące polecenia SQL:
 
     <div class="code_no">Plik <i>sqlraw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code:: python
-
-    cur.executescript("""
-    DROP TABLE IF EXISTS klasa;
-    CREATE TABLE IF NOT EXISTS klasa (
-        id INTEGER PRIMARY KEY ASC,
-        nazwa varchar(250) NOT NULL,
-        profil varchar(250) DEFAULT ''
-    );
-    DROP TABLE IF EXISTS uczen;
-    CREATE TABLE IF NOT EXISTS uczen (
-        id INTEGER PRIMARY KEY ASC,
-        imie varchar(250) NOT NULL,
-        nazwisko varchar(250) NOT NULL,
-        klasa_id INTEGER NOT NULL,
-        FOREIGN KEY(klasa_id) REFERENCES klasa(id)
-    )""")
+.. literalinclude:: sqlraw.py
+    :linenos:
+    :lineno-start: 15
+    :lines: 15-30
 
 Wydawanie poleceń SQL-a wymaga koncentracji na poprawności użycia tego języka,
 systemy ORM izolują nas od takich szczegółów pozwalając skupić się na logice danych.
@@ -103,22 +74,12 @@ ich instancje reprezentować będą z kolei rekordy.
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>ormpeewee.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>ormpw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code:: python
-
-    class Klasa(BazaModel):
-        nazwa = CharField(null=False)
-        profil = CharField(default='')
-
-
-    class Uczen(BazaModel):
-        imie = CharField(null=False)
-        nazwisko = CharField(null=False)
-        klasa = ForeignKeyField(Klasa, related_name='uczniowie')
-
-    baza.connect()
-    baza.create_tables([Klasa, Uczen], True)
+.. literalinclude:: ormpw.py
+    :linenos:
+    :lineno-start: 21
+    :lines: 21-32
 
 Ćwiczenie 1
 ============
@@ -129,47 +90,36 @@ podane niżej polecenia. Porównaj struktury utworzonych tabel.
 
 .. code-block:: bash
 
-    sqlite> .table
+    sqlite> .tables
     sqlite> .schema klasa
     sqlite> .schema uczen
 
 Wstawianie danych
 ***********************
 
-Chcemy wstawić do naszych tabel dane dwóch klas oraz jednego ucznia.
+Chcemy wstawić do naszych tabel dane dwóch klas oraz dwóch uczniów.
 Korzystając z języka SQL użyjemy następujących poleceń:
 
 .. raw:: html
 
     <div class="code_no">Plik <i>sqlraw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code-block:: python
-
-    cur.execute('INSERT INTO klasa VALUES(NULL, ?, ?);', ('1A', 'matematyczny'))
-    cur.execute('INSERT INTO klasa VALUES(NULL, ?, ?);', ('1B', 'humanistyczny'))
-    cur.execute('SELECT id FROM klasa WHERE nazwa = ?', ('1A',))
-    klasa_id = cur.fetchone()[0]
-    cur.execute('INSERT INTO uczen VALUES(?,?,?,?)', (None, 'Tomasz', 'Nowak', klasa_id))
-    con.commit()
+.. literalinclude:: sqlraw.py
+    :linenos:
+    :lineno-start: 32
+    :lines: 32-47
 
 W systemie ORM pracujemy z obiektami ``klasa`` i ``uczen``. Nadajemy wartości ich
-atrybutom i korzystamy z ich metody:
+atrybutom i korzystamy z ich metod:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>ormpeewee.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>ormpw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code:: python
-
-    if Klasa.select().count() == 0:
-        klasa = Klasa(nazwa='1A', profil='matematyczny')
-        klasa.save()
-        klasa = Klasa(nazwa='1B', profil='humanistyczny')
-        klasa.save()
-
-    klasa = Klasa.select().where(Klasa.nazwa == '1A').get()
-    uczen = Uczen(imie='Tomasz', nazwisko='Nowak', klasa=klasa)
-    uczen.save()
+.. literalinclude:: ormpw.py
+    :linenos:
+    :lineno-start: 34
+    :lines: 34-47
 
 Pobieranie danych
 ***********************
@@ -181,13 +131,10 @@ Aby wyświetlić dane wszystkich uczniów zapisane w bazie użyjemy kodu:
 
     <div class="code_no">Plik <i>sqlraw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code-block:: python
-
-    cur.execute('SELECT uczen.id,imie,nazwisko,nazwa FROM uczen,klasa WHERE uczen.klasa_id=klasa.id')
-    uczniowie = cur.fetchall()
-    for uczen in uczniowie:
-        print uczen['id'], uczen['imie'], uczen['nazwisko'], uczen['nazwa']
-    print ""
+.. literalinclude:: sqlraw.py
+    :linenos:
+    :lineno-start: 50
+    :lines: 50-62
 
 W systemie ORM korzystamy z metody ``select()`` obiektu reprezentującego ucznia.
 Dostęp do danych przechowywanych w innych tabelach uzyskujemy dzięki wyrażeniom
@@ -196,13 +143,12 @@ klasy przypisanej uczniowi.
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>ormpeewee.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>ormpw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code:: python
-
-    for uczen in Uczen.select():
-        print uczen.id, uczen.imie, uczen.nazwisko, uczen.klasa.nazwa
-    print ""
+.. literalinclude:: ormpw.py
+    :linenos:
+    :lineno-start: 50
+    :lines: 50-56
 
 .. tip::
 
@@ -210,64 +156,38 @@ klasy przypisanej uczniowi.
     zasygnalizować już w głównej kwerendzie, używając metody ``join()``,
     np.: ``Uczen.select().join(Klasa)``.
 
-Modyfikacja danych
+Modyfikacja i usuwanie danych
 *****************************
 
-Edycja danych zapisanych już w bazie to kolejna częsta operacja. Jeżeli Chcemy
-przepisać ucznia z klasy do klasy, musimy użyć następujących poleceń SQL:
+Edycja danych zapisanych już w bazie to kolejna częsta operacja. Jeżeli chcemy
+przepisać ucznia z klasy do klasy, w przypadku czystego SQL-a musimy pobrać
+identyfikator ucznia (``uczen_id = cur.fetchone()[0]``),
+identyfikator klasy (``klasa_id = cur.fetchone()[0]``) i użyć ich w klauzuli ``UPDATE``.
+Usuwany rekord z kolei musimy wskazać w klauzuli ``WHERE``.
 
 .. raw:: html
 
     <div class="code_no">Plik <i>sqlraw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code-block:: python
+.. literalinclude:: sqlraw.py
+    :linenos:
+    :lineno-start: 64
+    :lines: 64-
 
-    cur.execute('SELECT id FROM uczen WHERE nazwisko="Nowak"')
-    uczen_id = cur.fetchone()[0]
-    cur.execute('SELECT id FROM klasa WHERE nazwa = ?', ('1B',))
-    klasa_id = cur.fetchone()[0]
-    cur.execute('UPDATE uczen SET klasa_id=? WHERE id=?', (klasa_id, uczen_id))
-
-W systemie ORM manipulujemy atrybutami obiektu reprezentującego ucznia:
+W systemie ORM tworzymy instancję reprezentującą ucznia i zmieniamy jej właściwości (``uczen.klasa = Klasa.select().where(Klasa.nazwa == '1B').get()``). Usuwając dane w przypadku systemu ORM, usuwamy instancję wskazanego obiektu:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>ormpeewee.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>ormpw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code:: python
-
-    uczen = Uczen.select().join(Klasa).where(Uczen.nazwisko == 'Nowak').get()
-    uczen.klasa = Klasa.select().where(Klasa.nazwa == '1B').get()
-    uczen.save()  # zapisanie zmian w bazie
-
-Usuwanie danych
-*****************************
-
-Język SQL wymaga wskazania usuwanego rekordu w klauzuli ``WHERE``. Aby usunąć ucznia
-o identyfikatorze ``1``, użyjemy instrukcji:
-
-.. raw:: html
-
-    <div class="code_no">Plik <i>sqlraw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. code-block:: python
-
-    cur.execute('DELETE FROM uczen WHERE id=?', (1,))
-
-
-Usuwając dane w przypadku systemu ORM, usuwamy instancję wskazanego obiektu:
-
-.. raw:: html
-
-    <div class="code_no">Plik <i>ormpeewee.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. code:: python
-
-    Uczen.select().where(Uczen.id == 1).get().delete_instance()
+.. literalinclude:: ormpw.py
+    :linenos:
+    :lineno-start: 58
+    :lines: 58-
 
 .. note::
 
-    Po wykonaniu wszystkich założonychoperacji na danych połączenie z bazą należy
+    Po wykonaniu wszystkich założonych operacji na danych połączenie z bazą należy
     zamknąć, zwalniając w ten sposób zarezerwowane zasoby. W przypadku modułu ``sqlite3``
     wywołujemy polecenie ``con.close()``, w Peewee ``baza.close()``.
 
@@ -291,10 +211,10 @@ podstawowym składnikiem, np. *Django*.
 Zadania dodatkowe
 *******************
 
-- Wykonajs cenariusz aplikacji :ref:`Quiz ORM <quiz-orm>`, aby zobaczyć przykład wykorzystania systemów ORM
+- Wykonaj scenariusz aplikacji :ref:`Quiz ORM <quiz-orm>`, aby zobaczyć przykład wykorzystania systemów ORM
   w aplikacjach internetowych.
 
-- Przejrzyj scenariusz aplikacji internetowej :ref:`Czat <czat-app>`, zbudowanej z wykorzystaniem
+- Wykonaj scenariusz aplikacji internetowej :ref:`Czat (cz. 1) <czat-app>`, zbudowanej z wykorzystaniem
   frameworku *Django*, korzystającego z własnego modelu ORM.
 
 Źródła
@@ -302,11 +222,13 @@ Zadania dodatkowe
 
 * :download:`sqlorm.zip <sqlorm.zip>`
 
-Pełne wersje tworzenych skryptów znajdziesz w katalogu ``~/python101/docs/bazy/sqlorm``.
+Kolejne wersje tworzonych skryptów znajdziesz w katalogu ``~/python101/bazy/sqlorm``.
 Uruchamiamy je wydając polecenia:
 
 .. code-block:: bash
 
-    ~/python101$ cd docs/bazy/sqlorm
-    ~/python101/docs/bazy/sqlorm$ python sqlraw.py
-    ~/python101/docs/bazy/sqlorm$ python sqlorm.py
+    ~/python101$ cd bazy/sqlorm
+    ~/python101/bazy/sqlorm$ python sqlraw0x.py
+    ~/python101/bazy/sqlorm$ python ormpeewee0x.py
+
+\- gdzie *x* jest numerem kolejnej wersji kodu.

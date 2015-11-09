@@ -57,7 +57,7 @@ con.commit()
 
 # pobieranie danych z bazy
 def czytajdane():
-    """Funkcja pobiera z bazy i wyświetla informacje o uczniach."""
+    """Funkcja pobiera i wyświetla dane z bazy."""
     cur.execute(
         """
         SELECT uczen.id,imie,nazwisko,nazwa FROM uczen,klasa
