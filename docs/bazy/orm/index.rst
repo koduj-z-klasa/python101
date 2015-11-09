@@ -22,7 +22,7 @@ w trzech krokach:
 3. Wykonywanie operacji :term:`CRUD`
 
 Poniżej spróbujemy pokazać, jak operacje wykonywane przy użyciu wbudowanego
-w Pythona modułu sqlite3, zrealizować przy użyciu technik ORM.
+w Pythona modułu *sqlite3* zrealizować przy użyciu technik ORM.
 
 .. note::
 
@@ -37,19 +37,26 @@ w Pythona modułu sqlite3, zrealizować przy użyciu technik ORM.
 Połączenie z bazą
 ***********************
 
+W ulubionym edytorze utwórz dwa puste pliki o nazwach :file:`ormpw.py` i :file:`ormsa.py`.
+Pierwszy z nich zawierał będzie kod wykorzystujący ORM Peewee, drugi ORM SQLAlchemy.
+
 .. raw:: html
 
     <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: ormpw01.py
+.. literalinclude:: ormpw.py
     :linenos:
+    :lineno-start: 1
+    :lines: 1-15
 
 .. raw:: html
 
     <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: ormsa01.py
+.. literalinclude:: ormsa.py
     :linenos:
+    :lineno-start: 1
+    :lines: 1-15
 
 W jednym i drugim przypadku importujemy najpierw potrzebne klasy.
 Następnie tworzymy instancje ``baza`` służące do nawiązania połączeń
@@ -79,19 +86,19 @@ mechanizmy obsługujące te związki.
 
     <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: ormpw02.py
+.. literalinclude:: ormpw.py
     :linenos:
-    :lineno-start: 13
-    :lines: 13-34
+    :lineno-start: 18
+    :lines: 18-33
 
 .. raw:: html
 
     <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: ormsa02.py
+.. literalinclude:: ormsa.py
     :linenos:
-    :lineno-start: 14
-    :lines: 14-37
+    :lineno-start: 18
+    :lines: 18-38
 
 W obydwu przypadkach deklarowanie modelu opiera się na pewnej "klasie" podstawowej,
 którą nazwaliśmy ``BazaModel``. Dziedzicząc z niej, deklarujemy następnie
@@ -155,19 +162,19 @@ wykorzystujemy metody sesji, w ramach której komunikujemy się z bazą.
 
     <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: ormpw03.py
+.. literalinclude:: ormpw.py
     :linenos:
-    :lineno-start: 36
-    :lines: 36-62
+    :lineno-start: 35
+    :lines: 35-63
 
 .. raw:: html
 
     <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: ormsa03.py
+.. literalinclude:: ormsa.py
     :linenos:
-    :lineno-start: 39
-    :lines: 39-64
+    :lineno-start: 40
+    :lines: 40-65
 
 Dodawanie informacji w systemach ORM polega na utworzeniu instancji odpowiedniego
 obiektu i podaniu w jego konstruktorze wartości atrybutów reprezentujących pola rekordu:
@@ -248,19 +255,19 @@ tabelę lub do usunięcia instancji danej klasy.
 
     <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: ormpw04.py
+.. literalinclude:: ormpw.py
     :linenos:
-    :lineno-start: 64
-    :lines: 64-
+    :lineno-start: 65
+    :lines: 65-
 
 .. raw:: html
 
     <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: ormsa04.py
+.. literalinclude:: ormsa.py
     :linenos:
-    :lineno-start: 66
-    :lines: 66-
+    :lineno-start: 67
+    :lines: 67-
 
 Załóżmy, że chcemy zmienić przypisanie ucznia do klasy. W obydwu systemach
 tworzymy więc obiekt reprezentujący ucznia o identyfikatorze "2". Stosujemy
@@ -305,14 +312,14 @@ Zadania dodatkowe
 
 * :download:`orm.zip <orm.zip>`
 
-Kolejne wersje tworzenego kodu znajdziesz w katalogu ``~/python101/docs/bazy/orm``.
+Kolejne wersje tworzenego kodu znajdziesz w katalogu ``~/python101/bazy/orm``.
 Uruchamiamy je wydając polecenia:
 
 .. code-block:: bash
 
-    ~/python101$ cd docs/bazy/orm
-    ~/python101/docs/bazy/orm$ python ormpw0x.py
-    ~/python101/docs/bazy/orm$ python ormsa0x.py
+    ~/python101$ cd bazy/orm
+    ~/python101/bazy/orm$ python ormpw0x.py
+    ~/python101/bazy/orm$ python ormsa0x.py
 
 \- gdzie *x* jest numerem kolejnej wersji kodu.
 

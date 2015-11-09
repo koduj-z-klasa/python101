@@ -10,11 +10,10 @@ if os.path.exists('test.db'):
 baza = SqliteDatabase('test.db')  # ':memory:'
 
 
-class BazaModel(Model):
-
-    """Klasa bazowa"""
+class BazaModel(Model):  # klasa bazowa
     class Meta:
         database = baza
+
 
 # klasy Klasa i Uczen opisują rekordy tabel "klasa" i "uczen"
 # oraz relacje między nimi
@@ -54,6 +53,8 @@ uczniowie = [
 Uczen.insert_many(uczniowie).execute()
 
 # odczytujemy dane z bazy
+
+
 def czytajdane():
     for uczen in Uczen.select().join(Klasa):
         print uczen.id, uczen.imie, uczen.nazwisko, uczen.klasa.nazwa

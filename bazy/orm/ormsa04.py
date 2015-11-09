@@ -14,6 +14,7 @@ baza = create_engine('sqlite:///test.db')  # ':memory:'
 # klasa bazowa
 BazaModel = declarative_base()
 
+
 # klasy Klasa i Uczen opisują rekordy tabel "klasa" i "uczen"
 # oraz relacje między nimi
 
@@ -46,7 +47,7 @@ if not sesja.query(Klasa).count():
     sesja.add(Klasa(nazwa='1B', profil='humanistyczny'))
 
 # tworzymy instancję klasy Klasa reprezentującą klasę "1A"
-klasa = sesja.query(Klasa).filter(Klasa.nazwa == '1A').one()
+klasa = sesja.query(Klasa).filter_by(nazwa='1A').one()
 
 # dodajemy dane wielu uczniów
 sesja.add_all([
@@ -62,3 +63,16 @@ def czytajdane():
     print ""
 
 czytajdane()
+
+# zmiana klasy ucznia o identyfikatorze 2
+uczen = sesja.query(Uczen).filter(Uczen.id == 2).one()
+uczen.klasa_id = sesja.query(Klasa.id).filter(Klasa.nazwa == '1B').scalar()
+
+# usunięcie ucznia o identyfikatorze 3
+sesja.delete(sesja.query(Uczen).get(3))
+
+czytajdane()
+
+# zapisanie zmian w bazie i zamknięcie sesji
+sesja.commit()
+sesja.close()
