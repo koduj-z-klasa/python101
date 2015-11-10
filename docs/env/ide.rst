@@ -125,7 +125,7 @@ Bezpłatna licencja
 ------------------
 
 Każdy nauczyciel może wystąpić o klucz licencyjny przy pomocy `formularza
-<http://www.jetbrains.com/eforms/classroomRequest.action?licenseRequest=PCP04LS#>`_
+<https://www.jetbrains.com/buy/classroom/?product=pycharm>`_
 dostępnego na stronie producenta.
 
 Polski słownik ortograficzny
