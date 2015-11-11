@@ -3,7 +3,7 @@
 Python kreśli
 ################
 
-Jedną z potężniejszych biliotek Pythona jest `matplotlib <http://pl.wikipedia.org/wiki/Matplotlib>`_,
+Jedną z potężniejszych bibliotek Pythona jest `matplotlib <http://pl.wikipedia.org/wiki/Matplotlib>`_,
 która służy do tworzenia różnego rodzaju wykresów. *Pylab* to :term:`API` ułatwiające
 korzystanie z omawianej biblioteki na wzór środowiska `Matlab <http://pl.wikipedia.org/wiki/MATLAB>`_.
 Poniżej pokazujemy, jak łatwo przy użyciu Pythona wizualizować wykresy różnych
@@ -28,7 +28,7 @@ W systemach Windows bibliotekę instalujemy zgodnie z opisem :ref:`przygotowania
 Funkcja liniowa
 ***************
 
-Zabwę zacznijmy w konsoli Pythona:
+Zabawę zacznijmy w konsoli Pythona:
 
 .. raw:: html
 
