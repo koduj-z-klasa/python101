@@ -11,11 +11,15 @@ funkcji.
 
 W systemach Linux instalacja biblioteki sprowadza się do użycia polecenia:
 
+.. raw:: html
+
+    <div class="code_no"><i>Terminal</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
 .. code-block:: bash
 
     ~$ sudo pip install matplotlib
 
-W systemach Windows bibliotekę instalacjujemy zgodnie z opisem :ref:`przygotowania środowiska <windows-env>`.
+W systemach Windows bibliotekę instalujemy zgodnie z opisem :ref:`przygotowania środowiska <windows-env>`.
 
 .. contents::
     :depth: 1
@@ -25,6 +29,10 @@ Funkcja liniowa
 ***************
 
 Zabwę zacznijmy w konsoli Pythona:
+
+.. raw:: html
+
+    <div class="code_no"><i>Terminal</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -59,7 +67,7 @@ wartości. W powyższym przypadku generujemy listę wartości *x* za pomocą fun
 ``range()`` – co warto przetestować w interaktywnej konsoli Pythona.
 Wartości *y* wyliczamy w pętli i zapisujemy w liście.
 
-Dodatkowe **Metody**: ``title()`` ustawia tytuł wykresu, ``grid()`` włącza wyświetlanie
+Dodatkowe metody: ``title()`` ustawia tytuł wykresu, ``grid()`` włącza wyświetlanie
 pomocniczej siatki. Uruchom program.
 
 Ćwiczenie 1
@@ -74,6 +82,10 @@ tekstowych na liczby całkowite. Przetestuj zmodyfikowany kod.
 ============
 
 W konsoli Pythona wydajemy następujące polecenia:
+
+.. raw:: html
+
+    <div class="code_no"><i>Terminal</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -106,29 +118,40 @@ Wykorzystajmy wyrażenie listowe w naszym programie:
 Dwie funkcje
 *************
 
-ZADANIE: wykonaj wykres funkcji *f(x)*, gdzie *x* = <-10;10> z krokiem 0.5,
-*f(x) = x*x/3 dla x < 1 i x > 0*, *f(x) = x/(-3) + a dla x <= 0*. Współczynnik
-*a* podaje użytkownik.
+ZADANIE: wykonaj wykres funkcji:
 
-Ćwiczenie 2
-============
+* *f(x) = x/(-3) + a* dla *x* <= 0,
+* *f(x) = x\*x/3* dla *x* >= 0,
 
-Zanim zrealizujemy zadanie przećwiczmy w konsoli Pythona następujący kod:
-
-.. code-block:: python
-
-    >>> import pylab
-    >>> x = pylab.frange(-10, 11, 0.5)
-    >>> x
-    >>> y = [i**2 for i in x if i <= 0]
-    >>> len(y)
+– gdzie *x* = <-10;10> z krokiem 0.5. Współczynnik *a* podaje użytkownik.
 
 Wykonanie zadania wymaga umieszczenia na wykresie dwóch funkcji.
-Wykorzystamy funkcję ``frange``, która zwraca listę wartości
+Wykorzystamy funkcję ``arange()``, która zwraca listę wartości
 zmiennoprzecinkowych (zob. typ :term:`typy danych`) z zakresu określonego przez
 dwa pierwsze argumenty i z krokiem wyznaczonym przez argument trzeci.
 Drugą przydatną konstrukcją będzie wyrażenie listowe uzupełnione o instrukcję
 warunkową, która ogranicza wartości, dla których obliczane jest podane wyrażenie.
+
+Ćwiczenie 3
+============
+
+Zanim zrealizujemy zadanie przećwiczmy w konsoli Pythona następujący kod:
+
+.. raw:: html
+
+    <div class="code_no"><i>Terminal</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block:: python
+
+    >>> import pylab
+    >>> x = pylab.arange(-10, 10.5, 0.5)
+    >>> x
+    >>> len(x)
+    >>> a = 3
+    >>> y1 = [i / -3 + a for i in x if i <= 0]
+    >>> len(y1)
+
+Uwaga: nie zamykaj tej sesji konsoli, zaraz się nam jeszcze przyda.
 
 W pliku :file:`pylab02.py` umieszczamy poniższy kod:
 
@@ -140,7 +163,49 @@ W pliku :file:`pylab02.py` umieszczamy poniższy kod:
 .. literalinclude:: pylab03.py
     :linenos:
 
-Uruchom program. Udało się nam zrealizować pierwszą część zadania.
+Uruchom program. Nie działa, dostajemy komunikat:
+*ValueError: x and y must have same first dimension*,
+czyli listy wartości *x* i *y1* nie zawierają tyle samo elementów.
+
+Co należy z tym zrobić? Jak wynika z warunków zadania, wartości *y1* obliczane
+są tylko dla argumentów mniejszych od zera. Zatem trzeba ograniczyć listę
+*x*, tak aby zawierała tylko wartości z odpowiedniego przedziału.
+Wróćmy do konsoli Pythona:
+
+Ćwiczenie 4
+============
+
+.. raw:: html
+
+    <div class="code_no"><i>Terminal</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block:: python
+
+    >>> x
+    >>> x[0]
+    >>> x[0:5]
+    >>> x[:5]
+    >>> x[:len(y1)]
+    >>> len(x[:len(y1)])
+
+Uwaga: nie zamykaj tej sesji konsoli, zaraz się nam jeszcze przyda.
+
+Z pomocą przychodzi nam wydobywanie z listy wartości wskazywanych przez
+indeksy liczone od 0. Jednak prawdziwym ułatwieniem jest **notacja wycinania**
+(ang. *slice*), która pozwala podać pierwszy i ostatni indeks interesującego
+nas zakresu. Zmieniamy więc wywołanie funkcji ``plot()``:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block:: python
+
+    pylab.plot(x[:len(y1)], y1)
+
+Uruchom i przetestuj działanie programu.
+
+Udało się nam zrealizować pierwszą część zadania.
 Spróbujmy zakodować część drugą. Dopisujemy:
 
 .. raw:: html
@@ -150,71 +215,75 @@ Spróbujmy zakodować część drugą. Dopisujemy:
 .. highlight:: python
 .. literalinclude:: pylab04.py
     :linenos:
-    :lineno-start: 13
-    :lines: 13-16
+    :lineno-start: 14
+    :lines: 14-16
 
-Po pobraniu współczynnika ``a`` od użytkownika tworzymy wyrażenie listowe
-wyliczające drugą dziedzinę wartości. Następnie do argumentów przekazywanych
+Wyrażenie listowe wylicza nam drugą dziedzinę wartości. Następnie do argumentów
 funkcji ``plot()`` dodajemy drugę parę list. Spróbuj uruchomić program.
-
-Nie działa, dostajemy komunikat *ValueError: x and y must have same first dimension*,
-czyli listy wartości *x* i *y* w którejś z par nie zawierają tyle samo elementów.
-
-Ćwiczenie 3
-============
-
-Przetestujmy kod w konsoli Pythona:
-
-.. code-block:: python
-
-    >>> import pylab
-    >>> x = pylab.frange(-10, 11, 0.5)
-    >>> y1 = [i**2/3 for i in x if i < 1 or i > 0]
-    >>> len(x) == len(y1)
-    >>> a = 2
-    >>> y2 = [i/-3 + a for i in x if i <= 0]
-    >>> len(x) == len(y2)
-    >>> len(x)
-    >>> len(y2)
-
-Uwaga: nie zamykaj tej sesji konsoli, zaraz się nam jeszcze przyda.
-
-Szybko zauważymy, że lista ``y2`` zawiera mniej wartości niż dziedzina ``x``.
-Co należy z tym zrobić? Jak wynika z warunków zadania, wartości *y2* obliczane
-są tylko dla argumentów mniejszych od zera. Zatem trzeba ograniczyć listę
-*x*, tak aby zawierała tylko wartości z odpowiedniego przedziału.
-Wróćmy do konsoli Pythona:
-
-Ćwiczenie 4
-============
-
-.. code-block:: python
-
-    >>> x
-    >>> x[0]
-    >>> x[0:5]
-    >>> x[:5]
-    >>> x[:len(y2)]
-    >>> len(x[:len(y2)])
-
-Z pomocą przychodzi nam wydobywanie z listy wartości wskazywanych przez
-indeksy liczone od 0. Jednak prawdziwym ułatwieniem jest notacja wycinania
-(ang. *slice*), która pozwala podać pierwszy i ostatni indeks interesującego
-nas zakresu. Zmieniamy więc wywołanie funkcji ``plot()``:
-
-.. code-block:: python
-
-    pylab.plot(x,y1,x[:len(y2)],y2)
-
-Uruchom i przetestuj działanie programu.
+Nie działa, znowu dostajemy komunikat: *ValueError: x and y must have same first dimension*.
+Teraz jednak wiemy już dlaczego...
 
 Ćwiczenie 5
 ============
 
-Spróbuj samodzielnie przygotować wykres funkcji kwadratowej:
+Przetestujmy kod w konsoli Pythona:
+
+.. raw:: html
+
+    <div class="code_no"><i>Terminal</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block:: python
+
+    >>> len(x)
+    >>> x[-10]
+    >>> x[-10:]
+    >>> len(y2)
+    >>> x[-len(y2):]
+
+Jak widać, w **notacji wycinania** możemy używać indeksów ujemnych wskazujących
+elementy od końca listy. Jeżeli taki indeks umieścimy jako pierwszy przed
+dwukropkiem, czyli separatorem przedziału, dostaniemy resztę elementów listy.
+
+Na koniec musimy więc zmodyfikować funkcję ``plot()``:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block:: python
+
+    pylab.plot(x[:len(y1)], y1, x[-len(y2):], y2)
+
+Ćwiczenie 6
+============
+
+Spróbuj dziedziny wartości *x* dla funkcji *y1* i *y2* wyznaczyć nie za pomocą
+notacji wycinkowej, ale przy użyciu wyrażeń listowych, których wynik przypisz
+do zmiennych *x1* i *x2*. Użyj ich jako argumentów funkcji ``plot()`` i przetestuj
+program.
+
+Zadania dodatkowe
+*****************
+
+Przygotuj wykres funkcji kwadratowej:
 *f(x) = a*x^2 + b*x + c*, gdzie *x* = <-10;10> z krokiem 1, przyjmij następujące
 wartości współczynników: *a = 1, b = -3, c = 1*.
 
 Uzyskany wykres powinien wyglądać następująco:
 
 .. figure:: img/pylab01.png
+
+Źródła
+*******************
+
+* :download:`pylab.zip <pylab.zip>`
+
+Kolejne wersje tworzonych skryptów znajdziesz w katalogu ``~/python101/pylab``.
+Uruchamiamy je wydając polecenia:
+
+.. code-block:: bash
+
+    ~/python101$ cd pylab
+    ~/python101/pylab$ python pylab0x.py
+
+\- gdzie *x* jest numerem kolejnej wersji kodu.
