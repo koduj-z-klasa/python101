@@ -142,3 +142,48 @@ jest wskazanie pliku słownika. Pod linuksem możemy sobie wyprodukować słowni
 W ustawieniach :kbd:`Ctrl+Alt+S` szukamy `spell` i dodajemy
 ``custom dictionaries folder`` wskazując na ``/usr/share/dictionaries-common/``
 (lokalizacja w Xubuntu).
+
+Sublime Text 3
+===============
+
+Profesjonalny edytor dla programistów, dzięki systemowi dodatków można go skonfigurować
+jako środowisko IDE do programowania w dowolnym języku. Poza konfigurowalnością zaletą
+jest szybkość działania i małe użycie zasobów systemowych.
+
+Unikalne cechy:
+
+* Wygodne otwieranie plików: :kbd:`CTRL+P`
+* Wielokrotna selekcja i edycja: po zaznaczeniu zmiennej :kbd:`CTRL+D`, :kbd:`CTRL+D`... itd.
+* Lista wszystkich poleceń z menu: :kbd:`CTRL+SHIFT+P`
+* Równoczesna edycja kilku plików: *View/Layout*
+
+Instalacja Linux
+-----------------
+
+W Debianie i systemach na nim opartych, czyli (X)Ubuntu czy Linux Mint, wchodzimy na stronę
+`Sublime Text 3 <http://www.sublimetext.com/3>`_ i pobieramy archiwum *Ubuntu 64 bit*
+lub *Ubuntu 32 bit* zgodne z naszą wersją systemu.
+Następnie instalujemy wydając polecenie w terminalu w katalogu z pobranym plikiem, np.:
+
+.. code-block:: bash
+
+    sudo dpkg -i sublime-text_build-3083_amd64.deb
+
+W Arch Linux i systemach na nim opartych, np. Manjaro Linux, edytor dostępny jest w repozytoriach
+AUR (Arch User Repository), można go zainstalować np. przy użyciu pomocniczego narzędzia
+``pacaur``:
+
+.. code-block:: bash
+
+    pacaur -S sublime-text-dev
+
+Instalacja Windows
+------------------
+
+Po wejściu na stronę `Sublime Text 3 <http://www.sublimetext.com/3>`_ pobieramy archiwum
+dla wersji 32- lub 64-bitowej. Dalej instalujemy w standardowy sposób uruchamiając
+dwukrotnym kliknięciem pobrany plik.
+
+Konfiguracja
+------------
+[todo]
