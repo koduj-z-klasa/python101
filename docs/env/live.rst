@@ -49,7 +49,7 @@ W Windows
 
 * Pobieramy :term:`obraz iso` wybranej :ref:`dystrybucji <dystrybucje>`:
 
-  - `LxPupTahr Full <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/kzkbox_full.iso?download=1>`_ (525MB, zawiera edytory Geany 1.24, PyCharm Professional 4.5.4 i SublimeText 3)
+  - `LxPupTahr Full <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/kzkbox_full.iso?download=1>`_ (570MB, zawiera edytory Geany 1.24, PyCharm Professional 5.0.1 i SublimeText 3)
   - lub: `LxPupTahr Base <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/kzkbox.iso?download=1>`_ (320MB, zawiera edytor Geany 1.24)
   - lub: `Xubuntu <http://se.archive.ubuntu.com/mirror/cdimage.ubuntu.com/xubuntu/releases/14.04/release/xubuntu-14.04.2-desktop-i386.iso>`_ (975MB), `SRU v.37 32-bit <http://iso.sru.e-swoi.pl/SRU_MT-14.04-37.iso>`_ (2,4GB), `FREE_DESKTOP_CEO <http://cyfrowaszkola.waw.pl/_pliki/FREE_Desktop_CEO_02.iso>`_ (2,1GB)
 

@@ -99,8 +99,8 @@ W systemach Linux alternatywnie można użyć poleceń w terminalu:
 
 .. code-block:: bash
 
-    ~$ wget http://download.jetbrains.com/python/pycharm-professional-4.5.3.tar.gz -O - | tar -xz
-    ~$ ./pycharm-4.5.3/bin/pycharm.sh
+    ~$ wget http://download.jetbrains.com/python/pycharm-professional-5.0.1.tar.gz -O - | tar -xz
+    ~$ ./pycharm-5.0.1/bin/pycharm.sh
 
 Jak widać, program zostanie zainstalowany w katalogu domowym użytkownika,
 a uruchamiamy go drugim z podanych poleceń.
@@ -146,6 +146,8 @@ W ustawieniach :kbd:`Ctrl+Alt+S` szukamy `spell` i dodajemy
 Sublime Text 3
 ===============
 
+.. figure:: img/st3.png
+
 Profesjonalny edytor dla programistów, dzięki systemowi dodatków można go skonfigurować
 jako środowisko IDE do programowania w dowolnym języku. Poza konfigurowalnością zaletą
 jest szybkość działania i małe użycie zasobów systemowych.
@@ -186,4 +188,30 @@ dwukrotnym kliknięciem pobrany plik.
 
 Konfiguracja
 ------------
-[todo]
+
+Konfiguracja edytora polega na zainstalowaniu kilku dodatków i zmianie niektórych ustawień. Aby uprościć sprawę, wystarczy pobrać przygotowane przez nas `archiwum st3.zip <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/st3.zip?download=1>`_ i rozpakować do odpowiedniego katalogu:
+
+* w systemie Linux ściągnięte archiwum rozpakowujemy do katalogu :file:`~/.config`, np. za pomocą menedżera plików (uwaga: katalog *.config* jest ukryty i warto użyć skrótu :kbd:`CTRL+H`) lub polecenia w terminalu:
+
+.. code-block:: bash
+
+    unzip st3.zip -d ~/.config
+
+* w systemie Windows pobrane archiwum wypakowujemy do podkatalogu :file:`C:\\Użytkownicy\\nazwa_użytkownika\\Dane palikacji` i zmieniamy nazwę folderu :file:`sublime-text-3` na :file:`Sublime Text 3`.
+
+Przygotowane ustawienia zawierają:
+
+* `Package Control <https://packagecontrol.io/installation#st3>`_ – menedżer pakietów dla ST3. Po zainstalowaniu skrót :kbd:`CTRL+SHIFT+P` wywołuje listę, w które wpisujemy "install" i wybieramy *Package Control: Install Package*, teraz możemy wskazać pakiet do zainstalowania.
+* Globalne ustawienia edytora zdefiniowane w *Preferences >Settings – User*.
+* Ustawienia dla wybranego języka programowania dostępne są po wybraniu *Preferences > Settings – More > Syntax Specific – User*, plik należy zapisać pod nazwą *LANGUAGE.sublime-settings*, np. *Python.sublime-settings* w podkatalogu :file:`Packages/User`.
+* `Anaconda <https://packagecontrol.io/packages/Anaconda>`_ – podstawowy dodatek do programowania w Pythonie (autouzupełniania, sprawdzanie składni, podgląd dokumentacji itp.).
+* `Emmet <https://packagecontrol.io/packages/Emmet>`_ – oferuje skróty ułatwiające tworzenie dokumentów HTML i CSS.
+* `SublimeREPL <https://packagecontrol.io/packages/SublimeREPL>`_ – pozwala uruchamiać interpreter Pythona w edytorze za pomocą skrótu :kbd:`CTRL+SHIFT+R` lub :kbd:`CTRL+B`.
+* `Color Picker <https://packagecontrol.io/packages/ColorPicker>`_ – dodaje próbnik kolorów wywoływany skrótem :kbd:`CTRL+SHIFT+C`.
+* `GitSavvy <https://packagecontrol.io/packages/GitSavvy>`_ – obsługa git-a i GitHub-a.
+* `Restructured Text Improved <https://packagecontrol.io/packages/RestructuredText%20Improved>`_ – podświetlanie składni dokumentów RST.
+* `Restructured Text (RST) Snippets <https://packagecontrol.io/packages/Restructured%20Text%20%28RST%29%20Snippets>`_ – skróty formatujące dokumenty RST.
+
+.. tip::
+
+    Samodzielna instalacja powyższych dodatków po zainstalowaniu *Package Control* nie nastręcza problemów. Z kolei dostosowanie ustawień wymaga zapoznania się z `dokumentacją ST3 <http://sublime-text-unofficial-documentation.readthedocs.org/en/latest/reference/settings.html>`_ i dodatków, aby wiedzieć, co i w jaki sposób chcemy zmieniać.
