@@ -1,0 +1,3 @@
+[submodule "pong"]
+	path = pong
+	url = git@github.com:koduj-z-klasa/pong.git
