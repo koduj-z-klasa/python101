@@ -15,7 +15,7 @@ W katalogu domowym użytkownika uruchamiamy komendę:
 
 .. code-block:: bash
 
-    ~$ git clone https://github.com/koduj-z-klasa/python101.git
+    ~$ git clone --recursive https://github.com/koduj-z-klasa/python101.git
 
 W efekcie otrzymamy katalog ``python101`` z kodami źródłowymi materiałów.
 
