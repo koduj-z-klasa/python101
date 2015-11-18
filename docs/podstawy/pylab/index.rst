@@ -262,6 +262,28 @@ notacji wycinkowej, ale przy użyciu wyrażeń listowych, których wynik przypis
 do zmiennych *x1* i *x2*. Użyj ich jako argumentów funkcji ``plot()`` i przetestuj
 program.
 
+Ruchy Browna
+***************
+
+Napiszemy program, który symuluje `ruchy Browna <https://pl.wikipedia.org/wiki/Ruchy_Browna>`_. Jak wiadomo są to chaotyczne ruchy cząsteczek, które będziemy mogli zwizualizować w płaszczyźnie dwuwymiarowej.
+Na początku przyjmujemy następujące założenia:
+
+* cząsteczka, której ruch będziemy śledzić, znajduje się w początku układu współrzędnych (0, 0);
+* w każdym ruchu cząsteczka przemieszcza się o stały wektor o wartości 1;
+* kierunek ruchu wyznaczać będziemy losując kąt z zakresu <0; 2Pi>;
+* współrzędne kolejnego położenia cząsteczki wyliczać będziemy ze wzorów:
+
+.. math::
+    xn = xn-1 + r * cos(\fi) \\
+    yn = yn-1 + r * sin(\fi)
+
+  – gdzie: *r* – długość jednego kroku, *fi* – kąt wskazujący kierunek ruchu w odniesieniu do osi *OX*.
+
+* końcowy wektor przesunięcia obliczymy ze wzoru:
+
+.. math::
+    |s|
+
 Zadania dodatkowe
 *****************
 
