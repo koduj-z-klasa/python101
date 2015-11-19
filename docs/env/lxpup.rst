@@ -44,16 +44,16 @@ Opcjonalnie rozszerzamy domyślną nazwę i potwierdzamy zapis.
 Należy spokojnie poczekać na utworzenie pliku i wyłącznie komputera.
 Po ponownym uruchomieniu system będzie gotowy do pracy :-)
 
-System w dostosowanej wersji zawiera:
+System w naszej wersji *FULL* zawiera:
 
 * spolszczone prawie wszystkie elementy systemu;
 * zaktualizowane listy oprogramowania;
 * zaktualizowaną i spolszczoną przeglądarkę `Pale Moon <https://www.palemoon.org/>_`
   (otwartoźrodłówa, oparta na Firefoksie);
 * fonty Ubuntu oraz podstawowe z Windows;
-* pakiety *python-pip*, *python-virtualenv*, *git* oraz bibliotekę *Pygame*;
+* podstawowe pakiety narzędziowe: *python-pip*, *python-virtualenv*, *git*;
 * wszystkie biblioteki Pythona wymagane w poszczególnych scenariuszach;
-* skonfigurowane środowiska programistyczne: *Geany IDE*, w wersji *Full* obrazu iso PyCharm Professional 4.5.4 i Sublime Text 3;
+* środowiska programistyczne: *Geany IDE*, a w wersji *FULL* *PyCharm Professional* i *Sublime Text*;
 * skonfigurowane elementy interfejsu LXDE;
 * skonfigurowane skróty klawiszowe.
 
@@ -84,6 +84,29 @@ informacyjnym "Ok".
 .. figure:: lxpupimg/internet03.png
 .. figure:: lxpupimg/internet04.png
 .. figure:: lxpupimg/internet05.png
+
+.. _ins-edytory:
+
+Instalacja edytorów PyCharm i/lub Sublime Text
+**********************************************
+
+Dodanie edytorów *PyCharm* i/lub *Sublime Text3* do wersji podstawowej jest bardzo proste.
+Sciągamy odpowiedni(e) plik(i) SFS:
+
+* `PyCharm 5.0.1 <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/pycharm-5.0.1_15.05.sfs?download=1>`_  i wymagane środowisko `Java JRE <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/jre1.7.0_80.sfs?download=1>`_
+* `Sublime Text 3 <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/sublime-text3_15.05.sfs?download=1>`_
+
+Umieszczamy pliki w katalogu głównym pendrajwa z systemem LxPup. W działającym systemie wchodzimy
+do katalogu :file:`/mnt/home` (tu zamontowany jest katalog główny pendrajwa), klikamy wgrany plik
+SFS i wybieramy "Załaduj". Można też wydać polecenie ``sfs_load`` w terminalu lub wybrać
+*Start/Konfiguracja/SFS-Ładowanie w locie*. Z rozwijalnej listy wybieramy plik sfs i ładujemy.
+Na koniec restartujemy menedżer okien okien: *Start/Zamknij/Restart WM*.
+
+PyCharma można też zainstalować/zaktualizować w działającym systemie LxPup za pomocą polecenia
+w terminalu ``install-pycharm.sh ver``, w którym *ver* oznacza instalowaną wersję, np. *5.0.1*.
+Niestety, tak wgrany program zajmuje miejsce w pliku zapisu, więc nie polecamy tego.
+Lepiej pobrać zaktualizowany plik SFS (pamiętaj, żeby wyładować i usunąć poprzedni).
+Zobacz też: :ref:`pliki SFS <pet-sfs>`.
 
 Przeglądarka WWW
 ************************
@@ -140,54 +163,30 @@ Na koniec zatwierdzamy instalację przyciskiem "Do it!"
     warto instalować z repozytoriów, bo nie zawsze znajdziemy tam oprogramowanie
     odpowiednio dostosowane do naszej dystrybucji.
 
-*LxPup* oferuje jednak dwa inne sposoby doinstalowywania oprogramowania na żądanie!
+.. _pet-sfs:
+
+Pliki PET i SFS
+***************
+
+*LxPup* oferuje dwa kolejne sposoby doinstalowywania oprogramowania na żądanie!
 Pierwszy to paczki w formacie `PET <http://puppylinux.org/wikka/PETs?redirect=no>`_,
 dostępne np. na stronie `pet_packages-tahr <http://distro.ibiblio.org/puppylinux/pet_packages-tahr/>`.
 Ściągamy je, a następnie instalujemy dwukrotnie klikając (uruchomi się narzędzie *petget*).
 
 .. figure:: lxpupimg/pet01.png
 
-Drugim formatem stosowanym dla dużych pakietów, które używamy od czasu
-do czasu, jest format `SFS <http://puppylinux.org/wikka/SquashFS>`_.
-Spakowane w ten sposób oprogramowanie możemy dodawać "w locie" w trakcie
-działania systemu. Korzystamy z narzędzia *SFS-Ładuj w locie* (Start/Konfiguracja).
+Drugim formatem stosowanym dla dużych pakietów jest format `SFS <http://puppylinux.org/wikka/SquashFS>`_.
+Spakowane w ten sposób oprogramowanie możemy dodawać i usuwać "w locie" w trakcie
+działania systemu. Pobrane pliki SFS należy umieścić w głównym katalogu pendrajwa dostępnym w ścieżce
+:file:`/mnt/home`. Następnie używamy narzędzia *Start/Konfiguracja/SFS-Ładuj w locie*, które można
+uruchomić również poleceniem ``sfs_load`` w terminalu. Z rozwijalnej listy wybieramy plik SFS
+i ładujemy go.
 
-.. tip::
+.. attention::
 
-    Duże pliki SFS itp. zasoby warto przechowywać nie w katalogu domowym
-    :file:`/root`, ale w katalogu głównym startowego pendrajwa. Jest on
-    łatwo dostępny podczas pracy z systemem w ścieżce :file:`/initrd/mnt/dev_save/`,
-    łatwo go również otworzyć z lewego panelu w menedżerze plików.
-    Zazwyczaj oznaczony będzie jako ``sdb1``.
+  Zanim usuniesz plik SFS **wyładuj go** za pomocą narządzia *SFS-Ładuj w locie*.
 
 .. figure:: lxpupimg/pcmanfm01.png
-
-.. _ins-pycharm:
-
-Instalacja PyCharm Professional
-===============================
-
-W wersji "full" PyCharm jest już zainstalowany. W wersji podstawowej
-jeżeli nawiązaliśmy połączenie z internetem, w terminalu wydajemy polecenie:
-
-.. code-block:: bash
-
-    ~# install-pycharm.sh ver
-
-– gdzie *ver* oznacza wersję, którą chcemy zainstalować, np. `4.5.3`.
-Skrypt spróbuje pobrać odpowiednie archiwum. W przypadku niepowodzenia
-można podać inną wersję lub ściągnąć instalator ze `strony <https://www.jetbrains.com/pycharm/download/>`_,
-na której można też sprawdzić oznaczenie najnowszej wersji. Pobrane
-archiwum, np. ``pycharm-professional-4.5.3.tar.gz``, należy umieścić w katalogu
-:file:`~/Pobrane` lub – jeżeli pobieramy w innym systemie – w katalogu :file:`Dodatki`
-na pendrajwie z LxPupTahr. Skrypt spróbuje zainstalować program z wymienionych lokalizacji.
-
-PyCharm wymaga do działania środowiska JRE (Java Runtime Environment), które
-dostępne jest w pliku SFS umieszczonym w katalogu "Dodatki" na pendrajwie.
-Najnowsza wersja Javy dostępna jest również `w sieci <https://copy.com/9WzmbHVn8T8UxsSN>`_.
-Plik SFS instalujemy za pomocą polecenia w terminalu ``sfs_load`` lub
-*Start/Konfiguracja/SFS-Ładowanie w locie*. Na koniec restartujemy menedżer
-okien: *Start/Zamknij/Restart WM* lub ponownie uruchamiamy system.
 
 .. _klawiatura:
 

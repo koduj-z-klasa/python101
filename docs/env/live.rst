@@ -21,45 +21,32 @@ również w maszynie wirtualnej, na dysku twardym lub wykorzystać do odzyskiwan
 Poniżej opisujemy instalację *Linux Live* na kluczu USB oraz w maszynie wirtualnej tak,
 aby można było instalować oprogramowanie, zapisywać ustawienia i tworzone dokumenty.
 
-.. _dystrybucje:
-
-Polecane dystrybucje
----------------------
-
-* `LxPupTahr 15.05.02 <http://lx-pup.weebly.com/>`_ – system zaprojektowany
-  od podstaw jako *live* z możliwością zapisywania zmian. Oparty na stabilnym
-  Ubuntu 14.04 LTS. Środowisko graficzne LXDE. Nasza dostosowana wersja zawiera
-  wszystkie dodatkowe narzędzia i wymagane biblioteki.
-  **System ten polecamy do realizowania scenariuszy na warsztatach i nie tylko.**
+Polecamy dystrybucję `LxPupTahr 15.05.02 <http://lx-pup.weebly.com/>`_ – zaprojektowaną
+od podstaw jako *live* z możliwością zapisywania zmian. Oparta jest na stabilnym
+Ubuntu 14.04 LTS. Zawiera środowisko graficzne LXDE.
+**Na potrzeby szkoleń** i **do relalizacji naszych scenariuszy** przygotowaliśmy dostosowaną
+wersję *KzkBox*, która zawiera wszystkie dodatkowe narzędzia i wymagane biblioteki.
 
 .. figure:: lxpupimg/lxpuptahr.png
 
    System LxPupTahr
-
-W trybie live mogą być również zainstalowane inne dystrybucje, np.:
-`Xubutnu 14.04 LTS <http://xubuntu.org/>`_, `Szkolny Remiks Ucznia v.37 <Szkolny Remiks Ucznia: http://sru.e-swoi.pl>`_
-czy `FREE_DESKTOP v.02 <http://cyfrowaszkola.waw.pl/free_desktop-edukacyjny-remiks-dla-wszystkich/>`_.
-Są one oparte na stabilnych wydaniach Ubuntu i oferują środowisko graficzne XFCE.
-Do realizowania naszych scenariuszy wymagają doinstalowania części narzędzi i bibliotek.
 
 .. _usb-creator:
 
 W Windows
 ===================
 
-* Pobieramy :term:`obraz iso` wybranej :ref:`dystrybucji <dystrybucje>`:
+* Pobieramy :term:`obraz iso`:
 
   - `LxPupTahr Full <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/kzkbox_full.iso?download=1>`_ (570MB, zawiera edytory Geany 1.24, PyCharm Professional 5.0.1 i SublimeText 3)
-  - lub: `LxPupTahr Base <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/kzkbox.iso?download=1>`_ (320MB, zawiera edytor Geany 1.24)
-  - lub: `Xubuntu <http://se.archive.ubuntu.com/mirror/cdimage.ubuntu.com/xubuntu/releases/14.04/release/xubuntu-14.04.2-desktop-i386.iso>`_ (975MB), `SRU v.37 32-bit <http://iso.sru.e-swoi.pl/SRU_MT-14.04-37.iso>`_ (2,4GB), `FREE_DESKTOP_CEO <http://cyfrowaszkola.waw.pl/_pliki/FREE_Desktop_CEO_02.iso>`_ (2,1GB)
+  - lub: `LxPupTahr Base <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/kzkbox.iso?download=1>`_ (320MB, zawiera edytor Geany 1.24, edytory PyCharm i SublimeText można łatwo doinstalować)
 
 * Do wgrania *LxPupTahr* pobieramy program `Rufus <https://rufus.akeo.ie/>`_.
-  Dla pozostałych: `program Unetbootin <http://unetbootin.sourceforge.net/unetbootin-windows-latest.exe>`_.
 
-* Wpinamy pendrajwa o pojemności min. 2GB dla dystrybucji *LxPupTahr*, 4GB – dla pozostałych.
+* Wpinamy pendrajwa o pojemności min. 2GB dla dystrybucji *LxPupTahr*.
   Pendrajw powinien mieć przynajmniej jedną główną i aktywną partycję FAT32 – tak jest zazwyczaj.
 
-* **LxPupTahr**: po uruchomieniu *Rufusa* z uprawnieniami administratora z listy "Urządzenie" wybierz pendrajwa,
+* Po uruchomieniu *Rufusa* z uprawnieniami administratora z listy "Urządzenie" wybierz pendrajwa,
   zaznacz opcję "Utwórz bootowalny dysk używając" -> "Obraz ISO", kliknij ikonę obok
   i wskaż ściągnięty obraz iso, wybierz "Opcje formatowania" i zaznacz
   "Dodaj łatkę dla starych biosów"; kliknij "Start" i poczekaj do 5 min. na napis "Gotowe".
@@ -68,10 +55,27 @@ W Windows
 
 .. tip::
 
-  Jeżeli wybrałeś system *LxPupTahr*, przeczytaj :ref:`Pierwsze uruchomienie <lxpuptahr>`!!!
+  Po nagraniu systemu *LxPupTahr*, koniecznie przeczytaj :ref:`Pierwsze uruchomienie <lxpuptahr>`!!!
+  Jeżeli pobrałeś wersję BASE, przeczytaj jak łatwo dodać :ref:`edytory PyCharm i/lub Sublime Text3 <ins-edytory>`.
 
-* *Xubuntu*, *SRU*, *FREE DESKTOP*: po uruchomieniu programu *Unetbootin*
-  zaznaczamy opcję "Obraz dysku", klikamy przycisk "..." i wskazujemy
+.. _dystrybucje:
+
+W trybie live mogą być również zainstalowane również inne dystrybucje, np.:
+`Xubutnu 14.04 LTS <http://xubuntu.org/>`_, `Szkolny Remiks Ucznia v.37 <Szkolny Remiks Ucznia: http://sru.e-swoi.pl>`_
+czy `FREE_DESKTOP v.02 <http://cyfrowaszkola.waw.pl/free_desktop-edukacyjny-remiks-dla-wszystkich/>`_.
+Są one oparte na stabilnych wydaniach Ubuntu i oferują środowisko graficzne XFCE.
+Do realizowania naszych scenariuszy wymagają doinstalowania części narzędzi i bibliotek.
+Aby je zainstalować na pendrajwie:
+
+* Pobieramy wybrany obraz iso:
+
+  - `Xubuntu <http://se.archive.ubuntu.com/mirror/cdimage.ubuntu.com/xubuntu/releases/14.04/release/xubuntu-14.04.2-desktop-i386.iso>`_ (975MB)
+  - `SRU v.37 32-bit <http://iso.sru.e-swoi.pl/SRU_MT-14.04-37.iso>`_ (2,4GB)
+  - `FREE_DESKTOP_CEO <http://cyfrowaszkola.waw.pl/_pliki/FREE_Desktop_CEO_02.iso>`_ (2,1GB)
+
+* Pobieramy i uruchamiamy `program Unetbootin <http://unetbootin.sourceforge.net/unetbootin-windows-latest.exe>`_.
+* Wpinamy pendrajwa o pojemności min. 4GB.
+* W programie *Unetbootin* zaznaczamy opcję "Obraz dysku", klikamy przycisk "..." i wskazujemy
   pobrany obraz. W polu "Przestrzeń używana do zachowania plików..."
   wpisujemy min. **512**. W polu "Napęd:" wskazujemy pendrajwa i klikamy "OK".
   Czekamy w zależności od wybranej dystrybucji i prędkości klucza USB od 5-25 minut.
@@ -104,7 +108,7 @@ W Linuksie
     ~# pacman -Syu
     ~# pacman -S unetbootin
 
-* Wpinamy pendrajwa o pojemności min. 4GB dla dystrybucji *SRU* (*Xubuntu*). Pendrajw
+* Wpinamy pendrajwa o pojemności min. 2GB dla dystrybucji *LxPup* (4GB dla innych). Pendrajw
   powinien mieć przynajmniej jedną główną i aktywną partycję FAT32 – tak jest zazwyczaj.
 * Po uruchomieniu programu "Unetbootin" zaznaczamy opcję "Obraz dysku", klikamy
   przycisk "..." i wskazujemy pobrany obraz.
