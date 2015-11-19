@@ -1,3 +1,6 @@
 [submodule "pong"]
 	path = pong
 	url = git@github.com:koduj-z-klasa/pong.git
+[submodule "pylab"]
+	path = pylab
+	url = git@github.com:koduj-z-klasa/pylab.git
