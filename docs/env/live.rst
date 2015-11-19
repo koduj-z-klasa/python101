@@ -68,7 +68,7 @@ W Windows
 
 .. tip::
 
-    Jeżeli wybrałeś system *LxPupTahr*, przeczytaj :ref:`Pierwsze uruchomienie <lxpuptahr>`!!!
+  Jeżeli wybrałeś system *LxPupTahr*, przeczytaj :ref:`Pierwsze uruchomienie <lxpuptahr>`!!!
 
 * *Xubuntu*, *SRU*, *FREE DESKTOP*: po uruchomieniu programu *Unetbootin*
   zaznaczamy opcję "Obraz dysku", klikamy przycisk "..." i wskazujemy

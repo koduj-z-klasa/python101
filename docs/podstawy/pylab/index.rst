@@ -274,15 +274,34 @@ Na początku przyjmujemy następujące założenia:
 * współrzędne kolejnego położenia cząsteczki wyliczać będziemy ze wzorów:
 
 .. math::
-    xn = xn-1 + r * cos(\fi) \\
-    yn = yn-1 + r * sin(\fi)
 
-  – gdzie: *r* – długość jednego kroku, *fi* – kąt wskazujący kierunek ruchu w odniesieniu do osi *OX*.
+    x_n = x_{n-1} + r * cos(\phi)
 
-* końcowy wektor przesunięcia obliczymy ze wzoru:
+    y_n = y_{n-1} + r * sin(\phi)
 
-.. math::
-    |s|
+
+– gdzie: *r* – długość jednego kroku, :math:`\phi` – kąt wskazujący kierunek ruchu w odniesieniu do osi *OX*.
+
+* końcowy wektor przesunięcia obliczymy ze wzoru: :math:`|s| = \sqrt{(x^2 * y^2)}`
+
+Zacznijmy od wyliczenia współrzędnych opisujących ruch cząsteczki. Do pustego pliku o nazwie :file:`rbrowna.py` wpisujemy:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: rbrowna01.py
+    :linenos:
+
+Funkcje trygonometryczne zawarte w module ``math`` wymagają kąta podanego w radianach,
+dlatego wylosowany kąt po zamianie na liczbę zmiennoprzecinkową mnożymy przez wyrażenie
+``math.pi / 180``. Uruchom i przetestuj kod.
+
+Do przygotowania wykresu ilustrującego ruch cząsteczeki generowane współrzędne musimy
+zapisać w listach. Dopiszmy więc następujący kod:
+
+
 
 Zadania dodatkowe
 *****************

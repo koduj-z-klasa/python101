@@ -7,8 +7,8 @@ import random
 
 n = int(raw_input("Ile ruchów? "))
 x = y = 0
-wx = [0]
-wy = [0]
+wsp_x = [0]
+wsp_y = [0]
 nazwapliku = "rbrowna.xls"
 with open(nazwapliku, "w") as plik:
     print >>plik, "x\ty"
@@ -19,11 +19,11 @@ with open(nazwapliku, "w") as plik:
         y = y + math.sin(rad)
         print x, y
         print >>plik, str(x) + "\t" + str(y)
-        wx.append(x)
-        wy.append(y)
+        wsp_x.append(x)
+        wsp_y.append(y)
 
 s = math.sqrt(x**2 + y**2)
-p.plot(wx, wy, "o:", color="green", linewidth="3", alpha=0.5)
+p.plot(wsp_x, wsp_y, "o:", color="green", linewidth="3", alpha=0.5)
 # r:., r:+, r., r+, o:, +:, color="green"
 p.legend(["Dane x, y\nPrzemieszczenie: " + str(s)], loc="upper left")
 p.xlabel("Wsp_x")
