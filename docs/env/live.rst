@@ -25,7 +25,7 @@ Polecamy dystrybucję `LxPupTahr 15.05.02 <http://lx-pup.weebly.com/>`_ – zapr
 od podstaw jako *live* z możliwością zapisywania zmian. Oparta jest na stabilnym
 Ubuntu 14.04 LTS. Zawiera środowisko graficzne LXDE.
 **Na potrzeby szkoleń** i **do relalizacji naszych scenariuszy** przygotowaliśmy dostosowaną
-wersję *KzkBox*, która zawiera wszystkie dodatkowe narzędzia i wymagane biblioteki.
+wersję, która zawiera wszystkie dodatkowe narzędzia i wymagane biblioteki.
 
 .. figure:: lxpupimg/lxpuptahr.png
 
@@ -43,12 +43,12 @@ W Windows
 
 * Do wgrania *LxPupTahr* pobieramy program `Rufus <https://rufus.akeo.ie/>`_.
 
-* Wpinamy pendrajwa o pojemności min. 2GB dla dystrybucji *LxPupTahr*.
+* Wpinamy pendrajwa o pojemności min. 2GB.
   Pendrajw powinien mieć przynajmniej jedną główną i aktywną partycję FAT32 – tak jest zazwyczaj.
 
 * Po uruchomieniu *Rufusa* z uprawnieniami administratora z listy "Urządzenie" wybierz pendrajwa,
   zaznacz opcję "Utwórz bootowalny dysk używając" -> "Obraz ISO", kliknij ikonę obok
-  i wskaż ściągnięty obraz iso, wybierz "Opcje formatowania" i zaznacz
+  i wskaż ściągnięty obraz iso. Następnie wybierz "Opcje formatowania" i zaznacz
   "Dodaj łatkę dla starych biosów"; kliknij "Start" i poczekaj do 5 min. na napis "Gotowe".
 
 .. figure:: img/rufus02.jpg
@@ -58,34 +58,12 @@ W Windows
   Po nagraniu systemu *LxPupTahr*, koniecznie przeczytaj :ref:`Pierwsze uruchomienie <lxpuptahr>`!!!
   Jeżeli pobrałeś wersję BASE, przeczytaj jak łatwo dodać :ref:`edytory PyCharm i/lub Sublime Text3 <ins-edytory>`.
 
-.. _dystrybucje:
-
-W trybie live mogą być również zainstalowane również inne dystrybucje, np.:
-`Xubutnu 14.04 LTS <http://xubuntu.org/>`_, `Szkolny Remiks Ucznia v.37 <Szkolny Remiks Ucznia: http://sru.e-swoi.pl>`_
-czy `FREE_DESKTOP v.02 <http://cyfrowaszkola.waw.pl/free_desktop-edukacyjny-remiks-dla-wszystkich/>`_.
-Są one oparte na stabilnych wydaniach Ubuntu i oferują środowisko graficzne XFCE.
-Do realizowania naszych scenariuszy wymagają doinstalowania części narzędzi i bibliotek.
-Aby je zainstalować na pendrajwie:
-
-* Pobieramy wybrany obraz iso:
-
-  - `Xubuntu <http://se.archive.ubuntu.com/mirror/cdimage.ubuntu.com/xubuntu/releases/14.04/release/xubuntu-14.04.2-desktop-i386.iso>`_ (975MB)
-  - `SRU v.37 32-bit <http://iso.sru.e-swoi.pl/SRU_MT-14.04-37.iso>`_ (2,4GB)
-  - `FREE_DESKTOP_CEO <http://cyfrowaszkola.waw.pl/_pliki/FREE_Desktop_CEO_02.iso>`_ (2,1GB)
-
-* Pobieramy i uruchamiamy `program Unetbootin <http://unetbootin.sourceforge.net/unetbootin-windows-latest.exe>`_.
-* Wpinamy pendrajwa o pojemności min. 4GB.
-* W programie *Unetbootin* zaznaczamy opcję "Obraz dysku", klikamy przycisk "..." i wskazujemy
-  pobrany obraz. W polu "Przestrzeń używana do zachowania plików..."
-  wpisujemy min. **512**. W polu "Napęd:" wskazujemy pendrajwa i klikamy "OK".
-  Czekamy w zależności od wybranej dystrybucji i prędkości klucza USB od 5-25 minut.
-
-.. figure:: img/unetbootin_win_lxpup.jpg
-
 W Linuksie
 ===========
 
-* W Ubuntu i pochodnych instalujemy program `Unetbootin <http://unetbootin.sourceforge.net>`_ poleceniami:
+Aby przygotować pendrajw w systemie Linux, pobieramy wybrany :ref:`obraz iso <usb-creator>`, następnie:
+
+* instalujemy program `Unetbootin <http://unetbootin.sourceforge.net>`_, w Ubuntu i pochodnych:
 
 .. code-block:: bash
 
@@ -93,28 +71,26 @@ W Linuksie
     ~$ sudo apt-get update
     ~$ sudo apt-get install unetbootin
 
-* W Debianie Jessie 8 ściągamy pakiet `unetbootin_608-1_i386.deb <http://ftp.pl.debian.org/debian/pool/main/u/unetbootin/unetbootin_608-1_i386.deb>`_,
-  a następnie w katalogu z pobranym plikiem wydajemy polecenia jako root:
+
+- W Debianie Jessie 8 ściągamy pakiet `unetbootin_608-1_i386.deb <http://ftp.pl.debian.org/debian/pool/main/u/unetbootin/unetbootin_608-1_i386.deb>`_, a następnie w katalogu z pobranym plikiem wydajemy polecenia jako root:
 
 .. code-block:: bash
 
     ~# dpkg -i unetbootin_608-1_i386.deb
     ~# apt-get install -f
 
-*  W Arch Linuksie i pochodnych jako root wydajemy polecenia:
+
+- W Arch Linuksie i pochodnych jako root wydajemy polecenia:
 
 .. code-block:: bash
 
     ~# pacman -Syu
     ~# pacman -S unetbootin
 
-* Wpinamy pendrajwa o pojemności min. 2GB dla dystrybucji *LxPup* (4GB dla innych). Pendrajw
-  powinien mieć przynajmniej jedną główną i aktywną partycję FAT32 – tak jest zazwyczaj.
+* Wpinamy pendrajwa o pojemności min. 2GB.
+  Pendrajw powinien mieć przynajmniej jedną główną i aktywną partycję FAT32 – tak jest zazwyczaj.
 * Po uruchomieniu programu "Unetbootin" zaznaczamy opcję "Obraz dysku", klikamy
   przycisk "..." i wskazujemy pobrany obraz.
-* Jeżeli wybraliśmy *LxPupTahr*, przechodzimy do następnego punktu.
-  Jeżeli wybraliśmy obraz *Xubuntu*, *SRU* lub *FREE_DESKTOP*, w polu "Przestrzeń
-  używana do zachowania plików..." wpisujemy min. **512**.
 * Upewniamy się, że w polu "Napęd:" wyświetlona jest litera przydzielona
   właściwemu pendrajwowi i klikamy "OK". Czekamy w zależności od wybranej
   dystrybucji i prędkości klucza USB od 1-20 minut.
@@ -123,18 +99,8 @@ W Linuksie
 
 .. note::
 
-    Jeżeli nagrywamy obraz *Xubuntu*, *SRU* lub *FREE_DESKTOP* możemy na pendrajwie
-    utworzyć dodatkową partycję typu Ext4 o dowolnej pojemności, ale obowiązkowej
-    etykiecie "home-rw". Zostanie ona wykorzystana jako miejsce montowania
-    i zapisywania plików użytkownika. W takim wypadku pole "Przestrzeń używana
-    do zachowania plików..." pozostawiamy puste!
-
-    Dodatkową partycję utworzysz przy użyciu programu **gparted**. Instalacja:
-    ``sudo apt-get update && sudo apt-get install gparted``.
-    Niestety za pomocą standardowych narzędzi MS Windows nie utworzymy partycji Ext4.
-    Ostateczny układ partycji powinien wyglądać tak jak na poniższym zrzucie:
-
-.. figure:: img/sru_usb08.png
+  Pendrajw z systemem live można przygotować również w oparciu o inne
+  systemy niż LxPup. Zobacz materiał :ref:`Linux-live USB – różne systemy <dystrybucje>`.
 
 W maszynie wirtualnej
 =====================
