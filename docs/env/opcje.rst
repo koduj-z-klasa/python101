@@ -128,23 +128,19 @@ Aby wgrać system na pendrajwa:
   wpisujemy min. **512**. W polu "Napęd:" wskazujemy pendrajwa i klikamy "OK".
   Czekamy w zależności od wybranej dystrybucji i prędkości klucza USB od 5-25 minut.
 
-.. figure:: img/unetbootin_win_lxpup.jpg
-
-* Jeżeli wybraliśmy *LxPupTahr*, przechodzimy do następnego punktu.
-  Jeżeli wybraliśmy inny system, w polu "Przestrzeń
-  używana do zachowania plików..." wpisujemy min. **512** (rozmiar w MB).
+.. figure:: img/unetbootin_win_free.jpg
 
 .. note::
 
-    Jeżeli nagrywamy obraz *Xubuntu*, *SRU* lub *FREE_DESKTOP* możemy na pendrajwie
-    utworzyć dodatkową partycję typu Ext4 o dowolnej pojemności, ale obowiązkowej
-    etykiecie "home-rw". Zostanie ona wykorzystana jako miejsce montowania
-    i zapisywania plików użytkownika. W takim wypadku pole "Przestrzeń używana
-    do zachowania plików..." pozostawiamy puste!
+  Jeżeli nagrywamy obraz *Xubuntu*, *SRU* lub *FREE_DESKTOP* możemy na pendrajwie
+  utworzyć dodatkową partycję typu Ext4 o dowolnej pojemności, ale obowiązkowej
+  etykiecie "home-rw". Zostanie ona wykorzystana jako miejsce montowania
+  i zapisywania plików użytkownika. W takim wypadku pole "Przestrzeń używana
+  do zachowania plików..." pozostawiamy puste!
 
-    Dodatkową partycję utworzysz przy użyciu programu **gparted**. Instalacja:
-    ``sudo apt-get update && sudo apt-get install gparted``.
-    Niestety za pomocą standardowych narzędzi MS Windows nie utworzymy partycji Ext4.
-    Ostateczny układ partycji powinien wyglądać tak jak na poniższym zrzucie:
+  Dodatkową partycję utworzysz przy użyciu programu **gparted**. Instalacja:
+  ``sudo apt-get update && sudo apt-get install gparted``.
+  Niestety za pomocą standardowych narzędzi MS Windows nie utworzymy partycji Ext4.
+  Ostateczny układ partycji powinien wyglądać tak jak na poniższym zrzucie:
 
 .. figure:: img/sru_usb08.png

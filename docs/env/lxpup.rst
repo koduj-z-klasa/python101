@@ -85,57 +85,66 @@ informacyjnym "Ok".
 .. figure:: lxpupimg/internet04.png
 .. figure:: lxpupimg/internet05.png
 
-.. _ins-edytory:
+Równie proste i dobre są dwa pozostałe narzędzia, tzn. **Frisbee** i **Network Wizard**.
 
-Instalacja edytorów PyCharm i/lub Sublime Text
-**********************************************
+.. _sfs-pet:
 
-Dodanie edytorów *PyCharm* i/lub *Sublime Text3* do wersji podstawowej jest bardzo proste.
-Sciągamy odpowiedni(e) plik(i) SFS:
+Pliki SFS i PET
+****************
 
-* `PyCharm 5.0.1 <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/pycharm-5.0.1_15.05.sfs?download=1>`_  i wymagane środowisko `Java JRE <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/jre1.7.0_80.sfs?download=1>`_
+*LxPup* oferuje dwa dedykowane formaty plików zawierających oprogramowanie:
+Pierwszym stosowanym raczej dla dużych pakietów jest `SFS <http://puppylinux.org/wikka/SquashFS>`_.
+Za ich pomocą można doinstalować m. in. edytory Pycharm i Sublime Text.
+Aby to zrobić, ściągamy odpowiedni(e) plik(i) SFS:
+
+* `PyCharm 5.0.1 <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/pycharm-5.0.1_15.05.sfs?download=1>`_
+  i wymagane środowisko `Java JRE <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/jre1.7.0_80.sfs?download=1>`_
 * `Sublime Text 3 <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/sublime-text3_15.05.sfs?download=1>`_
 
-Umieszczamy pliki w katalogu głównym pendrajwa z systemem LxPup. W działającym systemie wchodzimy
-do katalogu :file:`/mnt/home` (tu zamontowany jest katalog główny pendrajwa), klikamy wgrany plik
-SFS i wybieramy "Załaduj". Można też wydać polecenie ``sfs_load`` w terminalu lub wybrać
-*Start/Konfiguracja/SFS-Ładowanie w locie*. Z rozwijalnej listy wybieramy plik sfs i ładujemy.
-Na koniec restartujemy menedżer okien okien: *Start/Zamknij/Restart WM*.
+Pobrane pliki umieszczamy w katalogu głównym pendrajwa. W działającym systemie dostępny jest on
+w ścieżce :file:`/mnt/home`.
 
-PyCharma można też zainstalować/zaktualizować w działającym systemie LxPup za pomocą polecenia
-w terminalu ``install-pycharm.sh ver``, w którym *ver* oznacza instalowaną wersję, np. *5.0.1*.
-Niestety, tak wgrany program zajmuje miejsce w pliku zapisu, więc nie polecamy tego.
-Lepiej pobrać zaktualizowany plik SFS (pamiętaj, żeby wyładować i usunąć poprzedni).
-Zobacz też: :ref:`pliki SFS <pet-sfs>`.
+.. figure:: lxpupimg/sfs_home.png
 
-Przeglądarka WWW
-************************
+Instalacja możliwa jest po kliknięciu wgranego pliku i wybraniu "Zainstaluj SFS":
 
-Domyślną przeglądarką jest `PaleMoon <https://www.palemoon.org/>`_, otwartoźródłowa
-odmiana oparta na Firefoksie. Od czasu do czasu warto ją zaktualizować.
+.. figure:: lxpupimg/sfs_click.png
 
-Domyślne katalogi
-************************
+Druga możliwość to wybranie *Start/Konfiguracja/SFS-Ładowanie w locie*
+lub wydanie polecenia ``sfs_load`` w terminalu. W oknie dialogowym z rozwijalnej listy
+wybieramy plik sfs i "Załaduj":
 
-* :file:`/root/my-documents` lub :file:`/root/Dokumenty`
-* :file:`/root/my-documents/clipart` lub :file:`/root/Pobrane` - tu zapisywane są pliki pobierane z internetu
-* :file:`/root/my-documents/clipart` lub :file:`/root/Obrazy`
-* :file:`/root/my-documents/tmp` lub :file:`/root/tmp` - katalogi tymczasowe
-* :file:`/root/LxPupUSB` - skrót do głównego katalogu napędu USB, zadziała dopiero po "pierwszym uruchomieniu"
-* :file:`/usr/share/fonts/default/TTF/` – dodatkowe czcionki TrueType, np. z MS Windows
+.. figure:: lxpupimg/sfs_load.png
 
-.. _instalacjaprog:
+Po załadowaniu plików SFS restartujemy menedżer okien: *Start/Zamknij/Restart WM*.
+Jeżeli nie potrzebujemy już danego programu lub chcemy go zaktualizować pakiet SFS
+możemy też wyładować,
 
-Instalacja programów
-************************
+.. note::
 
-Jeżeli chcemy coś doinstalować, uruchamiamy **Quickpet tahr**
-z menu "Start/Konfiguracja". Na początku klikamy "tahrpup updates",
-aby zaktualizować listę dostępnych aplikacji. Następnie restartujemy
-program i sprawdzamy, czy w poszczególnych zakładkach znajdziemy potrzebne
-nam narzędzia, np.: Firefox, Chrome, Flash, Skype i inne.
+  PyCharma można też zainstalować/zaktualizować za pomocą polecenia wydanego w terminalu:
+  ``install-pycharm.sh ver`` – *ver* oznacza wersję, np. *5.0.1*.
+  Tak wgrany program zajmuje miejsce w pliku zapisu, więc nie polecamy tego.
+  Lepiej użyć pliku SFS.
+
+Drugi format dedykowany dla LxPupa to paczki w formacie `PET <http://puppylinux.org/wikka/PETs?redirect=no>`_,
+dostępne np. na stronie `pet_packages-tahr <http://distro.ibiblio.org/puppylinux/pet_packages-tahr/>`.
+Ściągamy je, a następnie instalujemy dwukrotnie klikając (uruchomi się narzędzie *petget*).
+
+.. figure:: lxpupimg/pet01.png
+
+Społeczność LxPupa przygotowuje często używane programy w formatach SFS i PET.
+Można je przeglądać i instalować za pomocą specjalnego programu, który uruchamiamy
+wybierając **Start/Konfiguracja/Quickpet tahr**. Listę dostępnych paczek
+zaktualizujemy po kliknięciu "tahrpup updates". Później możemy zainstalować
+Chrome'a, Gimpa czy Skype'a.
 
 .. figure:: lxpupimg/pet_quickpet03.png
+
+.. _ppm:
+
+Menedżer pakietów
+*******************
 
 Jeżeli w *Quickpet tahr* nie znajdziemy wymaganej aplikacji, uruchamiamy
 **Puppy Package Manager/Puppy Manager Pakietów** z menu "Start/Konfiguracja".
@@ -149,7 +158,6 @@ Na koniec zamykamy okno aktualizacji przyciskiem "OK", co zrestartuje menedżera
 .. figure:: lxpupimg/ppm02.png
 .. figure:: lxpupimg/ppm03.png
 
-
 Po ponownym uruchomieniu PPM, wpisujemy nazwę szukanego pakietu w pole wyszukiwania,
 następnie wybieramy pakiet z wyświetlonej listy, co dodaje go do kolejki.
 W ten sposób możemy wyszukać i dodać kilka pakietów na raz.
@@ -157,36 +165,22 @@ Na koniec zatwierdzamy instalację przyciskiem "Do it!"
 
 .. figure:: lxpupimg/ppm04.png
 
-.. tip::
+Przeglądarka WWW
+************************
 
-    Trzeba pamiętać, że używamy dystrybucji okrojonej, więc nie wszystko
-    warto instalować z repozytoriów, bo nie zawsze znajdziemy tam oprogramowanie
-    odpowiednio dostosowane do naszej dystrybucji.
+Domyślną przeglądarką jest `PaleMoon <https://www.palemoon.org/>`_, otwartoźródłowa
+odmiana oparta na Firefoksie. Od czasu do czasu warto ją zaktualizować wybierając
+*Start/Internet/Palemoon/...*
 
-.. _pet-sfs:
+Domyślne katalogi
+************************
 
-Pliki PET i SFS
-***************
-
-*LxPup* oferuje dwa kolejne sposoby doinstalowywania oprogramowania na żądanie!
-Pierwszy to paczki w formacie `PET <http://puppylinux.org/wikka/PETs?redirect=no>`_,
-dostępne np. na stronie `pet_packages-tahr <http://distro.ibiblio.org/puppylinux/pet_packages-tahr/>`.
-Ściągamy je, a następnie instalujemy dwukrotnie klikając (uruchomi się narzędzie *petget*).
-
-.. figure:: lxpupimg/pet01.png
-
-Drugim formatem stosowanym dla dużych pakietów jest format `SFS <http://puppylinux.org/wikka/SquashFS>`_.
-Spakowane w ten sposób oprogramowanie możemy dodawać i usuwać "w locie" w trakcie
-działania systemu. Pobrane pliki SFS należy umieścić w głównym katalogu pendrajwa dostępnym w ścieżce
-:file:`/mnt/home`. Następnie używamy narzędzia *Start/Konfiguracja/SFS-Ładuj w locie*, które można
-uruchomić również poleceniem ``sfs_load`` w terminalu. Z rozwijalnej listy wybieramy plik SFS
-i ładujemy go.
-
-.. attention::
-
-  Zanim usuniesz plik SFS **wyładuj go** za pomocą narządzia *SFS-Ładuj w locie*.
-
-.. figure:: lxpupimg/pcmanfm01.png
+* :file:`/root/my-documents` lub :file:`/root/Dokumenty` – katalog na dokumenty
+* :file:`/root/Pobrane` – tu zapisywane są pliki pobierane z internetu
+* :file:`/root/my-documents/clipart` lub :file:`/root/Obrazy`– katalog na obrazki
+* :file:`/root/my-documents/tmp` lub :file:`/root/tmp` – katalogi tymczasowe
+* :file:`/root/LxPupUSB` lub :file:`/mnt/home` – ścieżki do głównego katalogu napędu USB
+* :file:`/usr/share/fonts/default/TTF/` – dodatkowe czcionki TrueType, np. z MS Windows
 
 .. _klawiatura:
 
@@ -250,11 +244,12 @@ Konfiguracja LXDE
   Wygładzanie czcionek
 
 Wskazówki
-************************
+*************
 
 1. Dwukrotne kliknięcie – menedżer plików PcManFm domyślnie otwiera pliki
    i katalogi po pojedynczym kliknięciu. Jeżeli chcielibyśmy to zmienić,
    wybieramy "Edycja/Preferencje".
+
 2. Jeżeli po uruchomieniu system nie wykrywa podłączonego monitora czy rzutnika,
    wybieramy "Start/Zamknij/Restart WM" – po restarcie menedżera okien obraz
    powinien pojawić się automatycznie. Możemy go dostosować wybierając

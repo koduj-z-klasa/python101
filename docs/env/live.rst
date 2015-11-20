@@ -56,7 +56,7 @@ W Windows
 .. tip::
 
   Po nagraniu systemu *LxPupTahr*, koniecznie przeczytaj :ref:`Pierwsze uruchomienie <lxpuptahr>`!!!
-  Jeżeli pobrałeś wersję BASE, przeczytaj jak łatwo dodać :ref:`edytory PyCharm i/lub Sublime Text3 <ins-edytory>`.
+  Jeżeli pobrałeś wersję BASE, przeczytaj jak łatwo dodać :ref:`edytory PyCharm i/lub Sublime Text3 <sfs-pet>`.
 
 W Linuksie
 ===========
@@ -95,7 +95,7 @@ Aby przygotować pendrajw w systemie Linux, pobieramy wybrany :ref:`obraz iso <u
   właściwemu pendrajwowi i klikamy "OK". Czekamy w zależności od wybranej
   dystrybucji i prędkości klucza USB od 1-20 minut.
 
-.. figure:: img/unetbootin_win_free.jpg
+.. figure:: img/unetbootin_linux_lxpup.png
 
 .. note::
 
