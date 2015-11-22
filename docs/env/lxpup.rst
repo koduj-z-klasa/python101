@@ -3,6 +3,9 @@
 *LxPupTahr* – obsługa
 ######################
 
+.. contents:: Spis treści
+    :depth: 2
+
 Pierwsze uruchomienie
 *********************
 
@@ -102,7 +105,7 @@ Aby to zrobić, ściągamy odpowiedni(e) plik(i) SFS:
 * `Sublime Text 3 <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/sublime-text3_15.05.sfs?download=1>`_
 
 Pobrane pliki umieszczamy w katalogu głównym pendrajwa. W działającym systemie dostępny jest on
-w ścieżce :file:`/mnt/home`.
+w ścieżce :file:`/mnt/home`, którą należy wpisać w pole adresu menedżera plików:
 
 .. figure:: lxpupimg/sfs_home.png
 
