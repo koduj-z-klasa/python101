@@ -338,7 +338,8 @@ zapisać w listach. Wstaw w odpowiednich miejscach pliku poniższe intrukcje:
 
 Na końcu skryptu dopisz instrukcje wyliczającą końcowy wektor przesunięcia (:math:`|s| = \sqrt{(x^2 * y^2)}`) i drukującą go na ekranie. Przetestuj program.
 
-Pozostaje dopisanie importu biblioteki *matplotlib* oraz instrukcji generujących wykres:
+Pozostaje dopisanie importu biblioteki *matplotlib* oraz instrukcji generujących wykres.
+Poniższy kod ilustruje również użycie opcji wzbogacających wykres o legendę, etykiety czy tytuł.
 
 .. raw:: html
 
@@ -359,6 +360,9 @@ i przezroczystość (``alpha``). Poeksperymentuj.
 ============
 
 Spróbuj uzupełnić kod tak, aby na wykresie zaznaczyć prostą linią w kolorze niebieskim wektor przesunięcia.
+Efekt końcowy może wyglądać następująco:
+
+.. figure:: img/rbrowna.png
 
 Zadania dodatkowe
 *****************
