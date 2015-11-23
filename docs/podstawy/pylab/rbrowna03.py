@@ -3,6 +3,7 @@
 
 import numpy as np
 import random
+import matplotlib.pyplot as plt
 
 n = int(raw_input("Ile ruchów? "))
 x = y = 0
@@ -23,3 +24,11 @@ print wsp_x, wsp_y
 # oblicz wektor końcowego przesunięcia
 s = np.fabs(np.sqrt(x**2 + y**2))
 print "Wektor przesunięcia:", s
+
+plt.plot(wsp_x, wsp_y, "o:", color="green", linewidth="3", alpha=0.5)
+plt.legend(["Dane x, y\nPrzemieszczenie: " + str(s)], loc="upper left")
+plt.xlabel("Wsp_x")
+plt.ylabel("Wsp_y")
+plt.title("Ruchy Browna")
+plt.grid(True)
+plt.show()

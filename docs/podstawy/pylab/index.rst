@@ -25,6 +25,26 @@ W systemach Windows bibliotekę instalujemy zgodnie z opisem :ref:`przygotowania
     :depth: 1
     :local:
 
+.. note::
+
+    Bibliotekę *matplotlib* można importować na kilka sposobów. Najprostszym jest użycie
+    instrukcji ``import pylab``, która udostępnia szkielet *pyplot* (do tworzenia wykresów) oraz
+    bibliotekę *numpy* (funkcje matematyczne) w jednej przestrzeni nazw. Tak będziemy
+    robić w konsoli i początkowych przykładach. Oficjalna dokumentacja sugeruje jednak,
+    aby w programowaniu biblioteki importować osobno, np. za pomocą podanego niżej kodu.
+    Tak zrobimy w przykładach korzystających z funkcji matematycznych z modułu *numpy*.
+
+.. code-block:: python
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+.. tip::
+
+    Konsolę rozszerzoną możemy uruchamiać poleceniem ``ipython --pylab``, które z kolei
+    równoważne jest instrukcji ``from pylab import *``. W tym wypadku nie trzeba podawać
+    przedrostka ``pylab`` przy korzystaniu z funkcji rsyowania.
+
 Funkcja liniowa
 ***************
 
@@ -298,10 +318,47 @@ Funkcje trygonometryczne zawarte w module ``math`` wymagają kąta podanego w ra
 dlatego wylosowany kąt po zamianie na liczbę zmiennoprzecinkową mnożymy przez wyrażenie
 ``math.pi / 180``. Uruchom i przetestuj kod.
 
+Ćwiczenie 6
+============
+
 Do przygotowania wykresu ilustrującego ruch cząsteczeki generowane współrzędne musimy
-zapisać w listach. Dopiszmy więc następujący kod:
+zapisać w listach. Wstaw w odpowiednich miejscach pliku poniższe intrukcje:
 
+.. raw:: html
 
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block:: python
+
+    wsp_x = [0]
+    wsp_y = [0]
+
+    wsp_x.append(x)
+    wsp_y.append(y)
+
+Na końcu skryptu dopisz instrukcje wyliczającą końcowy wektor przesunięcia (:math:`|s| = \sqrt{(x^2 * y^2)}`) i drukującą go na ekranie. Przetestuj program.
+
+Pozostaje dopisanie importu biblioteki *matplotlib* oraz instrukcji generujących wykres:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: rbrowna01.py
+    :linenos:
+    :emphasize-lines: 6, 28-34
+    :lineno-start: 1
+    :lines: 1-
+
+Warto zwrócić uwagę na dodatkowe opcje formatujące wykres w poleceniu ``p.plot(wsp_x, wsp_y, "o:", color="green", linewidth="3", alpha=0.5)``. Trzeci parametr określa styl linii, możesz sprawdzić
+inne wartości, np: ``r:.``, ``r:+``, ``r.``, ``r+``. Można też określać grubość linii (``linewidth``)
+i jej przezroczystość (````)
+
+Ćwiczenie 7
+============
+
+Spróbuj uzupełnić kod tak, aby na wykresie zaznaczyć linią prostą wektor przesunięcia.
 
 Zadania dodatkowe
 *****************

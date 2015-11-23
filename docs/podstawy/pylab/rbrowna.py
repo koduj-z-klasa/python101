@@ -1,9 +1,9 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import pylab as p
 import math
 import random
+import pylab as p
 
 n = int(raw_input("Ile ruchów? "))
 x = y = 0
@@ -17,12 +17,17 @@ with open(nazwapliku, "w") as plik:
         rad = float(random.randint(0, 360)) * math.pi / 180
         x = x + math.cos(rad)
         y = y + math.sin(rad)
-        print x, y
+        # print x, y
         print >>plik, str(x) + "\t" + str(y)
         wsp_x.append(x)
         wsp_y.append(y)
 
-s = math.sqrt(x**2 + y**2)
+print wsp_x, wsp_y
+
+# oblicz wektor końcowego przesunięcia
+s = math.fabs(math.sqrt(x**2 + y**2))
+print "Wektor przesunięcia:", s
+
 p.plot(wsp_x, wsp_y, "o:", color="green", linewidth="3", alpha=0.5)
 # r:., r:+, r., r+, o:, +:, color="green"
 p.legend(["Dane x, y\nPrzemieszczenie: " + str(s)], loc="upper left")
