@@ -345,20 +345,20 @@ Pozostaje dopisanie importu biblioteki *matplotlib* oraz instrukcji generującyc
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: rbrowna01.py
+.. literalinclude:: rbrowna03.py
     :linenos:
     :emphasize-lines: 6, 28-34
     :lineno-start: 1
     :lines: 1-
 
 Warto zwrócić uwagę na dodatkowe opcje formatujące wykres w poleceniu ``p.plot(wsp_x, wsp_y, "o:", color="green", linewidth="3", alpha=0.5)``. Trzeci parametr określa styl linii, możesz sprawdzić
-inne wartości, np: ``r:.``, ``r:+``, ``r.``, ``r+``. Można też określać grubość linii (``linewidth``)
-i jej przezroczystość (````)
+inne wartości, np: ``r:.``, ``r:+``, ``r.``, ``r+``. Można też określać kolor (``color``), grubość linii (``linewidth``)
+i przezroczystość (``alpha``). Poeksperymentuj.
 
 Ćwiczenie 7
 ============
 
-Spróbuj uzupełnić kod tak, aby na wykresie zaznaczyć linią prostą wektor przesunięcia.
+Spróbuj uzupełnić kod tak, aby na wykresie zaznaczyć prostą linią w kolorze niebieskim wektor przesunięcia.
 
 Zadania dodatkowe
 *****************
