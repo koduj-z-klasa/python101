@@ -205,6 +205,9 @@ i po przelogowaniu się dodaj co najmniej 1 wiadomość.
 
     <hr />
 
+Model w panelu
+==============
+
 W formularzu dodawania wiadomości widać, że etykiety nie są spolszczone, z kolei
 dodane wiadomości wyświetlają się na liście jako "Wiadomosc object".
 Aby poprawić te niedoskonałości, uzupełniamy plik :file:`models.py`:
@@ -289,7 +292,7 @@ Następnie **tworzymy (!)** plik :file:`czat/urls.py` o następującej treści:
 
 Podstawową funkcją wiążącą adres z widokiem jest ``url()``. Jako pierwszy parametr przyjmuje wyrażenie
 regularne oznaczane ``r`` przed łańcuchem dopasowania. Symbol ``^`` to początek,
-``$`` – koniec łańcucha. Zapis ``u'^$'`` to adres główny serwera.
+``$`` – koniec łańcucha. Zapis ``r'^$'`` to adres główny serwera.
 Drugi parametr wskazuje widok (funkcję), która ma obsłużyć dany adres.
 Trzeci parametr ``name`` pozwala zapamiętać skojarzenie url-a i widoku pod nazwą,
 której będzie można użyć np. do wygenerowania adresu linku.
