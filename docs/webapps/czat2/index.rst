@@ -11,7 +11,8 @@ użycie skraca i ulepsza programistyczną pracę eliminując potencjalne błędy
 
 Będziemy rozwijać kod uzyskany po zrealizowaniu punktów **5.4.1 – 5.4.4** scenariusza :ref:`Czat (cz. 1) <czat-app>`.
 Pobierz więc :download:`archiwum <czatpro2_z01.zip>` z potrzebnymi plikami
-i rozpakuj w katalogu głównym.
+i rozpakuj w katalogu głównym. Utworzony zostanie katalog :file:`czatpro2`,
+w którym będziemy pracować.
 
 Na początku zajmiemy się obsługą użytkowników. Umożliwimy im samodzielne
 zakładanie kont w serwisie, logowanie i wylogowywanie się. Później
@@ -22,17 +23,18 @@ na klasach (ang. `class-based generic views <https://docs.djangoproject.com/en/1
 Rejestrowanie
 *************
 
-Na początku pliku :file:`urls.py` aplikacji czat importujemy formularz tworzenia użytkownika
+Na początku pliku :file:`czatpro2/czat/urls.py` aplikacji czat importujemy formularz tworzenia użytkownika
 (``UserCreationForm``) oraz wbudowany widok przenaczony do dodawania danych (``CreateView``):
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code-block:: python
-
-    from django.contrib.auth.forms import UserCreationForm
-    from django.views.generic.edit import CreateView
+.. highlight:: python
+.. literalinclude:: urls.py
+    :linenos:
+    :lineno-start: 7
+    :lines: 7-8
 
 Następnie do listy ``paterns`` dopisujemy:
 
@@ -74,23 +76,31 @@ Na koniec wstawimy link na stronie głównej, a więc uzupełniamy plik :file:`i
 .. literalinclude:: index_z2.html
     :linenos:
 
-.. tip::
+Zwróć uwagę na sposób tworzenia linków w szablonie: ``{% url 'czat:rejestruj' %}``.
+Nazwę definiowaną w parametrze ``name`` w pliku :file:`urls.py` aplikacji
+poprzedzamy przestrzenią nazw zdefiniowaną w pliku adresów projektu (``namespace='czat'``).
 
-    Zwróć uwagę na sposób tworzenia linków w szablonie: ``{% url 'czat:loguj' %}``.
-    Nazwe definiowaną w parametrze ``name`` w pliku :file:`urls.py` aplikacji
-    poprzedzamy przestrzenią nazw zdefiniowaną w pliku adresów projektu (``namespace='czat'``).
+**Ćwiczenie:** dodaj link do strony głównej w szablonie :file:`rejestruj.html`.
 
 Uruchom aplikację (``python manage.py runserver``) i przetestuj dodawanie użytkowników:
 spróbuj wysłać niepełne dane, np. bez hasła; spróbuj dodać dwa razy tego samego użytkownika.
+
+.. figure:: img/czatpro2_02.png
 
 Wy(logowanie)
 *************
 
 Na początku pliku :file:`urls.py` aplikacji dopisujemy wymagany import:
 
-.. code-block:: python
+.. raw:: html
 
-    from django.core.urlresolvers import reverse_lazy
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: urls.py
+    :linenos:
+    :lineno-start: 9
+    :lines: 9
 
 – a następnie:
 
@@ -129,13 +139,15 @@ definujemy wartość zmiennej ``LOGIN_REDIRECT_URL``:
 
 .. code-block:: python
 
-    # czatpro/czatpro/settings.py
+    # czatpro2/czatpro/settings.py
 
     from django.core.urlresolvers import reverse_lazy
     LOGIN_REDIRECT_URL = reverse_lazy('czat:index')
 
 Na koniec warto uzupełnić plik :file:`index.html` o linki służące do logowania i wylogowania.
 Spróbuj zrobić to sam i przetestuj działanie aplikacji.
+
+.. figure:: img/czatpro2_03.png
 
 Lista wiadomości
 *****************
@@ -161,11 +173,11 @@ Do pliku :file:`urls.py` dopisujemy importy:
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code-block:: python
-
-    from django.contrib.auth.decorators import login_required
-    from django.views.generic.list import ListView
-    from czat.models import Wiadomosc
+.. highlight:: python
+.. literalinclude:: urls.py
+    :linenos:
+    :lineno-start: 0
+    :lines: 10-12
 
 – i wiążemy adres */wiadomosci* z wywołaniem widoku:
 
@@ -213,6 +225,8 @@ Kolejne wiadomości odczytujemy i wyświetlamy w pętli przy użyciu tagu ``{% f
 Dostęp do właściwości obiketów umożliwia operator kropki, np.: ``{{ wiadomosc.autor.username }}``.
 
 Zanim przetestujesz wyświetlanie wiadomości, dodaj link na stronie głównej!
+
+.. figure:: img/czatpro2_04.png
 
 Dodawanie wiadomości
 ********************

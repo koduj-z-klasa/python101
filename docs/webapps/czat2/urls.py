@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# czatpro/czat/urls.py
+# czatpro2/czat/urls.py
 
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
