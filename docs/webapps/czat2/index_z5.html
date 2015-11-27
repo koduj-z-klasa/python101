@@ -6,6 +6,7 @@
 
     {% if user.is_authenticated %}
       <p>Jesteś zalogowany jako {{ user.username }}.</p>
+      <p><a href="{% url 'czat:wiadomosc' %}">Dodaj wiadomość</a></p>
       <p><a href="{% url 'czat:wiadomosci' %}">Wiadomości</a></p>
       <p><a href="{% url 'czat:wyloguj' %}">Wyloguj się</a></p>
     {% else %}

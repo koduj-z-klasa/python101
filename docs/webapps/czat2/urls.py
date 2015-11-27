@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 # czatpro2/czat/urls.py
 
-from django.conf.urls import patterns, include, url
-from django.contrib import admin
+from django.conf.urls import url
 from czat import views  # importujemy zdefiniowane w pliku views.py widoki
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
@@ -12,8 +11,7 @@ from django.views.generic import ListView
 from czat.models import Wiadomosc
 from django.views.generic import DeleteView
 
-urlpatterns = patterns[
-    '',
+urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^rejestruj/', CreateView.as_view(
         template_name='czat/rejestruj.html',
@@ -47,6 +45,4 @@ urlpatterns = patterns[
             success_url='/wiadomosci'),
         login_url='/loguj'),
         name='usun'),
-
-    url(r'^admin/', include(admin.site.urls)),
 ]

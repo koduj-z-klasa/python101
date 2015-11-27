@@ -33,8 +33,8 @@ Na początku pliku :file:`czatpro2/czat/urls.py` aplikacji czat importujemy form
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 7
-    :lines: 7-8
+    :lineno-start: 6
+    :lines: 6-7
 
 Następnie do listy ``paterns`` dopisujemy:
 
@@ -45,8 +45,8 @@ Następnie do listy ``paterns`` dopisujemy:
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 18
-    :lines: 18-21
+    :lineno-start: 16
+    :lines: 16-19
 
 Powyższy kod wiąże adres URL */rejestruj* z wywołaniem widoku wbudowanego jako funkcji
 ``CreateView.as_view()``. Przekazujemy jej trzy parametry:
@@ -99,8 +99,8 @@ Na początku pliku :file:`urls.py` aplikacji dopisujemy wymagany import:
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 9
-    :lines: 9
+    :lineno-start: 8
+    :lines: 8
 
 – a następnie:
 
@@ -111,8 +111,8 @@ Na początku pliku :file:`urls.py` aplikacji dopisujemy wymagany import:
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 22
-    :lines: 22-27
+    :lineno-start: 20
+    :lines: 20-25
 
 Widać, że z adresami */loguj* i */wyloguj* wiążemy wbudowane w django widoki ``login``
 i ``logout`` importowane z modułu ``django.contrib.auth.views``. Jedynym nowym
@@ -176,8 +176,8 @@ Do pliku :file:`urls.py` dopisujemy importy:
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 0
-    :lines: 10-12
+    :lineno-start: 9
+    :lines: 9-11
 
 – i wiążemy adres */wiadomosci* z wywołaniem widoku:
 
@@ -188,8 +188,8 @@ Do pliku :file:`urls.py` dopisujemy importy:
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 28
-    :lines: 28-34
+    :lineno-start: 26
+    :lines: 26-32
 
 Zakładamy, że wiadomości mogą oglądać tylko użytkownicy zalogowani. Dlatego
 całe wywołanie widoku umieszczamy w funkcji ``login_required()``.
@@ -245,8 +245,8 @@ Na początek dopiszemy w pliku :file:`urls.py` skojarzenie adresu URL
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 35
-    :lines: 35-38
+    :lineno-start: 33
+    :lines: 33-36
 
 Dalej kodujemy w pliku :file:`views.py`. Na początku dodajemy importy:
 
@@ -288,7 +288,7 @@ Wykorzystujemy ją do zainicjowania pola ``data_pub`` aktualna datą (``initial[
 
 Metoda ``get_context_data()`` z punktu widzenia dodawania wiadomości
 nie jest potrzebna. Pozwala natomiast przekazać do szablonu dodatkowe dane,
-w tym wypadku jest to lista wszystkich wiadomości: ``Wiadomosc.objects.all()``.
+w tym wypadku jest to lista wszystkich wiadomości: ``kwargs['wiadomosci'] = Wiadomosc.objects.all()``.
 Wyświetlimy je poniżej formularza dodawania nowej wiadomości.
 
 .. raw:: html
@@ -304,14 +304,14 @@ na podstawie szablonu :file:`wiadomosc_list.html`. Otwórz go i zapisz pod nazw�
     <div class="code_no">Plik <i>wiadomosc_form.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
-.. literalinclude:: wiadomosc_form_z4.html
+.. literalinclude:: wiadomosc_form_z5.html
     :linenos:
     :lineno-start: 6
     :lines: 6-19
 
 Zanim przetestujesz dodawanie wiadomości, dodaj odpowiedni link na stronie głównej!
 
-.. figure:: img/czat19wiadomosci.png
+.. figure:: img/czatpro2_05.png
 
 Edycja wiadomości
 *****************
@@ -327,16 +327,15 @@ obiektu do zaktualizowania. Zaczniemy od uzupełnienia pliku :file:`urls.py`:
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 39
-    :lines: 39-42
+    :lineno-start: 37
+    :lines: 37-40
 
 Nowością w powyższym kodzie są wyrażenia regularne definiujące adresy z dodatkowym
 parametrem, np. ``r'^edytuj/(?P<pk>\d+)/'``. Część ``/(?P<pk>\d+)`` oznacza,
 że oczekujemy 1 lub więcej cyfr (``\d+``), które zostaną zapisane w zmiennej o nazwie
 ``pk`` (``?P<pk>``) – nazwa jest tu skrótem od ang. wyrażenia *primary key*, co znaczy
 "klucz główny". Zmienna ta zawierać będzie identyfikator wiadomości i dostępna
-będzie w klasie ``EdytujWiadomosc``, która dziedziczy, czyli dostosowuje wbudowany
-widok ``UpdateView``.
+będzie w klasie widoku, który obsłuży edycję wiadomości.
 
 Na początku pliku :file:`views.py` importujemy więc potrzebny widok:
 
@@ -350,6 +349,9 @@ Na początku pliku :file:`views.py` importujemy więc potrzebny widok:
     :lineno-start: 10
     :lines: 10
 
+Dalej tworzymy klasę ``EdytujWiadomosc``, która dziedziczy, czyli dostosowuje wbudowany
+widok ``UpdateView``:
+
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
@@ -362,14 +364,15 @@ Na początku pliku :file:`views.py` importujemy więc potrzebny widok:
 
 Najważniejsza jest tu metoda ``get_object()``, która pobiera i zwraca wskazaną przez
 identyfikator w zmiennej *pk* wiadomość: ``wiadomosc = Wiadomosc.objects.get(id=self.kwargs['pk'])``.
-Omawianą metodę ``get_context_data()`` wykorzystujemy tak jak poprzednio, tzn. aby przekazać
-do szablonu listę wiadomości zalogowanego użytkownika (``Wiadomosc.objects.filter(autor=self.request.user)``).
+Omawianą już metodę ``get_context_data()`` wykorzystujemy, aby przekazać
+do szablonu listę wiadomości, ale tylko zalogowanego użytkownika
+(``Wiadomosc.objects.filter(autor=self.request.user)``).
 
 Właściwości ``model``, ``context_object_name``, ``template_name`` i ``success_url``
 wyjaśniliśmy wcześniej. Jak widać, do edycji wiadomości można wykorzystać ten sam szablon,
 którego użyliśmy podczas dodawania.
 
-Formularz jednak dostosujemy. Tym razem wykorzystamy właściwość ``form_class``,
+Formularz jednak dostosujemy. Wykorzystamy właściwość ``form_class``,
 której przypisujemy utworzoną w nowym pliku :file:`forms.py` klasę zmieniającą
 domyślne ustawienia:
 
@@ -378,7 +381,7 @@ domyślne ustawienia:
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: forms_z5.py
+.. literalinclude:: forms_z6.py
     :linenos:
 
 Klasa ``EdytujWiadomoscForm`` oparta jest na wbudowanej klasie ``ModelForm``.
@@ -399,14 +402,16 @@ Wstaw w odpowiednie miejsce szablonu poniższy kod:
     <div class="code_no">Plik wiadomosc_lista.html nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
-.. literalinclude:: wiadomosc_list_z5.html
+.. literalinclude:: wiadomosc_list_z6.html
     :linenos:
     :lineno-start: 12
     :lines: 12-14
 
-Dodaj również te same linki do listy wiadomości na stronach dodawania i aktualizowania.
+Ten sam link dodaj również link do listy wiadomości w szablonie dodawania.
 
-.. figure:: img/czat18wiadomosci.png
+.. figure:: img/czatpro2_06.png
+
+.. figure:: img/czatpro2_06a.png
 
 Usuwanie wiadomości
 *******************
@@ -414,9 +419,15 @@ Usuwanie wiadomości
 **Usuwanie danych** realizujemy za pomocą widoku ``DeleteView``, który importujemy
 na początku pliku :file:`urls.py`:
 
-.. code-block:: python
+.. raw:: html
 
-    from django.views.generic import DeleteView
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: urls.py
+    :linenos:
+    :lineno-start: 12
+    :lines: 12
 
 Podobnie, jak w przypadku edycji, usuwanie powiążemy z adresem URL zawierającym
 identyfikator wiadomości ***/usun/id_wiadomości***. W pliku :file:`urls.py` dopisujemy:
@@ -429,8 +440,8 @@ identyfikator wiadomości ***/usun/id_wiadomości***. W pliku :file:`urls.py` do
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 43
-    :lines: 43-49
+    :lineno-start: 41
+    :lines: 41-47
 
 Warto zwrócić uwagę, że podobnie jak w przypadku listy wiadomości, o ile wystarcza nam
 domyślna funkcjonalność widoku wbudowanego, nie musimy niczego implementować w pliku :file:`views.py`.
@@ -444,7 +455,7 @@ dlatego uproścliśmy jego nazwę we właściwości ``template_name``. Tworzymy 
     <div class="code_no">Plik <i>wiadomosc_usun.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
-.. literalinclude:: wiadomosc_usun_z6.html
+.. literalinclude:: wiadomosc_usun_z7.html
     :linenos:
 
 Tag ``{{ object }}`` zostanie zastąpiony treścią wiadomoś zwróconą przez funkcję
@@ -453,7 +464,9 @@ Tag ``{{ object }}`` zostanie zastąpiony treścią wiadomoś zwróconą przez f
 Na koniec, podobnie jak w przypadku edycji wiadomości, trzeba dodać linki *Usuń* w szablonach wyświetlających
 listę wiadomości. Spróbuj zrobic to samodzielnie, a następnie przetestuj działanie aplikacji.
 
-.. figure:: img/czat20wiadomosci.png
+.. figure:: img/czatpro2_07.png
+
+.. figure:: img/czatpro2_07a.png
 
 Materiały
 ***************

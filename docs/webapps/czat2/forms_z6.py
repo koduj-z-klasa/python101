@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# czatpro/czat/forms.py
+# czatpro2/czat/forms.py
 
 from django.forms import ModelForm, TextInput
 from czat.models import Wiadomosc
@@ -10,4 +10,4 @@ class EdytujWiadomoscForm(ModelForm):
         model = Wiadomosc
         fields = ['tekst', 'data_pub']
         exclude = ['autor']
-        widgets = {'tekst': TextInput(attrs={'size': 80})}
+        widgets = {'tekst': TextInput(attrs={'size': 60})}

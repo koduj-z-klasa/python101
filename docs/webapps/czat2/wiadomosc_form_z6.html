@@ -1,4 +1,4 @@
-<!-- czatpro/czat/templates/czat/wiadomosc_form.html -->
+<!-- czatpro2/czat/templates/czat/wiadomosc_form.html -->
 <html>
   <body>
     <h1>Wiadomości</h1>
@@ -6,12 +6,12 @@
     {% if messages %}
       <ul>
         {% for komunikat in messages %}
-           <li>{{ komunikat|capfirst }}</li>
+          <li>{{ komunikat|capfirst }}</li>
         {% endfor %}
-        </ul>
+      </ul>
     {% endif %}
 
-    <h2>Dodaj wiadomość</h2>
+    <h2>Dodaj wiadomość:</h2>
     <form method="POST">
       {% csrf_token %}
       {{ form.as_p }}
@@ -24,6 +24,9 @@
       <li>
         <strong>{{ wiadomosc.autor.username }}</strong> ({{ wiadomosc.data_pub }}):
         <br /> {{ wiadomosc.tekst }}
+        {% if wiadomosc.autor.username == user.username %}
+          &bull; <a href="{% url 'czat:edytuj' wiadomosc.id %}">Edytuj</a>
+        {% endif %}
       </li>
       {% endfor %}
     </ol>
