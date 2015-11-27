@@ -4,29 +4,23 @@ Czat (cz. 2)
 #########################
 
 Dodawanie, edycja, usuwanie czy przeglądanie danych zgromadzonych w bazie
-są typowymi czynnościami w aplikacjach internetowych. Utworzony w scenariuszu :ref:`Czat (cz. 1) <czat_app>`
+są typowymi czynnościami w aplikacjach internetowych. Utworzony w scenariuszu :ref:`Czat (cz. 1) <czat-app>`
 kod ilustruje "ręczną" obsługę żądań GET i POST, w tym tworzenie formularzy,
 walidację danych itp. Django zawiera jednak gotowe mechanizmy, których
 użycie skraca i ulepsza programistyczną pracę eliminując potencjalne błędy.
 
-Obsługę wiadomości zrealizujemy teraz za pomocą tzw. widoków wbudowanych opartych
+Będziemy rozwijać kod uzyskany po zrealizowaniu punktów **5.4.1 – 5.4.4** scenariusza :ref:`Czat (cz. 1) <czat-app>`.
+Pobierz więc :download:`archiwum <czatpro2_z01.zip>` z potrzebnymi plikami
+i rozpakuj w katalogu głównym.
+
+Na początku zajmiemy się obsługą użytkowników. Umożliwimy im samodzielne
+zakładanie kont w serwisie, logowanie i wylogowywanie się. Później
+zajmiemy się dodawaniem, edycją i usuwaniem wiadomości.
+Inaczej niż w cz. 1 zadania te zrealizujemy za pomocą tzw. widoków wbudowanych opartych
 na klasach (ang. `class-based generic views <https://docs.djangoproject.com/en/1.4/topics/class-based-views/>`_ ).
 
-Aby rozpocząć pracę, należy zrealizować punkty 5.4.1 – 5.4.4
-scenariusza :ref:`Czat (cz. 1) <czat_app>`.
-
-Obsługa użytkowników
-***************************
-
-Zamiast dodawać użytkowników w panelu administracyjnym umożliwimy im samodzielne
-zakładanie kont w serwisie. Użytkownicy muszą również mieć możliwość logowania
-i wylogowywania się. Moglibyśmy te zadania zrealizować tak, jak w cz. 1 scenariusza,
-czyli za pomocą osobnych widoków (funkcji), które wyświetlałaby odpowiednie formularze (GET)
-oraz obsługiwałaby ich przesyłanie i walidację (POST).
-Zamiast tego wykorzystamy zaprojektowane w Django formularze i widoki wbudowane (ang. *generic views*).
-
 Rejestrowanie
-=============
+*************
 
 Na początku pliku :file:`urls.py` aplikacji czat importujemy formularz tworzenia użytkownika
 (``UserCreationForm``) oraz wbudowany widok przenaczony do dodawania danych (``CreateView``):
@@ -90,7 +84,7 @@ Uruchom aplikację (``python manage.py runserver``) i przetestuj dodawanie użyt
 spróbuj wysłać niepełne dane, np. bez hasła; spróbuj dodać dwa razy tego samego użytkownika.
 
 Wy(logowanie)
-=============
+*************
 
 Na początku pliku :file:`urls.py` aplikacji dopisujemy wymagany import:
 
@@ -450,34 +444,11 @@ listę wiadomości. Spróbuj zrobic to samodzielnie, a następnie przetestuj dzi
 Materiały
 ***************
 
-Słownik
-================
-
-.. include:: ../glossary.rst
-
 1. O Django http://pl.wikipedia.org/wiki/Django_(informatyka)
 2. Strona projektu Django https://www.djangoproject.com/
 3. Co to jest framework? http://pl.wikipedia.org/wiki/Framework
 4. Co nieco o HTTP i żądaniach GET i POST http://pl.wikipedia.org/wiki/Http
 
-Źródła
-===========
+**Źródła:**
 
-* :download:`czat_pr.zip <czat_pr.zip>`
-
-Metryka
-===============
-
-:Autor: Robert Bednarz
-
-:Utworzony: |date| o |time|
-
-.. |date| date::
-.. |time| date:: %H:%M
-
-.. raw:: html
-
-    <style>
-        div.code_no { text-align: right; background: #e3e3e3; padding: 6px 12px; }
-        div.highlight, div.highlight-python { margin-top: 0px; }
-    </style>
+* :download:`czatpro_cz2.zip <czatpro_cz1.zip>`
