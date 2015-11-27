@@ -1,0 +1,34 @@
+<!-- czatpro/czat/templates/czat/wiadomosc_form.html -->
+<html>
+  <body>
+    <h1>Wiadomości</h1>
+
+    {% if messages %}
+      <ul>
+        {% for komunikat in messages %}
+           <li>{{ komunikat|capfirst }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    <h2>Dodaj wiadomość</h2>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Zapisz</button>
+    </form>
+
+    <h2>Lista wiadomości:</h2>
+    <ol>
+      {% for wiadomosc in wiadomosci %}
+      <li>
+        <strong>{{ wiadomosc.autor.username }}</strong> ({{ wiadomosc.data_pub }}):
+        <br /> {{ wiadomosc.tekst }}
+      </li>
+      {% endfor %}
+    </ol>
+
+    <p><a href="{% url 'czat:index' %}">Strona główna</a></p>
+
+  </body>
+</html>

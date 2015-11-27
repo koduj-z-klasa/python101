@@ -1,0 +1,15 @@
+<!-- czatpro/czat/templates/czat/wiadomosc_usun.html -->
+<html>
+  <body>
+    <h1>Wiadomości</h1>
+
+    <h2>Usuń wiadomość</h2>
+    <form method="POST">
+      {% csrf_token %}
+      <p>Czy na pewno chcesz usunąć wiadomość:<br />"{{ object }}"?</p>
+      <button type="submit">Usuń</button>
+    </form>
+
+    <p><a href="{% url 'index' %}">Strona główna</a></p>
+  </body>
+</html>

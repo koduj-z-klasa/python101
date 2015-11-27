@@ -1,0 +1,16 @@
+<!-- czatpro/czat/templates/czat/rejestruj.html -->
+<html>
+  <body>
+    <h1>Rejestracja użytkownika</h1>
+    {% if user.is_authenticated %}
+      <p>Jesteś już zarejestrowany jako {{ user.username }}.
+      <br /><a href="/">Strona główna</a></p>
+    {% else %}
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Zarejestruj</button>
+    </form>
+    {% endif %}
+  </body>
+</html>

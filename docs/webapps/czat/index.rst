@@ -376,7 +376,7 @@ później dodajemy widoki ``loguj()`` i ``wyloguj()``:
 .. literalinclude:: views.py
     :linenos:
     :lineno-start: 20
-    :lines: 20-39
+    :lines: 20-38
 
 Widoki mogą obsługiwać zarówno żądania typu :term:`GET`, kiedy użytkownik chce tylko zobaczyć
 jakieś dane na stronie, oraz :term:`POST`, gdy wysyła informacje poprzez formularz, aby np. zostały zapisane.
@@ -417,7 +417,8 @@ Na początku widzimy, jak sprawdzić, czy użytkownik jest zalogowany (``{% if n
 co pozwala różnicować wyświetlaną treść. Użytkownikom niezalogowanym wyświetlamy
 formularz. W tym celu musimy ręcznie wstawić znacznik ``<form>``, zabezpieczenie formularza
 ``{% csrf_token %}`` oraz przycisk typu *submit*.
-Natomiast przekazany do szablonu formularz Django potrafi wyświetlić automatycznie: ``{{ form.as_p }}``.
+Natomiast przekazany do szablonu formularz Django potrafi wyświetlić automatycznie,
+np. używając znaczników akapitów: ``{{ form.as_p }}``.
 
 Trzeba również zapamiętać, jak wstawiamy odnośniki do zdefiniowanych widoków.
 Służy do tego kod typu ``{% url 'czat:index' %}`` – w cudzysłowach podajemy
@@ -454,8 +455,8 @@ Pozostaje **skojarzenie widoków z adresami URL**. W pliku :file:`czat/urls.py` 
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 10
-    :lines: 10-11
+    :lineno-start: 9
+    :lines: 9-10
 
 Możesz przetestować działanie dodanych funkcji wywołując w przeglądarce adresy:
 ``127.0.0.1:8000/loguj`` i ``127.0.0.1:8000/wyloguj``. Przykładowy formularz
@@ -504,8 +505,8 @@ Do pliku :file:`views.py` dodajemy importy i kod funkcji:
 .. highlight:: python
 .. literalinclude:: views.py
     :linenos:
-    :lineno-start: 42
-    :lines: 42-60
+    :lineno-start: 41
+    :lines: 41-59
 
 Po sprawdzeniu typu żądania wydobywamy treść przesłanej wiadomości
 ze słownika ``request.POST`` za pomocą metody ``get('tekst', '')``. Jej pierwszy argument
@@ -550,8 +551,8 @@ nadając mu nazwę *wiadomosci*:
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 12
-    :lines: 12
+    :lineno-start: 11
+    :lines: 11
 
 Ćwiczenie 3
 =============
@@ -571,197 +572,7 @@ Poniższe zrzuty prezentują efekty naszej pracy:
 
 .. figure:: img/czat16.png
 
-
-Widoki wbudowane
-******************
-
-Dodawanie, edycja, usuwanie czy przeglądanie danych zgromadzonych w bazie
-są typowymi czynnościami w aplikacjach internetowych. Utworzony dotychczas
-kod ilustruje "ręczną" obsługę żądań GET i POST, w tym tworzenie formularzy,
-walidację danych itp. Django zawiera jednak gotowe mechanizmy, których
-użycie skraca i ulepsza programistyczną pracę eliminując potencjalne błędy.
-
-Obsługę wiadomości zrealizujemy teraz za pomocą tzw. widoków wbudowanych opartych
-na klasach (ang. `class-based generic views <https://docs.djangoproject.com/en/1.4/topics/class-based-views/>`_ ).
-Na początku wykorzystamy widok ``CreateView`` służący do dodawania danych.
-
-W pliku :file:`views.py` dopisujemy:
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: python
-.. literalinclude:: views.py
-    :linenos:
-    :lineno-start: 12
-    :lines: 12
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: python
-.. literalinclude:: views_z5.py
-    :linenos:
-    :lineno-start: 63
-    :lines: 63-67
-
-Po zaimportowaniu widoku tworzymy na jego podstawie klasę ``class UtworzWiadomosc(CreateView):``,
-która obsłuży dodawanie wiadomości. Podstawowe argumenty to:
-
-* ``model`` – nazwa modelu, na podstawie którego Django utworzy formularz i sprawdzi poprawność danych;
-* ``fields`` – lista pól, które mają pojawić się w formularzu;
-* ``success_url`` – adres, na który przekierowujemy użytkownika po dodaniu wiadomości
-
-Do pliku :file:`urls.py` dopisujemy:
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: python
-.. literalinclude:: urls.py
-    :linenos:
-    :lineno-start: 6
-    :lines: 6
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: python
-.. literalinclude:: urls.py
-    :linenos:
-    :lineno-start: 13
-    :lines: 13-15
-
-Funkcja ``login_required()`` umożliwi nam ograniczenie dostępu do widoku tylko
-dla użytkowników zalogowanych, użytkownicy niezalogowani zostaną przekierowani
-na stronę podaną w parametrze ``login_url``. Pierwszym argumentem funkcji
-``views.UtworzWiadomosc.as_view()`` jest nasz widok, który jako klasa musi być
-wywołany metodą ``as_view()``.
-
-Wreszcie tworzymy szablon. Najłatwiej będzie otworzyć poprzednio edytowany plik :file:`wiadomosci.html`
-i zapisać go pod nazwą :file:`wiadomosc_form.html`. Następnie zmieniamy kod ``<input type="text" name="tekst" />``
-na ``{{ form.as_p }}``, czyli tag generujący formularz.
-
-.. note::
-
-    Widok ``CreateView`` szuka formularza o domyślnej nazwie tworzonej wg
-    wzoru ``nazwa_modelu_form.html``. Nazwę tę można zmienić za pomocą
-    atrybutu, np.: ``template_name='wiadomosc.html'``.
-
-Ćwiczenie 4
-===========
-
-Dodaj link do utworzonego widoku na stronie głównej, uruchom serwer, zaloguj się i wejdź
-na adres ``127.0.0.1:8000/wiadomosc``. Spróbuj dodać jakąś wiadomość. Zobacz, co się
-dzieje, gdy pozostawisz któreś z pól puste.
-
-.. figure:: img/czat17.png
-
-.. raw:: html
-
-    <hr />
-
-Mamy już działający formularz z obsługą błędów, jednak w porównaniu do poprzedniego
-rozwiązania nie jest on wygodny, wymagając uzupełniania wszystkich pól. Nie wyświetla
-się również lista wiadomości. Dostosujemy go zatem do naszych potrzeb.
-W pliku :file:`views.py` zmieniamy i dopisujemy kod:
-
-.. raw:: html
-
-     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: python
-.. literalinclude:: views.py
-    :linenos:
-    :lineno-start: 63
-    :lines: 63-84
-    :emphasize-lines: 4
-
-Metoda ``get_initial(self)`` umożliwia nam zainicjowanie pól formularza wartościami
-domyślnymi, ustawiamy więc aktualną datę publikacji, którą użytkownik będzie mógł
-zmienić.
-
-Nadpisanie metody ``get_context_data()`` umożliwia przekazanie do szablonu dodatkowych
-danych. W naszym przypadku kod ``context['wiadomosci'] = Wiadomosc.objects.all()``
-udostępnia w szablonie wszystkie dodane wiadomości.
-
-Metoda ``form_valid()`` sprawdza poprawność danych w formularzu. Nadpisujemy ją,
-aby dodać informację o autorze ``wiadomosc.autor = self.request.user``.
-
-.. raw:: html
-
-    <hr />
-
-Pozostaje nam dodanie możliwości usuwania wiadomości. W tym celu wykorzystamy
-widok ``DeleteView``. Do pliku :file:`views.py` dodajemy:
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: python
-.. literalinclude:: views.py
-    :linenos:
-    :lineno-start: 87
-    :lines: 87-91
-    :emphasize-lines: 4
-
-Tu widzimy zastosowanie wspomnianego wcześniej atrybutu ``template_name``.
-
-Do pliku :file:`urls.py` dopisujemy:
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: python
-.. literalinclude:: urls.py
-    :linenos:
-    :lineno-start: 16
-    :lines: 16-18
-
-Tu na uwagę zasługuje wzorzec ``r'^wiadomosc-usun/(?P<pk>\d+)/$'`` określający adres url wiązany z widokiem.
-Wyrażenie ``(?P<pk>\d+)`` opisuje liczbę dziesiętną, która zostanie przekazana do widoku pod
-nazwą ``pk`` (ang. *primary key*) oznaczającą identyfikator wiadomości.
-
-Potrzebujemy szablonu zapisanego w podanym w widoku pliku: :file:`czatpro/czat/templates/czat/wiadomosc_usun.html`:
-
-.. raw:: html
-
-    <div class="code_no">Plik <i>wiadomosc_usun.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: html
-.. literalinclude:: wiadomosc_usun.html
-    :linenos:
-
-Usuwany obiekt, a właściwie jego autoprezentację zwróconą przez metodę ``__unicode__``
-modelu, wyświetlamy w tagu ``{{ object }}``.
-
-Pozostaje dodanie do szablonu :file:`wiadomos_form.html` linku wywołującego widok
-usuwania wiadomości, o ile jest to wiadomość utworzona przez zalogowanego użytkownika:
-
-.. raw:: html
-
-    <div class="code_no">Plik <i>wiadomosc_form.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: html
-.. literalinclude:: wiadomosc_form.html
-    :linenos:
-    :lineno-start: 24
-    :lines: 24-32
-    :emphasize-lines: 5-7
-
-W efekcie pod adresem *127.0.0.1:8000/wiadomosc* powinniśmy zobaczyć strony podobne do poniższych:
-
-.. figure:: img/czat18.png
-
-.. figure:: img/czat19.png
-
-**Przetestuj działanie aplikacji!**
+Przetestuj działanie aplikacji.
 
 Materiały
 ***************

@@ -1,0 +1,14 @@
+<!-- czatpro/czat/templates/czat/index.html -->
+<html>
+  <head></head>
+  <body>
+    <h1>Witaj w aplikacji Czat!</h1>
+
+    {% if user.is_authenticated %}
+        <p>Jesteś zalogowany jako {{ user.username }}.</p>
+    {% else %}
+        <p><a href="{% url 'czat:rejestruj' %}">Zarejestruj się</a></p>
+    {% endif %}
+
+  </body>
+</html>

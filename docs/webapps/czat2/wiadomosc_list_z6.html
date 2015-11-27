@@ -1,0 +1,23 @@
+<!-- czatpro/czat/templates/czat/wiadomosc_list.html -->
+<html>
+  <body>
+    <h1>Wiadomości</h1>
+
+    <h2>Lista wiadomości:</h2>
+    <ol>
+      {% for wiadomosc in wiadomosci %}
+      <li>
+        <strong>{{ wiadomosc.autor.username }}</strong> ({{ wiadomosc.data_pub }}):
+        <br /> {{ wiadomosc.tekst }}
+        {% if wiadomosc.autor.username == user.username %}
+          &bull; <a href="{% url 'czat:edytuj' wiadomosc.id %}">Edytuj</a>
+          &bull; <a href="{% url 'czat:usun' wiadomosc.id %}">Usuń</a>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+
+    <p><a href="{% url 'czat:index' %}">Strona główna</a></p>
+
+  </body>
+</html>

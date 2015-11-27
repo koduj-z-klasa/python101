@@ -9,7 +9,6 @@ from django.core.urlresolvers import reverse
 from django.contrib import messages
 from czat.models import Wiadomosc
 from django.utils import timezone
-from django.views.generic.edit import CreateView, DeleteView
 
 
 def index(request):
@@ -58,34 +57,3 @@ def wiadomosci(request):
     wiadomosci = Wiadomosc.objects.all()
     kontekst = {'wiadomosci': wiadomosci}
     return render(request, 'czat/wiadomosci.html', kontekst)
-
-
-class UtworzWiadomosc(CreateView):
-    """Dodawanie wiadomości."""
-    model = Wiadomosc
-    fields = ['tekst', 'data_pub']
-    success_url = '/wiadomosc'
-
-    def get_initial(self):
-        initial = super(UtworzWiadomosc, self).get_initial()
-        initial['data_pub'] = timezone.now()
-        return initial
-
-    def get_context_data(self, **kwargs):
-        context = super(UtworzWiadomosc, self).get_context_data(**kwargs)
-        context['wiadomosci'] = Wiadomosc.objects.all()
-        return context
-
-    def form_valid(self, form):
-        wiadomosc = form.save(commit=False)
-        wiadomosc.autor = self.request.user
-        wiadomosc.save()
-        messages.success(self.request, "Dodano wiadomość!")
-        return super(UtworzWiadomosc, self).form_valid(form)
-
-
-class UsunWiadomosc(DeleteView):
-    """Usuwanie wiadomości."""
-    model = Wiadomosc
-    template_name = 'czat/wiadomosc_usun.html'
-    success_url = '/wiadomosc'
