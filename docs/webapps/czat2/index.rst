@@ -54,9 +54,9 @@ Powyższy kod wiąże adres URL */rejestruj* z wywołaniem widoku wbudowanego ja
 * ``template_name`` – szablon, który zostanie użyty do zwrócenia odpowiedzi;
 * ``form_class`` – formularz, który zostanie przekazany do szablonu;
 * ``success_url`` – adres, na który nastąpi przekierowanie w przypadku braku błędów
-  (np. po udanej rejestracji);
+  (np. po udanej rejestracji).
 
-Teraz tworzymy szablon formularza rejestracji, który zapisać należy w pliku :file:`czatpro/czat/templates/czat/rejestruj.html`:
+Teraz tworzymy szablon formularza rejestracji, który zapisać należy w pliku :file:`czatpro2/czat/templates/czat/rejestruj.html`:
 
 .. raw:: html
 
@@ -77,8 +77,9 @@ Na koniec wstawimy link na stronie głównej, a więc uzupełniamy plik :file:`i
     :linenos:
 
 Zwróć uwagę na sposób tworzenia linków w szablonie: ``{% url 'czat:rejestruj' %}``.
-Nazwę definiowaną w parametrze ``name`` w pliku :file:`urls.py` aplikacji
-poprzedzamy przestrzenią nazw zdefiniowaną w pliku adresów projektu (``namespace='czat'``).
+``czat`` to nazwa przestrzeni nazw zdefiniowanej w pliku adresów projektu
+:file:`czatpro2/czatpro/urls.py` (``namespace='czat'``). Link ``rejestruj``
+definiowany jest w parametrze ``name`` w pliku :file:`czatpro2/czat/urls.py` aplikacji.
 
 **Ćwiczenie:** dodaj link do strony głównej w szablonie :file:`rejestruj.html`.
 
@@ -222,7 +223,7 @@ Potrzebujemy szablonu, którego Django szuka pod domyślną nazwą
     :linenos:
 
 Kolejne wiadomości odczytujemy i wyświetlamy w pętli przy użyciu tagu ``{% for %}``.
-Dostęp do właściwości obiketów umożliwia operator kropki, np.: ``{{ wiadomosc.autor.username }}``.
+Dostęp do właściwości obiektów umożliwia operator kropki, np.: ``{{ wiadomosc.autor.username }}``.
 
 Zanim przetestujesz wyświetlanie wiadomości, dodaj link na stronie głównej!
 
