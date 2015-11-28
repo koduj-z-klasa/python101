@@ -115,7 +115,7 @@ Na początku pliku :file:`urls.py` aplikacji dopisujemy wymagany import:
     :lineno-start: 20
     :lines: 20-25
 
-Widać, że z adresami */loguj* i */wyloguj* wiążemy wbudowane w django widoki ``login``
+Widać, że z adresami */loguj* i */wyloguj* wiążemy wbudowane w Django widoki ``login``
 i ``logout`` importowane z modułu ``django.contrib.auth.views``. Jedynym nowym
 parametrem jest ``next_page``, za pomocą którego wskazujemy stronę
 wyświetlaną po wylogowaniu (``reverse_lazy('czat:index')``).
@@ -145,8 +145,7 @@ definujemy wartość zmiennej ``LOGIN_REDIRECT_URL``:
     from django.core.urlresolvers import reverse_lazy
     LOGIN_REDIRECT_URL = reverse_lazy('czat:index')
 
-Na koniec warto uzupełnić plik :file:`index.html` o linki służące do logowania i wylogowania.
-Spróbuj zrobić to sam i przetestuj działanie aplikacji.
+**Ćwiczenie:** Uzupełnij plik :file:`index.html` o linki służące do logowania i wylogowania.
 
 .. figure:: img/czatpro2_03.png
 
@@ -225,7 +224,7 @@ Potrzebujemy szablonu, którego Django szuka pod domyślną nazwą
 Kolejne wiadomości odczytujemy i wyświetlamy w pętli przy użyciu tagu ``{% for %}``.
 Dostęp do właściwości obiektów umożliwia operator kropki, np.: ``{{ wiadomosc.autor.username }}``.
 
-Zanim przetestujesz wyświetlanie wiadomości, dodaj link na stronie głównej!
+**Ćwiczenie:** Dodaj link do strony wyświetlającej wiadomości na stronie głównej dla zalogowanych użytkowników.
 
 .. figure:: img/czatpro2_04.png
 
@@ -310,7 +309,7 @@ na podstawie szablonu :file:`wiadomosc_list.html`. Otwórz go i zapisz pod nazw�
     :lineno-start: 6
     :lines: 6-19
 
-Zanim przetestujesz dodawanie wiadomości, dodaj odpowiedni link na stronie głównej!
+**Ćwiczenie:** Jak zwykle, umieść link do dodawanie wiadomości na stronie głównej.
 
 .. figure:: img/czatpro2_05.png
 
@@ -318,7 +317,7 @@ Edycja wiadomości
 *****************
 
 Widok pozwalający na edycję wiadomości i jej aktualizację dostępny będzie
-pod adresem ***/edytuj/id_wiadomości***, gdzie *id_wiadomosci* będzie identyfikatorem
+pod adresem **/edytuj/id_wiadomości**, gdzie **id_wiadomosci** będzie identyfikatorem
 obiektu do zaktualizowania. Zaczniemy od uzupełnienia pliku :file:`urls.py`:
 
 .. raw:: html
@@ -396,7 +395,8 @@ Właściwości formularza określamy w podklasie ``Meta``:
 
 Żeby przetestować aktualizowanie wiadomości, w szablonie :file:`wiadomosc_list.html`
 trzeba wygenerować linki *Edytuj* dla wiadomości utworzonych przez zalogowanego użytkownika.
-Wstaw w odpowiednie miejsce szablonu poniższy kod:
+Wstaw w odpowiednie miejsce szablonu, tzn po tagu wyświetlającym tekst wiadomości
+(``{{ wiadomosc.tekst }}``) poniższy kod:
 
 .. raw:: html
 
@@ -408,7 +408,7 @@ Wstaw w odpowiednie miejsce szablonu poniższy kod:
     :lineno-start: 12
     :lines: 12-14
 
-Ten sam link dodaj również link do listy wiadomości w szablonie dodawania.
+**Ćwiczenie:** Ten sam link "Edytuj" umieść również w szablonie dodawania.
 
 .. figure:: img/czatpro2_06.png
 
@@ -462,8 +462,7 @@ dlatego uproścliśmy jego nazwę we właściwości ``template_name``. Tworzymy 
 Tag ``{{ object }}`` zostanie zastąpiony treścią wiadomoś zwróconą przez funkcję
 "autoprezentacji" ``__unicode__()`` modelu.
 
-Na koniec, podobnie jak w przypadku edycji wiadomości, trzeba dodać linki *Usuń* w szablonach wyświetlających
-listę wiadomości. Spróbuj zrobic to samodzielnie, a następnie przetestuj działanie aplikacji.
+**Ćwiczenie:** Wstaw link "Usuń" (``&bull; <a href="{% url 'czat:usun' wiadomosc.id %}">Usuń</a>``) za linkiem "Edytuj" w szablonach wyświetlających listę wiadomości.
 
 .. figure:: img/czatpro2_07.png
 
