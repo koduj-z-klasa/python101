@@ -11,7 +11,7 @@ użycie skraca i ulepsza programistyczną pracę eliminując potencjalne błędy
 
 Będziemy rozwijać kod uzyskany po zrealizowaniu punktów **5.4.1 – 5.4.4** scenariusza :ref:`Czat (cz. 1) <czat-app>`.
 Pobierz więc :download:`archiwum <czatpro2_z01.zip>` z potrzebnymi plikami
-i rozpakuj w katalogu głównym. Utworzony zostanie katalog :file:`czatpro2`,
+i rozpakuj w katalogu domowym użytkownika. Utworzony zostanie katalog :file:`czatpro2`,
 w którym będziemy pracować.
 
 Na początku zajmiemy się obsługą użytkowników. Umożliwimy im samodzielne
@@ -268,7 +268,7 @@ Dalej kodujemy w pliku :file:`views.py`. Na początku dodajemy importy:
 .. literalinclude:: views.py
     :linenos:
     :lineno-start: 19
-    :lines: 19-39
+    :lines: 19-40
 
 Dostosowując widok ogólny, tworzymy opartą na nim klasę ``class UtworzWiadomosc(CreateView)``.
 Nieomówiona dotąd właściwość ``fields`` pozwala wskazać pola, które mają znaleźć
@@ -288,7 +288,7 @@ Wykorzystujemy ją do zainicjowania pola ``data_pub`` aktualna datą (``initial[
 
 Metoda ``get_context_data()`` z punktu widzenia dodawania wiadomości
 nie jest potrzebna. Pozwala natomiast przekazać do szablonu dodatkowe dane,
-w tym wypadku jest to lista wszystkich wiadomości: ``kwargs['wiadomosci'] = Wiadomosc.objects.all()``.
+w tym wypadku jest to lista wszystkich wiadomości: ``context['wiadomosci'] = Wiadomosc.objects.all()``.
 Wyświetlimy je poniżej formularza dodawania nowej wiadomości.
 
 .. raw:: html
@@ -359,14 +359,14 @@ widok ``UpdateView``:
 .. highlight:: python
 .. literalinclude:: views.py
     :linenos:
-    :lineno-start: 42
-    :lines: 42-57
+    :lineno-start: 43
+    :lines: 43-59
 
 Najważniejsza jest tu metoda ``get_object()``, która pobiera i zwraca wskazaną przez
 identyfikator w zmiennej *pk* wiadomość: ``wiadomosc = Wiadomosc.objects.get(id=self.kwargs['pk'])``.
 Omawianą już metodę ``get_context_data()`` wykorzystujemy, aby przekazać
 do szablonu listę wiadomości, ale tylko zalogowanego użytkownika
-(``Wiadomosc.objects.filter(autor=self.request.user)``).
+(``context['wiadomosci'] = Wiadomosc.objects.filter(autor=self.request.user)``).
 
 Właściwości ``model``, ``context_object_name``, ``template_name`` i ``success_url``
 wyjaśniliśmy wcześniej. Jak widać, do edycji wiadomości można wykorzystać ten sam szablon,

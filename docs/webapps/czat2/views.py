@@ -28,8 +28,9 @@ class UtworzWiadomosc(CreateView):
         return initial
 
     def get_context_data(self, **kwargs):
-        kwargs['wiadomosci'] = Wiadomosc.objects.all()
-        return super(UtworzWiadomosc, self).get_context_data(**kwargs)
+        context = super(UtworzWiadomosc, self).get_context_data(**kwargs)
+        context['wiadomosci'] = Wiadomosc.objects.all()
+        return context
 
     def form_valid(self, form):
         wiadomosc = form.save(commit=False)
@@ -48,9 +49,10 @@ class EdytujWiadomosc(UpdateView):
     success_url = '/wiadomosci'
 
     def get_context_data(self, **kwargs):
-        kwargs['wiadomosci'] = Wiadomosc.objects.filter(
+        context = super(EdytujWiadomosc, self).get_context_data(**kwargs)
+        context['wiadomosci'] = Wiadomosc.objects.filter(
             autor=self.request.user)
-        return super(EdytujWiadomosc, self).get_context_data(**kwargs)
+        return context
 
     def get_object(self, queryset=None):
         wiadomosc = Wiadomosc.objects.get(id=self.kwargs['pk'])
