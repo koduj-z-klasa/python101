@@ -1,0 +1,42 @@
+<!-- czatpro3/czat/templates/czat/baza.html -->
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="pl">
+  <meta charset="utf-8" />
+  <head>
+    <title>{% block tytul %} System wiadomości Czat {% endblock tytul %}</title>
+    <!-- dołączamy arkusz stylów: -->
+    <link rel="stylesheet" type="text/css" href="{% static 'czat/css/style.css' %}" />
+  </head>
+  <body>
+    <h1>{% block naglowek %} Witaj w aplikacji Czat! {% endblock %}</h1>
+
+    {% block komunikaty %}
+      {% if messages %}
+        <ul>
+        {% for komunikat in messages %}
+          <li>{{ komunikat|capfirst }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endblock %}
+
+    {% block tresc %} {% endblock %}
+
+    {% if user.is_authenticated %}
+      {% block linki1 %} {% endblock %}
+      <p><a href="{% url 'czat:wyloguj' %}">Wyloguj się</a></p>
+    {% else %}
+      {% block linki2 %} {% endblock %}
+    {% endif %}
+
+    {% block linki3 %} {% endblock %}
+
+    <!-- wstawiamy obrazki: -->
+    <div id="obrazki">
+      <img src="{% static 'czat/img/python.png' %}" width="300" />
+      <img src="{% static 'czat/img/sqlite.png' %}" width="300" />
+    </div>
+
+  </body>
+</html>

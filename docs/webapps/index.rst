@@ -29,6 +29,7 @@ nie musimy instalować żadnych dodatkowych narzędzi typu LAMP (WAMP).
     quiz_orm/index
     czat/index
     czat2/index
+    czat3/index
     mvc
     glossary
 

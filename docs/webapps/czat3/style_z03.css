@@ -1,0 +1,14 @@
+body {
+	margin: 10px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12pt;
+	background: lightgreen url('../img/django.png') no-repeat fixed top right;
+}
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:visited { text-decoration: none; }
+.clearfix { clear: both; }
+h1 { font-size: 1.8em; font-weight: bold; margin-top: 20px;}
+h2 { font-size: 1.4em; font-weight: bold; margin-top: 20px;}
+p { font-szie: 1em; font-family: Arial, sans-serif; }
+.fr { float: right; }

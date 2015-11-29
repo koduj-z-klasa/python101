@@ -1,0 +1,33 @@
+<!-- czatpro3/czat/templates/czat/baza.html -->
+<!DOCTYPE html>
+<html lang="pl">
+  <meta charset="utf-8" />
+  <head>
+    <title>{% block tytul %} System wiadomości Czat {% endblock tytul %}</title>
+  </head>
+  <body>
+    <h1>{% block naglowek %} Witaj w aplikacji Czat! {% endblock %}</h1>
+
+    {% block komunikaty %}
+      {% if messages %}
+        <ul>
+          {% for komunikat in messages %}
+            <li>{{ komunikat|capfirst }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endblock %}
+
+    {% block tresc %} {% endblock %}
+
+    {% if user.is_authenticated %}
+      {% block linki1 %} {% endblock %}
+      <p><a href="{% url 'czat:wyloguj' %}">Wyloguj się</a></p>
+    {% else %}
+      {% block linki2 %} {% endblock %}
+    {% endif %}
+
+    {% block linki3 %} {% endblock %}
+
+  </body>
+</html>
