@@ -132,7 +132,7 @@ Logowanie wymaga szablonu :file:`loguj.html`, który tworzymy i zapisujemy w pod
 
 Musimy jeszcze określić stronę, na którą powinien zostać przekierowany
 użytkownik po udanym zalogowaniu. W tym wypadku na końcu pliku :file:`czatpro/czatpro/settings.py`
-definujemy wartość zmiennej ``LOGIN_REDIRECT_URL``:
+definiujemy wartość zmiennej ``LOGIN_REDIRECT_URL``:
 
 .. raw:: html
 
@@ -448,7 +448,7 @@ Warto zwrócić uwagę, że podobnie jak w przypadku listy wiadomości, o ile wy
 domyślna funkcjonalność widoku wbudowanego, nie musimy niczego implementować w pliku :file:`views.py`.
 
 Domyślny szablon dla tego widoku przyjmuje nazwę *<nazwa-modelu>_confirm_delete.html*,
-dlatego uproścliśmy jego nazwę we właściwości ``template_name``. Tworzymy więc plik
+dlatego uprościliśmy jego nazwę we właściwości ``template_name``. Tworzymy więc plik
 :file:`wiadomosc_usun.html`:
 
 .. raw:: html
@@ -459,7 +459,7 @@ dlatego uproścliśmy jego nazwę we właściwości ``template_name``. Tworzymy 
 .. literalinclude:: wiadomosc_usun_z7.html
     :linenos:
 
-Tag ``{{ object }}`` zostanie zastąpiony treścią wiadomoś zwróconą przez funkcję
+Tag ``{{ object }}`` zostanie zastąpiony treścią wiadomości zwróconą przez funkcję
 "autoprezentacji" ``__unicode__()`` modelu.
 
 **Ćwiczenie:** Wstaw link "Usuń" (``&bull; <a href="{% url 'czat:usun' wiadomosc.id %}">Usuń</a>``) za linkiem "Edytuj" w szablonach wyświetlających listę wiadomości.
