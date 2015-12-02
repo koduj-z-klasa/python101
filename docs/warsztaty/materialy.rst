@@ -66,9 +66,9 @@ Oprogramowanie
 2. System operacyjny:
 
 	- **Linux** w wersji *live USB* lub *desktop*, np. :ref:`LxPupTahr <linux-live>`, (X)Ubuntu lub Debian. Python jest domyślnym składnikiem systemu.
-	- lub **Windows** 7/8/10. Interpreter Pythona należy doinstalować.
+	- lub **Windows** 7/8/10. :ref:`Interpreter Pythona należy doinstalować <windows-env>`.
 
-7. **Edytor kodu**, np. *Geany*, *PyCharm*, *Sublime Text*, *Atom* (działają w obu systemach).
+7. **Edytor kodu**, np. :ref:`*Geany*, *PyCharm*, *Sublime Text*, *Atom* <ide>` (działają w obu systemach).
 8. Narzędzia dodatkowe: *pip, virtualenv, git*.
 9. Biblioteki i frameworki Pythona wykorzystywane w przykładach: *Matplotlib, Pygame, Peewee, SQLAlchemy, Flask, Django, Rgkit, RobotGame-bots, Rgsimulator*.
 
