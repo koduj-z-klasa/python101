@@ -54,7 +54,7 @@ Wykresy w Pythonie
 
 	**Materiały i środki**: Python 2.7.x, biblioteka *Matplotlib*, edytor kodu, terminal, zalecany system :ref:`Linux Live LxPupTahr <linux-live>`, wersja HTML scenariusza Python kreśli. Projektor, dostęp do internetu nie jest konieczny.
 
-	**Realizacja**: Zaczynamy od :ref:`prostego przykładu w konsoli Pythona <_pylab>`, z której cały czas korzystamy. Stopniowo kodujemy przykłady wykorzystując je do praktycznego (!) wprowadzenia *wyrażeń listowych* zastępujących pętle *for*. Pokazujemy również mechanizmy związane z indeksowaniem list, m. in. *notację wycinkową* (ang. *slice*). Wyjaśniamy i ćwiczymy w interpreterze charakterystyczne dla Pythona konstrukcje. Jeżeli wystarczy czasu, zachęcamy do samodzielnego sporządzenia wykresu funkcji kwadratowej bądź innej.
+	**Realizacja**: Zaczynamy od :ref:`prostego przykładu w konsoli Pythona <pylab>`, z której cały czas korzystamy. Stopniowo kodujemy przykłady wykorzystując je do praktycznego (!) wprowadzenia *wyrażeń listowych* zastępujących pętle *for*. Pokazujemy również mechanizmy związane z indeksowaniem list, m. in. *notację wycinkową* (ang. *slice*). Wyjaśniamy i ćwiczymy w interpreterze charakterystyczne dla Pythona konstrukcje. Jeżeli wystarczy czasu, zachęcamy do samodzielnego sporządzenia wykresu funkcji kwadratowej bądź innej.
 
 Python w przykładach
 ====================

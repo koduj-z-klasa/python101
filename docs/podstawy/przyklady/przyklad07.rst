@@ -24,19 +24,28 @@ Operator ``+=`` oznacza dodanie argumentu z prawej strony do wartości z lewej.
 Zadania dodatkowe
 *****************
 
-Napisz funkcję deszyfrującą ``deszyfruj(txt)``. Dodaj do funkcji ``szyfruj(), deszyfruj()`` drugi parametr w postaci długości klucza podawanej przez użytkownika. Dodaj poprawne szyfrowanie dużych liter, obsługę białych znaków i znaków interpunkcyjnych.
+* Podany **kod można uprościć**, ponieważ napisy w Pythonie są sekwencjami.
+  Zatem pętlę odczytującą kolejne znaki można zapisać jako ``for znak in tekst:``,
+  a wszystkie wystąpienia notacji indeksowej ``txt[i]`` zastąpić zmienną ``znak``.
+
+* Napisz funkcję deszyfrującą ``deszyfruj(txt)``.
+
+* Dodaj do funkcji ``szyfruj() i deszyfruj()`` drugi parametr w postaci
+  długości klucza podawanej przez użytkownika.
+
+* Dodaj poprawne szyfrowanie dużych liter, obsługę białych znaków i znaków interpunkcyjnych.
 
 Przykład funkcji deszyfrującej:
 
 .. code-block:: python
     :linenos:
 
-    def deszyfruj(txt):
-        dtxt = ""
+    def deszyfruj(tekst):
+        odszyfrowany = ""
         KLUCZM = KLUCZ % 26
-        for i in range(len(txt)):
-            if (ord(txt[i]) - KLUCZM < 97):
-                dtxt += chr(ord(txt[i]) - KLUCZM + 26)
+        for znak in tekst:
+            if (ord(tekst) - KLUCZM < 97):
+                odszyfrowany += chr(ord(tekst) - KLUCZM + 26)
             else:
-                dtxt += chr(ord(txt[i]) - KLUCZM)
-        return dtxt
+                odszyfrowany += chr(ord(tekst) - KLUCZM)
+        return odszyfrowany

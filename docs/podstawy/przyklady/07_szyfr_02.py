@@ -5,14 +5,13 @@ KLUCZ = 3
 
 
 def szyfruj(txt):
-    stxt = ""
+    zaszyfrowny = ""
     for i in range(len(txt)):
         if ord(txt[i]) > 122 - KLUCZ:
-            stxt += chr(ord(txt[i]) + KLUCZ - 26)
+            zaszyfrowny += chr(ord(txt[i]) + KLUCZ - 26)
         else:
-            stxt += chr(ord(txt[i]) + KLUCZ)
-    return stxt
+            zaszyfrowny += chr(ord(txt[i]) + KLUCZ)
+    return zaszyfrowny
 
-utxt = raw_input("Podaj ciąg do zaszyfrowania:\n")
-stxt = szyfruj(utxt)
-print "Ciąg zaszyfrowany:\n", stxt
+u_tekst = raw_input("Podaj ciąg do zaszyfrowania:\n")
+print "Ciąg zaszyfrowany:\n", szyfruj(u_tekst)
