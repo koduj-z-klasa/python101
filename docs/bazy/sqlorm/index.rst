@@ -69,8 +69,9 @@ musimy wydać następujące polecenia SQL:
 
 Wydawanie poleceń SQL-a wymaga koncentracji na poprawności użycia tego języka,
 systemy ORM izolują nas od takich szczegółów pozwalając skupić się na logice danych.
-Tworzymy więc klasy opisujące nasze tabele: atrybuty tych klas odpowiadają polom tabel,
-ich instancje reprezentować będą z kolei rekordy.
+Tworzymy więc klasy opisujące nasze obiekty, tj. klasy i uczniów. Na podstawie
+Właściwości tych obieków system ORM utworzy odpowiednie pola tabel. Konkretna klasa
+lub uczeń, czyli instancje klasy, reprezentować będą rekordy w tabelach.
 
 .. raw:: html
 
@@ -109,7 +110,7 @@ Korzystając z języka SQL użyjemy następujących poleceń:
     :lineno-start: 32
     :lines: 32-47
 
-W systemie ORM pracujemy z obiektami ``klasa`` i ``uczen``. Nadajemy wartości ich
+W systemie ORM pracujemy z instancjami ``inst_klasa`` i ``inst_uczen``. Nadajemy wartości ich
 atrybutom i korzystamy z ich metod:
 
 .. raw:: html
@@ -136,9 +137,9 @@ Aby wyświetlić dane wszystkich uczniów zapisane w bazie użyjemy kodu:
     :lineno-start: 50
     :lines: 50-62
 
-W systemie ORM korzystamy z metody ``select()`` obiektu reprezentującego ucznia.
+W systemie ORM korzystamy z metody ``select()`` instancji reprezentującej ucznia.
 Dostęp do danych przechowywanych w innych tabelach uzyskujemy dzięki wyrażeniom
-typu ``uczen.klasa.nazwa``, które generuje podzazpytanie zwracające nazwę
+typu ``inst_uczen.klasa.nazwa``, które generuje podzapytanie zwracające obiekt
 klasy przypisanej uczniowi.
 
 .. raw:: html
@@ -174,7 +175,7 @@ Usuwany rekord z kolei musimy wskazać w klauzuli ``WHERE``.
     :lineno-start: 64
     :lines: 64-
 
-W systemie ORM tworzymy instancję reprezentującą ucznia i zmieniamy jej właściwości (``uczen.klasa = Klasa.select().where(Klasa.nazwa == '1B').get()``). Usuwając dane w przypadku systemu ORM, usuwamy instancję wskazanego obiektu:
+W systemie ORM tworzymy instancję reprezentującą ucznia i zmieniamy jej właściwości (``inst_uczen.klasa = Klasa.select().where(Klasa.nazwa == '1B').get()``). Usuwając dane w przypadku systemu ORM, usuwamy instancję wskazanego obiektu:
 
 .. raw:: html
 
@@ -229,6 +230,6 @@ Uruchamiamy je wydając polecenia:
 
     ~/python101$ cd bazy/sqlorm
     ~/python101/bazy/sqlorm$ python sqlraw0x.py
-    ~/python101/bazy/sqlorm$ python ormpeewee0x.py
+    ~/python101/bazy/sqlorm$ python ormpw0x.py
 
 \- gdzie *x* jest numerem kolejnej wersji kodu.

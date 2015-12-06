@@ -33,15 +33,15 @@ baza.create_tables([Klasa, Uczen], True)  # tworzymy tabele
 
 # dodajemy dwie klasy, jeżeli tabela jest pusta
 if Klasa.select().count() == 0:
-    klasa = Klasa(nazwa='1A', profil='matematyczny')
-    klasa.save()
-    klasa = Klasa(nazwa='1B', profil='humanistyczny')
-    klasa.save()
+    inst_klasa = Klasa(nazwa='1A', profil='matematyczny')
+    inst_klasa.save()
+    inst_klasa = Klasa(nazwa='1B', profil='humanistyczny')
+    inst_klasa.save()
 
 # tworzymy instancję klasy Klasa reprezentującą klasę "1A"
-klasa = Klasa.select().where(Klasa.nazwa == '1A').get()
+inst_klasa = Klasa.select().where(Klasa.nazwa == '1A').get()
 # dodajemy uczniów
-uczen = Uczen(imie='Tomasz', nazwisko='Nowak', klasa=klasa)
-uczen.save()
-uczen = Uczen(imie='Adam', nazwisko='Kowalski', klasa=klasa)
-uczen.save()
+inst_uczen = Uczen(imie='Tomasz', nazwisko='Nowak', klasa=inst_klasa)
+inst_uczen.save()
+inst_uczen = Uczen(imie='Adam', nazwisko='Kowalski', klasa=inst_klasa)
+inst_uczen.save()
