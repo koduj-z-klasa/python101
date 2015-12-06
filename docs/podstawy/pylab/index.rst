@@ -302,7 +302,7 @@ Na początku przyjmujemy następujące założenia:
 
 – gdzie: *r* – długość jednego kroku, :math:`\phi` – kąt wskazujący kierunek ruchu w odniesieniu do osi *OX*.
 
-* końcowy wektor przesunięcia obliczymy ze wzoru: :math:`|s| = \sqrt{(x^2 * y^2)}`
+* końcowy wektor przesunięcia obliczymy ze wzoru: :math:`|s| = \sqrt{(x^2 + y^2)}`
 
 Zacznijmy od wyliczenia współrzędnych opisujących ruch cząsteczki. Do pustego pliku o nazwie :file:`rbrowna.py` wpisujemy:
 
@@ -336,7 +336,7 @@ zapisać w listach. Wstaw w odpowiednich miejscach pliku poniższe intrukcje:
     wsp_x.append(x)
     wsp_y.append(y)
 
-Na końcu skryptu dopisz instrukcje wyliczającą końcowy wektor przesunięcia (:math:`|s| = \sqrt{(x^2 * y^2)}`) i drukującą go na ekranie. Przetestuj program.
+Na końcu skryptu dopisz instrukcje wyliczającą końcowy wektor przesunięcia (:math:`|s| = \sqrt{(x^2 + y^2)}`) i drukującą go na ekranie. Przetestuj program.
 
 Pozostaje dopisanie importu biblioteki *matplotlib* oraz instrukcji generujących wykres.
 Poniższy kod ilustruje również użycie opcji wzbogacających wykres o legendę, etykiety czy tytuł.
