@@ -47,13 +47,13 @@ if not sesja.query(Klasa).count():
     sesja.add(Klasa(nazwa='1B', profil='humanistyczny'))
 
 # tworzymy instancję klasy Klasa reprezentującą klasę "1A"
-klasa = sesja.query(Klasa).filter_by(nazwa='1A').one()
+inst_klasa = sesja.query(Klasa).filter_by(nazwa='1A').one()
 
 # dodajemy dane wielu uczniów
 sesja.add_all([
-    Uczen(imie='Tomasz', nazwisko='Nowak', klasa_id=klasa.id),
-    Uczen(imie='Jan', nazwisko='Kos', klasa_id=klasa.id),
-    Uczen(imie='Piotr', nazwisko='Kowalski', klasa_id=klasa.id),
+    Uczen(imie='Tomasz', nazwisko='Nowak', klasa_id=inst_klasa.id),
+    Uczen(imie='Jan', nazwisko='Kos', klasa_id=inst_klasa.id),
+    Uczen(imie='Piotr', nazwisko='Kowalski', klasa_id=inst_klasa.id),
 ])
 
 

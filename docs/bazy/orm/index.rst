@@ -76,11 +76,11 @@ podczas testowania).
 Model danych i baza
 ***********************
 
-Przez model rozumiemy tutaj definicje tablic, pól, ich typów oraz wzajemnych
-relacji za pomocą podejścia obiektowego, czyli deklaracji klas i ich właściwości (atrybutów).
+Przez model rozumiemy tutaj deklaracje klas i ich właściwości (atrybutów)
+opisujące obiekty, którymi się zajmujemy. Systemy ORM na podstawie klas tworzą
+odpowiednie tablice, pola, uwzględniając ich typy i powiązania.
 Wzajemne powiązanie klas i ich właściwości z tabelami i kolumnami w bazie stanowi
-właśnie istotę mapowania relacyjno-obiektowego, a systemy ORM zapewniają
-mechanizmy obsługujące te związki.
+właśnie istotę mapowania relacyjno-obiektowego.
 
 .. raw:: html
 
@@ -204,7 +204,7 @@ wyrażenia SQL (należy uważać na użycie poprawnego operatora ``==``).
 Pobieranie danych z wielu tabel połączonych relacjami może być w porównaniu
 do zapytań SQL-a bardzo proste. W zależności od ORM-a wystarcza polecenie:
 ``Uczen.select()`` lub ``sesja.query(Uczen).all()``, ale przy próbie
-odczytu klasy, do której przypisano ucznia (``uczen.klasa.nazwa``),
+odczytu klasy, do której przypisano ucznia (``inst_uczen.klasa.nazwa``),
 wykonane zostanie dodatkowe zapytanie, co nie jest efektywne.
 Dlatego lepiej otwarcie wskazywać na powiązania między obiektami,
 czyli w zależności od ORM-u używać:

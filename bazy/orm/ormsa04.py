@@ -47,13 +47,13 @@ if not sesja.query(Klasa).count():
     sesja.add(Klasa(nazwa='1B', profil='humanistyczny'))
 
 # tworzymy instancję klasy Klasa reprezentującą klasę "1A"
-klasa = sesja.query(Klasa).filter_by(nazwa='1A').one()
+inst_klasa = sesja.query(Klasa).filter_by(nazwa='1A').one()
 
 # dodajemy dane wielu uczniów
 sesja.add_all([
-    Uczen(imie='Tomasz', nazwisko='Nowak', klasa_id=klasa.id),
-    Uczen(imie='Jan', nazwisko='Kos', klasa_id=klasa.id),
-    Uczen(imie='Piotr', nazwisko='Kowalski', klasa_id=klasa.id),
+    Uczen(imie='Tomasz', nazwisko='Nowak', klasa_id=inst_klasa.id),
+    Uczen(imie='Jan', nazwisko='Kos', klasa_id=inst_klasa.id),
+    Uczen(imie='Piotr', nazwisko='Kowalski', klasa_id=inst_klasa.id),
 ])
 
 
@@ -65,8 +65,9 @@ def czytajdane():
 czytajdane()
 
 # zmiana klasy ucznia o identyfikatorze 2
-uczen = sesja.query(Uczen).filter(Uczen.id == 2).one()
-uczen.klasa_id = sesja.query(Klasa.id).filter(Klasa.nazwa == '1B').scalar()
+inst_uczen = sesja.query(Uczen).filter(Uczen.id == 2).one()
+inst_uczen.klasa_id = sesja.query(Klasa.id).filter(
+                                            Klasa.nazwa == '1B').scalar()
 
 # usunięcie ucznia o identyfikatorze 3
 sesja.delete(sesja.query(Uczen).get(3))

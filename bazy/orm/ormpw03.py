@@ -34,19 +34,19 @@ baza.create_tables([Klasa, Uczen], True)  # tworzymy tabele
 
 # dodajemy dwie klasy, jeżeli tabela jest pusta
 if Klasa().select().count() == 0:
-    klasa = Klasa(nazwa='1A', profil='matematyczny')
-    klasa.save()
-    klasa = Klasa(nazwa='1B', profil='humanistyczny')
-    klasa.save()
+    inst_klasa = Klasa(nazwa='1A', profil='matematyczny')
+    inst_klasa.save()
+    inst_klasa = Klasa(nazwa='1B', profil='humanistyczny')
+    inst_klasa.save()
 
 # tworzymy instancję klasy Klasa reprezentującą klasę "1A"
-klasa = Klasa.select().where(Klasa.nazwa == '1A').get()
+inst_klasa = Klasa.select().where(Klasa.nazwa == '1A').get()
 
 # lista uczniów, których dane zapisane są w słownikach
 uczniowie = [
-    {'imie': 'Tomasz', 'nazwisko': 'Nowak', 'klasa': klasa},
-    {'imie': 'Jan', 'nazwisko': 'Kos', 'klasa': klasa},
-    {'imie': 'Piotr', 'nazwisko': 'Kowalski', 'klasa': klasa}
+    {'imie': 'Tomasz', 'nazwisko': 'Nowak', 'klasa': inst_klasa},
+    {'imie': 'Jan', 'nazwisko': 'Kos', 'klasa': inst_klasa},
+    {'imie': 'Piotr', 'nazwisko': 'Kowalski', 'klasa': inst_klasa}
 ]
 
 # dodajemy dane wielu uczniów
