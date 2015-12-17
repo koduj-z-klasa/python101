@@ -26,7 +26,7 @@ a w nim plik główny :file:`todo.py`:
 
 .. code-block:: bash
 
-    ~ $ mkdir todo; cd todo; touch todo.py
+    ~$ mkdir todo; cd todo; touch todo.py
 
 Utworzymy szkielet aplikacji Flask, co pozwoli na uruchomienie testowego serwera www,
 umożliwiającego wygodne rozwijanie kodu. W pliku :file:`todo.py` wpisujemy:
@@ -47,9 +47,16 @@ Serwer uruchamiamy komendą:
 
 .. code-block:: bash
 
-    ~/quiz$ python todo.py
+    ~/todo$ python todo.py
 
 .. figure:: img/serwer.png
+
+.. note::
+
+    Jeżeli zaktualizowałeś pakiet Flask, a wraz z nim moduł Werkzeug,
+    w terminalu zobaczysz nieco inne komunikaty.
+
+.. figure:: img/serwer2.jpg
 
 Domyślnie serwer uruchamia się pod adresem *http://127.0.0.1:5000*.
 Po wpisaniu go do przeglądarki internetowej otrzymamy :term:`kod odpowiedzi HTTP` 404,
