@@ -28,12 +28,10 @@ pt. "Quiz". Zalecamy również zapoznanie się ze scenariuszem "ToDo", który
 ilustruje użycie bazy danych obsługiwanej za pomocą wbudowanego modułu ``sqlite3``
 z aplikacją internetową.
 
-Wykorzystywane biblioteki instalujemy przy użyciu menedżera pakietów
-lub instalatora ``pip`` (wydajemy albo pierwsze albo drugie polecenie):
+Wykorzystywane biblioteki instalujemy przy użyciu instalatora ``pip``:
 
 .. code-block:: bash
 
-    ~$ sudo apt-get install python-peewee python-sqlalchemy python-flask-sqlalchemy
     ~$ sudo pip install peewee sqlalchemy flask-sqlalchemy
 
 Modularyzacja
@@ -94,7 +92,9 @@ Flaska (``app = Flask(__name__)``).
 Jej ustawienia przechowywane są w słowniku ``.config``. Oprócz klucza
 używanego do obsługi sesji (``SECRET_KEY``), a także nazwy wykorzystywanej
 w szablonach (``TYTUL``), w przypadku SQLAlchemy definujemy tu nazwę pliku
-bazy danych. Następnie tworzymy instancję obiektu reprezentującego bazę.
+bazy danych (``SQLALCHEMY_DATABASE_URI='sqlite:///quiz.db'``)
+i wyłączamy śledzenie modyfikacji (``SQLALCHEMY_TRACK_MODIFICATIONS=False``).
+Następnie tworzymy instancję obiektu reprezentującego bazę.
 
 Peewee wykorzystuje specjalną zmienną ``g``, w której możemy przechowywać
 różne zasoby składające się na kontekst aplikacji, np. instancję bazy.
@@ -161,13 +161,14 @@ przywoływać we fragmentach. Warto również zaznaczyć,
 Strona główna i szablony
 ============================
 
-Widok obsługujący stronę główną w obu przypadkach jest taki sam:
+Widok obsługujący stronę główną w obu przypadkach jest prawie taki sam,
+w *Peewee* linia ``from app import baza`` nie jest potrzebna:
 
 .. raw:: html
 
-    <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: quiz2_pw/views.py
+.. literalinclude:: quiz2_sa/views.py
     :linenos:
     :lineno-start: 1
     :lines: 1-13
@@ -254,8 +255,6 @@ W podanym kodzie najważniejsze jest polecenie tworzące bazę i tabele:
 ``baza.create_tables([Pytanie, Odpowiedz],True)``; w SQLAlchemy
 trzeba zastąpić je wywołaniem ``baza.create_all()``. Zostanie ono wykonane,
 o ile na dysku nie istnieje już plik bazy ``quiz.db``.
-Zakomentowane linie wskazują kod, którego zadaniem jest wprowadzenie do bazy
-przykładowych danych. Tym zajmiemy się w kolejnym punkcie.
 
 Ostatnie polecenie ``app.run(debug=True)`` ma uruchomić naszą aplikację
 w trybie debugowania. Czas więc uruchomić nasz testowy serwer:
@@ -279,23 +278,19 @@ oznacza, jak wyjaśniono, podstawowe operacje wykonywane na bazie danych.
 Dane początkowe
 ====================
 
-.. tip::
-
-    Opisane poniżej dodawanie przykładowych pytań uaktywnimy po usunięciu
-    znaków komentarza z linii importującej moduł ``dane.py`` i drugiej wywołującej
-    zawarte w nim funkcje w pliku ``main.py``.
-
 Moduł ``dane.py``:
 
 .. raw:: html
 
-    <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: quiz2_pw/dane.py
+.. literalinclude:: quiz2_sa/dane.py
     :linenos:
     :lineno-start: 1
-    :lines: 1-21
+    :lines: 1-22
+
+W *Peewee* linia ``from app import baza`` nie jest potrzebna.
 
 Plik z danymi:
 
@@ -321,8 +316,8 @@ drugiej funkcji ``dodaj_pytania()``.
 .. highlight:: python
 .. literalinclude:: quiz2_pw/dane.py
     :linenos:
-    :lineno-start: 25
-    :lines: 25-
+    :lineno-start: 24
+    :lines: 24-
 
 .. raw:: html
 
@@ -355,10 +350,10 @@ i sprawdzającego udzielone przez użytkownika odpowiedzi.
 
 .. highlight:: python
 .. literalinclude:: quiz2_pw/views.py
-    :emphasize-lines: 21,29,34
+    :emphasize-lines: 18,23
     :linenos:
-    :lineno-start: 14
-    :lines: 14-35
+    :lineno-start: 15
+    :lines: 15-37
 
 Wyświetlenie pytań wymaga odczytania ich wraz z możliwymi odpowiedziami z bazy.
 W Peewee korzystamy z kodu: ``Pytanie().select().annotate(Odpowiedz)``,
@@ -432,10 +427,10 @@ wygląda ten widok:
 
 .. highlight:: python
 .. literalinclude:: quiz2_pw/views.py
-    :emphasize-lines: 56-72
+    :emphasize-lines: 21-38
     :linenos:
-    :lineno-start: 36
-    :lines: 36-81
+    :lineno-start: 40
+    :lines: 40-87
 
 .. raw:: html
 
@@ -444,8 +439,8 @@ wygląda ten widok:
 .. highlight:: python
 .. literalinclude:: quiz2_sa/views.py
     :linenos:
-    :lineno-start: 56
-    :lines: 56-75
+    :lineno-start: 61
+    :lines: 61-78
 
 Po otworzeniu adresu ``/dodaj`` otrzymujemy żadanie :term:`GET`,
 na które odpowiadamay zwróceniem omówionego wyżej szablonu ``dodaj.html``.
@@ -500,10 +495,10 @@ chcemy edytować. Odpowiada za to widok ``edytuj()``
 
 .. highlight:: python
 .. literalinclude:: quiz2_pw/views.py
-    :emphasize-lines: 91,94
+    :emphasize-lines: 9,12
     :linenos:
-    :lineno-start: 83
-    :lines: 83-95
+    :lineno-start: 90
+    :lines: 90-103
 
 Na początku pobieramy wszystkie pytania przy użyciu takiego samego kodu
 jak w widoku ``quiz()`` i sprawdzamy, czy w ogóle jakieś są. Jeżeli tak,
@@ -539,10 +534,10 @@ trafia do widoku ``usun()``. Funkcja ta przedstawia się następująco:
 
 .. highlight:: python
 .. literalinclude:: quiz2_pw/views.py
-    :emphasize-lines: 101,102
+    :emphasize-lines: 5-6
     :linenos:
-    :lineno-start: 97
-    :lines: 97-
+    :lineno-start: 106
+    :lines: 106-
 
 Działanie jest proste. Tworzymy obiekt reprezentujący pytanie o przesłanym
 identyfikatorze i wywołujemy metodę, która go usuwa.. W Peewee korzystamy z polecenia:
@@ -568,19 +563,13 @@ Poćwicz sam
 * :download:`quiz2.zip <quiz2.zip>`
 
 Kompletne wersje kodu znajdziesz w powyższym archiwum lub w katalogu
-:file:`~/python101/docs/webapps/quiz_orm` w podkatalogach :file:`quiz2_pw`
+:file:`~/python101/quiz2` w podkatalogach :file:`quiz2_pw`
 i :file:`quiz2_sa`. Uruchamiamy je poleceniami:
 
 .. code-block:: bash
 
-    ~/python101$ cd docs/webapps/quiz_orm
-    ~/python101/docs/webapps/quiz_orm$ cd quiz2_orm; python main.py
+    ~/python101$ cd quiz2
+    ~/python101/quiz2$ cd quiz2_orm; python main.py
 
 \- gdzie *orm* jest oznaczeniem modułu obsługi bazy danych, *pw* dla Peewee,
 *sa* dla SQLALchemy.
-
-.. tip::
-
-    Jeżeli po uruchomieniu aplikacji do bazy mają być wprowadzone początkowe
-    dane, pamiętaj, aby odkomentować odpowiednie linie w pliku
-    ``main.py`` z katalogu ``quiz2_pw``.

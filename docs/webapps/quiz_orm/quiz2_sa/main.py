@@ -9,6 +9,6 @@ import os
 
 if __name__ == '__main__':
     if not os.path.exists('quiz.db'):
-        baza.create_all() # tworzymy tabele
+        baza.create_all()  # tworzymy tabele
         dodaj_pytania(pobierz_dane('pytania.csv'))
     app.run(debug=True)

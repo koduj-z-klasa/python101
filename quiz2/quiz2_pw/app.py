@@ -6,19 +6,22 @@ from peewee import *
 
 app = Flask(__name__)
 
-# konfiguracja aplikacji, m.in. klucz do obsługi sesji HTTP wymaganej przez funkcję flash
+# konfiguracja aplikacji, m.in. klucz do obsługi sesji HTTP wymaganej
+# przez funkcję flash
 app.config.update(dict(
     SECRET_KEY='bardzosekretnawartosc',
-    TYTUL = 'Quiz 2 Peewee'
+    TYTUL='Quiz 2 Peewee'
 ))
 
 # tworzymy instancję bazy używanej przez modele
 baza = SqliteDatabase('quiz.db')
 
+
 @app.before_request
 def before_request():
     g.db = baza
     g.db.connect()
+
 
 @app.after_request
 def after_request(response):
