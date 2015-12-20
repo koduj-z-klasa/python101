@@ -100,9 +100,9 @@ Pierwszym stosowanym raczej dla dużych pakietów jest `SFS <http://puppylinux.o
 Za ich pomocą można doinstalować m. in. edytory Pycharm i Sublime Text.
 Aby to zrobić, ściągamy odpowiedni(e) plik(i) SFS:
 
-* `PyCharm 5.0.1 <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/pycharm-5.0.1_15.05.sfs?download=1>`_
+* `PyCharm 5.0.2 <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/pycharm-5.0.2.sfs?download=1>`_
   i wymagane środowisko `Java JRE <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/jre1.7.0_80.sfs?download=1>`_
-* `Sublime Text 3 <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/sublime-text3_15.05.sfs?download=1>`_
+* `Sublime Text 3 <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/sublime-text3.sfs?download=1>`_
 
 Pobrane pliki umieszczamy w katalogu głównym pendrajwa. W działającym systemie dostępny jest on
 w ścieżce :file:`/mnt/home`, którą należy wpisać w pole adresu menedżera plików:
@@ -120,7 +120,7 @@ wybieramy plik sfs i "Załaduj":
 .. figure:: lxpupimg/sfs_load.png
 
 Po załadowaniu plików SFS restartujemy menedżer okien: *Start/Zamknij/Restart WM*.
-Jeżeli nie potrzebujemy już danego programu lub chcemy go zaktualizować pakiet SFS
+Jeżeli nie potrzebujemy już danego programu lub chcemy go zaktualizować, pakiet SFS
 możemy też wyładować,
 
 .. note::
