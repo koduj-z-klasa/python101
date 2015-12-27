@@ -100,7 +100,7 @@ Pierwszym stosowanym raczej dla dużych pakietów jest `SFS <http://puppylinux.o
 Za ich pomocą można doinstalować m. in. edytory Pycharm i Sublime Text.
 Aby to zrobić, ściągamy odpowiedni(e) plik(i) SFS:
 
-* `PyCharm 5.0.2 <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/pycharm-5.0.2.sfs?download=1>`_
+* `PyCharm 5.0.3 <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/pycharm-5.0.3.sfs?download=1>`_
   i wymagane środowisko `Java JRE <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/jre1.7.0_80.sfs?download=1>`_
 * `Sublime Text 3 <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/sublime-text3.sfs?download=1>`_
 
@@ -126,7 +126,7 @@ możemy też wyładować,
 .. note::
 
   PyCharma można też zainstalować/zaktualizować za pomocą polecenia wydanego w terminalu:
-  ``install-pycharm.sh ver`` – *ver* oznacza wersję, np. *5.0.1*.
+  ``install-pycharm.sh ver`` – *ver* oznacza wersję, np. *5.0.3*.
   Tak wgrany program zajmuje miejsce w pliku zapisu, więc nie polecamy tego.
   Lepiej użyć pliku SFS.
 
