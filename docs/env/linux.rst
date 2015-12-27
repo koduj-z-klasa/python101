@@ -8,16 +8,28 @@ Jeżeli nie masz zainstalowanego systemu Linux, możesz wykorzystać wersję
 Jeżeli masz Linuksa lub planujesz go zainstalować na dysku, czytaj dalej.
 
 W systemach linuksowych Python 2.7.x zainstalowany jest domyślnie,
-wersję 3 również. Potrzebne narzędzia instalujemy przy użyciu systemowego
-menedżera pakietów, natomiast biblioteki wykorzystywane w materiałach za pomocą
-instalatora pakietów Pythona ``pip``.
+wersja 3.x również. Potrzebne narzędzia/biblioteki instalujemy przy użyciu systemowego
+menedżera pakietów i/lub instalatora pakietów Pythona ``pip``.
 
-Narzędzia:
+Narzędzia wymagane:
 
-* pip – instalator pakietów Pythona
-* virtualenv – menedżer wirtualnych środowisk
-* git – narzędzie umożliwiające korzystanie z zasobów serwisu `Github <https://github.com/>`
-* ipython – rozszerzona interaktywna konsola Pythona
+* `pip <https://pip.pypa.io/en/stable/>`_  – instalator pakietów Pythona, podstawowe narzędzie
+  służące do zarządzania pakietami Pythona zgromadzonymi np.
+  w repozytorium `PyPI <https://pypi.python.org/pypi>`_  (Python Package Index);
+* `virtualenv <https://virtualenv.readthedocs.org/en/latest/>`_  – menedżer wirtualnych środowisk Pythona,
+  pozwala tworzyć katalogi zawierające izolowane środowisko Pythona umożliwiające instalowanie
+  wybranych wersji pakietów przez zwykłych użytkowników;
+* `klient git <https://git-scm.com/downloads>`_  – narzędzie umożliwiające korzystanie z repozytoriów
+  kodu i dokumentacji w serwisie `Github <https://github.com/>`_
+* `sqlite3 <https://www.sqlite.org/>`_ – konsolowa powłoka dla baz SQLite3, umożliwia przeglądanie
+  schematów tabel oraz zarządzanie bazą za pomocą języka SQL.
+
+Narzędzia dodatkowe:
+
+* `ipython <http://ipython.org/>`_ – rozszerzona interaktywna konsola Pythona;
+* `qtconsole <http://jupyter.org/qtconsole/stable/>`_  – rozszerzona interaktywna konsola
+  Pythona wykorzystująca bibliotekę Qt, umożliwia m. in. wyświetlanie wykresów utworzonych
+  z wykorzystaniem *matplotlib*.
 
 .. contents:: Spis treści
     :backlinks: none
@@ -25,61 +37,56 @@ Narzędzia:
 .. note::
 
     * Nazwy pakietów w różnych dystrybucjach mogą się nieco różnić od podanych.
-    * *Pygame* to jedyna biblioteka, którą trzeba instalować za pomocą systemowego
-      menedżera pakietów.
-    * Systemy Debian i Arch Linux w domyślnej konfiguracji nie wykorzytują
+    * Systemy *Debian* i *Arch Linux* w domyślnej konfiguracji nie wykorzystują
       mechanizmu podnoszenia uprawnień ``sudo``, dlatego polecenia instalacji
-      należy wydawać z konta użytkownika root (w kodzie oznaczane znakami ``~#``).
+      należy wydawać z konta użytkownika root, co oznaczamy znakami ``~#``.
+    * W systemach opartych na *Debianie* (*(X)Ubuntu, LinuxMint* itp.) polecenie ``python``
+      domyślnie wywołuje Pythona 2, w systemach opartych na *Arch Linuksie* – Pythona 3.
+      Aby użyć interpretera Pythona 2, w *Archu* itp. trzeba wydać polecenie ``python2``.
 
-Debian, Ubuntu i pochodne
--------------------------
+Narzędzia i biblioteki
+-----------------------
 
-W systemach opartych na Debianie (m. in. wszystkie wersje Ubuntu, LinuxMint itd.)
-używamy menedżera ``apt-get`` i w terminalu wydajemy następujące polecenia:
+W systemach opartych na *Debianie* (*(X)Ubuntu, LinuxMint* itp.)
+w terminalu wydajemy następujące polecenia:
 
 .. code-block:: bash
 
     ~$ sudo apt-get update
-    ~$ sudo apt-get install python-pip python-virtualenv git ipython python-pygame sqlite3
-    ~$ sudo pip install --upgrade pip
-    ~$ sudo pip install --upgrade virtualenv
-    ~$ sudo pip install Flask Django peewee sqlalchemy flask-sqlalchemy matplotlib
+    ~$ sudo apt-get install python-pip python-pygame python-matplotlib git sqlite3
+    ~$ sudo apt-get install ipython ipython-qtconsole
+    ~$ sudo pip install virtualenv flask django peewee sqlalchemy flask-sqlalchemy
 
-Jeśli ``apt-get`` zgłosi problem z dostępnością pakietu, w systemach Ubuntu i pochodnych
-należy spróbować włączyć dodatkowe źródła oprogramowania:
-
-.. figure:: img/universe.png
-
-Arch Linux i pochodne
----------------------
-
-W systemach opartych na Arch Linuksie (Bridge Linux, Manjaro)
-wykorzystują menedżer ``pacman``. Odpowiednie polecenia mają postać:
+W systemach opartych na *Arch Linuksie* (*Manjaro* itp.)
+w terminalu wydajemy następujące polecenia:
 
 .. code-block:: bash
 
     ~# pacman -Syyu
-    ~# pacman -S python2-pip python2-virtualenv git ipython2 python2-pygame sqlite
-    ~# pip2 install Flask Django peewee sqlalchemy flask-sqlalchemy matplotlib
+    ~# pacman -S python2-pip python2-pygame python2-matplotlib git sqlite
+    ~# pacman -S ipython2-notebook python2-pyqt5
+    ~# pip2 install virtualenv flask django peewee sqlalchemy flask-sqlalchemy
 
-W innych systemach linuksowych należy korzystać z dedykowanych menedżerów
-lub wspomnianego instalatora Pythona (``pip``).
+Pip
+-------
 
-Narzędzie ``pip``
------------------
-
-Aby sprawdzić listę zainstalowanych modułów, wydajemy polecenie:
+Przydatne polecenia:
 
 .. code-block:: bash
 
-    ~$ pip list
-
-Aby zaktualizować jakiś pakiet:
-
-.. code-block:: bash
-
-    ~$ pip install --upgrade Django
+    ~$ pip -V  # wersja narzędzia pip
+    ~$ pip list  # lista zainstalowanych pakietów
+    ~$ sudo pip install nazwa_pakietu  # instalacja pakietu
+    ~$ sudo pip install nazwa_pakietu -U  # aktualizacja pakietu
+    ~$ sudo pip uninstall  # usunięcie pakietu
 
 .. note::
-    W zależności od konfigracji polecenie te należy wydać z uprawnieniami
-    administratora, np. z użyciem ``sudo`` lub z konta roota.
+
+    Aktualizacja biblioteki *matplotlib* oraz narzędzi *ipython* i *qtconsole*
+    w systemach opartych na Debianie wymaga doinstalowania środowiska
+    umożliwijącego kompilację:
+
+.. code-block:: bash
+
+    ~$ sudo apt-get install build-essential libpng12-dev zlib1g-dev libfreetype6-dev python-dev
+    ~$ sudo pip install matplotlib ipython qtconsole

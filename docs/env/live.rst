@@ -21,7 +21,7 @@ również w maszynie wirtualnej, na dysku twardym lub wykorzystać do odzyskiwan
 Poniżej opisujemy instalację *Linux Live* na kluczu USB oraz w maszynie wirtualnej tak,
 aby można było instalować oprogramowanie, zapisywać ustawienia i tworzone dokumenty.
 
-Polecamy dystrybucję `LxPupTahr 15.05.02 <http://lx-pup.weebly.com/>`_ – zaprojektowaną
+Polecamy dystrybucję `LxPupTahr 15.12 <http://lx-pup.weebly.com/>`_ – zaprojektowaną
 od podstaw jako *live* z możliwością zapisywania zmian. Oparta jest na stabilnym
 Ubuntu 14.04 LTS. Zawiera środowisko graficzne LXDE.
 **Na potrzeby szkoleń** i **do relalizacji naszych scenariuszy** przygotowaliśmy dostosowaną
@@ -38,8 +38,10 @@ W Windows
 
 * Pobieramy :term:`obraz iso`:
 
-  - `LxPupTahr Full <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/kzkbox_full.iso?download=1>`_ (570MB, zawiera edytory Geany 1.24, PyCharm Professional 5.0.1 i SublimeText 3)
-  - lub: `LxPupTahr Base <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/kzkbox.iso?download=1>`_ (325MB, zawiera edytor Geany 1.25, edytory PyCharm i SublimeText można łatwo doinstalować)
+  - `LxPupTahr Full <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/kzkbox_20151227_full.iso?download=1>`_
+    (608MB, zawiera edytory Geany 1.25, PyCharm Professional 5.0.3 i SublimeText 3)
+  - lub: `LxPupTahr Base <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/kzkbox_20151226.iso?download=1>`_
+    (384MB, zawiera edytor Geany 1.25, edytory PyCharm i SublimeText można łatwo doinstalować)
 
 * Do wgrania *LxPupTahr* pobieramy program `Rufus <https://rufus.akeo.ie/>`_.
 
@@ -56,7 +58,7 @@ W Windows
 .. tip::
 
   Po nagraniu systemu *LxPupTahr*, koniecznie przeczytaj :ref:`Pierwsze uruchomienie <lxpuptahr>`!!!
-  Jeżeli pobrałeś wersję BASE, przeczytaj jak łatwo dodać :ref:`edytory PyCharm i/lub Sublime Text3 <sfs-pet>`.
+  Jeżeli pobrałeś wersję BASE, przeczytaj, jak łatwo dodać :ref:`edytory PyCharm i/lub Sublime Text3 <sfs-pet>`.
 
 W Linuksie
 ===========
