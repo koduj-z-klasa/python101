@@ -62,6 +62,7 @@ Zaczynamy!
     rg/index
     pygame/index
     bazy/index
+    pyqt/index
     webapps/index
 
 Dodatkowe informacje
