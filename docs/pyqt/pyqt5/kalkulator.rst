@@ -80,11 +80,11 @@ Przetestujmy kod. Program uruchamiamy poleceniem wydanym w terminalu w katalogu 
 .. figure:: img/kalkulator01.png
 
 
-Dodajemy widżety
-****************
+Etykiety
+**********
 
-Puste okno być może nie robi wrażenia, zobaczymy więc, jak tworzyć widżety (zob. :term:`widżet`),
-czyli składniki interfejsu takie jak etykiety, przyciski, pola edycyjne itd.
+Puste okno być może nie robi wrażenia, zobaczymy więc, jak tworzyć widżety (zob. :term:`widżet`).
+Najprostszym przykładem będą etykiety.
 
 Dodajemy wymagane importy i rozbudowujemy metodę ``interfejs()``:
 
@@ -108,9 +108,9 @@ Dodajemy wymagane importy i rozbudowujemy metodę ``interfejs()``:
     :lineno-start: 16
     :lines: 16-35
 
-Dodawanie etykiet zaczynamy od utworzenia obiektów na podstawie odpowiedniej klasy Qt,
+Dodawanie etykiet zaczynamy od utworzenia obiektów na podstawie odpowiedniej klasy,
 w tym wypadku *QtLabel*. Do jej konstruktora przekazujemy tekst, który ma się wyświetlać
-na etykiecie, np.: ``self.etykieta1 = QLabel("Liczba 1:")``.
+na etykiecie, np.: ``etykieta1 = QLabel("Liczba 1:")``.
 
 Później tworzymy pomocniczy obiekt służący do rozmieszczenia etykiet w układzie
 tabelarycznym: ``ukladT = QGridLayout()``. Kolejne etykiety dodajemy do niego za
@@ -132,9 +132,61 @@ Przetestuj wprowadzone zmiany.
 
 .. figure:: img/kalkulator02.png
 
-[cdn.]
+Dodawanie widżetów
+*******************
+
+Dodamy teraz pozostałe widżety tworzące interfejs naszej aplikacji.
+Jak zwykle, zaczynamy od zaimportowania potrzebnych klas:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: kalkulator03.py
+    :linenos:
+    :lineno-start: 7
+    :lines: 7
+
+Następnie przed instrukcją ``self.setLayout(ukladT)`` wstawiamy następujący kod:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: kalkulator03.py
+    :linenos:
+    :lineno-start: 30
+    :lines: 30-56
+
+Jak widać, dodawanie widżetów polega zazwyczaj na:
+
+* **utworzeniu obiektu** na podstawie klasy opisującej potrzebny element interfejsu,
+  np. *QLineEdit* – 1-liniowe pole edycyjne, lub *QPushButton* – przycisk;
+* **ustawieniu właściwości** obiektu, np. ``wynik.setToolTip('Wpisz <b>liczby</b> i wybierz działanie...')``
+  – ustawia podpowiedź, a ``koniecBtn.resize(koniecBtn.sizeHint())`` – sugerowany rozmiar obiektu;
+* **przypisaniu obiektu do układu** – w powyższym przypadku wszystkie przyciski działań dodano
+  do układu horyzontalnego *QHBoxLayout*, ponieważ przycisków jest 4, a dopiero jego instancję
+  do układu tabelarycznego: ``ukladT.addLayout(ukladH, 2, 0, 1, 3)``. Liczby w tym przykładzie
+  oznaczają odpowiednio wiersz i kolumnę, tj. komórkę, do której wstawiamy obiekt,
+  a następnie ilość wierszy i kolumn, które chcemy wykorzystać.
+
+W powyższym kodzie, np. ``dodajBtn = QPushButton("&Dodaj", self)``, widać również, że tworząc obiekty można
+określać ich rodzica (ang. *parent*), tzn. widżet nadrzędny, w tym wypadku ``self``, czyli okno główne
+(ang. *toplevel window*). Bywa to przydatne zwłaszcza przy bardziej złożonych interfejsach.
+
+Znak ``&`` przed jakąć literą w opisie przycisków tworzy z kolei skrót klawiaturowy dostępny po naciśnięciu :kbd:`ALT + litera`.
+
+Po uruchomieniu programu powinniśmy zobaczyć okno podobne do poniższego:
+
+.. figure:: img/kalkulator03.png
+
+[cdn]
 
 Materiały
 ***************
 
-1. `Dokumentacja Qt5 <http://doc.qt.io/qt-5/>`_
+1. Strona główna `dokumentacji Qt5 <http://doc.qt.io/qt-5/>`_
+2. `Lista klas Qt5 <http://doc.qt.io/qt-5/classes.html>`_
+3. `Przykłady PyQt5 <https://github.com/baoboa/pyqt5/tree/master/examples>`_
