@@ -36,6 +36,14 @@ Słownik (Py)Qt
         – obiekt utworzony na podstawie klasy, która go opisuje. Posiada konkretne
         właściwości, które odróżniają go od innych instancji klasy.
 
+    sygnały i sloty
+        – (ang. signals and slots), sygnały powstają kiedy zachodzi jakieś wydarzenie.
+        W odpowiedzi na sygnał wywoływane są sloty, czyli funkcje. Wiele sygnałów
+        można łączyć z jednym slotem i odwrotnie. Można też łączyć ze sobą sygnały.
+        Widżety Qt mają wiele predefiniowanych zarówno sygnałów, jak i slotów.
+        Można jednak tworzyć własne. Dzięki temu obsługuje się tylko te zdarzenia,
+        które nas interesują.
+
     dziedziczenie
         w programowaniu obiektowym nazywamy mechanizm współdzielenia funkcjonalności
         między klasami. Klasa może dziedziczyć po innej klasie, co oznacza,

@@ -109,8 +109,8 @@ Dodajemy wymagane importy i rozbudowujemy metodę ``interfejs()``:
     :lines: 16-35
 
 Dodawanie etykiet zaczynamy od utworzenia obiektów na podstawie odpowiedniej klasy,
-w tym wypadku *QtLabel*. Do jej konstruktora przekazujemy tekst, który ma się wyświetlać
-na etykiecie, np.: ``etykieta1 = QLabel("Liczba 1:")``.
+w tym wypadku `QtLabel <http://doc.qt.io/qt-5/qlabel.html>`_. Do jej konstruktora
+przekazujemy tekst, który ma się wyświetlać na etykiecie, np.: ``etykieta1 = QLabel("Liczba 1:")``.
 
 Później tworzymy pomocniczy obiekt służący do rozmieszczenia etykiet w układzie
 tabelarycznym: ``ukladT = QGridLayout()``. Kolejne etykiety dodajemy do niego za
@@ -132,10 +132,10 @@ Przetestuj wprowadzone zmiany.
 
 .. figure:: img/kalkulator02.png
 
-Dodawanie widżetów
-*******************
+Interfejs
+**********
 
-Dodamy teraz pozostałe widżety tworzące interfejs naszej aplikacji.
+Dodamy teraz pozostałe widżety tworzące graficzny interfejs naszej aplikacji.
 Jak zwykle, zaczynamy od zaimportowania potrzebnych klas:
 
 .. raw:: html
@@ -163,13 +163,13 @@ Następnie przed instrukcją ``self.setLayout(ukladT)`` wstawiamy następujący 
 Jak widać, dodawanie widżetów polega zazwyczaj na:
 
 * **utworzeniu obiektu** na podstawie klasy opisującej potrzebny element interfejsu,
-  np. *QLineEdit* – 1-liniowe pole edycyjne, lub *QPushButton* – przycisk;
+  np. `QLineEdit <http://doc.qt.io/qt-5/qlineedit.html>`_ – 1-liniowe pole edycyjne, lub
+  `QPushButton <http://doc.qt.io/qt-5/qpushbutton.html>`_ – przycisk;
 * **ustawieniu właściwości** obiektu, np. ``wynik.setToolTip('Wpisz <b>liczby</b> i wybierz działanie...')``
   – ustawia podpowiedź, a ``koniecBtn.resize(koniecBtn.sizeHint())`` – sugerowany rozmiar obiektu;
 * **przypisaniu obiektu do układu** – w powyższym przypadku wszystkie przyciski działań dodano
-  do układu horyzontalnego *QHBoxLayout*, ponieważ przycisków jest 4, a dopiero jego instancję
-  do układu tabelarycznego: ``ukladT.addLayout(ukladH, 2, 0, 1, 3)``. Liczby w tym przykładzie
-  oznaczają odpowiednio wiersz i kolumnę, tj. komórkę, do której wstawiamy obiekt,
+  do układu horyzontalnego `QHBoxLayout <http://doc.qt.io/qt-5/qhboxlayout.html>`_, ponieważ przycisków jest 4, a dopiero jego instancję do układu tabelarycznego: ``ukladT.addLayout(ukladH, 2, 0, 1, 3)``.
+  Liczby w tym przykładzie oznaczają odpowiednio wiersz i kolumnę, tj. komórkę, do której wstawiamy obiekt,
   a następnie ilość wierszy i kolumn, które chcemy wykorzystać.
 
 W powyższym kodzie, np. ``dodajBtn = QPushButton("&Dodaj", self)``, widać również, że tworząc obiekty można
@@ -182,6 +182,90 @@ Po uruchomieniu programu powinniśmy zobaczyć okno podobne do poniższego:
 
 .. figure:: img/kalkulator03.png
 
+Zamykanie programu
+*******************
+
+Mamy okienko z polami edycyjnymi i przyciskami, ale kontrolki te na nic nie reagują.
+Nauczymy się więc obsługiwać poszczególne zdarzenia. Zacznijmy od zamykania aplikacji.
+
+Na początku dopiszmy import klasy *QMessageBox* pozwalającej tworzyć komunikaty:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: kalkulator04.py
+    :linenos:
+    :lineno-start: 8
+    :lines: 8
+
+Dalej po instrukcji ``self.setLayout(ukladT)`` w metodzie ``interfejs()`` dopisujemy:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: kalkulator04.py
+    :linenos:
+    :lineno-start: 62
+    :lines: 62
+
+– instrukcja ta wiąże kliknięcie przycisku "Koniec" z wywołaniem metody ``koniec()``,
+którą musimy dopisać na końcu klasy ``Kalkulator()``:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: kalkulator04.py
+    :linenos:
+    :lineno-start: 69
+    :lines: 69-70
+
+Funkcja ``koniec()``, obsługująca wydarzenie (ang. *event*) kliknięcia przycisku,
+wywołuje po prostu metodę ``close()`` okna głównego.
+
+.. note::
+
+    Omówiony fragment kodu ilustruje mechanizm zwany :term:`sygnały i sloty` (ang. *signals & slots*).
+    Zapewnia on komunikację między obiektami. Sygnał powstaje w momencie wystąpienia jakiegoś wydarzenia,
+    np. kliknięcia. Slot może z kolei być wbudowaną w Qt funkcją lub Pythonowym wywołaniem (ang. *callable*),
+    np. klasą lub metodą.
+
+
+Zamknięcie okna również jest rodzajem wydarzenia (`QCloseEvent <http://doc.qt.io/qt-5/qcloseevent.html>`_) , które można przechwycić. Np. po to,
+aby zapobiec utracie niezapisanych danych. Do klasy ``Kalkulator()`` dopiszmy następujący kod:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: kalkulator04.py
+    :linenos:
+    :lineno-start: 72
+    :lines: 72-82
+
+W metodzie ``closeEvent()`` wyświetlamy użytkownikowi prośbę o potwierdzenie zamknięcia
+za pomocą metody ``question()`` (ang. pytanie) klasy `QMessageBox <http://doc.qt.io/qt-5/qmessagebox.html>`_.
+Do konstruktora metody przekazujemy:
+
+* obiekt rodzica – ``self`` oznacza okno główne;
+* tytuł kona dialogowego;
+* komunikat dla użytkownika, np. pytanie;
+* kombinację standardowych przycisków, np. ``QMessageBox.Yes | QMessageBox.No``;
+* przycisk domyślny – ``QMessageBox.No``.
+
+Udzielona odpowiedź ``odp``, np. kliknięcie przycisku "Tak", decyduje o zezwoleniu
+na obsłużenie wydarzenia ``event.accept()`` lub odrzuceniu go ``event.ignore()``.
+
+Przetestuj działanie aplikacji.
+
+.. figure:: img/kalkulator04.png
+
 [cdn]
 
 Materiały
@@ -189,4 +273,6 @@ Materiały
 
 1. Strona główna `dokumentacji Qt5 <http://doc.qt.io/qt-5/>`_
 2. `Lista klas Qt5 <http://doc.qt.io/qt-5/classes.html>`_
-3. `Przykłady PyQt5 <https://github.com/baoboa/pyqt5/tree/master/examples>`_
+3. `PyQt5 Reference Guide <http://pyqt.sourceforge.net/Docs/PyQt5/>`_
+4. `Przykłady PyQt5 <https://github.com/baoboa/pyqt5/tree/master/examples>`_
+5. `Signals and slots <http://doc.qt.io/qt-5/signalsandslots.html>`_
