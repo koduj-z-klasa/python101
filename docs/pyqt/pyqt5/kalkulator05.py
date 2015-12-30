@@ -62,6 +62,10 @@ class Kalkulator(QWidget):
         self.setLayout(ukladT)
 
         koniecBtn.clicked.connect(self.koniec)
+        dodajBtn.clicked.connect(self.dzialanie)
+        odejmijBtn.clicked.connect(self.dzialanie)
+        mnozBtn.clicked.connect(self.dzialanie)
+        dzielBtn.clicked.connect(self.dzialanie)
 
         self.setGeometry(20, 20, 300, 100)
         self.setWindowIcon(QIcon('kalkulator.png'))
@@ -86,6 +90,22 @@ class Kalkulator(QWidget):
     def keyPressEvent(self, e):
         if e.key() == Qt.Key_Escape:
             self.close()
+
+    def dzialanie(self):
+
+        nadawca = self.sender()
+
+        try:
+            liczba1 = float(self.liczba1Edt.text())
+            liczba2 = float(self.liczba2Edt.text())
+
+            if nadawca.text() == "&Dodaj":
+                wynik = liczba1 + liczba2
+
+            self.wynikEdt.setText(str(wynik))
+
+        except ValueError:
+            QMessageBox.warning(self, "Błąd", "Błędne dane", QMessageBox.Ok)
 
 if __name__ == '__main__':
     import sys

@@ -28,15 +28,16 @@ class Kalkulator(QWidget):
         ukladT.addWidget(etykieta3, 0, 2)
 
         # 1-liniowe pola edycyjne
-        liczba1 = QLineEdit(self)
-        liczba2 = QLineEdit(self)
-        wynik = QLineEdit(self)
+        self.liczba1Edt = QLineEdit()
+        self.liczba2Edt = QLineEdit()
+        self.wynikEdt = QLineEdit()
 
-        wynik.setToolTip('Wpisz <b>liczby</b> i wybierz działanie...')
+        self.wynikEdt.readonly = True
+        self.wynikEdt.setToolTip('Wpisz <b>liczby</b> i wybierz działanie...')
 
-        ukladT.addWidget(liczba1, 1, 0)
-        ukladT.addWidget(liczba2, 1, 1)
-        ukladT.addWidget(wynik, 1, 2)
+        ukladT.addWidget(self.liczba1Edt, 1, 0)
+        ukladT.addWidget(self.liczba2Edt, 1, 1)
+        ukladT.addWidget(self.wynikEdt, 1, 2)
 
         # przyciski
         dodajBtn = QPushButton("&Dodaj", self)

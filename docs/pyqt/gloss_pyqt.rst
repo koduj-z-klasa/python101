@@ -8,7 +8,7 @@ Słownik (Py)Qt
         informacji na komputerze i innych urządzeniach oraz interakcji z użytkownikiem.
 
     widżet
-        (ang. *widget*) – podstawowy element graficzny interfejsu,
+        (ang. *widget*) – podstawowy element graficzny interfejsu, zwany czasami kontrolką,
         nie tylko główne okno aplikacji, ale również etykiety, pola edycyjne, przycicki itd.
 
     główna pętla programu
