@@ -67,6 +67,7 @@ class Kalkulator(QWidget):
         mnozBtn.clicked.connect(self.dzialanie)
         dzielBtn.clicked.connect(self.dzialanie)
 
+        self.liczba1Edt.setFocus()
         self.setGeometry(20, 20, 300, 100)
         self.setWindowIcon(QIcon('kalkulator.png'))
         self.setWindowTitle("Prosty kalkulator")
@@ -102,8 +103,17 @@ class Kalkulator(QWidget):
 
             if nadawca.text() == "&Dodaj":
                 wynik = liczba1 + liczba2
-            else:
-                pass
+            elif nadawca.text() == "&Odejmij":
+                wynik = liczba1 - liczba2
+            elif nadawca.text() == "&Mnóż":
+                wynik = liczba1 * liczba2
+            else:  # dzielenie
+                try:
+                    wynik = round(liczba1 / liczba2, 9)
+                except ZeroDivisionError:
+                    QMessageBox.critical(
+                        self, "Błąd", "Nie można dzielić przez zero!")
+                    return
 
             self.wynikEdt.setText(str(wynik))
 

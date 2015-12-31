@@ -8,6 +8,9 @@ przez `Guido van Rossuma <https://www.python.org/~guido/>`_,
 nazwa zaś pochodzi od tytułu serialu komediowego emitowanego w BBC pt.
 `"Latający cyrk Monty Pythona" <http://pl.wikipedia.org/wiki/Lataj%C4%85cy_cyrk_Monty_Pythona>`_.
 
+Według zestawień serwisu `TIOBE <http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html>`_
+Python jest w czołówce popularności języków programowania – 4 miejsce na koniec 2015 r.
+
 W systemach opartych na Linuksie :term:`interpreter` Pythona jest standardowo
 zainstalowany. W systemach Microsoft Windows należy go :ref:`doinstalować <ins-python>`.
 Interpreter Pythona może i powinien być używany w trybie interaktywnym

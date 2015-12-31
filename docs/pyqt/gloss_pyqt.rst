@@ -46,6 +46,6 @@ Słownik (Py)Qt
 
     dziedziczenie
         w programowaniu obiektowym nazywamy mechanizm współdzielenia funkcjonalności
-        między klasami. Klasa może dziedziczyć po innej klasie, co oznacza,
+        między klasami. Klasa może dziedziczyć po innej klasie, co w najprostszym przypadku oznacza,
         że oprócz swoich własnych atrybutów oraz zachowań, uzyskuje także te pochodzące
-        z klasy, z której dziedziczy.
+        z klasy, z której dziedziczy. Jest wiele odmian `dziedziczenia <https://pl.wikipedia.org/wiki/Dziedziczenie_%28programowanie%29>`_ .

@@ -39,7 +39,7 @@ Podstawą naszego programu będzie moduł ``PyQt5.QtWidgets``, z którego import
 klasy ``QApplication`` i ``QWidget`` – podstawową klasę wszystkich elementów interfejsu graficznego.
 
 Wygląd okna naszej aplikacji definiować będziemy za pomocą klasy *Kalkulator*
-dziedziczącej właściwości i metody z klasy *QWidget* (``class Kalkulator(QWidget)``).
+dziedziczącej (zob. :term:`dziedziczenie`) właściwości i metody z klasy *QWidget* (``class Kalkulator(QWidget)``).
 Instrukcja ``super().__init()__`` zwraca nam klasę rodzica i wywołuje jego :term:`konstruktor`.
 Z kolei w konstruktorze naszej klasy wywołujemy metodę ``interfejs()``,
 w której tworzyć będziemy :term:`GUI` naszej aplikacji. Ustawiamy więc właściwości
@@ -322,13 +322,12 @@ Następnie zaczynamy implementację funkcji ``dzialanie()``. Na końcu klasy ``K
 .. literalinclude:: kalkulator05.py
     :linenos:
     :lineno-start: 94
-    :lines: 94-108
+    :lines: 94-111
 
 Ponieważ jedna funkcja ma obsłużyć cztery sygnały, musimy znać źródło sygnału (ang. *source*),
 czyli nadawcę (ang. *sender*): ``nadawca = self.sender()``.
-Dalej rozpoczynamy blok ``try: ... except: ...``,
-bo użytkownik może wprowadzić błędne dane, tj. pusty ciąg znaków lub ciąg, którego
-nie da się przekształcić na liczbę zmiennoprzecinkową (``float()``).
+Dalej rozpoczynamy blok ``try: except:`` – użytkownik może wprowadzić błędne dane,
+tj. pusty ciąg znaków lub ciąg, którego nie da się przekształcić na liczbę zmiennoprzecinkową (``float()``).
 W przypadku wyjątku, wyświetlamy ostrzeżenie o błędnych danych: ``QMessageBox.warning()``
 
 Jeżeli dane są liczbami, sprawdzamy nadawcę (``if nadawca.text() == "&Dodaj":``)
@@ -336,11 +335,38 @@ i jeżeli jest to przycisk dodawania, obliczamy sumę ``wynik = liczba1 + liczba
 Na koniec wyświetlamy ją po zamianie na tekst (``str()``) w polu tekstowym za pomocą
 metody ``setText()``: ``self.wynikEdt.setText(str(wynik))``.
 
-Przetestuj działanie aplikacji :-)
+Sprawdź działanie programu.
 
 .. figure:: img/kalkulator05.png
 
-[cdn]
+Dopiszemy obsługę pozostałych działań. Instrukcję warunkową w funkcji ``dzialanie()``
+rozbudowujemy następująco:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: kalkulator06.py
+    :linenos:
+    :lineno-start: 103
+    :lines: 103-115
+
+Na uwagę zasługuje tylko dzielenie. Po pierwsze określamy dokładność dzielenia do 9
+miejsc po przecinku ``round(liczba1 / liczba2, 9)``. Po drugie zabezpieczamy się
+przed dzieleniem przez zero. Znów wykorzystujemy konstrukcję ``try: except:``,
+w której przechwytujemy wyjątek ``ZeroDivisionError`` i wyświetlamy odpowiednie ostrzeżenie.
+
+Pozostaje przetestować aplikację.
+
+.. figure:: img/kalkulator06.png
+
+.. tip::
+
+    Jeżeli po zaimplementowaniu działań, aplikacja po uruchomieniu nie aktywuje kursora
+    w pierwszym polu edycyjnym, należy tuż przed ustawianiem właściwości okna głównego
+    (``self.setGeometry()``) umieścić wywołanie ``self.liczba1Edt.setFocus()``,
+    które ustawia focus na wybranym elemencie.
 
 Materiały
 ***************
@@ -351,3 +377,7 @@ Materiały
 4. `Przykłady PyQt5 <https://github.com/baoboa/pyqt5/tree/master/examples>`_
 5. `Signals and slots <http://doc.qt.io/qt-5/signalsandslots.html>`_
 6. `Kody klawiszy <http://doc.qt.io/qt-5/qt.html#Key-enum>`_
+
+**Źródła:**
+
+* :download:`kalkulator.zip <kalkulator.zip>`
