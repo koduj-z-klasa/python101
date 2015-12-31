@@ -24,8 +24,10 @@ Obowiązkowa zawartość pliku:
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: toto01.py
+.. literalinclude:: toto03.py
     :linenos:
+    :lineno-start: 1
+    :lines: 1-2
 
 Pierwsza linia to ścieżka do interpretera Pythona (zob. :term:`interpreter`),
 druga linia deklaruje sposób kodowania znaków, dzięki czemu możemy używać
@@ -43,11 +45,10 @@ z zakresu <a; b>. Do naszego pliku dopisujemy:
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: toto02.py
+.. literalinclude:: toto03.py
     :linenos:
-    :emphasize-lines: 4, 6-7
-    :lineno-start: 1
-    :lines: 1-
+    :lineno-start: 4
+    :lines: 4-
 
 Wylosowana liczba zostanie zapamiętana w **zmiennej** ``liczba`` (zob. :term:`zmienna` ).
 Instrukcja ``print`` wydrukuje ją razem z komunikatem na ekranie.
@@ -75,13 +76,12 @@ na ile prób mu pozwolimy. Zacznijmy od jednej! Dopisujemy zatem:
 .. highlight:: python
 .. literalinclude:: toto03.py
     :linenos:
-    :emphasize-lines: 7, 9
+    :emphasize-lines: 9
     :lineno-start: 1
     :lines: 1-
 
-Na początku **zakomentowujemy** znakiem ``#`` instrukcję drukującą wylosowaną liczbę.
-Nie będzie wykonywana :-) Liczbę podaną przez użytkownika pobieramy za pomocą
-instrukcji ``raw_input()`` i zapamiętujemy w zmiennej ``odp``.
+Liczbę podaną przez użytkownika pobieramy za pomocą instrukcji ``raw_input()``
+i zapamiętujemy w zmiennej ``odp``.
 
 .. attention::
 
@@ -91,8 +91,12 @@ instrukcji ``raw_input()`` i zapamiętujemy w zmiennej ``odp``.
 Ćwiczenie 1
 =============
 
-Dopisz odpowiednie polecenie, które wyświetli liczbę podaną przez gracza.
-Przetestuj jego działanie.
+* Zgadywanie, gdy losowana liczba jest drukowana, nie jest zabawne. Zakomentuj
+  więc instrukcję drukowania: ``# print "Wylosowana liczba:", liczba`` – będzie pomijana
+  przez interpreter.
+
+* Dopisz odpowiednie polecenie, które wyświetli liczbę podaną przez gracza.
+  Przetestuj jego działanie.
 
 .. figure:: img/toto03.png
 
@@ -218,6 +222,20 @@ i wcięciami (!), aby po 3 nieudanej próbie wyświetlić komunikat:
 Ostateczny wynik działania naszego programu prezentuje się tak:
 
 .. figure:: img/toto07.png
+
+A kod następująco:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: toto07.py
+    :linenos:
+
+.. raw:: html
+
+    <hr />
 
 .. _duzy-lotek:
 
@@ -773,3 +791,12 @@ Funkcja zapisująca dane mogłaby wyglądać np. tak:
 
 Napisz funkcję ``czytaj_str()`` odczytującą tak zapisane dane. Funkcja
 powinna zwrócić listę słowników.
+
+Materiały
+**********
+
+**Źródła:**
+
+* :download:`Mały Lotek <toto1.zip>`
+* :download:`Duży Lotek <toto2.zip>`
+* :download:`Duży Lotek z modułem <toto3.zip>`
