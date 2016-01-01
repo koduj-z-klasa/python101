@@ -123,7 +123,7 @@ Część bibliotek wymaganych przez scenariusze wymaga innej instalacji.
 Matplotlib
 ----------
 
-Aby zainstalować ``matplotlib``, wchodzimy na stronę `http://www.lfd.uci.edu/~gohlke/pythonlibs <http://www.lfd.uci.edu/~gohlke/pythonlibs>`_ i pobieramy pakiety ``numpy`` oraz ``matplotlib`` w formacie ``whl`` dostosowane do naszej wersji Pythona i Windows. Np. jeżeli zainstalowaliśmy *Pythona v. 2.7.10* i mamy *Windows 7 64-bit*, pobierzemy:
+Aby zainstalować **matplotlib**, wchodzimy na stronę `http://www.lfd.uci.edu/~gohlke/pythonlibs <http://www.lfd.uci.edu/~gohlke/pythonlibs>`_ i pobieramy pakiety ``numpy`` oraz ``matplotlib`` w formacie ``whl`` dostosowane do naszej wersji Pythona i Windows. Np. jeżeli zainstalowaliśmy *Pythona v. 2.7.10* i mamy *Windows 7 64-bit*, pobierzemy:
 ``numpy‑1.10.0b1+mkl‑cp27‑none‑win_amd64.whl`` i ``matplotlib‑1.4.3‑cp27‑none‑win_amd64.whl``. Następnie
 otwieramy terminal w katalogu z pobranymi pakietami i instalujemy je przy użyciu instalatora:
 
@@ -131,6 +131,11 @@ otwieramy terminal w katalogu z pobranymi pakietami i instalujemy je przy użyci
 
     pip install numpy‑1.10.0b1+mkl‑cp27‑none‑win_amd64.whl
     pip install matplotlib‑1.4.3‑cp27‑none‑win_amd64.whl
+
+.. note::
+
+    Oficjalne kompilacje **matplotlib** dla Windows dostępne są w serwisie
+    `Sourceforge matplotlib <http://sourceforge.net/projects/matplotlib/files/matplotlib/matplotlib-1.5.0/windows/>`_.
 
 PyGame
 -------
