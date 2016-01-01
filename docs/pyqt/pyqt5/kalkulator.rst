@@ -17,18 +17,18 @@ Przykład wprowadza również podstawy `programowania obiektowego <https://pl.wi
       * Python v. 3.x
       * PyQt v. => 5.2.1
 
-    Instalacja w systemach opartych na Debianie ((X)Ubuntu, Linux Mint itp.)
-    i w systemach opartych na Arch Linuksie (Manjrao itp.):
+Instalacja w systemach opartych na Debianie ((X)Ubuntu, Linux Mint itp.)
+i w systemach opartych na Arch Linuksie (Manjaro itp.):
 
 .. code-block:: bash
 
     ~$ sudo apt-get install python3-pyqt5
     ~# pacman -S python-pyqt5
 
-    W systemach Windows ze strony `Python Releases for Windows <https://www.python.org/downloads/windows/>`_
-    pobieramy instalator Pythona 3 w 32- lub 64-bitowej wersji i instalujemy.
-    Następnie pobieramy ze strony `PyQt5 Download <https://riverbankcomputing.com/software/pyqt/download5>`_
-    instalator PyQt5 w wersji 32- lub 64-bitowej i również instalujemy.
+W systemach Windows ze strony `Python Releases for Windows <https://www.python.org/downloads/windows/>`_
+pobieramy instalator Pythona 3 w 32- lub 64-bitowej wersji i instalujemy.
+Następnie pobieramy ze strony `PyQt5 Download <https://riverbankcomputing.com/software/pyqt/download5>`_
+instalator PyQt5 w wersji 32- lub 64-bitowej i również instalujemy.
 
 .. contents::
     :depth: 1
