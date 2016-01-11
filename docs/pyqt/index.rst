@@ -11,6 +11,16 @@ Działa na wielu platformach i systemach operacyjnych.
 Najbardziej rozpowszechnioną wersją jest Qt 4, jednak jej wsparcie kończy się pod koniec 2015 r.
 Najnowszą wersją jest Qt 5.
 
+.. toctree::
+    :maxdepth: 2
+
+    instalacja.rst
+    kalkulator/index
+    gloss_pyqt
+
+Inne biblioteki
+***************
+
 Aplikacje okienkowe w Pythonie można tworzyć z wykorzystaniem innych rozwiązań,
 takich jak:
 
@@ -18,13 +28,3 @@ takich jak:
 * `wxPython <https://pl.wikipedia.org/wiki/WxPython>`_ – wykorzystuje bibliotekę `wxWidgets <https://pl.wikipedia.org/wiki/WxWidgets>`_;
 * `Tkinter <https://pl.wikipedia.org/wiki/Tkinter>`_ – wykorzystuje bibliotekę `Tk <https://pl.wikipedia.org/wiki/Tk>`_;
 * `PySide <https://srinikom.github.io/pyside-docs/>`_ – wykorzystuje bibliotekę Qt, alternatywa dla PyQt.
-
-.. toctree::
-    :maxdepth: 2
-
-    pyqt5/kalkulator
-    gloss_pyqt
-
-Materiały
-*********
-
