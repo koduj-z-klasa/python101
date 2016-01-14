@@ -1,16 +1,15 @@
-.. _kalkulator:
+.. _widzety:
 
-Kalkulator
+Widżety
 ###########################
 
 .. highlight:: python
 
-Prosta 1-okienkowa aplikacja ilustrująca podstawy tworzenia interfejsu graficznego
-i obsługi działań użytkownika za pomocą Pythona (PyQt5) i biblioteki Qt5.
-Przykład wprowadza również podstawy `programowania obiektowego <https://pl.wikipedia.org/wiki/Programowanie_obiektowe>`_
-(ang. Object Oriented Programing).
+1-okienkowa aplikacja prezentująca zastosowanie większości podstawowych widżetów
+dostępnych w bibliotece Qt5 obsługiwanej za pomocą Pythona (PyQt5).
+Przykład ilustruje również techniki `programowania obiektowego <https://pl.wikipedia.org/wiki/Programowanie_obiektowe>`_ (ang. Object Oriented Programing).
 
-.. figure:: img/kalkulator05.png
+.. figure:: img/widzety.png
 
 .. attention::
 
@@ -19,26 +18,72 @@ Przykład wprowadza również podstawy `programowania obiektowego <https://pl.wi
       * Python v. 3.x
       * PyQt v. => 5.2.1
 
+    **Wymagana wiedza**:
+
+    	* Znajomość Pythona w stopniu średnim.
+    	* Znajomość podstaw projektowania interfejsu z wykorzystaniem bibliotek Qt
+    	  (zob. scenariusz :ref:`Kalkulator <kalkulator>`).
+
 .. contents::
     :depth: 1
     :local:
 
-Pokaż okno
-***********
+Podstawy rysowania
+******************
 
-Zaczynamy od utworzenia pliku o nazwie :file:`kalkulator.py` w dowolnym katalogu
+Zaczynamy od utworzenia głównego pliku o nazwie :file:`widgety.py` w dowolnym katalogu
 za pomocą dowolnego edytora. Wstawiamy do niego poniższy kod:
 
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>widgety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: kalkulator01.py
+.. literalinclude:: widgety_z0.py
     :linenos:
 
-Podstawą naszego programu będzie moduł ``PyQt5.QtWidgets``, z którego importujemy
-klasy ``QApplication`` i ``QWidget`` – podstawową klasę wszystkich elementów interfejsu graficznego.
+Podstawową klasą opisującą naszą aplikację będzie klasa ``Widgety``. Umieścimy
+w niej głównie logikę aplikacji, czyli powiązania sygnałów i slotów (zob.: :term:`sygnały i sloty`)
+oraz implementację tych ostatnich. Klasa ta dziedziczy z zaimportowanej klasy ``Ui_Widget``
+i w swoim konstruktorze (``def __init__(self, parent=None)``) wywołuję odziedziczoną
+metodę ``self.setupUi(self)``, aby zbudować interfejs. Pozostała część pliku
+tworzy instancję aplikacji, instancję okna głównego, czyli klasy ``Widgety``,
+wyświetla je i uruchamia pętlę zdarzeń.
+
+Klasę ``Ui_Widget`` dla przejrzystości umieścimy w osobnym pliku o nazwie :file:`gui.py`.
+Tworzymy go i wstawiamy poniższy kod:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>widgety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: gui_z0.py
+    :linenos:
+
+Klasa pomocnicza ``Ksztalty`` symulować będzie typ wyliczeniowy: angielskim nazwom
+kształtów przypiszemy kolejne wartości całkowite zaczynając od 0.
+Kształty, które będziemy rysowali, to:
+
+ * *Rect* – prostokąt, wartość 0;
+ * *Ellipse* – elipsa, w tym koło, wartość 1;
+ * *Polygon* – linia łamana zamknięta, np. trójkąt, wartość 2;
+ * *Line* – linia łącząca dwa punkty, wartość 3.
+
+Określając rodzaj rysowanego kształtu, będziemy używali konstrukcji typu ``Ksztalty.Ellipse``.
+Robimy tak w głównej metodzie klasy ``Ui_Widget`` o nazwie ``setupUi()``.
+Na początku definiujemy w niej kilka zmiennych opisujących kształt, który chcemy narysować,
+i jego właściwości. Takie kształty, jak prostokąt czy elipsa, opisywane są przez strukturę
+danych ``QRect``. Konstruktorowi klasy `QRect() <http://http://doc.qt.io/qt-5/qrect.html>`_
+przekazujemy: dwie liczby określające współrzędne lewego górnego rogu prostokąta oraz dwie następne –
+wskazujące jego prawy dolny róg: ``self.prost = QRect(1, 1, 101, 101)``.
+
+.. attention::
+
+	Początek dwuwymiarowego układu współrzędnych znajduje się w lewym górnym
+	rogu ekranu czy okna.
+
+
 
 Wygląd okna naszej aplikacji definiować będziemy za pomocą klasy *Kalkulator*
 dziedziczącej (zob. :term:`dziedziczenie`) właściwości i metody z klasy *QWidget* (``class Kalkulator(QWidget)``).
