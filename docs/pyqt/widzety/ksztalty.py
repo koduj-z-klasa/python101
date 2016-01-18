@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import QWidget
 from PyQt5.QtGui import QPainter, QColor, QPolygon
 from PyQt5.QtCore import QPoint, QRect, QSize
 
+
 class Ksztalty:
     """ Klasa pomocnicza, symuluje typ wyliczeniowy """
     Rect, Ellipse, Polygon, Line = range(4)
@@ -30,10 +31,10 @@ class Ksztalt(QWidget):
     def paintEvent(self, e):
         qp = QPainter()
         qp.begin(self)
-        self.rysujFigury(qp)
+        self.rysujFigury(e, qp)
         qp.end()
 
-    def rysujFigury(self, qp):
+    def rysujFigury(self, e, qp):
         qp.setPen(self.kolorO)  # kolor obramowania
         qp.setBrush(self.kolorW)  # kolor wypełnienia
         qp.setRenderHint(QPainter.Antialiasing)  # wygładzanie kształtu
@@ -59,6 +60,6 @@ class Ksztalt(QWidget):
         self.ksztalt = ksztalt
         self.update()
 
-    def ustawKolorW(self, kolor):
-        self.kolorW = kolor
+    def ustawKolorW(self, r=0, g=0, b=0):
+        self.kolorW = QColor(r, g, b)
         self.update()

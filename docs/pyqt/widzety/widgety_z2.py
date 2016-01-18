@@ -3,36 +3,35 @@
 
 from PyQt5.QtWidgets import QApplication, QWidget
 from gui_z2 import Ui_Widget
-from PyQt5.QtGui import QColor
 
 
 class Widgety(QWidget, Ui_Widget):
+    """ Główna klasa aplikacji """
 
     def __init__(self, parent=None):
         super(Widgety, self).__init__(parent)
-        self.setupUi(self)
+        self.setupUi(self)  # tworzenie interfejsu
 
-        # sygnały i sloty
+        # ustawienia, sygnały i sloty
+        # przyciski CheckBox ###
+        self.ksztaltChk.setChecked(True)
+        self.ksztaltAktywny = self.ksztalt1
+        self.grupaChk.buttons()[self.ksztaltAktywny.ksztalt].setChecked(True)
         self.grupaChk.buttonClicked[int].connect(self.ustawKsztalt)
         self.ksztaltChk.clicked.connect(self.aktywujKsztalt)
 
-        # ustawienia
-        self.ksztalt1.ustawKolorW(QColor(200, 30, 40))
-        self.ksztalt2.ustawKolorW(QColor(34, 76, 189))
-        self.grupaChk.buttons()[self.ksztalt.ksztalt].setChecked(True)
-
     def ustawKsztalt(self, wartosc):
-        self.ksztalt.ustawKsztalt(wartosc)
+        self.ksztaltAktywny.ustawKsztalt(wartosc)
 
     def aktywujKsztalt(self, wartosc):
         nadawca = self.sender()
         if wartosc:
-            self.ksztalt = self.ksztalt1
+            self.ksztaltAktywny = self.ksztalt1
             nadawca.setText("<=")
         else:
-            self.ksztalt = self.ksztalt2
+            self.ksztaltAktywny = self.ksztalt2
             nadawca.setText("=>")
-        self.grupaChk.buttons()[self.ksztalt.ksztalt].setChecked(True)
+        self.grupaChk.buttons()[self.ksztaltAktywny.ksztalt].setChecked(True)
 
 
 if __name__ == '__main__':

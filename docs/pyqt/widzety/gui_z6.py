@@ -3,7 +3,7 @@
 
 from ksztalty import Ksztalty, Ksztalt
 from PyQt5.QtGui import QColor
-from PyQt5.QtWidgets import QWidget, QHBoxLayout
+from PyQt5.QtWidgets import QHBoxLayout
 from PyQt5.QtWidgets import QCheckBox, QButtonGroup, QVBoxLayout
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QSlider, QLCDNumber, QSplitter

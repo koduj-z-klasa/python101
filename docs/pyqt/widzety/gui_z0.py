@@ -7,6 +7,7 @@ from PyQt5.QtCore import QRect
 
 class Ui_Widget(object):
     """ Klasa definiująca GUI """
+
     def setupUi(self, Widget):
 
         self.ksztalt = Ksztalty.Ellipse  # kształt do narysowania
@@ -24,7 +25,7 @@ class Ui_Widget(object):
         self.rysujFigury(qp)
         qp.end()
 
-    def rysujFigury(self, qp):
+    def rysujFigury(self, e, qp):
         qp.setPen(self.kolorO)  # kolor obramowania
         qp.setBrush(self.kolorW)  # kolor wypełnienia
         qp.setRenderHint(QPainter.Antialiasing)  # wygładzanie kształtu

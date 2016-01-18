@@ -6,10 +6,10 @@ from gui_z1 import Ui_Widget
 
 
 class Widgety(QWidget, Ui_Widget):
-
+    """ Główna klasa aplikacji """
     def __init__(self, parent=None):
         super(Widgety, self).__init__(parent)
-        self.setupUi(self)
+        self.setupUi(self)  # tworzenie interfejsu
 
 if __name__ == '__main__':
     import sys

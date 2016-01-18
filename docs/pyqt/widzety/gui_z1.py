@@ -2,17 +2,17 @@
 # -*- coding: utf-8 -*-
 
 from ksztalty import Ksztalty, Ksztalt
-from PyQt5.QtGui import QColor
-from PyQt5.QtWidgets import QWidget, QHBoxLayout
+from PyQt5.QtWidgets import QHBoxLayout
 
 
 class Ui_Widget(object):
     """ Klasa definiująca GUI """
+
     def setupUi(self, Widget):
 
         # widget rysujący kształty, instancja klasy Ksztalt
         self.ksztalt = Ksztalt(self, Ksztalty.Polygon)
-        self.ksztalt.ustawKolorW(QColor(200, 30, 40))
+        self.ksztalt.ustawKolorW(200, 30, 40)
 
         # układ poziomy, zawiera: self.ksztalt
         ukladH1 = QHBoxLayout()

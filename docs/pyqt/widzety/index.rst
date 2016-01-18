@@ -6,10 +6,10 @@ Widżety
 .. highlight:: python
 
 1-okienkowa aplikacja prezentująca zastosowanie większości podstawowych widżetów
-dostępnych w bibliotece Qt5 obsługiwanej za pomocą Pythona (PyQt5).
-Przykład ilustruje również techniki `programowania obiektowego <https://pl.wikipedia.org/wiki/Programowanie_obiektowe>`_ (ang. Object Oriented Programing).
+dostępnych w bibliotece Qt5 obsługiwanej za pomocą wiązań PyQt5.
+Przykład ilustruje również techniki `programowania obiektowego <https://pl.wikipedia.org/wiki/Programowanie_obiektowe>`_ (ang. *Object Oriented Programing*).
 
-.. figure:: img/widzety.png
+
 
 .. attention::
 
@@ -28,8 +28,8 @@ Przykład ilustruje również techniki `programowania obiektowego <https://pl.wi
     :depth: 1
     :local:
 
-Podstawy rysowania
-******************
+QPainter – podstawy rysowania
+*****************************
 
 Zaczynamy od utworzenia głównego pliku o nazwie :file:`widgety.py` w dowolnym katalogu
 za pomocą dowolnego edytora. Wstawiamy do niego poniższy kod:
@@ -70,361 +70,333 @@ Kształty, które będziemy rysowali, to:
  * *Polygon* – linia łamana zamknięta, np. trójkąt, wartość 2;
  * *Line* – linia łącząca dwa punkty, wartość 3.
 
-Określając rodzaj rysowanego kształtu, będziemy używali konstrukcji typu ``Ksztalty.Ellipse``.
-Robimy tak w głównej metodzie klasy ``Ui_Widget`` o nazwie ``setupUi()``.
-Na początku definiujemy w niej kilka zmiennych opisujących kształt, który chcemy narysować,
-i jego właściwości. Takie kształty, jak prostokąt czy elipsa, opisywane są przez strukturę
-danych ``QRect``. Konstruktorowi klasy `QRect() <http://http://doc.qt.io/qt-5/qrect.html>`_
-przekazujemy: dwie liczby określające współrzędne lewego górnego rogu prostokąta oraz dwie następne –
-wskazujące jego prawy dolny róg: ``self.prost = QRect(1, 1, 101, 101)``.
+Określając rodzaj rysowanego kształtu, będziemy używali konstrukcji typu ``Ksztalty.Ellipse``,
+tak jak w głównej metodzie klasy ``Ui_Widget`` o nazwie ``setupUi()``. Definiujemy w niej zmienną
+wskazującą rysowany ksztalt (``self.ksztalt = Ksztalty.Ellipse``) oraz jego właściwości,
+czyli rozmiar, kolor obramowania i wypełnienia. Kolory opisujemy za pomocą klasy
+`QColor <http://doc.qt.io/qt-5/qcolor.html>`_, przy czym używamy formatu `RGB <https://pl.wikipedia.org/wiki/RGB>`_,
+np .: ``self.kolorW = QColor(200, 30, 40)``.
+
+Za rysowanie każdego widżetu, w tym wypadku głównego okna, odpowiada funkcja
+`paintEven() <http://doc.qt.io/qt-5/qwidget.html#paintEvent>`_. Nadpisujemy ją,
+tworzymy instancję klasy `QPainter <http://doc.qt.io/qt-5/qwidget.html#paintEvent>`_
+umożliwiającej rysowanie różnych kształtów (``qp = QPainter()``). Między metodami ``begin()`` i ``end()``
+wywołujemy funkcję ``rysujFigury()``, w której implementujemy właściwy kod rysujący.
+
+Metody ``setPen()`` i ``setBrush()`` pozwalają ustawić kolor odpowiednio obramowania
+i wypełnienia. Po sprawdzeniu w instrukcji warunkowej rodzaju rysowanego kształtu
+wywołujemy odpowiednią metodę obiektu ``QPainter``:
+
+* ``drawRect()`` – rysuje prostokąty,
+* ``drawEllipse()`` – rysuje elipsy.
+
+Obydwie metody jako parametr przyjmują instancję klasy `QRect <http://doc.qt.io/qt-5/qrect.html>`_:
+``self.prost = QRect(1, 1, 101, 101)``. Pozwala ona opisywać prostokąt do narysowania
+albo służący do wpisania w niego elipsy. Jako argumenty konstruktora podajemy
+dwie pary współrzędnych. Pierwsza określa położenie lewego górnego,
+druga prawego dolnego rogu prostokąta.
 
 .. attention::
 
-	Początek dwuwymiarowego układu współrzędnych znajduje się w lewym górnym
-	rogu ekranu czy okna.
+    Początek układu współrzędnych, w dniesieniu do którego definujemy w Qt pozycję okien,
+    widżetów czy punkty opisujące kształty, znajduje się w lewym górnym rogu ekranu
+    czy też okna.
 
+**Ćwiczenie**
 
+    * Przetestuj działanie aplikacji wydając w katalogu z plikami źródłowymi polecenie
+      w terminalu: ``python3 widgety.py``.
+    * Spróbuj zmienić rodzaj rysowanej figury oraz kolory jej obramowania i wypełnienia.
 
-Wygląd okna naszej aplikacji definiować będziemy za pomocą klasy *Kalkulator*
-dziedziczącej (zob. :term:`dziedziczenie`) właściwości i metody z klasy *QWidget* (``class Kalkulator(QWidget)``).
-Instrukcja ``super().__init()__`` zwraca nam klasę rodzica i wywołuje jego :term:`konstruktor`.
-Z kolei w konstruktorze naszej klasy wywołujemy metodę ``interfejs()``,
-w której tworzyć będziemy :term:`GUI` naszej aplikacji. Ustawiamy więc właściwości
-okna aplikacji i jego zachowanie:
+.. figure:: img/widzety00.png
 
-* ``self.resize(300, 100)`` – szerokość i wysokość okna;
-* ``setWindowTitle("Prosty kalkulator")``) – tytuł okna;
-* ``self.show()`` – wyświetlenie okna na ekranie.
+Klasa *Ksztalt*
+***************
+
+Przedstawiony wyżej sposób rysowania ma istotne ograniczenia. Przede wszystkim
+rysowanie odbywa się bezpośrednio w oknie głównym, co utrudnia umieszczanie
+innych widżetów. Po drugie nie ma wygodnego sposobu dodawania niezależnych
+od siebie kształtów. Aby poprawić te niedogoności, stworzymy swój widżet
+do rysowania, czyli klasę ``Ksztalt``. Kod umieszczamy w osobnym pliku
+o nazwie :file:`ksztalt.py` w katalogu z poprzednimi plikami.
+Jego zawartość jest następująca:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>ksztalty.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: ksztalty.py
+    :linenos:
+
+Najważniejsza metoda, tj. ``paintEvent()``, w ogóle się nie zmienia. Natomiast funkcję
+``rysujFigury()`` rozbudowujemy o możliwość rysowania kolejnych kształtów:
+
+* ``drawPolygon()`` – pozwala rysować wielokąty, jako argument podajemy listę typu
+  `QPolygon <http://doc.qt.io/qt-5/qpolygon.html>`_ punktów typu `QPoint <http://doc.qt.io/qt-5/qpoint.html>`_
+  opisujących współrzędne kolejnych wierzchołków; domyślne współrzędne zdefiniowane zostały
+  jako atrybut ``punkty`` naszej klasy;
+* ``qp.drawLine()`` – pozwala narysować linię wyznaczoną przez współrzędne punktu
+  początkowego i końcowego typu ``QPoint``; nasza klasa wykorzystuje tu współrzędne
+  lewego górnego (``self.prost.topLeft()``) i prawego dolnego ``self.prost.bottomRight()``
+  rogu domyślnego prostokąta: ``prost = QRect(1, 1, 100, 100)``.
+
+Konstruktor naszej klasy: ``__init__(self, parent, ksztalt=Ksztalty.Rect)`` –
+umożliwia opcjonalne przekazanie w drugim argumencie typu rysowanego kształtu. Domyślnie
+będzie to prostokąt. Zostanie on przypisany do atrybutu ``self.ksztalt``.
+W konstruktorze definujemy również domyślne kolory obramowania ``self.kolorO``
+i wypełnienia ``self.kolorW``.
 
 .. note::
 
-    Słowa ``self`` używamy w definicji klasy wtedy, kiedy odnosimy się do jej właściwości lub metod
-    oraz odziedziczonych. Słowo to zawsze podajemy również jako pierwszy parametr
-    funkcji definiującyhc metody klasy.
+    Warto zrozumieć różnicę pomiędzy **zmiennymi klasy** a **zmiennymi instancji**.
+    Zmienne (właściwości) klasy są wspólne dla wszystkich jej instancji.
+    W naszym przypadku zdefiniowaliśmy w ten sposób zmienne ``prost`` i ``punkty``.
+    Zmienne instancji definiujemy w konstruktorze, są one inne dla każdego obiektu.
+    Np. każda instancja klasy *Ksztalt* może rysować inną figurę zapamiętaną
+    w zmiennej ``self.ksztalt``.
 
-Aby uruchomić program, tworzymy obiekt reprezentujący aplikację: ``app = QApplication(sys.argv)``.
-Aplikacja może otrzymywać parametry z linii poleceń (``sys.argv``). Tworzymy również
-obiekt reprezentujący okno aplikacji, czyli instancję klasy *Kalkulator*: ``okno = Kalkulator()``.
+Funkcje ``ustawKsztalt()`` i ``ustawKolorW()`` – jak wskazują nazwy – pozwalają modyfikować
+kształt i kolor wypełnienia obiektu kształtu już po jego utworzeniu jako instancji klasy.
+Metoda ``self.update()`` wymusza ponowne narysowanie kształtu.
 
-Na koniec uruchamiamy **główną pętlę programu** (``app.exec_()``), która rozpoczyna obsługę
-zdarzeń (zob. :term:`główna pętla programu`). Zdarzenia (np. kliknięcia) generowane są przez
-system lub użytkownika i przekazywane do widżetów aplikacji, które mogą je obsługiwać.
+W metodach ``sizeHint()`` i ``minimumSizeHint()`` określamy sugerowany i minimalny
+rozmiar naszego kształtu. Są one niezbędne, aby układy (ang. *layouts*), w których
+umieścimy kształty, zarezerwowały odpowiednio dużo miejsca na ich wyświetlenie.
+
+Ponieważ wydzieliliśmy klasę opisującą kształty, plik :file:`gui.py` możemy uprościć:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>gui.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: gui_z1.py
+    :linenos:
+
+Tworzymy obiekt ``self.ksztalt`` jako instancję klasy ``Ksztalty()`` i ustawiamy
+kolor wypełnienia. Utworzony widżet dodajemy do poziomego układu ``ukladH1.addWidget(self.ksztalt)``,
+a układ przypisujemy do okna głównego ``self.setLayout(ukladH1)``.
+
+Plik :file:`widgety.py` pozostaje bez zmian, jego zadaniem jest uruchomienie aplikacji.
+
+**Ćwiczenie**
+
+    * Ponownie przetestuj działanie aplikacji, spróbuj zmienić rodzaj rysowanej figury oraz
+      kolor jej wypełnienia.
+
+.. figure:: img/widzety01.png
 
 .. note::
 
-    Metoda ``exec_()`` ma podkreślenie, ponieważ ``exec`` jest zarezerwowanym słowem
-    kluczowym Pythona.
+    W kolejnych krokach będziemy umieszczać w oknie głównym widżety różnego typu.
+    Za każdym razem pamiętać należy o zaimportowaniu potrzebnej klasy na początku
+    pliku, czyli o dodaniu klauzuli typu: ``from PyQt5.QtWidget import <nazwa_klasy>``.
 
-Poprawne zakończenie aplikacji zapewniające zwrócenie informacji o jej stanie do systemu
-zapewnia metoda ``sys.exit()``.
+Przyciski CheckBox
+******************
 
-Przetestujmy kod. Program uruchamiamy poleceniem wydanym w terminalu w katalogu ze skryptem:
+Wykorzystując klasę *Ksztalt* utworzymy kolejny obiekt do rysowania figur. Dodamy także
+przyciski typu `QCheckBox <http://doc.qt.io/qt-5/qcheckbox.html>`_ umożliwiające zmianę
+rodzaju wyświetlanej figury.
+
+Na poczatku pliku :file:`gui.py` zaimportować należy klasy *QCheckBox, QButtonGroup, QVBoxLayout*.
+Funkcja ``setupUi()`` z kolei przyjmuje następującą postać:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>gui.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: gui_z2.py
+    :linenos:
+    :lineno-start: 12
+    :lines: 12-
+    :emphasize-lines: 11-12
+
+Do tworzenia przycisków wykorzystujemy pętlę ``for``, która odczytuje z tupli
+kolejne indeksy i etykiety przycisków. Jeśli masz wątpliwości, jak to działa,
+przetestuj następujący kod w terminalu:
 
 .. code-block:: bash
 
-    ~$ python3 kalkulator.py
+    ~$ python3
+    >>> for i, v in enumerate(('Kwadrat', 'Koło', 'Trójkąt', 'Linia')):
+    ...   print(i, v)
 
-.. figure:: img/kalkulator01.png
+Odczytane etykiety przekazujemy do konstruktora: ``self.chk = QCheckBox(v)``.
 
+Przyciski wyboru kształtu działać mają na zasadzie wyłączności, w danym momencie
+powinien zaznaczony być tylko jeden z nich. Możemy więc logicznie je
+zgrupować dzięki klasie `QButtonGroup <http://doc.qt.io/qt-5/qbuttongroup.html>`_.
+Do jej instancji dodajemy przyciski, oznaczając je kolejnymi indeksami:
+``self.grupaChk.addButton(self.chk, i)``.
 
-Widżety
-**********
+Poza pętlą tworzymy jeszcze jeden przycisk (``self.ksztaltChk = QCheckBox("<=")``),
+niezależny od powyższej grupy. Jego stan będzie wskazywał aktywny kształt.
 
-Puste okno być może nie robi wrażenia, zobaczymy więc, jak tworzyć widżety (zob. :term:`widżet`).
-Najprostszym przykładem będą etykiety.
+Wszystkie elementy interfejsu umieszczamy w układzie poziomym o nazwie ``ukladH1``.
+Po lewej stronie znajdzie się ``ksztalt1``, w środku układ przycisków wyboru,
+a po prawej ``ksztalt2``.
 
-Dodajemy wymagane importy i rozbudowujemy metodę ``interfejs()``:
+Jeżeli w tym momencie uruchomimy naszą aplikację, powinniśmy zobaczyć okno
+podobne do poniższego:
 
-.. raw:: html
+.. figure:: img/widzety02a.png
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: python
-.. literalinclude:: kalkulator02.py
-    :linenos:
-    :lineno-start: 5
-    :lines: 5-6
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: python
-.. literalinclude:: kalkulator02.py
-    :linenos:
-    :lineno-start: 16
-    :lines: 16-35
-
-Dodawanie etykiet zaczynamy od utworzenia obiektów na podstawie odpowiedniej klasy,
-w tym wypadku `QtLabel <http://doc.qt.io/qt-5/qlabel.html>`_. Do jej konstruktora
-przekazujemy tekst, który ma się wyświetlać na etykiecie, np.: ``etykieta1 = QLabel("Liczba 1:")``.
-
-Później tworzymy pomocniczy obiekt służący do rozmieszczenia etykiet w układzie
-tabelarycznym: ``ukladT = QGridLayout()``. Kolejne etykiety dodajemy do niego za
-pomocą metody ``addWidget()``. Przyjmuje ona nazwę obiektu oraz numer wiersza i kolumny
-definiujących komórkę, w której znaleźć się ma obiekt. Zdefiniowany układ
-(ang. layout) musimy powiązać z oknem naszej aplikacji: ``self.setLayout(ukladT)``.
-
-Na koniec używamy metody ``setGeometry()`` do określenia położenia okna aplikacji
-(początek układu jest w lewym górnym rogu ekranu) i jego rozmiaru (szerokość, wysokość).
-Dodajemy również ikonę pokazywaną w pasku tytułowym lub w miniaturze na pasku zadań:
-``self.setWindowIcon(QIcon('kalkulator.png'))``.
-
-.. note::
-
-    Plik graficzny z ikoną musimy :download:`pobrać <kalkulator.png>` i umieścić w katalogu
-    z aplikacją, czyli ze skryptem :file:`kalkulator.py`.
-
-Przetestuj wprowadzone zmiany.
-
-.. figure:: img/kalkulator02.png
-
-Interfejs
-**********
-
-Dodamy teraz pozostałe widżety tworzące graficzny interfejs naszej aplikacji.
-Jak zwykle, zaczynamy od zaimportowania potrzebnych klas:
+Teraz zajmiemy się ustawieniami początkowymi widżetów oraz obsługą syganłów.
+W pliku :file:`widgety.py` rozbudowujemy klasę ``Widgety``:
 
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>widgety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: kalkulator03.py
-    :linenos:
-    :lineno-start: 7
-    :lines: 7
-
-Następnie przed instrukcją ``self.setLayout(ukladT)`` wstawiamy następujący kod:
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: python
-.. literalinclude:: kalkulator03.py
-    :linenos:
-    :lineno-start: 30
-    :lines: 30-56
-
-Jak widać, dodawanie widżetów polega zazwyczaj na:
-
-* **utworzeniu obiektu** na podstawie klasy opisującej potrzebny element interfejsu,
-  np. `QLineEdit <http://doc.qt.io/qt-5/qlineedit.html>`_ – 1-liniowe pole edycyjne, lub
-  `QPushButton <http://doc.qt.io/qt-5/qpushbutton.html>`_ – przycisk;
-* **ustawieniu właściwości** obiektu, np. ``self.wynikEdt.readonly = True`` umożliwia tylko odczyt tekstu pola,
-  ``self.wynikEdt.setToolTip('Wpisz <b>liczby</b> i wybierz działanie...')`` – ustawia podpowiedź,
-  a ``koniecBtn.resize(koniecBtn.sizeHint())`` – sugerowany rozmiar obiektu;
-* **przypisaniu obiektu do układu** – w powyższym przypadku wszystkie przyciski działań dodano
-  do układu horyzontalnego `QHBoxLayout <http://doc.qt.io/qt-5/qhboxlayout.html>`_, ponieważ przycisków jest 4, a dopiero jego instancję do układu tabelarycznego: ``ukladT.addLayout(ukladH, 2, 0, 1, 3)``.
-  Liczby w tym przykładzie oznaczają odpowiednio wiersz i kolumnę, tj. komórkę, do której wstawiamy obiekt,
-  a następnie ilość wierszy i kolumn, które chcemy wykorzystać.
-
-.. note::
-
-    Jeżeli chcemy mieć dostęp do właściwości obiektów interfejsu w zasięgu całej klasy,
-    czyli w innych funkcjach obiekty musimy definiować jako składowe klasy, a więc
-    poprzedzone słowem ``self``, np.: ``self.liczba1Edt = QLineEdit()``.
-
-
-W powyższym kodzie, np. ``dodajBtn = QPushButton("&Dodaj", self)``, widać również, że tworząc obiekty można
-określać ich rodzica (ang. *parent*), tzn. widżet nadrzędny, w tym wypadku ``self``, czyli okno główne
-(ang. *toplevel window*). Bywa to przydatne zwłaszcza przy bardziej złożonych interfejsach.
-
-Znak ``&`` przed jakąś literą w opisie przycisków tworzy z kolei skrót klawiaturowy dostępny po naciśnięciu :kbd:`ALT + litera`.
-
-Po uruchomieniu programu powinniśmy zobaczyć okno podobne do poniższego:
-
-.. figure:: img/kalkulator03.png
-
-Zamykanie programu
-*******************
-
-Mamy okienko z polami edycyjnymi i przyciskami, ale kontrolki te na nic nie reagują.
-Nauczymy się więc obsługiwać poszczególne zdarzenia. Zacznijmy od zamykania aplikacji.
-
-Na początku dopiszmy import klasy *QMessageBox* pozwalającej tworzyć komunikaty
-oraz przestrzeni nazw `Qt <http://doc.qt.io/qt-5/qt.html>`_ zawierającej różne stałe
-środowiska:
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: python
-.. literalinclude:: kalkulator04.py
+.. literalinclude:: widgety_z2.py
     :linenos:
     :lineno-start: 8
-    :lines: 8-9
+    :lines: 8-34
 
-Dalej po instrukcji ``self.setLayout(ukladT)`` w metodzie ``interfejs()`` dopisujemy:
+W konstruktorze zaczynamy od zaznaczenia przycisku wskazującego aktywny kształt:
+``self.ksztaltChk.setChecked(True)``. Przyjmujemy, że stan ten będzie oznaczał
+jako aktywną pierwszą figurę: ``self.ksztaltAktywny = self.ksztalt1``.
 
-.. raw:: html
+Dalej chcemy zaznaczyć ten przycisk wyboru, który odpowiada aktualnemu kształtowi.
+Metoda ``buttons()`` grupy przycisków zwraca nam ich listę. Ponieważ do oznaczania
+kształtów używamy kolejnych liczb całkowitych zaczynając od zera, możemy użyć
+ich jako indeksu wskazującego odpowiedni przycisk:
+``self.grupaChk.buttons()[self.ksztaltAktywny.ksztalt].setChecked(True)``
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+Teraz czas na **obsłużenie zdarzeń**. Najpierw kliknięcie któregoś z przycisków wyboru kształtu:
+``self.grupaChk.buttonClicked[int].connect(self.ustawKsztalt)``. Zapis ``buttonClicked[int]``
+oznacza, że sygnał kliknięcia któregoś z przycisków grupy może przekazać do slotu różne dane.
+W tym wypadku będzie to indeks klikniętego przycisku, czyli liczba całkowita.
+Gdybyśmy chcieli otrzymać tekst przycisku, użylibyśmy konstrukcji ``buttonClicked[str]``.
+W slocie (czyli funkcji) ``ustawKsztalt()`` otrzymaną wartość używamy
+do ustawienia rodzaju rysowanej figury za pomocą odpowiedniej metody klasy ``Ksztalt``:
+``self.ksztaltAktywny.ustawKsztalt(wartosc)``.
 
-.. highlight:: python
-.. literalinclude:: kalkulator04.py
-    :linenos:
-    :lineno-start: 64
-    :lines: 64
+Drugie zdarzenie, tj. kliknięcie przycisku wskazującego aktywną figurę, wiążemy ze slotem
+``aktywujKsztalt()``: ``self.ksztaltChk.clicked.connect(self.aktywujKsztalt)``.
+Tym razem funkcja jako wartosc dostaje wartość logiczną ``True`` lub ``False``,
+która określa, czy przycisk został zanaczony, czy nie. W zależności od tego
+ustawiamy jako aktywny odpowiedni obszar rysowania oraz tekst przycisku.
+Na uwagę zasługuje konstrukcja ``nadawca = self.sender()``, która pozwala
+uzyskać dostęp do obiektu, który wygenerował obsługiwany sygnał.
 
-– instrukcja ta wiąże kliknięcie przycisku "Koniec" z wywołaniem metody ``koniec()``,
-którą musimy dopisać na końcu klasy ``Kalkulator()``:
+**Ćwiczenie**
 
-.. raw:: html
+    Jak zwykle uruchom kilkakrotnie aplikację. Spróbuj zmieniać inicjalne rodzaje domyślnych
+    kształtów i kolory wypełnienia figur.
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+.. figure:: img/widzety02a.png
 
-.. highlight:: python
-.. literalinclude:: kalkulator04.py
-    :linenos:
-    :lineno-start: 71
-    :lines: 71-72
+Slider i przyciski RadioButton
+******************************
 
-Funkcja ``koniec()``, obsługująca wydarzenie (ang. *event*) kliknięcia przycisku,
-wywołuje po prostu metodę ``close()`` okna głównego.
+Możemy już manipulować rodzajami rysowanych kształtów na obydwu obszarach rysowania.
+Spróbujemy teraz dodać widżety pozwalające je kolorować.
+Po pierwsze do importów w pliku :file:`gui.py` dopisujemy ``from PyQt5.QtCore import Qt``.
+Dalej dodajemy jeszcze importy nowych widżetów, tj. *QSlider, QLCDNumber, QSplitter*
+oraz *QRadioButton, QGroupBox*.
 
-.. note::
-
-    Omówiony fragment kodu ilustruje mechanizm zwany :term:`sygnały i sloty` (ang. *signals & slots*).
-    Zapewnia on komunikację między obiektami. Sygnał powstaje w momencie wystąpienia jakiegoś wydarzenia,
-    np. kliknięcia. Slot może z kolei być wbudowaną w Qt funkcją lub Pythonowym wywołaniem (ang. *callable*),
-    np. klasą lub metodą.
-
-Zamknięcie okna również jest rodzajem wydarzenia (`QCloseEvent <http://doc.qt.io/qt-5/qcloseevent.html>`_),
-które można przechwycić. Np. po to, aby zapobiec utracie niezapisanych danych.
-Do klasy ``Kalkulator()`` dopiszmy następujący kod:
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: python
-.. literalinclude:: kalkulator04.py
-    :linenos:
-    :lineno-start: 74
-    :lines: 74-84
-
-W nadpisanej metodzie `closeEvent() <http://doc.qt.io/qt-5/qwidget.html#closeEvent>`_
-wyświetlamy użytkownikowi prośbę o potwierdzenie zamknięcia
-za pomocą metody ``question()`` (ang. pytanie) klasy `QMessageBox <http://doc.qt.io/qt-5/qmessagebox.html>`_.
-Do konstruktora metody przekazujemy:
-
-* obiekt rodzica – ``self`` oznacza okno główne;
-* tytuł kona dialogowego;
-* komunikat dla użytkownika, np. pytanie;
-* kombinację standardowych przycisków, np. ``QMessageBox.Yes | QMessageBox.No``;
-* przycisk domyślny – ``QMessageBox.No``.
-
-Udzielona odpowiedź ``odp``, np. kliknięcie przycisku "Tak", decyduje o zezwoleniu
-na obsłużenie wydarzenia ``event.accept()`` lub odrzuceniu go ``event.ignore()``.
-
-Może wygodnie byłoby zamykać aplikację naciśnięciem klawisza :kbd:`ESC`?
-Dopiszmy jeszcze jedną funkcję:
+Teraz rozbudowujemy klasę ``Ui_Widget``. Po komentarzu ``# koniec CheckBox ###``
+wstawiamy:
 
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>gui.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: kalkulator04.py
+.. literalinclude:: gui_z3.py
     :linenos:
-    :lineno-start: 86
-    :lines: 86-88
+    :lineno-start: 39
+    :lines: 39-66
+    :emphasize-lines: 19-20, 23
 
-Podobnie jak w przypadku ``closeEvent()`` tworzymy własną wersję funkcji
-`keyPressEvent <http://doc.qt.io/qt-5/qwidget.html#keyPressEvent>`_ obsługującej
-naciśnięcia klawiszy `QKeyEvent <http://doc.qt.io/qt-5/qkeyevent.html>`_.
-Sprawdzamy naciśnięty klawisz ``if e.key() == Qt.Key_Escape:`` i zamykamy okno.
+Do zmiany wartości składowych kolorów RGB wykorzystamy instancję klasy `QSlider <http://doc.qt.io/qt-5/qslider.html>`_,
+czyli popularny suwak, w tym wypadku poziomy. Po utworzeniu obiektu, ustawiamy za pomocą
+metod ``setMinimum()`` i ``setMaximum()`` zakres zmienianych wartości. Następnie
+tworzymy instancję klasy `QLCDNumber <http://doc.qt.io/qt-5/qlcdnumber.html>`_,
+którą wykorzystamy do wyświetlania wartości wybranej za pomocą suwaka.
+Obydwa obiekty dodajemy do poziomego układu, rozdzielając je instancją typu
+`QSplitter <http://doc.qt.io/qt-5/qsplitter.html>`_. Obiekt tez pozwala płynnie
+zmieniać rozmiar otaczających go widżetów.
+
+Przyciski typu `RadioButton <http://doc.qt.io/qt-5/qradiobutton.html>`_ posłużą nam do wskazywania
+kanału koloru RGB, którego wartość chcemy zmienić. Tworzymy je w pętli,
+wykorzystując odczytane z pomocniczej tupli nazwy kanałów: ``self.radio = QRadioButton(v)``.
+Przyciski rozmieszczamy w poziomie (``self.ukladR.addWidget(self.radio)``),
+a ich układ dodajemy do grupy typu `QGroupBox <http://doc.qt.io/qt-5/qgroupbox.html>`_:
+``self.grupaRBtn.setLayout(self.ukladR)``. Tego typu grupa zapewnia graficzną
+ramkę z przyciskiem aktywującym typu CheckBox. Za pomocą metody ``setObjectName()``
+grupie nadajemy nazwę *Radio*.
+
+Kończąc zmiany w interfesie, tworzymy nowy pionowy układ dla elementów głównego
+okna aplikacji. Przedostatnią linię ``self.setLayout(ukladH1)`` zastępujemy poniższym kodem:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>gui.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: gui_z3.py
+    :linenos:
+    :lineno-start: 68
+    :lines: 68-75
+
+**Ustawienia wstępne i obsługa zdarzeń**
+
+Na początku w pliku :file:`widgety.py` dodajemy import ``from PyQt5.QtGui import QColor``.
+Dalej tworzymy dwie zmienne klasy *Widgety*:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>widgety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: widgety_z3.py
+    :linenos:
+    :lineno-start: 9
+    :lines: 9-13
+
+Następnie uzupełniamy konstruktor (``__init__()``), a za nim dopisujemy dwie funkcje:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>widgety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: widgety_z3.py
+    :linenos:
+    :lineno-start: 26
+    :lines: 26-51
+
+Instrukcja ``self.grupaRBtn.setCheckable(True)`` uaktywnia grupę przycisków
+Radio, pierwszy z nich zaznaczamy: ``self.ukladR.itemAt(0).widget().setChecked(True)``.
+Metoda ``itemAt(0)`` zwraca nam pierwszy element danego układu.
+Za pomocą metody ``widget()`` przekształcamy zwrócony typ *QLayoutItem* w widżet,
+dzięki czemu możemy wywoływać jego metody.
+
+Manipulowanie suwakiem wyzwala sygnał ``valueChanged``, który łączymy ze slotem ``zmienKolor()``:
+``self.suwak.valueChanged.connect(self.zmienKolor)``. Do funkcji przekazywana jest wartość
+wybrana na suwaku, wyświetlamy ją w widżecie LCD: ``self.lcd.display(wartosc)``.
+Następnie sprawdzamy aktywne kanały w zbiorze kanałów i zmieniamy
+odpowiedającą im wartość składową w kolorze wypełnenia, np.: ``self.kolorW.setRed(wartosc)``.
+Na koniec przypisujemy otrzymany kolor wypełnienia aktywnemu kształtowi,
+osobno podając składowe RGB.
+
+Ze zmianą stanu przycisków Radio związany jest sygnał ``toggled``. W pętli
+``for i in range(self.ukladR.count()):`` wiążemy go dla każdego
+przycisku układu z funkcją ``ustawKanal()``. Otrzymuje ona wartość logiczną.
+Zadaniem funkcji jest zrestetowanie zbioru kolorów i dodaniego do niego
+litery opisującej zaznaczony przycisk: ``self.kanaly.add(nadawca.text())``.
 
 Przetestuj działanie aplikacji.
-
-.. figure:: img/kalkulator04.png
-
-Działania
-*********
-
-Kalkulator powinien liczyć. Zaczniemy od dodawania, ale na początku wszystkie
-sygnały wygenerowane przez przyciski działań połączymy z jednym slotem.
-Pod instrukcją ``koniecBtn.clicked.connect(self.koniec)`` dodajemy:
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: python
-.. literalinclude:: kalkulator05.py
-    :linenos:
-    :lineno-start: 65
-    :lines: 65-68
-
-Następnie zaczynamy implementację funkcji ``dzialanie()``. Na końcu klasy ``Kalkulator()`` dodajemy:
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: python
-.. literalinclude:: kalkulator05.py
-    :linenos:
-    :lineno-start: 94
-    :lines: 94-111
-
-Ponieważ jedna funkcja ma obsłużyć cztery sygnały, musimy znać źródło sygnału (ang. *source*),
-czyli nadawcę (ang. *sender*): ``nadawca = self.sender()``.
-Dalej rozpoczynamy blok ``try: except:`` – użytkownik może wprowadzić błędne dane,
-tj. pusty ciąg znaków lub ciąg, którego nie da się przekształcić na liczbę zmiennoprzecinkową (``float()``).
-W przypadku wyjątku, wyświetlamy ostrzeżenie o błędnych danych: ``QMessageBox.warning()``
-
-Jeżeli dane są liczbami, sprawdzamy nadawcę (``if nadawca.text() == "&Dodaj":``)
-i jeżeli jest to przycisk dodawania, obliczamy sumę ``wynik = liczba1 + liczba2``.
-Na koniec wyświetlamy ją po zamianie na tekst (``str()``) w polu tekstowym za pomocą
-metody ``setText()``: ``self.wynikEdt.setText(str(wynik))``.
-
-Sprawdź działanie programu.
-
-.. figure:: img/kalkulator05.png
-
-Dopiszemy obsługę pozostałych działań. Instrukcję warunkową w funkcji ``dzialanie()``
-rozbudowujemy następująco:
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: python
-.. literalinclude:: kalkulator06.py
-    :linenos:
-    :lineno-start: 103
-    :lines: 103-115
-
-Na uwagę zasługuje tylko dzielenie. Po pierwsze określamy dokładność dzielenia do 9
-miejsc po przecinku ``round(liczba1 / liczba2, 9)``. Po drugie zabezpieczamy się
-przed dzieleniem przez zero. Znów wykorzystujemy konstrukcję ``try: except:``,
-w której przechwytujemy wyjątek ``ZeroDivisionError`` i wyświetlamy odpowiednie ostrzeżenie.
-
-Pozostaje przetestować aplikację.
-
-.. figure:: img/kalkulator06.png
-
-.. tip::
-
-    Jeżeli po zaimplementowaniu działań, aplikacja po uruchomieniu nie aktywuje kursora
-    w pierwszym polu edycyjnym, należy tuż przed ustawianiem właściwości okna głównego
-    (``self.setGeometry()``) umieścić wywołanie ``self.liczba1Edt.setFocus()``,
-    które ustawia focus na wybranym elemencie.
 
 Materiały
 ***************
 
-1. Strona główna `dokumentacji Qt5 <http://doc.qt.io/qt-5/>`_
-2. `Lista klas Qt5 <http://doc.qt.io/qt-5/classes.html>`_
-3. `PyQt5 Reference Guide <http://pyqt.sourceforge.net/Docs/PyQt5/>`_
-4. `Przykłady PyQt5 <https://github.com/baoboa/pyqt5/tree/master/examples>`_
-5. `Signals and slots <http://doc.qt.io/qt-5/signalsandslots.html>`_
-6. `Kody klawiszy <http://doc.qt.io/qt-5/qt.html#Key-enum>`_
-
-**Źródła:**
-
-* :download:`kalkulator.zip <kalkulator.zip>`
+1. `Qt Widgets <http://doc.qt.io/qt-5/qtwidgets-index.html>`_
+2. `Widgets Tutorial <http://doc.qt.io/qt-5/widgets-tutorial.html>`_
+3. `Layout Management <http://doc.qt.io/qt-5/layout.html>`_
