@@ -27,8 +27,8 @@ poniższy kod linia po linii, wkleić i wykonać:
 
 .. code-block:: posh
 
-    (new-object System.Net.WebClient).DownloadFile("https://www.python.org/ftp/python/2.7.10/python-2.7.10.msi", "$pwd\python-2.7.10.msi")
-    msiexec /i python-2.7.10.msi TARGETDIR=C:\Python27
+    (new-object System.Net.WebClient).DownloadFile("https://www.python.org/ftp/python/2.7.11/python-2.7.11.msi", "$pwd\python-2.7.11.msi")
+    msiexec /i python-2.7.11.msi TARGETDIR=C:\Python27
     (new-object System.Net.WebClient).DownloadFile("https://raw.github.com/pypa/pip/master/contrib/get-pip.py", "$pwd\get-pip.py")
     C:\Python27\python.exe get-pip.py virtualenv
 
