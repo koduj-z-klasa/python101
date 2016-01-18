@@ -198,7 +198,7 @@ Zamykanie programu
 Mamy okienko z polami edycyjnymi i przyciskami, ale kontrolki te na nic nie reagują.
 Nauczymy się więc obsługiwać poszczególne zdarzenia. Zacznijmy od zamykania aplikacji.
 
-Na początku dopiszmy zaimportujmy klasę *QMessageBox* pozwalającą tworzyć komunikaty
+Na początku zaimportujmy klasę *QMessageBox* pozwalającą tworzyć komunikaty
 oraz przestrzeń nazw `Qt <http://doc.qt.io/qt-5/qt.html>`_ zawierającą różne stałe:
 
 .. raw:: html
