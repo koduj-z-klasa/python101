@@ -14,6 +14,7 @@ class Ui_Widget(object):
         # widgety rysujące kształty, instancje klasy Ksztalt
         self.ksztalt1 = Ksztalt(self, Ksztalty.Polygon)
         self.ksztalt2 = Ksztalt(self, Ksztalty.Ellipse)
+        self.ksztaltAktywny = self.ksztalt1
 
         # przyciski CheckBox ###
         uklad = QVBoxLayout()  # układ pionowy
@@ -22,8 +23,10 @@ class Ui_Widget(object):
             self.chk = QCheckBox(v)
             self.grupaChk.addButton(self.chk, i)
             uklad.addWidget(self.chk)
+        self.grupaChk.buttons()[self.ksztaltAktywny.ksztalt].setChecked(True)
         # CheckBox do wyboru aktywnego kształtu
         self.ksztaltChk = QCheckBox("<=")
+        self.ksztaltChk.setChecked(True)
         uklad.addWidget(self.ksztaltChk)
 
         # układ poziomy dla kształtów oraz przycisków CheckBox

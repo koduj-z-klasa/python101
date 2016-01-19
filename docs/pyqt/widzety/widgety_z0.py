@@ -7,6 +7,7 @@ from gui import Ui_Widget
 
 class Widgety(QWidget, Ui_Widget):
     """ Główna klasa aplikacji """
+
     def __init__(self, parent=None):
         super(Widgety, self).__init__(parent)
         self.setupUi(self)  # tworzenie interfejsu

@@ -12,7 +12,6 @@ class Ui_Widget(object):
 
         # widget rysujący kształty, instancja klasy Ksztalt
         self.ksztalt = Ksztalt(self, Ksztalty.Polygon)
-        self.ksztalt.ustawKolorW(200, 30, 40)
 
         # układ poziomy, zawiera: self.ksztalt
         ukladH1 = QHBoxLayout()

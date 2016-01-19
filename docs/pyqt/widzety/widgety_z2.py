@@ -12,11 +12,8 @@ class Widgety(QWidget, Ui_Widget):
         super(Widgety, self).__init__(parent)
         self.setupUi(self)  # tworzenie interfejsu
 
-        # ustawienia, sygnały i sloty
+        # Sygnały i sloty ###
         # przyciski CheckBox ###
-        self.ksztaltChk.setChecked(True)
-        self.ksztaltAktywny = self.ksztalt1
-        self.grupaChk.buttons()[self.ksztaltAktywny.ksztalt].setChecked(True)
         self.grupaChk.buttonClicked[int].connect(self.ustawKsztalt)
         self.ksztaltChk.clicked.connect(self.aktywujKsztalt)
 
@@ -32,7 +29,6 @@ class Widgety(QWidget, Ui_Widget):
             self.ksztaltAktywny = self.ksztalt2
             nadawca.setText("=>")
         self.grupaChk.buttons()[self.ksztaltAktywny.ksztalt].setChecked(True)
-
 
 if __name__ == '__main__':
     import sys

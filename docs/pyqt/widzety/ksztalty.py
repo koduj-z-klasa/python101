@@ -13,7 +13,7 @@ class Ksztalty:
 class Ksztalt(QWidget):
     """ Klasa definiująca widget do rysowania kształtów """
     # współrzędne prostokąta i trójkąta
-    prost = QRect(1, 1, 100, 100)
+    prost = QRect(1, 1, 101, 101)
     punkty = QPolygon([
         QPoint(1, 101),  # punkt początkowy (x, y)
         QPoint(51, 1),

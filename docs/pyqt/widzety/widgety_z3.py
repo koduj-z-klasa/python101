@@ -16,19 +16,20 @@ class Widgety(QWidget, Ui_Widget):
         super(Widgety, self).__init__(parent)
         self.setupUi(self)  # tworzenie interfejsu
 
-        # ustawienia, sygnały i sloty
+        # Sygnały i sloty ###
         # przyciski CheckBox ###
-        self.ksztaltChk.setChecked(True)
-        self.ksztaltAktywny = self.ksztalt1
-        self.grupaChk.buttons()[self.ksztaltAktywny.ksztalt].setChecked(True)
         self.grupaChk.buttonClicked[int].connect(self.ustawKsztalt)
         self.ksztaltChk.clicked.connect(self.aktywujKsztalt)
-        # Slider + Radio Buttons ###
-        self.grupaRBtn.setCheckable(True)
-        self.ukladR.itemAt(0).widget().setChecked(True)
-        self.suwak.valueChanged.connect(self.zmienKolor)
+        # Slider + przyciski RadioButton ###
         for i in range(self.ukladR.count()):
-            self.ukladR.itemAt(i).widget().toggled.connect(self.ustawKanal)
+            self.ukladR.itemAt(i).widget().toggled.connect(self.ustawKanalRBtn)
+        self.suwak.valueChanged.connect(self.zmienKolor)
+
+    def ustawKanalRBtn(self, wartosc):
+        self.kanaly = set()  # resetujemy zbiór kanałów
+        nadawca = self.sender()
+        if wartosc:
+            self.kanaly.add(nadawca.text())
 
     def zmienKolor(self, wartosc):
         self.lcd.display(wartosc)
@@ -44,12 +45,6 @@ class Widgety(QWidget, Ui_Widget):
             self.kolorW.green(),
             self.kolorW.blue())
 
-    def ustawKanal(self, wartosc):
-        self.kanaly = set()  # resetujemy zbiór kanałów
-        nadawca = self.sender()
-        if wartosc:
-            self.kanaly.add(nadawca.text())
-
     def ustawKsztalt(self, wartosc):
         self.ksztaltAktywny.ustawKsztalt(wartosc)
 
@@ -61,7 +56,6 @@ class Widgety(QWidget, Ui_Widget):
         else:
             self.ksztaltAktywny = self.ksztalt2
             nadawca.setText("=>")
-
         self.grupaChk.buttons()[self.ksztaltAktywny.ksztalt].setChecked(True)
 
 if __name__ == '__main__':

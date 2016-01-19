@@ -200,8 +200,8 @@ Wykorzystując klasę *Ksztalt* utworzymy kolejny obiekt do rysowania figur. Dod
 przyciski typu `QCheckBox <http://doc.qt.io/qt-5/qcheckbox.html>`_ umożliwiające zmianę
 rodzaju wyświetlanej figury.
 
-Na poczatku pliku :file:`gui.py` zaimportować należy klasy *QCheckBox, QButtonGroup, QVBoxLayout*.
-Funkcja ``setupUi()`` z kolei przyjmuje następującą postać:
+Na poczatku pliku :file:`gui.py` zaimportuj klasy *QCheckBox, QButtonGroup, QVBoxLayout*.
+Funkcja ``setupUi()`` przyjmie następującą postać:
 
 .. raw:: html
 
@@ -212,7 +212,7 @@ Funkcja ``setupUi()`` z kolei przyjmuje następującą postać:
     :linenos:
     :lineno-start: 12
     :lines: 12-
-    :emphasize-lines: 11-12
+    :emphasize-lines: 12-13, 15
 
 Do tworzenia przycisków wykorzystujemy pętlę ``for``, która odczytuje z tupli
 kolejne indeksy i etykiety przycisków. Jeśli masz wątpliwości, jak to działa,
@@ -227,13 +227,21 @@ przetestuj następujący kod w terminalu:
 Odczytane etykiety przekazujemy do konstruktora: ``self.chk = QCheckBox(v)``.
 
 Przyciski wyboru kształtu działać mają na zasadzie wyłączności, w danym momencie
-powinien zaznaczony być tylko jeden z nich. Możemy więc logicznie je
-zgrupować dzięki klasie `QButtonGroup <http://doc.qt.io/qt-5/qbuttongroup.html>`_.
+powinien zaznaczony być tylko jeden z nich. Tworzymy więc grupę logiczną dzięki
+klasie `QButtonGroup <http://doc.qt.io/qt-5/qbuttongroup.html>`_.
 Do jej instancji dodajemy przyciski, oznaczając je kolejnymi indeksami:
 ``self.grupaChk.addButton(self.chk, i)``.
 
+Po uruchomieniu aplikacji zaznaczony powinien być przycisk, który odpowiada aktualnemu kształtowi.
+Metoda ``buttons()`` grupy przycisków zwraca nam ich listę. Ponieważ do oznaczania
+kształtów używamy kolejnych liczb całkowitych zaczynając od zera, możemy użyć
+ich jako indeksu wskazującego odpowiedni przycisk:
+``self.grupaChk.buttons()[self.ksztaltAktywny.ksztalt].setChecked(True)``.
+
 Poza pętlą tworzymy jeszcze jeden przycisk (``self.ksztaltChk = QCheckBox("<=")``),
 niezależny od powyższej grupy. Jego stan będzie wskazywał aktywny kształt.
+Domyślnie go zaznaczamy: ``self.ksztaltChk.setChecked(True)``. Przyjmujemy,
+że stan ten będzie oznaczał jako aktywną pierwszą figurę: ``self.ksztaltAktywny = self.ksztalt1``.
 
 Wszystkie elementy interfejsu umieszczamy w układzie poziomym o nazwie ``ukladH1``.
 Po lewej stronie znajdzie się ``ksztalt1``, w środku układ przycisków wyboru,
@@ -244,8 +252,7 @@ podobne do poniższego:
 
 .. figure:: img/widzety02a.png
 
-Teraz zajmiemy się ustawieniami początkowymi widżetów oraz obsługą syganłów.
-W pliku :file:`widgety.py` rozbudowujemy klasę ``Widgety``:
+Teraz zajmiemy się obsługą syganłów. W pliku :file:`widgety.py` rozbudowujemy klasę ``Widgety``:
 
 .. raw:: html
 
@@ -255,49 +262,38 @@ W pliku :file:`widgety.py` rozbudowujemy klasę ``Widgety``:
 .. literalinclude:: widgety_z2.py
     :linenos:
     :lineno-start: 8
-    :lines: 8-34
+    :lines: 8-31
 
-W konstruktorze zaczynamy od zaznaczenia przycisku wskazującego aktywny kształt:
-``self.ksztaltChk.setChecked(True)``. Przyjmujemy, że stan ten będzie oznaczał
-jako aktywną pierwszą figurę: ``self.ksztaltAktywny = self.ksztalt1``.
-
-Dalej chcemy zaznaczyć ten przycisk wyboru, który odpowiada aktualnemu kształtowi.
-Metoda ``buttons()`` grupy przycisków zwraca nam ich listę. Ponieważ do oznaczania
-kształtów używamy kolejnych liczb całkowitych zaczynając od zera, możemy użyć
-ich jako indeksu wskazującego odpowiedni przycisk:
-``self.grupaChk.buttons()[self.ksztaltAktywny.ksztalt].setChecked(True)``
-
-Teraz czas na **obsłużenie zdarzeń**. Najpierw kliknięcie któregoś z przycisków wyboru kształtu:
+Na poczatku kliknięcie któregokolwiek z przycisków wyboru kształtu wiążemy z funkcją ``ustawKsztalt``:
 ``self.grupaChk.buttonClicked[int].connect(self.ustawKsztalt)``. Zapis ``buttonClicked[int]``
-oznacza, że sygnał kliknięcia któregoś z przycisków grupy może przekazać do slotu różne dane.
+oznacza, że sygnał kliknięcia może przekazać do slotu różne dane.
 W tym wypadku będzie to indeks klikniętego przycisku, czyli liczba całkowita.
 Gdybyśmy chcieli otrzymać tekst przycisku, użylibyśmy konstrukcji ``buttonClicked[str]``.
-W slocie (czyli funkcji) ``ustawKsztalt()`` otrzymaną wartość używamy
-do ustawienia rodzaju rysowanej figury za pomocą odpowiedniej metody klasy ``Ksztalt``:
-``self.ksztaltAktywny.ustawKsztalt(wartosc)``.
+W slocie ``ustawKsztalt()`` otrzymaną wartość używamy do ustawienia rodzaju rysowanej figury
+za pomocą odpowiedniej metody klasy ``Ksztalt``: ``self.ksztaltAktywny.ustawKsztalt(wartosc)``.
 
 Drugie zdarzenie, tj. kliknięcie przycisku wskazującego aktywną figurę, wiążemy ze slotem
 ``aktywujKsztalt()``: ``self.ksztaltChk.clicked.connect(self.aktywujKsztalt)``.
-Tym razem funkcja jako wartosc dostaje wartość logiczną ``True`` lub ``False``,
+Tym razem funkcja dostaje wartość logiczną ``True`` lub ``False``,
 która określa, czy przycisk został zanaczony, czy nie. W zależności od tego
 ustawiamy jako aktywny odpowiedni obszar rysowania oraz tekst przycisku.
-Na uwagę zasługuje konstrukcja ``nadawca = self.sender()``, która pozwala
-uzyskać dostęp do obiektu, który wygenerował obsługiwany sygnał.
+Konstrukcja ``nadawca = self.sender()`` pozwala uzyskać dostęp do obiektu,
+który wygenerował obsługiwany sygnał.
 
 **Ćwiczenie**
 
     Jak zwykle uruchom kilkakrotnie aplikację. Spróbuj zmieniać inicjalne rodzaje domyślnych
     kształtów i kolory wypełnienia figur.
 
-.. figure:: img/widzety02a.png
+.. figure:: img/widzety02b.png
 
 Slider i przyciski RadioButton
 ******************************
 
 Możemy już manipulować rodzajami rysowanych kształtów na obydwu obszarach rysowania.
 Spróbujemy teraz dodać widżety pozwalające je kolorować.
-Po pierwsze do importów w pliku :file:`gui.py` dopisujemy ``from PyQt5.QtCore import Qt``.
-Dalej dodajemy jeszcze importy nowych widżetów, tj. *QSlider, QLCDNumber, QSplitter*
+Po pierwsze do importów w pliku :file:`gui.py` dopisz ``from PyQt5.QtCore import Qt``.
+Dalej dodaj jeszcze importy widżetów *QSlider, QLCDNumber, QSplitter*
 oraz *QRadioButton, QGroupBox*.
 
 Teraz rozbudowujemy klasę ``Ui_Widget``. Po komentarzu ``# koniec CheckBox ###``
@@ -310,13 +306,13 @@ wstawiamy:
 .. highlight:: python
 .. literalinclude:: gui_z3.py
     :linenos:
-    :lineno-start: 39
-    :lines: 39-66
-    :emphasize-lines: 19-20, 23
+    :lineno-start: 42
+    :lines: 42-68
+    :emphasize-lines: 16-18, 22
 
 Do zmiany wartości składowych kolorów RGB wykorzystamy instancję klasy `QSlider <http://doc.qt.io/qt-5/qslider.html>`_,
 czyli popularny suwak, w tym wypadku poziomy. Po utworzeniu obiektu, ustawiamy za pomocą
-metod ``setMinimum()`` i ``setMaximum()`` zakres zmienianych wartości. Następnie
+metod ``setMinimum()`` i ``setMaximum()`` zakres zmienianych wartości <0-255>. Następnie
 tworzymy instancję klasy `QLCDNumber <http://doc.qt.io/qt-5/qlcdnumber.html>`_,
 którą wykorzystamy do wyświetlania wartości wybranej za pomocą suwaka.
 Obydwa obiekty dodajemy do poziomego układu, rozdzielając je instancją typu
@@ -325,11 +321,18 @@ zmieniać rozmiar otaczających go widżetów.
 
 Przyciski typu `RadioButton <http://doc.qt.io/qt-5/qradiobutton.html>`_ posłużą nam do wskazywania
 kanału koloru RGB, którego wartość chcemy zmienić. Tworzymy je w pętli,
-wykorzystując odczytane z pomocniczej tupli nazwy kanałów: ``self.radio = QRadioButton(v)``.
-Przyciski rozmieszczamy w poziomie (``self.ukladR.addWidget(self.radio)``),
-a ich układ dodajemy do grupy typu `QGroupBox <http://doc.qt.io/qt-5/qgroupbox.html>`_:
+wykorzystując odczytane z tupli nazwy kanałów: ``self.radio = QRadioButton(v)``.
+Przyciski rozmieszczamy w poziomie (``self.ukladR.addWidget(self.radio)``).
+
+Pierwszy z nich zaznaczamy: ``self.ukladR.itemAt(0).widget().setChecked(True)``.
+Metoda ``itemAt(0)`` zwraca nam pierwszy element danego układu jako typ *QLayoutItem*.
+Kolejna metoda ``widget()`` przekształca go w obiekt typu *QWidget*,
+dzięki czemu możemy wywoływać jego metody.
+
+Układ przycisków dodajemy do grupy typu `QGroupBox <http://doc.qt.io/qt-5/qgroupbox.html>`_:
 ``self.grupaRBtn.setLayout(self.ukladR)``. Tego typu grupa zapewnia graficzną
-ramkę z przyciskiem aktywującym typu CheckBox. Za pomocą metody ``setObjectName()``
+ramkę z przyciskiem aktywującym typu CheckBox, który doyślnie zaznaczamy:
+``self.grupaRBtn.setCheckable(True)``. Za pomocą metody ``setObjectName()``
 grupie nadajemy nazwę *Radio*.
 
 Kończąc zmiany w interfesie, tworzymy nowy pionowy układ dla elementów głównego
@@ -342,8 +345,8 @@ okna aplikacji. Przedostatnią linię ``self.setLayout(ukladH1)`` zastępujemy p
 .. highlight:: python
 .. literalinclude:: gui_z3.py
     :linenos:
-    :lineno-start: 68
-    :lines: 68-75
+    :lineno-start: 70
+    :lines: 70-
 
 **Ustawienia wstępne i obsługa zdarzeń**
 
@@ -369,22 +372,8 @@ Następnie uzupełniamy konstruktor (``__init__()``), a za nim dopisujemy dwie f
 .. highlight:: python
 .. literalinclude:: widgety_z3.py
     :linenos:
-    :lineno-start: 26
-    :lines: 26-51
-
-Instrukcja ``self.grupaRBtn.setCheckable(True)`` uaktywnia grupę przycisków
-Radio, pierwszy z nich zaznaczamy: ``self.ukladR.itemAt(0).widget().setChecked(True)``.
-Metoda ``itemAt(0)`` zwraca nam pierwszy element danego układu.
-Za pomocą metody ``widget()`` przekształcamy zwrócony typ *QLayoutItem* w widżet,
-dzięki czemu możemy wywoływać jego metody.
-
-Manipulowanie suwakiem wyzwala sygnał ``valueChanged``, który łączymy ze slotem ``zmienKolor()``:
-``self.suwak.valueChanged.connect(self.zmienKolor)``. Do funkcji przekazywana jest wartość
-wybrana na suwaku, wyświetlamy ją w widżecie LCD: ``self.lcd.display(wartosc)``.
-Następnie sprawdzamy aktywne kanały w zbiorze kanałów i zmieniamy
-odpowiedającą im wartość składową w kolorze wypełnenia, np.: ``self.kolorW.setRed(wartosc)``.
-Na koniec przypisujemy otrzymany kolor wypełnienia aktywnemu kształtowi,
-osobno podając składowe RGB.
+    :lineno-start: 23
+    :lines: 23-46
 
 Ze zmianą stanu przycisków Radio związany jest sygnał ``toggled``. W pętli
 ``for i in range(self.ukladR.count()):`` wiążemy go dla każdego
@@ -392,7 +381,50 @@ przycisku układu z funkcją ``ustawKanal()``. Otrzymuje ona wartość logiczną
 Zadaniem funkcji jest zrestetowanie zbioru kolorów i dodaniego do niego
 litery opisującej zaznaczony przycisk: ``self.kanaly.add(nadawca.text())``.
 
+Manipulowanie suwakiem wyzwala sygnał ``valueChanged``, który łączymy ze slotem ``zmienKolor()``:
+``self.suwak.valueChanged.connect(self.zmienKolor)``. Do funkcji przekazywana jest wartość
+wybrana na suwaku, wyświetlamy ją w widżecie LCD: ``self.lcd.display(wartosc)``.
+Następnie sprawdzamy aktywne kanały w zbiorze kanałów i zmieniamy
+odpowiadającą im wartość składową w kolorze wypełnenia, np.: ``self.kolorW.setRed(wartosc)``.
+Na koniec przypisujemy otrzymany kolor wypełnienia aktywnemu kształtowi,
+osobno podając składowe RGB.
+
 Przetestuj działanie aplikacji.
+
+.. figure:: img/widzety03.png
+
+ComboBox i SpinBox
+******************
+
+Modyfikowane kanały koloru można wybierać z rozwijalnej listy typu
+`QComboBox <http://doc.qt.io/qt-5/qcombobox.html>`_, a ich wartości
+ustawiać za pomocą widżetu `QSpinBox <http://doc.qt.io/qt-5/qspinbox.html>`_.
+Aby dodać te elementy do aplikacji na początku pliku :file:`gui.py`
+dopisz import obydwu wymienionych klas. Następnie po komentarzu
+``# koniec RadioButton ###`` uzupełniamy kod:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>gui.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: gui_z4.py
+    :linenos:
+    :lineno-start: 71
+    :lines: 71-88
+    :emphasize-lines: 4, 8-9
+
+Po utworzeniu obiektu listy za pomocą pętli ``for`` dodajemy kolejne elementy,
+czyli litery poszczególnych kanałów: ``self.listaRGB.addItem(v)``.
+
+Obiekt *SpinBox* podobnie jak *Slider* wymaga ustawienia zakresu wartości <0-255>,
+wykorzystujemy takie same metody, jak wcześniej, tj. ``setMinimum()`` i ``setMaximum()``.
+
+Obydwa widżety wyłączamy metodą ``setEnabled(False)``. Umieszczamy jeden nad drugim,
+a ich układ dodajemy obok przycisków Radio, rozdzielając je odstępem 25 px:
+``ukladH3.insertSpacing(1, 25)``.
+
+
 
 Materiały
 ***************
