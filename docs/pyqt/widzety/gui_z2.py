@@ -25,7 +25,7 @@ class Ui_Widget(object):
             uklad.addWidget(self.chk)
         self.grupaChk.buttons()[self.ksztaltAktywny.ksztalt].setChecked(True)
         # CheckBox do wyboru aktywnego kształtu
-        self.ksztaltChk = QCheckBox("<=")
+        self.ksztaltChk = QCheckBox('<=')
         self.ksztaltChk.setChecked(True)
         uklad.addWidget(self.ksztaltChk)
 
@@ -37,4 +37,4 @@ class Ui_Widget(object):
         # koniec CheckBox ###
 
         self.setLayout(ukladH1)  # przypisanie układu do okna głównego
-        self.setWindowTitle("Widgety")
+        self.setWindowTitle('Widgety')

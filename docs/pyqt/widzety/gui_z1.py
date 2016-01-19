@@ -18,4 +18,4 @@ class Ui_Widget(object):
         ukladH1.addWidget(self.ksztalt)
 
         self.setLayout(ukladH1)  # przypisanie układu do okna głównego
-        self.setWindowTitle("Widżety")
+        self.setWindowTitle('Widżety')

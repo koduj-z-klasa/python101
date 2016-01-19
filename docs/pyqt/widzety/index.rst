@@ -399,7 +399,7 @@ ComboBox i SpinBox
 Modyfikowane kanały koloru można wybierać z rozwijalnej listy typu
 `QComboBox <http://doc.qt.io/qt-5/qcombobox.html>`_, a ich wartości
 ustawiać za pomocą widżetu `QSpinBox <http://doc.qt.io/qt-5/qspinbox.html>`_.
-Aby dodać te elementy do aplikacji na początku pliku :file:`gui.py`
+Aby dodać te elementy do aplikacji, na początku pliku :file:`gui.py`
 dopisz import obydwu wymienionych klas. Następnie po komentarzu
 ``# koniec RadioButton ###`` uzupełniamy kod:
 
@@ -420,11 +420,228 @@ czyli litery poszczególnych kanałów: ``self.listaRGB.addItem(v)``.
 Obiekt *SpinBox* podobnie jak *Slider* wymaga ustawienia zakresu wartości <0-255>,
 wykorzystujemy takie same metody, jak wcześniej, tj. ``setMinimum()`` i ``setMaximum()``.
 
-Obydwa widżety wyłączamy metodą ``setEnabled(False)``. Umieszczamy jeden nad drugim,
+Obydwa widżety na razie wyłączamy metodą ``setEnabled(False)``. Umieszczamy jeden nad drugim,
 a ich układ dodajemy obok przycisków Radio, rozdzielając je odstępem 25 px:
 ``ukladH3.insertSpacing(1, 25)``.
 
+W pliku :file:`widgety.py` dodajemy do konstruktora kod przechwytujący 3 sygnały
+i dopisujemy dwie nowe funkcje:
 
+.. raw:: html
+
+    <div class="code_no">Plik <i>widgety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: widgety_z4.py
+    :linenos:
+    :lineno-start: 27
+    :lines: 27-44
+
+Zakładamy, że po uruchomieniu aplikacji aktywna jest tylko grupa przycisków Radio.
+Aby uaktywnić inne kontrolki, przechwytujemy kliknięcie tej grupy i obsługujemy
+je za pomocą funkcji ``ustawStan()``: self.grupaRBtn.clicked.connect(self.ustawStan).
+W zależności od zaznaczenia grupy lub jego braku slot wyłącza (``setEnabled(False)``)
+lub włącza (``setEnabled(True)``) widżety *ComboBox* i *SpinBox*. W tym drugim przypadku
+resetujemy zbiór kanałów i dodajemy do niego tylko kanał wybrany na liście:
+``self.kanaly.add(self.listaRGB.currentText())``.
+
+Drugie wydarzenie, które obsłużymy, to wybranie nowego kanału z listy. Emitowany jest wtedy
+sygnał ``activated[str]``, który zawiera tekst wybranego elementu. W slocie ``ustawKanalCBox()``
+tekst ten, czyli nazwę składowej koloru, dodajemy do zbioru kanałów.
+
+Zmiana wartości w kontrolce SpinBox, czyli sygnał ``valueChanged[int]``, przekierowujemy
+do funkcji ``zmienKolor()``, która obsługuje również zmiany wartości na suwaku.
+
+Uruchom aplikację i sprawdź jej działanie.
+
+Przyciski PushButton
+********************
+
+Do tej pory można było zmieniać kolor każdego kanału składowego osobno.
+Dodamy teraz grupę przycisków typu Push, które zachowywać się będą jak
+grupa przycisków wielokrotnego wyboru. Na początku zaimportuj klasę
+`QPushButton <http://doc.qt.io/qt-5/qpushbutton.html>`_ w pliku :file:`gui.py`.
+Następnie dopisz kod:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>gui.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: gui_z5.py
+    :linenos:
+    :lineno-start: 91
+    :lines: 91-106
+    :emphasize-lines: 4, 6-8
+
+Przyciski, jak poprzednio, tworzymy w pętli, podając w konstruktorze litery
+składowych koloru RGB: ``self.btn = QPushButton(v)``. Każdy przycisk przekształcamy
+na stanowy (może być trwale wciśnięty) za pomocą metody ``setCheckable()``.
+Kolejne obiekty dodajemy do grupy logicznej typu *QButtonGroup*:
+``self.grupaP.addButton(self.btn)``; oraz do układu poziomego.
+Układ przycisków dodajemy do ramki typu *QGropBox* z przyciskiem CheckBox:
+``self.grupaPBtn.setCheckable(True)``. Na początku ramkę wyłączamy: ``self.grupaPBtn.setChecked(False)``.
+
+**Uwaga**: na koniec musimy dodać grupę przycisków do głównego układu okna:
+``ukladOkna.addWidget(self.grupaPBtn)``. Inaczej nie zobaczymy jej w oknie aplikacji!
+
+W pliku :file:`widgety.py` jak zwykle dopisujemy obsługę sygnałów w konstruktorze
+i jedną nową funkcję:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>widgety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: widgety_z5.py
+    :linenos:
+    :lineno-start: 31
+    :lines: 31-41
+
+Pętla ``for btn in self.grupaP.buttons():`` odczytuje kolejne przyciski
+z grupy ``grupaP``, i kliknięcie każdego wiąże z nową funkcją:
+``btn.clicked[bool].connect(self.ustawKanalPBtn)``. Zadaniem funkcji
+jest dodawanie kanału do zbioru, jeżeli przycisk został wciśnięty,
+i usuwanie ich ze zbioru w przeciwnym razie. Inaczej niż w poprzednich
+funkcjach, obsługujących przycicki Radio i listę ComboBox, nie resetujemy
+tu zbioru kanałów.
+
+Przetestuj zmodyfikowaną aplikację.
+
+QLabel i QLineEdit
+******************
+
+Dodamy do aplikacji zestaw widżetów wyświetlających aktywne kanały koloru
+i ich wartości. Na początku pliku :file:`gui.py` zaimportuj klasy
+`QLabel <http://doc.qt.io/qt-5/qlabel.html>`_ i `QLineEdit <http://doc.qt.io/qt-5/qlineedit.html>`_.
+Następnie uzupełnij funkcję ``setupUi()``:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>gui.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: gui_z6.py
+    :linenos:
+    :lineno-start: 109
+    :lines: 109-123
+    :emphasize-lines: 10-11
+
+Zaczynamy od utworzenia trzech etykiet i trzech pól edycyjnych dla każdego kanału.
+W pętli wykorzystujemy funkcję Pythona
+`getattr(obiekt, nazwa) <https://docs.python.org/3/library/functions.html#getattr>`_,
+która potrafi zwrócić podany jako ``nazwa`` atrybut ``obiektu``. W tym wypadku
+kolejne etykiety i pola edycyjne, które umieszczamy obok siebie w poziomie.
+Przy okzaji ograniczamy długość wpisywanego w pola edycyjne tekstu do 3 znaków:
+``kolor.setMaxLength(3)``.
+
+Pamiętajmy, że aby zobaczyć utworzone obiekty w oknie aplikacji, musimy dołączyć
+je do głównego układu okna: ``ukladOkna.addLayout(ukladH4)``.
+
+W pliku :file:`widgety.py` rozszerzamy konstruktor klasy ``Widgety`` i dodajemy
+funkcję informacyjną:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>widgety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: widgety_z6.py
+    :linenos:
+    :lineno-start: 35
+    :lines: 35-56
+
+W pętli, podobnej jak w pliku interfejsu, sygnał zmiany tekstu pola typu *QLineEdit*
+wiążemy z dodaną wcześniej funkcją ``zmienKolor()``. Będziemy mogli wpisywać w tych
+polach nowe wartości składowych koloru. **Ale uwaga**: do tej pory funkcja ``zmienKolor()``
+otrzymywała wartości typu całkowitego z suwaka *QSlider* lub pola *QSpinBox*. Pole edycyjne
+zwraca natomiast tekst, który trzeba rzutować na typ całkowity.
+Dodaj więc na początku funkcji instrukcję: ``wartosc = int(wartosc)``.
+
+Druga nowa rzecz to funkcja informacyjna ``info()``. Jej zadanie polega na wyróżnieniu
+aktywnych kanałów poprzez pogrubienie czcionki etykiet i uaktywnieniu odpowiednich pól edycyjnych.
+Jeżeli kanał jest nieaktywny, ustawiamy normalną czcionkę etykiety i wyłączamy pole edycji.
+Wszystko dzieje się w pętli wykorzystującej omawiane już funkcje ``getattr()`` oraz ``setEnabled()``.
+
+Na uwagę zasługują operacje na czcionce. Zmieniamy ją dzięki stylom CSS zdefiniowanym na
+początku funkcji pod nazwą ``fontB`` i ``fontN``. Później przypisujemy je etykietom
+za pomocą metody ``setStyleSheet()``.
+
+Na końcu omawianej funkcji do każdego pola edycyjnego wstawiamy aktualną wartość
+odpowiedniej składowej koloru przekształconą na tekst,
+np. ``self.kolorR.setText(str(self.kolorW.red()))``.
+
+Wywołanie tej funkcji w postaci ``self.info()`` powinniśmy dopisać przynajmniej
+do funkcji ``zmienKolor()``.
+
+Wprowadź omówione zmiany i przetestuj działanie aplikacji.
+
+Dodatki
+********
+
+[Niegotowe!]
+
+Zaznaczenie i odznaczenie ramki z przyciskami obsłużymy w dodanej wcześniej
+funkcji: ``self.grupaPBtn.clicked.connect(self.ustawStan)``. Ale musimy ją
+rozbudować. Tak więc funkcja ``ustawStan()`` przyjmie następującą postać:
+
+.. highlight:: python
+.. code-block:: python
+
+    def ustawStan(self, wartosc):
+        if wartosc:
+            self.listaRGB.setEnabled(False)
+            self.spinRGB.setEnabled(False)
+            nadawca = self.sender()
+            if nadawca.objectName() == 'Radio':
+                self.grupaPBtn.setChecked(False)
+            if nadawca.objectName() == 'Push':
+                self.grupaRBtn.setChecked(False)
+                for btn in self.grupaP.buttons():
+                    btn.setChecked(False)
+                    if btn.text() in self.kanaly:
+                        btn.setChecked(True)
+        else:
+            self.listaRGB.setEnabled(True)
+            self.spinRGB.setEnabled(True)
+            self.kanaly = set()
+            self.kanaly.add(self.listaRGB.currentText())
+
+Jeżeli budujemy aplikację nie opuszczając żadnego z dotychczasowych kroków,
+mamy już trzy zestawy do manipulowania kolorem: ramkę z przyciskami RadioButton,
+listę ComboBox razem ze SpinBoksem oraz ramkę przycisków PushButton.
+W(y)łączanie ramek obsługujemy w jednym slocie. Kiedy jedna jest włączona,
+drugą chcemy wyłączyć, dlatego sprawdzamy, która z ramek wysłała sygnał
+wykorzystując ich nazwę, np. ``if nadawca.objectName() == 'Radio':``.
+Drugą wyłączamy.
+
+Dodatkowo, jeżeli ramką źródłową jest ta z przyciskami PushButton,
+w pętli ``for btn in self.grupaP.buttons():`` na początku odznaczamy
+każdy przycisk po to, żeby zaznaczyć go, o ile wskazywany przez niego
+kanał jest w zbiorze.
+
+.. highlight:: python
+.. code-block:: python
+
+    def ustawKanal(self, wartosc):
+        try:
+            wartosc = int(wartosc)
+        except ValueError:
+            wartosc = 0
+        if wartosc > 255:
+            wartosc = 255
+        elif wartosc < 0:
+            wartosc = 0
+
+    def ustawKanal(self, wartosc):
+        self.kanaly = set()  # resetujemy zbiór kanałów
+        try:  # ComboBox
+            if len(wartosc) == 1:
+                self.kanaly.add(wartosc)
+        except TypeError:  # RadioButton
+            nadawca = self.sender()
+            if wartosc:
+                self.kanaly.add(nadawca.text())
 
 Materiały
 ***************

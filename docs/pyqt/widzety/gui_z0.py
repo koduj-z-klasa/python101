@@ -17,7 +17,7 @@ class Ui_Widget(object):
         self.kolorW = QColor(200, 30, 40)
 
         self.resize(102, 102)
-        self.setWindowTitle("Widgety")
+        self.setWindowTitle('Widgety')
 
     def paintEvent(self, e):
         qp = QPainter()

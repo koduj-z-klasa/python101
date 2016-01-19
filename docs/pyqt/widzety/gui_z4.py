@@ -29,7 +29,7 @@ class Ui_Widget(object):
             uklad.addWidget(self.chk)
         self.grupaChk.buttons()[self.ksztaltAktywny.ksztalt].setChecked(True)
         # CheckBox do wyboru aktywnego kształtu
-        self.ksztaltChk = QCheckBox("<=")
+        self.ksztaltChk = QCheckBox('<=')
         self.ksztaltChk.setChecked(True)
         uklad.addWidget(self.ksztaltChk)
 
@@ -59,9 +59,9 @@ class Ui_Widget(object):
             self.ukladR.addWidget(self.radio)
         self.ukladR.itemAt(0).widget().setChecked(True)
         # grupujemy przyciski
-        self.grupaRBtn = QGroupBox("Opcje RGB")
+        self.grupaRBtn = QGroupBox('Opcje RGB')
         self.grupaRBtn.setLayout(self.ukladR)
-        self.grupaRBtn.setObjectName("Radio")
+        self.grupaRBtn.setObjectName('Radio')
         self.grupaRBtn.setCheckable(True)
         # układ poziomy dla grupy Radio
         ukladH3 = QHBoxLayout()
@@ -94,4 +94,4 @@ class Ui_Widget(object):
         ukladOkna.addLayout(ukladH3)
 
         self.setLayout(ukladOkna)  # przypisanie układu do okna głównego
-        self.setWindowTitle("Widgety")
+        self.setWindowTitle('Widgety')

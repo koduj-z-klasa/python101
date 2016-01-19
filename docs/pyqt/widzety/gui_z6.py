@@ -20,6 +20,7 @@ class Ui_Widget(object):
         # widgety rysujące kształty, instancje klasy Ksztalt
         self.ksztalt1 = Ksztalt(self, Ksztalty.Polygon)
         self.ksztalt2 = Ksztalt(self, Ksztalty.Ellipse)
+        self.ksztaltAktywny = self.ksztalt1
 
         # przyciski CheckBox ###
         uklad = QVBoxLayout()  # układ pionowy
@@ -28,11 +29,13 @@ class Ui_Widget(object):
             self.chk = QCheckBox(v)
             self.grupaChk.addButton(self.chk, i)
             uklad.addWidget(self.chk)
+        self.grupaChk.buttons()[self.ksztaltAktywny.ksztalt].setChecked(True)
         # CheckBox do wyboru aktywnego kształtu
-        self.ksztaltChk = QCheckBox("<=")
+        self.ksztaltChk = QCheckBox('<=')
+        self.ksztaltChk.setChecked(True)
         uklad.addWidget(self.ksztaltChk)
 
-        # układ poziomy dla kształtów oraz przycisków Chk
+        # układ poziomy dla kształtów oraz przycisków CheckBox
         ukladH1 = QHBoxLayout()
         ukladH1.addWidget(self.ksztalt1)
         ukladH1.addLayout(uklad)
@@ -56,10 +59,12 @@ class Ui_Widget(object):
         for v in ('R', 'G', 'B'):
             self.radio = QRadioButton(v)
             self.ukladR.addWidget(self.radio)
+        self.ukladR.itemAt(0).widget().setChecked(True)
         # grupujemy przyciski
-        self.grupaRBtn = QGroupBox("Opcje RGB")
+        self.grupaRBtn = QGroupBox('Opcje RGB')
         self.grupaRBtn.setLayout(self.ukladR)
-        self.grupaRBtn.setObjectName("Radio")
+        self.grupaRBtn.setObjectName('Radio')
+        self.grupaRBtn.setCheckable(True)
         # układ poziomy dla grupy Radio
         ukladH3 = QHBoxLayout()
         ukladH3.addWidget(self.grupaRBtn)
@@ -69,10 +74,12 @@ class Ui_Widget(object):
         self.listaRGB = QComboBox(self)
         for v in ('R', 'G', 'B'):
             self.listaRGB.addItem(v)
+        self.listaRGB.setEnabled(False)
         # SpinBox
         self.spinRGB = QSpinBox()
         self.spinRGB.setMinimum(0)
         self.spinRGB.setMaximum(255)
+        self.spinRGB.setEnabled(False)
         # układ pionowy dla ComboBox i SpinBox
         uklad = QVBoxLayout()
         uklad.addWidget(self.listaRGB)
@@ -85,25 +92,29 @@ class Ui_Widget(object):
         # przyciski PushButton ###
         uklad = QHBoxLayout()
         self.grupaP = QButtonGroup()
+        self.grupaP.setExclusive(False)
         for v in ('R', 'G', 'B'):
             self.btn = QPushButton(v)
-            uklad.addWidget(self.btn)
+            self.btn.setCheckable(True)
             self.grupaP.addButton(self.btn)
+            uklad.addWidget(self.btn)
         # grupujemy przyciski
-        self.grupaPBtn = QGroupBox("Przyciski RGB")
+        self.grupaPBtn = QGroupBox('Przyciski RGB')
         self.grupaPBtn.setLayout(uklad)
         self.grupaPBtn.setObjectName('Push')
+        self.grupaPBtn.setCheckable(True)
+        self.grupaPBtn.setChecked(False)
         # koniec PushButton ###
 
         # etykiety QLabel i pola QLineEdit ###
         ukladH4 = QHBoxLayout()
-        self.labelR = QLabel("R", self)
-        self.kolorR = QLineEdit("0")
-        self.labelG = QLabel("G")
-        self.kolorG = QLineEdit("0")
-        self.labelB = QLabel("B")
-        self.kolorB = QLineEdit("0")
-        for v in self.kolory:
+        self.labelR = QLabel('R')
+        self.kolorR = QLineEdit('0')
+        self.labelG = QLabel('G')
+        self.kolorG = QLineEdit('0')
+        self.labelB = QLabel('B')
+        self.kolorB = QLineEdit('0')
+        for v in ('R', 'G', 'B'):
             label = getattr(self, 'label'+v)
             kolor = getattr(self, 'kolor'+v)
             ukladH4.addWidget(label)
@@ -120,5 +131,5 @@ class Ui_Widget(object):
         ukladOkna.addLayout(ukladH4)
 
         self.setLayout(ukladOkna)  # przypisanie układu do okna głównego
-        self.setWindowTitle("Widżety")
+        self.setWindowTitle('Widżety')
         self.resize(200, 250)

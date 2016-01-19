@@ -16,46 +16,35 @@ class Widgety(QWidget, Ui_Widget):
         super(Widgety, self).__init__(parent)
         self.setupUi(self)  # tworzenie interfejsu
 
-        # ustawienia, sygnały i sloty
+        # Sygnały i sloty ###
         # przyciski CheckBox ###
-        self.ksztaltChk.setChecked(True)
-        self.ksztaltAktywny = self.ksztalt1
-        self.grupaChk.buttons()[self.ksztaltAktywny.ksztalt].setChecked(True)
         self.grupaChk.buttonClicked[int].connect(self.ustawKsztalt)
         self.ksztaltChk.clicked.connect(self.aktywujKsztalt)
         # Slider + przyciski RadioButton ###
-        self.grupaRBtn.setCheckable(True)
-        self.ukladR.itemAt(0).widget().setChecked(True)
         for i in range(self.ukladR.count()):
-            self.ukladR.itemAt(i).widget().toggled.connect(self.ustawKanalRbtn)
+            self.ukladR.itemAt(i).widget().toggled.connect(self.ustawKanalRBtn)
         self.suwak.valueChanged.connect(self.zmienKolor)
         # Lista ComboBox i SpinBox ###
-        self.listaRGB.setEnabled(False)
-        self.spinRGB.setEnabled(False)
         self.grupaRBtn.clicked.connect(self.ustawStan)
         self.listaRGB.activated[str].connect(self.ustawKanalCBox)
         self.spinRGB.valueChanged[int].connect(self.zmienKolor)
         # przyciski PushButton ###
         for btn in self.grupaP.buttons():
-            btn.setCheckable(True)
             btn.clicked[bool].connect(self.ustawKanalPBtn)
-        self.grupaP.setExclusive(False)
-        self.grupaPBtn.setCheckable(True)
-        self.grupaPBtn.setChecked(False)
         self.grupaPBtn.clicked.connect(self.ustawStan)
         # etykiety QLabel i pola QEditLine ###
-        self.kolorR.textEdited.connect(self.zmienKolor)
-        self.kolorG.textEdited.connect(self.zmienKolor)
-        self.kolorB.textEdited.connect(self.zmienKolor)
+        for v in ('R', 'G', 'B'):
+            kolor = getattr(self, 'kolor'+v)
+            kolor.textEdited.connect(self.zmienKolor)
 
     def info(self):
         fontB = "QWidget { font-weight: bold }"
         fontN = "QWidget { font-weight: normal }"
 
-        for k in ('R', 'G', 'B'):
-            label = getattr(self, 'label'+k)
-            kolor = getattr(self, 'kolor'+k)
-            if k in self.kanaly:
+        for v in ('R', 'G', 'B'):
+            label = getattr(self, 'label'+v)
+            kolor = getattr(self, 'kolor'+v)
+            if v in self.kanaly:
                 label.setStyleSheet(fontB)
                 kolor.setEnabled(True)
             else:
@@ -96,22 +85,14 @@ class Widgety(QWidget, Ui_Widget):
         self.kanaly = set()  # resetujemy zbiór kanałów
         self.kanaly.add(wartosc)
 
-    def ustawKanalRbtn(self, wartosc):
+    def ustawKanalRBtn(self, wartosc):
         self.kanaly = set()  # resetujemy zbiór kanałów
         nadawca = self.sender()
         if wartosc:
             self.kanaly.add(nadawca.text())
 
     def zmienKolor(self, wartosc):
-        try:
-            wartosc = int(wartosc)
-        except ValueError:
-            wartosc = 0
-        if wartosc > 255:
-            wartosc = 255
-        elif wartosc < 0:
-            wartosc = 0
-
+        wartosc = int(wartosc)
         self.lcd.display(wartosc)
         if 'R' in self.kanaly:
             self.kolorW.setRed(wartosc)

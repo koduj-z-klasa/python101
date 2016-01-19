@@ -24,10 +24,10 @@ class Widgety(QWidget, Ui_Widget):
         nadawca = self.sender()
         if wartosc:
             self.ksztaltAktywny = self.ksztalt1
-            nadawca.setText("<=")
+            nadawca.setText('<=')
         else:
             self.ksztaltAktywny = self.ksztalt2
-            nadawca.setText("=>")
+            nadawca.setText('=>')
         self.grupaChk.buttons()[self.ksztaltAktywny.ksztalt].setChecked(True)
 
 if __name__ == '__main__':
