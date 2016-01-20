@@ -37,4 +37,4 @@ class Ui_Widget(object):
         # koniec CheckBox ###
 
         self.setLayout(ukladH1)  # przypisanie układu do okna głównego
-        self.setWindowTitle('Widgety')
+        self.setWindowTitle('Widżety')

@@ -114,6 +114,8 @@ class Ui_Widget(object):
         self.kolorR = QLineEdit('0')
         self.kolorG = QLineEdit('0')
         self.kolorB = QLineEdit('0')
+        self.kolorG.setEnabled(False)
+        self.kolorB.setEnabled(False)
         for v in ('R', 'G', 'B'):
             label = getattr(self, 'label'+v)
             kolor = getattr(self, 'kolor'+v)

@@ -31,15 +31,15 @@ Przykład ilustruje również techniki `programowania obiektowego <https://pl.wi
 QPainter – podstawy rysowania
 *****************************
 
-Zaczynamy od utworzenia głównego pliku o nazwie :file:`widgety.py` w dowolnym katalogu
+Zaczynamy od utworzenia głównego pliku o nazwie :file:`widzety.py` w dowolnym katalogu
 za pomocą dowolnego edytora. Wstawiamy do niego poniższy kod:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>widgety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>widzety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: widgety_z0.py
+.. literalinclude:: widzety_z0.py
     :linenos:
 
 Podstawową klasą opisującą naszą aplikację będzie klasa ``Widgety``. Umieścimy
@@ -55,7 +55,7 @@ Tworzymy go i wstawiamy poniższy kod:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>widgety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>widzety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
 .. literalinclude:: gui_z0.py
@@ -105,7 +105,7 @@ druga prawego dolnego rogu prostokąta.
 **Ćwiczenie**
 
     * Przetestuj działanie aplikacji wydając w katalogu z plikami źródłowymi polecenie
-      w terminalu: ``python3 widgety.py``.
+      w terminalu: ``python3 widzety.py``.
     * Spróbuj zmienić rodzaj rysowanej figury oraz kolory jej obramowania i wypełnienia.
 
 .. figure:: img/widzety00.png
@@ -178,7 +178,7 @@ Tworzymy obiekt ``self.ksztalt`` jako instancję klasy ``Ksztalty()`` i ustawiam
 kolor wypełnienia. Utworzony widżet dodajemy do poziomego układu ``ukladH1.addWidget(self.ksztalt)``,
 a układ przypisujemy do okna głównego ``self.setLayout(ukladH1)``.
 
-Plik :file:`widgety.py` pozostaje bez zmian, jego zadaniem jest uruchomienie aplikacji.
+Plik :file:`widzety.py` pozostaje bez zmian, jego zadaniem jest uruchomienie aplikacji.
 
 **Ćwiczenie**
 
@@ -247,19 +247,14 @@ Wszystkie elementy interfejsu umieszczamy w układzie poziomym o nazwie ``ukladH
 Po lewej stronie znajdzie się ``ksztalt1``, w środku układ przycisków wyboru,
 a po prawej ``ksztalt2``.
 
-Jeżeli w tym momencie uruchomimy naszą aplikację, powinniśmy zobaczyć okno
-podobne do poniższego:
-
-.. figure:: img/widzety02a.png
-
-Teraz zajmiemy się obsługą syganłów. W pliku :file:`widgety.py` rozbudowujemy klasę ``Widgety``:
+Teraz zajmiemy się obsługą syganłów. W pliku :file:`widzety.py` rozbudowujemy klasę ``Widgety``:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>widgety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>widzety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: widgety_z2.py
+.. literalinclude:: widzety_z2.py
     :linenos:
     :lineno-start: 8
     :lines: 8-31
@@ -285,7 +280,7 @@ który wygenerował obsługiwany sygnał.
     Jak zwykle uruchom kilkakrotnie aplikację. Spróbuj zmieniać inicjalne rodzaje domyślnych
     kształtów i kolory wypełnienia figur.
 
-.. figure:: img/widzety02b.png
+.. figure:: img/widzety03.png
 
 Slider i przyciski RadioButton
 ******************************
@@ -350,15 +345,15 @@ okna aplikacji. Przedostatnią linię ``self.setLayout(ukladH1)`` zastępujemy p
 
 **Ustawienia wstępne i obsługa zdarzeń**
 
-Na początku w pliku :file:`widgety.py` dodajemy import ``from PyQt5.QtGui import QColor``.
+Na początku w pliku :file:`widzety.py` dodajemy import ``from PyQt5.QtGui import QColor``.
 Dalej tworzymy dwie zmienne klasy *Widgety*:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>widgety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>widzety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: widgety_z3.py
+.. literalinclude:: widzety_z3.py
     :linenos:
     :lineno-start: 9
     :lines: 9-13
@@ -367,10 +362,10 @@ Następnie uzupełniamy konstruktor (``__init__()``), a za nim dopisujemy dwie f
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>widgety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>widzety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: widgety_z3.py
+.. literalinclude:: widzety_z3.py
     :linenos:
     :lineno-start: 23
     :lines: 23-46
@@ -424,26 +419,25 @@ Obydwa widżety na razie wyłączamy metodą ``setEnabled(False)``. Umieszczamy 
 a ich układ dodajemy obok przycisków Radio, rozdzielając je odstępem 25 px:
 ``ukladH3.insertSpacing(1, 25)``.
 
-W pliku :file:`widgety.py` dodajemy do konstruktora kod przechwytujący 3 sygnały
+W pliku :file:`widzety.py` dodajemy do konstruktora kod przechwytujący 3 sygnały
 i dopisujemy dwie nowe funkcje:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>widgety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>widzety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: widgety_z4.py
+.. literalinclude:: widzety_z4.py
     :linenos:
     :lineno-start: 27
     :lines: 27-44
 
-Zakładamy, że po uruchomieniu aplikacji aktywna jest tylko grupa przycisków Radio.
-Aby uaktywnić inne kontrolki, przechwytujemy kliknięcie tej grupy i obsługujemy
-je za pomocą funkcji ``ustawStan()``: self.grupaRBtn.clicked.connect(self.ustawStan).
-W zależności od zaznaczenia grupy lub jego braku slot wyłącza (``setEnabled(False)``)
-lub włącza (``setEnabled(True)``) widżety *ComboBox* i *SpinBox*. W tym drugim przypadku
-resetujemy zbiór kanałów i dodajemy do niego tylko kanał wybrany na liście:
-``self.kanaly.add(self.listaRGB.currentText())``.
+Po uruchomieniu aplikacji aktywna jest tylko grupa przycisków Radio.
+Kliknięcie tej grupy przechwytujemy: ``self.grupaRBtn.clicked.connect(self.ustawStan)``.
+Funkcja ``ustawStan()`` w zależności od zaznaczenia grupy lub jego braku
+wyłącza (``setEnabled(False)``) lub włącza (``setEnabled(True)``) widżety
+*ComboBox* i *SpinBox*. W tym drugim przypadku resetujemy zbiór kanałów
+i dodajemy do niego tylko kanał wybrany na liście: ``self.kanaly.add(self.listaRGB.currentText())``.
 
 Drugie wydarzenie, które obsłużymy, to wybranie nowego kanału z listy. Emitowany jest wtedy
 sygnał ``activated[str]``, który zawiera tekst wybranego elementu. W slocie ``ustawKanalCBox()``
@@ -453,6 +447,8 @@ Zmiana wartości w kontrolce SpinBox, czyli sygnał ``valueChanged[int]``, przek
 do funkcji ``zmienKolor()``, która obsługuje również zmiany wartości na suwaku.
 
 Uruchom aplikację i sprawdź jej działanie.
+
+.. figure:: img/widzety04.png
 
 Przyciski PushButton
 ********************
@@ -485,15 +481,15 @@ Układ przycisków dodajemy do ramki typu *QGropBox* z przyciskiem CheckBox:
 **Uwaga**: na koniec musimy dodać grupę przycisków do głównego układu okna:
 ``ukladOkna.addWidget(self.grupaPBtn)``. Inaczej nie zobaczymy jej w oknie aplikacji!
 
-W pliku :file:`widgety.py` jak zwykle dopisujemy obsługę sygnałów w konstruktorze
+W pliku :file:`widzety.py` jak zwykle dopisujemy obsługę sygnałów w konstruktorze
 i jedną nową funkcję:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>widgety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>widzety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: widgety_z5.py
+.. literalinclude:: widzety_z5.py
     :linenos:
     :lineno-start: 31
     :lines: 31-41
@@ -507,6 +503,8 @@ funkcjach, obsługujących przycicki Radio i listę ComboBox, nie resetujemy
 tu zbioru kanałów.
 
 Przetestuj zmodyfikowaną aplikację.
+
+.. figure:: img/widzety05.png
 
 QLabel i QLineEdit
 ******************
@@ -538,15 +536,15 @@ Przy okzaji ograniczamy długość wpisywanego w pola edycyjne tekstu do 3 znak�
 Pamiętajmy, że aby zobaczyć utworzone obiekty w oknie aplikacji, musimy dołączyć
 je do głównego układu okna: ``ukladOkna.addLayout(ukladH4)``.
 
-W pliku :file:`widgety.py` rozszerzamy konstruktor klasy ``Widgety`` i dodajemy
+W pliku :file:`widzety.py` rozszerzamy konstruktor klasy ``Widgety`` i dodajemy
 funkcję informacyjną:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>widgety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>widzety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: widgety_z6.py
+.. literalinclude:: widzety_z6.py
     :linenos:
     :lineno-start: 35
     :lines: 35-56
@@ -576,22 +574,25 @@ do funkcji ``zmienKolor()``.
 
 Wprowadź omówione zmiany i przetestuj działanie aplikacji.
 
+.. figure:: img/widzety06.png
+
 Dodatki
 ********
 
-[Niegotowe!]
+Nasza aplikacja działa, ale można dopracować w niej kilka szczegółów. Poniżej zaproponujemy
+kilka zmian, które potraktować należy jako zachętę do samodzielnych ćwiczeń i przeróbek.
 
-Zaznaczenie i odznaczenie ramki z przyciskami obsłużymy w dodanej wcześniej
-funkcji: ``self.grupaPBtn.clicked.connect(self.ustawStan)``. Ale musimy ją
-rozbudować. Tak więc funkcja ``ustawStan()`` przyjmie następującą postać:
+1. Po pierwsze pola edycyjne *QLineEdit* dla składowych zielonej i niebieskiej powinny
+   być na początku nieaktywne. Dodaj odpowiedni kod do pliku :file:`gui.py`,
+   wykorzystaj metodę ``setEnabled()``.
+2. Zaznaczenie jednej z grup przycisków powinno wyłączać drugą grupę.
+   Jeżeli aktywujemy grupę Push dobrze byłoby zaznaczyć przycisk odpowiadający
+   ostatniemu aktywnemu kanałowi. W tym celu trzeba uzupełnić funkcję ``ustawStan()``.
+   Spróbuj użyć poniższego kodu:
 
 .. highlight:: python
 .. code-block:: python
 
-    def ustawStan(self, wartosc):
-        if wartosc:
-            self.listaRGB.setEnabled(False)
-            self.spinRGB.setEnabled(False)
             nadawca = self.sender()
             if nadawca.objectName() == 'Radio':
                 self.grupaPBtn.setChecked(False)
@@ -601,37 +602,45 @@ rozbudować. Tak więc funkcja ``ustawStan()`` przyjmie następującą postać:
                     btn.setChecked(False)
                     if btn.text() in self.kanaly:
                         btn.setChecked(True)
-        else:
-            self.listaRGB.setEnabled(True)
-            self.spinRGB.setEnabled(True)
-            self.kanaly = set()
-            self.kanaly.add(self.listaRGB.currentText())
 
-Jeżeli budujemy aplikację nie opuszczając żadnego z dotychczasowych kroków,
-mamy już trzy zestawy do manipulowania kolorem: ramkę z przyciskami RadioButton,
-listę ComboBox razem ze SpinBoksem oraz ramkę przycisków PushButton.
-W(y)łączanie ramek obsługujemy w jednym slocie. Kiedy jedna jest włączona,
-drugą chcemy wyłączyć, dlatego sprawdzamy, która z ramek wysłała sygnał
-wykorzystując ich nazwę, np. ``if nadawca.objectName() == 'Radio':``.
-Drugą wyłączamy.
+Ponieważ w(y)łączanie ramek z przyciskami obsługujemy w jednym slocie,
+musimy wiedzieć, która ramka wysłała sygnał. Metoda ``self.sender()``
+zwraca nam nadawcę, a za pomocą metody ``objectName()`` możemy odczytać
+jego nazwę.
 
-Dodatkowo, jeżeli ramką źródłową jest ta z przyciskami PushButton,
+Jeżeli ramką źródłową jest ta z przyciskami PushButton,
 w pętli ``for btn in self.grupaP.buttons():`` na początku odznaczamy
 każdy przycisk po to, żeby zaznaczyć go, o ile wskazywany przez niego
 kanał jest w zbiorze.
 
+3. Stan pól edycyjnych powinnien odpowiadać stanowi przycisków PushButton,
+   wciśnięty przycisk to aktywne pole i odwrotnie. Dopisz odpowiedni kod
+   do slotu ``ustawKanalPBtn()``. Wykorzystaj funkcję ``getattr``,
+   aby uzyskać dostęp do właściwego pola edycyjnego.
+
+4. Funkcja ``zmienKolor()`` nie jest zabezpieczona przed błędnymi danymi
+   wprowadzanymi do pól edycyjnych. Prześledź komunikaty w konsoli pojawiające
+   się powpisaniu wartości ujemnych, albo tekstu. Sytuacje takie można obsłużyć
+   dopisując na początku funkcji np. taki kod:
+
 .. highlight:: python
 .. code-block:: python
 
-    def ustawKanal(self, wartosc):
         try:
             wartosc = int(wartosc)
         except ValueError:
             wartosc = 0
         if wartosc > 255:
             wartosc = 255
-        elif wartosc < 0:
-            wartosc = 0
+
+5. Jak zostało pokazane w aplikacji, nic nie stoi na przeszkodzie, żeby podobne
+   sygnały obsługiwane były przez jeden slot. Niekiedy jednak wymaga to pewnych
+   dodatkowych zabiegów. Możnaby na przykład spróbować połączyć sloty
+   ``ustawKanalRBtn()`` i ``ustawKanalCBox()`` w jeden ``ustawKanal()``,
+   który mógłby zostać zamplementowany tak:
+
+.. highlight:: python
+.. code-block:: python
 
     def ustawKanal(self, wartosc):
         self.kanaly = set()  # resetujemy zbiór kanałów
@@ -643,9 +652,16 @@ kanał jest w zbiorze.
             if wartosc:
                 self.kanaly.add(nadawca.text())
 
+6. Dodaj dwa osobne przyciski, które umożliwią kopiowanie koloru i kształtu z jednej figury
+   na drugą.
+
 Materiały
 ***************
 
 1. `Qt Widgets <http://doc.qt.io/qt-5/qtwidgets-index.html>`_
 2. `Widgets Tutorial <http://doc.qt.io/qt-5/widgets-tutorial.html>`_
 3. `Layout Management <http://doc.qt.io/qt-5/layout.html>`_
+
+**Źródła:**
+
+* :download:`widzety.zip <widzety.zip>`

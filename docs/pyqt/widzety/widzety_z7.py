@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from PyQt5.QtWidgets import QApplication, QWidget
-from gui_z6 import Ui_Widget
+from gui_z7 import Ui_Widget
 from PyQt5.QtGui import QColor
 
 
@@ -22,11 +22,11 @@ class Widgety(QWidget, Ui_Widget):
         self.ksztaltChk.clicked.connect(self.aktywujKsztalt)
         # Slider + przyciski RadioButton ###
         for i in range(self.ukladR.count()):
-            self.ukladR.itemAt(i).widget().toggled.connect(self.ustawKanalRBtn)
+            self.ukladR.itemAt(i).widget().toggled.connect(self.ustawKanal)
         self.suwak.valueChanged.connect(self.zmienKolor)
         # Lista ComboBox i SpinBox ###
         self.grupaRBtn.clicked.connect(self.ustawStan)
-        self.listaRGB.activated[str].connect(self.ustawKanalCBox)
+        self.listaRGB.activated[str].connect(self.ustawKanal)
         self.spinRGB.valueChanged[int].connect(self.zmienKolor)
         # przyciski PushButton ###
         for btn in self.grupaP.buttons():
@@ -57,10 +57,13 @@ class Widgety(QWidget, Ui_Widget):
 
     def ustawKanalPBtn(self, wartosc):
         nadawca = self.sender()
+        kolor = getattr(self, 'kolor'+nadawca.text())
         if wartosc:
             self.kanaly.add(nadawca.text())
+            kolor.setEnabled(True)
         else:
             self.kanaly.remove(nadawca.text())
+            kolor.setEnabled(False)
 
     def ustawStan(self, wartosc):
         if wartosc:
@@ -81,18 +84,24 @@ class Widgety(QWidget, Ui_Widget):
             self.kanaly = set()
             self.kanaly.add(self.listaRGB.currentText())
 
-    def ustawKanalCBox(self, wartosc):
+    def ustawKanal(self, wartosc):
         self.kanaly = set()  # resetujemy zbiór kanałów
-        self.kanaly.add(wartosc)
-
-    def ustawKanalRBtn(self, wartosc):
-        self.kanaly = set()  # resetujemy zbiór kanałów
-        nadawca = self.sender()
-        if wartosc:
-            self.kanaly.add(nadawca.text())
+        try:  # ComboBox
+            if len(wartosc) == 1:
+                self.kanaly.add(wartosc)
+        except TypeError:  # RadioButton
+            nadawca = self.sender()
+            if wartosc:
+                self.kanaly.add(nadawca.text())
 
     def zmienKolor(self, wartosc):
-        wartosc = int(wartosc)
+        try:
+            wartosc = int(wartosc)
+        except ValueError:
+            wartosc = 0
+        if wartosc > 255:
+            wartosc = 255
+
         self.lcd.display(wartosc)
         if 'R' in self.kanaly:
             self.kolorW.setRed(wartosc)

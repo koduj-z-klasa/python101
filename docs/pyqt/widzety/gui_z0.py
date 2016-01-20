@@ -17,12 +17,12 @@ class Ui_Widget(object):
         self.kolorW = QColor(200, 30, 40)
 
         self.resize(102, 102)
-        self.setWindowTitle('Widgety')
+        self.setWindowTitle('Widżety')
 
     def paintEvent(self, e):
         qp = QPainter()
         qp.begin(self)
-        self.rysujFigury(qp)
+        self.rysujFigury(e, qp)
         qp.end()
 
     def rysujFigury(self, e, qp):
