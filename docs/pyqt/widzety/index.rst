@@ -155,6 +155,7 @@ i wypełnienia ``self.kolorW``.
     Zmienne instancji definiujemy w konstruktorze, są one inne dla każdego obiektu.
     Np. każda instancja klasy *Ksztalt* może rysować inną figurę zapamiętaną
     w zmiennej ``self.ksztalt``.
+    Zob.: `Class and Instance Variables <https://docs.python.org/3/tutorial/classes.html#class-and-instance-variables>`_
 
 Funkcje ``ustawKsztalt()`` i ``ustawKolorW()`` – jak wskazują nazwy – pozwalają modyfikować
 kształt i kolor wypełnienia obiektu kształtu już po jego utworzeniu jako instancji klasy.
@@ -190,8 +191,14 @@ Plik :file:`widzety.py` pozostaje bez zmian, jego zadaniem jest uruchomienie apl
 .. note::
 
     W kolejnych krokach będziemy umieszczać w oknie głównym widżety różnego typu.
-    Za każdym razem pamiętać należy o zaimportowaniu potrzebnej klasy na początku
-    pliku, czyli o dodaniu klauzuli typu: ``from PyQt5.QtWidget import <nazwa_klasy>``.
+    Kod tworzący te obiekty i ustawiający początkowe ich właściwości umieszczać będziemy
+    w pliku :file:`gui.py` w funkcji ``setupUi()``. Dodając nowe widżety, musimy pamiętać
+    o zaimportowaniu odpowiedniej klasy Qt na początku pliku.
+    Informacje o importach będą umieszczone na początku każdej sekcji.
+
+    Kod wiążący sygnały ze slotami implementować będziemy w pliku :file:`widzety.py`,
+    w konstruktorze klasy ``Widgety``. Sloty implementować będziemy jako funkcje
+    tej klasy.
 
 Przyciski CheckBox
 ******************
@@ -200,8 +207,13 @@ Wykorzystując klasę *Ksztalt* utworzymy kolejny obiekt do rysowania figur. Dod
 przyciski typu `QCheckBox <http://doc.qt.io/qt-5/qcheckbox.html>`_ umożliwiające zmianę
 rodzaju wyświetlanej figury.
 
-Na poczatku pliku :file:`gui.py` zaimportuj klasy *QCheckBox, QButtonGroup, QVBoxLayout*.
-Funkcja ``setupUi()`` przyjmie następującą postać:
+**Importy** w pliku :file:`gui.py`:
+
+.. code-block:: python
+
+    from PyQt5.QtWidgets import QCheckBox, QButtonGroup, QVBoxLayout
+
+Funkcja ``setupUi()`` przyjmuje następującą postać:
 
 .. raw:: html
 
@@ -287,11 +299,16 @@ Slider i przyciski RadioButton
 
 Możemy już manipulować rodzajami rysowanych kształtów na obydwu obszarach rysowania.
 Spróbujemy teraz dodać widżety pozwalające je kolorować.
-Po pierwsze do importów w pliku :file:`gui.py` dopisz ``from PyQt5.QtCore import Qt``.
-Dalej dodaj jeszcze importy widżetów *QSlider, QLCDNumber, QSplitter*
-oraz *QRadioButton, QGroupBox*.
 
-Teraz rozbudowujemy klasę ``Ui_Widget``. Po komentarzu ``# koniec CheckBox ###``
+**Importy** w pliku :file:`gui.py`:
+
+.. code-block:: python
+
+    from PyQt5.QtCore import Qt
+    from PyQt5.QtWidgets import QSlider, QLCDNumber, QSplitter
+    from PyQt5.QtWidgets import QRadioButton, QGroupBox
+
+Teraz rozbudowujemy konstruktor klasy ``Ui_Widget``. Po komentarzu ``# koniec CheckBox ###``
 wstawiamy:
 
 .. raw:: html
@@ -345,7 +362,12 @@ okna aplikacji. Przedostatnią linię ``self.setLayout(ukladH1)`` zastępujemy p
 
 **Ustawienia wstępne i obsługa zdarzeń**
 
-Na początku w pliku :file:`widzety.py` dodajemy import ``from PyQt5.QtGui import QColor``.
+**Importy** w pliku :file:`widzety.py`:
+
+.. code-block:: python
+
+    from PyQt5.QtGui import QColor
+
 Dalej tworzymy dwie zmienne klasy *Widgety*:
 
 .. raw:: html
@@ -394,9 +416,14 @@ ComboBox i SpinBox
 Modyfikowane kanały koloru można wybierać z rozwijalnej listy typu
 `QComboBox <http://doc.qt.io/qt-5/qcombobox.html>`_, a ich wartości
 ustawiać za pomocą widżetu `QSpinBox <http://doc.qt.io/qt-5/qspinbox.html>`_.
-Aby dodać te elementy do aplikacji, na początku pliku :file:`gui.py`
-dopisz import obydwu wymienionych klas. Następnie po komentarzu
-``# koniec RadioButton ###`` uzupełniamy kod:
+
+**Importy** w pliku :file:`gui.py`:
+
+.. code-block:: python
+
+    from PyQt5.QtWidgets import QComboBox, QSpinBox
+
+Po komentarzu ``# koniec RadioButton ###`` uzupełniamy kod funkcji ``setupUi()``:
 
 .. raw:: html
 
@@ -454,10 +481,16 @@ Przyciski PushButton
 ********************
 
 Do tej pory można było zmieniać kolor każdego kanału składowego osobno.
-Dodamy teraz grupę przycisków typu Push, które zachowywać się będą jak
-grupa przycisków wielokrotnego wyboru. Na początku zaimportuj klasę
-`QPushButton <http://doc.qt.io/qt-5/qpushbutton.html>`_ w pliku :file:`gui.py`.
-Następnie dopisz kod:
+Dodamy teraz grupę przycisków typu `QPushButton <http://doc.qt.io/qt-5/qpushbutton.html>`_,
+które zachowywać się będą jak grupa przycisków wielokrotnego wyboru.
+
+**Importy** w pliku :file:`gui.py`:
+
+.. code-block:: python
+
+    from PyQt5.QtWidgets import QPushButton
+
+Następnie dopisujemy kod w funkcji ``setupUi()``:
 
 .. raw:: html
 
@@ -509,9 +542,16 @@ Przetestuj zmodyfikowaną aplikację.
 QLabel i QLineEdit
 ******************
 
-Dodamy do aplikacji zestaw widżetów wyświetlających aktywne kanały koloru
-i ich wartości. Na początku pliku :file:`gui.py` zaimportuj klasy
-`QLabel <http://doc.qt.io/qt-5/qlabel.html>`_ i `QLineEdit <http://doc.qt.io/qt-5/qlineedit.html>`_.
+Dodamy do aplikacji zestaw widżetów wyświetlających aktywne kanały jako etykiety
+typu `QLabel <http://doc.qt.io/qt-5/qlabel.html>`_ oraz wartości składowych koloru
+jako 1-liniowe pola edycyjne typu `QLineEdit <http://doc.qt.io/qt-5/qlineedit.html>`_.
+
+**Importy** w pliku :file:`gui.py`:
+
+.. code-block:: python
+
+    from PyQt5.QtWidgets import QLabel, QLineEdit
+
 Następnie uzupełnij funkcję ``setupUi()``:
 
 .. raw:: html
