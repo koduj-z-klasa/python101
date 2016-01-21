@@ -9,8 +9,6 @@ Widżety
 dostępnych w bibliotece Qt5 obsługiwanej za pomocą wiązań PyQt5.
 Przykład ilustruje również techniki `programowania obiektowego <https://pl.wikipedia.org/wiki/Programowanie_obiektowe>`_ (ang. *Object Oriented Programing*).
 
-
-
 .. attention::
 
     **Wymagane oprogramowanie**:
@@ -72,7 +70,7 @@ Kształty, które będziemy rysowali, to:
 
 Określając rodzaj rysowanego kształtu, będziemy używali konstrukcji typu ``Ksztalty.Ellipse``,
 tak jak w głównej metodzie klasy ``Ui_Widget`` o nazwie ``setupUi()``. Definiujemy w niej zmienną
-wskazującą rysowany ksztalt (``self.ksztalt = Ksztalty.Ellipse``) oraz jego właściwości,
+wskazującą rysowany kształt (``self.ksztalt = Ksztalty.Ellipse``) oraz jego właściwości,
 czyli rozmiar, kolor obramowania i wypełnienia. Kolory opisujemy za pomocą klasy
 `QColor <http://doc.qt.io/qt-5/qcolor.html>`_, przy czym używamy formatu `RGB <https://pl.wikipedia.org/wiki/RGB>`_,
 np .: ``self.kolorW = QColor(200, 30, 40)``.
@@ -98,7 +96,7 @@ druga prawego dolnego rogu prostokąta.
 
 .. attention::
 
-    Początek układu współrzędnych, w dniesieniu do którego definujemy w Qt pozycję okien,
+    Początek układu współrzędnych, w odniesieniu do którego definiujemy w Qt pozycję okien,
     widżetów czy punkty opisujące kształty, znajduje się w lewym górnym rogu ekranu
     czy też okna.
 
@@ -116,7 +114,7 @@ Klasa *Ksztalt*
 Przedstawiony wyżej sposób rysowania ma istotne ograniczenia. Przede wszystkim
 rysowanie odbywa się bezpośrednio w oknie głównym, co utrudnia umieszczanie
 innych widżetów. Po drugie nie ma wygodnego sposobu dodawania niezależnych
-od siebie kształtów. Aby poprawić te niedogoności, stworzymy swój widżet
+od siebie kształtów. Aby poprawić te niedogodności, stworzymy swój widżet
 do rysowania, czyli klasę ``Ksztalt``. Kod umieszczamy w osobnym pliku
 o nazwie :file:`ksztalt.py` w katalogu z poprzednimi plikami.
 Jego zawartość jest następująca:
@@ -144,7 +142,7 @@ Najważniejsza metoda, tj. ``paintEvent()``, w ogóle się nie zmienia. Natomias
 Konstruktor naszej klasy: ``__init__(self, parent, ksztalt=Ksztalty.Rect)`` –
 umożliwia opcjonalne przekazanie w drugim argumencie typu rysowanego kształtu. Domyślnie
 będzie to prostokąt. Zostanie on przypisany do atrybutu ``self.ksztalt``.
-W konstruktorze definujemy również domyślne kolory obramowania ``self.kolorO``
+W konstruktorze definiujemy również domyślne kolory obramowania ``self.kolorO``
 i wypełnienia ``self.kolorW``.
 
 .. note::
@@ -152,7 +150,7 @@ i wypełnienia ``self.kolorW``.
     Warto zrozumieć różnicę pomiędzy **zmiennymi klasy** a **zmiennymi instancji**.
     Zmienne (właściwości) klasy są wspólne dla wszystkich jej instancji.
     W naszym przypadku zdefiniowaliśmy w ten sposób zmienne ``prost`` i ``punkty``.
-    Zmienne instancji natomiast są one inne dla każdego obiektu. Definiujemy je w konstruktorze.
+    Zmienne instancji natomiast są inne dla każdego obiektu. Definiujemy je w konstruktorze.
     Np. każda instancja klasy *Ksztalt* może rysować inną figurę zapamiętaną
     w zmiennej ``self.ksztalt``.
     Zob.: `Class and Instance Variables <https://docs.python.org/3/tutorial/classes.html#class-and-instance-variables>`_
@@ -250,7 +248,7 @@ przycisków. Ponieważ do oznaczania kształtów używamy kolejnych liczb całko
 możemy użyć ich jako indeksu.
 
 Poza pętlą tworzymy jeszcze jeden przycisk (``self.ksztaltChk = QCheckBox("<=")``),
-niezależny od powyższej grupy. Jego stan wskauzje aktywny kształt.
+niezależny od powyższej grupy. Jego stan wskazuje aktywny kształt.
 Domyślnie go zaznaczamy: ``self.ksztaltChk.setChecked(True)``, co oznacza,
 że aktywną figurą będzie pierwszy kształt. Inicjujemy również odpowiednią zmienną:
 ``self.ksztaltAktywny = self.ksztalt1``.
@@ -259,7 +257,7 @@ Wszystkie elementy interfejsu umieszczamy w układzie poziomym o nazwie ``ukladH
 Po lewej stronie znajdzie się ``ksztalt1``, w środku układ przycisków wyboru,
 a po prawej ``ksztalt2``.
 
-Teraz zajmiemy się obsługą syganłów. W pliku :file:`widzety.py` rozbudowujemy klasę ``Widgety``:
+Teraz zajmiemy się obsługą sygnałów. W pliku :file:`widzety.py` rozbudowujemy klasę ``Widgety``:
 
 .. raw:: html
 
@@ -282,7 +280,7 @@ za pomocą odpowiedniej metody klasy ``Ksztalt``: ``self.ksztaltAktywny.ustawKsz
 Kliknięcie przycisku wskazującego aktywną figurę obsługujemy w kodzie:
 ``self.ksztaltChk.clicked.connect(self.aktywujKsztalt)``.
 Tym razem funkcja ``aktywujKsztalt()`` dostaje wartość logiczną ``True`` lub ``False``,
-która określa, czy przycisk został zanaczony, czy nie. W zależności od tego
+która określa, czy przycisk został zaznaczony, czy nie. W zależności od tego
 ustawiamy jako aktywny odpowiedni obszar rysowania oraz tekst przycisku.
 
 .. note::
@@ -346,11 +344,11 @@ dzięki czemu możemy wywoływać jego metody.
 
 Układ przycisków dodajemy do grupy typu `QGroupBox <http://doc.qt.io/qt-5/qgroupbox.html>`_:
 ``self.grupaRBtn.setLayout(self.ukladR)``. Tego typu grupa zapewnia graficzną
-ramkę z przyciskiem aktywującym typu CheckBox, który doyślnie zaznaczamy:
+ramkę z przyciskiem aktywującym typu CheckBox, który domyślnie zaznaczamy:
 ``self.grupaRBtn.setCheckable(True)``. Za pomocą metody ``setObjectName()``
 grupie nadajemy nazwę *Radio*.
 
-Kończąc zmiany w interfesie, tworzymy nowy pionowy układ dla elementów głównego
+Kończąc zmiany w interfejsie, tworzymy nowy pionowy układ dla elementów głównego
 okna aplikacji. Przedostatnią linię ``self.setLayout(ukladH1)`` zastępujemy poniższym kodem:
 
 .. raw:: html
@@ -398,14 +396,14 @@ Następnie uzupełniamy konstruktor (``__init__()``), a za nim dopisujemy dwie f
 Ze zmianą stanu przycisków Radio związany jest sygnał ``toggled``. W pętli
 ``for i in range(self.ukladR.count()):`` wiążemy go dla każdego
 przycisku układu z funkcją ``ustawKanal()``. Otrzymuje ona wartość logiczną.
-Zadaniem funkcji jest zrestetowanie zbioru kolorów i dodaniego do niego
+Zadaniem funkcji jest zresetowanie zbioru kolorów i dodanie do niego
 litery opisującej zaznaczony przycisk: ``self.kanaly.add(nadawca.text())``.
 
 Manipulowanie suwakiem wyzwala sygnał ``valueChanged``, który łączymy ze slotem ``zmienKolor()``:
 ``self.suwak.valueChanged.connect(self.zmienKolor)``. Do funkcji przekazywana jest wartość
 wybrana na suwaku, wyświetlamy ją w widżecie LCD: ``self.lcd.display(wartosc)``.
 Następnie sprawdzamy aktywne kanały w zbiorze kanałów i zmieniamy
-odpowiadającą im wartość składową w kolorze wypełnenia, np.: ``self.kolorW.setRed(wartosc)``.
+odpowiadającą im wartość składową w kolorze wypełnienia, np.: ``self.kolorW.setRed(wartosc)``.
 Na koniec przypisujemy otrzymany kolor wypełnienia aktywnemu kształtowi,
 osobno podając składowe RGB.
 
@@ -535,7 +533,7 @@ z grupy ``grupaP``, i kliknięcie każdego wiąże z nową funkcją:
 ``btn.clicked[bool].connect(self.ustawKanalPBtn)``. Zadaniem funkcji
 jest dodawanie kanału do zbioru, jeżeli przycisk został wciśnięty,
 i usuwanie ich ze zbioru w przeciwnym razie. Inaczej niż w poprzednich
-funkcjach, obsługujących przycicki Radio i listę ComboBox, nie resetujemy
+funkcjach, obsługujących przyciski Radio i listę ComboBox, nie resetujemy
 tu zbioru kanałów.
 
 Przetestuj zmodyfikowaną aplikację.
@@ -573,7 +571,7 @@ W pętli wykorzystujemy funkcję Pythona
 `getattr(obiekt, nazwa) <https://docs.python.org/3/library/functions.html#getattr>`_,
 która potrafi zwrócić podany jako ``nazwa`` atrybut ``obiektu``. W tym wypadku
 kolejne etykiety i pola edycyjne, które umieszczamy obok siebie w poziomie.
-Przy okzaji ograniczamy długość wpisywanego w pola edycyjne tekstu do 3 znaków:
+Przy okazji ograniczamy długość wpisywanego w pola edycyjne tekstu do 3 znaków:
 ``kolor.setMaxLength(3)``.
 
 **Uwaga**: Pamiętajmy, że aby zobaczyć utworzone obiekty w oknie aplikacji, musimy dołączyć
@@ -629,7 +627,7 @@ kilka zmian, które potraktować należy jako zachętę do samodzielnych ćwicze
    być na początku nieaktywne. Dodaj odpowiedni kod do pliku :file:`gui.py`,
    wykorzystaj metodę ``setEnabled()``.
 2. Zaznaczenie jednej z grup przycisków powinno wyłączać drugą grupę.
-   Jeżeli aktywujemy grupę Push dobrze byłoby zaznaczyć przycisk odpowiadający
+   Jeżeli aktywujemy grupę *Push* dobrze byłoby zaznaczyć przycisk odpowiadający
    ostatniemu aktywnemu kanałowi. W tym celu trzeba uzupełnić funkcję ``ustawStan()``.
    Spróbuj użyć poniższego kodu:
 
@@ -656,14 +654,14 @@ w pętli ``for btn in self.grupaP.buttons():`` na początku odznaczamy
 każdy przycisk po to, żeby zaznaczyć go, o ile wskazywany przez niego
 kanał jest w zbiorze.
 
-3. Stan pól edycyjnych powinnien odpowiadać stanowi przycisków PushButton,
+3. Stan pól edycyjnych powinien odpowiadać stanowi przycisków PushButton,
    wciśnięty przycisk to aktywne pole i odwrotnie. Dopisz odpowiedni kod
    do slotu ``ustawKanalPBtn()``. Wykorzystaj funkcję ``getattr``,
    aby uzyskać dostęp do właściwego pola edycyjnego.
 
 4. Funkcja ``zmienKolor()`` nie jest zabezpieczona przed błędnymi danymi
    wprowadzanymi do pól edycyjnych. Prześledź komunikaty w konsoli pojawiające
-   się powpisaniu wartości ujemnych, albo tekstu. Sytuacje takie można obsłużyć
+   się po wpisaniu wartości ujemnych, albo tekstu. Sytuacje takie można obsłużyć
    dopisując na początku funkcji np. taki kod:
 
 .. highlight:: python
@@ -678,9 +676,9 @@ kanał jest w zbiorze.
 
 5. Jak zostało pokazane w aplikacji, nic nie stoi na przeszkodzie, żeby podobne
    sygnały obsługiwane były przez jeden slot. Niekiedy jednak wymaga to pewnych
-   dodatkowych zabiegów. Możnaby na przykład spróbować połączyć sloty
+   dodatkowych zabiegów. Można by na przykład spróbować połączyć sloty
    ``ustawKanalRBtn()`` i ``ustawKanalCBox()`` w jeden ``ustawKanal()``,
-   który mógłby zostać zamplementowany tak:
+   który mógłby zostać zaimplementowany tak:
 
 .. highlight:: python
 .. code-block:: python
