@@ -62,7 +62,7 @@ Tworzymy go i wstawiamy poniższy kod:
     :linenos:
 
 Klasa pomocnicza ``Ksztalty`` symulować będzie typ wyliczeniowy: angielskim nazwom
-kształtów przypiszemy kolejne wartości całkowite zaczynając od 0.
+kształtów przypisujemy kolejne wartości całkowite zaczynając od 0.
 Kształty, które będziemy rysowali, to:
 
  * *Rect* – prostokąt, wartość 0;
@@ -78,8 +78,8 @@ czyli rozmiar, kolor obramowania i wypełnienia. Kolory opisujemy za pomocą kla
 np .: ``self.kolorW = QColor(200, 30, 40)``.
 
 Za rysowanie każdego widżetu, w tym wypadku głównego okna, odpowiada funkcja
-`paintEven() <http://doc.qt.io/qt-5/qwidget.html#paintEvent>`_. Nadpisujemy ją,
-tworzymy instancję klasy `QPainter <http://doc.qt.io/qt-5/qwidget.html#paintEvent>`_
+`paintEvent() <http://doc.qt.io/qt-5/qwidget.html#paintEvent>`_. Nadpisujemy ją,
+tworzymy instancję klasy `QPainter <http://doc.qt.io/qt-5/qpainter.html>`_
 umożliwiającej rysowanie różnych kształtów (``qp = QPainter()``). Między metodami ``begin()`` i ``end()``
 wywołujemy funkcję ``rysujFigury()``, w której implementujemy właściwy kod rysujący.
 
@@ -138,7 +138,7 @@ Najważniejsza metoda, tj. ``paintEvent()``, w ogóle się nie zmienia. Natomias
   jako atrybut ``punkty`` naszej klasy;
 * ``qp.drawLine()`` – pozwala narysować linię wyznaczoną przez współrzędne punktu
   początkowego i końcowego typu ``QPoint``; nasza klasa wykorzystuje tu współrzędne
-  lewego górnego (``self.prost.topLeft()``) i prawego dolnego ``self.prost.bottomRight()``
+  lewego górnego (``self.prost.topLeft()``) i prawego dolnego (``self.prost.bottomRight()``)
   rogu domyślnego prostokąta: ``prost = QRect(1, 1, 100, 100)``.
 
 Konstruktor naszej klasy: ``__init__(self, parent, ksztalt=Ksztalty.Rect)`` –
@@ -152,7 +152,7 @@ i wypełnienia ``self.kolorW``.
     Warto zrozumieć różnicę pomiędzy **zmiennymi klasy** a **zmiennymi instancji**.
     Zmienne (właściwości) klasy są wspólne dla wszystkich jej instancji.
     W naszym przypadku zdefiniowaliśmy w ten sposób zmienne ``prost`` i ``punkty``.
-    Zmienne instancji definiujemy w konstruktorze, są one inne dla każdego obiektu.
+    Zmienne instancji natomiast są one inne dla każdego obiektu. Definiujemy je w konstruktorze.
     Np. każda instancja klasy *Ksztalt* może rysować inną figurę zapamiętaną
     w zmiennej ``self.ksztalt``.
     Zob.: `Class and Instance Variables <https://docs.python.org/3/tutorial/classes.html#class-and-instance-variables>`_
@@ -244,16 +244,16 @@ klasie `QButtonGroup <http://doc.qt.io/qt-5/qbuttongroup.html>`_.
 Do jej instancji dodajemy przyciski, oznaczając je kolejnymi indeksami:
 ``self.grupaChk.addButton(self.chk, i)``.
 
-Po uruchomieniu aplikacji zaznaczony powinien być przycisk, który odpowiada aktualnemu kształtowi.
-Metoda ``buttons()`` grupy przycisków zwraca nam ich listę. Ponieważ do oznaczania
-kształtów używamy kolejnych liczb całkowitych zaczynając od zera, możemy użyć
-ich jako indeksu wskazującego odpowiedni przycisk:
-``self.grupaChk.buttons()[self.ksztaltAktywny.ksztalt].setChecked(True)``.
+Kod ``self.grupaChk.buttons()[self.ksztaltAktywny.ksztalt].setChecked(True)`` zaznacza
+przycisk, który odpowiada aktualnemu kształtowi. Metoda ``buttons()`` zwraca nam listę
+przycisków. Ponieważ do oznaczania kształtów używamy kolejnych liczb całkowitych,
+możemy użyć ich jako indeksu.
 
 Poza pętlą tworzymy jeszcze jeden przycisk (``self.ksztaltChk = QCheckBox("<=")``),
-niezależny od powyższej grupy. Jego stan będzie wskazywał aktywny kształt.
-Domyślnie go zaznaczamy: ``self.ksztaltChk.setChecked(True)``. Przyjmujemy,
-że stan ten będzie oznaczał jako aktywną pierwszą figurę: ``self.ksztaltAktywny = self.ksztalt1``.
+niezależny od powyższej grupy. Jego stan wskauzje aktywny kształt.
+Domyślnie go zaznaczamy: ``self.ksztaltChk.setChecked(True)``, co oznacza,
+że aktywną figurą będzie pierwszy kształt. Inicjujemy również odpowiednią zmienną:
+``self.ksztaltAktywny = self.ksztalt1``.
 
 Wszystkie elementy interfejsu umieszczamy w układzie poziomym o nazwie ``ukladH1``.
 Po lewej stronie znajdzie się ``ksztalt1``, w środku układ przycisków wyboru,
@@ -271,28 +271,31 @@ Teraz zajmiemy się obsługą syganłów. W pliku :file:`widzety.py` rozbudowuje
     :lineno-start: 8
     :lines: 8-31
 
-Na poczatku kliknięcie któregokolwiek z przycisków wyboru kształtu wiążemy z funkcją ``ustawKsztalt``:
+Na początku kliknięcie któregokolwiek z przycisków wyboru wiążemy z funkcją ``ustawKsztalt``:
 ``self.grupaChk.buttonClicked[int].connect(self.ustawKsztalt)``. Zapis ``buttonClicked[int]``
-oznacza, że sygnał kliknięcia może przekazać do slotu różne dane.
+oznacza, że dany sygnał może przekazać do slotu różne dane.
 W tym wypadku będzie to indeks klikniętego przycisku, czyli liczba całkowita.
 Gdybyśmy chcieli otrzymać tekst przycisku, użylibyśmy konstrukcji ``buttonClicked[str]``.
 W slocie ``ustawKsztalt()`` otrzymaną wartość używamy do ustawienia rodzaju rysowanej figury
 za pomocą odpowiedniej metody klasy ``Ksztalt``: ``self.ksztaltAktywny.ustawKsztalt(wartosc)``.
 
-Drugie zdarzenie, tj. kliknięcie przycisku wskazującego aktywną figurę, wiążemy ze slotem
-``aktywujKsztalt()``: ``self.ksztaltChk.clicked.connect(self.aktywujKsztalt)``.
-Tym razem funkcja dostaje wartość logiczną ``True`` lub ``False``,
+Kliknięcie przycisku wskazującego aktywną figurę obsługujemy w kodzie:
+``self.ksztaltChk.clicked.connect(self.aktywujKsztalt)``.
+Tym razem funkcja ``aktywujKsztalt()`` dostaje wartość logiczną ``True`` lub ``False``,
 która określa, czy przycisk został zanaczony, czy nie. W zależności od tego
 ustawiamy jako aktywny odpowiedni obszar rysowania oraz tekst przycisku.
-Konstrukcja ``nadawca = self.sender()`` pozwala uzyskać dostęp do obiektu,
-który wygenerował obsługiwany sygnał.
+
+.. note::
+
+    Warto zapamiętać, jak uzyskać dostęp do obiektu, który wygenerował dany sygnał.
+    W odpowiednim slocie używamy kodu ``self.sender()``.
 
 **Ćwiczenie**
 
     Jak zwykle uruchom kilkakrotnie aplikację. Spróbuj zmieniać inicjalne rodzaje domyślnych
     kształtów i kolory wypełnienia figur.
 
-.. figure:: img/widzety03.png
+.. figure:: img/widzety02.png
 
 Slider i przyciski RadioButton
 ******************************
@@ -573,7 +576,7 @@ kolejne etykiety i pola edycyjne, które umieszczamy obok siebie w poziomie.
 Przy okzaji ograniczamy długość wpisywanego w pola edycyjne tekstu do 3 znaków:
 ``kolor.setMaxLength(3)``.
 
-Pamiętajmy, że aby zobaczyć utworzone obiekty w oknie aplikacji, musimy dołączyć
+**Uwaga**: Pamiętajmy, że aby zobaczyć utworzone obiekty w oknie aplikacji, musimy dołączyć
 je do głównego układu okna: ``ukladOkna.addLayout(ukladH4)``.
 
 W pliku :file:`widzety.py` rozszerzamy konstruktor klasy ``Widgety`` i dodajemy
