@@ -102,10 +102,9 @@ Do tego celu musimy dodać zmienna systemowa podmieniająca domyślne narzędzie
 
 Uruchamiamy konsole PowerShell z uprawnieniami administracyjnymi:
 
-.. code-block:: ps
+.. code-block:: posh
 
     [Environment]::SetEnvironmentVariable("GIT_SSH", "d:\usr\tools\PuTTY\plink.exe", "User")
-
 
 
 Konfiguracja i pierwsze uruchomienie
