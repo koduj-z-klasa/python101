@@ -53,9 +53,10 @@ okna aplikacji i jego zachowanie:
 
 .. note::
 
-    Słowa ``self`` używamy w definicji klasy wtedy, kiedy odnosimy się do jej właściwości lub metod
-    oraz odziedziczonych. Słowo to zawsze podajemy również jako pierwszy parametr
-    funkcji definiującyhc metody klasy.
+    Słowa ``self`` używamy wtedy, kiedy odnosimy się do właściwości lub metod,
+    również odziedziczonych, jej instancji, czyli obiektów.
+    Słowo to zawsze występuje jako pierwszy parametr metod obiektu definiowanych
+    jako funkcje w definicji klasy. Zob. `What is self? <https://docs.python.org/3/faq/programming.html#what-is-self>`_
 
 Aby uruchomić program, tworzymy obiekt reprezentujący aplikację: ``app = QApplication(sys.argv)``.
 Aplikacja może otrzymywać parametry z linii poleceń (``sys.argv``). Tworzymy również
@@ -67,8 +68,9 @@ system lub użytkownika i przekazywane do widżetów aplikacji, które mogą je 
 
 .. note::
 
-    Metoda ``exec_()`` ma podkreślenie, ponieważ ``exec`` jest zarezerwowanym słowem
-    kluczowym Pythona.
+    Jeżeli jakaś metoda, np. ``exec_()``, ma na końcu podkreślenie, to dlatego, że jej nazwa
+    pokrywa się z zarezerwowanym słowem kluczowym Pythona. Podkreślenie służy
+    ich rozróżnieniu.
 
 Poprawne zakończenie aplikacji zapewniające zwrócenie informacji o jej stanie do systemu
 zapewnia metoda ``sys.exit()``.

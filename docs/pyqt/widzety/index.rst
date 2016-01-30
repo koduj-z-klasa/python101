@@ -59,8 +59,9 @@ Tworzymy go i wstawiamy poniższy kod:
 .. literalinclude:: gui_z0.py
     :linenos:
 
-Klasa pomocnicza ``Ksztalty`` symulować będzie typ wyliczeniowy: angielskim nazwom
-kształtów przypisujemy kolejne wartości całkowite zaczynając od 0.
+Klasa pomocnicza ``Ksztalty`` symulować będzie typ wyliczeniowy. Angielskie nazwy
+kształtów tworzą dane statyczne (zob. :term:`dana statyczna`) klasy.
+Przypisujemy im kolejne wartości całkowite zaczynając od 0.
 Kształty, które będziemy rysowali, to:
 
  * *Rect* – prostokąt, wartość 0;
@@ -148,11 +149,13 @@ i wypełnienia ``self.kolorW``.
 .. note::
 
     Warto zrozumieć różnicę pomiędzy **zmiennymi klasy** a **zmiennymi instancji**.
-    Zmienne (właściwości) klasy są wspólne dla wszystkich jej instancji.
-    W naszym przypadku zdefiniowaliśmy w ten sposób zmienne ``prost`` i ``punkty``.
-    Zmienne instancji natomiast są inne dla każdego obiektu. Definiujemy je w konstruktorze.
-    Np. każda instancja klasy *Ksztalt* może rysować inną figurę zapamiętaną
-    w zmiennej ``self.ksztalt``.
+    Zmienne (właściwości) klasy, określane również jako dane statyczne, są wspólne
+    dla wszystkich jej instancji. W naszej aplikacji zdefiniowaliśmy w ten sposób dostępne
+    kształty, a także zmienne ``prost`` i ``punkty`` klasy *Kształt*.
+
+    Zmienne instancji natomiast są inne dla każdego obiektu.
+    Definiujemy je w konstruktorze, używając słowa ``self``. Np. każda instancja klasy
+    *Ksztalt* może rysować inną figurę zapamiętaną w zmiennej ``self.ksztalt``.
     Zob.: `Class and Instance Variables <https://docs.python.org/3/tutorial/classes.html#class-and-instance-variables>`_
 
 Funkcje ``ustawKsztalt()`` i ``ustawKolorW()`` – jak wskazują nazwy – pozwalają modyfikować
