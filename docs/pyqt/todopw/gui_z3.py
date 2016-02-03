@@ -37,6 +37,7 @@ class Ui_Widget(object):
 
 class LoginDialog(QDialog):
     """ Okno dialogowe logowania """
+
     def __init__(self, parent=None):
         super(LoginDialog, self).__init__(parent)
 
@@ -75,5 +76,5 @@ class LoginDialog(QDialog):
         dialog = LoginDialog(parent)
         dialog.login.setFocus()
         ok = dialog.exec_()
-        dane = dialog.loginHaslo()
-        return (dane[0], dane[1], ok == QDialog.Accepted)
+        login, haslo = dialog.loginHaslo()
+        return (login, haslo, ok == QDialog.Accepted)

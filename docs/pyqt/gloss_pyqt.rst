@@ -49,3 +49,14 @@ Słownik (Py)Qt
         między klasami. Klasa może dziedziczyć po innej klasie, co w najprostszym przypadku oznacza,
         że oprócz swoich własnych atrybutów oraz zachowań, uzyskuje także te pochodzące
         z klasy, z której dziedziczy. Jest wiele odmian `dziedziczenia <https://pl.wikipedia.org/wiki/Dziedziczenie_%28programowanie%29>`_ .
+
+    metoda statyczna
+        – (ang. static method), metody powiązane z klasą, a nie z jej instancjami, czyli obiektami.
+        Tworzymy je używając w ciele klasy dekoratora ``@staticmethod``.
+        Do metody takiej trzeba odwoływać się podając nazwę klasy, np. Klasa.metoda().
+        Metoda statyczna nie otrzymuje parametru ``self``.
+
+    dana statyczna
+        – (ang. static data), dane powiązane z klasą, a nie z jej instancjami, czyli obiektami.
+        Tworzymy je definiując atrybuty klasy. Korzystamy z nich podając nazwę klasy, np.:
+        ``Klasa.dana``. Wszystkie instancje klasy dzielą ze sobą jeden egzemplarz danych statycznych.

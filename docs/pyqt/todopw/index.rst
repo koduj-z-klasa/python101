@@ -35,8 +35,15 @@ Przykład wykorzystuje `programowanie obiektowe <https://pl.wikipedia.org/wiki/P
 Interfejs
 **********
 
-Budowanie aplikacji zaczniemy od przygotowania podstawowego interfejsu. W dowolnym edytorze
-otwieramy pusty plik, wklejamy poniższą zawrtość i zapisujemy pod nazwą :file:`gui.py`.
+Budowanie aplikacji zaczniemy od przygotowania podstawowego interfejsu.
+Na początku utwórzmy katalog aplikacji, w którym zapisywać będziemy wszystkie pliki:
+
+.. code-block:: bash
+
+    ~$ mkdir todopw
+
+Następnie w dowolnym edytorze tworzymy plik o nazwie :file:`gui.py`, który posłuży
+do definiowania składików interfejsu. Wklejamy do niego poniższy kod:
 
 .. raw:: html
 
@@ -46,8 +53,7 @@ otwieramy pusty plik, wklejamy poniższą zawrtość i zapisujemy pod nazwą :fi
 .. literalinclude:: gui_z0.py
     :linenos:
 
-Centralnym elementem aplikacji będzie komponent `QTableView <http://doc.qt.io/qt-5/qtableview.html>`_,
-który potrafi wyświetlać dane w formie tabeli na podstawie zdefiniowanego modelu.
+Centralnym elementem aplikacji będzie komponent `QTableView <http://doc.qt.io/qt-5/qtableview.html>`_, który potrafi wyświetlać dane w formie tabeli na podstawie zdefiniowanego modelu.
 Użyjemy go po to, aby oddzielić dane od sposobu ich prezentacji (zob. `Model/View programming <http://doc.qt.io/qt-5/model-view-programming.html>`_). Taka architektura przydaje się zwłaszcza wtedy,
 kiedy aplikacja okienkowa stanowi przede wszystkim interfejs służący prezentacji
 i ewentualnie edycji danych, przechowywanych niezależnie, np. w bazie.
@@ -55,8 +61,8 @@ i ewentualnie edycji danych, przechowywanych niezależnie, np. w bazie.
 Pod kontrolką widoku umieszczamy obok siebie dwa przyciski, za pomocą których będzie się można
 zalogować do aplikacji i ją zakończyć.
 
-Główne okno i obiekt aplikacji utworzymy w pliku :file:`todopw.py`, którego zawartość
-na początku będzie następująca:
+Główne okno i obiekt aplikacji utworzymy w pliku :file:`todopw.py`, który musi zostać zapisany
+w tym samym katalogo co plik opisujący interfejs. Jego zawartość na początku będzie następująca:
 
 .. raw:: html
 
@@ -66,14 +72,198 @@ na początku będzie następująca:
 .. literalinclude:: todopw_z0.py
     :linenos:
 
+Podobnie jak w poprzednich scenariuszach klasa ``Zadania`` dziedziczy z klasy ``Ui_Widget``,
+aby utworzyć interfejs aplikacji. W konstruktorze skupiamy się na działaniu aplikacji,
+czyli wiążemy kliknięcia przycisków z odpowiednimi slotami.
+
+Przeglądanie i dodawanie zadań wymaga zalogowania, które obsługuje funkcja ``loguj()``.
+Login i hasło użytkownika można pobrać za pomocą widżetu `QInputDialog <http://>`_, np.:
+``login, ok = QInputDialog.getText(self, 'Logowanie', 'Podaj login:')``. Zmienna ``ok``
+przyjmie wartość ``True``, jeżeli użytkownik zamknie okno naciśnięciem przycisku *OK*.
+
+Jeżeli użytkownik nie podał loginu lub hasła za pomocą okna dialogowego typu `QMessageBox <http://doc.qt.io/qt-5/qmessagebox.html>`_ wyświetlamy ostrzeżenie (``warning``). W przeciwnym wypadku wyświetlamy
+okno informacyjne (``information``) z wprowadzonymi wartościami.
+
+Aplikację testujemy wpisując w terminalu polecenie:
+
+.. code-block:: bash
+
+    ~/todopw$ python3 todopw.py
+
+.. figure:: img/todopw00.png
+
 Okno logowania
 ***************
+
+Pobieranie loginu i hasła w osobnych dialogach nie jest optymalne. Na podstawie klasy
+`QDialog <http://doc.qt.io/qt-5/qdialog.html>`_ stworzymy specjalne okno dialogowe.
+
+**Importy** w pliku :file:`gui.py`:
+
+.. code-block:: python
+
+    from PyQt5.QtWidgets import QDialog, QDialogButtonBox
+    from PyQt5.QtWidgets import QLabel, QLineEdit
+    from PyQt5.QtWidgets import QGridLayout
+
+Na końcu pliku :file:`gui.py` wstawiamy:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>gui.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: gui_z1.py
+    :linenos:
+    :lineno-start: 38
+    :lines: 38-
+    :emphasize-lines: 31-42
+
+Okno składa się z dwóch etykiet, odpowiadających im 1-liniowych pól edycyjnych oraz standardowych
+przycisków. Wywołanie metody ``setModal(True)`` powoduje, że dopóki użytkownik nie zamknie
+okna, nie może manipulować oknem rodzica, czyli aplikacją.
+
+Do wywołania okna użyjemy metody statycznej ``getLoginHaslo()`` (zob. :term:`metoda statyczna`)
+klasy *LoginDialog*. Można by ją zapisać nawet poza definicją klasy, ale ponieważ ściśle jest z nią związana,
+używamy dekoratora ``@staticmethod``. Metodę wywołamy w pliku :file:`todopw.py` w postaci
+``LoginDialog.getLoginHaslo(self)``. Tworzy ona okno dialogowe (``dialog = LoginDialog(parent)``)
+i aktywuje pole loginu. Następnie wyświetla okno i zapisuje odpowiedź użytkownika
+(wciśnięty przycisk) w zmiennej: ``ok = dialog.exec_()``.
+Po zamknięciu okna pobiera wpisane dane za pomocą funkcji pomocniczej ``loginHaslo()``
+i zwraca je, o ile użytkownik wcisnął przycisk *OK*.
+
+Pozostaje nam zmienić funkcję ``loguj()`` w pliku :file:`todopw.py`:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>gui.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: todopw_z1.py
+    :linenos:
+    :lineno-start: 18
+    :lines: 18-29
+    :emphasize-lines: 2
+
+Przetestuj działanie nowego okna dialogowego.
 
 Podłączamy bazę
 *****************
 
+Dane użytkowników oraz ich listy zadań zapisywać będziemy w bazie SQLite.
+Dla uproszczenia jej obsługi wykorzystamy prosty system ORM Peewee.
+Kod umieścimy w osobnym pliku o nazwie :file:`baza.py`. Po utworzeniu
+tego pliku wypełniamy go poniższą zawartością:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>baza.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: baza_z2.py
+    :linenos:
+
+Po zaimportowaniu wymaganych modułów mamy definicje klas *Osoba* i *Zadania*,
+na podstawie których tworzyć będziemy obiekty reprezentujące użytkownika
+i jego zadania. W pliku definiujemy również instancję bazy w instrukcji:
+``baza = SqliteDatabase('adresy.db')``. Jako argument podajemy nazwę pliku,
+w którym zapisywane będą dane.
+
+Dalej mamy trzy funkcje pomocnicze:
+
+* ``polacz()`` – służy do nawiązania połączenia z bazą, utworzenia tabel, o ile ich w bazie
+  nie ma oraz do wywołania funkcji ładującej początkowe dane testowe;
+* ``loguj()`` – funkcja stara się odczytać z bazy dane użytkownika o podanym loginie
+  i haśle; jeżeli użytkownika nie ma w bazie, zostaje automatycznie utworzony
+  pod warunkiem, że podany login nie został wcześniej wykorzystany; w takim
+  wypadku zamiast obiektu reprezentującego użytkownika zwrócona zostanie wartość ``None``;
+* ``ladujDane()`` – jeżeli tabela użytkowników jest pusta, funkcja doda dane dwóch
+  testowych użytkowników.
+
+Resztę zmian nanosimy w pliku :file:`todopw.py`. Przede wszystkim importujemy przygotowany
+przed chwilą moduł obsługujący bazę:
+
+**Importy** w pliku :file:`todopw.py`:
+
+.. code-block:: python
+
+    import baza
+Dalej uzupełniamy funkcję ``loguj()``:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>todopw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: todopw_z2.py
+    :linenos:
+    :lineno-start: 19
+    :lines: 19-36
+    :emphasize-lines: 12-15
+
+Jak widać, dopisujemy kod logujący użytkownika w bazie: ``self.osoba = baza.loguj(login, haslo)``.
+
+Na końcu pliku, po utworzeniu obiektu aplikacji (``app = QApplication(sys.argv)``),
+musimy jeszcze wywołać funkcję ustanawiającą połączenie z bazą, czyli wstawić kod: ``baza.polacz()``.
+
+Przetestuj działanie aplikacji. Znakiem poprawnego jej działania będzie utworzenie
+pliku bazy :file:`adresy.db`, brak komunikatów po podaniu poprawnego loginu i hasła
+oraz komunikat o błędzie, jeżeli login został już w bazie użyty, a hasło do niego
+nie pasuje.
+
 Model danych
 **************
+
+Kluczowym zadaniem podczas programowania z wykorzystaniem techniki model/widok jest zaimplementowanie
+modelu. Jego zadaniem jest stworzenie interfejsu dostępu do danych dla komponentów pełniących
+rolę widoków. Zob. `Model Classess <http://doc.qt.io/qt-5/model-view-programming.html#model-classes>`_.
+
+.. note::
+
+    Warto zauważyć, ze dane udostępniane przez model mogą być prezentowane za pomocą różnych widoków jednocześnie.
+
+Ponieważ listę zadań przechowujemy w zewnętrznej bazie danych w tabeli, model stworzymy
+na podstawie klasy `QAbstractTableModel <http://doc.qt.io/qt-5/qabstracttablemodel.html>`_.
+W nowym pliku o nazwie :file:`tabmodel.py` umieszczamy następujący kod:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>tabmodel.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: tabmodel.py
+    :linenos:
+
+Konstruktor klasy ``TabModel`` opcjonalnie przyjmuje listę pól oraz listę rekordów
+– z tych możliwości skorzystamy później. Dane będzie można również przypisać za pomocą metody
+``aktualizuj()``. Wywołanie ``print(dane)`` jest w niej umieszczone tylko w celach
+poglądowych: wydrukuje przekazane dane w konsoli.
+
+Dwie kolejne funkcje ``rowCount()`` i ``columnCount()`` są obowiązkowe i zgodnie ze swoimi
+nazwami zwracają ilość wierszy (``len(self.tabela)``) i kolumn (``len(self.tabela[0])``)
+w każdym wierszu. Jak widać, dane przekazywać będziemy w postaci listy list,
+czy też listy dwuwymiarowej.
+
+Funkcja ``data()`` również jest obowiązkowa i odpowiada za wyświetlanie danych.
+Wywoływana jest dla każdego wiersza i każdej kolumny osobno. Trzecim parametrem
+tej funkcji jest tzw. *rola* (zob. `ItemDataRole <http://doc.qt.io/qt-5/qt.html#ItemDataRole-enum>`_ ), oznaczająca rodzaj danych wymaganych przez widok do właściwego wyświetlenia danych.
+Domyślną wartością jest ``Qt.DisplayRole``, dla której zwracamy reprezentację
+tekstową naszych danych: ``return '{0}'.format(self.tabela[i][j])``.
+
+Dane przekazywane do modelu odczytamy za pomocą funkcji, którą dopisujemy do pliku :file:`baza.py`:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>baza.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: baza_z3.py
+    :linenos:
+    :lineno-start: 64
+    :lines: 64-
+    :emphasize-lines: 6-11
+
+Na żółto zaznaczono
 
 Dodawanie zadań
 ***************

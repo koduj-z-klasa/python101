@@ -81,5 +81,5 @@ class LoginDialog(QDialog):
         dialog = LoginDialog(parent)
         dialog.login.setFocus()
         ok = dialog.exec_()
-        dane = dialog.loginHaslo()
-        return (dane[0], dane[1], ok == QDialog.Accepted)
+        login, haslo = dialog.loginHaslo()
+        return (login, haslo, ok == QDialog.Accepted)

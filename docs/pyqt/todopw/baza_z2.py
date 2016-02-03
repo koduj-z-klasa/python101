@@ -33,6 +33,7 @@ class Zadanie(BazaModel):
 def polacz():
     baza.connect()  # nawiązujemy połączenie z bazą
     baza.create_tables([Osoba, Zadanie], True)  # tworzymy tabele
+    ladujDane()  # wstawiamy początkowe dane
     return True
 
 
