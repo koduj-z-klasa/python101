@@ -38,11 +38,11 @@ class Zadania(QWidget, Ui_Widget):
         model.layoutChanged.emit()
         self.odswiezWidok()
 
-    def koniec(self):
-        self.close()
-
     def odswiezWidok(self):
         self.widok.setModel(model)  # przekazanie modelu do widoku
+
+    def koniec(self):
+        self.close()
 
 if __name__ == '__main__':
     import sys

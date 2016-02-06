@@ -253,7 +253,7 @@ W nowym pliku o nazwie :file:`tabmodel.py` umieszczamy następujący kod:
 .. literalinclude:: tabmodel_z3.py
     :linenos:
 
-Konstruktor klasy ``TabModel`` opcjonalnie przyjmuje listę pól oraz listę rekordów
+Konstruktor klasy *TabModel* opcjonalnie przyjmuje listę pól oraz listę rekordów
 – z tych możliwości skorzystamy później. Dane będzie można również przypisać za pomocą metody
 ``aktualizuj()``. Wywołanie ``print(dane)`` jest w niej umieszczone tylko w celach
 poglądowych: wydrukuje przekazane dane w konsoli.
@@ -283,12 +283,21 @@ Dane przekazywane do modelu odczytamy za pomocą funkcji, którą dopisujemy do 
 
 Funkcję ``czytajDane()`` odczytuje wszystkie zadania danego użytkownika z bazy:
 ``wpisy = Zadanie.select().where(Zadanie.osoba == osoba)``. Następnie w pętli
-przygotowujemy dwuwymiarową listę, której każdy rekord zawiera:
-identyfikator zadania, treść, datę dodania, pole oznaczające wykonanie zadania,
-oraz dodatkową wartość logiczną, która pozwoli wskazać zadania do usunięcia.
+do listy ``zadania`` dodajemy rekordy opisujące kolejne zadania (``zadania.append()``).
+Każdy rekord to lista, która zawiera: identyfikator, treść, datę dodania,
+pole oznaczające wykonanie zadania oraz dodatkową wartość logiczną,
+która pozwoli wskazać zadania do usunięcia.
 
-Pozostaje nam edycja pliku :file:`todopw.py`. Na początku trzeba utworzyć instancję
-modelu, uzupełniamy więc kod uruchamiający aplikację o kod ``model = TabModel()``:
+Pozostaje nam edycja pliku :file:`todopw.py`. Na początku trzeba zaimportować model:
+
+**Importy** w pliku :file:`todopw.py`:
+
+.. code-block:: python
+
+    from tabmodel import TabModel
+
+Następnie tworzymy jego instancję. Uzupełniamy fragment uruchamiający aplikację
+o kod: ``model = TabModel()``:
 
 .. raw:: html
 
@@ -298,10 +307,10 @@ modelu, uzupełniamy więc kod uruchamiający aplikację o kod ``model = TabMode
 .. literalinclude:: todopw_z3.py
     :linenos:
     :lineno-start: 49
-    :lines: 49-55
+    :lines: 49-51
     :emphasize-lines: 3
 
-Zadania użytkownika odczytujemy w funkcji ``loguj()``. Kod wyświetlający dialog
+Zadania użytkownika odczytujemy w funkcji ``loguj()``, w której kod wyświetlający dialog
 informacyjny (``QMessageBox.information()``) zastępujemy instrukcjami:
 
 .. raw:: html
@@ -312,17 +321,17 @@ informacyjny (``QMessageBox.information()``) zastępujemy instrukcjami:
 .. literalinclude:: todopw_z3.py
     :linenos:
     :lineno-start: 36
-    :lines: 36-38
+    :lines: 36-42
 
 Po odczytaniu zadań ``zadania = baza.czytajDane(self.osoba)`` przypisujemy dane
-modelowi ``model.aktualizuj(zadania)``. Jeżeli chcemy zobaczyć te dane,
-musimy model przekazać widokowi. To zadanie metody ``odswiezWidok()``:
-``self.widok.setModel(model)``. Proces ten dobrze pokazuje, na czym polega
-oddzielanie danych od sposobu ich prezentacji.
+modelowi ``model.aktualizuj(zadania)``.
 
 Instrukcja ``model.layoutChanged.emit()`` powoduje wysłanie sygnału powiadamiającego
-widok o zmianie danych. Umieszczamy ją, aby po ponownym zalogowaniu kolejny użytkownik
-zobaczył swoje zadania.
+widok o zmianie danych. Umieszczamy ją, aby po ewentualnym ponownym zalogowaniu
+kolejny użytkownik zobaczył swoje zadania.
+
+Dane modelu musimy przekazać widokowi. To zadanie metody ``odswiezWidok()``,
+która wywołuje polecenie: ``self.widok.setModel(model)``.
 
 Przetestuj aplikację.
 

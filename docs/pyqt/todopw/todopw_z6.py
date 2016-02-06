@@ -63,9 +63,6 @@ class Zadania(QWidget, Ui_Widget):
         self.dodajBtn.setEnabled(True)
         self.zapiszBtn.setEnabled(True)
 
-    def koniec(self):
-        self.close()
-
     def odswiezWidok(self):
         self.widok.setModel(model)  # przekazanie modelu do widoku
         self.widok.hideColumn(0)  # ukrywamy kolumnę id
@@ -73,6 +70,9 @@ class Zadania(QWidget, Ui_Widget):
         self.widok.horizontalHeader().setStretchLastSection(True)
         # dopasowanie szerokości kolumn do zawartości
         self.widok.resizeColumnsToContents()
+
+    def koniec(self):
+        self.close()
 
 if __name__ == '__main__':
     import sys
