@@ -70,7 +70,6 @@ class Zadania(QWidget, Ui_Widget):
 
 if __name__ == '__main__':
     import sys
-
     app = QApplication(sys.argv)
     baza.polacz()
     model = TabModel(baza.pola)

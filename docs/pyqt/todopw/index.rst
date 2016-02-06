@@ -212,11 +212,18 @@ Dalej uzupełniamy funkcję ``loguj()``:
 Jak widać, dopisujemy kod logujący użytkownika w bazie: ``self.osoba = baza.loguj(login, haslo)``.
 
 Na końcu pliku, po utworzeniu obiektu aplikacji (``app = QApplication(sys.argv)``),
-musimy jeszcze wywołać funkcję ustanawiającą połączenie z bazą, czyli wstawić kod:
+musimy jeszcze wywołać funkcję ustanawiającą połączenie z bazą, czyli wstawić kod ``baza.polacz()``:
 
-.. code-block:: python
+.. raw:: html
 
-    baza.polacz()
+    <div class="code_no">Plik <i>todopw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: todopw_z2.py
+    :linenos:
+    :lineno-start: 41
+    :lines: 41-45
+    :emphasize-lines: 4
 
 Przetestuj działanie aplikacji. Znakiem poprawnego jej działania będzie utworzenie
 pliku bazy :file:`adresy.db`, brak komunikatów po podaniu poprawnego loginu i hasła
