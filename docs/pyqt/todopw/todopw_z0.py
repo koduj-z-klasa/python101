@@ -3,7 +3,7 @@
 
 from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.QtWidgets import QMessageBox, QInputDialog
-from gui_z0 import Ui_Widget
+from gui import Ui_Widget
 
 
 class Zadania(QWidget, Ui_Widget):

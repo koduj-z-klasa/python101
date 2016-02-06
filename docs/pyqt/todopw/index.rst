@@ -100,6 +100,7 @@ Pobieranie loginu i hasła w osobnych dialogach nie jest optymalne. Na podstawie
 
 .. code-block:: python
 
+    from PyQt5.QtCore import Qt
     from PyQt5.QtWidgets import QDialog, QDialogButtonBox
     from PyQt5.QtWidgets import QLabel, QLineEdit
     from PyQt5.QtWidgets import QGridLayout
@@ -130,7 +131,15 @@ i aktywuje pole loginu. Następnie wyświetla okno i zapisuje odpowiedź użytko
 Po zamknięciu okna pobiera wpisane dane za pomocą funkcji pomocniczej ``loginHaslo()``
 i zwraca je, o ile użytkownik wcisnął przycisk *OK*.
 
-Pozostaje nam zmienić funkcję ``loguj()`` w pliku :file:`todopw.py`:
+W pliku :file:`todopw.py` uzupełniamy importy:
+
+**Importy** w pliku :file:`gui.py`:
+
+.. code-block:: python
+
+    from gui import Ui_Widget, LoginDialog
+
+- i zmieniamy funkcję ``loguj()``:
 
 .. raw:: html
 
@@ -203,7 +212,11 @@ Dalej uzupełniamy funkcję ``loguj()``:
 Jak widać, dopisujemy kod logujący użytkownika w bazie: ``self.osoba = baza.loguj(login, haslo)``.
 
 Na końcu pliku, po utworzeniu obiektu aplikacji (``app = QApplication(sys.argv)``),
-musimy jeszcze wywołać funkcję ustanawiającą połączenie z bazą, czyli wstawić kod: ``baza.polacz()``.
+musimy jeszcze wywołać funkcję ustanawiającą połączenie z bazą, czyli wstawić kod:
+
+.. code-block:: python
+
+    baza.polacz()
 
 Przetestuj działanie aplikacji. Znakiem poprawnego jej działania będzie utworzenie
 pliku bazy :file:`adresy.db`, brak komunikatów po podaniu poprawnego loginu i hasła
