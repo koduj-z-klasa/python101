@@ -18,13 +18,14 @@ Przykład wykorzystuje `programowanie obiektowe <https://pl.wikipedia.org/wiki/P
 
       * Python v. 3.x
       * PyQt v. => 5.2.1
+      * Peewee dla Pythona v. 3.x
 
     **Wymagana wiedza**:
 
     	* Znajomość Pythona w stopniu średnim.
     	* Znajomość podstaw projektowania interfejsu z wykorzystaniem biblioteki Qt
     	  (zob. scenariusze :ref:`Kalkulator <kalkulator>` i :ref:`Widżety <widzety>`).
-        * Znajomość podstaw wykorzystania systemów ORM (zob. scenariusz :ref:`Systemy ORM <systemy_orm>`).
+        * Znajomość podstaw systemów ORM (zob. scenariusz :ref:`Systemy ORM <systemy_orm>`).
 
 .. contents::
     :depth: 1
