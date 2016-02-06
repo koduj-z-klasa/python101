@@ -1,16 +1,14 @@
 .. _todopw:
 
-ToDO
+ToDoPw
 ###########################
 
 .. highlight:: python
 
-Realizacja prostej listy ToDo (lista zadań do zrobienia) jako aplikacji okienkowej,
+Realizacja prostej listy zadań do zrobienia jako aplikacji okienkowej,
 z wykorzystaniem biblioteki Qt5 i wiązań Pythona PyQt5.
 Aplikacja umożliwia dodawanie, usuwanie, edycję i oznaczanie jako wykonane zadań,
 zapisywanych w bazie SQLite obsługiwanej za pomocą systemu ORM `Peewee <http://docs.peewee-orm.com/en/latest/>`_.
-
-Przykład ilustruje również techniki .
 
 Przykład wykorzystuje `programowanie obiektowe <https://pl.wikipedia.org/wiki/Programowanie_obiektowe>`_ (ang. *Object Oriented Programing*) i ilustruje technikę `programowania model/widok <http://doc.qt.io/qt-5/model-view-programming.html>`_ (ang. *Model/View Programming*).
 
@@ -43,7 +41,7 @@ Na początku utwórzmy katalog aplikacji, w którym zapisywać będziemy wszystk
     ~$ mkdir todopw
 
 Następnie w dowolnym edytorze tworzymy plik o nazwie :file:`gui.py`, który posłuży
-do definiowania składików interfejsu. Wklejamy do niego poniższy kod:
+do definiowania składników interfejsu. Wklejamy do niego poniższy kod:
 
 .. raw:: html
 
@@ -62,7 +60,7 @@ Pod kontrolką widoku umieszczamy obok siebie dwa przyciski, za pomocą których
 zalogować do aplikacji i ją zakończyć.
 
 Główne okno i obiekt aplikacji utworzymy w pliku :file:`todopw.py`, który musi zostać zapisany
-w tym samym katalogo co plik opisujący interfejs. Jego zawartość na początku będzie następująca:
+w tym samym katalogu co plik opisujący interfejs. Jego zawartość na początku będzie następująca:
 
 .. raw:: html
 
@@ -188,6 +186,7 @@ przed chwilą moduł obsługujący bazę:
 .. code-block:: python
 
     import baza
+
 Dalej uzupełniamy funkcję ``loguj()``:
 
 .. raw:: html
@@ -231,7 +230,7 @@ W nowym pliku o nazwie :file:`tabmodel.py` umieszczamy następujący kod:
     <div class="code_no">Plik <i>tabmodel.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: tabmodel.py
+.. literalinclude:: tabmodel_z3.py
     :linenos:
 
 Konstruktor klasy ``TabModel`` opcjonalnie przyjmuje listę pól oraz listę rekordów
@@ -247,8 +246,7 @@ czy też listy dwuwymiarowej.
 Funkcja ``data()`` również jest obowiązkowa i odpowiada za wyświetlanie danych.
 Wywoływana jest dla każdego wiersza i każdej kolumny osobno. Trzecim parametrem
 tej funkcji jest tzw. *rola* (zob. `ItemDataRole <http://doc.qt.io/qt-5/qt.html#ItemDataRole-enum>`_ ), oznaczająca rodzaj danych wymaganych przez widok do właściwego wyświetlenia danych.
-Domyślną wartością jest ``Qt.DisplayRole``, dla której zwracamy reprezentację
-tekstową naszych danych: ``return '{0}'.format(self.tabela[i][j])``.
+Domyślną wartością jest ``Qt.DisplayRole``, czyli wyświetlanie danych, dla której zwracamy reprezentację tekstową naszych danych: ``return '{0}'.format(self.tabela[i][j])``.
 
 Dane przekazywane do modelu odczytamy za pomocą funkcji, którą dopisujemy do pliku :file:`baza.py`:
 
@@ -263,17 +261,257 @@ Dane przekazywane do modelu odczytamy za pomocą funkcji, którą dopisujemy do 
     :lines: 64-
     :emphasize-lines: 6-11
 
-Na żółto zaznaczono
+Funkcję ``czytajDane()`` odczytuje wszystkie zadania danego użytkownika z bazy:
+``wpisy = Zadanie.select().where(Zadanie.osoba == osoba)``. Następnie w pętli
+przygotowujemy dwuwymiarową listę, której każdy rekord zawiera:
+identyfikator zadania, treść, datę dodania, pole oznaczające wykonanie zadania,
+oraz dodatkową wartość logiczną, która pozwoli wskazać zadania do usunięcia.
+
+Pozostaje nam edycja pliku :file:`todopw.py`. Na początku trzeba utworzyć instancję
+modelu, uzupełniamy więc kod uruchamiający aplikację o kod ``model = TabModel()``:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>todopw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: todopw_z3.py
+    :linenos:
+    :lineno-start: 49
+    :lines: 49-55
+    :emphasize-lines: 3
+
+Zadania użytkownika odczytujemy w funkcji ``loguj()``. Kod wyświetlający dialog
+informacyjny (``QMessageBox.information()``) zastępujemy instrukcjami:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>todopw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: todopw_z3.py
+    :linenos:
+    :lineno-start: 36
+    :lines: 36-38
+
+Po odczytaniu zadań ``zadania = baza.czytajDane(self.osoba)`` przypisujemy dane
+modelowi ``model.aktualizuj(zadania)``. Jeżeli chcemy zobaczyć te dane,
+musimy model przekazać widokowi. To zadanie metody ``odswiezWidok()``:
+``self.widok.setModel(model)``. Proces ten dobrze pokazuje, na czym polega
+oddzielanie danych od sposobu ich prezentacji.
+
+Instrukcja ``model.layoutChanged.emit()`` powoduje wysłanie sygnału powiadamiającego
+widok o zmianie danych. Umieszczamy ją, aby po ponownym zalogowaniu kolejny użytkownik
+zobaczył swoje zadania.
+
+Przetestuj aplikację.
 
 Dodawanie zadań
 ***************
 
+Możemy już przeglądać zadania, ale jeżeli zalogujemy się jako nowy użytkownik,
+nic w tabeli nie zobaczymy. Aby umożliwić dodawanie zadań, w pliku
+:file:`gui.py` tworzymy nowy przycisk "Dodaj", który po uruchomieniu będzie
+nieaktywny:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>gui.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: gui_z4.py
+    :linenos:
+    :lineno-start: 19
+    :lines: 19-29
+    :emphasize-lines: 4-5, 10
+
+W pliku :file:`todopw.py` uzupełniamy konstruktor i dodajemy nową funkcję:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>todopw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: todopw_z4.py
+    :linenos:
+    :lineno-start: 19
+    :lines: 19-37
+
+Za dodawania zadań odpowiada funkcja ``dodaj()`` powiązana z kliknięciem przycisku "Dodaj".
+Treść zadania pobieramy za pomocą omawianego okna typu ``QInputDialog``. Po sprawdzeniu,
+czy użytkownik wprowadził jakąś treść zadania wywołujemy funkcję ``dodajZadanie()``
+z modułu :file:`baza`, która zapisuje nowe dane w bazie. Następnie aktualizujemy
+dane modelu, czyli do listy zadań dodajemy rekord nowego zadania: ``model.tabela.append(zadanie)``.
+Ponieważ następuje zmiana danych modelu, emitujemy odpowiedni sygnał: ``model.layoutChanged.emit()``.
+
+Jeżeli nowe zadanie jest pierwszym w modelu (``if len(model.tabela) == 1``), należy
+jeszcze odświeżyć widok. Wywołujemy więc funkcję``odswiezWidok()``. Przy okazji
+warto ją rozwinąć:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>todopw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: todopw_z4.py
+    :linenos:
+    :lineno-start: 62
+    :lines: 62-68
+
+W uzupełnionej funkcji wywołujemy metody obiektu widoku, które ukrywają pierwszą kolumnę
+z identyfikatorami zadań, ograniczają szerokość ostatniej kolumny oraz powodują
+dopasowanie szerokości kolumn do zawartości.
+
+Musimy jeszcze aktywować przycisk dodawania po zalogowaniu się użytkownika. Na końcu
+funkcji ``loguj()`` dopisujemy:
+
+.. code-block:: python
+
+    self.dodajBtn.setEnabled(True)
+
+W pliku :file:`baza.py` dopisujemy jeszcze wspomnianą funkcję ``dodajZadanie()``:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>baza.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: baza_z4.py
+    :linenos:
+    :lineno-start: 78
+    :lines: 78-87
+
+Zapisanie zadania jest proste dzięki wykorzystaniu systemu ORM. Tworzymy instancję
+klasy *Zadanie*: ``zadanie = Zadanie(tresc=tresc, osoba=osoba)`` – podając tylko
+wymagane dane. Pozostałe utworzone zostaną na podstawie wartości domyślnych
+określonych w definicji klasy. Wywołanie metody ``save()`` zapisuje zadanie w bazie.
+Funkcja zwraca listę – rekord o takiej samej strukturze, jak funkcja ``czytajDane()``.
+
+Pozostaje uruchomienie aplikacji i dodanie nowego zadania.
+
 Edycja i widok danych
 *********************
+
+Edycję zadań można zrealizować za pomocą funkcjonalności modelu. Rozszerzamy więc
+funkcję ``data()`` i uzupełniamy definicję klasy *TabModel* w pliku :file:`tabmodel.py`:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>tabmodel.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: tabmodel_z5.py
+    :linenos:
+    :lineno-start: 31
+    :lines: 31-
+
+W funkcji ``data()`` dodajemy obsługę roli ``Qt.CheckStateRole``, pozwalającej w polach
+typu prawda/fałsz wyświetlić kontrolki *checkbox*. Rozpoczęcie edycji danych,
+np. poprzez dwukrotne kliknięcie, wywołuje rolę ``Qt.EditRole``, wtedy zwracamy
+do dotychczasowe dane.
+
+Właściwości danego pola danych określa funkcja ``flags()``, która wywoływana jest dla
+każdego pola osobno. W naszej implementacji, po sprawdzeniu indeksu pola,
+pozwalamy na zmianę treści zadania: ``flags |= Qt.ItemIsEditable``. Pozwalamy również
+na oznaczenie zadania jako wykonanego i przeznaczonego do usunięcia:
+``flags |= Qt.ItemIsUserCheckable``.
+
+Faktyczną edycję danych zatwierdza funkcja ``setData()``. Po sprawdzeniu roli i indeksu
+pola aktualizuje ona treść zadania oraz stan pól typu *checkbox* w modelu.
+
+Ostatnia funkcja, ``headerData()``, odpowiada za wyświetlanie nagłówków kolumn.
+Nagłówki pól (resp. kolumn, ``kierunek == Qt.Horizontal``), odczytywane są z listy:
+``return self.pola[sekcja]``. Kolejne rekordy (resp. wiersze, ``kierunek == Qt.Vertical``)
+są kolejno numerowane: ``return sekcja+1``. Zmienna ``sekcja`` oznacza numer kolumny lub wiersza.
+
+Listę nagłówków kolumn definiujemy w pliku :file:`baza.py` dopisując na końcu:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>baza.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: baza_z5.py
+    :linenos:
+    :lineno-start: 89
+    :lines: 89
+
+W pliku :file:`todopw.py` uzupełniamy jeszcze kod tworzący instancję modelu:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>todopw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: todopw_z5.py
+    :linenos:
+    :lineno-start: 75
+    :lines: 75
+
+Uruchom zmodyfikowaną aplikację.
 
 Zapisywanie zmian
 ******************
 
+Możemy już edytować zadania, oznaczać je jako wykonane i przeznaczone do usunięcia,
+ale zmiany te nie są zapisywane. Dodamy więc taką możliwość. W pliku :file:`gui.py`
+tworzymy jeszcze jeden przycisk i dodajemy go do układu:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>gui.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: gui_z6.py
+    :linenos:
+    :lineno-start: 19
+    :lines: 19-32
+    :emphasize-lines: 6-7, 13
+
+W pliku :file:`todopw.py` kliknięcie przycisku "Zapisz" wiążemy z funkcją ``zapisz()``:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>todopw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: todopw_z6.py
+    :linenos:
+    :lineno-start: 19
+    :lines: 19-32
+    :emphasize-lines: 6-7, 13
+
+Slot ``zapisz()`` wywołuje funkcję zdefiniowaną w module :file:`baza.py`,
+przekazując jej listę z rekordami: ``baza.zapiszDane(model.tabela)``. Na koniec
+emitujemy sygnał zmiany, aby widok mógł uaktualnić dane, jeżeli jakieś zadania
+zostały usunięte.
+
+Przycisk "Zapisz" podobnie jak "Dodaj" powinien być uaktywniony po zalogowaniu
+użytkownika. Na końcu funkcji ``loguj()`` należy dopisać kod:
+
+.. code-block:: python
+
+    self.zapiszBtn.setEnabled(True)
+
+Pozostaje dopisanie na końcu pliku :file:`baza.py` funkcji zapisującej zmiany:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>baza.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: baza_z6.py
+    :linenos:
+    :lineno-start: 92
+    :lines: 92-103
+
+W pętli odczytujemy indeksy i rekordy z danymi zadań: ``for i, z in enumerate(zadania)``.
+Tworzymy instancję każdego zadania na podstawie identyfikatora zapisanego jako
+pierwszy element listy: ``zadanie = Zadanie.select().where(Zadanie.id == z[0]).get()``.
+Później albo usuwamy zadanie, albo aktualizujemy przypisując polom "tresc" i "wykonane"
+dane z modelu.
+
+To wszystko, pozostaje przetestować gotową aplikację.
 
 Materiały
 ***************
@@ -285,4 +523,4 @@ Materiały
 
 **Źródła:**
 
-* :download:` <>`
+* :download:`ToDoPw <todopw.zip>`

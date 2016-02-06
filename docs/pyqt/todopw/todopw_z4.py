@@ -53,6 +53,7 @@ class Zadania(QWidget, Ui_Widget):
 
         zadania = baza.czytajDane(self.osoba)
         model.aktualizuj(zadania)
+        model.layoutChanged.emit()
         self.odswiezWidok()
         self.dodajBtn.setEnabled(True)
 

@@ -92,11 +92,11 @@ pola = ['Id', 'Zadanie', 'Dodano', 'Zrobione', 'Usuń']
 def zapiszDane(zadania):
     """ Zapisywanie zmian """
     for i, z in enumerate(zadania):
-        print(z)
+        # utworzenie instancji zadania
         zadanie = Zadanie.select().where(Zadanie.id == z[0]).get()
-        if z[4]:
-            zadanie.delete_instance()
-            del zadania[i]
+        if z[4]:  # jeżeli zaznaczono zadanie do usunięcia
+            zadanie.delete_instance()  # usunięcie zadania z bazy
+            del zadania[i]  # usunięcie zadania z danych modelu
         else:
             zadanie.tresc = z[1]
             zadanie.wykonane = z[3]

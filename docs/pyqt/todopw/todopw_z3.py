@@ -35,13 +35,14 @@ class Zadania(QWidget, Ui_Widget):
 
         zadania = baza.czytajDane(self.osoba)
         model.aktualizuj(zadania)
+        model.layoutChanged.emit()
         self.odswiezWidok()
 
     def koniec(self):
         self.close()
 
     def odswiezWidok(self):
-        self.widok.setModel(model)  # przypisanie modelu do widoku
+        self.widok.setModel(model)  # przekazanie modelu do widoku
 
 if __name__ == '__main__':
     import sys

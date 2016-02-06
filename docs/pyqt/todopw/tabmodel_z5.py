@@ -45,6 +45,17 @@ class TabModel(QAbstractTableModel):
         else:
             return QVariant()
 
+    def flags(self, index):
+        """ Zwraca właściwości kolumn tabeli """
+        flags = super(TabModel, self).flags(index)
+        j = index.column()
+        if j == 1:
+            flags |= Qt.ItemIsEditable
+        elif j == 3 or j == 4:
+            flags |= Qt.ItemIsUserCheckable
+
+        return flags
+
     def setData(self, index, value, rola=Qt.DisplayRole):
         """ Zmiana danych """
         i = index.row()
@@ -58,17 +69,6 @@ class TabModel(QAbstractTableModel):
                 self.tabela[i][j] = False
 
         return True
-
-    def flags(self, index):
-        """ Zwraca właściwości kolumn tabeli """
-        flags = super(TabModel, self).flags(index)
-        j = index.column()
-        if j == 1:
-            flags |= Qt.ItemIsEditable
-        elif j == 3 or j == 4:
-            flags |= Qt.ItemIsUserCheckable
-
-        return flags
 
     def headerData(self, sekcja, kierunek, rola=Qt.DisplayRole):
         """ Zwraca nagłówki kolumn """

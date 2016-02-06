@@ -14,9 +14,10 @@ Najnowszą wersją jest Qt 5.
 .. toctree::
     :maxdepth: 2
 
-    instalacja.rst
+    instalacja
     kalkulator/index
     widzety/index
+    todopw/index
     gloss_pyqt
 
 .. note::
