@@ -96,7 +96,9 @@ Okno logowania
 Pobieranie loginu i hasła w osobnych dialogach nie jest optymalne. Na podstawie klasy
 `QDialog <http://doc.qt.io/qt-5/qdialog.html>`_ stworzymy specjalne okno dialogowe.
 
-**Importy** w pliku :file:`gui.py`:
+.. raw:: html
+
+    <div class="code_no">Plik <i>gui.py</i> - importy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -123,8 +125,7 @@ przycisków. Wywołanie metody ``setModal(True)`` powoduje, że dopóki użytkow
 okna, nie może manipulować oknem rodzica, czyli aplikacją.
 
 Do wywołania okna użyjemy metody statycznej ``getLoginHaslo()`` (zob. :term:`metoda statyczna`)
-klasy *LoginDialog*. Można by ją zapisać nawet poza definicją klasy, ale ponieważ ściśle jest z nią związana,
-używamy dekoratora ``@staticmethod``. Metodę wywołamy w pliku :file:`todopw.py` w postaci
+klasy *LoginDialog*. Można by ją zapisać nawet poza definicją klasy, ale ponieważ ściśle jest z nią związana, używamy dekoratora ``@staticmethod``. Metodę wywołamy w pliku :file:`todopw.py` w postaci
 ``LoginDialog.getLoginHaslo(self)``. Tworzy ona okno dialogowe (``dialog = LoginDialog(parent)``)
 i aktywuje pole loginu. Następnie wyświetla okno i zapisuje odpowiedź użytkownika
 (wciśnięty przycisk) w zmiennej: ``ok = dialog.exec_()``.
@@ -133,7 +134,9 @@ i zwraca je, o ile użytkownik wcisnął przycisk *OK*.
 
 W pliku :file:`todopw.py` uzupełniamy importy:
 
-**Importy** w pliku :file:`gui.py`:
+.. raw:: html
+
+    <div class="code_no">Plik <i>todopw.py</i> - importy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -190,7 +193,9 @@ Dalej mamy trzy funkcje pomocnicze:
 Resztę zmian nanosimy w pliku :file:`todopw.py`. Przede wszystkim importujemy przygotowany
 przed chwilą moduł obsługujący bazę:
 
-**Importy** w pliku :file:`todopw.py`:
+.. raw:: html
+
+    <div class="code_no">Plik <i>todopw.py</i> - importy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -290,7 +295,9 @@ która pozwoli wskazać zadania do usunięcia.
 
 Pozostaje nam edycja pliku :file:`todopw.py`. Na początku trzeba zaimportować model:
 
-**Importy** w pliku :file:`todopw.py`:
+.. raw:: html
+
+    <div class="code_no">Plik <i>todopw.py</i> - importy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
