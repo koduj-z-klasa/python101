@@ -98,7 +98,7 @@ Pobieranie loginu i hasła w osobnych dialogach nie jest optymalne. Na podstawie
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>gui.py</i> - importy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>gui.py</i> – importy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -136,7 +136,7 @@ W pliku :file:`todopw.py` uzupełniamy importy:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>todopw.py</i> - importy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>todopw.py</i> – importy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -195,7 +195,7 @@ przed chwilą moduł obsługujący bazę:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>todopw.py</i> - importy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>todopw.py</i> – importy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -297,7 +297,7 @@ Pozostaje nam edycja pliku :file:`todopw.py`. Na początku trzeba zaimportować 
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>todopw.py</i> - importy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>todopw.py</i> – importy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -318,7 +318,7 @@ o kod: ``model = TabModel()``:
     :emphasize-lines: 3
 
 Zadania użytkownika odczytujemy w funkcji ``loguj()``, w której kod wyświetlający dialog
-informacyjny (``QMessageBox.information()``) zastępujemy instrukcjami:
+informacyjny (``QMessageBox.information()``) zastępujemy oraz dodajemy nową funkcję:
 
 .. raw:: html
 
@@ -370,8 +370,9 @@ W pliku :file:`todopw.py` uzupełniamy konstruktor i dodajemy nową funkcję:
 .. highlight:: python
 .. literalinclude:: todopw_z4.py
     :linenos:
-    :lineno-start: 19
-    :lines: 19-37
+    :lineno-start: 13
+    :lines: 13-37
+    :emphasize-lines: 7-25
 
 Za dodawania zadań odpowiada funkcja ``dodaj()`` powiązana z kliknięciem przycisku "Dodaj".
 Treść zadania pobieramy za pomocą omawianego okna typu ``QInputDialog``. Po sprawdzeniu,
@@ -391,8 +392,9 @@ warto ją rozwinąć:
 .. highlight:: python
 .. literalinclude:: todopw_z4.py
     :linenos:
-    :lineno-start: 62
-    :lines: 62-68
+    :lineno-start: 60
+    :lines: 60-66
+    :emphasize-lines: 3-7
 
 W uzupełnionej funkcji wywołujemy metody obiektu widoku, które ukrywają pierwszą kolumnę
 z identyfikatorami zadań, ograniczają szerokość ostatniej kolumny oraz powodują
@@ -400,6 +402,10 @@ dopasowanie szerokości kolumn do zawartości.
 
 Musimy jeszcze aktywować przycisk dodawania po zalogowaniu się użytkownika. Na końcu
 funkcji ``loguj()`` dopisujemy:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>todopw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -481,10 +487,12 @@ W pliku :file:`todopw.py` uzupełniamy jeszcze kod tworzący instancję modelu:
 .. highlight:: python
 .. literalinclude:: todopw_z5.py
     :linenos:
-    :lineno-start: 75
-    :lines: 75
+    :lineno-start: 71
+    :lines: 71-75
+    :emphasize-lines: 5
 
-Uruchom zmodyfikowaną aplikację.
+Uruchom zmodyfikowaną aplikację. Spróbuj zmienić treść zadania dwukrotnie na niej klikając.
+Oznacz wybrane zadania jako wykonane lub przeznaczone do usunięcia.
 
 Zapisywanie zmian
 ******************
@@ -504,7 +512,7 @@ tworzymy jeszcze jeden przycisk i dodajemy go do układu:
     :lines: 19-32
     :emphasize-lines: 6-7, 13
 
-W pliku :file:`todopw.py` kliknięcie przycisku "Zapisz" wiążemy z funkcją ``zapisz()``:
+W pliku :file:`todopw.py` kliknięcie przycisku "Zapisz" wiążemy z nową funkcją ``zapisz()``:
 
 .. raw:: html
 
@@ -513,9 +521,9 @@ W pliku :file:`todopw.py` kliknięcie przycisku "Zapisz" wiążemy z funkcją ``
 .. highlight:: python
 .. literalinclude:: todopw_z6.py
     :linenos:
-    :lineno-start: 19
-    :lines: 19-32
-    :emphasize-lines: 6-7, 13
+    :lineno-start: 13
+    :lines: 13-24
+    :emphasize-lines: 8
 
 Slot ``zapisz()`` wywołuje funkcję zdefiniowaną w module :file:`baza.py`,
 przekazując jej listę z rekordami: ``baza.zapiszDane(model.tabela)``. Na koniec
@@ -524,6 +532,10 @@ zostały usunięte.
 
 Przycisk "Zapisz" podobnie jak "Dodaj" powinien być uaktywniony po zalogowaniu
 użytkownika. Na końcu funkcji ``loguj()`` należy dopisać kod:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>todopw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. code-block:: python
 
@@ -547,7 +559,7 @@ pierwszy element listy: ``zadanie = Zadanie.select().where(Zadanie.id == z[0]).g
 Później albo usuwamy zadanie, albo aktualizujemy przypisując polom "tresc" i "wykonane"
 dane z modelu.
 
-To wszystko, pozostaje przetestować gotową aplikację.
+To wszystko, przetestuj gotową aplikację.
 
 Materiały
 ***************

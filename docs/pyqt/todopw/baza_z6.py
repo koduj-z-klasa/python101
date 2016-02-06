@@ -49,7 +49,7 @@ def laduj_dane():
     """ Przygotowanie początkowych danych testowych """
     if Osoba.select().count() > 0:
         return
-    osoby = ('ala', 'piotr')
+    osoby = ('adam', 'ewa')
     zadania = ('Pierwsze zadanie', 'Drugie zadanie', 'Trzecie zadanie')
     for login in osoby:
         o = Osoba(login=login, haslo='123')
