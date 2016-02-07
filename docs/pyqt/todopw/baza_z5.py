@@ -45,7 +45,7 @@ def loguj(login, haslo):
         return None
 
 
-def laduj_dane():
+def ladujDane():
     """ Przygotowanie początkowych danych testowych """
     if Osoba.select().count() > 0:
         return

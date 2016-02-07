@@ -12,6 +12,8 @@ zapisywanych w bazie SQLite obsługiwanej za pomocą systemu ORM `Peewee <http:/
 
 Przykład wykorzystuje `programowanie obiektowe <https://pl.wikipedia.org/wiki/Programowanie_obiektowe>`_ (ang. *Object Oriented Programing*) i ilustruje technikę `programowania model/widok <http://doc.qt.io/qt-5/model-view-programming.html>`_ (ang. *Model/View Programming*).
 
+.. figure:: img/todopw06.png
+
 .. attention::
 
     **Wymagane oprogramowanie**:
@@ -157,6 +159,10 @@ W pliku :file:`todopw.py` uzupełniamy importy:
     :emphasize-lines: 2
 
 Przetestuj działanie nowego okna dialogowego.
+
+.. figure:: img/todopw01.png
+
+.. figure:: img/todopw01a.png
 
 Podłączamy bazę
 *****************
@@ -343,6 +349,8 @@ która wywołuje polecenie: ``self.widok.setModel(model)``.
 
 Przetestuj aplikację.
 
+.. figure:: img/todopw03.png
+
 Dodawanie zadań
 ***************
 
@@ -362,7 +370,7 @@ nieaktywny:
     :lines: 19-29
     :emphasize-lines: 4-5, 10
 
-W pliku :file:`todopw.py` uzupełniamy konstruktor i dodajemy nową funkcję:
+W pliku :file:`todopw.py` uzupełniamy konstruktor i dodajemy nową funkcję ``dodaj()``:
 
 .. raw:: html
 
@@ -375,9 +383,9 @@ W pliku :file:`todopw.py` uzupełniamy konstruktor i dodajemy nową funkcję:
     :lines: 13-37
     :emphasize-lines: 7-25
 
-Za dodawania zadań odpowiada funkcja ``dodaj()`` powiązana z kliknięciem przycisku "Dodaj".
+Kliknięcie przycisku "Dodaj" wiążemy z nową funkcją ``dodaj()``.
 Treść zadania pobieramy za pomocą omawianego okna typu ``QInputDialog``. Po sprawdzeniu,
-czy użytkownik wprowadził jakąś treść zadania wywołujemy funkcję ``dodajZadanie()``
+czy użytkownik w ogóle coś wpisał, wywołujemy funkcję ``dodajZadanie()``
 z modułu :file:`baza`, która zapisuje nowe dane w bazie. Następnie aktualizujemy
 dane modelu, czyli do listy zadań dodajemy rekord nowego zadania: ``model.tabela.append(zadanie)``.
 Ponieważ następuje zmiana danych modelu, emitujemy odpowiedni sygnał: ``model.layoutChanged.emit()``.
@@ -431,6 +439,8 @@ określonych w definicji klasy. Wywołanie metody ``save()`` zapisuje zadanie w 
 Funkcja zwraca listę – rekord o takiej samej strukturze, jak funkcja ``czytajDane()``.
 
 Pozostaje uruchomienie aplikacji i dodanie nowego zadania.
+
+.. figure:: img/todopw04.png
 
 Edycja i widok danych
 *********************
@@ -494,6 +504,8 @@ W pliku :file:`todopw.py` uzupełniamy jeszcze kod tworzący instancję modelu:
 
 Uruchom zmodyfikowaną aplikację. Spróbuj zmienić treść zadania dwukrotnie na niej klikając.
 Oznacz wybrane zadania jako wykonane lub przeznaczone do usunięcia.
+
+.. figure:: img/todopw05.png
 
 Zapisywanie zmian
 ******************
