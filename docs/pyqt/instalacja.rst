@@ -21,14 +21,15 @@ PyQt5 vs PyQt4
 
 Wszystkie przykłady aplikacji z naszych scenariuszy można kodować
 i uruchamiać za pomocą bibliotek Qt4, PyQt4 i Pythona 2.
-Zmiany w kodzie są niewielkie i dotyczą kodowania napisów, obiektów *QString* oraz importów.
+Zmiany w kodzie są niewielkie i dotyczą kodowania napisów, obiektów *QVariant* oraz importów.
 Tak więc:
 
 * w importach ``PyQt5.QtWidgets`` zamieniamy na ``PyQt4.QtGui``;
 * na początku każdego pliku źródłowego dodajemy import ``from __future__ import unicode_literals`` –
   dzięki temu napisów w unikodzie nie musimy poprzedzać symbolem ``u``;
-* tekst zwracany przez obiekty Qt4 jako typ *QString* konwertujemy w razie potrzeby na napisy
-  Pythona za pomocą funkcji ``str()``.
+* wartości zwracane przez obiekty Qt4 jako typ *QVariant* konwertujemy w razie potrzeby na odpowiednie
+  typy. Napisy uzyskujemy za pomocą funkcji ``str()`` lub metody ``toString()`` obiektu ``QVariant``.
+  Wartość logiczną otrzymamy wywołując metodę ``toBool()`` obiektu ``QVariant``.
 
 Dokładne informacje nt. różnic pomiędzy kolejnymi wersjami bibblioteki PyQt
 dostępne są na stronie `Differences Between PyQt4 and PyQt5 <http://pyqt.sourceforge.net/Docs/PyQt5/pyqt4_differences.html>`_.

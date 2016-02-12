@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.QtWidgets import QMessageBox, QInputDialog
 from gui_z4 import Ui_Widget, LoginDialog
 import baza_z4 as baza
-from tabmodel_z3 import TabModel
+from tabmodel_z4 import TabModel
 
 
 class Zadania(QWidget, Ui_Widget):

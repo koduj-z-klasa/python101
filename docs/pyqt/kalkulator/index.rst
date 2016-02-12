@@ -383,4 +383,5 @@ Materiały
 
 **Źródła:**
 
-* :download:`kalkulator.zip <kalkulator.zip>`
+* :download:`Kalkulator Qt5 <kalkulator_qt5.zip>`
+* :download:`Kalkulator Qt4 <kalkulator_qt4.zip>`

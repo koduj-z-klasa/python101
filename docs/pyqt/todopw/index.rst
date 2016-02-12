@@ -584,4 +584,5 @@ Materiały
 
 **Źródła:**
 
-* :download:`ToDoPw <todopw.zip>`
+* :download:`ToDoPw Qt5 <todopw_qt5.zip>`
+* :download:`ToDoPw Qt4 <todopw_qt4.zip>`
