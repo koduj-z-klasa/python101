@@ -121,7 +121,7 @@ Na końcu pliku :file:`gui.py` wstawiamy:
     :linenos:
     :lineno-start: 38
     :lines: 38-
-    :emphasize-lines: 31-42
+    :emphasize-lines: 32-43
 
 Okno składa się z dwóch etykiet, odpowiadających im 1-liniowych pól edycyjnych oraz standardowych
 przycisków. Wywołanie metody ``setModal(True)`` powoduje, że dopóki użytkownik nie zamknie
@@ -238,8 +238,8 @@ musimy jeszcze wywołać funkcję ustanawiającą połączenie z bazą, czyli ws
     :emphasize-lines: 4
 
 Przetestuj działanie aplikacji. Znakiem poprawnego jej działania będzie utworzenie
-pliku bazy :file:`adresy.db`, brak komunikatów po podaniu poprawnego loginu i hasła
-oraz komunikat o błędzie, jeżeli login został już w bazie użyty, a hasło do niego
+pliku bazy :file:`adresy.db`, komunikat wyświetlający poprawnie podany login i hasło
+lub komunikat o błędzie, jeżeli login został już w bazie użyty, a hasło do niego
 nie pasuje.
 
 Model danych
@@ -325,11 +325,11 @@ o kod: ``model = TabModel()``:
     :emphasize-lines: 3
 
 Zadania użytkownika odczytujemy w funkcji ``loguj()``, w której kod wyświetlający dialog
-informacyjny (``QMessageBox.information()``) zastępujemy oraz dodajemy nową funkcję:
+informacyjny (``QMessageBox.information(...)``) zastępujemy oraz dodajemy nową funkcję:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>todopw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>todopw.py</i> – funkcja <i>loguj()</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
 .. literalinclude:: todopw_z3.py
@@ -347,7 +347,7 @@ kolejny użytkownik zobaczył swoje zadania.
 Dane modelu musimy przekazać widokowi. To zadanie metody ``odswiezWidok()``,
 która wywołuje polecenie: ``self.widok.setModel(model)``.
 
-Przetestuj aplikację.
+Przetestuj aplikację logując się jako "adam" lub "ewa" z hasłem "123".
 
 .. figure:: img/todopw03.png
 
