@@ -170,7 +170,7 @@ od *0* do *n-1*.
 Zamiast się domyślać, sprawdźmy działanie omawianej funkcji w trybie interaktywnym
 interpretera Pythona. W terminalu wpisz polecenia:
 
-.. code-block:: python
+.. code-block:: bash
 
     ~$ python
     >>> range(3)

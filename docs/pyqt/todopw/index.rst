@@ -18,9 +18,9 @@ Przykład wykorzystuje `programowanie obiektowe <https://pl.wikipedia.org/wiki/P
 
     **Wymagane oprogramowanie**:
 
-      * Python v. 3.x
+      * Python v. 2.7.x lub 3.x
       * PyQt v. => 5.2.1
-      * Peewee dla Pythona v. 3.x
+      * Peewee dla Pythona 2.7.x lub odpowiednio 3.x
 
     **Wymagana wiedza**:
 

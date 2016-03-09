@@ -91,7 +91,7 @@ na tym, co ustaliliśmy.
 Zapiszmy wszystkie reguły w pseudokodzie. Możemy użyć do tego jednej
 rozbudowanej instrukcji warunkowej if/else.
 
-.. code-block:: python
+.. code-block:: html
 
     jeżeli jesteś w punkcie wejścia:
         rusz się bezpiecznie (np. poza wejście)

@@ -16,7 +16,7 @@ Przykład wprowadza również podstawy `programowania obiektowego <https://pl.wi
 
     **Wymagane oprogramowanie**:
 
-      * Python v. 3.x
+      * Python v. 2.7.x lub 3.x
       * PyQt v. => 5.2.1
 
 .. contents::
