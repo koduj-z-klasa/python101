@@ -27,7 +27,7 @@ Ubuntu 14.04 LTS. Zawiera środowisko graficzne LXDE.
 **Na potrzeby szkoleń** i **do relalizacji naszych scenariuszy** przygotowaliśmy dostosowaną
 wersję, która zawiera wszystkie dodatkowe narzędzia i wymagane biblioteki.
 
-.. figure:: lxpupimg/lxpuptahr.png
+.. figure:: lxpupimg/lxpup1515.png
 
    System LxPupTahr
 
