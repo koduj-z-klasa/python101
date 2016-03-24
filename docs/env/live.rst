@@ -38,10 +38,10 @@ W Windows
 
 * Pobieramy :term:`obraz iso`:
 
-  - `LxPupTahr Full <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/kzkbox_20151227_full.iso?download=1>`_
-    (608MB, zawiera edytory Geany 1.25, PyCharm Professional 5.0.3 i SublimeText 3)
-  - lub: `LxPupTahr Base <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/kzkbox_20151226.iso?download=1>`_
-    (384MB, zawiera edytor Geany 1.25, edytory PyCharm i SublimeText można łatwo doinstalować)
+  - `LxPupTahr Full <https://drive.google.com/open?id=0B1zG9cfNyT7WZFZkTnMwSlNtS1U>`_
+    (608MB, zawiera edytory Geany 1.25, PyCharm Professional 5.0.4 i SublimeText 3)
+  - lub: `LxPupTahr Base <https://drive.google.com/open?id=0B1zG9cfNyT7Wd2V5ZU5hUzh6UE0>`_
+    (384MB, zawiera edytor Geany 1.25, łatwo dodać :ref:`edytory PyCharm i/lub Sublime Text 3<sfs-pet>`)
 
 * Do wgrania *LxPupTahr* pobieramy program `Rufus <https://rufus.akeo.ie/>`_.
 
@@ -58,7 +58,7 @@ W Windows
 .. tip::
 
   Po nagraniu systemu *LxPupTahr*, koniecznie przeczytaj :ref:`Pierwsze uruchomienie <lxpuptahr>`!!!
-  Jeżeli pobrałeś wersję BASE, przeczytaj, jak łatwo dodać :ref:`edytory PyCharm i/lub Sublime Text3 <sfs-pet>`.
+  Jeżeli pobrałeś wersję BASE, przeczytaj, jak łatwo dodać .
 
 W Linuksie
 ===========

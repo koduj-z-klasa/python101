@@ -13,16 +13,15 @@ Pierwsze uruchomienie
 
 Po pierwszym uruchomieniu zatwierdzamy okno kreatora ustawień przyciskiem "Ok"
 i zamykamy kreatora połączenia z internetem. Następnie **zamykamy system i tworzymy**
-`pliku zapisu <http://puppylinux.org/wikka/SaveFile>`_ (ang. *savefile*),
+`plik zapisu <http://puppylinux.org/wikka/SaveFile>`_ (ang. *savefile*),
 w którym przechowywane będą wprowadzane przez nas zmiany:
 konfiguracja, instalacja programów, utworzone dokumenty.
 
-Na początku może pojawić się pytanie o przetłumaczenie informacji rozruchowych,
-wybieramy "Yes" i potwierdzamy kolejny komunikat.
+Na początku potwierdzamy tłumaczenie informacji rozruchowych.
 
 .. figure:: lxpupimg/lxpsave01.png
 
-W następnym oknie klikamy "Zapisz", następnie "administrator".
+Dalej klikamy "Zapisz", następnie "administrator".
 Wybieramy partycję oznaczającą pendrajwa: w konfiguracjach z 1 dyskiem twardym
 będzie ona oznaczona najczęsciej `sdb1` (kierujemy się rozmiarem i typem plików: vfat).
 
@@ -30,9 +29,8 @@ będzie ona oznaczona najczęsciej `sdb1` (kierujemy się rozmiarem i typem plik
 .. figure:: lxpupimg/lxpsave04.png
 .. figure:: lxpupimg/lxpsave05.png
 
-Następnie wybieramy ewentualnie szyfrowanie i system plików. Sugerujemy
-`ext2` – najszybszy, wymagany przy szyfrowaniu, lub `ext4` – bezpieczniejszy i domyślny.
-Minimalny rozmiar to 32MB, zalecamy **512MB** lub więcej.
+Następnie wybieramy szyfrowanie i system plików. Sugerujemy brak szyfrowania,
+domyślny system `ext4` i początkowy rozmiar **512MB**.
 
 .. figure:: lxpupimg/lxpsave06.png
 .. figure:: lxpupimg/lxpsave07.png
@@ -47,7 +45,7 @@ Opcjonalnie rozszerzamy domyślną nazwę i potwierdzamy zapis.
 Należy spokojnie poczekać na utworzenie pliku i wyłącznie komputera.
 Po ponownym uruchomieniu system będzie gotowy do pracy :-)
 
-System w naszej wersji *FULL* zawiera:
+System wersji *FULL* zawiera:
 
 * spolszczone prawie wszystkie elementy systemu;
 * zaktualizowane listy oprogramowania;
@@ -56,7 +54,8 @@ System w naszej wersji *FULL* zawiera:
 * fonty Ubuntu oraz podstawowe z Windows;
 * podstawowe pakiety narzędziowe: *python-pip*, *python-virtualenv*, *git*;
 * wszystkie biblioteki Pythona wymagane w poszczególnych scenariuszach;
-* środowiska programistyczne: *Geany IDE*, a w wersji *FULL* *PyCharm Professional* i *Sublime Text*;
+* środowisko programistyczne: *Geany IDE*, *PyCharm Professional* i *Sublime Text*
+  jako :ref:`pakiety SFS<sfs-pet>`, które trzeba załadować;
 * skonfigurowane elementy interfejsu LXDE;
 * skonfigurowane skróty klawiszowe.
 
@@ -95,40 +94,33 @@ Równie proste i dobre są dwa pozostałe narzędzia, tzn. **Frisbee** i **Netwo
 Pliki SFS i PET
 ****************
 
-*LxPup* oferuje dwa dedykowane formaty plików zawierających oprogramowanie:
-Pierwszym stosowanym raczej dla dużych pakietów jest `SFS <http://puppylinux.org/wikka/SquashFS>`_.
-Za ich pomocą można doinstalować m. in. edytory Pycharm i Sublime Text.
-Aby to zrobić, ściągamy odpowiedni(e) plik(i) SFS:
+*LxPup* oferuje dwa dedykowane formaty plików zawierających oprogramowanie.
+Edytory *PyCharm* i *SublimeText3* przygotowaliśmy w formie plików `SFS <http://puppylinux.org/wikka/SquashFS>`_.
+W wersji FULL są one już dołączone. Jeżeli ściągneliśmy obraz BASE
+lub chcemy mieć ostatnią dostępną wersję, ściągamy poniższe pliki:
 
-* `PyCharm 5.0.3 <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/pycharm-5.0.3.sfs?download=1>`_
-  i wymagane środowisko `Java JRE <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/jre1.7.0_80.sfs?download=1>`_
-* `Sublime Text 3 <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/sublime-text3.sfs?download=1>`_
+* `PyCharm 5.0.4 <https://drive.google.com/open?id=0B1zG9cfNyT7WSjVCYjA5VjhqQ1E>`_
+* `Java JRE 1.7.80 <https://drive.google.com/open?id=0B1zG9cfNyT7WVVJKTF9sSkE1UzQ>`_
+* `Sublime Text 3.103 <https://drive.google.com/open?id=0B1zG9cfNyT7WaGcwLTlENVJQWDA>`_
 
 Pobrane pliki umieszczamy w katalogu głównym pendrajwa. W działającym systemie dostępny jest on
 w ścieżce :file:`/mnt/home`, którą należy wpisać w pole adresu menedżera plików:
 
 .. figure:: lxpupimg/sfs_home.png
 
-Instalacja możliwa jest po kliknięciu wgranego pliku i wybraniu "Zainstaluj SFS":
+Załadowanie modułu sprowadza się do dwukrotnego kliknięcia wgranego pliku i wybraniu "Zainstaluj SFS":
 
 .. figure:: lxpupimg/sfs_click.png
 
-Druga możliwość to wybranie *Start/Konfiguracja/SFS-Ładowanie w locie*
-lub wydanie polecenia ``sfs_load`` w terminalu. W oknie dialogowym z rozwijalnej listy
-wybieramy plik sfs i "Załaduj":
+Można również użyć programu *Start/Konfiguracja/SFS-Ładowanie w locie*
+lub polecenia ``sfs_load`` w terminalu. W oknie dialogowym z rozwijalnej listy
+wybieramy plik sfs i klikamy "Załaduj":
 
 .. figure:: lxpupimg/sfs_load.png
 
-Po załadowaniu plików SFS restartujemy menedżer okien: *Start/Zamknij/Restart WM*.
+Po załadowaniu plików warto zrestartować menedżer okien: *Start/Zamknij/Restart WM*.
 Jeżeli nie potrzebujemy już danego programu lub chcemy go zaktualizować, pakiet SFS
-możemy też wyładować,
-
-.. note::
-
-  PyCharma można też zainstalować/zaktualizować za pomocą polecenia wydanego w terminalu:
-  ``install-pycharm.sh ver`` – *ver* oznacza wersję, np. *5.0.3*.
-  Tak wgrany program zajmuje miejsce w pliku zapisu, więc nie polecamy tego.
-  Lepiej użyć pliku SFS.
+możemy też wyładować.
 
 Drugi format dedykowany dla LxPupa to paczki w formacie `PET <http://puppylinux.org/wikka/PETs?redirect=no>`_,
 dostępne np. na stronie `pet_packages-tahr <http://distro.ibiblio.org/puppylinux/pet_packages-tahr/>`.
@@ -136,10 +128,9 @@ dostępne np. na stronie `pet_packages-tahr <http://distro.ibiblio.org/puppylinu
 
 .. figure:: lxpupimg/pet01.png
 
-Społeczność LxPupa przygotowuje często używane programy w formatach SFS i PET.
-Można je przeglądać i instalować za pomocą specjalnego programu, który uruchamiamy
-wybierając **Start/Konfiguracja/Quickpet tahr**. Listę dostępnych paczek
-zaktualizujemy po kliknięciu "tahrpup updates". Później możemy zainstalować
+Aktualizacje oraz programy w formatach SFS/PET przygotowywane przez społeczność LxPupa
+można przeglądać i instalować za pomocą programu **Start/Konfiguracja/Quickpet tahr**.
+System aktualizujemy klikając "tahrpup updates". Później możemy zainstalować np.
 Chrome'a, Gimpa czy Skype'a.
 
 .. figure:: lxpupimg/pet_quickpet03.png
@@ -150,11 +141,10 @@ Menedżer pakietów
 *******************
 
 Jeżeli w *Quickpet tahr* nie znajdziemy wymaganej aplikacji, uruchamiamy
-**Puppy Package Manager/Puppy Manager Pakietów** z menu "Start/Konfiguracja".
-Aktualizujemy listę dostępnych aplikacaji: klikamy ikonę ustawień obok koła ratunkowego,
-w następnym oknie zakładkę "Update database/Aktualizuj bazę danych"
-i przycisk "Update now/Aktualizuj teraz". Po uruchomieniu okna terminala naciskamy
-klawisze ENTER klika razy, aby potwierdzić aktualizację repozytoriów.
+**Start/Konfiguracja/Puppy Manager Pakietów**. Aktualizujemy listę dostępnych aplikacaji:
+klikamy ikonę ustawień obok koła ratunkowego, w następnym oknie zakładkę
+"Aktualizuj bazę danych" i przycisk "Aktualizuj teraz". Po uruchomieniu okna terminala
+klawiszem ENTER potwierdzamy aktualizację repozytoriów.
 Na koniec zamykamy okno aktualizacji przyciskiem "OK", co zrestartuje menedżera pakietów.
 
 .. figure:: lxpupimg/ppm01.png
@@ -162,7 +152,7 @@ Na koniec zamykamy okno aktualizacji przyciskiem "OK", co zrestartuje menedżera
 .. figure:: lxpupimg/ppm03.png
 
 Po ponownym uruchomieniu PPM, wpisujemy nazwę szukanego pakietu w pole wyszukiwania,
-następnie wybieramy pakiet z wyświetlonej listy, co dodaje go do kolejki.
+następnie klikamy pakiet na liście, co dodaje go do kolejki.
 W ten sposób możemy wyszukać i dodać kilka pakietów na raz.
 Na koniec zatwierdzamy instalację przyciskiem "Do it!"
 
@@ -173,7 +163,7 @@ Przeglądarka WWW
 
 Domyślną przeglądarką jest `PaleMoon <https://www.palemoon.org/>`_, otwartoźródłowa
 odmiana oparta na Firefoksie. Od czasu do czasu warto ją zaktualizować wybierając
-*Start/Internet/Palemoon/...*
+**Start/Internet/Update Palemoon**
 
 Domyślne katalogi
 ************************
