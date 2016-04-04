@@ -13,7 +13,7 @@ Autorzy
 - `Janusz Skonieczny <https://plus.google.com/+JanuszSkonieczny/>`_:
   "System i oprogramowanie", "Przygotowanie katalogu projektu",
   "Gry w Pythonie" (wersje obiektowe), "Git – wersjonowanie kodów źródłowych"
-- Paweł Śpiewak: "Scenariusze"
+- Paweł Świeczka: "Scenariusze"
 - Rafał Brzychcy, Tomasz Nowacki, Łukasz Zarzecki – pomysłodawcy i autorzy
   wyjściowych wersji materiałów:
   "Wprowadzenia do języka Python", "Gry w Pythonie" (wersja strukturalna),
