@@ -708,4 +708,5 @@ Materiały
 
 **Źródła:**
 
-* :download:`widzety.zip <widzety.zip>`
+* :download:`Widżety Qt5 <widzety_qt5.zip>`
+* :download:`Widżety Qt4 <widzety_qt4.zip>`
