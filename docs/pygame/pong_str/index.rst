@@ -5,8 +5,7 @@ Pong (str)
 
 .. highlight:: python
 
-Klasyczna gra w odbijanie piłeczki zrealizowana z użyciem biblioteki `PyGame`_. Wersja strukturalna.
-Biblioteka PyGame ułatwia tworzenie aplikacji multimedialnych, w tym gier.
+Wersja strukturalna klasycznej gry w odbijanie piłeczki zrealizowana z użyciem biblioteki `PyGame`_.
 
 .. _PyGame: http://www.pygame.org/wiki/tutorials
 
@@ -16,101 +15,273 @@ Biblioteka PyGame ułatwia tworzenie aplikacji multimedialnych, w tym gier.
 
 .. figure:: pong.png
 
-Zmienne i plansza gry
+Pole gry
 ***********************
 
-Tworzymy plik ``pong_str.py`` w terminalu lub w wybranym edytorze, zapisujemy na dysku i zaczynamy od zdefiniowania zmiennych określających właściwości obiektów w naszej grze.
+Tworzymy plik ``pong_str.py`` w terminalu lub w wybranym edytorze, zapisujemy na dysku
+i wprowadzamy poniższy kod:
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: pong_str1.py
+.. literalinclude:: pong_str01.py
     :linenos:
 
-W instrukcji ``pygame.display.set_mode()`` inicjalizujemy okno gry o rozmiarach 800x400 pikseli i 32 bitowej głębi kolorów. Tworzymy w ten sposób powierzchnię główną do rysowania zapisaną w zmiennej OKNOGRY. Definujemy również kolory w formacie RGB (Red, Green, Blue) podając składowe poszczegónych kanałów w tuplach, np. ``(0, 0, 255)``.
+Na początku importujemy wymagane biblioteki i inicjujemy moduł ``pygame``. Dużymi literami zapisujemy nazwy zmiennych określające właściwości pola gry, które inicjalizujemy w instrukcji ``pygame.display.set_mode()``. Tworzy ona powierzchnię o wymiarach 800x400 pikseli i 32 bitowej głębi kolorów, na której umieszczać będziemy pozostałe obiekty. W kolejnej instrukcji ustawiamy tytuł okna gry.
 
-Obiekty graficzne
-***********************
+Programy interaktywne, w tym gry, reagujące na działania użytkownika, takie jak ruchy czy kliknięcia myszą, działają w tzw. **głównej pętli**, której zadaniem jest:
 
-W dalszej kolejności zamiemy się określeniem właściwości i inicjalizacją paletek i piłki.
+a) przechwycenie i obsługa działań użytkownika, czyli tzw. zdarzeń (ruchy, kliknięcia myszą, naciśnięcie klawiszy),
+b) aktualizacja stanu gry (np. obliczanie przesunięć elementów) i rysowanie go.
 
-.. raw:: html
+Zadanie z punktu *a)* realizuje pętla ``for``, która odczytuje kolejne zdarzenia zwracane przez metodę ``pygame.event.get()``. Za pomocą instrukcji warunkowych możemy przechwytywać zdarzenia, które chcemy obsłużyć, np. naciśnięcie przycisku zamknięcia okna: ``if event.type == QUIT``.
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+Instrukcja ``oknogry.fill(BLUE)`` wypełnia okno zdefiniowanym kolorem. Jego wyświetlenie następuje w poleceniu ``pygame.display.update()``.
 
-.. literalinclude:: pong_str2.py
-    :linenos:
-    :lineno-start: 34
-    :lines: 34-
-
-Schemat dodawania obiektów graficznych jest prosty. Po określeniu wymiarów obiektu (szerokości i wysokości), tworzymy powierzchnię (``pygame.Surface``), którą wypełniamy odpowiednim kolorem (``.fill()``). W przypadku piłki do metody ``Surface()`` przekazujemy dodatkowe argumenty (``pygame.SRCALPHA``) umożliwiające uzyskanie powierzchni z przezroczystymi pikselami (z kanałem alpha), na której rysujemy koło (``pygame.draw.ellipse()``) o podanym kolorze, środku i rozmiarach. W kolejnym kroku pobieramy prostokąt (np. ``paletka1_prost = paletka1_obr.get_rect()``) zajmowany przez obiekt, za pomocą którego łatwiej ustawić wstępne położenie obiektu, a później nim manipulować (właściwości ``.x`` i ``.y`` obiektu :term:`Rect` zwróconego przez metodę ``.get_rect()``).
-
-Wyświetlanie tekstu
-***********************
-
-W grze chcemy wyświetlać punkty zdobywane przez graczy. Dopisujemy więc poniższy kod:
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. literalinclude:: pong_str3.py
-    :linenos:
-    :lineno-start: 72
-    :lines: 72-
-
-Po zdefiniowaniu zmiennych przechowujących punkty graczy, tworzymy obiekt czcionki z podanego pliku (``pygame.font.Font()``). Następnie definujemy funkcje, których zadaniem jest rysowanie punktacji graczy. Na początku tworzą one nową powierzchnię z punktacją gracza (``.render()``), pobierają jej prostokąt (``.get_rect()``), pozycjonują go (``.center()``) i rysują na głównej powierzchni gry (``.blit()``).
-
-.. note::
-    Plik wykorzystywany do wyświetlania tekstu (``freesansbold.ttf``) musi znaleźć się w katalogu ze skryptem.
-
-Główna pętla programu
-***********************
-
-Programy interaktywne, w tym gry, reagujące na działania użytkownika, takie jak ruchy czy kliknięcia myszą, działają w pętli, której zadaniem jest:
-
-* przechwycenie i obsługa działań użytkownika, czyli tzw. zdarzeń (ruchy, kliknięcia myszą, naciśnięcie klawiszy),
-* aktualizacja stanu gry (przesunięcia elementów, aktualizacja planszy),
-* aktualizacja wyświetlanego okna (narysowanie nowego stanu gry).
-
-Dopisujemy więc do kodu główną pętlę wraz z obsługą zdarzeń:
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. literalinclude:: pong_str4.py
-    :linenos:
-    :lineno-start: 95
-    :lines: 95-
-
-W obrębie głównej pętli programu pętla ``for`` odczytuje kolejne zdarzenia zwracane przez metodę ``pygame.event.get()``. Jak widać, za pomocą instrukcji warunkowych (``if event.type ==``) obsługujemy wydarzenia typu QUIT, czyli zakończenie aplikacji, oraz MOUSEMOTION, a więc ruch myszy W tym drugim przypadku pobieramy współrzędne kursora (``event.pos``) i obliczamy przesunięcie myszy w poziomie. Kolejne instrukcje uniemożliwiają wyjście paletki gracza poza okno gry.
-Do pętli głównej musimy dopisać jeszcze kod kontrolujący paletkę komputera, piłkę i jej interakcje ze ścianami okna gry oraz paletkami, a także rysujący poszczególne obiekty:
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. literalinclude:: pong_str5.py
-    :linenos:
-    :lineno-start: 119
-    :lines: 119-
-
-Komentarze w kodzie wyjaśniają kolejne czynności. Warto zwrócić uwagę na sposób odczytywania pozycji obiektów klasy ``Rect`` (prostokątów), czyli właściwości ``.x, .y, .centerx, .right, .left, .top, .bottom``; oraz na sprawdzanie kolizji piłki z paletkami, czyli metodę ``.colliderect()``. Ostatnie linie kodu rysują okno gry i obiekty (tekst z wynikami graczy, paletki i piłkę) ze zmienionymi właściwościami (liczba punktów, położenie). Funkcja ``pygame.display.update()``, która musi być wykonywana na końcu rysowania, aktualizuje obraz gry na ekranie. Ostatnia linia natomiast (``fpsClock.tick()``) blokuje grę na 30 klatek na sekundę, aby nie działała tak szybko jak pozwala sprzęt, lecz ze stałą prędkością.
-
-Grę możemy uruchomić poleceniem wpisanym w terminalu:
+Uruchom aplikację, wydając w terminalu polecenie:
 
 .. code:: bash
 
     $ python pong_str.py
 
+Paletka gracza
+***************
+
+Planszę gry już mamy, pora umieścić na niej paletkę gracza. Poniższy kod wstawiamy **przed pętlą główną** programu:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: pong_str02.py
+    :linenos:
+    :lineno-start: 22
+    :lines: 22-33
+
+Elementy graficzne tworzymy za pomocą polecenia
+``pygame.Surface((szerokosc, wysokosc), flagi, głębia)``. Utworzony obiekt możemy wypełnić kolorem: ``.fill(kolor)``. Położenie obiektu określimy pobierając na początku prostokątny obszar (:term:`Rect`), który go reprezentuje, metodą ``get_rect()``. Następnie podajemy współrzędne ``x`` i ``y`` wyznaczające położenie w poziomie i pionie.
+
+.. note::
+
+    * Początek układu współrzędnych w *Pygame* to lewy górny róg okna głównego.
+    * Położenie obiektu można ustawić również podając nazwane argumenty: ``obiekt_prost = obiekt.get_rect(x = 350, y =350)``.
+    * Położenie obiektów klasy ``Rect`` (prostokątów) możemy odczytwyać wykorzystując właściwości, takie jak: ``.x, .y, .centerx, .right, .left, .top, .bottom``.
+
+Omówiony kod utworzy obiekt reprezentujący paletkę gracza, ale trzeba ją jeszcze umieścić na planszy gry. W tym celu użyjemy metody ``.blit()``, która służy rysowaniu jednego obrazka na drugim. Poniższy kod musimy wstawić w pętli głównej przed instrukcją wyświetlającą okno.
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: pong_str02.py
+    :linenos:
+    :lineno-start: 47
+    :lines: 47-48
+
+Pozostaje uruchomienie kodu.
+
+Ruch paletki
+*************
+
+W pętli przechwytującej zdarzenia dopisujemy zaznaczony poniżej kod:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: pong_str03.py
+    :linenos:
+    :lineno-start: 35
+    :lines: 35-67
+    :emphasize-lines: 10-24
+
+Chcemy sterować paletką za pomocą myszy. Zadaniem powyższego kodu jest przechwycenie jej ruchu (``MOUSEMOTION``), odczytanie współrzędnych kursora z tupli ``event.pos`` i obliczenie przesunięcia określającego nowe położenie paletki. Kolejne instrukcje warunkowe korygują nową pozycję paletki, jeśli wykraczamy poza granice pola gry.
+
+Przetestuj kod.
+
+Piłka w grze
+************
+
+Piłkę tworzymy podobnie jak paletkę. Przed pętlą główną programu wstawiamy poniższy kod:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: pong_str04.py
+    :linenos:
+    :lineno-start: 35
+    :lines: 35-51
+
+Przy tworzeniu powierzchni dla piłki używamy flagi ``SRCALPHA``, co oznacza, że obiekt graficzny będzie zawierał przezroczyste piksele. Samą piłkę rysujemy za pomocą instrukcji ``pygame.draw.ellipse(powierzchnia, kolor, prostokąt)``. Ostatni argument to lista zawierająca współrzędne lewego górnego i prawego dolnego rogu prostokąta, w który wpisujemy piłkę.
+
+Ruch piłki, aby był płynny, wymaga użycia animacji. Ustawiamy więc liczbę generowanych klatek na sekundę (``FPS = 30``) i przygotowujemy obiekt zegara, który będzie kontrolował czas.
+
+Teraz **pod pętlą** (nie w pętli!) ``for``, która przechwytuje zdarzenia, umieszczamy kod:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: pong_str04.py
+    :linenos:
+    :lineno-start: 78
+    :lines: 78-100
+
+Na uwagę zasługuje metoda ``.move_ip(offset, offset)``, która przesuwa prostokąt zawierający piłkę o podane jako ``offset`` wartości. Dalej decydujemy, co ma się dziać, kiedy piłka wyjdzie poza pole gry. Metoda ``.colliderect(prostokąt)`` pozwala sprawdzić, czy dwa obiekty nachodzą na siebie. Dzięki temu możemy odwrócić bieg piłeczki po jej zetknięciu się z paletką gracza.
+
+Piłkę trzeba umieścić na polu gry. Podaną niżej instrukcję umieszczamy poniżej polecenia rysującego paletkę gracza:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: pong_str04.py
+    :linenos:
+    :lineno-start: 108
+    :lines: 108-109
+
+Na koniec ograniczamy prędkość animacji wywołując metodę ``.tick(fps)``, która wstrzymuje wykonywanie programu na podaną jako argument liczbę klatek na sekundę. Podany niżej kod trzeba dopisać na końcu w pętli głównej:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: pong_str04.py
+    :linenos:
+    :lineno-start: 114
+    :lines: 114-115
+
+Teraz możesz już zagrać sam ze sobą! Przetestuj działanie programu.
+
+AI – przeciwnik
+***************
+
+Dodamy do gry przeciwnika AI (ang. *artificial inteligence*), czyli paletkę sterowaną programowo.
+
+Przed główną pętlą programu dopisujemy kod tworzący paletkę AI:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: pong_str05.py
+    :linenos:
+    :lineno-start: 53
+    :lines: 53-64
+
+Tu nie ma nic nowego, więc od razu przed instrukcją wykrywającą kolizję piłki z paletką gracza (``if pilka_prost.colliderect(paletka1_prost)``) dopisujemy kod sterujący ruchem paletki AI:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: pong_str05.py
+    :linenos:
+    :lineno-start: 111
+    :lines: 111-123
+
+Samą paletkę AI trzeba umieścić na planszy, po instrukcji rysującej paletkę gracza dopisujemy więc:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block:: python
+
+.. literalinclude:: pong_str05.py
+    :linenos:
+    :lineno-start: 134
+    :lines: 134-136
+    :emphasize-lines: 3
+
+Pozostaje zmienić kod odpowiedzialny za odbijanie piłki od górnej krawędzi planszy (``if pilka_prost.top <= 0``), żeby przeciwnik AI mógł przegrywać. W tym celu dokonujemy zmian wg poniższego kodu:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: pong_str05.py
+    :linenos:
+    :lineno-start: 102
+    :lines: 102-105
+    :emphasize-lines: 3-4
+
+Teraz można już zagrać z komputerem :-).
+
+Liczymy punkty
+**************
+
+Co to za gra, w której nie wiadomo, kto wygrywa...
+Dodamy kod zliczający i wyświetlający punkty. Przed główną pętlą programu wstawiamy poniższy kod:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: pong_str06.py
+    :linenos:
+    :lineno-start: 66
+    :lines: 66-84
+
+Po zdefiniowaniu zmiennych przechowujących punkty graczy, tworzymy obiekt czcionki z podanego pliku (``pygame.font.Font()``). Następnie definiujemy funkcje, których zadaniem jest rysowanie punktacji graczy. Na początku tworzą one nowe obrazki z punktacją gracza (``.render()``), pobierają ich prostokąty (``.get_rect()``), pozycjonują je (``.center()``) i rysują na głównej powierzchni gry (``.blit()``).
+
+.. note::
+
+    Plik wykorzystywany do wyświetlania tekstu (``freesansbold.ttf``) musi znaleźć się w katalogu ze skryptem.
+
+Obie funkcje trzeba wywołać z pętli głównej, a więc po instrukcji wypełniającej okno gry kolorem (``oknogry.fill(LT_BLUE)``) dopisujemy:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: pong_str06.py
+    :linenos:
+    :lineno-start: 153
+    :lines: 153-157
+    :emphasize-lines: 4-5
+
+Sterowanie klawiszami
+*********************
+
+Skoro możemy przechwytywać ruch myszy, nic nie stoi na przeszkodzie, aby umożliwić poruszanie paletką za pomocą klawiszy. W pętli ``for`` odczytującej zdarzenia dopisujemy:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: pong_str07.py
+    :linenos:
+    :lineno-start: 114
+    :lines: 114-123
+
+Naciśnięcie klawisza generuje zdarzenie ``pygame.KEYDOWN``. Dalej w instrukcji warunkowej sprawdzamy, czy naciśnięto klawisz kursora lewy lub prawy i przesuwamy paletkę o 5 pikseli.
+
+.. tip::
+
+    `Kody klawiszy <http://www.pygame.org/docs/ref/key.html>`_ możemy sprawdzić w dokumentacji *Pygame*.
+
+Uruchom program i sprawdź, jak działa. Szybko zauważysz, że wciśnięcie strzałki porusza paletką, ale żeby poruszyła się znowu, trzeba naciskanie powtarzać. To niewygodne, paletka powinna ruszać się dopóki klawisz jest wciśnięty. Przed pętlą główną dodamy więc poniższy kod:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: pong_str07.py
+    :linenos:
+    :lineno-start: 86
+    :lines: 86-87
+
+Dzięki tej instrukcji włączyliśmy powtarzalność wciśnięć klawiszy. Przetestuj, czy działa.
+
 Zadania dodatkowe
 ***********************
 
-    Zmodyfikuj właściwości obiektów (paletek, piłki) takie jak rozmiar, kolor, początkowa pozycja.
-    Zmień położenie paletek tak aby znalazły przy lewej i prawej krawędzi okna, wprowadź potrzebne zmiany w kodzie, aby umożliwić rozgrywkę.
-    Dodaj trzecią paletkę, która co jakiś czas będzie "przelatywać" przez środek planszy i zmieniać w przypadku kolizji tor i kolor piłki.
+* Zmodyfikuj właściwości obiektów (paletek, piłki) takie jak rozmiar, kolor, początkowa pozycja.
+* Zmień położenie paletek tak, aby znalazły przy lewej i prawej krawędzi okna, wprowadź potrzebne zmiany w kodzie, aby poruszały się w pionie.
+* Dodaj trzecią paletkę, która co jakiś czas będzie "przelatywać" przez środek planszy i zmieniać w przypadku kolizji tor i kolor piłki.
 
 Materiały
 **************
@@ -118,23 +289,4 @@ Materiały
 **Źródła:**
 
 * :download:`pong_str.zip <pong_str.zip>`
-* :download:`pong_str.pdf <../../pdf/pong_str.pdf>`
-
-Kolejne wersje tworzenego kodu można pobierać wydając polecenia:
-
-.. code-block:: bash
-
-    ~/python101$ git checkout -f pong/str1
-    ~/python101$ git checkout -f pong/str2
-    ~/python101$ git checkout -f pong/str3
-    ~/python101$ git checkout -f pong/str4
-    ~/python101$ git checkout -f pong/str5
-
-Uruchamiamy je wydając polecenie:
-
-.. code-block:: bash
-
-    ~/python101$ cd docs/pong_str
-    ~/python101/docs/pong_str$ python pong_strx.py
-
-\- gdzie *x* jest numerem kolejnej wersji kodu.
+* :download:`Dokumentacja Pygame (PDF) <../../pdf/pygame192.pdf>`

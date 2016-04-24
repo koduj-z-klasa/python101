@@ -1,8 +1,8 @@
 Gry w Pythonie
 ###################
 
-`Pygame <http://www.pygame.org/wiki/about/>`_ to zbiór modułów w języku `Python <https://www.python.org/>`_ wpomagających tworzenie aplikacji multimedialnych,
-zwłaszcza gier. Wykorzystuje możliwości biblioteki :term:`SDL (Simple DirectMedia Layer)`,
+`Pygame <http://www.pygame.org/wiki/about/>`_ to zbiór modułów w języku `Python <https://www.python.org/>`_ wpomagających tworzenie aplikacji multimedialnych, zwłaszcza gier.
+Wykorzystuje możliwości biblioteki :term:`SDL (Simple DirectMedia Layer)`,
 jest darmowy i rozpowszechniany na licencji `GNU General Public Licence <http://pl.wikipedia.org/wiki/GNU_General_Public_License>`_.
 Działa na wielu platformach i systemach operacyjnych.
 
@@ -28,6 +28,7 @@ Materiały
 
 #. `Python`_
 #. `Pygame`_
+#. :download:`Dokumentacja Pygame (PDF) <../pdf/pygame192.pdf>`
 
 .. Python_: https://www.python.org/
 .. Pygame_: http://www.pygame.org/wiki/about
