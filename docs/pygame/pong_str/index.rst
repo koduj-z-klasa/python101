@@ -231,7 +231,19 @@ Po zdefiniowaniu zmiennych przechowujących punkty graczy, tworzymy obiekt czcio
 
     Plik wykorzystywany do wyświetlania tekstu (``freesansbold.ttf``) musi znaleźć się w katalogu ze skryptem.
 
-Obie funkcje trzeba wywołać z pętli głównej, a więc po instrukcji wypełniającej okno gry kolorem (``oknogry.fill(LT_BLUE)``) dopisujemy:
+W pętli głównej programu musimy umieścić wyrażenia zliczające punkty. Jeżeli piłka ucieknie górą, punkty dostaje gracz, w przeciwnym wypadku AI. Dopisz podświetlone instrukcje:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: pong_str06.py
+    :linenos:
+    :lineno-start: 122
+    :lines: 122-131
+    :emphasize-lines: 5, 10
+
+Obie funkcje wyświetlające punkty również trzeba wywołać z pętli głównej, a więc po instrukcji wypełniającej okno gry kolorem (``oknogry.fill(LT_BLUE)``) dopisujemy:
 
 .. raw:: html
 
