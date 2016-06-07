@@ -49,7 +49,7 @@ System wersji *FULL* zawiera:
 
 * spolszczone prawie wszystkie elementy systemu;
 * zaktualizowane listy oprogramowania;
-* zaktualizowaną i spolszczoną przeglądarkę `Pale Moon <https://www.palemoon.org/>_`
+* zaktualizowaną i spolszczoną przeglądarkę `Pale Moon <https://www.palemoon.org/>`_
   (otwartoźrodłówa, oparta na Firefoksie);
 * fonty Ubuntu oraz podstawowe z Windows;
 * podstawowe pakiety narzędziowe: *python-pip*, *python-virtualenv*, *git*;

@@ -58,7 +58,7 @@ W Windows
 .. tip::
 
   Po nagraniu systemu *LxPupTahr*, koniecznie przeczytaj :ref:`Pierwsze uruchomienie <lxpuptahr>`!!!
-  Jeżeli pobrałeś wersję BASE, przeczytaj, jak łatwo dodać .
+  Jeżeli pobrałeś wersję BASE, przeczytaj, jak łatwo :ref:`dodawać programy <sfs-pet>` (np. profesjonalne edytory kodu).
 
 W Linuksie
 ===========
