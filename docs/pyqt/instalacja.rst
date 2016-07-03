@@ -23,12 +23,14 @@ Następnie pobieramy ze strony `PyQt5 Download <https://riverbankcomputing.com/s
 instalator PyQt5 w wersji 32- lub 64-bitowej i również instalujemy.
 Autorzy PyQt5 na stronach Riverbank nie udostępniają wersji dla Pythona 2.
 
-PyQt5 + Python2 lub Python3
-***************************
+PyQt5 + Python2
+****************
 
-Przykłady w scenariuszach napisane są dla Pythona3, ale jeżeli zainstalowaliśmy
-PyQt5 dla Pythona2, żeby zadziałały wystarczy w pierwszej linii zmienić ``python3``
-na ``python`` lub ``python2``.
+Przykłady w scenariuszach napisane są dla PyQt5+Pythona3, ale jeżeli zainstalowaliśmy
+PyQt5+Python2, żeby zadziałały wystarczy:
+* w pierwszej linii zmienić ``python3`` na ``python`` lub ``python2``;
+* wywołanie ``super().__init__(parent)`` zmienić na ``super(nazwa_klasy, self).__init__(parent)``;
+* na początku każdego pliku źródłowego dodać import ``from __future__ import unicode_literals``.
 
 PyQt5 vs PyQt4
 **************
