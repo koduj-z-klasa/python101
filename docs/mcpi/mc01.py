@@ -43,7 +43,7 @@ def plac(x, y, z, roz=10, gracz=False):
 
 
 def main(args):
-    plac(0, 0, 0, 20)
+    plac(0, 0, 0, 18)
     return 0
 
 if __name__ == '__main__':

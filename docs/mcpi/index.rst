@@ -281,10 +281,31 @@ Do rysowania bloków można użyć pętli. Zmieniamy funkcję ``buduj()`` nastę
 
 Teraz powinniśmy postawić mur 10 bloków na skraju "placu".
 
-[cdn]
+Spróbujemy teraz zbudować arenę wykorzystywaną w grze Robot Game. W pliku :file:`mc.py`
+umieszczamy następującą funkcję:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: mc04.py
+    :linenos:
+    :lineno-start: 52
+    :lines: 52-72
+
+Pole gry wpisane jest w kwadrat o boku 19 jednostek, dlatego korzystamy z dwóch zagnieżdoznych pętli,
+w których zmienne iteracyjne *i*, *j* przyjmują wartości od 0 do 18. Część pól kwadratu wyłączona jest
+z rozgrywki, ich współrzędne zawiera lista ``obstacle``. Bloki trawy umieszczamy tylko wtedy, kiedy
+para zmiennych iteracyjnych, służąca również do wyznaczania współrzędnych, znajduje się w liście.
+Odpowiada za to instrukcja warunkowa ``if (i, j) in obstacle``.
+
+Przed uruchomieniem skryptu trzeba jeszcze umieścić wywołanie funkcji ``polegry()`` w funkcji głównej
+po instrukcji rysującej pole budowy ``plac()``.
+
+.. figure:: img/rgboard.png
 
 Materiały
 =========
 
 1. Minecraft `Pi Edition <http://minecraft.gamepedia.com/Pi_Edition>`_
-

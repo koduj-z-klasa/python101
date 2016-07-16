@@ -45,12 +45,12 @@ def buduj():
     Funkcja do testowania umieszczania bloków.
     Wymaga: globalnych obiektów mc i block.
     """
-    for i in range(11):
-        mc.setBlock(0 + i, 0, 20, block.CACTUS)
+    for i in range(19):
+        mc.setBlock(0 + i, 0, 18, block.CACTUS)
 
 
 def main(args):
-    plac(0, 0, 0, 20)
+    plac(0, 0, 0, 18)
     buduj()
     return 0
 
