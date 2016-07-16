@@ -99,9 +99,9 @@ Edytory *PyCharm* i *SublimeText3* przygotowaliśmy w formie plików `SFS <http:
 W wersji FULL są one już dołączone. Jeżeli ściągneliśmy obraz BASE
 lub chcemy mieć ostatnią dostępną wersję, ściągamy poniższe pliki:
 
-* `PyCharm 5.0.4 <https://drive.google.com/open?id=0B1zG9cfNyT7WSjVCYjA5VjhqQ1E>`_
-* `Java JRE 1.7.80 <https://drive.google.com/open?id=0B1zG9cfNyT7WVVJKTF9sSkE1UzQ>`_
-* `Sublime Text 3.103 <https://drive.google.com/open?id=0B1zG9cfNyT7WaGcwLTlENVJQWDA>`_
+* `PyCharm 2016.1 <https://drive.google.com/open?id=0B1zG9cfNyT7WUUtlcXpzVE1fd3M>`_
+* `Java JRE 1.8.65 <https://drive.google.com/open?id=0B1zG9cfNyT7WMTVrZXpOYzRHY2M>`_
+* `Sublime Text 3.114 <https://drive.google.com/open?id=0B1zG9cfNyT7WUUtlcXpzVE1fd3M>`_
 
 Pobrane pliki umieszczamy w katalogu głównym pendrajwa. W działającym systemie dostępny jest on
 w ścieżce :file:`/mnt/home`, którą należy wpisać w pole adresu menedżera plików:

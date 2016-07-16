@@ -21,15 +21,13 @@ również w maszynie wirtualnej, na dysku twardym lub wykorzystać do odzyskiwan
 Poniżej opisujemy instalację *Linux Live* na kluczu USB oraz w maszynie wirtualnej tak,
 aby można było instalować oprogramowanie, zapisywać ustawienia i tworzone dokumenty.
 
-Polecamy dystrybucję `LxPupTahr 15.12 <http://lx-pup.weebly.com/>`_ – zaprojektowaną
-od podstaw jako *live* z możliwością zapisywania zmian. Oparta jest na stabilnym
-Ubuntu 14.04 LTS. Zawiera środowisko graficzne LXDE.
-**Na potrzeby szkoleń** i **do relalizacji naszych scenariuszy** przygotowaliśmy dostosowaną
-wersję, która zawiera wszystkie dodatkowe narzędzia i wymagane biblioteki.
+**Na potrzeby szkoleń** i **do realizacji scenariuszy** przygotowaliśmy dostosowaną
+wersję *live* dystrybucji `LxPup <http://lx-pup.weebly.com/>`_, wykorzystującą środowisko graficzne
+`LXDE <http://lxde.org/>`_. Nasza wersja zawiera wszystkie dodatkowe narzędzia i biblioteki.
 
-.. figure:: lxpupimg/lxpup1515.png
+.. figure:: lxpupimg/xenialpup701.jpg
 
-   System LxPupTahr
+   Dostosowany system XenialPup 7.0.1
 
 .. _usb-creator:
 
@@ -38,10 +36,10 @@ W Windows
 
 * Pobieramy :term:`obraz iso`:
 
-  - `LxPupTahr Full <https://drive.google.com/open?id=0B1zG9cfNyT7WZFZkTnMwSlNtS1U>`_
-    (608MB, zawiera edytory Geany 1.25, PyCharm Professional 5.0.4 i SublimeText 3)
-  - lub: `LxPupTahr Base <https://drive.google.com/open?id=0B1zG9cfNyT7Wd2V5ZU5hUzh6UE0>`_
-    (384MB, zawiera edytor Geany 1.25, łatwo dodać :ref:`edytory PyCharm i/lub Sublime Text 3<sfs-pet>`)
+  - `XenialPup Full <https://drive.google.com/open?id=0B1zG9cfNyT7WRU95MFFvRVhNcFE>`_
+    (710MB, zawiera edytory Geany 1.25, PyCharm Professional 2016.1 i SublimeText 3)
+  - lub: `XenialPup Base <https://drive.google.com/open?id=0B1zG9cfNyT7WQ1VucmlTWnNIc0E>`_
+    (438MB, zawiera edytor Geany 1.25, łatwo dodać :ref:`edytory PyCharm i/lub Sublime Text 3<sfs-pet>`)
 
 * Do wgrania *LxPupTahr* pobieramy program `Rufus <https://rufus.akeo.ie/>`_.
 
@@ -123,7 +121,7 @@ np. ``kzkbox_20150921_full.iso``:
 
 .. figure:: vboximg/vbox05.jpg
 
-Uruchamiamy maszynę, ale na ekranie roruchowym systemu podajemy dodatkowe
+Uruchamiamy maszynę, ale na ekranie rozruchowym systemu podajemy dodatkowe
 parametry uruchomieniowe: ``puppy pmedia=cd pfix=ram``:
 
 .. figure:: vboximg/vbox06.jpg
@@ -134,7 +132,7 @@ i uruchamiamy instalatora poleceniem *Start/Konfiguracja/Puppy uniwersalny insta
 
 1) W oknie "Instaluj" wybieramy *Uniwersalny instalator*;
 2) W kolejnym wybieramy *Wewnętrzny (IDE lub SATA) dysk twardy*;
-3) Następnie wskaujemy dysk *sda ATA VBOX HARDDISK* za pomocą ikony;
+3) Następnie wskazujemy dysk *sda ATA VBOX HARDDISK* za pomocą ikony;
 4) Kolejne okno umożliwi uruchomienie edytora GParted, za pomocą którego
    założymy i sformatujemy partycję systemową;
 
@@ -145,7 +143,7 @@ i uruchamiamy instalatora poleceniem *Start/Konfiguracja/Puppy uniwersalny insta
    a) w menu *Urządzenie/Utwórz tablicę partycji*, kolejne okno potwierdzamy *Zastosuj*;
    b) Klikamy nieprzydzielone miejsce prawym klawiszem i wybieramy *Nowa*, wybieramy
       "Partycja główna" i system "Ext4", zatwierdzamy *Dodaj*;
-   c) Następnie wybieramy *Edycja/Zastosj wszystkie działania* lub klikamy ikonę "zielonego ptaszka";
+   c) Następnie wybieramy *Edycja/Zastosuj wszystkie działania* lub klikamy ikonę "zielonego ptaszka";
    d) Na koniec klikamy utworzoną partycję prawym klawiszem, wybieramy *Zarządzaj flagami*,
       zaznaczamy opcję "boot" i zatwierdzamy *Zamknij*; w efekcie powinniśmy zobaczyć
       co następuje:
