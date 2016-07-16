@@ -64,6 +64,7 @@ Zaczynamy!
     bazy/index
     pyqt/index
     webapps/index
+    mcpi/index
 
 Dodatkowe informacje
 =====================
