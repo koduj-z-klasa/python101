@@ -20,7 +20,7 @@ mc = minecraft.Minecraft.create("")
 mc.postToChat("Cześć! Tak działa MC chat!")
 
 
-def plac(self, x, y, z, roz=10, gracz=False):
+def plac(x, y, z, roz=10, gracz=False):
     """Funkcja wypełnia sześcienny obszar od podanej pozycji
     powietrzem i opcjonalnie umieszcza gracza w środku.
     Parametry: x, y, z - współrzędne pozycji początkowej,
