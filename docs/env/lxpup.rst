@@ -1,7 +1,7 @@
-.. _lxpuptahr:
+.. _lxpup:
 
-*LxPupTahr* – obsługa
-######################
+*LxPup* – obsługa
+#################
 
 .. contents:: Spis treści
     :depth: 2
@@ -123,15 +123,17 @@ Jeżeli nie potrzebujemy już danego programu lub chcemy go zaktualizować, paki
 możemy też wyładować.
 
 Drugi format dedykowany dla LxPupa to paczki w formacie `PET <http://puppylinux.org/wikka/PETs?redirect=no>`_,
-dostępne np. na stronie `pet_packages-tahr <http://distro.ibiblio.org/puppylinux/pet_packages-tahr/>`.
+dostępne np. na stronie `pet_packages <http://distro.ibiblio.org/puppylinux/pet_packages-tahr/>`_.
 Ściągamy je, a następnie instalujemy dwukrotnie klikając (uruchomi się narzędzie *petget*).
 
 .. figure:: lxpupimg/pet01.png
 
-Aktualizacje oraz programy w formatach SFS/PET przygotowywane przez społeczność LxPupa
-można przeglądać i instalować za pomocą programu **Start/Konfiguracja/Quickpet tahr**.
-System aktualizujemy klikając "tahrpup updates". Później możemy zainstalować np.
-Chrome'a, Gimpa czy Skype'a.
+.. note::
+
+  W wersji LxPupTahr (ale nie w LxPupXenial) aktualizacje oraz programy w formatach SFS/PET
+  przygotowywane przez społeczność można przeglądać i instalować za pomocą programu
+  **Start/Konfiguracja/Quickpet tahr**. System aktualizujemy klikając "tahrpup updates".
+  Później możemy zainstalować np. Chrome'a, Gimpa czy Skype'a.
 
 .. figure:: lxpupimg/pet_quickpet03.png
 
@@ -140,8 +142,8 @@ Chrome'a, Gimpa czy Skype'a.
 Menedżer pakietów
 *******************
 
-Jeżeli w *Quickpet tahr* nie znajdziemy wymaganej aplikacji, uruchamiamy
-**Start/Konfiguracja/Puppy Manager Pakietów**. Aktualizujemy listę dostępnych aplikacaji:
+Aby doinstalować jakiś pakiet (program), uruchamiamy **Start/Konfiguracja/Puppy Manager Pakietów**.
+Aktualizujemy listę dostępnych aplikacaji:
 klikamy ikonę ustawień obok koła ratunkowego, w następnym oknie zakładkę
 "Aktualizuj bazę danych" i przycisk "Aktualizuj teraz". Po uruchomieniu okna terminala
 klawiszem ENTER potwierdzamy aktualizację repozytoriów.

@@ -23,11 +23,12 @@ aby można było instalować oprogramowanie, zapisywać ustawienia i tworzone do
 
 **Na potrzeby szkoleń** i **do realizacji scenariuszy** przygotowaliśmy dostosowaną
 wersję *live* dystrybucji `LxPup <http://lx-pup.weebly.com/>`_, wykorzystującą środowisko graficzne
-`LXDE <http://lxde.org/>`_. Nasza wersja zawiera wszystkie dodatkowe narzędzia i biblioteki.
+`LXDE <http://lxde.org/>`_, oparte na stabilnej wersji Ubuntu Xenial Xerus 16.04.
+Nasza wersja zawiera wszystkie dodatkowe narzędzia i biblioteki.
 
 .. figure:: lxpupimg/xenialpup701.jpg
 
-   Dostosowany system XenialPup 7.0.1
+   Dostosowany system LxPupXenial 7.0.1
 
 .. _usb-creator:
 
@@ -36,9 +37,9 @@ W Windows
 
 * Pobieramy :term:`obraz iso`:
 
-  - `XenialPup Full <https://drive.google.com/open?id=0B1zG9cfNyT7WRU95MFFvRVhNcFE>`_
+  - `LxPupXenial Full <https://drive.google.com/open?id=0B1zG9cfNyT7WRU95MFFvRVhNcFE>`_
     (710MB, zawiera edytory Geany 1.25, PyCharm Professional 2016.1 i SublimeText 3)
-  - lub: `XenialPup Base <https://drive.google.com/open?id=0B1zG9cfNyT7WQ1VucmlTWnNIc0E>`_
+  - lub: `LxPupXenial Base <https://drive.google.com/open?id=0B1zG9cfNyT7WQ1VucmlTWnNIc0E>`_
     (438MB, zawiera edytor Geany 1.25, łatwo dodać :ref:`edytory PyCharm i/lub Sublime Text 3<sfs-pet>`)
 
 * Do wgrania *LxPupTahr* pobieramy program `Rufus <https://rufus.akeo.ie/>`_.
@@ -55,7 +56,7 @@ W Windows
 
 .. tip::
 
-  Po nagraniu systemu *LxPupTahr*, koniecznie przeczytaj :ref:`Pierwsze uruchomienie <lxpuptahr>`!!!
+  Po nagraniu systemu *LxPupXenial*, koniecznie przeczytaj :ref:`Pierwsze uruchomienie <lxpup>`!!!
   Jeżeli pobrałeś wersję BASE, przeczytaj, jak łatwo :ref:`dodawać programy <sfs-pet>` (np. profesjonalne edytory kodu).
 
 W Linuksie
@@ -177,7 +178,7 @@ i możemy uruchomić LxPupTahr w maszynie wirtualnej:
 
 System zainstalowany w ten sposób działa tak samo jak zainstalowany na kluczu USB,
 a więc wymaga potwierdzenia konfiguracji wstępnej i utworzenia pliku zapisu.
-Zob.: :ref:`Pierwsze uruchomienie <lxpuptahr>`!!!
+Zob.: :ref:`Pierwsze uruchomienie <lxpup>`!!!
 
 .. tip::
 

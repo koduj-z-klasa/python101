@@ -43,6 +43,8 @@ i "klocków", z których można zacząć składać swojego robota. Pokazujemy r�
 jak testować swoje roboty. Nie podajemy jednak "przepisu" na robota najlepszego.
 Do tego musisz dojść sam.
 
+.. _rg-env:
+
 Środowisko testowe
 *******************
 
@@ -51,7 +53,7 @@ Przygotujemy więc środowisko deweloperskie w katalogu :file:`robot`.
 
 .. attention::
 
-    Jeżeli korzystasz z polecanej przez nas na warsztaty dystrybucji *LxPupTahr*,
+    Jeżeli korzystasz z polecanej przez nas na warsztaty dystrybucji *LxPupXenial*,
     środowisko testowe jest już przygotowane w katlogu :file:`~/robot`.
 
 W terminalu wydajemy polecenia:
