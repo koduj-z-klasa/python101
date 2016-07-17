@@ -73,10 +73,42 @@ def polegry():
             else:
                 mc.setBlock(x + i, y, z + j, block.AIR)
 
+
+def pokaz_runde(runda):
+    from time import sleep
+    x = y = z = 0
+    polegry()
+    for robot in runda:
+        if robot['player_id']:
+            blok = block.WOOD
+        else:
+            blok = block.WOOL
+        loc = robot['location']
+        print robot['player_id'], blok, loc[0], loc[1]
+        mc.setBlock(loc[0], y, loc[1], blok)
+    sleep(1)
+    print
+
+
+def pokaz_gre(ile=100):
+    import json
+    plik = open("lastgame.log", "r")
+    dane = json.load(plik)
+    runda_nr = 0
+
+    for r in dane:
+        print "Runda ",runda_nr
+        print(r)
+        pokaz_runde(r)
+        runda_nr = runda_nr + 1
+        if runda_nr > ile:
+            break
+
+
 def main(args):
     plac(0, 0, 0, 18)
     # buduj()
-    polegry()
+    pokaz_gre(5)
     return 0
 
 if __name__ == '__main__':

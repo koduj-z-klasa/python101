@@ -281,8 +281,14 @@ Do rysowania bloków można użyć pętli. Zmieniamy funkcję ``buduj()`` nastę
 
 Teraz powinniśmy postawić mur 10 bloków na skraju "placu".
 
-Spróbujemy teraz zbudować arenę wykorzystywaną w grze Robot Game. W pliku :file:`mc.py`
-umieszczamy następującą funkcję:
+Robot Game & Minecraft
+======================
+
+Pole gry
+--------
+
+Spróbujemy teraz pokazać rozgrywkę z :ref:`gry robotów <robot-game>`.
+Zaczniemy od zbudowania areny wykorzystywanej w grze. W pliku :file:`mc.py` umieszczamy następującą funkcję:
 
 .. raw:: html
 
@@ -292,9 +298,9 @@ umieszczamy następującą funkcję:
 .. literalinclude:: mc04.py
     :linenos:
     :lineno-start: 52
-    :lines: 52-72
+    :lines: 52-74
 
-Pole gry wpisane jest w kwadrat o boku 19 jednostek, dlatego korzystamy z dwóch zagnieżdoznych pętli,
+Pole gry wpisane jest w kwadrat o boku 19 jednostek, dlatego korzystamy z dwóch zagnieżdżonych pętli,
 w których zmienne iteracyjne *i*, *j* przyjmują wartości od 0 do 18. Część pól kwadratu wyłączona jest
 z rozgrywki, ich współrzędne zawiera lista ``obstacle``. Bloki trawy umieszczamy tylko wtedy, kiedy
 para zmiennych iteracyjnych, służąca również do wyznaczania współrzędnych, znajduje się w liście.
@@ -303,7 +309,76 @@ Odpowiada za to instrukcja warunkowa ``if (i, j) in obstacle``.
 Przed uruchomieniem skryptu trzeba jeszcze umieścić wywołanie funkcji ``polegry()`` w funkcji głównej
 po instrukcji rysującej pole budowy ``plac()``.
 
-.. figure:: img/rgboard.png
+.. figure:: img/mc04.png
+
+Dane gry
+--------
+
+W pliku :file:`lastgame.log` w katalogu :file:`mcpi-sim` znajduje się zapis 100 rund przykładowej rozgrywki.
+
+.. note::
+
+	Gdybyś chciał wykorzystać zapis swojej rozgrywki, musisz zmodyfikować bibliotekę ``game.py``
+	z pakietu ``rgkit``. Jeżeli korzystałeś z naszego :ref:`scenariusza <robot-game>` i zainstalowałeś ``rgkit``
+	w :ref:`wirtualnym środowisku <rg-env>` :file:`~/robot/env`, plik ten znajdziesz w ścieżce
+	:file:`~/robot/env/lib/python2.7/site-packages/rgkit/game.py`. Na końcu funkcji ``run_all_turns()``
+	po linii nr 386 wstaw podany niżej kod:
+
+	.. code-block:: python
+
+	    # BEGIN DODANE na potrzeby Kzk
+	    import json
+	    plik = open('lastgame.log', 'w')
+	    json.dump(self.history, plik)
+	    plik.close()
+	    # END OF DODANE
+
+  Teraz po wywołaniu przykładowej walki: ``(env) root@kzk:~/robot$ rgrun bots/stupid26.py bots/Wall-E.py``
+  w katalogu :file:`~/robot` znajdziesz plik :file:`lastgame.log`, który trzeba umieścić w katalogu
+  ze skryptem :file:`mc.py`.
+
+Każda runda to lista zawierająca słowniki określające właściwości poszczególnych robotów.
+Do pliku :file:`mc.py` przed funkcją główną dodamy funkcję ``pokaz_gre()``:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: mc05.py
+    :linenos:
+    :lineno-start: 77
+    :lines: 77-88
+
+Po otworzeniu pliku z danymi za pomocą modułu *json* wczytujemy jego zawartość do listy: ``dane = json.load(plik)``.
+Następnie w pętli odczytujemy dane kolejnych rund i – na razie, poglądowo – drukujemy je w konsoli.
+Aby przetestować kod, wpisz wywołanie funkcji ``pokaz_gre(5)`` zamiast ``polegry()`` w funkcji głównej.
+
+.. figure:: img/mc05.png
+
+Jak można zauważyć na zrzucie, słowniki opisujące roboty walczące w danej rundzie zawierają m.in.
+identyfikatory gracza oraz położenie robota. Wykorzystamy te informacje w funkcji ``pokaz_runde()``,
+którą dopisujemy w pliku :file:`mc.py` przed funkcją ``pokaz_gre()``:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: mc06.py
+    :linenos:
+    :lineno-start: 77
+    :lines: 77-90
+
+Funkcja na początku rysuje pole gry, następnie w pętli odczytujemy dane kolejnych robotów.
+Na podstawie identyfikatora gracza określamy typ bloku reprezentujący robota, pobieramy jego
+położenie i wreszcie umieszczamy na planszy: ``mc.setBlock(loc[0], y, loc[1], blok)``.
+Aby przetestować kod, wywołanie funkcji ``pokaz_runde(r)`` umieszczamy w funkcji ``pokaz_gre()``
+po instrukcji ``print(r)``.
+
+.. figure:: img/mc06.png
+
+[cdn]
 
 Materiały
 =========

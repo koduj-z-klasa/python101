@@ -73,10 +73,25 @@ def polegry():
             else:
                 mc.setBlock(x + i, y, z + j, block.AIR)
 
+
+def pokaz_gre(ile=100):
+    import json
+    plik = open("lastgame.log", "r")
+    dane = json.load(plik)
+    runda_nr = 0
+
+    for r in dane:
+        print "Runda ",runda_nr
+        print(r)
+        runda_nr = runda_nr + 1
+        if runda_nr > ile:
+            break
+
+
 def main(args):
     plac(0, 0, 0, 18)
     # buduj()
-    polegry()
+    pokaz_gre(5)
     return 0
 
 if __name__ == '__main__':
