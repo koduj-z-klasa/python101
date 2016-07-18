@@ -73,6 +73,7 @@ def polegry():
             else:
                 mc.setBlock(x + i, y, z + j, block.AIR)
 
+
 def main(args):
     plac(0, 0, 0, 18)
     # buduj()

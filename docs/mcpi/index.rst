@@ -350,7 +350,7 @@ Do pliku :file:`mc.py` przed funkcją główną dodamy funkcję ``pokaz_gre()``:
     :lineno-start: 77
     :lines: 77-88
 
-Po otworzeniu pliku z danymi za pomocą modułu *json* wczytujemy jego zawartość do listy: ``dane = json.load(plik)``.
+Po otworzeniu pliku z danymi wczytujemy jego zawartość do listy za pomocą modułu *json*: ``dane = json.load(plik)``.
 Następnie w pętli odczytujemy dane kolejnych rund i – na razie, poglądowo – drukujemy je w konsoli.
 Aby przetestować kod, wpisz wywołanie funkcji ``pokaz_gre(5)`` zamiast ``polegry()`` w funkcji głównej.
 
@@ -368,17 +368,43 @@ którą dopisujemy w pliku :file:`mc.py` przed funkcją ``pokaz_gre()``:
 .. literalinclude:: mc06.py
     :linenos:
     :lineno-start: 77
-    :lines: 77-90
+    :lines: 77-89
 
 Funkcja na początku rysuje pole gry, następnie w pętli odczytujemy dane kolejnych robotów.
 Na podstawie identyfikatora gracza określamy typ bloku reprezentujący robota, pobieramy jego
 położenie i wreszcie umieszczamy na planszy: ``mc.setBlock(loc[0], y, loc[1], blok)``.
 Aby przetestować kod, wywołanie funkcji ``pokaz_runde(r)`` umieszczamy w funkcji ``pokaz_gre()``
-po instrukcji ``print(r)``.
+po instrukcji ``print(r)``, którą można zakomentować.
 
 .. figure:: img/mc06.png
 
-[cdn]
+Kolory i  animacja
+------------------
+
+W trakcie starć w kolejnych rundach maleje siła robotów wskazywana przez właściwość *hp*.
+Spróbujemy zróżnicować kolorystycznie typ bloków wykorzystywany do wyświetlania robotów.
+Przed funkcją ``pokaz_runde()`` dopisujemy funkcję ``wybierz_blok()``:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: mc07.py
+    :linenos:
+    :lineno-start: 77
+    :lines: 77-85
+
+Siła robotów (*hp*) przyjmuje wartości od 0 do 50, dzieląc tę wartość całkowicie przez 10,
+otrzymamy liczby od 0 do 5, które posłużą nam jako indeksy wskazujące typ bloku służący
+do wyświetlenia robota danego zawodnika. Dobór typów w tuplach jest oczywiście
+czysto umowny.
+
+Pozostaje jeszcze zastąpienie instrukcji warunkowej w funkcji ``pokaz_runde()`` wywołaniem
+naszej funkcji: ``blok = wybierz_blok(robot['player_id'], robot['hp'])``. Przykładowy efekt
+przedstawia się tak:
+
+.. figure:: img/mc07.png
 
 Materiały
 =========

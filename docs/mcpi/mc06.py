@@ -76,7 +76,6 @@ def polegry():
 
 def pokaz_runde(runda):
     from time import sleep
-    x = y = z = 0
     polegry()
     for robot in runda:
         if robot['player_id']:
@@ -85,7 +84,7 @@ def pokaz_runde(runda):
             blok = block.WOOL
         loc = robot['location']
         print robot['player_id'], blok, loc[0], loc[1]
-        mc.setBlock(loc[0], y, loc[1], blok)
+        mc.setBlock(loc[0], 0, loc[1], blok)
     sleep(1)
     print
 
@@ -97,8 +96,8 @@ def pokaz_gre(ile=100):
     runda_nr = 0
 
     for r in dane:
-        print "Runda ",runda_nr
-        print(r)
+        print "Runda ", runda_nr
+        # print(r)
         pokaz_runde(r)
         runda_nr = runda_nr + 1
         if runda_nr > ile:
