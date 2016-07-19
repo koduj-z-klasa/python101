@@ -6,7 +6,7 @@ Git - wersjonowanie kodów źródłowych
 Pokażemy tutaj, jak nauczyciele mogą wykorzystać profesjonalne i bezpłatne narzędzia do wersjonowania
 kodów źródłowych i wszystkich innych plików.
 
-Przybliżamy tutaj jak GIT jest wykorzystywany w naszych materiałach i pokważemy jak go wykorzystać go podczas zajęć w szkole.
+Przybliżamy tutaj jak GIT jest wykorzystywany w naszych materiałach i pokażemy jak go wykorzystać go podczas zajęć w szkole.
 
 Poniżej przeprowadzimy szybkie wprowadzenie po więcej informacji oraz pełne szczegółowe wprowadzenie i przykłady użycia znajdziecie
 w dostępnej online i do pobrania polskiej wersji książki `Pro Git`_ .
@@ -16,7 +16,7 @@ Polecamy także `cheat sheet z podręcznymi komendami <https://training.github.c
 Co to jest GIT?
 ===============
 
-GIT to system kontroli wersji, pozwala zapemiętać i synchronizować pomiędzy uzytkownikami zmiany dokonywane na plikach.
+GIT to system kontroli wersji, pozwala zapamiętać i synchronizować pomiędzy użytkownikami zmiany dokonywane na plikach.
 Umożliwia przywołanie dowolnej wcześniejszej wersji, a co najważniejsze,
 automatycznie łączy zmiany które ze sobą nie kolidują, np. dokonane w różnych miejscach w pliku.
 
@@ -35,7 +35,7 @@ ujednolicą stan plików na komputerach naszych uczniów.
 Lokalne repozytoria z historią zmian
 ------------------------------------
 
-Każdy z uczniów może meć lokalną kopię całej historii zmian w plikach,
+Każdy z uczniów może mieć lokalną kopię całej historii zmian w plikach,
 będzie mógł modyfikować swoje przykłady, ale w kluczowym momencie nauczyciel
 może poprosić by wszyscy zsynchronizowali swoje kopie do jednej sprawdzonej wersji,
 tak by dalej prowadzić zajęcia na jednolitym fundamencie.
@@ -45,7 +45,7 @@ podczas zajęć pozwala wykluczyć pomyłki i wyeliminować problemy wynikające
 we wprowadzonych zmianach.
 
 Poniżej mamy przykład komendy która otworzy pliki w `wersji 5` dla `zadania 2` .
-Nazwy ``zadanie2`` oraz ``wersja5`` sa tylko przykładem, mogą być dowolnie wybrane przez autora.
+Nazwy ``zadanie2`` oraz ``wersja5`` są tylko przykładem, mogą być dowolnie wybrane przez autora.
 
 .. code-block:: bash
 
@@ -78,7 +78,7 @@ W linuksie do instalacji użyjemy menadżera pakietów, np. apt-get:
 Pod windows
 -----------
 
-Zaczynamy od isntalacji narzdzia GIT dla konsoli:
+Zaczynamy od instalacji narzędzia GIT dla konsoli:
 
 .. code-block:: bat
 
@@ -94,7 +94,7 @@ Pod windows polecamy zainstalować SourceTree_, aplikację okienkową i narzędz
     @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
     choco install sourcetree
 
-Jeśli nie mamy PowerShell'a `możemy sciągnąć i zainstalować <http://www.sourcetreeapp.com/download>`_ narzędzie ręcznie.
+Jeśli nie mamy PowerShell'a `możemy ściągnąć i zainstalować <http://www.sourcetreeapp.com/download>`_ narzędzie ręcznie.
 
 Jeśli korzystamy z narzędzia `KeePass <http://keepass.info/>`_ do przechowywania haseł i kluczy SSH,
 to dobrze jest połączyć je z GITem przez narzędzie `Plink <http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html>`_.
@@ -488,7 +488,7 @@ według jednej z wersji zapamiętanej w historii zmian.
     HEAD is now at 302fb3a... poprawiona nazwa CEO
 
 
-Zmiany można też oznaczyć czytelnym tag'iem tak by łatwiej było zapamiętać miejsca docelowe.
+Zmiany można też oznaczyć czytelnym tagiem tak by łatwiej było zapamiętać miejsca docelowe.
 W przykładzie poniżej ``pong/z1`` jest przykładową etykietą wersji plików potrzebnej podczas pracy
 z pierwszym zadaniem ćwiczenia z grą pong.
 
@@ -632,7 +632,7 @@ do centralnego repozytorium przy pomocy specjalnej wersji komendy push.
 
     ~/python101$ git push origin --tags --force
 
-Parametr ``--tags`` mowi komendzie by wypchnęła nasze etykiety,
+Parametr ``--tags`` mówi komendzie by wypchnęła nasze etykiety,
 natomiast ``--force`` wymusi zmiany w ew. istniejących etykietach — bez ``--force``
 serwer może odrzucić nasze zmiany jeśli takie same etykiety już istnieją
 w centralnym repozytorium i są przypisane do innych wersji zmian.
