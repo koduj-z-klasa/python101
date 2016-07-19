@@ -103,7 +103,7 @@ Następnie przy użyciu odpowiednich dekoratorów Flaska definujemy funkcje
 otwierające i zamykające połączenie w ramach każdego cyklu żądanie-odpowiedź,
 co stanowi specyficzny wymóg bazy SQLite.
 
-SQLAlchemy będziemy obsługiwać za pomocą rozszerzenia ``flask.ext.sqlalchemy``,
+SQLAlchemy będziemy obsługiwać za pomocą rozszerzenia ``flask_sqlalchemy``,
 które ułatwia używanie tego systemu ORM. Dzięki niemu tworzymy instancję
 bazy powiązaną z konkretną aplkacją Flaska dzięki prostemu wywołaniu
 odpowiedniego konstruktora (``baza = SQLAlchemy(app)``).
