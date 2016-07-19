@@ -1,7 +1,7 @@
 Sphinx==1.3.1
 # hg+https://bitbucket.org/birkenfeld/sphinx#egg=sphinx
 # sphinx_rtd_theme
-# pip ma problem z instalacj� pod windows, trzeba znale�� obej�cie
+# pip ma problem z instalacją pod windows, trzeba znaleźć obejście
 # pygame
 turtle
 Flask==0.10.1
