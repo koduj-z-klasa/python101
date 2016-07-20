@@ -42,7 +42,7 @@ Połączenie z serwerem
 =====================
 
 Za pomocą wybranego edytora utwórz pusty plik, umieść w nim podany niżej kod i zapisz,
-np. w katalogu :file:`mcpi` pod nazwą :file:`mcpikzk.py`:
+np. w katalogu :file:`mcpi-sim` pod nazwą :file:`mcpikzk.py`:
 
 .. raw:: html
 
@@ -52,10 +52,10 @@ np. w katalogu :file:`mcpi` pod nazwą :file:`mcpikzk.py`:
 .. literalinclude:: mcpikzk01.py
     :linenos:
     :lineno-start: 1
-    :lines: 1-21
+    :lines: 1-25
 
 Bardzo ważną rzeczą jest wskazanie lokalizacji biblioteki mcpi, odpowiada za to instrukcja
-``sys.path.append("/root/mcpi-sim")``, która dołącza katalog :file:`mcpi-sim` do ścieżki
+``sys.path.append("/root/mcpi-sim")``, która dołącza katalog :file:`/root/mcpi-sim` do ścieżki
 przeszukiwania. Jeżeli katalog :file:`mcpi-sim` znajduje się w innym położeniu, ścieżkę
 należy odpowiednio zmodyfikować. Potrzebne moduły importujemy w poleceniach:
 
@@ -80,20 +80,28 @@ Po wykonaniu czynności wstępnych tworzymy podstawowy obiekt reprezentujący gr
 
 .. figure:: img/rasplan-ip.jpg
 
-.. note::
-
-	Omówiony kod (linie 5-18) stanowi niezbędne minimum, które **musi znaleźć się** w każdym skrypcie
-	lub w sesji interpretera (konsoli), jeżeli chcemy widzieć efekty naszych działań
-	na serwerze.
-
-Na końcu wywołujemy metodę ``postToChat()``, która pozwala wysłać i wyświetlić podaną
-wiadomość na czacie Minecrafta.
+Na końcu w funkcji ``main()``, czyli głównej, wywołujemy metodę ``postToChat()``,
+która pozwala wysłać i wyświetlić podaną wiadomość na czacie Minecrafta.
 
 Skrypt uruchamiamy z poziomu edytora, jeśli to możliwe, lub wykonując w terminalu polecenie:
 
 .. code-block:: bash
 
-    ~$ python mcpikzk.py
+    ~/mcpi-sim$ python mcpikzk.py
+
+.. note::
+
+	Omówiony kod (linie 7-17) stanowi **niezbędne minimum**, które **musi znaleźć się** w każdym skrypcie
+	lub w sesji interpretera (konsoli), jeżeli chcemy widzieć efekty naszych działań
+	na serwerze. Dla wygody kopiowania podajemy go w skondensowanej formie:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: mcpikzk00.py
+    :linenos:
 
 
 Świat Minecrafta Pi
@@ -130,14 +138,14 @@ Uruchamiamy rozszerzoną konsolę Pythona wpisując w terminalu polecenie:
 	Uwaga: jeżeli skorzystamy z interpretera podstawowego kod kopiujemy i wklejamy
 	linia po linii.
 
-Kopiujemy omówiony powyżej "Kod 1" służący nawiązaniu połączenia z serwerem i wklejamy
-do okna konsoli, tak jak na poniższym zrzucie:
+Kopiujemy do okna konsoli, uruchamiamy omówiony powyżej "Kod 2", służący nawiązaniu połączenia z serwerem,
+i wysyłamy wiadomość na czat:
 
 .. figure:: img/ipython01.png
 
 Poznamy teraz kilka podstawowych metod pozwalających na manipulowanie światem Minecrafta.
 
-Gdzie jesteś Steve?
+Orientuj się Steve!
 ===================
 
 Wpisz w konsoli poniższy kod:
@@ -147,17 +155,26 @@ Wpisz w konsoli poniższy kod:
     >>> mc.player.getPos()
     >>> x, y, z = mc.player.getPos()
     >>> print x, y, z
+    >>> x, y, z = mc.player.getTilePos()
+    >>> print x, y, z
 
 Metoda ``getPos()`` obiektu ``player`` zwraca nam obiekt zawierający współrzędne określające
-pozycję bohatera. Druga instrukcja rozpakowuje kolejne współrzędne do zmiennych *x*, *y* i *z*.
-Możemy wykorzystać je do zmiany położenia bohatera:
+pozycję bohatera. Metoda ``getTitlePos()`` zwraca z kolei współrzędne bloku, na którym stoi
+bohater. Instrukcje typu ``x, y, z = mc.player.getPos()`` rozpakowują kolejne współrzędne
+do zmiennych *x*, *y* i *z*. Możemy wykorzystać je do zmiany położenia bohatera:
 
 .. code-block:: bash
 
     >>> mc.player.setPos(x+10, y+20, z)
 
-Powyższy kod przesunie bohatera w prawo o 10 bloków i do góry na wysokość 20 bloków.
-Zadanie to możemy realizować za pomocą funkcji, która dodatkowo zwróci nam nową pozycję.
+Powyższy kod przesunie bohatera w bok o 10 bloków i do góry na wysokość 20 bloków.
+Podobnie zadziała kod ``mc.player.setTilePos(x+10, y+20, z)``, który przeniesie postać
+na blok, którego pozycję podamy.
+
+Idź i przesuń się
+-----------------
+
+Zadania takie możemy realizować za pomocą funkcji, które dodatkowo zwrócą nam nową pozycję.
 W pliku :file:`mcpikzk.py` umieszczamy kod:
 
 .. raw:: html
@@ -167,12 +184,28 @@ W pliku :file:`mcpikzk.py` umieszczamy kod:
 .. highlight:: python
 .. literalinclude:: mcpikzk.py
     :linenos:
-    :lineno-start: 24
-    :lines: 24-36
+    :lineno-start: 20
+    :lines: 20-39
 
-Kod testujemy uruchamiając skrypt :file:`mcpikzk.py` lub wklejając do konsoli:
+W pierwszej funkcji ``idzDo()`` warto zwrócić uwagę na metodę ``getHeight()``, która pozwala ustalić
+wysokość świata w punkcie *x, z*, czyli współrzędną *y* najwyższego bloku nie będącego powietrzem.
+Dzięki temu umieścimy bohatera zawsze na jakiejś powierzchni, a nie np. pod ziemią ;-).
+Druga funkcja ``przesunSie()`` nie tyle umieszcza, co przesuwa postać, stąd dodatkowe instrukcje.
+
+Dopisz wywołanie ``print idzDo(50, 0, 50)`` w funkcji ``main()`` przed instrukcją ``return``
+i przetestuj kod uruchamiając skrypt :file:`mcpikzk.py` lub w konsoli. Później dopisz również
+drugą funkcję ``print przesunSie(20)`` i sprawdź jej działanie.
 
 .. figure:: img/ipython02.png
+
+**Ćwiczenie 2**
+
+Sprawdź, co się stanie, kiedy podasz współrzędne większe niż świat Minecrafta.
+Zmień kod obydwu funkcji na "bezpieczny dla życia" ;-)
+
+
+Gdzie jestem?
+-------------
 
 Aby odczytywać i drukować pozycję bohatera dodamy kolejną funkcję do pliku :file:`mcpikzk.py`:
 
@@ -183,18 +216,22 @@ Aby odczytywać i drukować pozycję bohatera dodamy kolejną funkcję do pliku 
 .. highlight:: python
 .. literalinclude:: mcpikzk.py
     :linenos:
-    :lineno-start: 39
-    :lines: 39-49
+    :lineno-start: 42
+    :lines: 42-50
 
-Funkcja nie tylko drukuje koordynaty w konsoli (``print x, y, z``), ale również -
-po przekształceniu ich na listę wartości typu string ``pos_str = map(str, pos_list)`` -
-wysyła jako komunikat na czat Minecrafta. Testujemy kod:
+Funkcja nie tylko drukuje koordynaty w konsoli (``print x, y, z``), ale również –
+po przekształceniu ich na listę wartości typu string ``pos_str = map(str, pos_list)`` –
+wysyła jako komunikat na czat Minecrafta. Wywołanie funkcji dopisujemy do funkcji głównej
+i testujemy kod:
 
 .. figure:: img/ipython03.png
 
 
-Teraz możemy trochę pochodzić, ale będziemy obserwować to z lotu ptaka. Dopiszmy kod
-do pliku :file:`mcpikzk.py`:
+Więcej ruchu
+------------
+
+Teraz możemy trochę pochodzić, ale będziemy obserwować to z lotu ptaka. Dopiszmy kod poniższej
+funkcji do pliku :file:`mcpikzk.py`:
 
 .. raw:: html
 
@@ -203,17 +240,40 @@ do pliku :file:`mcpikzk.py`:
 .. highlight:: python
 .. literalinclude:: mcpikzk.py
     :linenos:
-    :lineno-start: 51
-    :lines: 51-80
+    :lineno-start: 53
+    :lines: 53-87
 
-Jak widać pętla (``for i in range(krok)``) umożliwia symulowanie ruchu postaci.
-Kod testujemy uruchamiając skrypt lub wklejając w konsoli.
+Warto zauważyć, jak pętla ``for i in range(krok)`` umożliwia symulowanie ruchu postaci.
+Wywołanie funkcji dodajemy do funkcji głównej. Kod testujemy uruchamiając skrypt lub w konsoli.
+
+.. figure:: img/ipython04.png
+
+
+Po czym chodzę?
+---------------
+
+Teraz spróbujemy dowiedzieć się, po jakich blokach chodzimy. Definiujemy jeszcze jedną funkcję:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: mcpikzk.py
+    :linenos:
+    :lineno-start: 90
+    :lines: 90-92
+
+Dopisujemy jej wywołanie: ``print "Typ bloku: ", jakiBlok()`` – w funkcji głównej i testujemy.
+
+.. figure:: img/ipython05.png
+
 
 Plac budowy
 ============
 
 Skoro orientujemy się już w przestrzeni, możemy zacząć budować. Na początku wykorzystamy
-symulator. Rozpoczniemy od przygotowania placu budowy.
+**symulator**. Rozpoczniemy od przygotowania placu budowy.
 Posłuży nam do tego odpowiednia funkcja, którą umieścimy w pliku :file:`mc.py`:
 
 .. raw:: html
@@ -314,7 +374,7 @@ po instrukcji rysującej pole budowy ``plac()``.
 Dane gry
 --------
 
-W pliku :file:`lastgame.log` w katalogu :file:`mcpi-sim` znajduje się zapis 100 rund przykładowej rozgrywki.
+W pliku :file:`lastgame.log` w katalogu :file:`mcpi-sim` (lub na końcu w "Źródłach") znajduje się zapis 100 rund przykładowej rozgrywki.
 
 .. note::
 
@@ -406,7 +466,19 @@ przedstawia się tak:
 
 .. figure:: img/mc07.png
 
+**Ćwiczenie 3**
+
+Przekształć kod uruchamiany na symulatorze tak, aby można go było uruchomić na serwerze
+Minecrafta Pi Edition.
+
+[cdn]
+
 Materiały
 =========
 
 1. Minecraft `Pi Edition <http://minecraft.gamepedia.com/Pi_Edition>`_
+
+**Źródła:**
+
+* :download:`Skrypty mcpi <mcpi.zip>`
+* :download:`Logi RG <lastgame.zip>`

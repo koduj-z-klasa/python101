@@ -2,13 +2,12 @@
 # -*- coding: utf-8 -*-
 
 # dodanie ścieżki do biblioteki minecraft
+# import modułów minecrafta
+# ustawienie nazwy użytkownika i komputera
 import sys
 sys.path.append("/root/mcpi-sim")
-# import modułów minecrafta
-import mcpi.minecraft as minecraft
-import mcpi.block as block
-
-# ustawienie nazwy użytkownika i komputera
+import mcpi.minecraft as minecraft  # import modułu minecraft
+import mcpi.block as block  # import modułu block
 import os
 os.environ["USERNAME"] = "Steve"  # wpisz dowolną nazwę użytkownika
 os.environ["COMPUTERNAME"] = "mykomp"  # wpisz dowolną nazwę komputera
@@ -17,23 +16,27 @@ os.environ["COMPUTERNAME"] = "mykomp"  # wpisz dowolną nazwę komputera
 # UWAGA: wpisujemy adres IP minikomputera Raspberry Pi!
 mc = minecraft.Minecraft.create("192.168.1.8")
 
-# wysłanie komunikatu do mc
-mc.postToChat("Czesc! Tak dziala MC chat!")
+
+def idzDo(x=0, y=0, z=0):
+    """Funkcja przenosi gracza w podane miejsce.
+    Parametry: x, y, z - współrzędne miejsca
+    """
+    y = mc.getHeight(x, z)  # ustalenie wysokości podłoża
+    mc.player.setPos(x, y, z)
+    return mc.player.getPos()
 
 
-def przesun(x1=0, y1=0, z1=0):
+def przesunSie(x1=0, y1=0, z1=0):
     """Funkcja przesuwa gracza o podaną liczbę bloków
     i zwraca nową pozycję.
-
     Parametry: x1, y1, z1 - ilość bloków, o którą powiększamy
     lub pomniejszamy współrzędne pozycji gracza.
     """
 
-    x, y, z = mc.player.getPos()
+    x, y, z = mc.player.getPos()  # aktualna pozycja
+    y = mc.getHeight(x + x1, z + z1)  # ustalenie wysokości podłoża
     mc.player.setPos(x + x1, y + y1, z + z1)
     return mc.player.getPos()
-
-print przesun(20)
 
 
 def drukujPoz():
@@ -44,37 +47,53 @@ def drukujPoz():
     pos = mc.player.getPos()
     print pos
     pos_str = map(str, (pos.x, pos.y, pos.z))
-    mc.postToChat(", ".join(pos_str))
+    mc.postToChat("Pozycja: " + ", ".join(pos_str))
 
-drukujPoz()
 
-from time import sleep
+def ruszajSie():
+    from time import sleep
 
-krok = 10
-mc.player.setPos(0, 0, 0)
-# pobranie współrzędnych aktualnej pozycji gracza
-x, y, z = mc.player.getPos()
+    krok = 10
+    # ustawienie pozycji gracza w środku świata na odpowiedniej wysokości
+    przesunSie(0, 0, 0)
 
-for i in range(krok):
-    przesun(0, 2, 0)  # idź 2*krok bloków do góry - latamy :-)
-sleep(2)
+    mc.postToChat("Latam...")
+    przesunSie(0, krok, 0)  # idź krok bloków do góry - latamy :-)
+    sleep(2)
 
-mc.camera.setFollow()  # ustawienie kamery z góry
+    mc.camera.setFollow()  # ustawienie kamery z góry
 
-for i in range(krok):
-    przesun(1)  # idź krok bloków w prawo
-sleep(2)
+    mc.postToChat("Ide w bok...")
+    for i in range(krok):
+        przesunSie(1)  # idź krok bloków w bok
+    sleep(2)
 
-for i in range(krok):
-    przesun(-1)  # idź krok bloków w lewo
-sleep(2)
+    mc.postToChat("Ide w drugi bok...")
+    for i in range(krok):
+        przesunSie(-1)  # idź krok bloków w drugi bok
+    sleep(2)
 
-for i in range(krok):
-    przesun(0, 0, 1)  # idź krok bloków do przodu
-sleep(2)
+    mc.postToChat("Ide do przodu...")
+    for i in range(krok):
+        przesunSie(0, 0, 1)  # idź krok bloków do przodu
+    sleep(2)
 
-for i in range(krok):
-    przesun(0, 0, -1)  # idź krok bloków do tyłu
+    mc.postToChat("Ide do tylu...")
+    for i in range(krok):
+        przesunSie(0, 0, -1)  # idź krok bloków do tyłu
+    sleep(2)
 
-drukujPoz()
-mc.camera.setNormal()  # ustawienie kamery normalnie
+    drukujPoz()
+    mc.camera.setNormal()  # ustawienie kamery normalnie
+
+
+def main(args):
+    mc.postToChat("Czesc! Tak dziala MC chat!")  # wysłanie komunikatu do mc
+    print idzDo(50, 0, 50)  # wywołanie funkcji idzDo()
+    print przesunSie(20)  # wywołanie funkcji przesun()
+    drukujPoz()  # wywołanie funkcji drukujPoz()
+    ruszajSie()  # wywołanie funkcji ruszajSie()
+    return 0
+
+if __name__ == '__main__':
+    sys.exit(main(sys.argv))
