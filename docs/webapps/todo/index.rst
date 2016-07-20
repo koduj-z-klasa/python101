@@ -49,14 +49,7 @@ Serwer uruchamiamy komendą:
 
     ~/todo$ python todo.py
 
-.. figure:: img/serwer.png
-
-.. note::
-
-    Jeżeli zaktualizowałeś pakiet Flask, a wraz z nim moduł Werkzeug,
-    w terminalu zobaczysz nieco inne komunikaty.
-
-.. figure:: img/serwer2.jpg
+.. figure:: img/serwer.jpg
 
 Domyślnie serwer uruchamia się pod adresem *http://127.0.0.1:5000*.
 Po wpisaniu go do przeglądarki internetowej otrzymamy :term:`kod odpowiedzi HTTP` 404,
