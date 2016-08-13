@@ -53,7 +53,7 @@ w terminalu wydajemy następujące polecenia:
 .. code-block:: bash
 
     ~$ sudo apt-get update
-    ~$ sudo apt-get install python-pip python-pygame python-matplotlib git sqlite3
+    ~$ sudo apt-get install python-pip python-pygame python-tk python-matplotlib git sqlite3
     ~$ sudo apt-get install ipython ipython-qtconsole
     ~$ sudo pip install virtualenv flask django peewee sqlalchemy flask-sqlalchemy
 
@@ -63,7 +63,7 @@ w terminalu wydajemy następujące polecenia:
 .. code-block:: bash
 
     ~# pacman -Syyu
-    ~# pacman -S python2-pip python2-pygame python2-matplotlib git sqlite
+    ~# pacman -S python2-pip python2-pygame tk python2-matplotlib git sqlite
     ~# pacman -S ipython2-notebook python2-pyqt5
     ~# pip2 install virtualenv flask django peewee sqlalchemy flask-sqlalchemy
 
