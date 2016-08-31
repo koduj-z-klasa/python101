@@ -1,4 +1,4 @@
-.. _widzety:
+.. _widzety-qt5:
 
 Widżety
 ###########################
@@ -11,16 +11,11 @@ Przykład ilustruje również techniki `programowania obiektowego <https://pl.wi
 
 .. attention::
 
-    **Wymagane oprogramowanie**:
-
-      * Python v. 2.7.x lub 3.x
-      * PyQt v. => 5.2.1
-
     **Wymagana wiedza**:
 
     	* Znajomość Pythona w stopniu średnim.
     	* Znajomość podstaw projektowania interfejsu z wykorzystaniem bibliotek Qt
-    	  (zob. scenariusz :ref:`Kalkulator <kalkulator>`).
+    	  (zob. scenariusz :ref:`Kalkulator <kalkulator-qt5>`).
 
 .. contents::
     :depth: 1
@@ -42,13 +37,13 @@ za pomocą dowolnego edytora. Wstawiamy do niego poniższy kod:
 
 Podstawową klasą opisującą naszą aplikację będzie klasa ``Widgety``. Umieścimy
 w niej głównie logikę aplikacji, czyli powiązania sygnałów i slotów (zob.: :term:`sygnały i sloty`)
-oraz implementację tych ostatnich. Klasa ta dziedziczy z zaimportowanej klasy ``Ui_Widget``
+oraz implementację tych ostatnich. Klasa ta dziedziczy z zaimportowanej z pliku :file:`gui.py` klasy ``Ui_Widget``
 i w swoim konstruktorze (``def __init__(self, parent=None)``) wywołuję odziedziczoną
 metodę ``self.setupUi(self)``, aby zbudować interfejs. Pozostała część pliku
 tworzy instancję aplikacji, instancję okna głównego, czyli klasy ``Widgety``,
 wyświetla je i uruchamia pętlę zdarzeń.
 
-Klasę ``Ui_Widget`` dla przejrzystości umieścimy w osobnym pliku o nazwie :file:`gui.py`.
+Klasę ``Ui_Widget`` dla przejrzystości umieszczamy we wspomnianym pliku o nazwie :file:`gui.py`.
 Tworzymy go i wstawiamy poniższy kod:
 
 .. raw:: html
@@ -73,7 +68,7 @@ Określając rodzaj rysowanego kształtu, będziemy używali konstrukcji typu ``
 tak jak w głównej metodzie klasy ``Ui_Widget`` o nazwie ``setupUi()``. Definiujemy w niej zmienną
 wskazującą rysowany kształt (``self.ksztalt = Ksztalty.Ellipse``) oraz jego właściwości,
 czyli rozmiar, kolor obramowania i wypełnienia. Kolory opisujemy za pomocą klasy
-`QColor <http://doc.qt.io/qt-5/qcolor.html>`_, przy czym używamy formatu `RGB <https://pl.wikipedia.org/wiki/RGB>`_,
+`QColor <http://doc.qt.io/qt-5/qcolor.html>`_, używając formatu `RGB <https://pl.wikipedia.org/wiki/RGB>`_,
 np .: ``self.kolorW = QColor(200, 30, 40)``.
 
 Za rysowanie każdego widżetu, w tym wypadku głównego okna, odpowiada funkcja
@@ -104,7 +99,7 @@ druga prawego dolnego rogu prostokąta.
 **Ćwiczenie**
 
     * Przetestuj działanie aplikacji wydając w katalogu z plikami źródłowymi polecenie
-      w terminalu: ``python3 widzety.py``.
+      w terminalu: ``python widzety.py``.
     * Spróbuj zmienić rodzaj rysowanej figury oraz kolory jej obramowania i wypełnienia.
 
 .. figure:: img/widzety00.png
@@ -138,7 +133,7 @@ Najważniejsza metoda, tj. ``paintEvent()``, w ogóle się nie zmienia. Natomias
 * ``qp.drawLine()`` – pozwala narysować linię wyznaczoną przez współrzędne punktu
   początkowego i końcowego typu ``QPoint``; nasza klasa wykorzystuje tu współrzędne
   lewego górnego (``self.prost.topLeft()``) i prawego dolnego (``self.prost.bottomRight()``)
-  rogu domyślnego prostokąta: ``prost = QRect(1, 1, 100, 100)``.
+  rogu domyślnego prostokąta: ``prost = QRect(1, 1, 101, 101)``.
 
 Konstruktor naszej klasy: ``__init__(self, parent, ksztalt=Ksztalty.Rect)`` –
 umożliwia opcjonalne przekazanie w drugim argumencie typu rysowanego kształtu. Domyślnie
@@ -151,7 +146,7 @@ i wypełnienia ``self.kolorW``.
     Warto zrozumieć różnicę pomiędzy **zmiennymi klasy** a **zmiennymi instancji**.
     Zmienne (właściwości) klasy, określane również jako dane statyczne, są wspólne
     dla wszystkich jej instancji. W naszej aplikacji zdefiniowaliśmy w ten sposób dostępne
-    kształty, a także zmienne ``prost`` i ``punkty`` klasy *Kształt*.
+    kształty, a także zmienne ``prost`` i ``punkty`` klasy *Ksztalt*.
 
     Zmienne instancji natomiast są inne dla każdego obiektu.
     Definiujemy je w konstruktorze, używając słowa ``self``. Np. każda instancja klasy
@@ -223,9 +218,9 @@ Funkcja ``setupUi()`` przyjmuje następującą postać:
 .. highlight:: python
 .. literalinclude:: gui_z2.py
     :linenos:
-    :lineno-start: 12
-    :lines: 12-
-    :emphasize-lines: 12-13, 15
+    :lineno-start: 13
+    :lines: 13-
+    :emphasize-lines: 16-17, 23
 
 Do tworzenia przycisków wykorzystujemy pętlę ``for``, która odczytuje z tupli
 kolejne indeksy i etykiety przycisków. Jeśli masz wątpliwości, jak to działa,
@@ -233,7 +228,7 @@ przetestuj następujący kod w terminalu:
 
 .. code-block:: bash
 
-    ~$ python3
+    ~$ python
     >>> for i, v in enumerate(('Kwadrat', 'Koło', 'Trójkąt', 'Linia')):
     ...   print(i, v)
 
@@ -269,8 +264,8 @@ Teraz zajmiemy się obsługą sygnałów. W pliku :file:`widzety.py` rozbudowuje
 .. highlight:: python
 .. literalinclude:: widzety_z2.py
     :linenos:
-    :lineno-start: 8
-    :lines: 8-31
+    :lineno-start: 9
+    :lines: 9-32
 
 Na początku kliknięcie któregokolwiek z przycisków wyboru wiążemy z funkcją ``ustawKsztalt``:
 ``self.grupaChk.buttonClicked[int].connect(self.ustawKsztalt)``. Zapis ``buttonClicked[int]``
@@ -322,9 +317,9 @@ wstawiamy:
 .. highlight:: python
 .. literalinclude:: gui_z3.py
     :linenos:
-    :lineno-start: 42
-    :lines: 42-68
-    :emphasize-lines: 16-18, 22
+    :lineno-start: 43
+    :lines: 43-69
+    :emphasize-lines: 15-17
 
 Do zmiany wartości składowych kolorów RGB wykorzystamy instancję klasy `QSlider <http://doc.qt.io/qt-5/qslider.html>`_,
 czyli popularny suwak, w tym wypadku poziomy. Po utworzeniu obiektu, ustawiamy za pomocą
@@ -361,8 +356,8 @@ okna aplikacji. Przedostatnią linię ``self.setLayout(ukladH1)`` zastępujemy p
 .. highlight:: python
 .. literalinclude:: gui_z3.py
     :linenos:
-    :lineno-start: 70
-    :lines: 70-
+    :lineno-start: 77
+    :lines: 77-
 
 **Ustawienia wstępne i obsługa zdarzeń**
 
@@ -381,8 +376,8 @@ Dalej tworzymy dwie zmienne klasy *Widgety*:
 .. highlight:: python
 .. literalinclude:: widzety_z3.py
     :linenos:
-    :lineno-start: 9
-    :lines: 9-13
+    :lineno-start: 10
+    :lines: 10-14
 
 Następnie uzupełniamy konstruktor (``__init__()``), a za nim dopisujemy dwie funkcje:
 
@@ -393,12 +388,12 @@ Następnie uzupełniamy konstruktor (``__init__()``), a za nim dopisujemy dwie f
 .. highlight:: python
 .. literalinclude:: widzety_z3.py
     :linenos:
-    :lineno-start: 23
-    :lines: 23-46
+    :lineno-start: 24
+    :lines: 24-47
 
 Ze zmianą stanu przycisków Radio związany jest sygnał ``toggled``. W pętli
 ``for i in range(self.ukladR.count()):`` wiążemy go dla każdego
-przycisku układu z funkcją ``ustawKanal()``. Otrzymuje ona wartość logiczną.
+przycisku układu z funkcją ``ustawKanalRBtn()``. Otrzymuje ona wartość logiczną.
 Zadaniem funkcji jest zresetowanie zbioru kolorów i dodanie do niego
 litery opisującej zaznaczony przycisk: ``self.kanaly.add(nadawca.text())``.
 
@@ -436,8 +431,8 @@ Po komentarzu ``# koniec RadioButton ###`` uzupełniamy kod funkcji ``setupUi()`
 .. highlight:: python
 .. literalinclude:: gui_z4.py
     :linenos:
-    :lineno-start: 71
-    :lines: 71-88
+    :lineno-start: 72
+    :lines: 72-89
     :emphasize-lines: 4, 8-9
 
 Po utworzeniu obiektu listy za pomocą pętli ``for`` dodajemy kolejne elementy,
@@ -460,8 +455,8 @@ i dopisujemy dwie nowe funkcje:
 .. highlight:: python
 .. literalinclude:: widzety_z4.py
     :linenos:
-    :lineno-start: 27
-    :lines: 27-44
+    :lineno-start: 28
+    :lines: 28-45
 
 Po uruchomieniu aplikacji aktywna jest tylko grupa przycisków Radio.
 Kliknięcie tej grupy przechwytujemy: ``self.grupaRBtn.clicked.connect(self.ustawStan)``.
@@ -494,7 +489,7 @@ które zachowywać się będą jak grupa przycisków wielokrotnego wyboru.
 
     from PyQt5.QtWidgets import QPushButton
 
-Następnie dopisujemy kod w funkcji ``setupUi()``:
+Następnie po komentarzu ``# koniec ComboBox i SpinBox ###`` dopisujemy kod w funkcji ``setupUi()``:
 
 .. raw:: html
 
@@ -503,16 +498,16 @@ Następnie dopisujemy kod w funkcji ``setupUi()``:
 .. highlight:: python
 .. literalinclude:: gui_z5.py
     :linenos:
-    :lineno-start: 91
-    :lines: 91-106
+    :lineno-start: 92
+    :lines: 92-107
     :emphasize-lines: 4, 6-8
 
 Przyciski, jak poprzednio, tworzymy w pętli, podając w konstruktorze litery
 składowych koloru RGB: ``self.btn = QPushButton(v)``. Każdy przycisk przekształcamy
 na stanowy (może być trwale wciśnięty) za pomocą metody ``setCheckable()``.
-Kolejne obiekty dodajemy do grupy logicznej typu *QButtonGroup*:
+Kolejne obiekty dodajemy do grupy logicznej typu `QButtonGroup <http://doc.qt.io/qt-5/qbuttongroup.html>`_:
 ``self.grupaP.addButton(self.btn)``; oraz do układu poziomego.
-Układ przycisków dodajemy do ramki typu *QGropBox* z przyciskiem CheckBox:
+Układ przycisków dodajemy do ramki typu `QGropBox <http://doc.qt.io/qt-5/qgroupbox.html>`_ z przyciskiem CheckBox:
 ``self.grupaPBtn.setCheckable(True)``. Na początku ramkę wyłączamy: ``self.grupaPBtn.setChecked(False)``.
 
 **Uwaga**: na koniec musimy dodać grupę przycisków do głównego układu okna:
@@ -528,15 +523,15 @@ i jedną nową funkcję:
 .. highlight:: python
 .. literalinclude:: widzety_z5.py
     :linenos:
-    :lineno-start: 31
-    :lines: 31-41
+    :lineno-start: 32
+    :lines: 32-42
 
 Pętla ``for btn in self.grupaP.buttons():`` odczytuje kolejne przyciski
 z grupy ``grupaP``, i kliknięcie każdego wiąże z nową funkcją:
 ``btn.clicked[bool].connect(self.ustawKanalPBtn)``. Zadaniem funkcji
 jest dodawanie kanału do zbioru, jeżeli przycisk został wciśnięty,
 i usuwanie ich ze zbioru w przeciwnym razie. Inaczej niż w poprzednich
-funkcjach, obsługujących przyciski Radio i listę ComboBox, nie resetujemy
+funkcjach, obsługujących przyciski *Radio* i listę *ComboBox*, nie resetujemy
 tu zbioru kanałów.
 
 Przetestuj zmodyfikowaną aplikację.
@@ -556,7 +551,7 @@ jako 1-liniowe pola edycyjne typu `QLineEdit <http://doc.qt.io/qt-5/qlineedit.ht
 
     from PyQt5.QtWidgets import QLabel, QLineEdit
 
-Następnie uzupełnij funkcję ``setupUi()``:
+Następnie po komentarzu ``# koniec PushButton ###`` uzupełnij funkcję ``setupUi()``:
 
 .. raw:: html
 
@@ -565,8 +560,8 @@ Następnie uzupełnij funkcję ``setupUi()``:
 .. highlight:: python
 .. literalinclude:: gui_z6.py
     :linenos:
-    :lineno-start: 109
-    :lines: 109-123
+    :lineno-start: 110
+    :lines: 110-124
     :emphasize-lines: 10-11
 
 Zaczynamy od utworzenia trzech etykiet i trzech pól edycyjnych dla każdego kanału.
@@ -590,8 +585,8 @@ funkcję informacyjną:
 .. highlight:: python
 .. literalinclude:: widzety_z6.py
     :linenos:
-    :lineno-start: 35
-    :lines: 35-56
+    :lineno-start: 36
+    :lines: 36-57
 
 W pętli, podobnej jak w pliku interfejsu, sygnał zmiany tekstu pola typu *QLineEdit*
 wiążemy z dodaną wcześniej funkcją ``zmienKolor()``. Będziemy mogli wpisywać w tych
@@ -709,4 +704,3 @@ Materiały
 **Źródła:**
 
 * :download:`Widżety Qt5 <widzety_qt5.zip>`
-* :download:`Widżety Qt4 <widzety_qt4.zip>`

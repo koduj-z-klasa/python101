@@ -3,40 +3,36 @@
 Instalacja
 ############
 
-W systemach opartych na Debianie ((X)Ubuntu, Linux Mint itp.)
-i w systemach opartych na Arch Linuksie (Manjaro itp.):
-
-.. code-block:: bash
-
-    ~$ sudo apt-get install python3-pyqt5
-    ~# pacman -S python-pyqt5
-
-.. tip::
-
-	Powyższe polecenia zainstalują bibliotekę PyQt5 dla Pythona 3.
-	Jeżeli chcemy wersji dla Pythona 2, użyjemy pakietów: ``python-pyqt5``,
-	a w Archu ``python2-pyqt5``.
-
-W systemach Windows ze strony `Python Releases for Windows <https://www.python.org/downloads/windows/>`_
-pobieramy instalator Pythona 3 w 32- lub 64-bitowej wersji i instalujemy.
-Następnie pobieramy ze strony `PyQt5 Download <https://riverbankcomputing.com/software/pyqt/download5>`_
-instalator PyQt5 w wersji 32- lub 64-bitowej i również instalujemy.
-Autorzy PyQt5 na stronach Riverbank nie udostępniają wersji dla Pythona 2.
-
 PyQt5 + Python2
 ****************
 
-Przykłady w scenariuszach napisane są dla PyQt5+Pythona3, ale jeżeli zainstalowaliśmy
-PyQt5+Python2, żeby zadziałały wystarczy:
-* w pierwszej linii zmienić ``python3`` na ``python`` lub ``python2``;
-* wywołanie ``super().__init__(parent)`` zmienić na ``super(nazwa_klasy, self).__init__(parent)``;
-* na początku każdego pliku źródłowego dodać import ``from __future__ import unicode_literals``.
+W systemach Linux opartych na Debianie ((X)Ubuntu, Linux Mint itp.) lub na Arch Linuksie (Manjaro itp.):
 
-PyQt5 vs PyQt4
-**************
+.. code-block:: bash
+
+    ~$ sudo apt-get install python-pyqt5
+    ~# pacman -S python2-pyqt5
+
+Ponieważ Riverbank nie udostępnia pakietów binarnych PyQt5 dla Pythona 2 pod systemem Windows,
+ze strony `Python Releases for Windows <https://www.python.org/downloads/windows/>`_
+pobieramy instalator Pythona 3 w 32- lub 64-bitowej wersji i instalujemy.
+Następnie postępujemy wg instrukcji ze strony `PyQt5 Download <https://riverbankcomputing.com/software/pyqt/download5>`_. Gdybyśmy jednak chcieli skorzystać z połączenia Python2 + PyQt5,
+postęþujemy wg instrukcji ze strony ` PyQt5 for Windows via PyPI <https://github.com/pyqt/python-qt5>`_.
+
+PyQt5 + Python3
+****************
+
+Przykłady w scenariuszach napisane są dla PyQt5+Pythona2, ale jeżeli zainstalowaliśmy
+PyQt5+Python3, żeby zadziałały wystarczy:
+* w pierwszej linii zmienić ``python`` na ``python3``;
+* wywołanie ``super().__init__(parent)`` zmienić na ``super(nazwa_klasy, self).__init__(parent)``;
+* na początku każdego pliku źródłowego usunąć lub zakomentować import ``from __future__ import unicode_literals``.
+
+PyQt4 + Python2
+****************
 
 Wszystkie przykłady aplikacji z naszych scenariuszy można kodować
-i uruchamiać za pomocą bibliotek Qt4, PyQt4 i Pythona 2.
+i uruchamiać za pomocą starszych bibliotek Qt4, PyQt4 i Pythona 2.
 Zmiany w kodzie są niewielkie i dotyczą kodowania napisów, obiektów *QVariant* oraz importów.
 Tak więc:
 

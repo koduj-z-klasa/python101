@@ -1,6 +1,7 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
 from PyQt5.QtWidgets import QApplication, QWidget
 from gui_z6 import Ui_Widget
 from PyQt5.QtGui import QColor
@@ -34,7 +35,7 @@ class Widgety(QWidget, Ui_Widget):
         self.grupaPBtn.clicked.connect(self.ustawStan)
         # etykiety QLabel i pola QEditLine ###
         for v in ('R', 'G', 'B'):
-            kolor = getattr(self, 'kolor'+v)
+            kolor = getattr(self, 'kolor' + v)
             kolor.textEdited.connect(self.zmienKolor)
 
     def info(self):
@@ -42,8 +43,8 @@ class Widgety(QWidget, Ui_Widget):
         fontN = "QWidget { font-weight: normal }"
 
         for v in ('R', 'G', 'B'):
-            label = getattr(self, 'label'+v)
-            kolor = getattr(self, 'kolor'+v)
+            label = getattr(self, 'label' + v)
+            kolor = getattr(self, 'kolor' + v)
             if v in self.kanaly:
                 label.setStyleSheet(fontB)
                 kolor.setEnabled(True)

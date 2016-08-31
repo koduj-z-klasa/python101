@@ -1,4 +1,6 @@
-Aplikacje okienkowe
+.. _pyqt5:
+
+Aplikacje okienkowe Qt5
 ###########################
 
 `PyQt <https://pl.wikipedia.org/wiki/PyQt>`_ to zbiór bibliotek `Pythona <https://www.python.org/>`_
@@ -8,8 +10,8 @@ framework `Qt <https://pl.wikipedia.org/wiki/Qt>`_ (zob. również oficjalną st
 dostępny w wersji `Open Source <https://pl.wikipedia.org/wiki/Otwarte_oprogramowanie>`_  na licencji `GNU LGPL <https://pl.wikipedia.org/wiki/GNU_Lesser_General_Public_License>`_ .
 Działa na wielu platformach i systemach operacyjnych.
 
-Najbardziej rozpowszechnioną wersją jest Qt 4, jednak jej wsparcie kończy się pod koniec 2015 r.
-Najnowszą wersją jest Qt 5.
+Najnowszą stabilną wersją jest Qt 5, można programować z jej pomocą zarówno przy użyciu Pythona 2, jak i 3.
+Nasze scenariusze przygotowane zostały z wykorzystaniem Pythona 2 i bilioteki PyQt5.
 
 .. toctree::
     :maxdepth: 2

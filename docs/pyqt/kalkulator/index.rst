@@ -1,4 +1,4 @@
-.. _kalkulator:
+.. _kalkulator-qt5:
 
 Kalkulator
 ###########################
@@ -6,18 +6,10 @@ Kalkulator
 .. highlight:: python
 
 Prosta 1-okienkowa aplikacja ilustrująca podstawy tworzenia interfejsu graficznego
-i obsługi działań użytkownika za pomocą Pythona (PyQt5) i biblioteki Qt5.
-Przykład wprowadza również podstawy `programowania obiektowego <https://pl.wikipedia.org/wiki/Programowanie_obiektowe>`_
-(ang. Object Oriented Programing).
+i obsługi działań użytkownika za pomocą Pythona 2, PyQt5 i biblioteki Qt5.
+Przykład wprowadza również podstawy `programowania obiektowego <https://pl.wikipedia.org/wiki/Programowanie_obiektowe>`_ (ang. Object Oriented Programing).
 
-.. figure:: img/kalkulator05.png
-
-.. attention::
-
-    **Wymagane oprogramowanie**:
-
-      * Python v. 2.7.x lub 3.x
-      * PyQt v. => 5.2.1
+.. figure:: img//kalkulator05.png
 
 .. contents::
     :depth: 1
@@ -37,12 +29,15 @@ za pomocą dowolnego edytora. Wstawiamy do niego poniższy kod:
 .. literalinclude:: kalkulator01.py
     :linenos:
 
+Import ``from __future__ import unicode_literals`` ułatwi nam obsługę napisów zawierających
+znaki narodowe, np. polskie "ogonki".
+
 Podstawą naszego programu będzie moduł ``PyQt5.QtWidgets``, z którego importujemy
 klasy ``QApplication`` i ``QWidget`` – podstawową klasę wszystkich elementów interfejsu graficznego.
 
 Wygląd okna naszej aplikacji definiować będziemy za pomocą klasy *Kalkulator*
 dziedziczącej (zob. :term:`dziedziczenie`) właściwości i metody z klasy *QWidget* (``class Kalkulator(QWidget)``).
-Instrukcja ``super().__init()__`` zwraca nam klasę rodzica i wywołuje jego :term:`konstruktor`.
+Instrukcja ``super(Kalkulator, self).__init__(parent)`` zwraca nam klasę rodzica i wywołuje jego :term:`konstruktor`.
 Z kolei w konstruktorze naszej klasy wywołujemy metodę ``interfejs()``,
 w której tworzyć będziemy :term:`GUI` naszej aplikacji. Ustawiamy więc właściwości
 okna aplikacji i jego zachowanie:
@@ -79,9 +74,9 @@ Przetestujmy kod. Program uruchamiamy poleceniem wydanym w terminalu w katalogu 
 
 .. code-block:: bash
 
-    ~$ python3 kalkulator.py
+    ~$ python kalkulator.py
 
-.. figure:: img/kalkulator01.png
+.. figure:: img//kalkulator01.png
 
 
 Widżety
@@ -99,8 +94,8 @@ Dodajemy wymagane importy i rozbudowujemy metodę ``interfejs()``:
 .. highlight:: python
 .. literalinclude:: kalkulator02.py
     :linenos:
-    :lineno-start: 5
-    :lines: 5-6
+    :lineno-start: 6
+    :lines: 6-7
 
 .. raw:: html
 
@@ -109,18 +104,19 @@ Dodajemy wymagane importy i rozbudowujemy metodę ``interfejs()``:
 .. highlight:: python
 .. literalinclude:: kalkulator02.py
     :linenos:
-    :lineno-start: 16
-    :lines: 16-35
+    :lineno-start: 17
+    :lines: 17-36
 
 Dodawanie etykiet zaczynamy od utworzenia obiektów na podstawie odpowiedniej klasy,
 w tym wypadku `QtLabel <http://doc.qt.io/qt-5/qlabel.html>`_. Do jej konstruktora
-przekazujemy tekst, który ma się wyświetlać na etykiecie, np.: ``etykieta1 = QLabel("Liczba 1:")``.
+przekazujemy tekst, który ma się wyświetlać na etykiecie, np.: ``etykieta1 = QLabel("Liczba 1:", self)``.
+Opcjonalny drugi argument wskazuje obiekt rodzica danej kontrolki.
 
 Później tworzymy pomocniczy obiekt służący do rozmieszczenia etykiet w układzie
 tabelarycznym: ``ukladT = QGridLayout()``. Kolejne etykiety dodajemy do niego za
 pomocą metody ``addWidget()``. Przyjmuje ona nazwę obiektu oraz numer wiersza i kolumny
 definiujących komórkę, w której znaleźć się ma obiekt. Zdefiniowany układ
-(ang. layout) musimy powiązać z oknem naszej aplikacji: ``self.setLayout(ukladT)``.
+(ang. *layout*) musimy powiązać z oknem naszej aplikacji: ``self.setLayout(ukladT)``.
 
 Na koniec używamy metody ``setGeometry()`` do określenia położenia okna aplikacji
 (początek układu jest w lewym górnym rogu ekranu) i jego rozmiaru (szerokość, wysokość).
@@ -134,7 +130,7 @@ Dodajemy również ikonę pokazywaną w pasku tytułowym lub w miniaturze na pa
 
 Przetestuj wprowadzone zmiany.
 
-.. figure:: img/kalkulator02.png
+.. figure:: img//kalkulator02.png
 
 Interfejs
 **********
@@ -149,8 +145,8 @@ Jak zwykle, zaczynamy od zaimportowania potrzebnych klas:
 .. highlight:: python
 .. literalinclude:: kalkulator03.py
     :linenos:
-    :lineno-start: 7
-    :lines: 7
+    :lineno-start: 8
+    :lines: 8
 
 Następnie przed instrukcją ``self.setLayout(ukladT)`` wstawiamy następujący kod:
 
@@ -161,8 +157,8 @@ Następnie przed instrukcją ``self.setLayout(ukladT)`` wstawiamy następujący 
 .. highlight:: python
 .. literalinclude:: kalkulator03.py
     :linenos:
-    :lineno-start: 30
-    :lines: 30-56
+    :lineno-start: 31
+    :lines: 31-58
 
 Jak widać, dodawanie widżetów polega zazwyczaj na:
 
@@ -180,7 +176,7 @@ Jak widać, dodawanie widżetów polega zazwyczaj na:
 .. note::
 
     Jeżeli chcemy mieć dostęp do właściwości obiektów interfejsu w zasięgu całej klasy,
-    czyli w innych funkcjach obiekty musimy definiować jako składowe klasy, a więc
+    czyli w innych funkcjach, obiekty musimy definiować jako składowe klasy, a więc
     poprzedzone słowem ``self``, np.: ``self.liczba1Edt = QLineEdit()``.
 
 
@@ -192,7 +188,7 @@ Znak ``&`` przed jakąś literą w opisie przycisków tworzy z kolei skrót klaw
 
 Po uruchomieniu programu powinniśmy zobaczyć okno podobne do poniższego:
 
-.. figure:: img/kalkulator03.png
+.. figure:: img//kalkulator03.png
 
 Zamykanie programu
 *******************
@@ -200,8 +196,9 @@ Zamykanie programu
 Mamy okienko z polami edycyjnymi i przyciskami, ale kontrolki te na nic nie reagują.
 Nauczymy się więc obsługiwać poszczególne zdarzenia. Zacznijmy od zamykania aplikacji.
 
-Na początku zaimportujmy klasę *QMessageBox* pozwalającą tworzyć komunikaty
-oraz przestrzeń nazw `Qt <http://doc.qt.io/qt-5/qt.html>`_ zawierającą różne stałe:
+Na początku zaimportujmy klasę `QMessageBox <http://doc.qt.io/qt-5/qmessagebox.html>`_
+pozwalającą tworzyć komunikaty oraz przestrzeń nazw `Qt <http://doc.qt.io/qt-5/qt.html>`_
+zawierającą różne stałe:
 
 .. raw:: html
 
@@ -210,8 +207,8 @@ oraz przestrzeń nazw `Qt <http://doc.qt.io/qt-5/qt.html>`_ zawierającą różn
 .. highlight:: python
 .. literalinclude:: kalkulator04.py
     :linenos:
-    :lineno-start: 8
-    :lines: 8-9
+    :lineno-start: 9
+    :lines: 9-10
 
 Dalej po instrukcji ``self.setLayout(ukladT)`` w metodzie ``interfejs()`` dopisujemy:
 
@@ -222,8 +219,8 @@ Dalej po instrukcji ``self.setLayout(ukladT)`` w metodzie ``interfejs()`` dopisu
 .. highlight:: python
 .. literalinclude:: kalkulator04.py
     :linenos:
-    :lineno-start: 64
-    :lines: 64
+    :lineno-start: 65
+    :lines: 65
 
 – instrukcja ta wiąże kliknięcie przycisku "Koniec" z wywołaniem metody ``koniec()``,
 którą musimy dopisać na końcu klasy ``Kalkulator()``:
@@ -235,8 +232,8 @@ którą musimy dopisać na końcu klasy ``Kalkulator()``:
 .. highlight:: python
 .. literalinclude:: kalkulator04.py
     :linenos:
-    :lineno-start: 71
-    :lines: 71-72
+    :lineno-start: 72
+    :lines: 72-73
 
 Funkcja ``koniec()``, obsługująca wydarzenie (ang. *event*) kliknięcia przycisku,
 wywołuje po prostu metodę ``close()`` okna głównego.
@@ -259,8 +256,8 @@ Do klasy ``Kalkulator()`` dopiszmy następujący kod:
 .. highlight:: python
 .. literalinclude:: kalkulator04.py
     :linenos:
-    :lineno-start: 74
-    :lines: 74-84
+    :lineno-start: 75
+    :lines: 75-85
 
 W nadpisanej metodzie `closeEvent() <http://doc.qt.io/qt-5/qwidget.html#closeEvent>`_
 wyświetlamy użytkownikowi prośbę o potwierdzenie zamknięcia
@@ -286,8 +283,8 @@ Dopiszmy jeszcze jedną funkcję:
 .. highlight:: python
 .. literalinclude:: kalkulator04.py
     :linenos:
-    :lineno-start: 86
-    :lines: 86-88
+    :lineno-start: 87
+    :lines: 87-89
 
 Podobnie jak w przypadku ``closeEvent()`` tworzymy własną wersję funkcji
 `keyPressEvent <http://doc.qt.io/qt-5/qwidget.html#keyPressEvent>`_ obsługującej
@@ -296,7 +293,7 @@ Sprawdzamy naciśnięty klawisz ``if e.key() == Qt.Key_Escape:`` i zamykamy okno
 
 Przetestuj działanie aplikacji.
 
-.. figure:: img/kalkulator04.png
+.. figure:: img//kalkulator04.png
 
 Działania
 *********
@@ -312,8 +309,8 @@ Pod instrukcją ``koniecBtn.clicked.connect(self.koniec)`` dodajemy:
 .. highlight:: python
 .. literalinclude:: kalkulator05.py
     :linenos:
-    :lineno-start: 65
-    :lines: 65-68
+    :lineno-start: 66
+    :lines: 66-69
 
 Następnie zaczynamy implementację funkcji ``dzialanie()``. Na końcu klasy ``Kalkulator()`` dodajemy:
 
@@ -324,8 +321,8 @@ Następnie zaczynamy implementację funkcji ``dzialanie()``. Na końcu klasy ``K
 .. highlight:: python
 .. literalinclude:: kalkulator05.py
     :linenos:
-    :lineno-start: 94
-    :lines: 94-111
+    :lineno-start: 95
+    :lines: 95-112
 
 Ponieważ jedna funkcja ma obsłużyć cztery sygnały, musimy znać źródło sygnału (ang. *source*),
 czyli nadawcę (ang. *sender*): ``nadawca = self.sender()``.
@@ -340,7 +337,7 @@ metody ``setText()``: ``self.wynikEdt.setText(str(wynik))``.
 
 Sprawdź działanie programu.
 
-.. figure:: img/kalkulator05.png
+.. figure:: img//kalkulator05.png
 
 Dopiszemy obsługę pozostałych działań. Instrukcję warunkową w funkcji ``dzialanie()``
 rozbudowujemy następująco:
@@ -352,8 +349,8 @@ rozbudowujemy następująco:
 .. highlight:: python
 .. literalinclude:: kalkulator06.py
     :linenos:
-    :lineno-start: 103
-    :lines: 103-115
+    :lineno-start: 104
+    :lines: 104-116
 
 Na uwagę zasługuje tylko dzielenie. Po pierwsze określamy dokładność dzielenia do 9
 miejsc po przecinku ``round(liczba1 / liczba2, 9)``. Po drugie zabezpieczamy się
@@ -362,7 +359,7 @@ w której przechwytujemy wyjątek ``ZeroDivisionError`` i wyświetlamy odpowiedn
 
 Pozostaje przetestować aplikację.
 
-.. figure:: img/kalkulator06.png
+.. figure:: img//kalkulator06.png
 
 .. tip::
 
@@ -384,4 +381,3 @@ Materiały
 **Źródła:**
 
 * :download:`Kalkulator Qt5 <kalkulator_qt5.zip>`
-* :download:`Kalkulator Qt4 <kalkulator_qt4.zip>`

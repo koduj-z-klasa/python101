@@ -1,6 +1,7 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
 from ksztalty import Ksztalty, Ksztalt
 from PyQt5.QtWidgets import QHBoxLayout
 from PyQt5.QtWidgets import QCheckBox, QButtonGroup, QVBoxLayout
@@ -115,8 +116,8 @@ class Ui_Widget(object):
         self.kolorG = QLineEdit('0')
         self.kolorB = QLineEdit('0')
         for v in ('R', 'G', 'B'):
-            label = getattr(self, 'label'+v)
-            kolor = getattr(self, 'kolor'+v)
+            label = getattr(self, 'label' + v)
+            kolor = getattr(self, 'kolor' + v)
             ukladH4.addWidget(label)
             ukladH4.addWidget(kolor)
             kolor.setMaxLength(3)

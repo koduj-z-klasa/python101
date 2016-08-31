@@ -1,6 +1,7 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
 from ksztalty import Ksztalty, Ksztalt
 from PyQt5.QtWidgets import QHBoxLayout
 from PyQt5.QtWidgets import QCheckBox, QButtonGroup, QVBoxLayout
