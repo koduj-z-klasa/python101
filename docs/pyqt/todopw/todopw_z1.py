@@ -1,6 +1,7 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
 from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.QtWidgets import QMessageBox, QInputDialog
 from gui_z1 import Ui_Widget, LoginDialog
@@ -25,8 +26,8 @@ class Zadania(QWidget, Ui_Widget):
                                 'Pusty login lub hasło!', QMessageBox.Ok)
             return
 
-        QMessageBox.information(self, 'Dane logowania',
-                                'Podano: '+login+' '+haslo, QMessageBox.Ok)
+        QMessageBox.information(self,
+            'Dane logowania', 'Podano: ' + login + ' ' + haslo, QMessageBox.Ok)
 
     def koniec(self):
         self.close()

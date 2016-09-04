@@ -1,4 +1,4 @@
-.. _todopw:
+.. _todopw-qt5:
 
 ToDoPw
 ###########################
@@ -9,6 +9,7 @@ Realizacja prostej listy zadań do zrobienia jako aplikacji okienkowej,
 z wykorzystaniem biblioteki Qt5 i wiązań Pythona PyQt5.
 Aplikacja umożliwia dodawanie, usuwanie, edycję i oznaczanie jako wykonane zadań,
 zapisywanych w bazie SQLite obsługiwanej za pomocą systemu ORM `Peewee <http://docs.peewee-orm.com/en/latest/>`_.
+Biblioteka `Peewee` musi być zainstalowana w systemie.
 
 Przykład wykorzystuje `programowanie obiektowe <https://pl.wikipedia.org/wiki/Programowanie_obiektowe>`_ (ang. *Object Oriented Programing*) i ilustruje technikę `programowania model/widok <http://doc.qt.io/qt-5/model-view-programming.html>`_ (ang. *Model/View Programming*).
 
@@ -16,17 +17,11 @@ Przykład wykorzystuje `programowanie obiektowe <https://pl.wikipedia.org/wiki/P
 
 .. attention::
 
-    **Wymagane oprogramowanie**:
-
-      * Python v. 2.7.x lub 3.x
-      * PyQt v. => 5.2.1
-      * Peewee dla Pythona 2.7.x lub odpowiednio 3.x
-
     **Wymagana wiedza**:
 
     	* Znajomość Pythona w stopniu średnim.
     	* Znajomość podstaw projektowania interfejsu z wykorzystaniem biblioteki Qt
-    	  (zob. scenariusze :ref:`Kalkulator <kalkulator>` i :ref:`Widżety <widzety>`).
+    	  (zob. scenariusze :ref:`Kalkulator <kalkulator-qt5>` i :ref:`Widżety <widzety-qt5>`).
         * Znajomość podstaw systemów ORM (zob. scenariusz :ref:`Systemy ORM <systemy_orm>`).
 
 .. contents::
@@ -78,18 +73,17 @@ aby utworzyć interfejs aplikacji. W konstruktorze skupiamy się na działaniu a
 czyli wiążemy kliknięcia przycisków z odpowiednimi slotami.
 
 Przeglądanie i dodawanie zadań wymaga zalogowania, które obsługuje funkcja ``loguj()``.
-Login i hasło użytkownika można pobrać za pomocą widżetu `QInputDialog <http://>`_, np.:
-``login, ok = QInputDialog.getText(self, 'Logowanie', 'Podaj login:')``. Zmienna ``ok``
+Login i hasło użytkownika można pobrać za pomocą widżetu `QInputDialog <http://doc.qt.io/qt-5/qinputdialog.html>`_, np.: ``login, ok = QInputDialog.getText(self, 'Logowanie', 'Podaj login:')``. Zmienna ``ok``
 przyjmie wartość ``True``, jeżeli użytkownik zamknie okno naciśnięciem przycisku *OK*.
 
-Jeżeli użytkownik nie podał loginu lub hasła za pomocą okna dialogowego typu `QMessageBox <http://doc.qt.io/qt-5/qmessagebox.html>`_ wyświetlamy ostrzeżenie (``warning``). W przeciwnym wypadku wyświetlamy
+Jeżeli użytkownik nie podał loginu lub hasła, za pomocą okna dialogowego typu `QMessageBox <http://doc.qt.io/qt-5/qmessagebox.html>`_ wyświetlamy ostrzeżenie (``warning``). W przeciwnym wypadku wyświetlamy
 okno informacyjne (``information``) z wprowadzonymi wartościami.
 
 Aplikację testujemy wpisując w terminalu polecenie:
 
 .. code-block:: bash
 
-    ~/todopw$ python3 todopw.py
+    ~/todopw$ python todopw.py
 
 .. figure:: img/todopw00.png
 
@@ -98,6 +92,7 @@ Okno logowania
 
 Pobieranie loginu i hasła w osobnych dialogach nie jest optymalne. Na podstawie klasy
 `QDialog <http://doc.qt.io/qt-5/qdialog.html>`_ stworzymy specjalne okno dialogowe.
+Na początku dodajemy importy:
 
 .. raw:: html
 
@@ -145,7 +140,7 @@ W pliku :file:`todopw.py` uzupełniamy importy:
 
     from gui import Ui_Widget, LoginDialog
 
-- i zmieniamy funkcję ``loguj()``:
+– i zmieniamy funkcję ``loguj()``:
 
 .. raw:: html
 
@@ -154,8 +149,8 @@ W pliku :file:`todopw.py` uzupełniamy importy:
 .. highlight:: python
 .. literalinclude:: todopw_z1.py
     :linenos:
-    :lineno-start: 18
-    :lines: 18-29
+    :lineno-start: 19
+    :lines: 19-30
     :emphasize-lines: 2
 
 Przetestuj działanie nowego okna dialogowego.
@@ -217,8 +212,8 @@ Dalej uzupełniamy funkcję ``loguj()``:
 .. highlight:: python
 .. literalinclude:: todopw_z2.py
     :linenos:
-    :lineno-start: 19
-    :lines: 19-36
+    :lineno-start: 20
+    :lines: 20-37
     :emphasize-lines: 12-15
 
 Jak widać, dopisujemy kod logujący użytkownika w bazie: ``self.osoba = baza.loguj(login, haslo)``.
@@ -233,8 +228,8 @@ musimy jeszcze wywołać funkcję ustanawiającą połączenie z bazą, czyli ws
 .. highlight:: python
 .. literalinclude:: todopw_z2.py
     :linenos:
-    :lineno-start: 41
-    :lines: 41-45
+    :lineno-start: 42
+    :lines: 42-45
     :emphasize-lines: 4
 
 Przetestuj działanie aplikacji. Znakiem poprawnego jej działania będzie utworzenie
@@ -320,9 +315,9 @@ o kod: ``model = TabModel()``:
 .. highlight:: python
 .. literalinclude:: todopw_z3.py
     :linenos:
-    :lineno-start: 49
-    :lines: 49-51
-    :emphasize-lines: 3
+    :lineno-start: 48
+    :lines: 48-
+    :emphasize-lines: 4
 
 Zadania użytkownika odczytujemy w funkcji ``loguj()``, w której kod wyświetlający dialog
 informacyjny (``QMessageBox.information(...)``) zastępujemy oraz dodajemy nową funkcję:
@@ -334,8 +329,8 @@ informacyjny (``QMessageBox.information(...)``) zastępujemy oraz dodajemy nową
 .. highlight:: python
 .. literalinclude:: todopw_z3.py
     :linenos:
-    :lineno-start: 36
-    :lines: 36-42
+    :lineno-start: 37
+    :lines: 37-43
 
 Po odczytaniu zadań ``zadania = baza.czytajDane(self.osoba)`` przypisujemy dane
 modelowi ``model.aktualizuj(zadania)``.
@@ -379,8 +374,8 @@ W pliku :file:`todopw.py` uzupełniamy konstruktor i dodajemy nową funkcję ``d
 .. highlight:: python
 .. literalinclude:: todopw_z4.py
     :linenos:
-    :lineno-start: 13
-    :lines: 13-37
+    :lineno-start: 14
+    :lines: 14-38
     :emphasize-lines: 7-25
 
 Kliknięcie przycisku "Dodaj" wiążemy z nową funkcją ``dodaj()``.
@@ -391,8 +386,8 @@ dane modelu, czyli do listy zadań dodajemy rekord nowego zadania: ``model.tabel
 Ponieważ następuje zmiana danych modelu, emitujemy odpowiedni sygnał: ``model.layoutChanged.emit()``.
 
 Jeżeli nowe zadanie jest pierwszym w modelu (``if len(model.tabela) == 1``), należy
-jeszcze odświeżyć widok. Wywołujemy więc funkcję``odswiezWidok()``. Przy okazji
-warto ją rozwinąć:
+jeszcze odświeżyć widok. Wywołujemy więc funkcję ``odswiezWidok()``, którą modyfikujemy
+do podanej postaci:
 
 .. raw:: html
 
@@ -401,8 +396,8 @@ warto ją rozwinąć:
 .. highlight:: python
 .. literalinclude:: todopw_z4.py
     :linenos:
-    :lineno-start: 60
-    :lines: 60-66
+    :lineno-start: 61
+    :lines: 61-67
     :emphasize-lines: 3-7
 
 W uzupełnionej funkcji wywołujemy metody obiektu widoku, które ukrywają pierwszą kolumnę
@@ -434,7 +429,7 @@ W pliku :file:`baza.py` dopisujemy jeszcze wspomnianą funkcję ``dodajZadanie()
 
 Zapisanie zadania jest proste dzięki wykorzystaniu systemu ORM. Tworzymy instancję
 klasy *Zadanie*: ``zadanie = Zadanie(tresc=tresc, osoba=osoba)`` – podając tylko
-wymagane dane. Pozostałe utworzone zostaną na podstawie wartości domyślnych
+wymagane dane. Wartości pozostałych pól utworzone zostaną na podstawie wartości domyślnych
 określonych w definicji klasy. Wywołanie metody ``save()`` zapisuje zadanie w bazie.
 Funkcja zwraca listę – rekord o takiej samej strukturze, jak funkcja ``czytajDane()``.
 
@@ -455,8 +450,8 @@ funkcję ``data()`` i uzupełniamy definicję klasy *TabModel* w pliku :file:`ta
 .. highlight:: python
 .. literalinclude:: tabmodel_z5.py
     :linenos:
-    :lineno-start: 31
-    :lines: 31-
+    :lineno-start: 30
+    :lines: 30-
 
 W funkcji ``data()`` dodajemy obsługę roli ``Qt.CheckStateRole``, pozwalającej w polach
 typu prawda/fałsz wyświetlić kontrolki *checkbox*. Rozpoczęcie edycji danych,
@@ -498,11 +493,11 @@ W pliku :file:`todopw.py` uzupełniamy jeszcze kod tworzący instancję modelu:
 .. highlight:: python
 .. literalinclude:: todopw_z5.py
     :linenos:
-    :lineno-start: 71
-    :lines: 71-75
+    :lineno-start: 72
+    :lines: 72-76
     :emphasize-lines: 5
 
-Uruchom zmodyfikowaną aplikację. Spróbuj zmienić treść zadania dwukrotnie na niej klikając.
+Uruchom zmodyfikowaną aplikację. Spróbuj zmienić treść zadania dwukrotnie klikając.
 Oznacz wybrane zadania jako wykonane lub przeznaczone do usunięcia.
 
 .. figure:: img/todopw05.png
@@ -534,9 +529,9 @@ W pliku :file:`todopw.py` kliknięcie przycisku "Zapisz" wiążemy z nową funkc
 .. highlight:: python
 .. literalinclude:: todopw_z6.py
     :linenos:
-    :lineno-start: 13
-    :lines: 13-24
-    :emphasize-lines: 8
+    :lineno-start: 14
+    :lines: 14-25
+    :emphasize-lines: 8-12
 
 Slot ``zapisz()`` wywołuje funkcję zdefiniowaną w module :file:`baza.py`,
 przekazując jej listę z rekordami: ``baza.zapiszDane(model.tabela)``. Na koniec
@@ -585,4 +580,3 @@ Materiały
 **Źródła:**
 
 * :download:`ToDoPw Qt5 <todopw_qt5.zip>`
-* :download:`ToDoPw Qt4 <todopw_qt4.zip>`

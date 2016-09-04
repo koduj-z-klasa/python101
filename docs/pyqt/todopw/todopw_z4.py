@@ -1,6 +1,7 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
 from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.QtWidgets import QMessageBox, QInputDialog
 from gui_z4 import Ui_Widget, LoginDialog

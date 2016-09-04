@@ -74,6 +74,6 @@ class TabModel(QAbstractTableModel):
         if rola == Qt.DisplayRole and kierunek == Qt.Horizontal:
             return self.pola[sekcja]
         elif rola == Qt.DisplayRole and kierunek == Qt.Vertical:
-            return sekcja+1
+            return sekcja + 1
         else:
             return QVariant()

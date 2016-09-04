@@ -1,9 +1,10 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
 from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.QtWidgets import QMessageBox, QInputDialog
-from gui import Ui_Widget
+from gui_z0 import Ui_Widget
 
 
 class Zadania(QWidget, Ui_Widget):

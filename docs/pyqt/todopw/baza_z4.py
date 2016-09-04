@@ -79,9 +79,9 @@ def dodajZadanie(osoba, tresc):
     """ Dodawanie nowego zadania """
     zadanie = Zadanie(tresc=tresc, osoba=osoba)
     zadanie.save()
-    return [
+    return (
         zadanie.id,
         zadanie.tresc,
         '{0:%Y-%m-%d %H:%M:%S}'.format(zadanie.datad),
         zadanie.wykonane,
-        False]
+        False)
