@@ -39,6 +39,8 @@ W pustym pliku :file:`mcsim2d.py` umieszczamy kod:
 
 Większość kodu omówiona została w :ref:`Podstawach <mcpipodstawy>`, nowy kod został podświetlony.
 
+.. figure:: img/mcpisim2d.png
+
 Figury 3D
 =========
 
@@ -60,6 +62,8 @@ W pustym pliku :file:`mcsim3d.py` umieszczamy kod:
     :emphasize-lines: 44-86
 
 Większość kodu omówiona została w :ref:`Podstawach <mcpipodstawy>`, nowy kod został podświetlony.
+
+.. figure:: img/mcpisim3d.png
 
 [cdn]
 
