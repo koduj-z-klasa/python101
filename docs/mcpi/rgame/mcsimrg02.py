@@ -23,7 +23,6 @@ def plac(x, y, z, roz=10, gracz=False):
     powietrzem i opcjonalnie umieszcza gracza w środku.
     Parametry: x, y, z - współrzędne pozycji początkowej,
     roz - rozmiar wypełnianej przestrzeni,
-    blok - rodzaj bloku
     gracz - czy umieścić gracza w środku
     Wymaga: globalnych obiektów mc i block.
     """
