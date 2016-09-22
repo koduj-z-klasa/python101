@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+from __future__ import unicode_literals
 from PyQt5.QtCore import QAbstractTableModel, QModelIndex, Qt, QVariant
 
 

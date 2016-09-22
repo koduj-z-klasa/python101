@@ -481,8 +481,8 @@ Listę nagłówków kolumn definiujemy w pliku :file:`baza.py` dopisując na ko�
 .. highlight:: python
 .. literalinclude:: baza_z5.py
     :linenos:
-    :lineno-start: 89
-    :lines: 89
+    :lineno-start: 90
+    :lines: 90
 
 W pliku :file:`todopw.py` uzupełniamy jeszcze kod tworzący instancję modelu:
 
@@ -558,8 +558,8 @@ Pozostaje dopisanie na końcu pliku :file:`baza.py` funkcji zapisującej zmiany:
 .. highlight:: python
 .. literalinclude:: baza_z6.py
     :linenos:
-    :lineno-start: 92
-    :lines: 92-103
+    :lineno-start: 93
+    :lines: 93-104
 
 W pętli odczytujemy indeksy i rekordy z danymi zadań: ``for i, z in enumerate(zadania)``.
 Tworzymy instancję każdego zadania na podstawie identyfikatora zapisanego jako
