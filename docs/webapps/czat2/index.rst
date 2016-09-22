@@ -101,7 +101,7 @@ Na początku pliku :file:`urls.py` aplikacji dopisujemy wymagany import:
 .. literalinclude:: urls.py
     :linenos:
     :lineno-start: 8
-    :lines: 8
+    :lines: 8-9
 
 – a następnie:
 
@@ -112,8 +112,8 @@ Na początku pliku :file:`urls.py` aplikacji dopisujemy wymagany import:
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 20
-    :lines: 20-25
+    :lineno-start: 21
+    :lines: 21-26
 
 Widać, że z adresami */loguj* i */wyloguj* wiążemy wbudowane w Django widoki ``login``
 i ``logout`` importowane z modułu ``django.contrib.auth.views``. Jedynym nowym
@@ -176,8 +176,8 @@ Do pliku :file:`urls.py` dopisujemy importy:
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 9
-    :lines: 9-11
+    :lineno-start: 10
+    :lines: 10-12
 
 – i wiążemy adres */wiadomosci* z wywołaniem widoku:
 
@@ -188,8 +188,8 @@ Do pliku :file:`urls.py` dopisujemy importy:
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 26
-    :lines: 26-32
+    :lineno-start: 27
+    :lines: 27-33
 
 Zakładamy, że wiadomości mogą oglądać tylko użytkownicy zalogowani. Dlatego
 całe wywołanie widoku umieszczamy w funkcji ``login_required()``.
@@ -245,8 +245,8 @@ Na początek dopiszemy w pliku :file:`urls.py` skojarzenie adresu URL
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 33
-    :lines: 33-36
+    :lineno-start: 34
+    :lines: 34-37
 
 Dalej kodujemy w pliku :file:`views.py`. Na początku dodajemy importy:
 
@@ -327,8 +327,8 @@ obiektu do zaktualizowania. Zaczniemy od uzupełnienia pliku :file:`urls.py`:
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 37
-    :lines: 37-40
+    :lineno-start: 38
+    :lines: 38-41
 
 Nowością w powyższym kodzie są wyrażenia regularne definiujące adresy z dodatkowym
 parametrem, np. ``r'^edytuj/(?P<pk>\d+)/'``. Część ``/(?P<pk>\d+)`` oznacza,
@@ -427,8 +427,8 @@ na początku pliku :file:`urls.py`:
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 12
-    :lines: 12
+    :lineno-start: 13
+    :lines: 13
 
 Podobnie, jak w przypadku edycji, usuwanie powiążemy z adresem URL zawierającym
 identyfikator wiadomości ***/usun/id_wiadomości***. W pliku :file:`urls.py` dopisujemy:
@@ -441,8 +441,8 @@ identyfikator wiadomości ***/usun/id_wiadomości***. W pliku :file:`urls.py` do
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 41
-    :lines: 41-47
+    :lineno-start: 42
+    :lines: 42-48
 
 Warto zwrócić uwagę, że podobnie jak w przypadku listy wiadomości, o ile wystarcza nam
 domyślna funkcjonalność widoku wbudowanego, nie musimy niczego implementować w pliku :file:`views.py`.

@@ -6,6 +6,7 @@ from czat import views  # importujemy zdefiniowane w pliku views.py widoki
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
 from django.core.urlresolvers import reverse_lazy
+from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
 from czat.models import Wiadomosc
@@ -17,10 +18,10 @@ urlpatterns = [
         template_name='czat/rejestruj.html',
         form_class=UserCreationForm,
         success_url='/'), name='rejestruj'),
-    url(r'^loguj/', 'django.contrib.auth.views.login',
+    url(r'^loguj/', auth_views.login,
         {'template_name': 'czat/loguj.html'},
         name='loguj'),
-    url(r'^wyloguj/', 'django.contrib.auth.views.logout',
+    url(r'^wyloguj/', auth_views.logout,
         {'next_page': reverse_lazy('czat:index')},
         name='wyloguj'),
     url(r'^wiadomosci/', login_required(
