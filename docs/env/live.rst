@@ -13,18 +13,14 @@ również w maszynie wirtualnej, na dysku twardym lub wykorzystać do odzyskiwan
 
 .. note::
 
-    Bootowalna płyta CD/DVD z systemem Linux w wersji *live* nada się do instalacji
-    systemu na twardym dysku, ale nie do realizacji scenariuszy. Nie będzie zawierać
-    wymaganych bibliotek i nie umożliwi łatwego zachowywania utworzonych
-    dokumentów.
+    Bootowalna płyta CD/DVD z systemem Linux w wersji *live* nie nadaje się do realizacji scenariuszy.
 
-Poniżej opisujemy instalację *Linux Live* na kluczu USB oraz w maszynie wirtualnej tak,
-aby można było instalować oprogramowanie, zapisywać ustawienia i tworzone dokumenty.
-
-**Na potrzeby szkoleń** i **do realizacji scenariuszy** przygotowaliśmy dostosowaną
-wersję *live* dystrybucji `LxPup <http://lx-pup.weebly.com/>`_, wykorzystującą środowisko graficzne
-`LXDE <http://lxde.org/>`_, oparte na stabilnej wersji Ubuntu Xenial Xerus 16.04.
-Nasza wersja zawiera wszystkie dodatkowe narzędzia i biblioteki.
+**Na potrzeby szkoleń**, **do realizacji scenariuszy**, **dla nauczycieli i uczniów**
+przygotowaliśmy specjalną wersję dystrybucji `LxPup <http://lx-pup.weebly.com/>`_,
+opartej na stabilnym wydaniu Ubuntu Xenial Xerus 16.04,
+wykorzystującą środowisko graficzne `LXDE <http://lxde.org/>`_.
+Nasz system zawiera wszystkie dodatkowe narzędzia i biblioteki, pozwala doinstalowywać
+programy, zapisuje ustawienia i utworzone dokumenty.
 
 .. figure:: lxpupimg/xenialpup701.jpg
 
@@ -37,12 +33,12 @@ W Windows
 
 * Pobieramy :term:`obraz iso`:
 
-  - `LxPupXenial Full <https://drive.google.com/open?id=0B1zG9cfNyT7WUW5OZnFJcXNSdUE>`_
-    (718MB, zawiera edytory Geany 1.25, PyCharm Professional 2016.2 i SublimeText 3)
-  - lub: `LxPupXenial Base <https://drive.google.com/open?id=0B1zG9cfNyT7WUElmNnF1bGFVTTg>`_
-    (442MB, zawiera edytor Geany 1.25, łatwo dodać :ref:`edytory PyCharm i/lub Sublime Text 3<sfs-pet>`)
+  - `LxPupXenial Full <https://drive.google.com/open?id=0B1zG9cfNyT7WeDdRSGc4dm1mQm8>`_
+    (700MB, zawiera edytory Geany 1.25, PyCharm Professional 2016.2 i SublimeText 3)
+  - lub: `LxPupXenial Base <https://drive.google.com/open?id=0B1zG9cfNyT7WaUJ1bEotTHZranM>`_
+    (423MB, zawiera edytor Geany 1.25, łatwo dodać :ref:`edytory PyCharm i/lub Sublime Text 3<sfs-pet>`)
 
-* Do wgrania *LxPupTahr* pobieramy program `Rufus <https://rufus.akeo.ie/>`_.
+* Do wgrania *LxPupXenial* pobieramy program `Rufus <https://rufus.akeo.ie/>`_.
 
 * Wpinamy pendrajwa o pojemności min. 2GB.
   Pendrajw powinien mieć przynajmniej jedną główną i aktywną partycję FAT32 – tak jest zazwyczaj.
@@ -106,7 +102,7 @@ Aby przygotować pendrajw w systemie Linux, pobieramy wybrany :ref:`obraz iso <u
 W maszynie wirtualnej
 =====================
 
-Dystrybucję *LxPupTahr* łatwo zainstalować i uruchamiać w Windows (lub w Linuksie!) za pomocą
+Dystrybucję *LxPupXenial* łatwo zainstalować i uruchamiać w Windows (lub w Linuksie!) za pomocą
 tzw. maszyny wirtualnej.
 
 Do zarządzania maszynami wirtualnymi wykorzystamy program VirtualBox, który pobieramy w wersji
@@ -118,7 +114,7 @@ Następnie uruchamiamy aplikację i tworzymy nową maszynę wirtualną:
 * tworzymy dysk twardy VDI o stałym rozmiarze min. 2048MB
 
 Po utworzeniu maszyny w sekcji "Storage" jako dysk rozruchowy wskazujemy ściągnięty :term:`obraz iso` dystrybucji,
-np. ``kzkbox_20150921_full.iso``:
+np. ``kzkbox20160922_full.iso``:
 
 .. figure:: vboximg/vbox05.jpg
 

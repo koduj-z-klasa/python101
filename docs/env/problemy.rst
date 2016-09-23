@@ -28,7 +28,7 @@ Jeśli nie da się uruchomić komputera za pomocą przygotowanego klucza, przecz
    .. figure:: img/hpformat.jpg
 
 6. W Windows wypróbuj narzędzie `Linux Live USB Creator <http://www.linuxliveusb.com/en/download>`_.
-   Użyj go do nagrania obrazu *Xubuntu, SRU lub LxPupTahr*. Po uruchomieniu
+   Użyj go do nagrania obrazu *Xubuntu lub LxPupXenial*. Po uruchomieniu
    klikij "Opcje", wybierz polski język interfejsu. Skonfiguruj program
    zgodnie z podanym zrzutem, czyli: wskaż klucz USB, wybierz obraz iso
    i określamy rozmiar pliku "casper-rw" (persystencji) na min. 512MB.
@@ -38,31 +38,26 @@ Jeśli nie da się uruchomić komputera za pomocą przygotowanego klucza, przecz
 
    .. figure:: img/lluc.jpg
 
-.. _rufustool:
-
-7. W Windows wypróbuj narzędzie `Rufus <https://rufus.akeo.ie/>`_. Użyj go
-   do nagrania dystrybucji *LxPupTahr*. 
-
-8. W Windows możesz wypróbować narzędzie `Universal USB Installer <http://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3/#button>`_
+7. W Windows możesz wypróbować narzędzie
+   `Universal USB Installer <http://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3/#button>`_
    polecane przez `producenta Ubuntu <http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-windows>`_,
-   który udostępnia również instrukcję. Użyj do nagrania dystrybucji
-   *Xubuntu* lub *SRU*.
+   który udostępnia również instrukcję. Użyj do nagrania dystrybucji *Xubuntu*.
 
-9. Spróbuj z innym pendrajwem.
+8. Spróbuj z innym pendrajwem.
 
-10. Zmień maszynę, być może jest za stara lub za nowa!
+9. Zmień maszynę, być może jest za stara lub za nowa!
 
-11. Przygotuj pendrajwa na innym komputerze!
+10. Przygotuj pendrajwa na innym komputerze!
 
-12. Jeżeli masz BIOS UEFI z włączonym mechanizmem `SecureBoot <http://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface#Secure_boot>`_,
-    co stanowi normę dla laptopów z preinstalowanym Windows 7/8/... po 2012 r.,
+11. Jeżeli masz BIOS UEFI z włączonym mechanizmem `SecureBoot <http://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface#Secure_boot>`_,
+    co stanowi normę dla laptopów z preinstalowanym Windows 7/8/10... po 2012 r.,
     spróbuj wyłączyć zabezpieczenie w biosie. Możesz zajrzeć do instrukcji:
 
     - `pomoc Ubuntu <https://help.ubuntu.com/community/UEFI#SecureBoot>`_
     - `pomoc Microsoft <http://technet.microsoft.com/en-us/library/dn481258.aspx>`_
     - `wsparcie HP <http://h10025.www1.hp.com/ewfrf/wc/document?cc=pl&lc=pl&dlc=pl&docname=c03679388>`_
 
-13. W Ubuntu i pochodnych można użyć programu **usb-creator-gtk**, który
+12. W Ubuntu i pochodnych można użyć programu **usb-creator-gtk**, który
     powinien być zainstalowany domyślnie. Jeśli nie, wydajemy polecenia:
     ``sudo apt-get update && sudo apt-get install usb-gtk-creator``.
 

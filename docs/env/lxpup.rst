@@ -54,15 +54,16 @@ System wersji *FULL* zawiera:
 * fonty Ubuntu oraz podstawowe z Windows;
 * podstawowe pakiety narzędziowe: *python-pip*, *python-virtualenv*, *git*;
 * wszystkie biblioteki Pythona wymagane w poszczególnych scenariuszach;
-* środowisko programistyczne: *Geany IDE*, *PyCharm Professional* i *Sublime Text*
+* środowisko programistyczne *Geany IDE*, a także *PyCharm Professional* i *Sublime Text*
   jako :ref:`pakiety SFS<sfs-pet>`, które trzeba załadować;
-* skonfigurowane elementy interfejsu LXDE;
+* serwer Etherpada Lite – narzędzia do współpracy online;
+* skonfigurowany interfejs LXDE;
 * skonfigurowane skróty klawiszowe.
 
 Połączenie z internetem
 ************************
 
-System *LxPupTahr* domyślnie wczytuje się w całości do pamięci RAM i uruchamia
+System *LxPupXenial* domyślnie wczytuje się w całości do pamięci RAM i uruchamia
 środowisko graficzne LXDE z zalogowanym użytkownikiem *root*, czyli administratorem
 w systemach linuksowych. Na początku będziesz chciał nawiązać połączenie
 z internetem.
@@ -99,9 +100,9 @@ Edytory *PyCharm* i *SublimeText3* przygotowaliśmy w formie plików `SFS <http:
 W wersji FULL są one już dołączone. Jeżeli ściągneliśmy obraz BASE
 lub chcemy mieć ostatnią dostępną wersję, ściągamy poniższe pliki:
 
-* `PyCharm 2016.1 <https://drive.google.com/open?id=0B1zG9cfNyT7WUUtlcXpzVE1fd3M>`_
+* `PyCharm 2016.2 <https://drive.google.com/open?id=0B1zG9cfNyT7WcEhIRTNhVEtLMUE>`_
 * `Java JRE 1.8.65 <https://drive.google.com/open?id=0B1zG9cfNyT7WMTVrZXpOYzRHY2M>`_
-* `Sublime Text 3.114 <https://drive.google.com/open?id=0B1zG9cfNyT7WUUtlcXpzVE1fd3M>`_
+* `Sublime Text 3.124 <https://drive.google.com/open?id=0B1zG9cfNyT7WSUswZG9hQ01oVWs>`_
 
 Pobrane pliki umieszczamy w katalogu głównym pendrajwa. W działającym systemie dostępny jest on
 w ścieżce :file:`/mnt/home`, którą należy wpisać w pole adresu menedżera plików:
@@ -123,7 +124,7 @@ Jeżeli nie potrzebujemy już danego programu lub chcemy go zaktualizować, paki
 możemy też wyładować.
 
 Drugi format dedykowany dla LxPupa to paczki w formacie `PET <http://puppylinux.org/wikka/PETs?redirect=no>`_,
-dostępne np. na stronie `pet_packages <http://distro.ibiblio.org/puppylinux/pet_packages-tahr/>`_.
+dostępne np. na stronie `pet_packages <http://distro.ibiblio.org/puppylinux/pet_packages-xenial/>`_.
 Ściągamy je, a następnie instalujemy dwukrotnie klikając (uruchomi się narzędzie *petget*).
 
 .. figure:: lxpupimg/pet01.png
@@ -249,3 +250,7 @@ Wskazówki
    wybieramy "Start/Zamknij/Restart WM" – po restarcie menedżera okien obraz
    powinien pojawić się automatycznie. Możemy go dostosować wybierając
    "Start/System/Sytem/Ustawienia wyświetlania".
+3. Jeżeli po uruchomieniu systemu nie działą ani myszka, ani klawiatura,
+   restarujemy system i uruchamiamy go ponownie podając opcje **puppy pfix=nox**,
+   co uruchomi system w trybie konsoli (bez okienek). Następnie wydajemy polecenie
+   *xorgwizard* i wybieramy opcje domyślne.

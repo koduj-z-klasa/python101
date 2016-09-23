@@ -104,22 +104,17 @@ W MS Widows
 Linux-live USB – różne systemy
 ===============================
 
-W trybie live mogą być również instalowane na pendrajwach różne dystrybucje Linuksa, m. in.
-`Xubutnu 14.04 LTS <http://xubuntu.org/>`_,
-`Szkolny Remiks Ucznia v.37 <Szkolny Remiks Ucznia: http://sru.e-swoi.pl>`_
-czy `FREE_DESKTOP v.02 <http://cyfrowaszkola.waw.pl/free_desktop-edukacyjny-remiks-dla-wszystkich/>`_.
-Są one oparte na stabilnych wydaniach systemu Ubuntu i oferują środowisko graficzne XFCE.
+W trybie live mogą być również instalowane na pendrajwach różne dystrybucje Linuksa,
+np. `Xubutnu 16.04 LTS <http://xubuntu.org/>`_ czy `Linux Mint 18 <https://www.linuxmint.com/download.php>`_, oparte na stabilnym wydaniu systemu Ubuntu.
 Do realizowania naszych scenariuszy wymagają doinstalowania części narzędzi i bibliotek.
 Wymienione systemy bardzo dobrze nadają się do zainstalowania jako system główny
-lub drugi na dysku twardym komputera. Można to zrobić z poziomu omawianych pendrajwów live.
-
+lub drugi na dysku twardym komputera. Można to zrobić za pomocą pendrajwów live.
 Aby wgrać system na pendrajwa:
 
 * Pobieramy wybrany obraz iso:
 
-  - `Xubuntu <http://se.archive.ubuntu.com/mirror/cdimage.ubuntu.com/xubuntu/releases/14.04/release/xubuntu-14.04.2-desktop-i386.iso>`_ (975MB)
-  - `SRU v.37 32-bit <http://iso.sru.e-swoi.pl/SRU_MT-14.04-37.iso>`_ (2,4GB)
-  - `FREE_DESKTOP_CEO <http://cyfrowaszkola.waw.pl/_pliki/FREE_Desktop_CEO_02.iso>`_ (2,1GB)
+  - `Xubuntu <https://xubuntu.org/getxubuntu/>`_
+  - `Linux Mint 18 <https://www.linuxmint.com/download.php>`_
 
 * Pobieramy `program Unetbootin <http://unetbootin.sourceforge.net/unetbootin-windows-latest.exe>`_.
 * Wpinamy pendrajwa o pojemności min. 4GB.
@@ -132,7 +127,7 @@ Aby wgrać system na pendrajwa:
 
 .. note::
 
-  Jeżeli nagrywamy obraz *Xubuntu*, *SRU* lub *FREE_DESKTOP* możemy na pendrajwie
+  Jeżeli nagrywamy obraz *Xubuntu* lub *Minta* możemy na pendrajwie
   utworzyć dodatkową partycję typu Ext4 o dowolnej pojemności, ale obowiązkowej
   etykiecie "home-rw". Zostanie ona wykorzystana jako miejsce montowania
   i zapisywania plików użytkownika. W takim wypadku pole "Przestrzeń używana
