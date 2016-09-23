@@ -96,13 +96,16 @@ Pliki SFS i PET
 ****************
 
 *LxPup* oferuje dwa dedykowane formaty plików zawierających oprogramowanie.
-Edytory *PyCharm* i *SublimeText3* przygotowaliśmy w formie plików `SFS <http://puppylinux.org/wikka/SquashFS>`_.
+Edytory *PyCharm* i *SublimeText3*, a także *serwer Etherpad* umożliwiający wspólne redagownie
+dokumentów w czasie rzeczywistym przygotowaliśmy w formie plików
+`SFS <http://puppylinux.org/wikka/SquashFS>`_.
 W wersji FULL są one już dołączone. Jeżeli ściągneliśmy obraz BASE
 lub chcemy mieć ostatnią dostępną wersję, ściągamy poniższe pliki:
 
 * `PyCharm 2016.2 <https://drive.google.com/open?id=0B1zG9cfNyT7WcEhIRTNhVEtLMUE>`_
 * `Java JRE 1.8.65 <https://drive.google.com/open?id=0B1zG9cfNyT7WMTVrZXpOYzRHY2M>`_
 * `Sublime Text 3.124 <https://drive.google.com/open?id=0B1zG9cfNyT7WSUswZG9hQ01oVWs>`_
+* `Etherpad Lite <https://drive.google.com/open?id=0B1zG9cfNyT7WQ2g4V1VhTUhPSlk>`_
 
 Pobrane pliki umieszczamy w katalogu głównym pendrajwa. W działającym systemie dostępny jest on
 w ścieżce :file:`/mnt/home`, którą należy wpisać w pole adresu menedżera plików:
