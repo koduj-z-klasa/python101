@@ -28,10 +28,10 @@ W pustym pliku :file:`mcsim-fig.py` umieszczamy kod:
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: mcsim-fig.py
+.. literalinclude:: mcsim-fig01.py
     :linenos:
     :lineno-start: 1
-    :lines: 1-59
+    :lines: 1-
     :emphasize-lines: 41-59
 
 Większość kodu omówiona została w :ref:`Podstawach <mcpiplac>`. W nowym kodzie, który został podświetlony,
