@@ -35,8 +35,46 @@ def plac(x, y, z, roz=10, gracz=False):
 
 
 def main(args):
-    mc.postToChat("Cześć! Tak działa MC chat!")  # wysłanie komunikatu do mc
-    plac(0, 0, 0, 18)
+    mc.postToChat("Czesc! Tak dziala MC chat!")  # wysłanie komunikatu do mc
+    plac(-15, 0, -15, 30)
+
+    import local.minecraftturtle as mcturtle
+    from local.vec3 import Vec3  # klasa reprezentująca punkt 3D
+
+    start = Vec3(0, 1, 0)  # pozycja początkowa
+    turtle = mcturtle.MinecraftTurtle(mc, start)
+
+    # KWADRATY
+    turtle.speed(0)  # szybkość budowania
+    turtle.penblock(block.SAND)  # typ bloku
+    for i in range(4):
+        turtle.forward(10)  # do przodu 10 "króków"
+        turtle.right(90)  # w prawo o 90 stopni
+    turtle.left(90)  # w lewo o 90 stopni
+    for i in range(4):
+        turtle.forward(10)
+        turtle.left(90)
+
+    # OKNA
+    turtle.penblock(block.WOOD)
+    turtle.setposition(10, 2, 0)
+    turtle.up(90)
+    turtle.forward(14)
+    turtle.down(90)
+    turtle.setposition(-10, 2, 0)
+    turtle.up(90)
+    turtle.forward(14)
+    turtle.down(90)
+    turtle.right(90)
+    turtle.forward(19)
+    turtle.setposition(0, 2, 0)
+    turtle.up(90)
+    turtle.forward(13)
+    turtle.setposition(9, 10, 0)
+    turtle.down(90)
+    turtle.left(180)
+    turtle.forward(19)
+
     return 0
 
 

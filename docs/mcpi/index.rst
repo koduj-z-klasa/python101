@@ -33,17 +33,16 @@ pozwalające na komunikację z serwerem Minecraft Pi.
 	  ``git clone https://github.com/martinohanlon/mcpi.git``. Można też ściągnąć
 	  i rozpakować archiwum `master.zip <https://github.com/martinohanlon/mcpi/archive/master.zip>`_.
 
-	* Pełną dokumentację API znajdziemy na stronie
-	  `Minecraft API <http://www.stuffaboutcode.com/p/minecraft-api-reference.html>`_.
-
 .. toctree::
     :maxdepth: 2
 
     podstawy/index
     figury/index
+    turtle/index
     rgame/index
     gloss_mcpi
 
 **Materiały**
 
 1. Minecraft `Pi Edition <http://minecraft.gamepedia.com/Pi_Edition>`_
+2. Dokumentacja `Minecraft API <http://www.stuffaboutcode.com/p/minecraft-api-reference.html>`_

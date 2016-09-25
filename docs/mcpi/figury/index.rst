@@ -1,72 +1,113 @@
 .. _mcpifigury:
 
-Figury
-#######
+Figury 2D i 3D
+###############
 
 Możliwość programowego umieszczania różnych bloków w Minecraft Pi Edition
 można wykorzystać jako atrakcyjny sposób wizualizacji różnych figur. Jednak
 o ile budowanie prostych kształtów, jak np. kwadrat czy sześcian, nie stanowi
-raczej problemu, o tyle trójkąty, koła i bardziej skomplikowane figury 3D
-nie są trywialnym zadaniem. Dużym ułatwienim w konstruowaniu bardziej skomplikowanych
-budowli będzie 2-wymiarowa biblioteka `minecraftstuff <http://www.stuffaboutcode.com/2013/11/coding-shapes-in-minecraft.html>`_ oraz 3-wymiarowa `minecraftturtle <http://www.stuffaboutcode.com/2014/05/minecraft-graphics-turtle.html>`_.
+raczej problemu, o tyle trójkąty, koła i bardziej skomplikowane budowle
+nie są trywialnym zadaniem. Tworzenie 2- i 3-wymiarowych konstrukcji ułatwi
+nam biblioteka `minecraftstuff <http://www.stuffaboutcode.com/2013/11/coding-shapes-in-minecraft.html>`_.
 
 **Instalacja**
 
-Symulator ``mcpi-sim`` domyślnie nie działa z omawianymi bibliotekami i wymaga modyfikacji.
-Dla ułatwienia przygotowaliśmy więc archiwum :download:`mcpi-sim-fix.zip <mcpi-sim-fix.zip>`,
-które po ściągnięciu należy rozpakować do katalogu :file:`~/mcpi-sim/local` nadpisując oryginalne pliki.
-Archiwum zawiera również omawiane biblioteki.
+Symulator ``mcpi-sim`` domyślnie nie działa z omawianą biblioteką i wymaga modyfikacji.
+Zmienione pliki oraz omawianą bibliotekę umieściliśmy w archiwum
+:download:`mcpi-sim-fix.zip <../mcpi-sim-fix.zip>`, które po ściągnięciu
+należy rozpakować do katalogu :file:`~/mcpi-sim/local` nadpisując oryginalne pliki.
 
-.. note::
 
-	Kod bibliotek znajdziemy w repozytoriach serwisu GitHub: `rep. minecraftstuff <https://github.com/martinohanlon/minecraft-stuff>`_ i `rep. minecraftturtle <https://github.com/martinohanlon/minecraft-turtle>`_ w serwisie GitHub.
-
-Kształty 2D
+Linia
 ===========
 
-W pustym pliku :file:`mcsim2d.py` umieszczamy kod:
+W pustym pliku :file:`mcsim-fig.py` umieszczamy kod:
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: mcsim2d01.py
+.. literalinclude:: mcsim-fig.py
     :linenos:
     :lineno-start: 1
-    :lines: 1-
-    :emphasize-lines: 44-54
+    :lines: 1-59
+    :emphasize-lines: 41-59
 
-Większość kodu omówiona została w :ref:`Podstawach <mcpipodstawy>`, nowy kod został podświetlony.
+Większość kodu omówiona została w :ref:`Podstawach <mcpiplac>`. W nowym kodzie, który został podświetlony,
+importujemy bibliotekę *minecraftstuff* oraz klasę *Vec3*. Reprezentuje ona pozycję o podanych
+współrzędnych w trójwymiarowym świecie MC. Polecenie ``figura = mcstuff.MinecraftDrawing(mc)`` tworzy instancję
+głównej klasy biblioteki, która udostępni jej metody.
 
-.. figure:: img/mcpisim2d.png
+Do rysowania linii wykorzystujemy metodę ``drawLine()``, której przekazujemy jako argumenty
+współrzędne punktu początkowego i końcowego, a także typ bloku i ewentualnie podtyp.
+Współrzędne punktów końcowych zostały zapisane w dwóch tuplach (niemodyfikowalnej liście) jako tuple.
+Rozpakowujemy je w pętlach (``x, y, z = punkt``) i przekazujemy do konstruktora klasy ``Vec3``
+(``p2 = Vec3(x, y, z)``).
 
-Figury 3D
-=========
+Koło
+=====
 
-Biblioteka ``minecraftturtle`` inspirowana jest wbudowaną w Pythona biblioteką
-`turtle <https://docs.python.org/2/library/turtle.html>`_, często wykorzystywaną do
-nauki programowania dzieci. Jednak tu "żółw" może poruszać się w przestrzeni.
-
-W pustym pliku :file:`mcsim3d.py` umieszczamy kod:
+Na końcu funkcji ``main()`` dodaj kod:
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: mcsim3d01.py
+.. literalinclude:: mcsim-fig.py
     :linenos:
-    :lineno-start: 1
-    :lines: 1-
-    :emphasize-lines: 44-86
+    :lineno-start: 61
+    :lines: 61-63
 
-Większość kodu omówiona została w :ref:`Podstawach <mcpipodstawy>`, nowy kod został podświetlony.
+Metoda ``drawCircle()`` pozwala na rysowanie koła. Pierwsze trzy argumenty to współrzędne
+środka, kolejne to: promień, typ i ewentualny podtyp bloku.
 
-.. figure:: img/mcpisim3d.png
+Kula
+====
 
-[cdn]
+Do funkcji ``main()`` dopisujemy:
 
-**Źródła:**
+.. raw:: html
 
-* :download:`Skrypty mcsimfig <mcsimfig.zip>`
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: mcsim-fig.py
+    :linenos:
+    :lineno-start: 65
+    :lines: 65-67
+
+Metoda ``drawSphere()`` buduje kulę. Pierwsze trzy argumenty to współrzędne
+środka, kolejne to: promień, typ i ewentualny podtyp bloku.
+
+Kształt
+=======
+
+Do funkcji ``main()`` dodajemy kod:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: mcsim-fig.py
+    :linenos:
+    :lineno-start: 69
+    :lines: 69-74
+
+Powyżej do listy ``ksztalt`` dodajemy kolejne punkty w instrukcjach typu ``ksztalt.append(Vec3(-11, 0, 11))``.
+Na koniec wywołujemy metodę ``drawFace()``, która punkty przekazane w liście łączy
+liniami budowanymi z podanego bloku. Drugi argument, logiczny, decyduje o tym, czy figura
+ma zostać wypełniona (``True``), czy nie (``False``).
+
+.. figure:: img/mcsim-fig.png
+
+**Ćwiczenie 1**
+
+Wykorzystując odpowiednią metodę biblioteki *minecraftstuff*,
+spróbuj zbudować napis "KzK" podobny do pokazanego poniżej.
+Przetestuj swój kod w symulatorze i w Minecrafcie Pi.
+
+.. figure:: img/mcsim-KzK.png
+

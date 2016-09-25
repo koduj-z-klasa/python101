@@ -6,32 +6,30 @@ Podstawy mcpi
 Połączenie z serwerem
 =====================
 
-Za pomocą wybranego edytora utwórz pusty plik, umieść w nim podany niżej kod i zapisz,
-np. w katalogu :file:`mcpi-sim` pod nazwą :file:`mcpikzk.py`:
+Za pomocą wybranego edytora utwórz pusty plik, umieść w nim podany niżej kod i zapisz
+w katalogu :file:`mcpi-sim` pod nazwą :file:`mcpi-podst.py`:
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: mcpikzk01.py
+.. literalinclude:: mcpi-podst.py
     :linenos:
     :lineno-start: 1
-    :lines: 1-25
+    :lines: 1-13
 
-Bardzo ważną rzeczą jest wskazanie lokalizacji biblioteki mcpi, odpowiada za to instrukcja
-``sys.path.append("/root/mcpi-sim")``, która dołącza katalog :file:`/root/mcpi-sim` do ścieżki
-przeszukiwania. Jeżeli katalog :file:`mcpi-sim` znajduje się w innym położeniu, ścieżkę
-należy odpowiednio zmodyfikować. Potrzebne moduły importujemy w poleceniach:
 
-.. code-block:: python
+Na początku importujemy moduły do obsługi Minecrafta i za pomocą instrukcji
+``os.environ["ZMIENNA"]`` ustawiamy wymagane przez ``mcpi`` zmienne
+środowiskowe z nazwami użytkownika i komputera:
 
-		import mcpi.minecraft as minecraft
-		import mcpi.block as block
+.. note::
 
-Biblioteka *mcpi* zawarta w symulatorze wymaga do działania ustawienia zmiennych
-środowiskowych określających nazwę użytkownika i komputera. Po zaimportowaniu modułu
-``os`` dodajemy więc odpowiednie klucze do pythonowego słownika, np. ``os.environ["USERNAME"] = "Steve"``.
+    Udany import wymaga, aby w katalogu ze skryptem znajdował się katalog :file:`mcpi`,
+    z którego importujemy wymagane moduły. Jeżeli katalog ten byłby w innym folderze, np. :file:`biblioteki`,
+    przed instrukcjami importu musielibyśmy wskazać ścieżkę do niego,
+    np: ``sys.path.append("/home/user/biblioteki")``.
 
 Po wykonaniu czynności wstępnych tworzymy podstawowy obiekt reprezentujący grę Minecraft:
 ``mc = minecraft.Minecraft.create("192.168.1.8")``.
@@ -52,11 +50,11 @@ Skrypt uruchamiamy z poziomu edytora, jeśli to możliwe, lub wykonując w termi
 
 .. code-block:: bash
 
-    ~/mcpi-sim$ python mcpikzk.py
+    ~/mcpi-sim$ python mcpi-podst.py
 
 .. note::
 
-	Omówiony kod (linie 7-17) stanowi **niezbędne minimum**, które **musi znaleźć się** w każdym skrypcie
+	Omówiony kod (linie 4-14) stanowi **niezbędne minimum**, które **musi znaleźć się** w każdym skrypcie
 	lub w sesji interpretera (konsoli), jeżeli chcemy widzieć efekty naszych działań
 	na serwerze. Dla wygody kopiowania podajemy go w skondensowanej formie:
 
@@ -65,8 +63,9 @@ Skrypt uruchamiamy z poziomu edytora, jeśli to możliwe, lub wykonując w termi
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: mcpikzk00.py
+.. literalinclude:: mcpimin.py
     :linenos:
+    :lines: 3-8
 
 
 Świat Minecrafta Pi
@@ -87,11 +86,12 @@ do góry/w dół - wertykalnie.
 
 **Ćwiczenie 1**
 
-Uruchamiamy rozszerzoną konsolę Pythona wpisując w terminalu polecenie:
+Uruchamiamy rozszerzoną konsolę Pythona i wchodzimy do katalogu :file:`mcpi-sim`:
 
 .. code-block:: bash
 
 	~$ ipython qtconsole
+    In [1]: cd /root/mcpi-sim
 
 .. tip::
 
@@ -140,17 +140,17 @@ Idź i przesuń się
 -----------------
 
 Zadania takie możemy realizować za pomocą funkcji, które dodatkowo zwrócą nam nową pozycję.
-W pliku :file:`mcpikzk.py` umieszczamy kod:
+W pliku :file:`mcpi-podst.py` umieszczamy kod:
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: mcpikzk.py
+.. literalinclude:: mcpi-podst.py
     :linenos:
-    :lineno-start: 20
-    :lines: 20-39
+    :lineno-start: 16
+    :lines: 16-35
 
 W pierwszej funkcji ``idzDo()`` warto zwrócić uwagę na metodę ``getHeight()``, która pozwala ustalić
 wysokość świata w punkcie *x, z*, czyli współrzędną *y* najwyższego bloku nie będącego powietrzem.
@@ -158,7 +158,7 @@ Dzięki temu umieścimy bohatera zawsze na jakiejś powierzchni, a nie np. pod z
 Druga funkcja ``przesunSie()`` nie tyle umieszcza, co przesuwa postać, stąd dodatkowe instrukcje.
 
 Dopisz wywołanie ``print idzDo(50, 0, 50)`` w funkcji ``main()`` przed instrukcją ``return``
-i przetestuj kod uruchamiając skrypt :file:`mcpikzk.py` lub w konsoli. Później dopisz również
+i przetestuj kod uruchamiając skrypt :file:`mcpi-podst.py` lub w konsoli. Później dopisz również
 drugą funkcję ``print przesunSie(20)`` i sprawdź jej działanie.
 
 .. figure:: img/ipython02.png
@@ -172,17 +172,17 @@ Zmień kod obydwu funkcji na "bezpieczny dla życia" ;-)
 Gdzie jestem?
 -------------
 
-Aby odczytywać i drukować pozycję bohatera dodamy kolejną funkcję do pliku :file:`mcpikzk.py`:
+Aby odczytywać i drukować pozycję bohatera dodamy kolejną funkcję do pliku :file:`mcpi-podst.py`:
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: mcpikzk.py
+.. literalinclude:: mcpi-podst.py
     :linenos:
-    :lineno-start: 42
-    :lines: 42-50
+    :lineno-start: 38
+    :lines: 38-46
 
 Funkcja nie tylko drukuje koordynaty w konsoli (``print x, y, z``), ale również –
 po przekształceniu ich na listę wartości typu string ``pos_str = map(str, pos_list)`` –
@@ -196,17 +196,17 @@ Więcej ruchu
 ------------
 
 Teraz możemy trochę pochodzić, ale będziemy obserwować to z lotu ptaka. Dopiszmy kod poniższej
-funkcji do pliku :file:`mcpikzk.py`:
+funkcji do pliku :file:`mcpi-podst.py`:
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: mcpikzk.py
+.. literalinclude:: mcpi-podst.py
     :linenos:
-    :lineno-start: 53
-    :lines: 53-87
+    :lineno-start: 49
+    :lines: 49-83
 
 Warto zauważyć, jak pętla ``for i in range(krok)`` umożliwia symulowanie ruchu postaci.
 Wywołanie funkcji dodajemy do funkcji głównej. Kod testujemy uruchamiając skrypt lub w konsoli.
@@ -224,15 +224,17 @@ Teraz spróbujemy dowiedzieć się, po jakich blokach chodzimy. Definiujemy jesz
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: mcpikzk.py
+.. literalinclude:: mcpi-podst.py
     :linenos:
-    :lineno-start: 90
-    :lines: 90-92
+    :lineno-start: 86
+    :lines: 86-88
 
 Dopisujemy jej wywołanie: ``print "Typ bloku: ", jakiBlok()`` – w funkcji głównej i testujemy.
 
 .. figure:: img/ipython05.png
 
+
+.. _mcpiplac:
 
 Plac budowy
 ============
@@ -285,8 +287,8 @@ W pliku :file:`mcsim.py` przed funkcją główną (``main()``) umieszczamy funkc
 .. highlight:: python
 .. literalinclude:: mcsim02.py
     :linenos:
-    :lineno-start: 42
-    :lines: 42-47
+    :lineno-start: 37
+    :lines: 37-42
 
 Używamy podstawowej metody ``setBlock(x, y, z, blockType)``, która w podanych koordynatach
 umieszcza określony blok. Wywołanie funkcji ``buduj()`` dodajemy do ``main()`` po funkcji ``plac()``
@@ -302,9 +304,19 @@ Do rysowania bloków można użyć pętli. Zmieniamy funkcję ``buduj()`` nastę
 .. literalinclude:: mcsim03.py
     :linenos:
     :lineno-start: 42
-    :lines: 42-48
+    :lines: 37-43
 
 Teraz powinniśmy postawić mur 10 bloków na skraju "placu".
+
+**Ćwiczenie 3**
+
+Odpowiednio modyfikując funkcję ``buduj()`` skonstruuj:
+
+- kwadrat 2D
+- prostokąt 2D
+- słup
+- bramę, czyli prostokąt 3D
+- sześcian
 
 **Źródła:**
 

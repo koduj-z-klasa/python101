@@ -1,21 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-print "Uruchamianie... Proszę czekać..."
 
-# import modułów minecrafta
-import local.minecraft as minecraft
-import local.block as block
-
-# ustawienie nazwy użytkownika i komputera
+import sys
 import os
-os.environ["USERNAME"] = "Steve"  # wpisz dowolną nazwę użytkownika
-os.environ["COMPUTERNAME"] = "mykomp"  # wpisz dowolną nazwę komputera
+import local.minecraft as minecraft  # import modułu minecraft
+import local.block as block  # import modułu block
+
+os.environ["USERNAME"] = "Steve"  # nazwa użytkownika
+os.environ["COMPUTERNAME"] = "mykomp"  # nazwa komputera
 
 # utworzenie połaczenia z symulatorem
 mc = minecraft.Minecraft.create("")
-
-# wysłanie wiadomości na czat
-mc.postToChat("Cześć! Tak działa MC chat!")
 
 
 def plac(x, y, z, roz=10, gracz=False):
@@ -49,10 +44,11 @@ def buduj():
 
 
 def main(args):
+    mc.postToChat("Cześć! Tak działa MC chat!")  # wysłanie komunikatu do mc
     plac(0, 0, 0, 18)
     buduj()
     return 0
 
+
 if __name__ == '__main__':
-    import sys
     sys.exit(main(sys.argv))

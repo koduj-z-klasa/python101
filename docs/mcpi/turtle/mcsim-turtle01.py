@@ -1,15 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-print "Uruchamianie... Proszę czekać..."
 
-# import modułów minecrafta
-import local.minecraft as minecraft
-import local.block as block
-
-# ustawienie nazwy użytkownika i komputera
+import sys
 import os
-os.environ["USERNAME"] = "Steve"  # wpisz dowolną nazwę użytkownika
-os.environ["COMPUTERNAME"] = "mykomp"  # wpisz dowolną nazwę komputera
+import local.minecraft as minecraft  # import modułu minecraft
+import local.block as block  # import modułu block
+
+os.environ["USERNAME"] = "Steve"  # nazwa użytkownika
+os.environ["COMPUTERNAME"] = "mykomp"  # nazwa komputera
 
 # utworzenie połaczenia z symulatorem
 mc = minecraft.Minecraft.create("")
@@ -20,7 +18,6 @@ def plac(x, y, z, roz=10, gracz=False):
     powietrzem i opcjonalnie umieszcza gracza w środku.
     Parametry: x, y, z - współrzędne pozycji początkowej,
     roz - rozmiar wypełnianej przestrzeni,
-    blok - rodzaj bloku
     gracz - czy umieścić gracza w środku
     Wymaga: globalnych obiektów mc i block.
     """
@@ -41,20 +38,25 @@ def main(args):
     mc.postToChat("Czesc! Tak dziala MC chat!")  # wysłanie komunikatu do mc
     plac(-15, 0, -15, 30)
 
-    import local.minecraftstuff as mcstuff
-    mcfig = mcstuff.MinecraftDrawing(mc)
-    mcfig.drawLine(-14, 0, -14, -14, 0, 14, block.LEAVES)
-    mcfig.drawLine(-14, 0, 0, -7, 0, 14, block.LEAVES)
-    mcfig.drawLine(-14, 0, 0, -7, 0, -14, block.LEAVES)
-    mcfig.drawLine(-5, 0, 0, 5, 0, 0, block.LEAVES)
-    mcfig.drawLine(5, 0, 0, -5, 0, 14, block.LEAVES)
-    mcfig.drawLine(-5, 0, 14, 5, 0, 14, block.LEAVES)
-    mcfig.drawLine(7, 0, -14, 7, 0, 14, block.LEAVES)
-    mcfig.drawLine(7, 0, 0, 14, 0, 14, block.LEAVES)
-    mcfig.drawLine(7, 0, 0, 14, 0, -14, block.LEAVES)
+    import local.minecraftturtle as mcturtle
+    from local.vec3 import Vec3  # klasa reprezentująca punkt 3D
+
+    start = Vec3(0, 1, 0)  # pozycja początkowa
+    turtle = mcturtle.MinecraftTurtle(mc, start)
+
+    # KWADRATY
+    turtle.speed(0)  # szybkość budowania
+    turtle.penblock(block.SAND)  # typ bloku
+    for i in range(4):
+        turtle.forward(10)  # do przodu 10 "króków"
+        turtle.right(90)  # w prawo o 90 stopni
+    turtle.left(90)  # w lewo o 90 stopni
+    for i in range(4):
+        turtle.forward(10)
+        turtle.left(90)
 
     return 0
 
+
 if __name__ == '__main__':
-    import sys
     sys.exit(main(sys.argv))

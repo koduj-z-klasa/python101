@@ -1,15 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-print "Uruchamianie... Proszę czekać..."
 
-# import modułów minecrafta
-import local.minecraft as minecraft
-import local.block as block
-
-# ustawienie nazwy użytkownika i komputera
+import sys
 import os
-os.environ["USERNAME"] = "Steve"  # wpisz dowolną nazwę użytkownika
-os.environ["COMPUTERNAME"] = "mykomp"  # wpisz dowolną nazwę komputera
+import local.minecraft as minecraft  # import modułu minecraft
+import local.block as block  # import modułu block
+
+os.environ["USERNAME"] = "Steve"  # nazwa użytkownika
+os.environ["COMPUTERNAME"] = "mykomp"  # nazwa komputera
 
 # utworzenie połaczenia z symulatorem
 mc = minecraft.Minecraft.create("")
@@ -20,7 +18,6 @@ def plac(x, y, z, roz=10, gracz=False):
     powietrzem i opcjonalnie umieszcza gracza w środku.
     Parametry: x, y, z - współrzędne pozycji początkowej,
     roz - rozmiar wypełnianej przestrzeni,
-    blok - rodzaj bloku
     gracz - czy umieścić gracza w środku
     Wymaga: globalnych obiektów mc i block.
     """
@@ -87,6 +84,6 @@ def main(args):
 
     return 0
 
+
 if __name__ == '__main__':
-    import sys
     sys.exit(main(sys.argv))

@@ -35,10 +35,24 @@ def plac(x, y, z, roz=10, gracz=False):
 
 
 def main(args):
-    mc.postToChat("Cześć! Tak działa MC chat!")  # wysłanie komunikatu do mc
-    plac(0, 0, 0, 18)
+    mc.postToChat("Czesc! Tak dziala MC chat!")  # wysłanie komunikatu do mc
+    plac(-15, 0, -15, 30)
+
+    import local.minecraftstuff as mcstuff
+    mcfig = mcstuff.MinecraftDrawing(mc)
+    mcfig.drawLine(-14, 0, -14, -14, 0, 14, block.LEAVES)
+    mcfig.drawLine(-14, 0, 0, -7, 0, 14, block.LEAVES)
+    mcfig.drawLine(-14, 0, 0, -7, 0, -14, block.LEAVES)
+    mcfig.drawLine(-5, 0, 0, 5, 0, 0, block.LEAVES)
+    mcfig.drawLine(5, 0, 0, -5, 0, 14, block.LEAVES)
+    mcfig.drawLine(-5, 0, 14, 5, 0, 14, block.LEAVES)
+    mcfig.drawLine(7, 0, -14, 7, 0, 14, block.LEAVES)
+    mcfig.drawLine(7, 0, 0, 14, 0, 14, block.LEAVES)
+    mcfig.drawLine(7, 0, 0, 14, 0, -14, block.LEAVES)
+
     return 0
 
 
 if __name__ == '__main__':
+    print "Uruchamianie... Proszę czekać..."
     sys.exit(main(sys.argv))

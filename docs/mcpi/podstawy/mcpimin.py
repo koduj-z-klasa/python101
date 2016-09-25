@@ -1,5 +1,5 @@
-import sys
-sys.path.append("/root/mcpi-sim")  # uwaga: sprawdź ścieżkę!
+# import sys
+# sys.path.append("/root/mcpi-sim")  # uwaga: sprawdź ścieżkę!
 import mcpi.minecraft as minecraft  # import modułu minecraft
 import mcpi.block as block  # import modułu block
 import os

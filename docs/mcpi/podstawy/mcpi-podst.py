@@ -1,20 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# dodanie ścieżki do biblioteki minecraft
-# import modułów minecrafta
-# ustawienie nazwy użytkownika i komputera
 import sys
-sys.path.append("/root/mcpi-sim")
+import os
 import mcpi.minecraft as minecraft  # import modułu minecraft
 import mcpi.block as block  # import modułu block
-import os
-os.environ["USERNAME"] = "Steve"  # wpisz dowolną nazwę użytkownika
-os.environ["COMPUTERNAME"] = "mykomp"  # wpisz dowolną nazwę komputera
+
+os.environ["USERNAME"] = "Steve"  # nazwa użytkownika
+os.environ["COMPUTERNAME"] = "mykomp"  # nazwa komputera
 
 # utworzenie połączenia z minecraftem
-# UWAGA: wpisujemy adres IP minikomputera Raspberry Pi!
-mc = minecraft.Minecraft.create("192.168.1.8")
+mc = minecraft.Minecraft.create("192.168.1.10")  # podaj adres IP Rpi
 
 
 def idzDo(x=0, y=0, z=0):
@@ -101,6 +97,7 @@ def main(args):
     drukujPoz()
     print "Typ bloku: ", jakiBlok()  # wywołanie funkcji jakiBlok()
     return 0
+
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv))
