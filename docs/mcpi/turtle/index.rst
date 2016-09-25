@@ -37,7 +37,12 @@ przede wszystkim importujemy omawianą bibliotekę oraz klasę *Vec3* reprezentu
 w MC. Polecenie ``turtle = mcturtle.MinecraftTurtle(mc, start)`` tworzy obiekt "żółwia",
 którym będziemy mogli sterować za pomocą kilku metod.
 
-[todo]
+W powyższym kodzie używamy następujących metod:
+
+- ``speed()`` – ustawia prędkość budowania: 0 – brak animacji, 1 – b. wolno, 10 – najszybciej;
+- ``penblock()`` – ustawienie bloku, którym budujemy ślad;
+- ``forward(x)`` – idź do przodu o *x* "kroków";
+-  ``right(x)``, ``left(x)`` – obróć się w prawo/lewo o *x* stopni;
 
 Okna
 ======
@@ -54,14 +59,41 @@ Do funkcji ``main()`` dopisujemy:
     :lineno-start: 58
     :lines: 58-76
 
-[todo]
+W podanym kodzie mamy kilka nowych metod:
+
+- ``setposition(x, y, z)`` – ustawia "żółwia" na podanej pozycji;
+- ``up(x)`` – obróć się do góry o *x* stopni;
+- ``down(x)`` – obróć się w dół o *x* stopni;
+
+Szlaczek
+========
+
+Dopisz do funkcji ``main()`` podany kod:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: mcsim-turtle.py
+    :linenos:
+    :lineno-start: 78
+    :lines: 78-92
+
+Nowe metody to:
+
+- ``setx(x)``, ``setx(y)``, ``setx(z)`` – metody ustawiają składowe pozycji,
+  jest też metoda ``position()``, która zwraca pozycję;
+- ``penup()``, ``pendown()`` – podniesienie/opuszczenie "pędzla", dodatkowo funkcja ``isdown()``
+  sprawdza, czy pędzel jest opuszczony;
 
 .. figure:: img/mcsim-turtle.png
 
-Litery
-=======
+**Ćwiczenia**
 
-Napisz kod, który zbuduje napis "KzK" podobny do pokazanego niżej.
+1. Napisz kod, który zbuduje napis "KzK" podobny do pokazanego niżej.
 
-.. figure:: img/mcsim-turtKzK.png
+	.. figure:: img/mcsim-turtKzK.png
 
+2. Napisz kod, który zbuduje sześcian. Przekształć go w funkcję, która
+buduje sześcian o podanej długości boku z podanego punktu.

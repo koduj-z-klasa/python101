@@ -75,6 +75,21 @@ def main(args):
     turtle.left(180)
     turtle.forward(19)
 
+    # SZLACZEK
+    turtle.penblock(block.MELON)
+    turtle.setx(-15)
+    turtle.sety(2)
+    turtle.setz(15)
+    turtle.left(180)
+    for i in range(8):
+        if (i % 2 == 0):
+            turtle.forward(1)
+        else:
+            turtle.forward(3)
+        turtle.penup()
+        turtle.forward(2)
+        turtle.pendown()
+
     return 0
 
 
