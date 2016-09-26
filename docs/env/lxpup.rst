@@ -104,7 +104,7 @@ lub chcemy mieć ostatnią dostępną wersję, ściągamy poniższe pliki:
 
 * `PyCharm 2016.2 <https://drive.google.com/open?id=0B1zG9cfNyT7WcEhIRTNhVEtLMUE>`_
 * `Java JRE 1.8.65 <https://drive.google.com/open?id=0B1zG9cfNyT7WMTVrZXpOYzRHY2M>`_
-* `Sublime Text 3.124 <https://drive.google.com/open?id=0B1zG9cfNyT7WSUswZG9hQ01oVWs>`_
+* `Sublime Text 3.126 <https://drive.google.com/open?id=0B1zG9cfNyT7WSUswZG9hQ01oVWs>`_
 * `Etherpad Lite <https://drive.google.com/open?id=0B1zG9cfNyT7WQ2g4V1VhTUhPSlk>`_
 
 Pobrane pliki umieszczamy w katalogu głównym pendrajwa. W działającym systemie dostępny jest on
