@@ -303,10 +303,13 @@ Do rysowania bloków można użyć pętli. Zmieniamy funkcję ``buduj()`` nastę
 .. highlight:: python
 .. literalinclude:: mcsim03.py
     :linenos:
-    :lineno-start: 42
-    :lines: 37-43
+    :lineno-start: 37
+    :lines: 37-50
 
-Teraz powinniśmy postawić mur 10 bloków na skraju "placu".
+Teraz plac powinien wyglądać, jak poniżej:
+
+.. figure:: img/mcsim.png
+
 
 **Ćwiczenie 3**
 

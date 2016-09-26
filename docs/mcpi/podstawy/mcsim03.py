@@ -40,7 +40,14 @@ def buduj():
     Wymaga: globalnych obiektów mc i block.
     """
     for i in range(19):
-        mc.setBlock(0 + i, 0, 18, block.CACTUS)
+        mc.setBlock(0 + i, 0, 0, block.WOOD)
+        mc.setBlock(0 + i, 1, 0, block.LEAVES)
+        mc.setBlock(0 + i, 0, 18, block.WOOD)
+        mc.setBlock(0 + i, 1, 18, block.LEAVES)
+
+    for i in range(19):
+        mc.setBlock(9, 0, 18 - i, block.BRICK_BLOCK)
+        mc.setBlock(9, 1, 18 - i, block.BRICK_BLOCK)
 
 
 def main(args):
