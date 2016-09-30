@@ -17,7 +17,7 @@ w katalogu :file:`mcpi-sim` pod nazwą :file:`mcpi-podst.py`:
 .. literalinclude:: mcpi-podst.py
     :linenos:
     :lineno-start: 1
-    :lines: 1-13
+    :lines: 1-
 
 
 Na początku importujemy moduły do obsługi Minecrafta i za pomocą instrukcji
