@@ -14,7 +14,7 @@ w katalogu :file:`mcpi-sim` pod nazwą :file:`mcpi-podst.py`:
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: mcpi-podst.py
+.. literalinclude:: mcpi-podst01.py
     :linenos:
     :lineno-start: 1
     :lines: 1-
