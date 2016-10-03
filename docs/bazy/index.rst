@@ -2,28 +2,19 @@ Bazy danych w Pythonie
 #######################
 
 Tworzenie i zarządzanie bazami danymi za pomocą Pythona z wykorzystaniem
-wbudowanego modułu `sqlite3 DB-API`_, a także zewnętrznych bibliotek ORM:
-`Peewee`_ oraz `SQLAlchemy`_
+wbudowanego modułu `sqlite3 DB-API <https://docs.python.org/2/library/sqlite3.html>`_,
+a także zewnętrznych bibliotek ORM:
+`Peewee <http://peewee.readthedocs.org/en/latest/index.html>`_
+oraz `SQLAlchemy <http://www.sqlalchemy.org>`_.
 
-.. _sqlite3 DB-API: https://docs.python.org/2/library/sqlite3.html
-.. _Peewee: http://peewee.readthedocs.org/en/latest/index.html
-.. _SQLAlchemy: http://www.sqlalchemy.org
+Poniższe przykłady wykorzystywać będą prostą, wydajną, stosowaną zarówno w prostych,
+jak i zaawansowanych projektach, `bazę danych SQLite3 <http://www.sqlite.org/>`_.
+Gdy zajdzie potrzeba, można je jednak wyorzystać w pracy z innymi bazami,
+takimi jak np. MySQL, MariaDB czy PostgresSQL.
 
-.. note::
-
-    Poniższe przykłady wykorzystywać będą prostą, wydajną, stosowaną
-    zarówno w prostych, jak i zaawansowanych projektach, `bazę danych SQLite3`_.
-    Gdy zajdzie potrzeba, można je jednak wyorzystać w pracy z innymi
-    bazami, takimi jak np. MySQL, MariaDB czy PostgresSQL.
-    Do testowania baz danych SQLite można wykorzystać przygotowane przez
-    jej twórców konsolowe narzędzie `sqlite3`_. W linuksach opartych na Debianie
-    (m. in. Ubuntu i pochodne) instalujemy je poleceniem typu:
-    ``apt-get install sqlite3``; w systemach Windows natomiast rozpakowujemy
-    z pobranego `archiwum`_.
-
-.. _bazę danych SQLite3: http://www.sqlite.org/
-.. _sqlite3: http://www.sqlite.org/cli.html
-.. _archiwum: http://www.sqlite.org/download.html
+Do testowania baz danych SQLite można wykorzystać przygotowane przez jej twórców
+konsolowe narzędzie `sqlite3 <http://www.sqlite.org/cli.html>`_.
+Zobacz, jak je zainstalować w systemie :ref:`Linux <linux-pakiety>` lub :ref:`Windows <sqlite3-win>`.
 
 .. toctree::
     :maxdepth: 2

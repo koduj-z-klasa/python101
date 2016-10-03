@@ -22,8 +22,10 @@ Biblioteki *mcpi-sim*, czyli symulatora Minecrafta, instalujemy poleceniem:
 
     ~$ git clone https://github.com/pddring/mcpi-sim.git
 
-Symulator w katalogu :file:`~/mcpi-sim/mcpi` zawiera biblioteki *mcpi*, czyli pythonowe :term:`API`
-pozwalające na komunikację z serwerem Minecraft Pi.
+**Symulator zawiera biblioteki ``mcpi``** w katalogu :file:`~/mcpi-sim/mcpi`.
+*Mcpi* to pythonowe :term:`API` pozwalające na komunikację z serwerem Minecraft Pi.
+Do działania symulatora potrzebna jest biblioteka *PyGame*. Zobacz, jak ją zainstalować
+w systemie :ref:`Linux <linux-pakiety>` lub :ref:`Windows <pygame-win>`.
 
 .. note::
 

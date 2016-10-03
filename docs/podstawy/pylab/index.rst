@@ -9,28 +9,11 @@ korzystanie z omawianej biblioteki na wzór środowiska `Matlab <http://pl.wikip
 Poniżej pokazujemy, jak łatwo przy użyciu Pythona wizualizować wykresy różnych
 funkcji.
 
-W systemach Linux *matplotlib* wymaga pakietu ``python-tk`` (systemy oparte na Debianie) lub ``tk`` (systemy oparte na Archlinuksie). Bibliotekę instalujemy jako pakiet:
+Zobacz, jak zainstalować matplotlib w systemie :ref:`Linux <linux-pakiety>` lub :ref:`Windows <matplotlib-win>`.
 
-.. raw:: html
+.. note::
 
-    <div class="code_no"><i>Terminal</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. code-block:: bash
-
-    ~$ sudo apt-get install python-matplotlib
-    ~# pacman -S python2-matplotlib
-
-– lub za pomocą narzędzia ``pip``:
-
-.. raw:: html
-
-    <div class="code_no"><i>Terminal</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. code-block:: bash
-
-    ~$ sudo pip install matplotlib
-
-W systemach Windows bibliotekę instalujemy zgodnie z opisem :ref:`przygotowania środowiska <windows-env>`.
+    W systemach **Linux** *matplotlib* wymaga pakietu ``python-tk`` (systemy oparte na Debianie) lub ``tk`` (systemy oparte na Arch Linux).
 
 .. contents::
     :depth: 1

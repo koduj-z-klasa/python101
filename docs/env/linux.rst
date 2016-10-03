@@ -44,6 +44,21 @@ Narzędzia dodatkowe:
       domyślnie wywołuje Pythona 2, w systemach opartych na *Arch Linuksie* – Pythona 3.
       Aby użyć interpretera Pythona 2, w *Archu* itp. trzeba wydać polecenie ``python2``.
 
+.. _linux-pakiety:
+
+Pip
+-------
+
+Przydatne polecenia:
+
+.. code-block:: bash
+
+    ~$ pip -V  # wersja narzędzia pip
+    ~$ pip list  # lista zainstalowanych pakietów
+    ~$ sudo pip install nazwa_pakietu  # instalacja pakietu
+    ~$ sudo pip install nazwa_pakietu -U  # aktualizacja pakietu
+    ~$ sudo pip uninstall  # usunięcie pakietu
+
 Narzędzia i biblioteki
 -----------------------
 
@@ -66,19 +81,6 @@ w terminalu wydajemy następujące polecenia:
     ~# pacman -S python2-pip python2-pygame tk python2-matplotlib git sqlite
     ~# pacman -S ipython2-notebook python2-pyqt5
     ~# pip2 install virtualenv flask django peewee sqlalchemy flask-sqlalchemy
-
-Pip
--------
-
-Przydatne polecenia:
-
-.. code-block:: bash
-
-    ~$ pip -V  # wersja narzędzia pip
-    ~$ pip list  # lista zainstalowanych pakietów
-    ~$ sudo pip install nazwa_pakietu  # instalacja pakietu
-    ~$ sudo pip install nazwa_pakietu -U  # aktualizacja pakietu
-    ~$ sudo pip uninstall  # usunięcie pakietu
 
 .. note::
 

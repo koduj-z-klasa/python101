@@ -14,7 +14,7 @@ krótkimi wiadomościami.
     **Wymagane oprogramowanie**:
 
       * Python v. 2.7.x
-      * Django v. 1.8.x
+      * Django v. 1.10.x
       * Interpreter bazy SQLite3
 
 .. contents::
