@@ -33,10 +33,10 @@ W Windows
 
 * Pobieramy :term:`obraz iso`:
 
-  - `LxPupXenial Full <https://drive.google.com/open?id=0B1zG9cfNyT7WT1I5MVZjdTE1ekE>`_
-    (689MB, zawiera edytory Geany 1.25, PyCharm Professional 2016.2 i SublimeText 3)
-  - lub: `LxPupXenial Base <https://drive.google.com/open?id=0B1zG9cfNyT7WeXBldEJLbklGTTg>`_
-    (412MB, zawiera edytor Geany 1.25, łatwo dodać :ref:`edytory PyCharm i/lub Sublime Text 3<sfs-pet>`)
+  - `LxPupXenial Full <https://drive.google.com/open?id=0B1zG9cfNyT7WUExnbTNkTWtnZFE>`_
+    (705MB, zawiera edytory Geany 1.25, PyCharm Professional 2016.2, SublimeText 3 oraz Etherpad)
+  - lub: `LxPupXenial Base <https://drive.google.com/open?id=0B1zG9cfNyT7WN2JCZEZMNTJnMjg>`_
+    (412MB, zawiera edytor Geany 1.25 oraz Etherpad, łatwo dodać :ref:`PyCharm i/lub Sublime Text 3<sfs-pet>`)
 
 * Do wgrania *LxPupXenial* pobieramy program `Rufus <https://rufus.akeo.ie/>`_.
 
