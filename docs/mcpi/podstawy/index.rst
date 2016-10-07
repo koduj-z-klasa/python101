@@ -233,7 +233,6 @@ Dopisujemy jej wywołanie: ``print "Typ bloku: ", jakiBlok()`` – w funkcji gł
 
 .. figure:: img/ipython05.png
 
-
 .. _mcpiplac:
 
 Plac budowy
@@ -321,6 +320,56 @@ Odpowiednio modyfikując funkcję ``buduj()`` skonstruuj:
 - bramę, czyli prostokąt 3D
 - sześcian
 
+Przykłady
+=========
+
+Zapisz skrypt :file:`mcsim.py` pod nazwą :file:`mcpi-test.py` i dostosuj go do uruchomienia
+na serwerze *MC Pi*. W tym celu zamień ciąg "local" w importach na "mcpi"
+oraz podaj adres IP serwera *MC Pi* w poleceniu tworzącym połączenie.
+Następnie umieść w pliku kody poniższych funkcji i po kolei je przetestuj dodając
+ich wywołania w funkcji głównej.
+
+
+Zostawiam ślady
+---------------
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: mcpi-slad.py
+    :linenos:
+    :lineno-start: 17
+    :lines: 17-39
+
+
+Buduję pomnik
+-------------
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: mcpi-pomnik.py
+    :linenos:
+    :lineno-start: 38
+    :lines: 38-52
+
+Piramida
+--------
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: mcpi-piramida.py
+    :linenos:
+    :lineno-start: 37
+    :lines: 37-55
+
 **Źródła:**
 
-* :download:`Skrypty mcpipodstawy <mcpipodst.zip>`
+* :download:`Skrypty mcpi podstawy <mcpi-podst.zip>`
