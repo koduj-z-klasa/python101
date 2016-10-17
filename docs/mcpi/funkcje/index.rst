@@ -74,7 +74,7 @@ za pomocą osobnej funkcji. Po funkcji ``plac()`` umieszczamy w pliku :file:`mcp
     rysuj(x, y, [1], blok)
 
 Funkcja ``rysuj()`` potrafi zbudować bloki zarówno w poziomie, jak i w pionie w zależności
-od tego, czy lista wartości funkcji przekazana zostanie jako parametr *y* czy *z*.
+od tego, czy lista wartości funkcji przekazana zostanie jako parametr *y* czy też *z*.
 Do rozpoznania tego wykorzystujemy zmienną sterującą ustawianą w instrukcji: ``czylista = True if len(y) > 1 else False``.
 
 Zawartość funkcji ``main()`` zmieniamy na:
@@ -106,7 +106,7 @@ bibliotekę :ref:`minecraftstuff <mcpifigury>`. Poniżej funkcji ``rysuj()`` dod
     :lineno-start: 62
     :lines: 62-83
 
-– a wywołanie nazwę ``rysuj()`` w funkcji ``fun1()`` zmieniamy na ``rysuj_linie()``.
+– a wywołanie ``rysuj()`` w funkcji ``fun1()`` zmieniamy na ``rysuj_linie()``.
 Sprawdź rezultat.
 
 Kolejne funkcje
@@ -125,13 +125,16 @@ wyliczający dziedziny i przeciwdziedziny dwóch kolejnych funkcji:
     :lineno-start: 115
     :lines: 115-159
 
-W funkckcji ``fun2()`` wartości dziedziny uzyskujemy dzięki funkcji ``arange(start, stop, step)`` z biblioteki *numpy*. Potrafi ona generować listę wartości zmiennopozycyjnych w podanym zakresie <*start;stop*) z określonym krokiem *step*. Przeciwdziedzinę wyliczamy w pętli w zależości od przedziałów,
-w których znajdują się argumenty, za pomocą złożonej instrukcji warunkowej. Następnie wartości
-zarówno dziedziny, jak i przeciwdziedziny przeskalowujemy w wyrażeniach listowych, mnożąc
-przez stały współczynnik, aby wykres w MC Pi był większy i wyraźnijeszy.
-Przy okazji współrzędne zaokrąglamy dodwóch miejsc po przecinku, np.:
-``x = [round(i * 20, 2) for i in x]``.
+W funkcji ``fun2()`` wartości dziedziny uzyskujemy dzięki metodzie ``arange(start, stop, step)`` z biblioteki *numpy*. Potrafi ona generować listę wartości zmiennopozycyjnych w podanym zakresie <*start;stop*) z określonym krokiem *step*.
+
+Przeciwdziedzinę wyliczamy w pętli w zależności od przedziałów, w których znajdują się argumenty,
+za pomocą złożonej instrukcji warunkowej. Następnie wartości zarówno dziedziny, jak i przeciwdziedziny
+przeskalowujemy w wyrażeniach listowych, mnożąc przez stały współczynnik,
+aby wykres w MC Pi był większy i wyraźniejszy. Przy okazji współrzędne zaokrąglamy
+do dwóch miejsc po przecinku, np.: ``x = [round(i * 20, 2) for i in x]``.
 
 Zmieniamy też nieco wywołania w funkcji głównej. Przetestuj podany kod.
 
 .. figure:: img/mcpi-funkcje04.png
+
+[todo]
