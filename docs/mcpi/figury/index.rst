@@ -32,23 +32,26 @@ W pustym pliku :file:`mcsim-fig.py` umieszczamy kod:
     :linenos:
     :lineno-start: 1
     :lines: 1-
-    :emphasize-lines: 41-59
+    :emphasize-lines: 7-8, 14, 38-51, 57
 
 Większość kodu omówiona została w :ref:`Podstawach <mcpiplac>`. W nowym kodzie, który został podświetlony,
-importujemy bibliotekę *minecraftstuff* oraz klasę *Vec3*. Reprezentuje ona pozycję o podanych
+importujemy bibliotekę *minecraftstuff* oraz klasę *Vec3*. Reprezentuje ona punkty o podanych
 współrzędnych w trójwymiarowym świecie MC. Polecenie ``figura = mcstuff.MinecraftDrawing(mc)`` tworzy instancję
 głównej klasy biblioteki, która udostępni jej metody.
 
 Do rysowania linii wykorzystujemy metodę ``drawLine()``, której przekazujemy jako argumenty
 współrzędne punktu początkowego i końcowego, a także typ bloku i ewentualnie podtyp.
-Współrzędne punktów końcowych zostały zapisane w dwóch tuplach (niemodyfikowalnej liście) jako tuple.
-Rozpakowujemy je w pętlach (``x, y, z = punkt``) i przekazujemy do konstruktora klasy ``Vec3``
-(``p2 = Vec3(x, y, z)``).
+Ponieważ chcemy narysować kilka linii wychodzących z tego samego punktu, współrzędne punktów końcowych
+umieszczamy w dwóch tuplach (niemodyfikowalnych listach) jako... tuple.
+W pętlach odczytujemy je (``for punkt in punkty1:``), rozpakowujemy (``x, y, z = punkt``) i przekazujemy do konstruktora omówionej wyżej klasy ``Vec3`` (``p2 = Vec3(x, y, z)``).
+
+Całość omówionego kodu dla przejrzystości umieszczamy w funkcji ``linie()``,
+którą wywołujemy w funkcji głównej i testujemy.
 
 Koło
 =====
 
-Na końcu funkcji ``main()`` dodaj kod:
+Przed funkcją główną ``main()`` wstawiamy kod:
 
 .. raw:: html
 
@@ -57,16 +60,38 @@ Na końcu funkcji ``main()`` dodaj kod:
 .. highlight:: python
 .. literalinclude:: mcsim-fig.py
     :linenos:
-    :lineno-start: 61
-    :lines: 61-63
+    :lineno-start: 54
+    :lines: 54-57
 
-Metoda ``drawCircle()`` pozwala na rysowanie koła. Pierwsze trzy argumenty to współrzędne
-środka, kolejne to: promień, typ i ewentualny podtyp bloku.
+Funkcja ``kolo(x, y, z, r)`` wykorzystuje metodę ``drawCircle()`` do rysowania koła w pionie
+oraz ``drawHorizontalCircle()`` do rysowania koła w poziomie. Obydwie metody pobierają współrzędne
+środka koła, jego promień oraz typ i podtyp bloku, służącego do rysowania.
+
+Umieść wywołanie funkcji, np. ``kolo(0, 10, 0, 10)``, w funkcji głównej i przetestuj.
 
 Kula
 ====
 
-Do funkcji ``main()`` dopisujemy:
+Do skryptu wstawiamy kolejną funkcję przed funkcją ``main()``:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: mcsim-fig.py
+    :linenos:
+    :lineno-start: 60
+    :lines: 60-62
+
+Metoda ``drawSphere()`` buduje kulę. Pierwsze trzy argumenty to współrzędne środka,
+kolejne to: promień, typ i ewentualny podtyp bloku. Umieść wywołanie funkcji,
+np. ``kula(0, 10, 0, 9)``, w funkcji głównej i przetestuj.
+
+Kształt
+=======
+
+Przed funkcją ``main()`` wstawiamy:
 
 .. raw:: html
 
@@ -76,30 +101,15 @@ Do funkcji ``main()`` dopisujemy:
 .. literalinclude:: mcsim-fig.py
     :linenos:
     :lineno-start: 65
-    :lines: 65-67
+    :lines: 65-71
 
-Metoda ``drawSphere()`` buduje kulę. Pierwsze trzy argumenty to współrzędne
-środka, kolejne to: promień, typ i ewentualny podtyp bloku.
-
-Kształt
-=======
-
-Do funkcji ``main()`` dodajemy kod:
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: python
-.. literalinclude:: mcsim-fig.py
-    :linenos:
-    :lineno-start: 69
-    :lines: 69-74
-
-Powyżej do listy ``ksztalt`` dodajemy kolejne punkty w instrukcjach typu ``ksztalt.append(Vec3(-11, 0, 11))``.
-Na koniec wywołujemy metodę ``drawFace()``, która punkty przekazane w liście łączy
+Chcąc narysować trójkąt do listy do listy ``ksztalt`` dodajemy trzy instancje klasy *Vec3*
+definiujące kolejne wierzchołki: ``ksztalt.append(Vec3(-11, 0, 11))``.
+Do rysowania dowolnych kształtów służy metoda ``drawFace()``, która punkty przekazane w liście łączy
 liniami budowanymi z podanego bloku. Drugi argument, logiczny, decyduje o tym, czy figura
 ma zostać wypełniona (``True``), czy nie (``False``).
+
+Po wywołaniu wszystkich omówionych funkcji możemy zobaczyć w symulatorze poniższą budowlę:
 
 .. figure:: img/mcsim-fig.png
 
@@ -110,4 +120,3 @@ spróbuj zbudować napis "KzK" podobny do pokazanego poniżej.
 Przetestuj swój kod w symulatorze i w Minecrafcie Pi.
 
 .. figure:: img/mcsim-KzK.png
-
