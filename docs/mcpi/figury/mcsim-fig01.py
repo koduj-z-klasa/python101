@@ -54,7 +54,7 @@ def linie():
 def main():
     mc.postToChat("Biblioteka minecraftstuff")  # wysłanie komunikatu do mc
     plac(-15, 0, -15, 30)
-    linie()  # wywołanie funkcji linie
+    linie()  # wywołanie funkcji
 
     return 0
 
