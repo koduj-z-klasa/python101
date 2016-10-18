@@ -34,21 +34,6 @@ def plac(x, y, z, roz=10, gracz=False):
         mc.player.setPos(x + roz / 2, y + roz / 2, z + roz / 2)
 
 
-def wykres(x, y, tytul="Wykres funkcji", *extra):
-    """
-    Funkcja wizualizuje wykres funkcji, której argumenty zawiera lista x
-    a wartości lista y i ew. dodatkowe listy w parametrze *extra
-    """
-    if len(extra):
-        plt.plot(x, y, extra[0], extra[1])  # dwa wykresy na raz
-    else:
-        plt.plot(x, y)
-    plt.title(tytul)
-    # plt.xlabel(podpis)
-    plt.grid(True)
-    plt.show()
-
-
 def uklad(blok=block.OBSIDIAN):
     """
     Funkcja rysuje układ współrzędnych
@@ -96,6 +81,21 @@ def rysuj_linie(x, y, z, blok=block.IRON_BLOCK):
             z2 = int(z[i + 1])
             print (x1, y[0], z1, x2, y[0], z2)
             mcfig.drawLine(x1, y[0], z1, x2, y[0], z2, blok)
+
+
+def wykres(x, y, tytul="Wykres funkcji", *extra):
+    """
+    Funkcja wizualizuje wykres funkcji, której argumenty zawiera lista x
+    a wartości lista y i ew. dodatkowe listy w parametrze *extra
+    """
+    if len(extra):
+        plt.plot(x, y, extra[0], extra[1])  # dwa wykresy na raz
+    else:
+        plt.plot(x, y)
+    plt.title(tytul)
+    # plt.xlabel(podpis)
+    plt.grid(True)
+    plt.show()
 
 
 def fun1(blok=block.IRON_BLOCK):
@@ -147,14 +147,44 @@ def fun3(blok=block.LAPIS_LAZULI_BLOCK):
     rysuj(x, y, [1], blok)
 
 
+def fkw(x, a=0.3, b=0.1, c=0):
+    return a * x**2 + b * x + c
+
+
+def fkwadratowa():
+    """
+    Funkcja przygotowuje dziedzinę funkcji kwadratowej
+    oraz dwie przeciwdziedziny, druga z odwróconym znakiem. Następnie
+    buduje ich wykresy w poziomie i w pionie.
+    """
+    while True:
+        lewy = float(raw_input("Podaj lewy kraniec przedziału: "))
+        prawy = float(raw_input("Podaj prawy kraniec przedziału: "))
+        if lewy * prawy < 1 and lewy <= prawy:
+            break
+    print lewy, prawy
+
+    # x = np.arange(lewy, prawy, 0.2)
+    x = np.linspace(lewy, prawy, 60, True)
+    x = [round(i, 2) for i in x]
+    y1 = [fkw(i) for i in x]
+    y1 = [round(i, 2) for i in y1]
+    y2 = [-fkw(i) for i in x]
+    y2 = [round(i, 2) for i in y2]
+    print x, "\n", y1, "\n", y2
+    wykres(x, y1, "Funkcja kwadratowa", x, y2)
+    rysuj_linie(x, [1], y1, block.GRASS)
+    rysuj(x, [1], y2, block.SAND)
+    rysuj(x, y1, [1], block.WOOL)
+    rysuj_linie(x, y2, [1], block.IRON_BLOCK)
+
+
 def main():
     mc.postToChat("Funkcje w Minecrafcie")  # wysłanie komunikatu do mc
     plac(-80, -20, -80, 160)
-    mc.player.setPos(-8, 10, 26)
-    uklad(block.DIAMOND_BLOCK)
-    fun1()
-    fun2()
-    fun3()
+    mc.player.setPos(-15, 10, -15)
+    uklad(block.OBSIDIAN)
+    fkwadratowa()
     return 0
 
 

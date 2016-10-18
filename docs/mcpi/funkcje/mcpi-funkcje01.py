@@ -57,8 +57,7 @@ def fun1(blok=block.IRON_BLOCK):
     b = int(raw_input('Podaj współczynnik b: '))
     x = range(-10, 11)  # lista argumentów x = <-10;10> z krokiem 1
     y = [a * i + b for i in x]  # wyrażenie listowe
-    print x
-    print y
+    print x, "\n", y
     wykres(x, y, "f(x) = a*x + b")
     for i in range(len(x)):
         mc.setBlock(x[i], 1, y[i], blok)

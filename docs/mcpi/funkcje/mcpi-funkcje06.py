@@ -147,14 +147,66 @@ def fun3(blok=block.LAPIS_LAZULI_BLOCK):
     rysuj(x, y, [1], blok)
 
 
+def fkw(x, a=0.3, b=0.1, c=0):
+    return a * x**2 + b * x + c
+
+
+def fkwadratowa():
+    """
+    Funkcja przygotowuje dziedzinę funkcji kwadratowej
+    oraz dwie przeciwdziedziny, druga z odwróconym znakiem. Następnie
+    buduje ich wykresy w poziomie i w pionie.
+    """
+    while True:
+        lewy = float(raw_input("Podaj lewy kraniec przedziału: "))
+        prawy = float(raw_input("Podaj prawy kraniec przedziału: "))
+        if lewy * prawy < 1 and lewy <= prawy:
+            break
+    print lewy, prawy
+
+    # x = np.arange(lewy, prawy, 0.2)
+    x = np.linspace(lewy, prawy, 60, True)
+    x = [round(i, 2) for i in x]
+    y1 = [fkw(i) for i in x]
+    y1 = [round(i, 2) for i in y1]
+    y2 = [-fkw(i) for i in x]
+    y2 = [round(i, 2) for i in y2]
+    print x, "\n", y1, "\n", y2
+    wykres(x, y1, "Funkcja kwadratowa", x, y2)
+    rysuj_linie(x, [1], y1, block.GRASS)
+    rysuj(x, [1], y2, block.SAND)
+    rysuj(x, y1, [1], block.WOOL)
+    rysuj_linie(x, y2, [1], block.IRON_BLOCK)
+
+
+def trygon():
+    x1 = np.arange(-50.0, 50.0, 1)
+    y1 = 5 * np.sin(0.1 * np.pi * x1)
+    y1 = [round(i, 2) for i in y1]
+    print x1, "\n", y1
+
+    x2 = range(0, 361, 10)  # lista argumentów x
+    y2 = [None if i == 90 or i == 270 else np.tan(i * np.pi / 180) for i in x2]
+    x2 = [i // 10 for i in x2]
+    y2 = [round(i * 3, 2) if i is not None else None for i in y2]
+    print x2, "\n", y2
+    wykres(x1, y1, "Funkcje sinus i tangens", x2, y2)
+
+    del x2[9]  # usuń 10 element listy
+    del y2[9]  # usuń 10 element listy
+    del x2[x2.index(27)]  # usuń element o wartości 27
+    del y2[y2.index(None)]  # usuń element None
+    print x2, "\n", y2
+    rysuj(x1, [1], y1, block.GOLD_BLOCK)
+    rysuj(x2, y2, [1], block.OBSIDIAN)
+
+
 def main():
     mc.postToChat("Funkcje w Minecrafcie")  # wysłanie komunikatu do mc
     plac(-80, -20, -80, 160)
-    mc.player.setPos(-8, 10, 26)
+    mc.player.setPos(17, 17, 24)
     uklad(block.DIAMOND_BLOCK)
-    fun1()
-    fun2()
-    fun3()
+    trygon()
     return 0
 
 

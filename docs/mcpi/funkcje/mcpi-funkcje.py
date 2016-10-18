@@ -34,6 +34,21 @@ def plac(x, y, z, roz=10, gracz=False):
         mc.player.setPos(x + roz / 2, y + roz / 2, z + roz / 2)
 
 
+def wykres(x, y, tytul="Wykres funkcji", *extra):
+    """
+    Funkcja wizualizuje wykres funkcji, której argumenty zawiera lista x
+    a wartości lista y i ew. dodatkowe listy w parametrze *extra
+    """
+    if len(extra):
+        plt.plot(x, y, extra[0], extra[1])  # dwa wykresy na raz
+    else:
+        plt.plot(x, y)
+    plt.title(tytul)
+    # plt.xlabel(podpis)
+    plt.grid(True)
+    plt.show()
+
+
 def uklad(blok=block.OBSIDIAN):
     """
     Funkcja rysuje układ współrzędnych
@@ -83,21 +98,6 @@ def rysuj_linie(x, y, z, blok=block.IRON_BLOCK):
             mcfig.drawLine(x1, y[0], z1, x2, y[0], z2, blok)
 
 
-def wykres(x, y, tytul="Wykres funkcji", *extra):
-    """
-    Funkcja wizualizuje wykres funkcji, której argumenty zawiera lista x
-    a wartości lista y
-    """
-    if len(extra):
-        plt.plot(x, y, extra[0], extra[1])
-    else:
-        plt.plot(x, y)
-    plt.title(tytul)
-    # plt.xlabel(podpis)
-    plt.grid(True)
-    plt.show()
-
-
 def fun1(blok=block.IRON_BLOCK):
     """
     Funkcja f(x) = a*x + b
@@ -106,8 +106,7 @@ def fun1(blok=block.IRON_BLOCK):
     b = int(raw_input('Podaj współczynnik b: '))
     x = range(-10, 11)  # lista argumentów x = <-10;10> z krokiem 1
     y = [a * i + b for i in x]  # wyrażenie listowe
-    print x
-    print y
+    print x, "\n", y
     wykres(x, y, "f(x) = a*x + b")
     rysuj_linie(x, y, [1], blok)
 
@@ -129,10 +128,10 @@ def fun2(blok=block.REDSTONE_ORE):
             y.append(i ** 2 / 3)
         else:
             y.append(i / (i + 2))
-    # wykres(x, y)
+    wykres(x, y, "Funkcja mieszana")
     x = [round(i * 20, 2) for i in x]
     y = [round(i * 20, 2) for i in y]
-    print x, y
+    print x, "\n", y
     rysuj(x, y, [1], blok)
 
 
@@ -143,19 +142,20 @@ def fun3(blok=block.LAPIS_LAZULI_BLOCK):
     x = np.arange(0.1, 41, 1)  # lista argumentów x
     y = [np.log2(i) for i in x]
     y = [round(i, 2) * 2 for i in y]
-    print x
-    print y
-    # wykres(x, y, "Funkcja logarytmiczna")
+    print x, "\n", y
+    wykres(x, y, "Funkcja logarytmiczna")
     rysuj(x, y, [1], blok)
 
 
-def fkw(x, a=2, b=4, c=1):
-    return x**2 / 3
-    # return a * x**2 + b * x + c
+def fkw(x, a=0.3, b=0.1, c=0):
+    return a * x**2 + b * x + c
 
 
 def fkwadratowa():
     """
+    Funkcja przygotowuje dziedzinę funkcji kwadratowej
+    oraz dwie przeciwdziedziny, druga z odwróconym znakiem. Następnie
+    buduje ich wykresy w poziomie i w pionie.
     """
     while True:
         lewy = float(raw_input("Podaj lewy kraniec przedziału: "))
@@ -165,43 +165,39 @@ def fkwadratowa():
     print lewy, prawy
 
     # x = np.arange(lewy, prawy, 0.2)
-    x = np.linspace(lewy, prawy, 60)
+    x = np.linspace(lewy, prawy, 60, True)
     x = [round(i, 2) for i in x]
-    y1 = [fkw(i, 2, 2, 1) for i in x]
+    y1 = [fkw(i) for i in x]
     y1 = [round(i, 2) for i in y1]
-    y2 = [-fkw(i, 2, 2, 1) for i in x]
+    y2 = [-fkw(i) for i in x]
     y2 = [round(i, 2) for i in y2]
-    print x
-    print y1
-    # wykres(x, y1)
-    rysuj(x, [1], y1, block.GRASS)
+    print x, "\n", y1, "\n", y2
+    wykres(x, y1, "Funkcja kwadratowa", x, y2)
+    rysuj_linie(x, [1], y1, block.GRASS)
     rysuj(x, [1], y2, block.SAND)
     rysuj(x, y1, [1], block.WOOL)
+    rysuj_linie(x, y2, [1], block.IRON_BLOCK)
 
 
 def trygon():
-    # plac(-80, -20, -80, 160)
     mc.player.setPos(17, 17, 24)
     x1 = np.arange(-50.0, 50.0, 1)
     y1 = 5 * np.sin(0.1 * np.pi * x1)
-    y1 = [round(i, 4) for i in y1]
+    y1 = [round(i, 2) for i in y1]
+    print x1, "\n", y1
 
     x2 = range(0, 361, 10)  # lista argumentów x
-    x2.remove(90)
-    x2.remove(270)
-    y2 = [np.tan(i * np.pi / 180) for i in x2]
-    # for i in x2:
-    #     if i == 90 or i == 270:
-    #         # y2.append(None)
-    #         pass
-    #     else:
-    #         y2.append(np.tan(i * np.pi / 180))
-
+    y2 = [None if i == 90 or i == 270 else np.tan(i * np.pi / 180) for i in x2]
     x2 = [i // 10 for i in x2]
-    y2 = [round(i * 3, 2) for i in y2]
-    # print x2
-    # print y2
-    # wykres(x1, y1, "Funkcje sinus i tangens", x2, y2)
+    y2 = [round(i * 3, 2) if i is not None else None for i in y2]
+    print x2, "\n", y2
+    wykres(x1, y1, "Funkcje sinus i tangens", x2, y2)
+
+    del x2[9]  # usuń 10 element listy
+    del y2[9]  # usuń 10 element listy
+    del x2[x2.index(27)]  # usuń element o wartości 27
+    del y2[y2.index(None)]  # usuń element None
+    print x2, "\n", y2
     rysuj(x1, [1], y1, block.GOLD_BLOCK)
     rysuj(x2, y2, [1], block.OBSIDIAN)
 
@@ -209,17 +205,9 @@ def trygon():
 def main():
     mc.postToChat("Funkcje w Minecrafcie")  # wysłanie komunikatu do mc
     plac(-80, -20, -80, 160)
-    mc.player.setPos(-8, 10, 26)
+    mc.player.setPos(17, 17, 24)
     uklad(block.DIAMOND_BLOCK)
-    fun1()
-    fun2()
-    fun3()
-    # plac(-80, -5, -80, 160)
-    # fkwadratowa()
-    # trygon()
-    # slonce()
-    # wielokat(10)
-
+    trygon()
     return 0
 
 

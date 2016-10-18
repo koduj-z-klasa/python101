@@ -55,7 +55,7 @@ Układ współrzędnych
 ===================
 
 Spróbujmy pokazać w Mc Pi układ współrzędnych oraz ułatwić "budowanie" wykresów
-za pomocą osobnej funkcji. Po funkcji ``plac()`` umieszczamy w pliku :file:`mcpi-funkcje.py` nowy kod:
+za pomocą osobnej funkcji. Po funkcji ``wykres()`` umieszczamy w pliku :file:`mcpi-funkcje.py` nowy kod:
 
 .. raw:: html
 
@@ -64,8 +64,8 @@ za pomocą osobnej funkcji. Po funkcji ``plac()`` umieszczamy w pliku :file:`mcp
 .. highlight:: python
 .. literalinclude:: mcpi-funkcje02.py
     :linenos:
-    :lineno-start: 37
-    :lines: 37-59
+    :lineno-start: 52
+    :lines: 52-74
 
 – a kod tworzący wykres funkcji liniowej w MC Pi zmieniamy na:
 
@@ -86,8 +86,8 @@ Zawartość funkcji ``main()`` zmieniamy na:
 .. highlight:: python
 .. literalinclude:: mcpi-funkcje02.py
     :linenos:
-    :lineno-start: 91
-    :lines: 91-98
+    :lineno-start: 90
+    :lines: 90-96
 
 Po uruchomieniu zmienionego kodu powinniśmy zobaczyć wykres naszej funkcji w pionie.
 
@@ -103,8 +103,8 @@ bibliotekę :ref:`minecraftstuff <mcpifigury>`. Poniżej funkcji ``rysuj()`` dod
 .. highlight:: python
 .. literalinclude:: mcpi-funkcje03.py
     :linenos:
-    :lineno-start: 62
-    :lines: 62-83
+    :lineno-start: 77
+    :lines: 77-98
 
 – a wywołanie ``rysuj()`` w funkcji ``fun1()`` zmieniamy na ``rysuj_linie()``.
 Sprawdź rezultat.
@@ -122,8 +122,8 @@ wyliczający dziedziny i przeciwdziedziny dwóch kolejnych funkcji:
 .. highlight:: python
 .. literalinclude:: mcpi-funkcje04.py
     :linenos:
-    :lineno-start: 115
-    :lines: 115-159
+    :lineno-start: 114
+    :lines: 114-158
 
 W funkcji ``fun2()`` wartości dziedziny uzyskujemy dzięki metodzie ``arange(start, stop, step)`` z biblioteki *numpy*. Potrafi ona generować listę wartości zmiennopozycyjnych w podanym zakresie <*start;stop*) z określonym krokiem *step*.
 
@@ -133,8 +133,83 @@ przeskalowujemy w wyrażeniach listowych, mnożąc przez stały współczynnik,
 aby wykres w MC Pi był większy i wyraźniejszy. Przy okazji współrzędne zaokrąglamy
 do dwóch miejsc po przecinku, np.: ``x = [round(i * 20, 2) for i in x]``.
 
-Zmieniamy też nieco wywołania w funkcji głównej. Przetestuj podany kod.
+W funkcji ``fun3()`` w podobny jak powyżej sposób obliczamy argumenty i wartości funkcji logarytmicznej.
+
+Na koniec zmieniamy też nieco wywołania w funkcji głównej. Przetestuj podany kod.
 
 .. figure:: img/mcpi-funkcje04.png
 
+Funkcja kwadratowa
+==================
+
+Przygotujemy wykres funkcji kwadratowej. Przed funkcją główną umieszczamy następujący kod:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: mcpi-funkcje05.py
+    :linenos:
+    :lineno-start: 150
+    :lines: 150-188
+
+Na początku w funkcji ``fkwadratowa()`` pobieramy od użytkownika przedział, w którym
+budować będziemy funkcję. Wymuszamy przy tym w pętli ``while``, aby lewa i prawa granica
+miały inne znaki. Dalej używamy funkcji ``linspace(start, stop, num, endpoint)``, która generuje
+listę *num* wartości od punktu początkowego do końcowego, który uwzględniany jest, jeżeli argument
+*endpoint* ma wartość *True*. Kolejne wyrażenia listowe wyliczają przeciwdziedziny
+i zaokrąglają wartości do 2 miejsc po przecinku.
+
+Sama funkcja kwadratowa ``a*x^2 + b*x + c`` zdefiniowana jest w funkcji ``fkw()``, do której
+przekazujemy kolejne argumenty dziedziny i opcjonalnie współczynniki.
+
+Instrukcje ``rysuj()`` i ``rysuj_linie()`` dzięki przekazywaniu przeciwdziedziny jako
+2. lub 3. argumentu budują wykresy w poziomie lub w pionie za pomocą pojedynczych
+lub połączonych bloków.
+
+Po przygotowaniu w funkcji głównej miejsca, ustawieniu gracza, narysowaniu układu
+i podaniu przedziału <-20, 20> otrzymamy konstrukcję podobną do poniższej.
+
+.. figure:: img/fkwadratowa1.png
+
+Po zmianie funkcji na *x**2 / 3* można otrzymać:
+
+.. figure:: img/fkwadratowa2.png
+
+**Ćwiczenie**
+
+Warto poeksperymentować z wzorami funkcji kwadratowej, jej współczynnikami,
+wartościami przedziałów i ilością argumentów, aby zbadać jak te zmiany
+wpływają na jej reprezentację graficzną.
+
+Funkcje trygonometryczne
+========================
+
+Na koniec zobrazujemy funkcje trygonometryczne. Przed funkcją główną dopisujemy kod:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: mcpi-funkcje06.py
+    :linenos:
+    :lineno-start: 182
+    :lines: 182-210
+
+W funkcji ``trygon()`` na początku wyliczamy dziedzinę i przeciwdziedzinę funkcji
+*5 * sin(0.1 * Pi * x)*, przy czym wartości *y* zaokrąglamy.
+
+Dalej generujemy argumenty *x* dla funkcji tangens w przedziale od 0 do 360 co 10 stopni.
+Obliczając wartości *y* za pomocą wyrażenia listowego
+``y2 = [None if i == 90 or i == 270 else np.tan(i * np.pi / 180) for i in x2]``
+dla argumentów *90* i *270* wstawiamy *None* (czyli nic), ponieważ dla tych argumentów
+funkcja nie przyjmuje wartości.
+
+Aby wykresy obydwu funkcji nałożyły się na siebie skalujemy argumenty funkcji tangens
+dzieląc je przez 10 oraz wartości mnożąc je przez 3 (przy okazji zaokrąglamy je).
+
 [todo]
+
+.. figure:: img/trygon.png

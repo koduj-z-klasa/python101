@@ -34,6 +34,21 @@ def plac(x, y, z, roz=10, gracz=False):
         mc.player.setPos(x + roz / 2, y + roz / 2, z + roz / 2)
 
 
+def wykres(x, y, tytul="Wykres funkcji", *extra):
+    """
+    Funkcja wizualizuje wykres funkcji, której argumenty zawiera lista x
+    a wartości lista y i ew. dodatkowe listy w parametrze *extra
+    """
+    if len(extra):
+        plt.plot(x, y, extra[0], extra[1])  # dwa wykresy na raz
+    else:
+        plt.plot(x, y)
+    plt.title(tytul)
+    # plt.xlabel(podpis)
+    plt.grid(True)
+    plt.show()
+
+
 def uklad(blok=block.OBSIDIAN):
     """
     Funkcja rysuje układ współrzędnych
@@ -83,21 +98,6 @@ def rysuj_linie(x, y, z, blok=block.IRON_BLOCK):
             mcfig.drawLine(x1, y[0], z1, x2, y[0], z2, blok)
 
 
-def wykres(x, y, tytul="Wykres funkcji", *extra):
-    """
-    Funkcja wizualizuje wykres funkcji, której argumenty zawiera lista x
-    a wartości lista y i ew. dodatkowe listy w parametrze *extra
-    """
-    if len(extra):
-        plt.plot(x, y, extra[0], extra[1])  # dwa wykresy na raz
-    else:
-        plt.plot(x, y)
-    plt.title(tytul)
-    # plt.xlabel(podpis)
-    plt.grid(True)
-    plt.show()
-
-
 def fun1(blok=block.IRON_BLOCK):
     """
     Funkcja f(x) = a*x + b
@@ -106,8 +106,7 @@ def fun1(blok=block.IRON_BLOCK):
     b = int(raw_input('Podaj współczynnik b: '))
     x = range(-10, 11)  # lista argumentów x = <-10;10> z krokiem 1
     y = [a * i + b for i in x]  # wyrażenie listowe
-    print x
-    print y
+    print x, "\n", y
     wykres(x, y, "f(x) = a*x + b")
     rysuj_linie(x, y, [1], blok)
 
@@ -118,7 +117,6 @@ def main():
     mc.player.setPos(-4, 10, 20)
     uklad()
     fun1()
-
     return 0
 
 
