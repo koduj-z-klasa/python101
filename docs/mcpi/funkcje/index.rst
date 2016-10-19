@@ -67,7 +67,7 @@ za pomocą osobnej funkcji. Po funkcji ``wykres()`` umieszczamy w pliku :file:`m
     :lineno-start: 52
     :lines: 52-74
 
-– a kod tworzący wykres funkcji liniowej w MC Pi zmieniamy na:
+– a pętlę tworzącą wykres w funkcji ``fun1()`` zastępujemy wywołaniem:
 
 .. code-block:: python
 
@@ -177,11 +177,7 @@ Po zmianie funkcji na *x**2 / 3* można otrzymać:
 
 .. figure:: img/fkwadratowa2.png
 
-**Ćwiczenie**
-
-Warto poeksperymentować z wzorami funkcji kwadratowej, jej współczynnikami,
-wartościami przedziałów i ilością argumentów, aby zbadać jak te zmiany
-wpływają na jej reprezentację graficzną.
+Zwróciłeś uwagę na to, że jeden z wykresów opada?
 
 Funkcje trygonometryczne
 ========================
@@ -205,11 +201,32 @@ Dalej generujemy argumenty *x* dla funkcji tangens w przedziale od 0 do 360 co 1
 Obliczając wartości *y* za pomocą wyrażenia listowego
 ``y2 = [None if i == 90 or i == 270 else np.tan(i * np.pi / 180) for i in x2]``
 dla argumentów *90* i *270* wstawiamy *None* (czyli nic), ponieważ dla tych argumentów
-funkcja nie przyjmuje wartości.
+funkcja nie przyjmuje wartości. Dzięki temu uzyskamy poprawny wykres w *matplotlib*.
 
-Aby wykresy obydwu funkcji nałożyły się na siebie skalujemy argumenty funkcji tangens
-dzieląc je przez 10 oraz wartości mnożąc je przez 3 (przy okazji zaokrąglamy je).
+Aby wykresy obydwu funkcji nałożyły się na siebie, używając wyrażenia listowego,
+skalujemy argumenty i wartości funkcji tangens. Pierwsze dzielimy przez 10, drugie
+mnożymy przez 3 (i przy okazji zaokrąglamy). Konstrukcja ``if i is not None else None``
+zapobiega wykonywaniu operacji dla wartości ``None``, co generowałoby błędy.
 
-[todo]
+Przygotowanie danych do zwizualizowania w Minecrafcie wymaga usunięcia 2 argumentów
+z listy *x2* oraz odpowiadających im wartości ``None`` z listy *y2*, ponieważ nie tworzą
+one poprawnych współrzędnych. Pierwszą parę usuwamy podając wprost odpowiedni indeks
+w instrukcjach ``del x2[9]`` i ``del y2[9]``. Indeksy elementów drugiej pary najpierw
+wyszukujemy ``x2.index(27)`` i ``y2.index(None)``, a później przekazujemy do
+instrukcji usuwającej ``del()``.
+
+Po wywołaniu z ustawieniami w funkcji głównej takimi jak w powyższym kodzie
+powinniśmy zobaczyć obraz podobny do poniższego.
 
 .. figure:: img/trygon.png
+
+
+**Ćwiczenia**
+
+Warto poeksperymentować z wzorami funkcji, ich współczynnikami,
+wartościami przedziałów i ilością argumentów, aby zbadać jak te zmiany
+wpływają na ich reprezentację graficzną.
+
+Można też rysować mieszać metody rysujące wykresy (``rysuj()``, ``rysuj_linie()``),
+kolejność przekazywania im parametrów, rodzaje bloków itp.
+Spróbuj np. budować wykresy z piasku (``block.STONE``) ponad powierzchnią.

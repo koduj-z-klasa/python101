@@ -45,6 +45,7 @@ w systemie :ref:`Linux <linux-pakiety>` lub :ref:`Windows <pygame-win>`.
     podstawy/index
     figury/index
     turtle/index
+    funkcje/index
     rgame/index
     gloss_mcpi
 

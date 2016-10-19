@@ -68,7 +68,6 @@ def main():
     plac(-80, 0, -80, 160)
     mc.player.setPos(22, 10, 10)
     fun1()
-
     return 0
 
 
