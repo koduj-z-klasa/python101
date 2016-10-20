@@ -1,4 +1,4 @@
-.. _mcpifunkcje:
+.. _mcpi-funkcje:
 
 Funkcje w mcpi
 ##############

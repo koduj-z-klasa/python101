@@ -44,9 +44,8 @@ def wykres(x, y, tytul="Wykres funkcji", *extra):
     if len(extra):
         plt.plot(x, y, extra[0], extra[1])  # dwa wykresy na raz
     else:
-        plt.plot(x, y, "o:")
+        plt.plot(x, y, "o:", color="blue", linewidth="3", alpha=0.8)
     plt.title(tytul)
-    # plt.xlabel(podpis)
     plt.grid(True)
     plt.show()
 
@@ -64,44 +63,6 @@ def rysuj(x, y, z, blok=block.IRON_BLOCK):
         else:
             print(x[i], z[i])
             mc.setBlock(x[i], y[0], z[i], blok)
-
-
-def rysuj_linie(x, y, z, blok=block.IRON_BLOCK):
-    """
-    Funkcja wizualizuje wykres funkcji, umieszczając bloki w pionie/poziomie
-    w punktach wyznaczonych przez pary elementów list x, y lub x, z
-    przy użyciu metody drawLine()
-    """
-    import local.minecraftstuff as mcstuff
-    mcfig = mcstuff.MinecraftDrawing(mc)
-    czylista = True if len(y) > 1 else False
-    for i in range(len(x) - 1):
-        x1 = int(x[i])
-        x2 = int(x[i + 1])
-        if czylista:
-            y1 = int(y[i])
-            y2 = int(y[i + 1])
-            mc.setBlock(x2, y2, z[0], block.GRASS)
-            mc.setBlock(x1, y1, z[0], block.GRASS)
-            mcfig.drawLine(x1, y1, z[0], x2, y2, z[0], blok)
-            mc.setBlock(x2, y2, z[0], block.GRASS)
-            mc.setBlock(x1, y1, z[0], block.GRASS)
-            print (x1, y1, z[0], x2, y2, z[0])
-        else:
-            z1 = int(z[i])
-            z2 = int(z[i + 1])
-            mc.setBlock(x1, y[0], z1, block.GRASS)
-            mc.setBlock(x2, y[0], z2, block.GRASS)
-            mcfig.drawLine(x1, y[0], z1, x2, y[0], z2, blok)
-            mc.setBlock(x1, y[0], z1, block.GRASS)
-            mc.setBlock(x2, y[0], z2, block.GRASS)
-            print (x1, y[0], z1, x2, y[0], z2)
-        sleep(1)  # przerwa na reklamę :-)
-    mc.setBlock(0, 1, 0, block.OBSIDIAN)
-    if czylista:
-        mc.setBlock(x2, y2, z[0], block.OBSIDIAN)
-    else:
-        mc.setBlock(x2, y[0], z2, block.OBSIDIAN)
 
 
 def ruchyBrowna():
@@ -129,14 +90,7 @@ def ruchyBrowna():
     print "Wektor przesunięcia: {:.2f}".format(s)
 
     wykres(lx, ly, "Ruchy Browna")
-
-    mc.player.setPos(x, 20, y)
     rysuj(lx, [1], ly, block.WOOL)
-
-    import json
-    plik = open('rbrowna.log', 'w')
-    json.dump((lx, ly), plik)
-    plik.close()
 
 
 def main():
