@@ -49,29 +49,26 @@ def model(promien, x, y, z):
                  promien, y, z + promien, obrys)
     mc.setBlocks(x - promien + 1, y, z - promien + 1, x +
                  promien - 1, y, z + promien - 1, wypelniacz)
-    mcfig.drawHorizontalCircle(0, 0, 0, promien - 1, block.GRASS)
+    mcfig.drawHorizontalCircle(0, 0, 0, promien, block.GRASS)
 
 
 def liczbaPi():
-    promien = float(raw_input("Podaj promień koła: "))
-    model(promien, 0, 0, 0)
+    r = float(raw_input("Podaj promień koła: "))
+    model(r, 0, 0, 0)
 
     # pobieramy ilość punktów w kwadracie
     ileKw = int(raw_input("Podaj ilość losowanych punktów: "))
     ileKo = 0  # ilość punktów w kole
 
+    blok = block.SAND
     for i in range(ileKw):
-        blok = block.SAND
-        podtyp = 0
-        x = round(random.uniform(-promien, promien), 10)
-        y = round(random.uniform(-promien, promien), 10)
+        x = round(random.uniform(-r, r))
+        y = round(random.uniform(-r, r))
         print x, y
-        if x**2 + y**2 <= promien**2:
+        if x**2 + y**2 <= r**2:
             ileKo += 1
-            blok = block.SAND
-            podtyp = random.randint(0, 15)
-
-        mc.setBlock(x, 10, y, blok, podtyp)
+        # umieść blok w MC Pi
+        mc.setBlock(x, 10, y, blok)
 
     mc.postToChat("W kole = " + str(ileKo) + " W Kwadracie = " + str(ileKw))
     pi = 4 * ileKo / float(ileKw)

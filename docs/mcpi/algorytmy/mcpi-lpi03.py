@@ -35,7 +35,7 @@ def plac(x, y, z, roz=10, gracz=False):
         mc.player.setPos(x + roz / 2, y + roz / 2, z + roz / 2)
 
 
-def model(promien, x, y, z):
+def model(r, x, y, z):
     """
     Fukcja buduje obrys kwadratu, którego środek to punkt x, y, z
     oraz koło wpisane w ten kwadrat
@@ -45,33 +45,43 @@ def model(promien, x, y, z):
     obrys = block.SANDSTONE
     wypelniacz = block.AIR
 
-    mc.setBlocks(x - promien, y, z - promien, x +
-                 promien, y, z + promien, obrys)
-    mc.setBlocks(x - promien + 1, y, z - promien + 1, x +
-                 promien - 1, y, z + promien - 1, wypelniacz)
-    mcfig.drawHorizontalCircle(0, 0, 0, promien - 1, block.GRASS)
+    mc.setBlocks(x - r, y, z - r, x +
+                 r, y, z + r, obrys)
+    mc.setBlocks(x - r + 1, y, z - r + 1, x +
+                 r - 1, y, z + r - 1, wypelniacz)
+    mcfig.drawHorizontalCircle(0, 0, 0, r, block.GRASS)
 
 
 def liczbaPi():
-    promien = float(raw_input("Podaj promień koła: "))
-    model(promien, 0, 0, 0)
+    r = float(raw_input("Podaj promień koła: "))
+    model(r, 0, 0, 0)
 
     # pobieramy ilość punktów w kwadracie
     ileKw = int(raw_input("Podaj ilość losowanych punktów: "))
     ileKo = 0  # ilość punktów w kole
+    wKwadrat = []  # pomcnicza lista punktów w kwadracie
+    wKolo = []  # pomocnicza lista punktów w kole
 
+    blok = block.SAND
     for i in range(ileKw):
-        blok = block.SAND
-        podtyp = 0
-        x = round(random.uniform(-promien, promien), 10)
-        y = round(random.uniform(-promien, promien), 10)
+        x = round(random.uniform(-r, r))
+        y = round(random.uniform(-r, r))
+        wKwadrat.append((x, y))
         print x, y
-        if x**2 + y**2 <= promien**2:
+        if x**2 + y**2 <= r**2:
             ileKo += 1
-            blok = block.SAND
-            podtyp = random.randint(0, 15)
+            wKolo.append((x, y))
 
-        mc.setBlock(x, 10, y, blok, podtyp)
+        mc.setBlock(x, 10, y, blok)
+
+    sleep(5)
+    for pkt in set(wKwadrat) - set(wKolo):
+        x, y = pkt
+        mc.setBlock(x, i, y, block.OBSIDIAN)
+        for i in range(1, 3):
+            print x, i, y
+            if mc.getBlock(x, i, y) == 12:
+                mc.setBlock(x, i, y, block.OBSIDIAN)
 
     mc.postToChat("W kole = " + str(ileKo) + " W Kwadracie = " + str(ileKw))
     pi = 4 * ileKo / float(ileKw)
