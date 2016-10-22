@@ -44,9 +44,8 @@ def wykres(x, y, tytul="Wykres funkcji", *extra):
     if len(extra):
         plt.plot(x, y, extra[0], extra[1])  # dwa wykresy na raz
     else:
-        plt.plot(x, y, "o:")
+        plt.plot(x, y, "o:", color="blue", linewidth="3", alpha=0.8)
     plt.title(tytul)
-    # plt.xlabel(podpis)
     plt.grid(True)
     plt.show()
 
@@ -104,46 +103,67 @@ def rysuj_linie(x, y, z, blok=block.IRON_BLOCK):
         mc.setBlock(x2, y[0], z2, block.OBSIDIAN)
 
 
-def ruchyBrowna():
+def ruchyBrowna(dane=[]):
 
-    n = int(raw_input("Ile ruchów? "))
-    r = int(raw_input("Krok przesunięcia? "))
+    if len(dane):
+        lx, ly = dane  # rozpakowanie listy
+        x = lx[-1]  # ostatni element lx
+        y = ly[-1]  # ostatni element ly
+    else:
+        n = int(raw_input("Ile ruchów? "))
+        r = int(raw_input("Krok przesunięcia? "))
 
-    x = y = 0
-    lx = [0]  # lista odciętych
-    ly = [0]  # lista rzędnych
+        x = y = 0
+        lx = [0]  # lista odciętych
+        ly = [0]  # lista rzędnych
 
-    for i in range(0, n):
-        # losujemy kąt i zamieniamy na radiany
-        rad = float(randint(0, 360)) * np.pi / 180
-        x = x + r * np.cos(rad)  # wylicz współrzędną x
-        y = y + r * np.sin(rad)  # wylicz współrzędną y
-        x = int(round(x, 2))  # zaokrągl
-        y = int(round(y, 2))  # zaokrągl
-        print x, y
-        lx.append(x)
-        ly.append(y)
+        for i in range(0, n):
+            # losujemy kąt i zamieniamy na radiany
+            rad = float(randint(0, 360)) * np.pi / 180
+            x = x + r * np.cos(rad)  # wylicz współrzędną x
+            y = y + r * np.sin(rad)  # wylicz współrzędną y
+            x = int(round(x, 2))  # zaokrągl
+            y = int(round(y, 2))  # zaokrągl
+            print x, y
+            lx.append(x)
+            ly.append(y)
 
     # oblicz wektor końcowego przesunięcia
     s = np.fabs(np.sqrt(x**2 + y**2))
     print "Wektor przesunięcia: {:.2f}".format(s)
 
     wykres(lx, ly, "Ruchy Browna")
+    rysuj_linie(lx, [1], ly, block.WOOL)
+    if not len(dane):
+        zapisz_dane((lx, ly))
 
-    mc.player.setPos(x, 20, y)
-    rysuj(lx, [1], ly, block.WOOL)
 
+def zapisz_dane(dane):
+    """Funkcja zapisuje dane w formacie json w pliku"""
     import json
     plik = open('rbrowna.log', 'w')
-    json.dump((lx, ly), plik)
+    json.dump(dane, plik)
     plik.close()
+
+
+def czytaj_dane():
+    """Funkcja odczytuje dane w formacie json z pliku"""
+    import json
+    dane = []
+    nazwapliku = raw_input("Podaj nazwę pliku z danymi lub naciśnij ENTER: ")
+    if os.path.isfile(nazwapliku):
+        with open(nazwapliku, "r") as plik:
+            dane = json.load(plik)
+    else:
+        print "Podany plik nie istnieje!"
+    return dane
 
 
 def main():
     mc.postToChat("Ruchy Browna")  # wysłanie komunikatu do mc
     plac(-80, -20, -80, 160)
     plac(-80, 0, -80, 160)
-    ruchyBrowna()
+    ruchyBrowna(czytaj_dane())
     return 0
 
 
