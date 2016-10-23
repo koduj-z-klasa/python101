@@ -34,7 +34,7 @@ def plac(x, y, z, roz=10, gracz=False):
         mc.player.setPos(x + roz / 2, y + roz / 2, z + roz / 2)
 
 
-def main(args):
+def main():
     mc.postToChat("Czesc! Tak dziala MC chat!")  # wysłanie komunikatu do mc
     plac(-15, 0, -15, 30)
 
@@ -86,4 +86,4 @@ def main(args):
 
 
 if __name__ == '__main__':
-    sys.exit(main(sys.argv))
+    main()

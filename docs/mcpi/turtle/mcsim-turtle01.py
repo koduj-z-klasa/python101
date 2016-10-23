@@ -49,7 +49,7 @@ def kwadraty():
         turtle.left(90)
 
 
-def main(args):
+def main():
     mc.postToChat("Biblioteka minecraftturtle")  # wysłanie komunikatu do mc
     plac(-15, 0, -15, 30)
     kwadraty()
