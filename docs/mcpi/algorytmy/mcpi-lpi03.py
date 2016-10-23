@@ -68,7 +68,7 @@ def liczbaPi():
         y = round(random.uniform(-r, r))
         wKwadrat.append((x, y))
         print x, y
-        if x**2 + y**2 <= r**2:
+        if abs(x)**2 + abs(y)**2 <= r**2:
             ileKo += 1
             wKolo.append((x, y))
 

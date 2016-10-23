@@ -121,7 +121,7 @@ Końcowe instrukcje służą zaznaczeniu początku i końca ruchu blokami obsydi
 
 **Eksperymenty**
 
-Uruchmiamy kod i ekperymentujemy. Dla 100 ruchów z krokiem przesunięcia 5
+Uruchamiamy kod i eksperymentujemy. Dla 100 ruchów z krokiem przesunięcia 5
 możemy uzyskać np. takie rezultaty:
 
 .. figure:: img/rbrowna1.png
@@ -195,7 +195,7 @@ Funkcja ``uniform()`` zwraca wartości zmiennoprzecinkowe, które zaokrąglamy
 do 10 miejsca po przecinku.
 
 Korzystając z twierdzenia Pitagorasa układamy warunek pozwalający sprawdzić,
-które punkty "wpadły" do koła: ``if x**2 + y**2 <= r**2:`` – i zliczamy je.
+które punkty "wpadły" do koła: ``if abs(x)**2 + abs(y)**2 <= r**2:`` – i zliczamy je.
 
 Instrukcja ``mc.setBlock(x, 10, y, blok)`` rysuje punkty w MC Pi za pomocą
 bloków piasku (*SAND*), dzięki czemu uzyskujemy efekt spadania.
@@ -212,8 +212,8 @@ na siebie.
 Podkolorowanie
 --------------
 
-Punkty wpadające do koła mogłyby wyglądać inczaczej niż poza nim. Można by to
-osiągnąć przez ustawienie różnych typów blokó w pętli ``for``, ale tylko
+Punkty wpadające do koła mogłyby wyglądać inaczej niż poza nim. Można by to
+osiągnąć przez ustawienie różnych typów bloków w pętli ``for``, ale tylko
 blok piaskowy daje efekt spadania. Zrobimy więc inaczej. Zmieniamy funkcję ``liczbaPi()``:
 
 .. raw:: html
@@ -229,9 +229,72 @@ blok piaskowy daje efekt spadania. Zrobimy więc inaczej. Zmieniamy funkcję ``l
 
 Deklarujemy dwie pomocnicze listy, do których zapisujemy w pętli współrzędne
 punktów należących do kwadratu i koła, np. ``wKwadrat.append((x, y))``.
-Następnie wstrzymujemy wykoannie kodu na 5 sekund, aby bloki piasku
+Następnie wstrzymujemy wykonanie kodu na 5 sekund, aby bloki piasku
 zdążyły opaść. W wyrażeniu ``set(wKwadrat) - set(wKolo)`` każda lista zostaje
 przekształcona na zbiór, a następnie zostaje obliczona ich różnica.
 W efekcie otrzymujemy współrzędne punktów należących do kwadratu, ale nie do koła.
 Ponieważ niektóre bloki piasku układają się jeden na drugim, wychwytujemy je w pętli
 wewnętrznej ``if mc.getBlock(x, i, y) == 12:`` – i zmieniamy na obsydian.
+
+Trzeci wymiar
+-------------
+
+Siła MC Pi tkwi w 3 wymiarze. Możemy bez większych problemów go wykorzystać. Na początku
+warto zauważyć, że w algorytmie wyliczania wartości liczby Pi nic się nie zmieni.
+Stosunek pola koła do pola kwadratu zastępujemy bowiem stosunkiem objętości walca,
+którego podstawa ma promień *r*, do objętości sześcianu o boku *2r*. Otrzymamy zatem:
+
+.. math::
+
+    \frac{\Pi * r^2 * 2 * r}{(2 * r)^3} = \frac{ileKo}{ileKw}
+
+Po przekształceniu skończymy na takim samym jak wcześniej wzorze, czyli:
+
+.. math::
+
+    \Pi = \frac{4 * ileKo}{ileKw}
+
+Aby to wykreślić, zmienimy funkcje ``model()``, ``liczbaPi()`` i ``main()``. Sugerujemy, żeby
+dotychczasowy plik zapisać pod inną nazwą, np. :file:`mcpi-lpi3D.py`, i wprowadzić następujące zmiany:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: mcpi-lpi04.py
+    :linenos:
+    :lineno-start: 38
+    :lines: 38-122
+    :emphasize-lines: 42, 51, 54, 57-58, 69-78, 84
+
+Zadaniem funkcji ``model()`` jest stworzenie przestrzeni dla obrysu sześcianu i jego szkieletu.
+Opcjonalnie, jeżeli przekażemy do funkcji parametr ``klatka`` równy ``True``,
+ściany mogą zostać wypełnione szkłem. Walec wizualizujemy w pętli ``for``
+rysując kilka okręgów blokami trawy.
+
+W funkcji ``liczbaPi()`` najważniejszą zmianą jest dodanie trzeciej zmiennej.
+Wartości wszystkich trzech współrzędnych losowane są w takim samym zakresie,
+ponieważ za środek całego układu przyjmujemy początek układu współrzędnych.
+Ważna zmiana zachodzi w funkcji warunkowej: ``if abs(x)**2 + abs(z)**2 <= r**2:``.
+Do sprawdzenia, czy punkt należy do koła wykorzystujemy zmienne *x* i *z*,
+uwzględniając fakt, że w MC Pi wyznaczają one położenie w poziomie.
+
+Bloki należące do sześcianu rysujemy za pomocą obsydianu, te w walcu –
+za pomocą diamentów.
+
+Na końcu funkcji dodajemy nieskończoną pętlę (``while True:``), której zadaniem jest
+sprawdzanie, na jakim bloku znajduje się gracz: ``if mc.getBlock(x, y - 1, z) == block.STONE.id:``.
+Jeżeli stanie on na kamieniu, wszystkie bloki należące do walca zamieniamy
+w pętli ``for pkt in wKolo:`` w piasek, a gracza teleportujemy do środka sześcianu.
+
+Dla promienia o wielkości 20 i 1000 bloków uzyskać można poniższe budowle:
+
+.. figure:: img/mcpi-lpi4_1.png
+
+.. figure:: img/mcpi-lpi4_2.png
+
+.. figure:: img/mcpi-lpi4_3.png
+
+Pozostaje eksperymentować z rozmiarami, typami bloków czy parametrem ``klatka``
+określanym w wywołaniu funkcji ``liczbaPi()`` w funkcji głównej.

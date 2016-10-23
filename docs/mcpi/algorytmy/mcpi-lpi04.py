@@ -35,24 +35,7 @@ def plac(x, y, z, roz=10, gracz=False):
         mc.player.setPos(x + roz / 2, y + roz / 2, z + roz / 2)
 
 
-def model(r, x, y, z):
-    """
-    Fukcja buduje obrys kwadratu, którego środek to punkt x, y, z
-    oraz koło wpisane w ten kwadrat
-    """
-
-    mcfig = mcstuff.MinecraftDrawing(mc)
-    obrys = block.SANDSTONE
-    wypelniacz = block.AIR
-
-    mc.setBlocks(x - r, y, z - r, x +
-                 r, y, z + r, obrys)
-    mc.setBlocks(x - r + 1, y, z - r + 1, x +
-                 r - 1, y, z + r - 1, wypelniacz)
-    mcfig.drawHorizontalCircle(0, 0, 0, r, block.GRASS)
-
-
-def model2(r, x, y, z, klatka=False):
+def model(r, x, y, z, klatka=False):
     """
     Fukcja buduje obrys kwadratu, którego środek to punkt x, y, z
     oraz koło wpisane w ten kwadrat
@@ -91,45 +74,9 @@ def model2(r, x, y, z, klatka=False):
         mcfig.drawHorizontalCircle(0, i, 0, r, block.GRASS)
 
 
-def liczbaPi():
-    r = float(raw_input("Podaj promień koła: "))
-    model(r, 0, 0, 0)
-
-    # pobieramy ilość punktów w kwadracie
-    ileKw = int(raw_input("Podaj ilość losowanych punktów: "))
-    ileKo = 0  # ilość punktów w kole
-    wKwadrat = []  # pomcnicza lista punktów w kwadracie
-    wKolo = []  # pomocnicza lista punktów w kole
-
-    blok = block.SAND
-    for i in range(ileKw):
-        x = round(random.uniform(-r, r))
-        y = round(random.uniform(-r, r))
-        wKwadrat.append((x, y))
-        print x, y
-        if abs(x)**2 + abs(y)**2 <= r**2:
-            ileKo += 1
-            wKolo.append((x, y))
-
-        mc.setBlock(x, 10, y, blok)
-
-    sleep(5)
-    for pkt in set(wKwadrat) - set(wKolo):
-        x, y = pkt
-        mc.setBlock(x, i, y, block.OBSIDIAN)
-        for i in range(1, 3):
-            print x, i, y
-            if mc.getBlock(x, i, y) == 12:
-                mc.setBlock(x, i, y, block.OBSIDIAN)
-
-    mc.postToChat("W kole = " + str(ileKo) + " W Kwadracie = " + str(ileKw))
-    pi = 4 * ileKo / float(ileKw)
-    mc.postToChat("Pi w przyblizeniu: {:.10f}".format(pi))
-
-
-def liczbaPi2(klatka=False):
+def liczbaPi(klatka=False):
     r = int(raw_input("Podaj promień koła: "))
-    model2(r, 0, 0, 0, klatka)
+    model(r, 0, 0, 0, klatka)
 
     # pobieramy ilość punktów w kwadracie
     ileKw = int(raw_input("Podaj ilość losowanych punktów: "))
@@ -171,8 +118,7 @@ def liczbaPi2(klatka=False):
 def main():
     mc.postToChat("LiczbaPi")  # wysłanie komunikatu do mc
     plac(-50, 0, -50, 100)
-    # mc.player.setPos(20, 20, 0)
-    liczbaPi2(False)
+    liczbaPi(False)
     return 0
 
 
