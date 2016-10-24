@@ -3,23 +3,15 @@
 
 # import sys
 import os
-from time import sleep
 from random import randint
-
+from time import sleep
 import mcpi.minecraft as minecraft  # import modułu minecraft
 import mcpi.block as block  # import modułu block
 
-os.environ["USERNAME"] = "mc3d"  # wpisz dowolną nazwę użytkownika
-os.environ["COMPUTERNAME"] = "mykomp"  # wpisz dowolną nazwę komputera
+os.environ["USERNAME"] = "Steve"  # nazwa użytkownika
+os.environ["COMPUTERNAME"] = "mykomp"  # nazwa komputera
 
-# utworzenie połaczenia z symulatorem
-mc = minecraft.Minecraft.create("192.168.1.10")
-
-
-# magiczne liczby używane do określenia czy komórka jest żywa
-DEAD = 0
-ALIVE = 1
-BLOK_ALIVE = 35  # block.WOOL
+mc = minecraft.Minecraft.create("192.168.1.10")  # połączenie z symulatorem
 
 
 class GameOfLife(object):
@@ -73,6 +65,12 @@ class GameOfLife(object):
         self.mc.setBlocks(x, y - 1, z, x + szer, y - 1, z + wys, podloga)
         self.mc.setBlocks(
             x, y, z, x + szer, y + max(szer, wys), z + wys, wypelniacz)
+
+
+# magiczne liczby używane do określenia czy komórka jest żywa
+DEAD = 0
+ALIVE = 1
+BLOK_ALIVE = 35  # block.WOOL
 
 
 class Populacja(object):
