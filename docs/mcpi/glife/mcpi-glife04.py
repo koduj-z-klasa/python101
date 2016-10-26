@@ -14,9 +14,9 @@ os.environ["COMPUTERNAME"] = "mykomp"  # nazwa komputera
 mc = minecraft.Minecraft.create("192.168.1.10")  # połączenie z symulatorem
 
 
-class GameOfLife(object):
+class GraWZycie(object):
     """
-    Łączy wszystkie elementy gry w całość.
+    Główna klasa gry, łączy wszystkie elementy.
     """
 
     def __init__(self, mc, szer, wys, ile=40):
@@ -24,19 +24,16 @@ class GameOfLife(object):
         Przygotowanie ustawień gry
         :param szer: szerokość planszy mierzona liczbą komórek
         :param wys: wysokość planszy mierzona liczbą komórek
-        :param roz_kom: bok komórki w pikselach
         """
         self.mc = mc
         mc.postToChat('Gra o zycie')
         self.szer = szer
         self.wys = wys
-        self.populacja = Populacja(mc, szer, wys)
+        self.populacja = Populacja(mc, szer, wys)  # instancja klasy Populacja
         if ile:
             self.populacja.losuj(ile)
-        else:
-            self.populacja.wczytaj()
 
-    def run(self):
+    def uruchom(self):
         """
         Główna pętla gry
         """
@@ -76,55 +73,35 @@ class Populacja(object):
     Populacja komórek
     """
 
-    def __init__(self, mc, szer, wys):
+    def __init__(self, mc, ilex, iley):
         """
         Przygotowuje ustawienia populacji
-
-        :param szer: szerokość planszy mierzona liczbą komórek
-        :param wys: wysokość planszy mierzona liczbą komórek
-        :param roz_kom: bok komórki w pikselach
+        :param mc: obiekt Minecrafta
+        :param ilex: rozmiar x macierzy komórek (wiersze)
+        :param iley: rozmiar y macierzy komórek (kolumny)
         """
         self.mc = mc
-        self.wys = wys
-        self.szer = szer
+        self.iley = iley
+        self.ilex = ilex
         self.generacja = self.reset_generacja()
 
     def reset_generacja(self):
         """
         Tworzy i zwraca macierz pustej populacji
         """
-        # w pętli wypełnij listę kolumnami
-        # które także w pętli zostają wypełnione wartością 0 (DEAD)
-        return [[DEAD for y in xrange(self.wys)] for x in xrange(self.szer)]
+        # wyrażenie listowe tworzy x kolumn o y komórkach
+        # wypełnionych wartością 0 (DEAD)
+        return [[DEAD for y in xrange(self.iley)] for x in xrange(self.ilex)]
 
     def losuj(self, ile=50):
         """
-        Wypełnia macierz losowymi komórkami
+        Losowo wypełnia macierz żywymi komórkami, czyli wartością 1 (ALIVE)
         """
-        print self.generacja
-        print len(self.generacja)
         for i in range(ile):
-            x = randint(0, self.szer - 1)
-            z = randint(0, self.wys - 1)
-            self.generacja[x][z] = ALIVE
+            x = randint(0, self.ilex - 1)
+            y = randint(0, self.iley - 1)
+            self.generacja[x][y] = ALIVE
         print self.generacja
-
-    def wczytaj(self):
-        """
-        Funkcja wczytuje populację komórek z MC RPi
-        """
-        ile_kom = 0
-        print "Proszę czekać, aktuzalizacja macierzy..."
-        for x in range(self.szer):
-            for z in range(self.wys):
-                blok = self.mc.getBlock(x, 0, z)
-                # print blok
-                if blok == BLOK_ALIVE:
-                    self.generacja[x][z] = ALIVE
-                    ile_kom += 1
-        print self.generacja
-        print "Żywych:", str(ile_kom)
-        sleep(3)
 
     def rysuj(self):
         """
@@ -152,24 +129,23 @@ class Populacja(object):
         for nx in range(x - 1, x + 2):
             for ny in range(y - 1, y + 2):
                 if nx == x and ny == y:
-                    # pomiń współrzędne centrum
-                    continue
-                if nx >= self.szer:
+                    continue  # pomiń współrzędne centrum
+                if nx >= self.ilex:
                     # sąsiad poza końcem planszy, bierzemy pierwszego w danym
                     # rzędzie
                     nx = 0
                 elif nx < 0:
                     # sąsiad przed początkiem planszy, bierzemy ostatniego w
                     # danym rzędzie
-                    nx = self.szer - 1
-                if ny >= self.wys:
+                    nx = self.ilex - 1
+                if ny >= self.iley:
                     # sąsiad poza końcem planszy, bierzemy pierwszego w danej
                     # kolumnie
                     ny = 0
                 elif ny < 0:
                     # sąsiad przed początkiem planszy, bierzemy ostatniego w
                     # danej kolumnie
-                    ny = self.wys - 1
+                    ny = self.iley - 1
 
                 # dla każdego nie pominiętego powyżej
                 # przejścia pętli zwróć komórkę w tych współrzędnych
@@ -203,10 +179,7 @@ class Populacja(object):
         self.generacja = nast_gen
 
 
-# Ta część powinna być zawsze na końcu modułu (ten plik jest modułem)
-# chcemy uruchomić naszą grę dopiero po tym jak wszystkie klasy zostaną
-# zadeklarowane
 if __name__ == "__main__":
-    game = GameOfLife(mc, 20, 10, 40)
-    mc.player.setPos(10, 10, -5)
-    game.run()
+    gra = GraWZycie(mc, 30, 20, 40)  # instancja klasy GraWZycie
+    mc.player.setPos(20, 1, 10)
+    gra.uruchom()  # wywołanie metody uruchom()
