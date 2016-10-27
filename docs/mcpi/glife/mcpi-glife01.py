@@ -46,6 +46,9 @@ class GraWZycie(object):
 
         # granica, podłoże, czyszczenie
         self.mc.setBlocks(
+            x - 5, y, z - 5,
+            x + szer + 5, y + max(szer, wys), z + wys + 5, wypelniacz)
+        self.mc.setBlocks(
             x - 1, y - 1, z - 1, x + szer + 1, y - 1, z + wys + 1, granica)
         self.mc.setBlocks(x, y - 1, z, x + szer, y - 1, z + wys, podloga)
         self.mc.setBlocks(
@@ -54,5 +57,5 @@ class GraWZycie(object):
 
 if __name__ == "__main__":
     gra = GraWZycie(mc, 20, 10, 40)  # instancja klasy GraWZycie
-    mc.player.setPos(10, 10, -5)
+    mc.player.setPos(10, 20, -5)
     gra.uruchom()  # wywołanie metody uruchom()

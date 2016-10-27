@@ -49,6 +49,9 @@ class GraWZycie(object):
 
         # granica, podłoże, czyszczenie
         self.mc.setBlocks(
+            x - 5, y, z - 5,
+            x + szer + 5, y + max(szer, wys), z + wys + 5, wypelniacz)
+        self.mc.setBlocks(
             x - 1, y - 1, z - 1, x + szer + 1, y - 1, z + wys + 1, granica)
         self.mc.setBlocks(x, y - 1, z, x + szer, y - 1, z + wys, podloga)
         self.mc.setBlocks(

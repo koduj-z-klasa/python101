@@ -56,6 +56,9 @@ class GraWZycie(object):
 
         # granica, podłoże, czyszczenie
         self.mc.setBlocks(
+            x - 5, y, z - 5,
+            x + szer + 5, y + max(szer, wys), z + wys + 5, wypelniacz)
+        self.mc.setBlocks(
             x - 1, y - 1, z - 1, x + szer + 1, y - 1, z + wys + 1, granica)
         self.mc.setBlocks(x, y - 1, z, x + szer, y - 1, z + wys, podloga)
         self.mc.setBlocks(
@@ -147,8 +150,7 @@ class Populacja(object):
                     # danej kolumnie
                     ny = self.iley - 1
 
-                # dla każdego nie pominiętego powyżej
-                # przejścia pętli zwróć komórkę w tych współrzędnych
+                # zwróć stan komórki w podanych współrzędnych
                 yield self.generacja[nx][ny]
 
     def nast_generacja(self):
@@ -164,11 +166,11 @@ class Populacja(object):
                 # dla żywej komórki dostaniemy wartość 1 (ALIVE)
                 # dla martwej otrzymamy wartość 0 (DEAD)
                 # zwykła suma pozwala nam określić liczbę żywych sąsiadów
-                count = sum(self.sasiedzi(x, y))
-                if count == 3:
+                iluS = sum(self.sasiedzi(x, y))
+                if iluS == 3:
                     # rozmnażamy się
                     nast_gen[x][y] = ALIVE
-                elif count == 2:
+                elif iluS == 2:
                     # przechodzi do kolejnej generacji bez zmian
                     nast_gen[x][y] = kolumna[y]
                 else:
@@ -180,6 +182,6 @@ class Populacja(object):
 
 
 if __name__ == "__main__":
-    gra = GraWZycie(mc, 30, 20, 40)  # instancja klasy GraWZycie
+    gra = GraWZycie(mc, 25, 15, 60)  # instancja klasy GraWZycie
     mc.player.setPos(20, 1, 10)
     gra.uruchom()  # wywołanie metody uruchom()
