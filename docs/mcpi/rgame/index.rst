@@ -1,7 +1,7 @@
-.. _mcpirg:
+.. _mcpi-rg:
 
-Robot Game & Minecraft
-######################
+Gra robotów
+###########
 
 Pole gry
 ========
