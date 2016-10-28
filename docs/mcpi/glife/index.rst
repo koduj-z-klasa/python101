@@ -44,11 +44,10 @@ parametry: obiekt ``mc`` reprezentujący grę Minecraft, szerokość
 i wysokość pola gry, a także ilość tworzonych na wstępie komórek.
 
 Konstruktor z przekazanych parametrów tworzy właściwości klasy w instrukcjach
-typu ``self.mc = mc``. Odwołujemy się do nich w innych metodach za pomocą
-słowa ``self``, tak jak np. w wywołanej w funkcji głównej metodzie ``uruchom()``.
-Jej zadaniem jest wykonanie kolejnej metody klasy – ``plac()``,
-której przekazujemy współrzędne punktu początkowego, a także szerokość i wysokość
-planszy gry.
+typu ``self.mc = mc``. Do właściwości klasy odwołujemy się w innych metodach za pomocą
+słowa ``self`` – np. w wywołanej w funkcji głównej metodzie ``uruchom()``.
+Jej zadaniem jest wykonanie metody ``plac()``, która buduje planszę gry.
+Przekazujemy jej współrzędne punktu początkowego, a także szerokość i wysokość planszy.
 
 .. note::
 
@@ -58,6 +57,8 @@ planszy gry.
 
 W wyniku uruchomienia i przetestowania kodu powinniśmy zobaczyć zbudowaną
 planszę do gry, czyli prostokąt, o podanych w funkcji głównej wymiarach.
+
+.. figure:: img/mcpi-glife01.png
 
 Populacja
 =========
@@ -83,9 +84,9 @@ wykorzystujemy wyrażenie listowe, które – ujmując rzecz w terminologii Pyth
 zwraca listę *ilex* list zawierających *iley* komórek z wartościami zero.
 To właśnie wspomniana wcześniej macierz dwuwymiarowa.
 
-**Ćwiczenie**
+**Ćwiczenie 1**
 
-Uruchom konsolę IPython Qt Console i wklej do niej polecenie:
+Uruchom konsolę IPython Qt Console i wklej do niej polecenia:
 
 .. code-block:: python
 
@@ -95,7 +96,7 @@ Uruchom konsolę IPython Qt Console i wklej do niej polecenie:
 
 Zobacz efekt (nie zamykaj konsoli, jeszcze się przyda):
 
-.. figure:: img/ipython-glife.png
+.. figure:: img/ipython01-glife.png
 
 Komórki mogą być martwe (``DEAD``– wartość 0) i tak jest na początku, ale aby populacja mogła ewoluować,
 trzeba niektóre z nich ożywić (``ALIVE`` – wartość 1).
@@ -105,7 +106,7 @@ jest wymagana ilość par indeksów wskazujących wiersz i kolumnę, czyli komó
 która ma być żywa (``ALIVE``). Na końcu drukujemy w terminalu
 początkowy układ komórek.
 
-**Ćwiczenie**
+**Ćwiczenie 2**
 
 Spróbuj w kilku komórkach macierzy utworzonej w konsoli, zapisać wartość ALIVE,
 czyli 1.
@@ -166,7 +167,7 @@ Funkcja ``zywe_komorki()`` to tzw. :term:`generator`, co poznajemy po tym,
 działanie polega na przeglądaniu macierzy za pomocą zagnieżdżonych pętli
 i zwracaniu współrzędnych "żywych"komórek.
 
-**Ćwiczenie**
+**Ćwiczenie 3**
 
 Odwołując się do utworzonej wcześniej przykładowej macierzy, przetestuj
 w konsoli poniższy kod:
@@ -188,6 +189,8 @@ zwiększamy wydajność.
 
 Uruchom kod, oprócz pola gry, powinieneś zobaczyć bloki reprezentujące pierwszą
 generację komórek.
+
+.. figure:: img/mcpi-glife03.png
 
 Ewolucja – zasady gry
 =====================
@@ -236,7 +239,7 @@ czy nie wychodzą one poza planszę.
     W naszej implementacji, kiedy badając stan sąsiada przekraczamy planszę,
     bierzemy pod uwagę stan komórki z przeciwległego końca wiersza lub kolumny.
 
-**Ćwiczenie**
+**Ćwiczenie 4**
 
 Na przykładzie utworzonej wcześniej macierzy przetestuj w konsoli kod:
 
@@ -291,6 +294,8 @@ działanie skryptu.
 
 Przetestuj skrypt!
 
+.. figure:: img/mcpi-glife04.png
+
 Początek zabawy
 ===============
 
@@ -343,7 +348,11 @@ Nie pozostaje nic innego, jak zacząć się bawić. Można np. urządzić zawody
 populacja komórek utrzyma się dłużej – oczywiście warto wykluczyć budowanie
 znanych i udokumentowanych układów stałych.
 
-**Ćwiczenie**
+.. figure:: img/mcpi-glife05.png
+
+**Ćwiczenie 5**
 
 Dodaj do skryptu mechanizm kończący symulacji, kiedy na planszy nie ma już
 żadnych żywych komórek.
+
+.. figure:: img/mcpi-glife06.png
