@@ -102,12 +102,17 @@ Aby przygotować pendrajw w systemie Linux, pobieramy wybrany :ref:`obraz iso <u
 W maszynie wirtualnej
 =====================
 
-Dystrybucję *LxPupXenial* łatwo zainstalować i uruchamiać w Windows (lub w Linuksie!) za pomocą
-tzw. maszyny wirtualnej.
+Dystrybucję *LxPupXenial* łatwo uruchamiać w Windows lub w Linuksie za pomocą tzw. maszyny wirtualnej.
 
-Do zarządzania maszynami wirtualnymi wykorzystamy program VirtualBox, który pobieramy w wersji
-dla naszego systemu ze strony `VirtualBox <https://www.virtualbox.org/wiki/Downloads>`_ i instalujemy.
-Następnie uruchamiamy aplikację i tworzymy nową maszynę wirtualną:
+1) Pobieramy program `VirtualBox <https://www.virtualbox.org/wiki/Downloads>`_ w wersji
+   dla naszego systemu  i instalujemy.
+2) Pobieramy `maszynę wirtualną z LxPupXenial <https://www.dropbox.com/s/vp2wt429buh4iw1/KzK_Linux.ova?dl=0>`_
+   (1,1 GB) w formacie OVA.
+3) Uruchamiamy VirtualBox, wybieramy polecenie "Plik/Importuj urządzenie wirtualne" i wskazujemy ściągnięty
+   w poprzednim kroku plik. Po zaimportowaniu maszyny klikamy "Uruchom".
+
+*LxPupXenial* można też zainstalować w VirtualBoksie samemu. Aby to zrobić, uruchamiamy aplikację
+i tworzymy nową maszynę wirtualną:
 
 * nazwa – np. "LxPup", typ – *Linux*, wersja – *Ubuntu (32-bit)*;
 * rozmiar pamięci – min. 1024MB
