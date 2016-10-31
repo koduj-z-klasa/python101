@@ -98,11 +98,6 @@ class GraRobotow(object):
             self.mc.setBlock(x, 0, z, block.AIR)
 
 
-def main():
+if __name__ == '__main__':
     gra = GraRobotow(mc)  # instancja klasy GraRobotow
     gra.uruchom("lastgame.log", 20)
-    return 0
-
-
-if __name__ == '__main__':
-    main()

@@ -65,11 +65,6 @@ class GraRobotow(object):
                     self.plansza.append((x + i, z + j))
 
 
-def main():
+if __name__ == '__main__':
     gra = GraRobotow(mc)  # instancja klasy GraRobotow
     print gra.plansza  # pokaż w konsoli listę współrzędnych pól gry
-    return 0
-
-
-if __name__ == '__main__':
-    main()

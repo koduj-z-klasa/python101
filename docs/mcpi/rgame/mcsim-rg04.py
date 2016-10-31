@@ -106,11 +106,6 @@ class GraRobotow(object):
         return player1_bloki[hp / 10] if player_id else player2_bloki[hp / 10]
 
 
-def main():
+if __name__ == '__main__':
     gra = GraRobotow(mc)  # instancja klasy GraRobotow
     gra.uruchom("lastgame.log", 50)
-    return 0
-
-
-if __name__ == '__main__':
-    main()

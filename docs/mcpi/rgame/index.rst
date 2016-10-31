@@ -65,8 +65,7 @@ Następnie po wywołaniu przykładowej walki: ``(env) root@kzk:~/robot$ rgrun bo
 w katalogu :file:`~/robot` znajdziemy plik :file:`lastgame.log`,
 który musimy umieścić w katalogu ze skryptem :file:`mcsim-rg.py`.
 
-Do definicji klasy ``GraRobotow`` w pliku :file:`mcsim-rg.py` przed funkcją główną ``main()``
-dodajemy metodę ``uruchom()``:
+Do definicji klasy ``GraRobotow`` w pliku :file:`mcsim-rg.py` dodajemy metodę ``uruchom()``:
 
 .. raw:: html
 
@@ -76,7 +75,7 @@ dodajemy metodę ``uruchom()``:
 .. literalinclude:: mcsim-rg02.py
     :linenos:
     :lineno-start: 67
-    :lines: 67-87
+    :lines: 67-86
     :emphasize-lines: 20
 
 Omawianą metodę wywołujemy w funkcji głównej przekazując jej jako parametry
@@ -223,5 +222,5 @@ MC Pi Edition.
 
 **Źródła:**
 
-* :download:`Skrypty mcsim-rg <mcsim-rg.zip>`
+* :download:`Skrypty mcpi-rg <mcpi-rg.zip>`
 * :download:`Log RG <lastgame.zip>`

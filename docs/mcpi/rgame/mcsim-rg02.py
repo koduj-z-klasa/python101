@@ -81,11 +81,6 @@ class GraRobotow(object):
                 break
 
 
-def main():
+if __name__ == '__main__':
     gra = GraRobotow(mc)  # instancja klasy GraRobotow
     gra.uruchom("lastgame.log", 10)
-    return 0
-
-
-if __name__ == '__main__':
-    main()
