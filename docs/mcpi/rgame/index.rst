@@ -7,132 +7,221 @@ Pole gry
 ========
 
 Spróbujemy teraz pokazać rozgrywkę z :ref:`gry robotów <robot-game>`.
-Zaczniemy od zbudowania areny wykorzystywanej w grze. W pliku :file:`mcsimrg.py` umieszczamy następujący kod:
+Zaczniemy od zbudowania areny wykorzystywanej w grze. W pliku :file:`mcsim-rg.py` umieszczamy następujący kod:
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: mcsimrg01.py
+.. literalinclude:: mcsim-rg01.py
     :linenos:
     :lineno-start: 1
     :lines: 1-
-    :emphasize-lines: 51-73
 
-Początek pliku zawiera kod omówiony w :ref:`Podstawach <mcpipodstawy>`, nowa jest funkcja ``polegry()``.
-Pole gry Robot Game wpisane jest w kwadrat o boku 19 jednostek, dlatego korzystamy z dwóch zagnieżdżonych pętli,
-w których zmienne iteracyjne *i*, *j* przyjmują wartości od 0 do 18. Część pól kwadratu wyłączona jest
-z rozgrywki, ich współrzędne zawiera lista ``obstacle``. Bloki trawy umieszczamy tylko wtedy, kiedy
-para zmiennych iteracyjnych, służąca również do wyznaczania współrzędnych, znajduje się w liście.
-Odpowiada za to instrukcja warunkowa ``if (i, j) in obstacle``.
+Zaczynamy od definicji klasy *GraRobotow*, której instancję tworzymy w funkcji
+głównej ``main()`` i przypisujemy do zmiennej: ``gra = GraRobotow(mc)``.
+Konstruktor klasy wywołuje metodę ``poleGry()``, która buduje pusty plac
+i arenę, na której walczą roboty.
 
-Przed uruchomieniem skryptu trzeba jeszcze umieścić wywołanie funkcji ``polegry()`` w funkcji głównej
-po instrukcji rysującej pole budowy ``plac()``.
+Pole gry wpisane jest w kwadrat o boku 19 jednostek. Część pól kwadratu
+wyłączona jest z rozgrywki, ich współrzędne zawiera lista ``obstacle``.
+Funkcja ``poleGry()`` wykorzystuje dwie zagnieżdżone pętle, w których zmienne
+iteracyjne *i*, *j* przyjmują wartości od 0 do 18, wyznaczając wszystkie pola
+kwadratu. Jeżeli dane pole zawarte jest w liście pól wyłączonych ``if (i, j) in obstacle``,
+umieszczamy w nim blok trawy – wyznaczą one granice planszy. W przeciwnym
+wypadku dołączamy współrzędne pola w postaci tupli do listy pól dozwolonych:
+``self.plansza.append((x + i, z + j))``. Wykorzystamy tę listę później
+do "czyszczenia" pola gry.
 
-.. figure:: img/mc04.png
+Po uruchomieniu powinniśmy zobaczyć plac gry, a w konsoli listę pól,
+na których będą walczyć roboty.
+
+.. figure:: img/mcpi-rg01.png
 
 Dane gry
 ========
 
-W pliku :file:`lastgame.log` w katalogu :file:`mcpi-sim` (lub na końcu w "Źródłach") znajduje się zapis 100 rund przykładowej rozgrywki.
+Dane gry, czyli zapis 100 rund rozgrywki zawierający m. in. informacje o położeniu
+robotów oraz ich sile (punkty *hp*) musimy wygenerować uruchamiając walkę
+gotowych lub napisanych przez nas robotów.
 
-.. note::
+W tym celu trzeba zmodyfikować bibliotekę ``game.py`` z pakietu ``rgkit``. Jeżeli
+korzystałeś z naszego :ref:`scenariusza <robot-game>` i zainstalowałeś ``rgkit``
+w :ref:`wirtualnym środowisku <rg-env>` :file:`~/robot/env`, plik ten znajdziesz
+w ścieżce :file:`~/robot/env/lib/python2.7/site-packages/rgkit/game.py`.
+Na końcu funkcji ``run_all_turns()`` po linii nr 386 wstawiamy podany niżej kod:
 
-	Gdybyś chciał wykorzystać zapis swojej rozgrywki, musisz zmodyfikować bibliotekę ``game.py``
-	z pakietu ``rgkit``. Jeżeli korzystałeś z naszego :ref:`scenariusza <robot-game>` i zainstalowałeś ``rgkit``
-	w :ref:`wirtualnym środowisku <rg-env>` :file:`~/robot/env`, plik ten znajdziesz w ścieżce
-	:file:`~/robot/env/lib/python2.7/site-packages/rgkit/game.py`. Na końcu funkcji ``run_all_turns()``
-	po linii nr 386 wstaw podany niżej kod:
+.. code-block:: python
 
-	.. code-block:: python
+    # BEGIN DODANE na potrzeby Kzk
+    import json
+    plik = open('lastgame.log', 'w')
+    json.dump(self.history, plik)
+    plik.close()
+    # END OF DODANE
 
-	    # BEGIN DODANE na potrzeby Kzk
-	    import json
-	    plik = open('lastgame.log', 'w')
-	    json.dump(self.history, plik)
-	    plik.close()
-	    # END OF DODANE
+Następnie po wywołaniu przykładowej walki: ``(env) root@kzk:~/robot$ rgrun bots/stupid26.py bots/Wall-E.py``
+w katalogu :file:`~/robot` znajdziemy plik :file:`lastgame.log`,
+który musimy umieścić w katalogu ze skryptem :file:`mcsim-rg.py`.
 
-  Teraz po wywołaniu przykładowej walki: ``(env) root@kzk:~/robot$ rgrun bots/stupid26.py bots/Wall-E.py``
-  w katalogu :file:`~/robot` znajdziesz plik :file:`lastgame.log`, który trzeba umieścić w katalogu
-  ze skryptem :file:`mcsimrg.py`.
-
-Każda runda to lista zawierająca słowniki określające właściwości poszczególnych robotów.
-Do pliku :file:`mcsimrg.py` przed funkcją główną dodamy funkcję ``pokaz_gre()``:
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: python
-.. literalinclude:: mcsimrg02.py
-    :linenos:
-    :lineno-start: 76
-    :lines: 76-87
-
-Po otworzeniu pliku z danymi wczytujemy jego zawartość do listy za pomocą modułu *json*: ``dane = json.load(plik)``.
-Następnie w pętli odczytujemy dane kolejnych rund i – na razie, poglądowo – drukujemy je w konsoli.
-Aby przetestować kod, wpisz wywołanie funkcji ``pokaz_gre(5)`` zamiast ``polegry()`` w funkcji głównej.
-
-.. figure:: img/mc05.png
-
-Jak można zauważyć na zrzucie, słowniki opisujące roboty walczące w danej rundzie zawierają m.in.
-identyfikatory gracza oraz położenie robota. Wykorzystamy te informacje w funkcji ``pokaz_runde()``,
-którą dopisujemy w pliku :file:`mcsimrg.py` przed funkcją ``pokaz_gre()``:
+Do definicji klasy ``GraRobotow`` w pliku :file:`mcsim-rg.py` przed funkcją główną ``main()``
+dodajemy metodę ``uruchom()``:
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: mcsimrg03.py
+.. literalinclude:: mcsim-rg02.py
     :linenos:
-    :lineno-start: 76
-    :lines: 77-88
+    :lineno-start: 67
+    :lines: 67-87
+    :emphasize-lines: 20
 
-Funkcja na początku rysuje pole gry, następnie w pętli odczytujemy dane kolejnych robotów.
-Na podstawie identyfikatora gracza określamy typ bloku reprezentujący robota, pobieramy jego
-położenie i wreszcie umieszczamy na planszy: ``mc.setBlock(loc[0], y, loc[1], blok)``.
-Aby przetestować kod, wywołanie funkcji ``pokaz_runde(r)`` umieszczamy w funkcji ``pokaz_gre()``
-po instrukcji ``print(r)``, którą można zakomentować.
+Omawianą metodę wywołujemy w funkcji głównej przekazując jej jako parametry
+nazwę pliku z zapisem rozgrywki oraz ilość rund do pokazania: ``gra.uruchom("lastgame.log", 10)``.
 
-.. figure:: img/mc06.png
+W samej metodzie zaczynamy od sprawdzenia, czy podany plik istnieje
+w katalogu ze skryptem. Jeżeli nie istnieje (``if not os.path.exists(plik):``)
+drukujemy komunikat i wychodzimy z funkcji.
 
-Kolory i  animacja
-==================
+Jeżeli plik istnieje, otwieramy go w trybie tylko do odczytu.
+Dalej, ponieważ dane gry zapisane są w formacie *json*,
+w pętli ``for runda in json.load(plik):`` dekodujemy jego zawartość
+wykorzystując metodę ``load()`` modułu *json*.
+Instrukcja ``print runda`` pokaże nam w konsoli format danych kolejnych rund.
 
-W trakcie starć w kolejnych rundach maleje siła robotów wskazywana przez właściwość *hp*.
-Spróbujemy zróżnicować kolorystycznie typ bloków wykorzystywany do wyświetlania robotów.
-Przed funkcją ``pokaz_runde()`` dopisujemy funkcję ``wybierz_blok()``:
+Po uruchomieniu kodu widzimy, że każda runda to lista zawierająca słowniki
+określające właściwości poszczególnych robotów.
+
+.. figure:: img/mcpi-rg02.png
+
+**Ćwiczenie 1**
+
+Skopiuj z konsoli dane jednej z rund, uruchom konsolę IPython Qt i wklej do
+niej.
+
+.. figure:: img/mcpi-rg-ip01.png
+
+Następnie przećwicz wydobywanie słowników z listy:
+
+.. figure:: img/mcpi-rg-ip02.png
+
+– oraz wydobywanie konkretnych danych ze słowników, a także rozpakowywanie tupli
+(``robot['location']``) określających położenie robota:
+
+.. figure:: img/mcpi-rg-ip03.png
+
+Pokaż rundę
+===========
+
+Słowniki opisujące roboty walczące w danej rundzie zawierają m.in.
+identyfikatory gracza, położenie robota oraz jego ilość punktów *hp*.
+Wykorzystamy te informacje w funkcji ``pokazRunde()``.
+
+Klasę *GraRobotow* w pliku :file:`mcsim-rg.py` uzupełniamy dwoma metodami:
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: mcsimrg04.py
+.. literalinclude:: mcsim-rg03.py
     :linenos:
-    :lineno-start: 76
-    :lines: 76-84
+    :lineno-start: 83
+    :lines: 83-98
 
-Siła robotów (*hp*) przyjmuje wartości od 0 do 50, dzieląc tę wartość całkowicie przez 10,
-otrzymamy liczby od 0 do 5, które posłużą nam jako indeksy wskazujące typ bloku służący
-do wyświetlenia robota danego zawodnika. Dobór typów w tuplach jest oczywiście
-czysto umowny.
+W metodzie ``pokazRunde()`` na początku czyścimy pole gry, czyli wypełniamy je
+blokami powietrza – to zadanie funkcji ``czyscPole()``. Jak widać, wykorzystuje ona
+stworzoną wcześniej listę dozwolonych pól. Kolejne tuple współrzędnych odczytujemy
+w pętli ``for xz in self.plansza:`` i rozpakowujemy ``x, z = xz``.
 
-Pozostaje jeszcze zastąpienie instrukcji warunkowej w funkcji ``pokaz_runde()`` wywołaniem
-naszej funkcji: ``blok = wybierz_blok(robot['player_id'], robot['hp'])``. Przykładowy efekt
-przedstawia się tak:
+Po wyczyszczeniu pola gry, z danych rundy przekazanych do metody ``pokazRunde()``
+odczytujemy w pętli ``for robot in runda:`` słowniki opisujące kolejne roboty.
 
-.. figure:: img/mc07.png
+W skróconej instrukcji warunkowej sprawdzamy identyfikator gracza: ``if robot['player_id']``.
+Jeżeli wynosi 1 (jeden), roboty będą oznaczane blokami bawełny, jeżeli 0 (zero)
+– blokami drewna.
 
-**Ćwiczenie 3**
+Następnie z każdego słownika rozpakowujemy tuplę określającą położenie robota:
+``x, z = robot['location']``. W uzyskanych współrzędnych umieszczamy ustalony
+dla gracza typ bloku.
+
+Dodatkowo drukujemy kolejne dane w konsoli ``print robot['player_id'], blok, x, z``.
+
+Zanim uruchomimy kod, musimy jeszcze zamienić instrukcję ``print runda`` w metodzie
+``uruchom()`` na wywołanie omówionej funkcji:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: mcsim-rg03.py
+    :linenos:
+    :lineno-start: 78
+    :lines: 78
+
+Po uruchomieniu kodu powinniśmy zobaczyć już rozgrywkę:
+
+.. figure:: img/mcpi-rg03.png
+
+Kolory
+======
+
+Takie same bloki wykorzystywane do pokazywania ruchów robotów obydwu graczy nie
+wyglądają zbyt dobrze. Spróbujemy odróżnić od siebie obydwie drużyny i pokazać,
+że roboty w starciach tracą siłę, czyli punkty życia *hp*.
+
+Do definicji klasy *GraRobotow* dodajemy jeszcze jedną metodę o nazwie
+``wybierzBlok()``:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: mcsim-rg04.py
+    :linenos:
+    :lineno-start: 100
+    :lines: 100-106
+
+Metoda definiuje dwie tuple, po jednej dla każdego gracza, zawierające zestawy
+bloków używane do wyświetlenia robotów danej drużyny. Dobór typów w tuplach jest
+oczywiście czysto umowny.
+
+Siła robotów (*hp*) przyjmuje wartości od 0 do 50, dzieląc tę wartość całkowicie
+przez 10, otrzymujemy liczby od 0 do 5, które wykorzystamy jako indeksy wskazujące
+typ bloku przeznaczony do wyświetlenia robota danego zawodnika.
+
+Skrócona instrukcja warunkowa ``player1_bloki[hp / 10] if player_id else player2_bloki[hp / 10]``
+bada wartość identyfikatora pracownika ``if player_id`` i zwraca ``player1_bloki[hp / 10]``,
+jeżeli wynosi on 1 (jeden) oraz ``player2_bloki[hp / 10]`` jeżeli równa się 0 (zero).
+
+Pozostaje jeszcze zastąpienie instrukcji ``blok = block.WOOL if robot['player_id'] else block.WOOD``
+w metodzie ``pokazRunde()`` wywołaniem omówionej funkcji, czyli:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: mcsim-rg04.py
+    :linenos:
+    :lineno-start: 87
+    :lines: 87
+
+.. figure:: img/mcpi-rg04.png
+
+**Ćwiczenie 2**
 
 Przekształć kod uruchamiany na symulatorze tak, aby można go było uruchomić na serwerze
-Minecrafta Pi Edition.
+MC Pi Edition.
+
+.. figure:: img/mcpi-rg05.png
 
 **Źródła:**
 
-* :download:`Skrypty mcsimrg <mcsimrg.zip>`
+* :download:`Skrypty mcsim-rg <mcsim-rg.zip>`
 * :download:`Log RG <lastgame.zip>`
