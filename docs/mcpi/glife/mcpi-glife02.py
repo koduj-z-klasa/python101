@@ -11,7 +11,7 @@ import mcpi.block as block  # import modułu block
 os.environ["USERNAME"] = "Steve"  # nazwa użytkownika
 os.environ["COMPUTERNAME"] = "mykomp"  # nazwa komputera
 
-mc = minecraft.Minecraft.create("192.168.1.10")  # połączenie z symulatorem
+mc = minecraft.Minecraft.create("192.168.1.10")  # połączenie z MCPi
 
 
 class GraWZycie(object):

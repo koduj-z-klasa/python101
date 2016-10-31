@@ -356,3 +356,7 @@ Dodaj do skryptu mechanizm kończący symulacji, kiedy na planszy nie ma już
 żadnych żywych komórek.
 
 .. figure:: img/mcpi-glife06.png
+
+**Źródła:**
+
+* :download:`Skrypty mcsim-glife <mcpi-glife.zip>`
