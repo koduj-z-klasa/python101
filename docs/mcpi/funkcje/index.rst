@@ -230,3 +230,7 @@ wpływają na ich reprezentację graficzną.
 Można też rysować mieszać metody rysujące wykresy (``rysuj()``, ``rysuj_linie()``),
 kolejność przekazywania im parametrów, rodzaje bloków itp.
 Spróbuj np. budować wykresy z piasku (``block.STONE``) ponad powierzchnią.
+
+**Źródła:**
+
+* :download:`Skrypty mcpi-funkcje <mcpi-funkcje.zip>`

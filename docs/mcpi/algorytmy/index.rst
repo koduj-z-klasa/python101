@@ -298,3 +298,7 @@ Dla promienia o wielkości 20 i 1000 bloków uzyskać można poniższe budowle:
 
 Pozostaje eksperymentować z rozmiarami, typami bloków czy parametrem ``klatka``
 określanym w wywołaniu funkcji ``liczbaPi()`` w funkcji głównej.
+
+**Źródła:**
+
+* :download:`Skrypty mcpi-algorytmy <mcpi-algorytmy.zip>`
