@@ -40,7 +40,7 @@ Modularyzacja
 Scenariusze "Quiz" i "ToDo" pokazują możliwość umieszczenia całego kodu
 aplikacji obsługiwanej przez Flaska w jednym pliku. O ile dla celów
 szkoleniowych jest to dobre rozwiązanie, o tyle w praktycznych realizacjach
-wygodniej logicznie roddzielić poszczególne części aplikacji i umieścić
+wygodniej logicznie rozdzielić poszczególne części aplikacji i umieścić
 je w osobnych plikach, których nazwy określają ich przeznaczenie.
 Podejście takie usprawnia rozwijanie aplikacji, ale również ułatwia
 poznawanie bardziej rozbudowanych systemów, takich jak Django, przedstawione
@@ -91,7 +91,7 @@ Moduł ``app.py``, jak wskazuje sama nazwa, służy zainicjowaniu aplikacji
 Flaska (``app = Flask(__name__)``).
 Jej ustawienia przechowywane są w słowniku ``.config``. Oprócz klucza
 używanego do obsługi sesji (``SECRET_KEY``), a także nazwy wykorzystywanej
-w szablonach (``TYTUL``), w przypadku SQLAlchemy definujemy tu nazwę pliku
+w szablonach (``TYTUL``), w przypadku SQLAlchemy definiujemy tu nazwę pliku
 bazy danych (``SQLALCHEMY_DATABASE_URI='sqlite:///quiz.db'``)
 i wyłączamy śledzenie modyfikacji (``SQLALCHEMY_TRACK_MODIFICATIONS=False``).
 Następnie tworzymy instancję obiektu reprezentującego bazę.
@@ -99,13 +99,13 @@ Następnie tworzymy instancję obiektu reprezentującego bazę.
 Peewee wykorzystuje specjalną zmienną ``g``, w której możemy przechowywać
 różne zasoby składające się na kontekst aplikacji, np. instancję bazy.
 Tworzymy ją przekazując konstruktorowi nazwę pliku (``SqliteDatabase('quiz.db')``).
-Następnie przy użyciu odpowiednich dekoratorów Flaska definujemy funkcje
+Następnie przy użyciu odpowiednich dekoratorów Flaska definiujemy funkcje
 otwierające i zamykające połączenie w ramach każdego cyklu żądanie-odpowiedź,
 co stanowi specyficzny wymóg bazy SQLite.
 
 SQLAlchemy będziemy obsługiwać za pomocą rozszerzenia ``flask_sqlalchemy``,
 które ułatwia używanie tego systemu ORM. Dzięki niemu tworzymy instancję
-bazy powiązaną z konkretną aplkacją Flaska dzięki prostemu wywołaniu
+bazy powiązaną z konkretną aplikacją Flaska dzięki prostemu wywołaniu
 odpowiedniego konstruktora (``baza = SQLAlchemy(app)``).
 
 Modele
@@ -185,13 +185,13 @@ do danego widoku. Wzorzec umieszczamy w katalogu ``templates`` pod nazwą
 
 .. raw:: html
 
-    <div class="code_no">Szablon. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Szablon <i>szkielet.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: quiz2_pw/templates/szkielet.html
     :linenos:
 
-Przypomnijmy i uzpełnijmy składnię. Instrukcje sterujące otoczone znacznikami
+Przypomnijmy i uzupełnijmy składnię. Instrukcje sterujące otoczone znacznikami
 ``{% %}`` wymagają otwarcia i zamknięcia, np.: ``{% for %} {% endfor %}``.
 Nowy znacznik ``{% block nazwa_bloku %}`` pozwala definiować nazwane miejsca,
 w których szablony dziedziczące mogą wstawiać swój kod. Jeżeli chcemy
@@ -210,7 +210,7 @@ zdefiniowane widoki możemy natomiast zmienić tytuł strony
 
 .. raw:: html
 
-    <div class="code_no">Szablon. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Szablon <i>index.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: quiz2_pw/templates/index.html
@@ -225,7 +225,7 @@ w katalogu ``static`` i określającego wygląd naszej aplikacji.
 
 .. raw:: html
 
-    <div class="code_no">Szablon. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Arkusz stylów <i>style.css</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: css
 .. literalinclude:: quiz2_pw/static/style.css
@@ -362,27 +362,27 @@ zwiększa efektywność, bo wymusza pobranie możliwych odpowiedzi
 w jednym zapytaniu). Po sprawdzeniu, czy mamy jakiekolwiek pytania za pomocą
 metody ``.count()``, zwracamy użytkownikowi szablon ``quiz.html``, któremu
 przekazujemy w zmiennej ``pytania`` dane w odpowiedniej formie. W SQLALchemy
-korzystamy z mtody ``.all()`` zwracającej pasujące rekordy jako listę.
+korzystamy z metody ``.all()`` zwracającej pasujące rekordy jako listę.
 
 Szablon ``quiz.html`` – oparty na omówionym wcześniej wzorcu – wyświetla pytania
 i możliwe odpowiedzi jako pola opcji typu radio button:
 
 .. raw:: html
 
-    <div class="code_no">Szablon. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Szablon <i>quiz.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: quiz2_pw/templates/quiz.html
     :linenos:
 
-Użytkownik po wybraniu odpowiedzi naciska przyscisk *Sprawdź...* i przesyła
+Użytkownik po wybraniu odpowiedzi naciska przycisk *Sprawdź...* i przesyła
 do naszego widoku dane w żądaniu typu :term:`POST`. W funkcji ``quiz()``
 uwzględniamy taką sytuację i w pętli ``for pid, odp in request.form.items():``
 odczytujemy identyfikator pytania i udzieloną odpowiedź. Następnie
 pobieramy odpowiedź prawidłową w Peewee za pomocą kodu
 ``odpok = Pytanie.select(Pytanie.odpok).where(Pytanie.id == int(pid)).scalar()``,
 a w SQLALchemy ``odpok = baza.session.query(Pytanie.odpok).filter(Pytanie.id == int(pid)).scalar()``.
-W obu przypdakach metody ``.scalar()`` zwracają pojedyncze wartości, które
+W obu przypadkach metody ``.scalar()`` zwracają pojedyncze wartości, które
 porównujemy z odpowiedziami użytkownika (``if odp == odpok:``) i w przypadku
 poprawności zwiększamy wynik.
 
@@ -398,7 +398,7 @@ właśnie nim.
 
 .. raw:: html
 
-    <div class="code_no">Szablon. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Szablon <i>dodaj.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: quiz2_pw/templates/dodaj.html
@@ -413,7 +413,7 @@ przy edycji musimy w formularzu wyświetlić dane wybranego pytania.
 Dlatego w kodzie szablonu stosujemy instrukcję warunkową ``{% if pytanie %}``,
 która decyduje o tym, czy wyświetlamy puste pola, czy wypełniamy je
 przekazanymi danymi. W tym ostatnim przypadku umieszczamy w
-formularzu dodaktowe ukryte pole, w którym zapisujemy *id* edytowanego pytania.
+formularzu dodatkowe ukryte pole, w którym zapisujemy *id* edytowanego pytania.
 
 Załóżmy, że użytkownik wpisał lub zmienił pytanie i nacisnął przycisk
 typu *submit*, czyli wysłał dane do serwera. Co dzieje się dalej? Takie
@@ -442,8 +442,8 @@ wygląda ten widok:
     :lineno-start: 61
     :lines: 61-78
 
-Po otworzeniu adresu ``/dodaj`` otrzymujemy żadanie :term:`GET`,
-na które odpowiadamay zwróceniem omówionego wyżej szablonu ``dodaj.html``.
+Po otworzeniu adresu ``/dodaj`` otrzymujemy żądanie :term:`GET`,
+na które odpowiadamy zwróceniem omówionego wyżej szablonu ``dodaj.html``.
 Jeżeli jednak otrzymujemy dane z formularza, na początku dokonujemy prostej
 walidacji, tj. sprawdzamy, czy użytkownik nie przesyła pustego pytania lub odpowiedzi,
 dodatkowo, czy podał odpowiedni numer odpowiedzi poprawnej.
@@ -506,7 +506,7 @@ przekazujemy pytania do szablonu ``edytuj.html``.
 
 .. raw:: html
 
-    <div class="code_no">Szablon. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Szablon <i>edytuj.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: html
 .. literalinclude:: quiz2_pw/templates/edytuj.html
@@ -514,7 +514,7 @@ przekazujemy pytania do szablonu ``edytuj.html``.
 
 Zadaniem szablonu jest wyświetlenie treści pytań i dwóch przycisków typu
 *submit*, umożliwiających edycję lub usunięcie pytania. Przyciski te
-są cześcią formularzy, które zawierają tylko jedno ukryte pole przechowujące
+są częścią formularzy, które zawierają tylko jedno ukryte pole przechowujące
 *id* pytania. O tym, gdzie trafia identyfikator decyduje atrybutu *action*
 w formularzu: ``{{ url_for('edytuj') }}`` lub ``{{ url_for('usun') }}``.
 Używamy tu funkcji ``url_for``, która na podstawie podanego widoku generuje
@@ -525,7 +525,7 @@ Jeżeli użytkownik wybierze edycję, do omawianego widoku ``edytuj()`` trafia
 odebranego identyfikatora tworzymy obiekt z żądanym pytaniem i odpowiedziami
 (w SQLAlchemy stosujemy tu polecenie: ``Pytanie.query.get(pid)``), a następnie
 każemy go wyrenderować w szablonie ``dodaj.html``. Działanie tego szablonu
-omówiono wyżej. Jeżęli użytkownik kliknie przycisk *Usuń* jego żądanie
+omówiono wyżej. Jeżeli użytkownik kliknie przycisk *Usuń* jego żądanie
 trafia do widoku ``usun()``. Funkcja ta przedstawia się następująco:
 
 .. raw:: html
@@ -547,7 +547,7 @@ W SQLAlchemy pozyskany obiekt ``p = Pytanie.query.get(pid)`` usuwamy za pomocą
 metody sesji ``baza.session.delete(p)``, którą finalnie zapisujemy ``baza.session.commit()``.
 Na koniec wywołujemy za pomocą tzw. przekierowania widok strony głównej
 (``return redirect(url_for('index'))``), który wyświetli przygotowane dla użytkownika komunikaty.
-*Nota bene*, podobnie postępiliśmy również w innych omówionych wyżej widokach.
+*Nota bene*, podobnie postąpiliśmy również w innych omówionych wyżej widokach.
 
 .. figure:: quiz2_5.png
 
@@ -562,14 +562,12 @@ Poćwicz sam
 
 * :download:`quiz2.zip <quiz2.zip>`
 
-Kompletne wersje kodu znajdziesz w powyższym archiwum lub w katalogu
-:file:`~/python101/quiz2` w podkatalogach :file:`quiz2_pw`
+Kompletne wersje kodu znajdziesz w powyższym archiwum w podkatalogach :file:`quiz2_pw`
 i :file:`quiz2_sa`. Uruchamiamy je poleceniami:
 
 .. code-block:: bash
 
-    ~/python101$ cd quiz2
-    ~/python101/quiz2$ cd quiz2_orm; python main.py
+    ~/quiz2/quiz2_orm$ python main.py
 
 \- gdzie *orm* jest oznaczeniem modułu obsługi bazy danych, *pw* dla Peewee,
 *sa* dla SQLALchemy.
