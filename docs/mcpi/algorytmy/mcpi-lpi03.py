@@ -59,7 +59,7 @@ def liczbaPi():
     # pobieramy ilość punktów w kwadracie
     ileKw = int(raw_input("Podaj ilość losowanych punktów: "))
     ileKo = 0  # ilość punktów w kole
-    wKwadrat = []  # pomcnicza lista punktów w kwadracie
+    wKwadrat = []  # pomocnicza lista punktów w kwadracie
     wKolo = []  # pomocnicza lista punktów w kole
 
     blok = block.SAND
