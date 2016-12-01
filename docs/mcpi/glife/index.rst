@@ -111,9 +111,9 @@ początkowy układ komórek.
 Spróbuj w kilku komórkach macierzy utworzonej w konsoli, zapisać wartość ALIVE,
 czyli 1.
 
-W konstruktorze klasy głównej tworzymy instancję klasy ``Populacja`` – to powoduje
+W konstruktorze klasy głównej ``GraWZycie`` tworzymy instancję klasy ``Populacja`` – to powoduje
 wykonanie jej konstruktora. Potem wywołujemy metodę tworzącą układ początkowy.
-Tak więc na końcu konstruktora klasy ``GraWZycie`` dodajemy poniższy kod:
+Tak więc na końcu konstruktora klasy ``GraWZycie`` (``__init__()``)dodajemy poniższy kod:
 
 .. raw:: html
 
@@ -145,7 +145,7 @@ metody ``rysyj()`` i ``zywe_komorki()``:
     :lineno-start: 103
     :lines: 103-120
 
-– a rysowanie wywołujemy w metodzie ``uruchom()`` klasy głównej, dopisując:
+– a rysowanie wywołujemy w metodzie ``uruchom()`` klasy ``GraWZycie``, dopisując:
 
 .. raw:: html
 
@@ -260,7 +260,7 @@ ożywiamy badaną komórkę, zachowujemy jej stan lub ją uśmiercamy.
 Uzyskany stan zapisujemy w nowej macierzy ``nast_gen``. Po zbadaniu
 wszystkich komórek nowa macierz reprezentująca nową generację nadpisuje
 poprzednią: ``self.generacja = nast_gen``. Pozostaje ją narysować.
-Zmieniamy metodę ``uruchom()`` klasy głównej:
+Zmieniamy metodę ``uruchom()`` klasy ``GraWZycie``:
 
 .. raw:: html
 
@@ -322,7 +322,7 @@ Jeżeli na placu znajduje się jakikolwiek blok inny niż powietrze,
 oznaczamy odpowiednią komórkę początkowej generacji, wskazywaną przez współrzędną
 bloku jako żywą: ``self.generacja[x][z] = ALIVE``. Przy okazji zliczamy ilość takich komórek.
 
-Wywołanie funkcji trzeba dopisać do konstruktora klasy głównej w następujący sposób:
+Wywołanie funkcji trzeba dopisać do konstruktora klasy ``GraWZycie`` w następujący sposób:
 
 .. raw:: html
 

@@ -195,7 +195,7 @@ przez 10, otrzymujemy liczby od 0 do 5, które wykorzystamy jako indeksy wskazuj
 typ bloku przeznaczony do wyświetlenia robota danego zawodnika.
 
 Skrócona instrukcja warunkowa ``player1_bloki[hp / 10] if player_id else player2_bloki[hp / 10]``
-bada wartość identyfikatora pracownika ``if player_id`` i zwraca ``player1_bloki[hp / 10]``,
+bada wartość identyfikatora gracza ``if player_id`` i zwraca ``player1_bloki[hp / 10]``,
 jeżeli wynosi on 1 (jeden) oraz ``player2_bloki[hp / 10]`` jeżeli równa się 0 (zero).
 
 Pozostaje jeszcze zastąpienie instrukcji ``blok = block.WOOL if robot['player_id'] else block.WOOD``
