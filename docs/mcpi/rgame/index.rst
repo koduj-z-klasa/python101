@@ -7,14 +7,14 @@ Pole gry
 ========
 
 Spróbujemy teraz pokazać rozgrywkę z :ref:`gry robotów <robot-game>`.
-Zaczniemy od zbudowania areny wykorzystywanej w grze. W pliku :file:`mcsim-rg.py` umieszczamy następujący kod:
+Zaczniemy od zbudowania areny wykorzystywanej w grze. W pliku :file:`mcpi-rg.py` umieszczamy następujący kod:
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: mcsim-rg01.py
+.. literalinclude:: mcpi-rg01.py
     :linenos:
     :lineno-start: 1
     :lines: 1-
@@ -63,22 +63,22 @@ Na końcu funkcji ``run_all_turns()`` po linii nr 386 wstawiamy podany niżej ko
 
 Następnie po wywołaniu przykładowej walki: ``(env) root@kzk:~/robot$ rgrun bots/stupid26.py bots/Wall-E.py``
 w katalogu :file:`~/robot` znajdziemy plik :file:`lastgame.log`,
-który musimy umieścić w katalogu ze skryptem :file:`mcsim-rg.py`.
+który musimy umieścić w katalogu ze skryptem :file:`mcpi-rg.py`.
 
-Do definicji klasy ``GraRobotow`` w pliku :file:`mcsim-rg.py` dodajemy metodę ``uruchom()``:
+Do definicji klasy ``GraRobotow`` w pliku :file:`mcpi-rg.py` dodajemy metodę ``uruchom()``:
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: mcsim-rg02.py
+.. literalinclude:: mcpi-rg02.py
     :linenos:
-    :lineno-start: 67
-    :lines: 67-86
+    :lineno-start: 61
+    :lines: 61-81
     :emphasize-lines: 20
 
-Omawianą metodę wywołujemy w funkcji głównej przekazując jej jako parametry
+Omawianą metodę wywołujemy w funkcji głównej ``main()`` przekazując jej jako parametry
 nazwę pliku z zapisem rozgrywki oraz ilość rund do pokazania: ``gra.uruchom("lastgame.log", 10)``.
 
 W samej metodzie zaczynamy od sprawdzenia, czy podany plik istnieje
@@ -119,17 +119,17 @@ Słowniki opisujące roboty walczące w danej rundzie zawierają m.in.
 identyfikatory gracza, położenie robota oraz jego ilość punktów *hp*.
 Wykorzystamy te informacje w funkcji ``pokazRunde()``.
 
-Klasę *GraRobotow* w pliku :file:`mcsim-rg.py` uzupełniamy dwoma metodami:
+Klasę *GraRobotow* w pliku :file:`mcpi-rg.py` uzupełniamy dwoma metodami:
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: mcsim-rg03.py
+.. literalinclude:: mcpi-rg03.py
     :linenos:
-    :lineno-start: 83
-    :lines: 83-98
+    :lineno-start: 77
+    :lines: 77-92
 
 W metodzie ``pokazRunde()`` na początku czyścimy pole gry, czyli wypełniamy je
 blokami powietrza – to zadanie funkcji ``czyscPole()``. Jak widać, wykorzystuje ona
@@ -157,10 +157,11 @@ Zanim uruchomimy kod, musimy jeszcze zamienić instrukcję ``print runda`` w met
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: mcsim-rg03.py
+.. literalinclude:: mcpi-rg03.py
     :linenos:
-    :lineno-start: 78
-    :lines: 78
+    :lineno-start: 70
+    :lines: 70-75
+    :emphasize-lines: 3
 
 Po uruchomieniu kodu powinniśmy zobaczyć już rozgrywkę:
 
@@ -181,10 +182,10 @@ Do definicji klasy *GraRobotow* dodajemy jeszcze jedną metodę o nazwie
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: mcsim-rg04.py
+.. literalinclude:: mcpi-rg04.py
     :linenos:
-    :lineno-start: 100
-    :lines: 100-106
+    :lineno-start: 94
+    :lines: 94-100
 
 Metoda definiuje dwie tuple, po jednej dla każdego gracza, zawierające zestawy
 bloków używane do wyświetlenia robotów danej drużyny. Dobór typów w tuplach jest
@@ -206,19 +207,49 @@ w metodzie ``pokazRunde()`` wywołaniem omówionej funkcji, czyli:
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: mcsim-rg04.py
+.. literalinclude:: mcpi-rg04.py
     :linenos:
-    :lineno-start: 87
-    :lines: 87
+    :lineno-start: 80
+    :lines: 80-84
+    :emphasize-lines: 2
 
 .. figure:: img/mcpi-rg04.png
 
-**Ćwiczenie 2**
-
-Przekształć kod uruchamiany na symulatorze tak, aby można go było uruchomić na serwerze
-MC Pi Edition.
-
 .. figure:: img/mcpi-rg05.png
+
+Trzeci wymiar
+=============
+
+**Ćwiczenia**
+
+Warto poeksperymentować z wizualizacją gry wykorzystując trójwymiarowość Minecrafta.
+Można uzyskać spektakularne rezulaty. Poniżej kilka sugestii.
+
+- Stosunkowo łatwo urozmaicić wizualizację gry używając wartości *hp* (siła robota)
+  jako współrzędnej określającej położenie bloku w pionie. Wystarczy zmienić instrukcję
+  ``self.mc.setBlock(x, 0, z, blok)`` w funkcji ``pokazRunde()``.
+
+.. figure:: img/mcpi-rg06.png
+
+- Jeżeli udało ci się wprowadzić powyższą poprawkę i bloki umieszczame są na różnej wysokości,
+  można zmienić typ umieszczanych bloków na piasek (``SAND``).
+
+.. figure:: img/mcpi-rg07.png
+.. figure:: img/mcpi-rg08.png
+
+- Można spróbować wykorzystać omawianą w scenariuszu :ref:`Figury 2D i 3D <mcpifigury>`
+  bibliotekę `minecraftstuff <http://www.stuffaboutcode.com/2013/11/coding-shapes-in-minecraft.html>`_.
+  Wykorzystując funkcję ``drawLine()`` oraz wartość siły robotów ``robot['hp']`` jako
+  współrzędną określającą położenie bloku w pionie, można rysować kolejne rundy
+  w postaci słupków.
+
+.. figure:: img/mcpi-rg09.png
+
+.. note::
+
+    Dziękujemy uczestnikom szkolenia przeprowadzonego w ramach programu "Koduj z Klasą"
+    w Krakowie (03.12.2016 r.), którzy zgłosili powyższe pomysły i sugestie.
+
 
 **Źródła:**
 

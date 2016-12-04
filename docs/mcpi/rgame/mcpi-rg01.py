@@ -4,19 +4,17 @@
 import os
 import json
 from time import sleep
-import local.minecraft as minecraft  # import modułu minecraft
-import local.block as block  # import modułu block
+import mcpi.minecraft as minecraft  # import modułu minecraft
+import mcpi.block as block  # import modułu block
 
 os.environ["USERNAME"] = "Steve"  # nazwa użytkownika
 os.environ["COMPUTERNAME"] = "mykomp"  # nazwa komputera
 
-mc = minecraft.Minecraft.create()  # połączenie z symulatorem
+mc = minecraft.Minecraft.create("192.168.1.10")  # połączenie z MCPi
 
 
 class GraRobotow(object):
-    """
-    Główna klasa gry, łączy wszystkie elementy.
-    """
+    """Główna klasa gry"""
 
     obstacle = [(0,0),(1,0),(2,0),(3,0),(4,0),(5,0),(6,0),(7,0),(8,0),(9,0),
         (10,0),(11,0),(12,0),(13,0),(14,0),(15,0),(16,0),(17,0),(18,0),(0,1),
@@ -43,11 +41,7 @@ class GraRobotow(object):
         # self.mc.player.setPos(19, 20, 19)
 
     def poleGry(self, x, y, z, roz=10):
-        """
-        Funkcja tworzy podłoże i wypełnia sześcienny obszar od podanej pozycji.
-        Parametry: x, y, z - współrzędne pozycji początkowej,
-        roz - rozmiar wypełnianej przestrzeni,
-        """
+        """Funkcja tworzy pole gry"""
 
         podloga = block.STONE
         wypelniacz = block.AIR
@@ -64,23 +58,13 @@ class GraRobotow(object):
                 else:  # tworzenie listy współrzędnych dozwolonych pól gry
                     self.plansza.append((x + i, z + j))
 
-    def uruchom(self, plik, ile=100):
-        """Funkcja odczytuje z pliku i wizualizuje rundy gry robotów."""
 
-        if not os.path.exists(plik):
-            print "Podany plik nie istnieje!"
-            return
-
-        plik = open(plik, "r")  # otwórz plik w trybie tylko do odczytu
-        runda_nr = 0
-        for runda in json.load(plik):
-            print "Runda ", runda_nr
-            print runda  # pokaż dane rundy w konsoli
-            runda_nr = runda_nr + 1
-            if runda_nr > ile:
-                break
+def main(args):
+    gra = GraRobotow(mc)  # instancja klasy GraRobotow
+    print gra.plansza  # pokaż w konsoli listę współrzędnych pól gry
+    return 0
 
 
 if __name__ == '__main__':
-    gra = GraRobotow(mc)  # instancja klasy GraRobotow
-    gra.uruchom("lastgame.log", 10)
+    import sys
+    sys.exit(main(sys.argv))

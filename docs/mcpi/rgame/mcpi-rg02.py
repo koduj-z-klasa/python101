@@ -4,19 +4,17 @@
 import os
 import json
 from time import sleep
-import local.minecraft as minecraft  # import modułu minecraft
-import local.block as block  # import modułu block
+import mcpi.minecraft as minecraft  # import modułu minecraft
+import mcpi.block as block  # import modułu block
 
 os.environ["USERNAME"] = "Steve"  # nazwa użytkownika
 os.environ["COMPUTERNAME"] = "mykomp"  # nazwa komputera
 
-mc = minecraft.Minecraft.create()  # połączenie z symulatorem
+mc = minecraft.Minecraft.create("192.168.1.10")  # połączenie z MCPi
 
 
 class GraRobotow(object):
-    """
-    Główna klasa gry, łączy wszystkie elementy.
-    """
+    """Główna klasa gry"""
 
     obstacle = [(0,0),(1,0),(2,0),(3,0),(4,0),(5,0),(6,0),(7,0),(8,0),(9,0),
         (10,0),(11,0),(12,0),(13,0),(14,0),(15,0),(16,0),(17,0),(18,0),(0,1),
@@ -43,11 +41,7 @@ class GraRobotow(object):
         # self.mc.player.setPos(19, 20, 19)
 
     def poleGry(self, x, y, z, roz=10):
-        """
-        Funkcja tworzy podłoże i wypełnia sześcienny obszar od podanej pozycji.
-        Parametry: x, y, z - współrzędne pozycji początkowej,
-        roz - rozmiar wypełnianej przestrzeni,
-        """
+        """Funkcja tworzy pole gry"""
 
         podloga = block.STONE
         wypelniacz = block.AIR
@@ -75,37 +69,18 @@ class GraRobotow(object):
         runda_nr = 0
         for runda in json.load(plik):
             print "Runda ", runda_nr
-            self.pokazRunde(runda)
+            print runda  # pokaż dane rundy w konsoli
             runda_nr = runda_nr + 1
             if runda_nr > ile:
                 break
 
-    def pokazRunde(self, runda):
-        """Funkcja buduje układ robotów na planszy w przekazanej rundzie."""
-        self.czyscPole()
-        for robot in runda:
-            blok = self.wybierzBlok(robot['player_id'], robot['hp'])
-            x, z = robot['location']
-            print robot['player_id'], blok, x, z
-            self.mc.setBlock(x, 0, z, blok)
-        sleep(1)
-        print
 
-    def czyscPole(self):
-        """Funkcja wypelnia blokami powietrza pole gry."""
-        for xz in self.plansza:
-            x, z = xz
-            self.mc.setBlock(x, 0, z, block.AIR)
-
-    def wybierzBlok(self, player_id, hp):
-        """Funkcja dobiera kolor bloku w zależności od gracza i hp robota."""
-        player1_bloki = (block.GRAVEL, block.SANDSTONE, block.BRICK_BLOCK,
-                         block.FARMLAND, block.OBSIDIAN, block.OBSIDIAN)
-        player2_bloki = (block.WOOL, block.LEAVES, block.CACTUS,
-                         block.MELON, block.WOOD, block.WOOD)
-        return player1_bloki[hp / 10] if player_id else player2_bloki[hp / 10]
+def main(args):
+    gra = GraRobotow(mc)  # instancja klasy GraRobotow
+    gra.uruchom("lastgame.log", 10)
+    return 0
 
 
 if __name__ == '__main__':
-    gra = GraRobotow(mc)  # instancja klasy GraRobotow
-    gra.uruchom("lastgame.log", 50)
+    import sys
+    sys.exit(main(sys.argv))
