@@ -33,34 +33,37 @@ tego samego typu, które jednak możemy zmieniać.
 
 .. note::
 
-    W definicji tupli nawiasy są opcjonalne, można więc pisać tak: ``tupla = 3, 2, 5, 8.``
+    W definicji tupli nawiasy są opcjonalne, można więc pisać tak: ``tupla = 3, 2, 5, 8``
+    Oprócz tupli i list sekwencjami są w Pythonie również napisy.
 
-Dostęp do elementów tupli lub listy uzyskujemy podając nazwę i indeks, np. ``lista[0]``.
-Elementy indeksowane są od 0 (zera!). Funkcja ``len()`` zwraca ilość elementów w tupli/liście.
-Funkcja ``enumerate()`` zwraca obiekt zawierający indeksy i elementy sekwencji
-(np. tupli lub listy) podanej jako atrybut. Funkcja ``reversed()`` zwraca
-odwróconą sekwencję.
+Dostęp do elementów sekwencji uzyskujemy podając nazwę i indeks, np. ``lista[0]``.
+Elementy indeksowane są od 0 (zera!). Z każdej sekwencji możemy wydobywać fragmenty
+dzięki notacji wycinkowej (ang. *slice*), np.: ``lista[1:4]``.
 
-Lista ma wiele użytecznych metod: ``.append(x)`` – dodaje x do listy;
-``.remove(x)`` – usuwa pierwszy x z listy;
-``.insert(i, x)`` – wstawia x przed indeksem i;
-``.count(x)`` – zwraca ilość wystąpień x;
-``.index(x)`` – zwraca indeks pierwszego wystąpienia x;
-``.pop()`` – usuwa i zwraca ostatni element listy.
+Funkcje działające na sekwencjach:
 
-Funkcja ``reversed(lista)`` zwraca kopię listy w odwróconym porządku,
-natomiast ``sorted(lista)`` zwraca kopię listy posortowanej rosnąco.
-Jeżeli chcemy trwale odwrócić lub posortować elementy listy stosujemy metody:
-``.reverse()`` i ``.sort()``.
+* ``len()`` – zwraca ilość elementów;
+* ``enumerate()`` – zwraca obiekt zawierający indeksy i elementy sekwencji;
+* ``reversed()`` – zwraca obiekt zawierający odwróconą sekwencję.
+* ``sorted(lista)`` – zwraca kopię listy posortowanej rosnąco;
+* ``sorted(lista, reverse=True)`` – zwraca kopię listy w odwrotnym porządku;
+*
 
-Z każdej sekwencji (napisu, tupli czy listy) możemy wydobywać fragmenty
-dzięki notacji *slice* (wycinek). W najprostszym przypadku polega ona
-na podaniu początkowego i końcowego (wyłącznie) indeksu elementów, które chcemy
-wydobyć, np. ``lista[1:4]``.
+Lista ma wiele użytecznych metod:
+
+* ``.append(x)`` – dodaje x do listy;
+* ``.remove(x)`` – usuwa pierwszy x z listy;
+* ``.insert(i, x)`` – wstawia x przed indeksem i;
+* ``.count(x)`` – zwraca ilość wystąpień x;
+* ``.index(x)`` – zwraca indeks pierwszego wystąpienia x;
+* ``.pop()`` – usuwa i zwraca ostatni element listy;
+* ``.sort()`` – sortuje listę rosnąco;
+* ``.reverse()`` – sortuje listę w odwróconym porządku.
+
 
 Zadania dodatkowe
 *****************
 
-Utwórz w konsoli Pythona dowolną listę i przećwicz notację *slice*. Sprawdź działanie indeksów pustych
-i ujemnych, np. ``lista[2:], lista[:4], lista[-2], lista[-2:]``.
-Posortuj dowolną listę malejąco. Wskazówka: wykorzystaj metodę ``.sort(reverse=True)``.
+Utwórz w konsoli Pythona dowolną listę i przećwicz notację wycinkową.
+Sprawdź działanie indeksów pustych i ujemnych, np. ``lista[2:], lista[:4], lista[-2], lista[-2:]``.
+Posortuj trwale dowolną listę malejąco. Utwórz kopię listy posortowaną rosnąco.

@@ -13,5 +13,6 @@ def szyfruj(txt):
             zaszyfrowny += chr(ord(txt[i]) + KLUCZ)
     return zaszyfrowny
 
+
 u_tekst = raw_input("Podaj ciąg do zaszyfrowania:\n")
 print "Ciąg zaszyfrowany:\n", szyfruj(u_tekst)

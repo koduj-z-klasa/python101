@@ -46,4 +46,5 @@ drukuj(oceny, przedmiot.capitalize() + " - wprowadzone oceny: ")
 s = srednia(oceny)  # wywołanie funkcji z modułu ocenyfun
 m = mediana(oceny)  # wywołanie funkcji z modułu ocenyfun
 o = odchylenie(oceny, s)  # wywołanie funkcji z modułu ocenyfun
-print "\nŚrednia: {0:5.2f}\nMediana: {1:5.2f}\nOdchylenie: {2:5.2f}".format(s, m, o)
+print "\nŚrednia: {0:5.2f}".format(s)
+print "Mediana: {0:5.2f}\nOdchylenie: {1:5.2f}".format(m, o, )

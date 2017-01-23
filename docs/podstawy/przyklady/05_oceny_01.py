@@ -7,6 +7,7 @@ def drukuj(co, kom="Sekwencja zawiera: "):
     for i in co:
         print i,
 
+
 przedmioty = set(['polski', 'angielski'])  # definicja zbioru
 drukuj(przedmioty, "Lista przedmiotów zawiera: ")
 

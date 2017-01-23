@@ -22,6 +22,7 @@ def oczysc(str):
     str = str.lower()  # zmień na małe litery
     return str
 
+
 # główna pętla programu
 while True:
     dane = raw_input("Podaj dane: ")

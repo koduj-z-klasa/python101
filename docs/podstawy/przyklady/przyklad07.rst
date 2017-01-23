@@ -13,9 +13,9 @@ Szyfr Cezara
     :linenos:
 
 W programie możemy wykorzystywać zmienne globalne, np. KLUCZ.
-``def nazwa_funkcji(argumenty)`` - tak definiujemy funkcje, które
+``def nazwa_funkcji(argumenty)`` – tak definiujemy funkcje, które
 mogą lub nie zwracać jakieś wartości.
-``nazwa_funkcji(argumenty)`` - tak wywołujemy funkcje.
+``nazwa_funkcji(argumenty)`` – tak wywołujemy funkcje.
 Napisy mogą być indeksowane (od 0), co daje dostęp do pojedynczych znaków.
 Funkcja ``len(str)`` zwraca długość napisu, wykorzystana jako argument funkcji
 ``range()`` pozwala iterować po znakach napisu.

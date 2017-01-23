@@ -23,6 +23,7 @@ czyli działań arytmetycznych lub logicznych.
 
     Niekiedy mówi się, że w Pythonie zmiennych nie ma, są natomiast wartości określonego typu.
 
+
 Funkcja ``raw_input()`` zwraca pobrane z klawiatury znaki jako napis, czyli typ **string**.
 Funkcja ``int()`` umożliwia konwersję napisu na liczbę całkowitą, czyli typ **integer**.
 Funkcja ``print`` drukuje podane argumenty oddzielone przecinkami. Komunikaty tekstowe ujmujemy
@@ -33,7 +34,7 @@ jest prawdziwe (przyjmuje wartość ``True``), wykonywana jest pierwsza instrukc
 w przeciwnym wypadku (``else``), kiedy wyrażenie jest fałszywe (wartość ``False``),
 wykonywana jest instrukcja druga. Części instrukcji warunkowej kończymy dwukropkiem.
 
-Charakterystyczną cechą Pythona jest używanie wcięć do zaznaczania bloków kodu.
+Charakterystyczną cechą Pythona jest używanie wcięć do zaznaczania bloków kodu. Standardem są 4 spacje.
 Komentarze wprowadzamy po znaku ``#``.
 
 Zadania

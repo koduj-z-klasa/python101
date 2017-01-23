@@ -39,6 +39,9 @@ Metoda ``.capitalize()`` pozwala wydrukować podany napis dużą literą.
 
 W funkcji ``print(...).format(s,m,o)`` zastosowano formatowanie drukowanych wartości, do których odwołujemy się w specyfikacji ``{0:5.2f}``. Pierwsza cyfra wskazuje, którą wartość z numerowanej od 0 (zera) listy, umieszczonej w funkcji ``format()``, wydrukować; np. aby wydrukować drugą wartość, trzeba by użyć kodu ``{1:}``.Po dwukropku podajemy szerokość pola przeznaczonego na wydruk, po kropce ilość miejsc po przecinku, symbol *f* oznacza natomiast liczbę zmiennoprzecinkową stałej precyzji.
 
+Więcej informacji nt. formatowania danych wyjściowych: `PyFormat <https://pyformat.info/>`_.
+
+
 .. raw:: html
 
     <hr />

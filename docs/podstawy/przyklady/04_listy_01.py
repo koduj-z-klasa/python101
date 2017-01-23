@@ -10,7 +10,7 @@ for i in range(len(tupla)):
 
 print "Elementy i ich indeksy:"
 for i, v in enumerate(lista):
-    print v, "[",i,"]"
+    print v, "[", i, "]"
 
 print "Elementy w odwróconym porządku:"
 for e in reversed(lista):
@@ -26,18 +26,25 @@ e = int(raw_input("Którą liczbę usunąć? "))
 lista.remove(e)
 print lista
 
-a, i = input("Podaj element do dodania i indeks, przed którym ma się on znaleźć: ")
+print "Dodawanie elementów do listy"
+a, i = input("Podaj element i indeks oddzielone przecinkiem: ")
 lista.insert(i, a)
 print lista
 
-e = int(raw_input("Podaj liczbę, której wystąpienia w liście chcesz zliczyć? "))
+print "Wyszukiwanie i zliczanie elementu w liście"
+e = int(raw_input("Podaj liczbę: "))
+print "Liczba wystąpień: "
 print lista.count(e)
-print "Pierwszy indeks, pod którym zapisana jest podana liczba to: "
-print lista.index(e)
+print "Indeks pierwszego wystąpienia: "
+if lista.count(e):
+    print lista.index(e)
+else:
+    print "Brak elementu w liście"
 
 print "Pobieramy ostatni element z listy: "
 print lista.pop()
 print lista
 
-i, j = input("Podaj indeks początkowy i końcowy, aby uzyskać frgament listy: ")
+print "Część listy:"
+i, j = input("Podaj indeks początkowy i końcowy oddzielone przecinkiem: ")
 print lista[i:j]
