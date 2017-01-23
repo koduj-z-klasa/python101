@@ -45,8 +45,8 @@ Następnie do listy ``paterns`` dopisujemy:
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 16
-    :lines: 16-19
+    :lineno-start: 17
+    :lines: 17-20
 
 Powyższy kod wiąże adres URL */rejestruj* z wywołaniem widoku wbudowanego jako funkcji
 ``CreateView.as_view()``. Przekazujemy jej trzy parametry:
