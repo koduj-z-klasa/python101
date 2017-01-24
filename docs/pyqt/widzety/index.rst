@@ -356,8 +356,8 @@ okna aplikacji. Przedostatnią linię ``self.setLayout(ukladH1)`` zastępujemy p
 .. highlight:: python
 .. literalinclude:: gui_z3.py
     :linenos:
-    :lineno-start: 77
-    :lines: 77-
+    :lineno-start: 71
+    :lines: 71-
 
 **Ustawienia wstępne i obsługa zdarzeń**
 
