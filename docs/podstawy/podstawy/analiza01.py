@@ -21,5 +21,4 @@ for i, slownik in enumerate(losowania):
     iletrafien = iletrafien + slownik['ile']
 
 srednio = float(iletrafien) / float(len(losowania))
-procent = srednio / float(ileliczb) * 100
-print "{0:2.2f} -> {1:3.2f}%".format(srednio, procent)
+print "{:2.2f} -> {:3.2%}".format(srednio, srednio / float(ileliczb))
