@@ -48,7 +48,7 @@ Tworzymy go i wstawiamy poniższy kod:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>widzety.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>gui.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
 .. literalinclude:: gui_z0.py
