@@ -59,6 +59,7 @@ Zaczynamy!
     :numbered:
 
     podstawy/index
+    pylab/index
     rg/index
     pygame/index
     bazy/index
