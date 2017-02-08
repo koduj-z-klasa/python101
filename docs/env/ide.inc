@@ -1,15 +1,12 @@
 .. _ide:
 
 IDE – edytory kodu
-##################
+******************
 
 Skrypty Pythona można zapisywać w dowolnym edytorze tekstu, ale oczywiście
 wygodniej jest używać programów, które potrafią przynajmniej odpowiednio
 podświetlać kod.
 
-
-.. contents:: Spis treści
-    :backlinks: none
 
 .. _geany-python:
 
@@ -27,7 +24,7 @@ auto-wcięć, pracy na kartach i wiele, wiele więcej. Podczas pisania kodu przy
 pozwalający tworzyć dowolne notatki, a także możliwość kompilacji plików źródłowych
 bezpośrednio z poziomu programu.
 
-Instalacja Linux
+W Linuksie
 ----------------
 
 W systemach linuksowych korzystamy z dedykowanych menedżerów, np. w Xubuntu
@@ -37,7 +34,7 @@ W systemach linuksowych korzystamy z dedykowanych menedżerów, np. w Xubuntu
 
     ~$ sudo apt-get install geany geany-plugins
 
-Instalacja Windows
+W Windows
 ------------------
 
 W MS Windows ściągamy i instalujemy `pełną wersję binarną Geany <http://www.geany.org/Download/Releases>`_
@@ -83,14 +80,10 @@ podpowiedziom oraz wykrywaniu błędów niemal na bieżąco, uczniowie mniej
 czasu będą spędzać na szukaniu problemów, a więcej na poznawaniu tajników
 programowania.
 
-Instalacja Windows
-------------------
-
 Zarówno w systemach Linux, jak i MS Windows najlepiej pobrać
-ostatnią wersję `Professional Edition <http://www.jetbrains.com/pycharm/download/>`_
-ze strony producenta.
+ostatnią wersję `Professional Edition <http://www.jetbrains.com/pycharm/download/>`_ ze strony producenta.
 
-Instalacja Linux
+W Linuksie
 ----------------
 
 Wersja linuksowa to archiwum, które trzeba rozpakować,
@@ -122,6 +115,13 @@ Jeśli w naszym systemie brakuje środowiska Java Run Time, musimy je doinstalow
 .. code-block:: bash
 
     export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+
+
+W Windows
+------------------
+
+Zainstaluj pobrany plik.
+
 
 Bezpłatna licencja
 ------------------
@@ -161,7 +161,7 @@ Unikalne cechy:
 * Lista wszystkich poleceń z menu: :kbd:`CTRL+SHIFT+P`
 * Równoczesna edycja kilku plików: *View/Layout*
 
-Instalacja Linux
+W Linuksie
 -----------------
 
 W Debianie i systemach na nim opartych, czyli (X)Ubuntu czy Linux Mint, wchodzimy na stronę
@@ -181,7 +181,7 @@ AUR (Arch User Repository), można go zainstalować np. przy użyciu pomocniczeg
 
     pacaur -S sublime-text-dev
 
-Instalacja Windows
+W Windows
 ------------------
 
 Po wejściu na stronę `Sublime Text 3 <http://www.sublimetext.com/3>`_ pobieramy archiwum

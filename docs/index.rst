@@ -46,10 +46,11 @@ Przygotowanie do szkolenia
 Przed szkoleniem warto przygotować swój komputer.
 
 ..  toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     env/index
     source_code
+    git/index
 
 Zaczynamy!
 =================

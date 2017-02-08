@@ -1,7 +1,7 @@
 .. _linux-env:
 
 Przygotowanie systemu Linux
-###########################
+***************************
 
 Jeżeli nie masz zainstalowanego systemu Linux, możesz wykorzystać wersję
 :ref:`Linux Live <linux-live>`, która po nagraniu na pendrajwa pozwoli uruchomić komputer.
@@ -20,8 +20,8 @@ Polecamy systemy, na których przetestowaliśmy scenariusze:
 * `Debian Jessie 8 <https://www.debian.org/index.pl.html>`_  – ostatnia stabilna wersja,
    proponujemy wersję ze środowiskiem `XFCE`_. Zob.: `Instalacja Debiana Jessie <http://ecg.vot.pl/?id=debian-stable-install>`_.
 
-* `Xubuntu <https://xubuntu.org/getxubuntu/>`_ 16.04 LTS – stabilna odmiana
-  `Ubuntu <https://www.ubuntu.com/>`_, zawiera proste i wydajne
+* `Xubuntu <https://xubuntu.org/getxubuntu/>`__ 16.04 LTS – stabilna odmiana
+  `Ubuntu <https://www.ubuntu.com/>`__, zawiera proste i wydajne
   :term:`środowisko graficzne` `XFCE`_.
   Zob. `Instalacja Lubuntu <http://ecg.vot.pl/?id=lubuntu>`_ (instalacja jest taka sama).
 
@@ -88,8 +88,6 @@ W systemach opartych na *Arch Linuksie* (*Manjaro* itp.) w terminalu wydajemy na
     ~$ sudo apt-get install build-essential libpng12-dev zlib1g-dev libfreetype6-dev python-dev
     ~$ sudo pip install matplotlib ipython qtconsole
 
-.. contents:: Spis treści
-    :backlinks: none
 
 .. note::
 

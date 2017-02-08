@@ -17,7 +17,7 @@ na większości komputerów i zapamiętuje wyniki naszej pracy.
     Na końcu tego dokumentu znajdziesz wskazówki, jak to zrobić.
 
 Katalog użytkownika
-===================
+*******************
 
 Scenariusze zakładają również, że pracujemy w **katalogu domowym** użytkownika.
 W systemach Linux jest to podfolder katalogu ``/home`` o nazwie zalogowanego użytkownika,
@@ -33,17 +33,15 @@ jako zwykły użytkownik, natomiast ``#`` – jako root, czyli administrator.
     W przygotowanym przez nas systemie *LxPup KzkBox* wyjątkowo pracujemy jako użytkownik
     *root* w kalogu domowym :file:`/root`.
 
-Przygotowanie systemów
-======================
 
-.. toctree::
-    :maxdepth: 2
-    :numbered:
+.. include:: linux.inc
 
-    linux
-    windows
-    ide
-    live
-    py3
-    git/git
-    gloss_env
+.. include:: windows.inc
+
+.. include:: ide.inc
+
+.. include:: live.inc
+
+.. include:: py3.inc
+
+.. include:: gloss_env.inc

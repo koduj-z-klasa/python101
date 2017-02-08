@@ -1,5 +1,5 @@
 Pojęcia
-#######
+*******
 
 .. glossary::
 
@@ -18,7 +18,7 @@ Pojęcia
     dystrybucja Linuksa
         określona wersja systemu operacyjnego oparta na jądrze Linux, udostępniana
         zazwyczaj w formie obrazów *iso*. Najbardziej znane to: `Debian`_,
-        `Ubuntu`_ i jego odmiany (np. `Xubuntu`_), `Linux Mint`_, `Arch Linux`_, `Slackware`_,
+        `Ubuntu <http://ubuntu.pl>`__ i jego odmiany (np. `Xubuntu <http://xubuntu.org/>`__), `Linux Mint`_, `Arch Linux`_, `Slackware`_,
         `Fedora`_, `Open Suse`_. Czytaj więcej o `dystrybucjach Linuksa <http://pl.wikipedia.org/wiki/Dystrybucja_Linuksa>`_
 
     obraz iso
@@ -30,7 +30,7 @@ Pojęcia
         w systemach linuksowych zestaw oprogramowania tworzący GUI, czyli graficzny
         interfejs użytkownika, często zawiera domyślny wybór aplikacji przeznaczonych
         do wykonywania typowych zadań. Najpopularnijesze środowiska to `XFCE`_,
-        `Gnome`_, `KDE`_, `LXDE`_, `Cinnamon`_, `Mate`_.
+        `Gnome`_, `KDE`_, `LXDE <http://pl.wikipedia.org/wiki/LXDE>`__, `Cinnamon`_, `Mate`_.
 
     terminal
         inaczej zwany konsolą tekstową, wierszem poleceń itp. Program umożliwiający
@@ -39,8 +39,6 @@ Pojęcia
         i szybszy odpowiednik, czyli Dash.
 
 .. _Debian: https://www.debian.org/index.pl.html
-.. _Ubuntu: http://ubuntu.pl
-.. _Xubuntu: http://xubuntu.org/
 .. _Linux Mint: https://www.linuxmint.com
 .. _Arch Linux: http://archlinux.pl
 .. _Slackware: http://pl.wikipedia.org/wiki/Slackware
@@ -48,7 +46,6 @@ Pojęcia
 .. _Open Suse: https://pl.opensuse.org/Witamy_w_openSUSE.org
 .. _Gnome: http://pl.wikipedia.org/wiki/GNOME
 .. _KDE: http://pl.wikipedia.org/wiki/KDE
-.. _LXDE: http://pl.wikipedia.org/wiki/LXDE
 .. _Cinnamon: http://en.wikipedia.org/wiki/Cinnamon_%28software%29
 .. _Mate: http://pl.wikipedia.org/wiki/MATE
 .. _XFCE: http://www.xfce.org/

@@ -1,7 +1,7 @@
 .. _windows-env:
 
 Przygotowanie systemu Windows
-#############################
+*****************************
 
 Przykłady zostały przygotowane z myślą o systemie Linux.
 Przygotowana i polecana przez nas przenośna wersja Linuksa :ref:`LxPup <linux-live>`
@@ -15,8 +15,6 @@ jednak niektóre biblioteki w wersjach binarnych trzeba ściągnąć i zainstalo
     podawanych w scenariuszach, podobnie pozamieniaj komendy systemu Linux
     na odpowiedniki wiersza poleceń Windows.
 
-.. contents:: Spis treści
-    :backlinks: none
 
 .. _ins-python:
 

@@ -1,5 +1,5 @@
 Wykorzystanie Python 3
-######################
+**********************
 
 Podstawą szkolenia jest, jak zaznaczono na początku, interpreter Pythona w wersji 2.7.x,
 który standardowo dostępny jest w dystrybucjach linuksowych. Można jednak korzystać
@@ -15,13 +15,8 @@ z interpretera w wersji 3.x, pamiętając że:
 * dodatkowe moduły trzeba zainstalować osobno dla wersji 3.x używając odpowiedniej
   wersji narzędzia pip.
 
-Instalacja Windows
-==================
-
-Ściągamy *interpreter Pythona* w wersji 3.x i instalujemy ręcznie.
-
-Instalacja Linux
-================
+Instalacja w Linuksie
+=====================
 
 Python 3 jest podstawowym składnikiem wszystkich głównych dystrybucji Linuksa.
 
@@ -30,3 +25,8 @@ w wersji 3.x wymaga użycia polecenia ``pip3``.
 
 W *Arch Linuksie* i pochodnych jest odwrotnie, domyślną wersją jest Python 3
 i polecenie ``pip``. Jeżeli chcemy używać wersji 2.x używamy polecenia ``pip2``.
+
+Instalacja w Windows
+====================
+
+Ściągamy *interpreter Pythona* w wersji 3.x i instalujemy ręcznie.

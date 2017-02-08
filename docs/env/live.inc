@@ -1,7 +1,7 @@
 .. _linux-live:
 
 Linux Live
-###########
+**********
 
 Klucz Live USB
 ===============
@@ -18,7 +18,7 @@ również w maszynie wirtualnej, na dysku twardym lub wykorzystać do odzyskiwan
 **Na potrzeby szkoleń**, **do realizacji scenariuszy**, **dla nauczycieli i uczniów**
 przygotowaliśmy specjalną wersję dystrybucji `LxPup <http://lx-pup.weebly.com/>`_,
 opartej na stabilnym wydaniu Ubuntu Xenial Xerus 16.04,
-wykorzystującą środowisko graficzne `LXDE <http://lxde.org/>`_.
+wykorzystującą środowisko graficzne `LXDE <http://lxde.org/>`__.
 Nasz system zawiera wszystkie dodatkowe narzędzia i biblioteki, pozwala doinstalowywać
 programy, zapisuje ustawienia i utworzone dokumenty.
 
@@ -28,25 +28,21 @@ programy, zapisuje ustawienia i utworzone dokumenty.
 
 .. _usb-creator:
 
-W Windows
-===================
-
-* Pobieramy :term:`obraz iso`:
+* Na początku pobieramy :term:`obraz iso`:
 
   - `LxPupXenial Full <https://drive.google.com/open?id=0B1zG9cfNyT7WUExnbTNkTWtnZFE>`_
     (705MB, zawiera edytory Geany 1.25, PyCharm Professional 2016.2, SublimeText 3 oraz Etherpad)
   - lub: `LxPupXenial Base <https://drive.google.com/open?id=0B1zG9cfNyT7WN2JCZEZMNTJnMjg>`_
     (412MB, zawiera edytor Geany 1.25 oraz Etherpad, łatwo dodać :ref:`PyCharm i/lub Sublime Text 3<sfs-pet>`)
 
-* Do wgrania *LxPupXenial* pobieramy program `Rufus <https://rufus.akeo.ie/>`_.
+W Windows
+===================
 
-* Wpinamy pendrajwa o pojemności min. 2GB.
-  Pendrajw powinien mieć przynajmniej jedną główną i aktywną partycję FAT32 – tak jest zazwyczaj.
+* Pobieramy program `Rufus <https://rufus.akeo.ie/>`_.
 
-* Po uruchomieniu *Rufusa* z uprawnieniami administratora z listy "Urządzenie" wybierz pendrajwa,
-  zaznacz opcję "Utwórz bootowalny dysk używając" -> "Obraz ISO", kliknij ikonę obok
-  i wskaż ściągnięty obraz iso. Następnie wybierz "Opcje formatowania" i zaznacz
-  "Dodaj łatkę dla starych biosów"; kliknij "Start" i poczekaj do 5 min. na napis "Gotowe".
+* Wpinamy pendrajwa o pojemności min. 2GB z jedną główną i aktywną partycją FAT32 – tak jest zazwyczaj.
+
+* Uruchamiamy *Rufusa* z uprawnieniami administratora, z listy "Urządzenie" wybieramy pendrajwa, zaznaczamy opcję "Utwórz bootowalny dysk używając" -> "Obraz ISO", klikamy ikonę obok i wskazujemy ściągnięty obraz iso. Następnie wybieramy "Opcje formatowania" i zaznaczamy "Dodaj łatkę dla starych biosów"; klikamy "Start" i czekamy do 5 min. na napis "Gotowe".
 
 .. figure:: img/rufus02.jpg
 
@@ -57,8 +53,6 @@ W Windows
 
 W Linuksie
 ===========
-
-Aby przygotować pendrajw w systemie Linux, pobieramy wybrany :ref:`obraz iso <usb-creator>`, następnie:
 
 * instalujemy program `Unetbootin <http://unetbootin.sourceforge.net>`_, w Ubuntu i pochodnych:
 
@@ -84,8 +78,7 @@ Aby przygotować pendrajw w systemie Linux, pobieramy wybrany :ref:`obraz iso <u
     ~# pacman -Syu
     ~# pacman -S unetbootin
 
-* Wpinamy pendrajwa o pojemności min. 2GB.
-  Pendrajw powinien mieć przynajmniej jedną główną i aktywną partycję FAT32 – tak jest zazwyczaj.
+* Wpinamy pendrajwa o pojemności min. 2GB z jedną główną i aktywną partycją FAT32 – tak jest zazwyczaj.
 * Po uruchomieniu programu "Unetbootin" zaznaczamy opcję "Obraz dysku", klikamy
   przycisk "..." i wskazujemy pobrany obraz.
 * Upewniamy się, że w polu "Napęd:" wyświetlona jest litera przydzielona
