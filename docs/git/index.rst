@@ -18,7 +18,7 @@ Co to jest GIT?
 
 GIT to system kontroli wersji, pozwala zapamiętać i synchronizować pomiędzy użytkownikami zmiany dokonywane na plikach.
 Umożliwia przywołanie dowolnej wcześniejszej wersji, a co najważniejsze,
-automatycznie łączy zmiany które ze sobą nie kolidują, np. dokonane w różnych miejscach w pliku.
+automatycznie łączy zmiany, które ze sobą nie kolidują, np. dokonane w różnych miejscach w pliku.
 
 Nauczyciele pracujący z plikami, które zmieniają się z przykładu na przykład,
 z ćwiczenia na ćwiczenie mogą skorzystać z systemu kontroli wersji do
@@ -27,7 +27,7 @@ synchronizacji przykładów z uczniami na poszczególnych etapach swojej pracy.
 .. figure:: git-scm.png
 
 Dzięki takim narzędziom możemy porzucić przesyłanie i rozpakowywanie archiwów oraz
-kopiowanie plików na rzecz komend które szybko
+kopiowanie plików na rzecz komend, które szybko
 ujednolicą stan plików na komputerach naszych uczniów.
 
 .. _Pro Git: http://git-scm.com/book/pl
@@ -37,14 +37,14 @@ Lokalne repozytoria z historią zmian
 
 Każdy z uczniów może mieć lokalną kopię całej historii zmian w plikach,
 będzie mógł modyfikować swoje przykłady, ale w kluczowym momencie nauczyciel
-może poprosić by wszyscy zsynchronizowali swoje kopie do jednej sprawdzonej wersji,
+może poprosić, by wszyscy zsynchronizowali swoje kopie z jedną sprawdzoną wersją,
 tak by dalej prowadzić zajęcia na jednolitym fundamencie.
 
 Okresowa synchronizacja przykładów, które uczniowie z założenia zmieniają
-podczas zajęć pozwala wykluczyć pomyłki i wyeliminować problemy wynikające z różnic
+podczas zajęć, pozwala wykluczyć pomyłki i wyeliminować problemy wynikające z różnic
 we wprowadzonych zmianach.
 
-Poniżej mamy przykład komendy która otworzy pliki w `wersji 5` dla `zadania 2` .
+Poniżej mamy przykład komendy która otworzy pliki w `wersji 5` dla `zadania 2`.
 Nazwy ``zadanie2`` oraz ``wersja5`` są tylko przykładem, mogą być dowolnie wybrane przez autora.
 
 .. code-block:: bash
@@ -52,7 +52,7 @@ Nazwy ``zadanie2`` oraz ``wersja5`` są tylko przykładem, mogą być dowolnie w
     $ git checkout -f zadanie2/wersja5
 
 
-Przed porzuceniem swoich zmian uczeń może zapisać kopię swojej pracy w repozytorium.
+Przed porzuceniem zmian uczeń może zapisać kopię swojej pracy w repozytorium.
 
 .. code-block:: bash
 
@@ -66,16 +66,16 @@ Instalujemy narzędzie GIT
 
 Do korzystania z naszego repozytorium lokalnie na naszym komputerze musimy doinstalować niezbędne oprogramowanie.
 
-Pod linuksem
+W Linuksie
 ------------
 
-W linuksie do instalacji użyjemy menadżera pakietów, np. apt-get:
+Do instalacji użyjemy menadżera pakietów, np. *apt-get*:
 
 .. code-block:: bash
 
     $ sudo apt-get install git
 
-Pod windows
+W Windows
 -----------
 
 Zaczynamy od instalacji narzędzia GIT dla konsoli:
@@ -85,7 +85,7 @@ Zaczynamy od instalacji narzędzia GIT dla konsoli:
     > @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
     > choco install git
 
-Pod windows polecamy zainstalować SourceTree_, aplikację okienkową i narzędzia konsolowe:
+Pod Windowsem polecamy zainstalować SourceTree_, aplikację okienkową i narzędzia konsolowe:
 
 .. _SourceTree: http://www.sourcetreeapp.com/
 
@@ -94,12 +94,12 @@ Pod windows polecamy zainstalować SourceTree_, aplikację okienkową i narzędz
     @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
     choco install sourcetree
 
-Jeśli nie mamy PowerShell'a `możemy ściągnąć i zainstalować <http://www.sourcetreeapp.com/download>`_ narzędzie ręcznie.
+Jeśli nie mamy PowerShell'a, możemy `ściągnąć i zainstalować narzędzie <http://www.sourcetreeapp.com/download>`_ ręcznie.
 
 Jeśli korzystamy z narzędzia `KeePass <http://keepass.info/>`_ do przechowywania haseł i kluczy SSH,
-to dobrze jest połączyć je z GITem przez narzędzie `Plink <http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html>`_.
-Do tego celu musimy dodać zmienna systemowa podmieniająca domyślne narzędzie SSH.
+to dobrze jest połączyć je z GITem za pomocą programu `Plink <http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html>`_.
 
+Do tego celu musimy dodać zmienną systemową podmieniającą domyślne narzędzie SSH.
 Uruchamiamy konsole PowerShell z uprawnieniami administracyjnymi:
 
 .. code-block:: posh
@@ -110,7 +110,7 @@ Uruchamiamy konsole PowerShell z uprawnieniami administracyjnymi:
 Konfiguracja i pierwsze uruchomienie
 ------------------------------------
 
-Przed pierwszym użyciem warto jeszcze skonfigurować dwie informacje identyfikujące ciebie jako autora zmian.
+Przed pierwszym użyciem warto jeszcze skonfigurować dwie informacje identyfikujące Ciebie jako autora zmian.
 W komendach poniżej wstaw swoje dane.
 
 .. code-block:: bash
@@ -123,7 +123,7 @@ Więcej `o konfiguracji przeczytacie tutaj <http://git-scm.com/book/pl/v1/Pierws
 Pierwsze kroki i podstawy GIT
 =============================
 
-Na początek utwórzmy sobie piaskownicę do zabawy z GIT.
+Na początek utwórzmy sobie piaskownicę do zabawy z GITem.
 Naszą piaskownicą będzie zwyczajny katalog, dla ułatwienia pracy z ćwiczeniami
 zalecamy nazwać go tak samo jak my, ale ostatecznie jego nazwa i lokalizacja nie ma znaczenia.
 
@@ -136,15 +136,15 @@ Tworzymy lokalną historię zmian
 -------------------------------
 
 Przed rozpoczęciem pracy z wersjami plików w nowym lub istniejącym projekcie (takim który jeszcze nie ma historii zmian),
-inicjalizujemy GITa w katalogu tego projektu. Tworzymy lokalne repozytorium poleceniem :
+inicjalizujemy GITa w katalogu tego projektu. Tworzymy lokalne repozytorium poleceniem:
 
 .. code-block:: bash
 
     ~/git101$ git init
     Initialized empty Git repository in ~/git101/.git/
 
-W wyniku w naszym katalogu projektu (na razie pustym) pojawi się katalog ``.git``
-w nim narzędzie będzie miało swój schowek.
+W katalogu projektu (na razie pustym) pojawi się katalog ``.git``,
+w którym narzędzie będzie miało swój schowek.
 
 
 Zaczynamy śledzić pliki
@@ -161,7 +161,7 @@ W każdym momencie możemy sprawdzić status naszego repozytorium:
 
     nothing to commit (create/copy files and use "git add" to track)
 
-Kluczowe jest ``nothing to commit``, oznacza to że narzędzie nie wykryło
+Kluczowe jest ``nothing to commit``, oznacza to, że narzędzie nie wykryło
 zmian w stosunku do tego co jest zapisane w repozytorium.
 Słusznie, bo katalog jest pusty. Dodajmy jakieś pliki:
 
@@ -181,8 +181,8 @@ Słusznie, bo katalog jest pusty. Dodajmy jakieś pliki:
 
     nothing added to commit but untracked files present (use "git add" to track)
 
-W powyższym komunikacie kluczowe jest ``untracked files present``,
-narzędzie wykryło pliki które jeszcze nie są śledzone, możemy rozpocząć
+W powyższym komunikacie najważniejsze jest ``untracked files present``:
+narzędzie wykryło pliki, które jeszcze nie są śledzone. Możemy rozpocząć
 ich śledzenie wykonując polecenie podane we wskazówce:
 
 .. code-block:: bash
@@ -199,15 +199,15 @@ ich śledzenie wykonując polecenie podane we wskazówce:
         new file:   README
         new file:   hello.py
 
-W efekcie wyraźnie zaznaczyliśmy które pliki GIT ma śledzić.
-Działa to także w druga stronę, jeśli jakieś pliki mają zostać
-zignorowane to trzeba to wyraźnie zaznaczyć, narzędzie nie
-nie decyduje o tym za nas.
+W efekcie wyraźnie zaznaczyliśmy, które pliki GIT ma śledzić.
+Działa to także w drugą stronę, jeśli jakieś pliki mają zostać
+zignorowane, to trzeba to wyraźnie zaznaczyć, narzędzie nie
+decyduje o tym za nas.
 
 .. note::
 
-    Operacji dodawania nie musimy powtarzać za każdym razem gdy
-    plik się zmieni, musimy ja wykonać tylko jak pojawiają się nowe pliki.
+    Operacji dodawania nie musimy powtarzać za każdym razem, gdy
+    plik się zmieni, musimy ją wykonać tylko raz, kiedy pojawiają się nowe pliki.
 
 
 Zapamiętujemy wersję plików
@@ -223,14 +223,14 @@ Zamiany w plikach zapisujemy wykonując komendę ``git commit``:
      create mode 100644 README
      create mode 100644 hello.py
 
-Parametr ``-m`` pozwala wprowadzić komentarz który pojawi się w historii zmian.
+Parametr ``-m`` pozwala wprowadzić komentarz, który pojawi się w historii zmian.
 
 .. note::
 
-    Komentarz jest wymagany, bo to dobra praktyka. Jeśli jesteśmy leniwi możemy podać
+    Komentarz jest wymagany, bo to dobra praktyka. Jeśli jesteśmy leniwi, możemy podać
     jedno słowo albo nawet literę, wtedy nie jest potrzebny cudzysłów.
 
-Sprawdźmy status a następnie zmodyfikujmy jeden z plików:
+Sprawdźmy status, a następnie zmodyfikujmy jeden z plików:
 
 .. code-block:: bash
 
@@ -260,18 +260,18 @@ oraz pojawienie się nowego jeszcze nie śledzonego pliku.
 .. note::
 
     Wskazówka zawiera tekst: ``no changes added to commit (use "git add" and/or "git commit -a")``,
-    wskazując na użycie komendy ``git add``. Wcześniej mówiliśmy że nie trzeba
-    operacji dodawania powtarzać za każdym razem - otóż nie trzeba, ale można.
+    sugerując użycie komendy ``git add``. Wcześniej mówiliśmy, że nie trzeba
+    operacji dodawania powtarzać za każdym razem – otóż nie trzeba, ale można.
 
-    Dzięki temu możemy wybierać pliki które wersje nie zostaną zapisane, tworząc
-    tzw. staging (poczekalnia), w poczekalni przygotowujemy zestaw plików,
+    Dzięki temu możemy wybierać pliki, których wersje nie zostaną zapisane, tworząc
+    tzw. poczekalnię (ang. *staging*). W niej przygotowujemy zestaw plików,
     który zostanie zapisany w historii zmian w monecie wykonania ``git commit``.
 
     Na razie nie zawracajmy sobie tym głowy, a po więcej informacji zapraszamy
-    `do rozdziału o poczekalni <http://git-scm.com/book/pl/v1/Podstawy-Gita-Rejestrowanie-zmian-w-repozytorium#Dodawanie-zmodyfikowanych-plików-do-poczekalni>`_
+    `do rozdziału o poczekalni <http://git-scm.com/book/pl/v1/Podstawy-Gita-Rejestrowanie-zmian-w-repozytorium#Dodawanie-zmodyfikowanych-plików-do-poczekalni>`_.
 
 
-Zapamiętajmy zmiany pliku 'README' w repozytorium przy pomocy komendy ``git commit -a`` z wskazówki:
+Zapamiętajmy zmiany pliku :file:`README` w repozytorium przy pomocy wskazanej komendy ``git commit -a``:
 
 .. code-block:: bash
 
@@ -287,8 +287,8 @@ Zapamiętajmy zmiany pliku 'README' w repozytorium przy pomocy komendy ``git com
 
     nothing added to commit but untracked files present (use "git add" to track)
 
-GIT wskazał nam, że plik tanie_dranie.py wciąż nie jest śledzony.
-To nowy plik w naszym katalogu a my zapomnieliśmy go wcześniej `dodać`:
+GIT pokazuje nam, że plik :file:`tanie_dranie.py` wciąż nie jest śledzony.
+To nowy plik w naszym katalogu, a my zapomnieliśmy go wcześniej `dodać`:
 
 .. code-block:: bash
 
@@ -305,7 +305,7 @@ Podgląd historii zmian i wyciąganie wersji archiwalnych
 -------------------------------------------------------
 
 W każdym momencie możemy wyciągnąć wersję archiwalną z repozytorium.
-Sprawdźmy co sobie zapisaliśmy w repozytorium.
+Sprawdźmy, co sobie zapisaliśmy w repozytorium.
 
 .. code-block:: bash
 
@@ -328,7 +328,7 @@ Sprawdźmy co sobie zapisaliśmy w repozytorium.
 
         Moja pierwsza wersja plików
 
-Teraz sprawdźmy co się kryje w naszym pliku ``README`` i wyciągnijmy jego pierwsza wersję:
+Teraz sprawdźmy, co się kryje w naszym pliku :file:`README` i wyciągnijmy jego pierwsza wersję:
 
 .. code-block:: bash
 
@@ -354,12 +354,12 @@ Teraz sprawdźmy co się kryje w naszym pliku ``README`` i wyciągnijmy jego pie
     ~/git101$ cat README
     To jest piaskownica Git101.
 
-Działo się! Zwróćmy uwagę jak wskazaliśmy wersję z historii zmian,
+Działo się! Zwróćmy uwagę, jak wskazaliśmy wersję z historii zmian,
 podaliśmy początek skrótu ``e9cffa4b65487f9c5291fa1b9607b1e75e394bc1``,
 czyli tego opisanego komentarzem ``Moja pierwsza wersja plików`` do komendy ``git checkout``.
 
 Następnie przywróciliśmy najnowsze wersje plików z gałęzi ``master``.
-Wyjaśnienia co są gałęzie, zostawmy na później, tymczasem wystarczy nam to,
+Wyjaśnienia co to są gałęzie, zostawmy na później, tymczasem wystarczy nam to,
 że komenda ``git checkout master`` zapisze nasze pliki w najnowszych wersjach
 zapamiętanych w repozytorium.
 
