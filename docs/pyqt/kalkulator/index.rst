@@ -380,4 +380,5 @@ Materiały
 
 **Źródła:**
 
-* :download:`Kalkulator Qt5 <kalkulator_qt5.zip>`
+* :download:`Kalkulator Qt5 Python 2<kalkulator-qt5-py2.zip>`
+* :download:`Kalkulator Qt5 Python 3<kalkulator-qt5-py3.zip>`
