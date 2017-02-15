@@ -80,8 +80,8 @@ podpowiedziom oraz wykrywaniu błędów niemal na bieżąco, uczniowie mniej
 czasu będą spędzać na szukaniu problemów, a więcej na poznawaniu tajników
 programowania.
 
-Zarówno w systemach Linux, jak i MS Windows najlepiej pobrać
-ostatnią wersję `Professional Edition <http://www.jetbrains.com/pycharm/download/>`_ ze strony producenta.
+**Zarówno w systemach Linux, jak i MS Windows najlepiej pobrać
+ostatnią wersję** `Professional Edition <http://www.jetbrains.com/pycharm/download/>`_ ze strony producenta.
 
 W Linuksie
 -----------
@@ -90,13 +90,13 @@ Wersja linuksowa to archiwum, które trzeba rozpakować. W terminalu wydajemy po
 
 .. code-block:: bash
 
-    ~$ sudo tar xzf -C /opt
-    ~$ ls /opt
+    ~$ sudo tar xzf pycharm-professional-2016.3.2.tar.gz -C /opt
     ~$ sudo ln -s /opt/pycharm-2016.3.2/bin/pycharm.sh /usr/bin/pycharm
 
-W ten sposób program zostanie rozpakowany do katalogu :file:`/opt/pycharm-wersja`, przy czym "wersja"
-to ciąg typu ``2016.3.2``, co pokaże nam komenda ``ls``. Trzecie polecenie utworzy skrót pozwalający
-uruchamiać edytor za pomocą polecenia ``pycharm`` w terminalu.
+W ten sposób program zostanie rozpakowany do katalogu :file:`/opt/pycharm-wersja`,
+przy czym "wersja" to ciąg typu ``2016.3.2`` odczytany z nazwy archiwum.
+Drugie polecenie utworzy skrót pozwalający uruchamiać edytor za pomocą polecenia
+``pycharm`` w terminalu.
 
 .. note::
 
@@ -122,20 +122,30 @@ Każdy nauczyciel może wystąpić o klucz licencyjny przy pomocy `formularza
 <https://www.jetbrains.com/buy/classroom/?product=pycharm>`_
 dostępnego na stronie producenta.
 
-Polski słownik ortograficzny
-----------------------------
+Polski słownik
+--------------
 
-W programie możemy włączyć sprawdzanie polskiej pisowni, jednak potrzebne
-jest wskazanie pliku słownika. Pod linuksem możemy sobie wyprodukować słownik dla PyCharm komendą:
+W programie możemy włączyć sprawdzanie polskiej pisowni.
+Pobieramy archiuwm :download:`polish-dic.tgz <ide/polish-dic.tgz>`,
+następnie wydajemy polecenie w terminalu:
 
 .. code-block:: bash
 
-    aspell --lang pl dump master | aspell --lang pl expand | tr ' ' '\n' > polish.dic
-    sudo mv polish.dic ``/usr/share/dictionaries-common/``
+    ~$ sudo tar xzf polish-dic.tgz -C /
 
-W ustawieniach :kbd:`Ctrl+Alt+S` szukamy `spell` i dodajemy
-``custom dictionaries folder`` wskazując na ``/usr/share/dictionaries-common/``
-(lokalizacja w Xubuntu).
+– które wypakuje słownik ``polish.dic`` do katalogu :file:`/usr/share/dictionaries-common/`.
+Na koniec w ustawieniach programu (:kbd:`Ctrl+Alt+S`) wyszukujemy `Spelling`, klikamy
+zakładkę `Dictionaries` i znak `+` przy `Custom Dictionaries Folder` i wskazujemy
+katalog :file:`/usr/share/dictionaries-common/`.
+
+
+.. tip::
+
+    W Linuksie plik :file:`polish.dic` można wygenerować poleceniem:
+    ``aspell --lang pl dump master | aspell --lang pl expand | tr ' ' '\n' > polish.dic``
+
+
+.. _st3-python:
 
 Sublime Text 3
 ===============
@@ -173,7 +183,7 @@ pakietem, np.:
 
 .. code-block:: bash
 
-    sudo dpkg -i sublime-text_build-3126_amd64.deb
+    ~$ sudo dpkg -i sublime-text_build-3126_amd64.deb
 
 W Arch Linux i systemach na nim opartych, np. Manjaro Linux, edytor dostępny
 jest w repozytoriach AUR (Arch User Repository), można go zainstalować np.
@@ -181,14 +191,14 @@ przy użyciu pomocniczego narzędzia ``pacaur`` lub ``yaourt``, np.:
 
 .. code-block:: bash
 
-    pacaur -S sublime-text-dev
+    ~$ pacaur -S sublime-text-dev
 
-Następnie pobieramy :download:`archiwum zip <ide/st3.zip>`_ i wypakowujemy do katalogu :file:`~/.config`
+Następnie pobieramy :download:`archiwum zip <ide/st3.zip>` i wypakowujemy do katalogu :file:`~/.config`
 za pomocą menedżera archiwów albo polecenia w terminalu:
 
 .. code-block:: bash
 
-    unzip st3.zip -d ~/.config
+    ~$ unzip st3.zip -d ~/.config
 
 .. tip::
 
@@ -204,7 +214,7 @@ Po wejściu na stronę `Sublime Text 3 <http://www.sublimetext.com/3>`_
 pobieramy archiwum dla wersji 32- lub 64-bitowej. Instalujemy standardowo
 dwukrotnie klikając pobrany plik.
 
-Następnie pobieramy :download:`archiwum zip <ide/st3.zip>`_ i wypakowujemy do katalogu :file:`C:\\Użytkownicy\\nazwa_użytkownika\\Dane palikacji` i zmieniamy nazwę folderu :file:`sublime-text-3` na :file:`Sublime Text 3`.
+Następnie pobieramy :download:`archiwum zip <ide/st3.zip>`, wypakowujemy do katalogu :file:`C:\\Użytkownicy\\nazwa_użytkownika\\Dane palikacji` i zmieniamy nazwę folderu :file:`sublime-text-3` na :file:`Sublime Text 3`.
 
 
 **Przygotowane ustawienia zawierają m.in.:**
