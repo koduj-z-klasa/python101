@@ -13,7 +13,7 @@ podświetlać kod.
 Geany
 =====================
 
-.. figure:: img/geany_windows01.jpg
+.. figure:: ide/geany_win.jpg
 
 `Geany <http://www.geany.org>`_ to proste i lekkie środowisko IDE dostępne na licencji
 `GNU General Public Licence <http://pl.wikipedia.org/wiki/GNU_General_Public_License>`_.
@@ -69,7 +69,7 @@ naciskając :kbd:`CTRL+U`.
 PyCharm
 =======
 
-.. figure:: img/pyCharm4.png
+.. figure:: ide/pyCharm4.jpg
 
 
 PyCharm to profesjonalne, komercyjne środowisko programistyczne dostępne
@@ -84,32 +84,24 @@ Zarówno w systemach Linux, jak i MS Windows najlepiej pobrać
 ostatnią wersję `Professional Edition <http://www.jetbrains.com/pycharm/download/>`_ ze strony producenta.
 
 W Linuksie
-----------------
+-----------
 
-Wersja linuksowa to archiwum, które trzeba rozpakować,
-czyli przenieść z katalogu ``Pobrane`` do np. w katalogu domowego, kliknąć
-prawym klawiszem i wybrać polecenie ``Rozpakuj tutaj``.
-
-W systemach Linux alternatywnie można użyć poleceń w terminalu:
+Wersja linuksowa to archiwum, które trzeba rozpakować. W terminalu wydajemy polecenia:
 
 .. code-block:: bash
 
-    ~$ wget http://download.jetbrains.com/python/pycharm-professional-5.0.1.tar.gz -O - | tar -xz
-    ~$ ./pycharm-5.0.1/bin/pycharm.sh
+    ~$ sudo tar xzf -C /opt
+    ~$ ls /opt
+    ~$ sudo ln -s /opt/pycharm-2016.3.2/bin/pycharm.sh /usr/bin/pycharm
 
-Jak widać, program zostanie zainstalowany w katalogu domowym użytkownika,
-a uruchamiamy go drugim z podanych poleceń.
-
-Jeśli w naszym systemie brakuje środowiska Java Run Time, musimy je doinstalować:
-
-.. code-block:: bash
-
-    ~$ sudo apt-get install openjdk-7-jre # Debian i pochodne, np. (X)Ubuntu
-    ~# pacman -S jre7-openjdk # Arch Linux i pochodne
+W ten sposób program zostanie rozpakowany do katalogu :file:`/opt/pycharm-wersja`, przy czym "wersja"
+to ciąg typu ``2016.3.2``, co pokaże nam komenda ``ls``. Trzecie polecenie utworzy skrót pozwalający
+uruchamiać edytor za pomocą polecenia ``pycharm`` w terminalu.
 
 .. note::
 
-    Aby poprawić wygląd czcionek w PyCharm, warto w pliku :file:`~/.bashrc` (Debian i pochodne)
+    PyCharm wykorzystuje środowisko Java, które dostarczane jest razem z nim w wersji 64-bitowej.
+    Jeżeli czcionki w programie są nieczytelne, można w pliku :file:`~/.bashrc` (Debian i pochodne)
     lub :file:`~/.bash_profile` (Arch Linux i pochodne) dodać poniższą linię:
 
 .. code-block:: bash
@@ -148,72 +140,97 @@ W ustawieniach :kbd:`Ctrl+Alt+S` szukamy `spell` i dodajemy
 Sublime Text 3
 ===============
 
-.. figure:: img/st3.png
+.. figure:: ide/st3.jpg
 
-Profesjonalny edytor dla programistów, dzięki systemowi dodatków można go skonfigurować
-jako środowisko IDE do programowania w dowolnym języku. Poza konfigurowalnością zaletą
-jest szybkość działania i małe użycie zasobów systemowych.
+Profesjonalny edytor dla programistów, dzięki systemowi dodatków można go
+skonfigurować jako środowisko IDE do programowania w dowolnym języku.
+Poza konfigurowalnością zaletą jest szybkość działania i małe użycie zasobów
+systemowych.
 
 Unikalne cechy:
 
 * Wygodne otwieranie plików: :kbd:`CTRL+P`
-* Wielokrotna selekcja i edycja: po zaznaczeniu zmiennej :kbd:`CTRL+D`, :kbd:`CTRL+D`... itd.
+* Wielokrotna selekcja i edycja: po zaznaczeniu zmiennej :kbd:`CTRL+D`,
+  :kbd:`CTRL+D`... itd.
 * Lista wszystkich poleceń z menu: :kbd:`CTRL+SHIFT+P`
 * Równoczesna edycja kilku plików: *View/Layout*
+
+Konfiguracja edytora polega na zainstalowaniu kilku dodatków i zmianie
+niektórych ustawień. Aby uprościć sprawę, wystarczy pobrać przygotowane przez
+nas archiwum i rozpakować do odpowiedniego katalogu.
 
 W Linuksie
 -----------------
 
 W Debianie i systemach na nim opartych, czyli (X)Ubuntu czy Linux Mint, wchodzimy na stronę
-`Sublime Text 3 <http://www.sublimetext.com/3>`_ i pobieramy archiwum *Ubuntu 64 bit*
-lub *Ubuntu 32 bit* zgodne z naszą wersją systemu.
-Następnie instalujemy wydając polecenie w terminalu w katalogu z pobranym plikiem, np.:
+`Sublime Text 3 <http://www.sublimetext.com/3>`_, pobieramy wersję *Ubuntu 64 bit* lub
+*Ubuntu 32 bit* i dwa razy klikamy zapisany plik:
+
+.. figure:: ide/gdebi.jpg
+
+– albo instalujemy wydając polecenie w terminalu w katalogu z pobranym
+pakietem, np.:
 
 .. code-block:: bash
 
-    sudo dpkg -i sublime-text_build-3083_amd64.deb
+    sudo dpkg -i sublime-text_build-3126_amd64.deb
 
-W Arch Linux i systemach na nim opartych, np. Manjaro Linux, edytor dostępny jest w repozytoriach
-AUR (Arch User Repository), można go zainstalować np. przy użyciu pomocniczego narzędzia
-``pacaur``:
+W Arch Linux i systemach na nim opartych, np. Manjaro Linux, edytor dostępny
+jest w repozytoriach AUR (Arch User Repository), można go zainstalować np.
+przy użyciu pomocniczego narzędzia ``pacaur`` lub ``yaourt``, np.:
 
 .. code-block:: bash
 
     pacaur -S sublime-text-dev
 
-W Windows
-------------------
-
-Po wejściu na stronę `Sublime Text 3 <http://www.sublimetext.com/3>`_ pobieramy archiwum
-dla wersji 32- lub 64-bitowej. Dalej instalujemy w standardowy sposób uruchamiając
-dwukrotnym kliknięciem pobrany plik.
-
-Konfiguracja
-------------
-
-Konfiguracja edytora polega na zainstalowaniu kilku dodatków i zmianie niektórych ustawień. Aby uprościć sprawę, wystarczy pobrać przygotowane przez nas `archiwum st3.zip <https://copy.com/9WzmbHVn8T8UxsSN/tahrpup/st3.zip?download=1>`_ i rozpakować do odpowiedniego katalogu:
-
-* w systemie Linux ściągnięte archiwum rozpakowujemy do katalogu :file:`~/.config`, np. za pomocą menedżera plików (uwaga: katalog *.config* jest ukryty i warto użyć skrótu :kbd:`CTRL+H`) lub polecenia w terminalu:
+Następnie pobieramy :download:`archiwum zip <ide/st3.zip>`_ i wypakowujemy do katalogu :file:`~/.config`
+za pomocą menedżera archiwów albo polecenia w terminalu:
 
 .. code-block:: bash
 
     unzip st3.zip -d ~/.config
 
-* w systemie Windows pobrane archiwum wypakowujemy do podkatalogu :file:`C:\\Użytkownicy\\nazwa_użytkownika\\Dane palikacji` i zmieniamy nazwę folderu :file:`sublime-text-3` na :file:`Sublime Text 3`.
+.. tip::
 
-Przygotowane ustawienia zawierają:
+    Katalog :file:`~/.config` to ukryty katalog konfiguracyjny znajdujący się w katalogu domowym
+    użytkownika. W menedżerze plików możemy włączyć wyświetlanie katalogów ukrytych skrótem
+    :kbd:`CTRL+H`.
+
+
+W Windows
+------------------
+
+Po wejściu na stronę `Sublime Text 3 <http://www.sublimetext.com/3>`_
+pobieramy archiwum dla wersji 32- lub 64-bitowej. Instalujemy standardowo
+dwukrotnie klikając pobrany plik.
+
+Następnie pobieramy :download:`archiwum zip <ide/st3.zip>`_ i wypakowujemy do katalogu :file:`C:\\Użytkownicy\\nazwa_użytkownika\\Dane palikacji` i zmieniamy nazwę folderu :file:`sublime-text-3` na :file:`Sublime Text 3`.
+
+
+**Przygotowane ustawienia zawierają m.in.:**
 
 * `Package Control <https://packagecontrol.io/installation#st3>`_ – menedżer pakietów dla ST3. Po zainstalowaniu skrót :kbd:`CTRL+SHIFT+P` wywołuje listę, w które wpisujemy "install" i wybieramy *Package Control: Install Package*, teraz możemy wskazać pakiet do zainstalowania.
 * Globalne ustawienia edytora zdefiniowane w *Preferences >Settings – User*.
 * Ustawienia dla wybranego języka programowania dostępne są po wybraniu *Preferences > Settings – More > Syntax Specific – User*, plik należy zapisać pod nazwą *LANGUAGE.sublime-settings*, np. *Python.sublime-settings* w podkatalogu :file:`Packages/User`.
-* `Anaconda <https://packagecontrol.io/packages/Anaconda>`_ – podstawowy dodatek do programowania w Pythonie (autouzupełniania, sprawdzanie składni, podgląd dokumentacji itp.).
+* `Anaconda <https://packagecontrol.io/packages/Anaconda>`_ – podstawowy dodatek do programowania w Pythonie
+  (autouzupełniania, sprawdzanie składni, podgląd dokumentacji itp.), dostępny w menu podręcznym podczas
+  edycji plików ".py".
 * `Emmet <https://packagecontrol.io/packages/Emmet>`_ – oferuje skróty ułatwiające tworzenie dokumentów HTML i CSS.
-* `SublimeREPL <https://packagecontrol.io/packages/SublimeREPL>`_ – pozwala uruchamiać interpreter Pythona w edytorze za pomocą skrótu :kbd:`CTRL+SHIFT+R` lub :kbd:`CTRL+B`.
-* `Color Picker <https://packagecontrol.io/packages/ColorPicker>`_ – dodaje próbnik kolorów wywoływany skrótem :kbd:`CTRL+SHIFT+C`.
-* `GitSavvy <https://packagecontrol.io/packages/GitSavvy>`_ – obsługa git-a i GitHub-a.
-* `Restructured Text Improved <https://packagecontrol.io/packages/RestructuredText%20Improved>`_ – podświetlanie składni dokumentów RST.
-* `Restructured Text (RST) Snippets <https://packagecontrol.io/packages/Restructured%20Text%20%28RST%29%20Snippets>`_ – skróty formatujące dokumenty RST.
+* `SublimeREPL <https://packagecontrol.io/packages/SublimeREPL>`_ – pozwala uruchamiać kod Pythona
+  w edytorze za pomocą skrótu :kbd:`CTRL+SHIFT+R` lub :kbd:`CTRL+B`.
+* `Color Picker <https://packagecontrol.io/packages/ColorPicker>`_ –
+  dodaje próbnik kolorów wywoływany skrótem :kbd:`CTRL+SHIFT+C`.
+* `GitSavvy <https://packagecontrol.io/packages/GitSavvy>`_ – obsługa git-a i GitHub-a dostępna po wciśnięciu
+  :kbd:`CTRL+SHIFT+P` i wpisaniu "git".
+* `Restructured Text Improved <https://packagecontrol.io/packages/RestructuredText%20Improved>`_
+  – podświetlanie składni dokumentów RST.
+* `Restructured Text (RST) Snippets <https://packagecontrol.io/packages/Restructured%20Text%20%28RST%29%20Snippets>`_
+  – skróty formatujące dokumenty RST.
+
 
 .. tip::
 
-    Samodzielna instalacja powyższych dodatków po zainstalowaniu *Package Control* nie nastręcza problemów. Z kolei dostosowanie ustawień wymaga zapoznania się z `dokumentacją ST3 <http://sublime-text-unofficial-documentation.readthedocs.org/en/latest/reference/settings.html>`_ i dodatków, aby wiedzieć, co i w jaki sposób chcemy zmieniać.
+    Samodzielna instalacja powyższych dodatków po zainstalowaniu *Package Control* jest prosta.
+    Z kolei dostosowanie ustawień wymaga zapoznania się z `dokumentacją ST3 <http://sublime-text-unofficial-documentation.readthedocs.org/en/latest/reference/settings.html>`_
+    i dodatków, aby wiedzieć, co i w jaki sposób chcemy zmieniać.
+
