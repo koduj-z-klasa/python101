@@ -9,8 +9,8 @@ kodów źródłowych i wszystkich innych plików.
 Przybliżamy tutaj jak GIT jest wykorzystywany w naszych materiałach i pokażemy jak go wykorzystać go podczas zajęć w szkole.
 
 Poniżej przeprowadzimy szybkie wprowadzenie po więcej informacji oraz pełne szczegółowe wprowadzenie i przykłady użycia znajdziecie
-w dostępnej online i do pobrania polskiej wersji książki `Pro Git`_ .
-Polecamy także `cheat sheet z podręcznymi komendami <https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf>`_.
+w dostępnej online i do pobrania polskiej wersji książki `Pro Git`_.
+Polecamy także `cheat sheet z podręcznymi komendami <https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf>`_.
 
 
 Co to jest GIT?
