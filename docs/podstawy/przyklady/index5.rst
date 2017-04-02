@@ -321,16 +321,22 @@ Przećwicz alternatywne sposoby otwierania plików:
     :linenos:
 
     f = open('test.txt', 'r')
-    for line in f:
-        print line[0]
+    for linia in f:  # odczytywanie linia po linii
+        print linia
     f.close()
 
-    with open("text.txt", "r") as txt:
-        for line in txt:
-            print line
+    f = open('test.txt', 'r')
+    tresc = f.read()  # odczytanie zawartości całego pliku
+    for znak in tresc:  # odczytaywanie znak po znaku
+        print znak
+    f.close()
 
-    for line in open('test.txt', 'r'):
-        print line[0]
+    for line in open('test.txt', 'r'):  # odczytywanie linia po linii
+        print linia
+
+    with open("text.txt", "r") as f:  # odczytywanie linia po linii
+        for linia in f:
+            print linia
 
 
 Materiały
