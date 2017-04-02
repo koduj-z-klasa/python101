@@ -322,7 +322,7 @@ Przećwicz alternatywne sposoby otwierania plików:
 
     f = open('test.txt', 'r')
     for linia in f:  # odczytywanie linia po linii
-        print linia
+        print linia.strip()  # usuwanie z linii białych znaków
     f.close()
 
     f = open('test.txt', 'r')
@@ -332,11 +332,11 @@ Przećwicz alternatywne sposoby otwierania plików:
     f.close()
 
     for line in open('test.txt', 'r'):  # odczytywanie linia po linii
-        print linia
+        print linia.strip()
 
     with open("text.txt", "r") as f:  # odczytywanie linia po linii
         for linia in f:
-            print linia
+            print linia.strip()
 
 
 Materiały
