@@ -22,8 +22,8 @@ Całość bardzo dobrze nadaje się do nauki programowania z wykorzystaniem jęz
 
 **Instalacja bibliotek**
 
-Biblioteki *mcpi-sim* zawierają *mcpi* w katalogu :file:`~/mcpi-sim/mcpi`,
-więc wystarczy zainstalować symulator Minecrafta:
+Symulator *mcpi-sim* zawiera biblioteki *mcpi* w katalogu :file:`~/mcpi-sim/mcpi`,
+zainstalujemy go poleceniem:
 
 .. code-block:: bash
 
