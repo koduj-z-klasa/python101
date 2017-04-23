@@ -98,3 +98,5 @@ $RECYCLE.BIN/
 *.msp
 
 .pve/
+.sublime-project
+.sublime-workspace
