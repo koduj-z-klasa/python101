@@ -98,5 +98,7 @@ $RECYCLE.BIN/
 *.msp
 
 .pve/
-.sublime-project
-.sublime-workspace
+*.sublime-project
+*.sublime-workspace
+/python101.sublime-project
+/python101.sublime-workspace
