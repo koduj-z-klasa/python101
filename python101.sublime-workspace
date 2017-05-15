@@ -1,0 +1,1442 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"fi",
+				"fields"
+			],
+			[
+				"t",
+				"type\tAttr"
+			],
+			[
+				"user",
+				"user_groups"
+			],
+			[
+				"User",
+				"UserGroupForm\tclass"
+			],
+			[
+				"re",
+				"register"
+			],
+			[
+				"nazw",
+				"nazwę"
+			],
+			[
+				"repozy",
+				"repozytorium"
+			],
+			[
+				"for",
+				"foreach\tforeach …"
+			],
+			[
+				"gsf_",
+				"gsf_sendmail"
+			],
+			[
+				"elen",
+				"elementów"
+			],
+			[
+				"porteus",
+				"porteus_cfg"
+			],
+			[
+				"pizza",
+				"pizza_form"
+			],
+			[
+				"defin",
+				"definiuje"
+			],
+			[
+				"urls",
+				"urls_02"
+			],
+			[
+				"django",
+				"django-registration"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"blo",
+				"inline-block"
+			],
+			[
+				"max-",
+				"max-width"
+			],
+			[
+				"paddin",
+				"padding-right"
+			],
+			[
+				"max",
+				"max-height"
+			],
+			[
+				"ma",
+				"margin-right"
+			],
+			[
+				"padding",
+				"padding-right"
+			],
+			[
+				"text",
+				"text-shadow"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"pa",
+				"padding-top"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"over",
+				"overflow-y"
+			],
+			[
+				"u",
+				"uppercase"
+			],
+			[
+				"post",
+				"post-type"
+			],
+			[
+				"kat",
+				"kat_klasa"
+			],
+			[
+				"list-",
+				"list-style-type"
+			],
+			[
+				"certy",
+				"Certyfikaty"
+			],
+			[
+				"quiz",
+				"quiz2_orm"
+			],
+			[
+				"mcpi",
+				"mcpi-rg04"
+			],
+			[
+				"mcpi-",
+				"mcpi-rg03"
+			],
+			[
+				"W",
+				"WOOD\tstatement"
+			],
+			[
+				"Gra",
+				"GraRobotow"
+			],
+			[
+				"pokaz",
+				"pokazRunde"
+			],
+			[
+				"Gr",
+				"GraRobotow"
+			],
+			[
+				"pla",
+				"player_id\tparam"
+			],
+			[
+				"czy",
+				"czyscpole\tfunction"
+			],
+			[
+				"LXPU",
+				"LxPupXenial"
+			],
+			[
+				"A",
+				"AIR\tstatement"
+			],
+			[
+				"mc",
+				"mcfig\tstatement"
+			],
+			[
+				"G",
+				"GLASS\tstatement"
+			],
+			[
+				"Ruchy",
+				"ruchyBrowna"
+			],
+			[
+				"zaok",
+				"zaokrąglamy"
+			],
+			[
+				"przed",
+				"przedziałów"
+			],
+			[
+				"B",
+				"IRON_BLOCK"
+			],
+			[
+				"wsp",
+				"współrzędnych"
+			],
+			[
+				"set",
+				"setposition\tfunction"
+			],
+			[
+				"mien",
+				"minecraftstuff"
+			],
+			[
+				"D",
+				"DIAMOND_BLOCK\tstatement"
+			],
+			[
+				"o",
+				"OBSIDIAN\tstatement"
+			],
+			[
+				"ra",
+				"randint\tstatement"
+			],
+			[
+				"S",
+				"SNOW\tstatement"
+			],
+			[
+				"I",
+				"IRON_BLOCK\tstatement"
+			],
+			[
+				"bl",
+				"BLOK_ALIVE\tstatement"
+			],
+			[
+				"gr",
+				"granica\tstatement"
+			],
+			[
+				"dr",
+				"drawLine\tfunction"
+			],
+			[
+				"Sq",
+				"SQLite3"
+			],
+			[
+				"Downlo",
+				"Download"
+			],
+			[
+				"fo",
+				"forward\tfunction"
+			],
+			[
+				"klawiat",
+				"Klawiatura"
+			],
+			[
+				"mi",
+				"minecraftturtle"
+			],
+			[
+				"minecraft",
+				"minecraftstuff"
+			],
+			[
+				"form_",
+				"form_errors"
+			],
+			[
+				"create",
+				"create_errors"
+			],
+			[
+				"ema",
+				"emailto"
+			],
+			[
+				"filter",
+				"filter_var"
+			],
+			[
+				"na",
+				"nazwisko"
+			],
+			[
+				"borde",
+				"border-radius"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"hidde",
+				"http_persistent_handles_ident"
+			],
+			[
+				"h",
+				"hidden"
+			],
+			[
+				"marg",
+				"margin-bottom"
+			],
+			[
+				"margi",
+				"margin-top"
+			],
+			[
+				"has",
+				"haschildren"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"sess",
+				"session_start"
+			],
+			[
+				"_",
+				"_SESSION"
+			],
+			[
+				"bo",
+				"border-color"
+			],
+			[
+				"trawertyn",
+				"trawertyn-wloski"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"col",
+				"col-sm-3"
+			],
+			[
+				"img",
+				"img-responsive"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"uri",
+				"uri_string"
+			],
+			[
+				"aau",
+				"aauth"
+			],
+			[
+				"json",
+				"json_encode"
+			],
+			[
+				"inut",
+				"input"
+			],
+			[
+				"is",
+				"is_nan"
+			],
+			[
+				"lista",
+				"listadrp"
+			],
+			[
+				"is_n",
+				"is_null"
+			],
+			[
+				"news",
+				"news_item"
+			],
+			[
+				"instr",
+				"instrukcji"
+			],
+			[
+				"pilk",
+				"pilka_prost\tstatement"
+			],
+			[
+				"print_",
+				"print_r"
+			],
+			[
+				"xs",
+				"xsimgname"
+			],
+			[
+				"va",
+				"validate_image\tfunction"
+			],
+			[
+				"python",
+				"python-pyqt5"
+			],
+			[
+				"em",
+				"emphasize-lines"
+			],
+			[
+				"wyświ",
+				"wyświetlanie"
+			],
+			[
+				"chec",
+				"checkbox"
+			],
+			[
+				"check",
+				"CheckStateRole"
+			],
+			[
+				"klink",
+				"kliknięcia"
+			],
+			[
+				"defi",
+				"definicje"
+			],
+			[
+				"zalo",
+				"zalogować"
+			],
+			[
+				"zap",
+				"zapisywanych"
+			],
+			[
+				"prog",
+				"programu"
+			],
+			[
+				"Programi",
+				"Programming"
+			],
+			[
+				"wyś",
+				"wyświetlenie"
+			],
+			[
+				"qsPNbOX",
+				"QSpinBox"
+			],
+			[
+				"ksztalt",
+				"ksztaltAktywny"
+			],
+			[
+				"Radio",
+				"RadioButton"
+			],
+			[
+				"koro",
+				"kolorW1\tstatement"
+			],
+			[
+				"rom",
+				"rozmiar"
+			],
+			[
+				"rysuj",
+				"rysujFigury"
+			],
+			[
+				"row",
+				"rowCount\tfunction"
+			],
+			[
+				"dat",
+				"datad"
+			],
+			[
+				"matplo",
+				"matplotlib"
+			],
+			[
+				"Q",
+				"QMessageBox"
+			],
+			[
+				"wynik",
+				"wynikEdt\tstatement"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "\n  BRANCH:  On branch `py3` tracking `origin/py3`.\n           You're ahead by 1.\n  ROOT:    ~/github/python101\n  HEAD:    81b38b3 Dostosowanie scenariusza \"Mały lotek\" do Pythona 3.\n\n    Your working directory is clean.\n\n  ###################                   ###############\n  ## SELECTED FILE ##                   ## ALL FILES ##\n  ###################                   ###############\n\n  [o] open file                         [a] stage all unstaged files\n  [s] stage file                        [A] stage all unstaged and untracked files\n  [u] unstage file                      [U] unstage all staged files\n  [d] discard changes to file           [D] discard all unstaged changes\n  [h] open file on remote\n  [M] launch external merge tool for conflict\n\n  [l] diff file inline                  [f] diff all files\n  [e] diff file                         [F] diff all cached files\n\n  #############                         #############\n  ## ACTIONS ##                         ## STASHES ##\n  #############                         #############\n\n  [c] commit                            [t][a] apply stash\n  [C] commit, including unstaged        [t][p] pop stash\n  [m] amend previous commit             [t][s] show stash\n  [p] push current branch               [t][c] create stash\n                                        [t][u] create stash including untracked files\n  [i] ignore file                       [t][g] create stash of staged changes only\n  [I] ignore pattern                    [t][d] discard stash\n\n  ###########\n  ## OTHER ##\n  ###########\n\n  [r]         refresh status\n  [?]         toggle this help menu\n  [tab]       transition to next dashboard\n  [SHIFT-tab] transition to previous dashboard\n  [.]         move cursor to next file\n  [,]         move cursor to previous file\n\n-\n\n",
+			"settings":
+			{
+				"buffer_size": 1795,
+				"line_ending": "Unix",
+				"name": "STATUS: python101",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"file": "docs/podstawy/dlotek/index.rst",
+			"settings":
+			{
+				"buffer_size": 10777,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "docs/podstawy/dlotek/toto22.py",
+			"settings":
+			{
+				"buffer_size": 475,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "docs/podstawy/dlotek/toto22_0.py",
+			"settings":
+			{
+				"buffer_size": 385,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "docs/podstawy/dlotek/toto21.py",
+			"settings":
+			{
+				"buffer_size": 297,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Python 3.4.2 (default, Oct  8 2014, 10:45:20) \n[GCC 4.9.1] on linux\nType \"help\", \"copyright\", \"credits\" or \"license\" for more information.\n>>> liczby = []\n>>> liczby\n[]\n>>> liczby.append(1)\n>>> liczby.append(1)\n>>> liczby.append(2)\n>>> liczby.append(2)\n>>> liczby\n[1, 1, 2, 2]\n>>> liczby.count(2)\n2\n>>> liczby.count(1)\n2\n>>> liczby.count(0)\n0\n>>> ",
+			"settings":
+			{
+				"buffer_size": 347,
+				"line_ending": "Unix",
+				"name": "*REPL* [python3]",
+				"scratch": true
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/SublimeREPL/sublimerepl_build_system_hack.sublime-build",
+					""
+				],
+				[
+					"Packages/User/Browser.sublime-build",
+					""
+				],
+				[
+					"Packages/User/PythonREPL.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/User/C++.sublime-build",
+					""
+				],
+				[
+					"Packages/User/C++.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/User/C++.sublime-build",
+				"Run"
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 334.0,
+		"last_filter": "pyth",
+		"selected_items":
+		[
+			[
+				"pyth",
+				"SublimeREPL: Python3 - RUN current file"
+			],
+			[
+				"git",
+				"git: push"
+			],
+			[
+				"python3",
+				"SublimeREPL: Python3 - RUN current file"
+			],
+			[
+				"ter",
+				"Terminal: Open in project folder"
+			],
+			[
+				"repl: P",
+				"SublimeREPL: Python"
+			],
+			[
+				"emm",
+				"Set Syntax: Emmet"
+			],
+			[
+				"wra",
+				"HTML: Wrap Selection With Tag"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 167.0,
+		"history":
+		[
+			"exit()",
+			"poleobszaru"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/smaster/github/python101",
+		"/home/smaster/github/python101/docs",
+		"/home/smaster/github/python101/docs/podstawy",
+		"/home/smaster/github/python101/docs/podstawy/dlotek"
+	],
+	"file_history":
+	[
+		"/home/smaster/github/python101/docs/podstawy/mlotek/index.rst",
+		"/home/smaster/github/python101/docs/podstawy/mlotek/toto04.py",
+		"/home/smaster/github/python101/docs/podstawy/mlotek/toto03.py",
+		"/home/smaster/github/python101/docs/podstawy/mlotek/toto05.py",
+		"/home/smaster/github/python101/docs/podstawy/mlotek/toto06.py",
+		"/home/smaster/github/python101/docs/podstawy/mlotek/toto07.py",
+		"/home/smaster/github/python101/docs/podstawy/index.rst",
+		"/home/smaster/github/python101/.gitignore",
+		"/home/smaster/github/testy3dj/pytania/urls.py",
+		"/home/smaster/github/testy3dj/pytania/templates/pytania/kategoria_delete.html",
+		"/home/smaster/github/testy3dj/pytania/templates/pytania/kategoria_form.html",
+		"/home/smaster/github/testy3dj/pytania/templates/pytania/base.html",
+		"/home/smaster/github/testy3dj/pytania/views.py",
+		"/home/smaster/github/testy3dj/pytania/templates/pytania/kategorie.html",
+		"/home/smaster/github/testy3dj/pytania/templates/pytania/kategoria_list.html",
+		"/home/smaster/github/thinkster-django-angular-boilerplate/static/javascripts/thinkster.config.js",
+		"/home/smaster/github/thinkster-django-angular-boilerplate/templates/javascripts.html",
+		"/home/smaster/github/thinkster-django-angular-boilerplate/static/javascripts/authentication/controllers/register.controller.js",
+		"/home/smaster/github/thinkster-django-angular-boilerplate/static/javascripts/thinkster.routes.js",
+		"/home/smaster/github/thinkster-django-angular-boilerplate/static/templates/authentication/register.html",
+		"/home/smaster/github/thinkster-django-angular-boilerplate/static/javascripts/thinkster.js",
+		"/home/smaster/github/thinkster-django-angular-boilerplate/static/javascripts/authentication/services/authentication.service.js",
+		"/home/smaster/github/thinkster-django-angular-boilerplate/thinkster_django_angular_boilerplate/urls.py",
+		"/home/smaster/github/thinkster-django-angular-boilerplate/authentication/permissions.py",
+		"/home/smaster/github/thinkster-django-angular-boilerplate/authentication/views.py",
+		"/home/smaster/github/thinkster-django-angular-boilerplate/authentication/serializers.py",
+		"/home/smaster/github/thinkster-django-angular-boilerplate/thinkster_django_angular_boilerplate/settings.py",
+		"/home/smaster/github/thinkster-django-angular-boilerplate/authentication/models.py",
+		"/home/smaster/github/thinkster-django-angular-boilerplate/scripts/postInstall.sh",
+		"/home/smaster/github/thinkster-django-angular-boilerplate/static/javascripts/authentication/authentication.module.js",
+		"/home/smaster/github/thinkster-django-angular-boilerplate/static/javascripts/authentication",
+		"/home/smaster/github/testy3dj/pytania/static/pytania/js/testy.js",
+		"/home/smaster/github/testy3dj/pytania/cut_off.py",
+		"/home/smaster/github/testy3dj/pytania/templates/pytania/user_groups.html",
+		"/home/smaster/github/testy3dj/pytania/templates/pytania/profil.html",
+		"/home/smaster/github/testy3/pytania/models.py",
+		"/home/smaster/github/testy3dj/pytania_data.json",
+		"/home/smaster/github/malybar/malybar/pizza/models.py",
+		"/home/smaster/github/testy3dj/requirements.txt",
+		"/home/smaster/github/kody/python/pong_sfml/paletka.py",
+		"/home/smaster/github/kody/python/pong_sfml/ball.py",
+		"/home/smaster/github/kody/python/pong_sfml/game.py",
+		"/home/smaster/github/kody/testy3dj/pytania/templates/pytania/index.html",
+		"/home/smaster/github/kody/testy3dj/testy3_initdb.json",
+		"/home/smaster/github/kody/testy3dj/pytania.json",
+		"/home/smaster/github/kody/testy3dj/testy3.json",
+		"/home/smaster/github/kody/testy3dj/pytania/fixtures/pytania.json",
+		"/home/smaster/github/malybar/docs/malybar/pizza/views_05.py",
+		"/home/smaster/github/malybar/docs/malybar/pizza/views_04.py",
+		"/home/smaster/github/malybar/docs/malybar/pizza/views_03.py",
+		"/home/smaster/github/malybar/docs/malybar/pizza/views_02.py",
+		"/home/smaster/github/malybar/docs/malybar/pizza/views_01.py",
+		"/home/smaster/github/malybar/malybar/pizza/templates/pizza/pizza_list.html",
+		"/home/smaster/github/malybar/malybar/pizza/urls.py",
+		"/home/smaster/github/malybar/malybar/malybar/urls.py",
+		"/home/smaster/github/malybar/docs/malybar/pizza/templates/pizza/pizza_confirm_delete_01.html",
+		"/home/smaster/github/malybar/docs/malybar/pizza/templates/pizza/pizza_confirm_delete_bs.html",
+		"/home/smaster/github/malybar/docs/malybar/pizza/templates/pizza/pizza_detail_01.html",
+		"/home/smaster/github/malybar/docs/malybar/pizza/templates/pizza/pizza_detail_bs.html",
+		"/home/smaster/github/malybar/docs/malybar/pizza/templates/pizza/pizza_form_01.html",
+		"/home/smaster/github/malybar/docs/malybar/pizza/templates/pizza/pizza_form_bs.html",
+		"/home/smaster/github/malybar/docs/malybar/pizza/templates/pizza/pizza_list_02.html",
+		"/home/smaster/github/malybar/docs/malybar/pizza/templates/pizza/pizza_list_bs.html",
+		"/home/smaster/github/malybar/docs/malybar/pizza/templates/pizza/base.html",
+		"/home/smaster/github/malybar/docs/malybar/pizza/templates/pizza/index_01.html",
+		"/home/smaster/github/malybar/docs/malybar/pizza/templates/pizza/index_02.html",
+		"/home/smaster/github/malybar/docs/malybar/pizza/templates/pizza/index_03.html",
+		"/home/smaster/github/malybar/docs/malybar/pizza/templates/pizza/index_bs.html",
+		"/home/smaster/github/malybar/docs/malybar/pizza/templates/pizza/pizza_list_01.html",
+		"/home/smaster/github/malybar/docs/malybar/pizza/templates/pizza/pizza_detail.html",
+		"/home/smaster/github/malybar/docs/malybar/pizza/urls_03456.py",
+		"/home/smaster/github/malybar/malybar/pizza/views.py",
+		"/home/smaster/github/malybar/docs/malybar/pizza/urls_02.py",
+		"/home/smaster/github/malybar/docs/malybar/pizza/urls_01.py",
+		"/home/smaster/github/malybar/docs/malybar/malybar/urls_01.py",
+		"/home/smaster/github/malybar/docs/malybar/malybar/urls_02.py",
+		"/home/smaster/github/malybar/docs/malybar/pizza/urls_0345.py",
+		"/home/smaster/github/malybar/docs/index.rst",
+		"/home/manjaro/kody/django/testy3dj/pytania/templates/pytania/index.html",
+		"/home/manjaro/kody/django/testy3dj/pytania/templates/pytania/base.html",
+		"/home/manjaro/kody/django/testy3dj/pytania/url_inne.txt",
+		"/home/manjaro/kody/django/testy3dj/testy3.json",
+		"/home/manjaro/kody/django/testy3dj/testy3_initdb.json",
+		"/home/manjaro/kody/django/testy3/pytania/admin.py",
+		"/home/manjaro/kody/django/testy3/pytania/models.py",
+		"/home/manjaro/kody/django/testy3/pytania/apps.py",
+		"/home/manjaro/kody/django/testy3/testy3/settings.py",
+		"/home/smaster/github/linetc/docs/tools/git/index.rst",
+		"/home/smaster/github/linetc/cpp/wskazniki/stos.cpp",
+		"/home/smaster/github/linetc/cpp/typy/typedef.cpp",
+		"/home/smaster/github/linetc/cpp/struktury/poker.cpp",
+		"/home/smaster/github/linetc/.gitignore",
+		"/home/arch/github/linetc/cpp/szyfr_cezara.cpp",
+		"/home/arch/Dropbox/ti/cpp/mcarlo_przyblizenia/liczbapi.cpp",
+		"/home/arch/Dropbox/ti/cpp/matura/mat_z6.cpp",
+		"/home/mint/github/python101/docs/podstawy/przyklady/07_szyfr_02a.py",
+		"/home/mint/github/python101/docs/podstawy/przyklady/07_szyfr_02.py",
+		"/home/smaster/Dropbox/ti/python/orke/poznajPythona/skrypty/kimjestes2_01.py",
+		"/home/smaster/github/linetc/docs/index.rst",
+		"/home/smaster/github/linetc/docs/web/index.rst",
+		"/home/smaster/github/linetc/docs/web/gs/index.rst",
+		"/home/smaster/github/linetc/docs/tools/git/gitignore.txt",
+		"/home/smaster/github/linetc/docs/tools/tools.rst",
+		"/home/smaster/github/linetc/docs/tools/sphinxrst.rst",
+		"/home/smaster/github/linetc/docs/web/glosary_www.rst",
+		"/home/smaster/github/linetc/docs/tools/index.rst",
+		"/home/smaster/github/linetc/docs/tools/spinxrst.rst",
+		"/home/smaster/github/linetc/docs/web/lamp.rst",
+		"/home/smaster/github/linetc/docs/porteus/index.rst",
+		"/home/smaster/github/linetc/docs/python/index.rst",
+		"/home/smaster/github/kompresja/kodmorsa.rst",
+		"/home/arch/Dropbox/ti/cpp/pliki/pliki.cpp",
+		"/home/smaster/Dropbox/ti/cpp/teksty/szyfr_cezara.cpp",
+		"/home/smaster/.config/sublime-text-3/Packages/User/C++.sublime-build",
+		"/media/Dane2/lo1cg/cg2016/data/gsform/gsforms.xml",
+		"/media/Dane2/lo1cg/cg2016/plugins/gsform/errorlog.txt",
+		"/media/Dane2/lo1cg/cg2016/plugins/gsform/lang/pl.php",
+		"/media/Dane2/lo1cg/cg2016/plugins/gsform/gsf_common.php",
+		"/media/Dane2/lo1cg/cg2016/plugins/gsform/gsf_settings.php",
+		"/media/Dane2/lo1cg/cg2016/plugins/gsform/gsf_class.php",
+		"/media/Dane2/lo1cg/cg2016/plugins/gsform/lang/en.php",
+		"/media/Dane2/lo1cg/cg2016/plugins/gsform/email.html",
+		"/home/smaster/Dropbox/ti/python/cc/unique.py",
+		"/home/smaster/github/python101/docs/git/index.rst",
+		"/home/smaster/github/python101/docs/index.rst",
+		"/home/smaster/github/python101/docs/env/index.rst",
+		"/home/smaster/github/python101/docs/env/live.inc",
+		"/home/smaster/github/python101/docs/env/ide.inc"
+	],
+	"find":
+	{
+		"height": 37.0
+	},
+	"find_in_files":
+	{
+		"height": 99.0,
+		"where_history":
+		[
+			"/home/smaster/github/testy3dj/pytania",
+			"/media/Dane2/lo1cg/cg2016/data/pages/",
+			"/media/Dane2/lo1cg/cg2016/data/pages/news*.xml",
+			"/media/Dane2/lo1cg/cg2016/data/pages/news\\*.xml",
+			"/media/Dane2/lo1cg/cg2016/data/pages/news*.xml",
+			"<open files>,/media/Dane2/lo1cg/cg2016/data/pages",
+			"<open files>"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"cgarch/data/uploads",
+			"klasy/201213-kl1e",
+			"str(self)",
+			"przedmiot",
+			"polecenie",
+			"Przedmiot",
+			"foreign",
+			"przedmiot",
+			"przedmiotmodels.py:",
+			"przedmiot",
+			"delta",
+			"sin",
+			"ćwicz",
+			"url_0345",
+			"Foreign",
+			"grupa",
+			"getsimple",
+			"git_clo",
+			"figure",
+			"figur",
+			"git",
+			"$errkom",
+			"GSF_SAVEd",
+			"gsf_nosav",
+			"dodano",
+			"/></",
+			"lxde",
+			"conte",
+			"map",
+			"icon",
+			"nowy",
+			".html",
+			"index.html",
+			"zaktualiz",
+			"127.0.0.1",
+			"local",
+			"urls_02",
+			"~/dj_10_4",
+			"aktual",
+			"aktual\t\t",
+			"zapamię",
+			"template",
+			"{{",
+			"$",
+			"pytania",
+			"Przypo",
+			"szabl",
+			"list",
+			"quiz",
+			"Odpowiedzi",
+			"odpowiedzi",
+			"PytanieForm",
+			"pytania",
+			"elipsis",
+			"&nbsp;",
+			"”",
+			"„",
+			" style=\"text-align: justify;\"",
+			"px;/>",
+			"<img ",
+			"</h4>",
+			"<h4>",
+			" margin-left: 10px;",
+			" margin-left:10px;",
+			" float: right;",
+			" float: right;margin-left: 10px;\" ",
+			" float: right; margin-left: 10px;\" ",
+			"<hr class=\"cb\" />",
+			" float: right;",
+			"</h4>",
+			"<h4>",
+			"<hr class=\"cb\" />",
+			"<img ",
+			"</h4>",
+			"<h4>",
+			" magin-left: 10px;",
+			" float: right;",
+			"<hr class=\"cb\" />",
+			" float: right; margin-left: 10px;",
+			"&gt;Zdjęcia »»»&lt;",
+			"Zdjęcia",
+			"<template>template.php</template>",
+			"a:before",
+			".cd",
+			"google",
+			".section",
+			"panel-",
+			"#content",
+			"#main-slide",
+			"slider",
+			"201415",
+			"2014/15",
+			"2015/16",
+			"201516",
+			"</li>",
+			"<li>",
+			"<li><a ",
+			"</template></template>",
+			"<template><![CDATA[template.php]]>",
+			"<fields/>",
+			"<fields>",
+			"<template><![CDATA[template.php]]></template>",
+			"<title><![CDATA[Aktualności",
+			"btn-sys",
+			"clearfix",
+			"span",
+			"<parent></parent>",
+			"title",
+			"<img ",
+			"</p>",
+			"<p>",
+			" style=\"text-align: center;\"",
+			" align=\"left\"",
+			" align=\"center\"",
+			"table",
+			".btn-sys",
+			"closed",
+			"<a ",
+			"<li class=\"list-group-item list-group-item-info\">",
+			"</li>",
+			"<li>",
+			"/data/",
+			"h4",
+			"</strong>",
+			"<a ",
+			"</li>",
+			"\t\t<li>",
+			"nauczyciele"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"cgarch/data/uploads/201213-kl1e",
+			"cgarch/data/uploads",
+			"__str__(self)",
+			"~/Django",
+			">>>",
+			"pizze",
+			"Skladniki",
+			"skladniki",
+			"PizzaForm",
+			" ",
+			"\"",
+			"",
+			"px;\" />",
+			"<img class=\"img-thumbnail img-left\" ",
+			"</h2>",
+			"<h2 class=\"h2-clear-left\">",
+			"",
+			"</h2>",
+			"<h2 class=\"h2-clear-left\">",
+			"",
+			"<img class=\"img-thumbnail img-left\" ",
+			"</h2>",
+			"<h2 class=\"h2-clear-left\">",
+			"",
+			" class=&quot;btn-system btn-mini&quot; &gt;Zdjęcia »»»&lt;",
+			"<template>post.php</template>",
+			"201314",
+			"2013/14",
+			"2014/15",
+			"201415",
+			"",
+			"<li><a class=\"btn-system btn-medium border-btn\" ",
+			"</template>",
+			"<template><![CDATA[newsarch.php]]></template>",
+			"<fields><item><name><![CDATA[kategoria]]></name><label><![CDATA[Kategoria]]></label><type><![CDATA[dropdown]]></type><value><![CDATA[informacja]]></value><option><![CDATA[informacja]]></option><option><![CDATA[szkola]]></option><option><![CDATA[uczniowie]]></option><option><![CDATA[nauczyciele]]></option><option><![CDATA[ekologia]]></option><option><![CDATA[sport]]></option><option><![CDATA[kultura]]></option><option><![CDATA[nauka]]></option><option><![CDATA[historia]]></option><option><![CDATA[pomagamy]]></option><option><![CDATA[sukces]]></option><option><![CDATA[informatyka]]></option><index>2</index></item><item><name><![CDATA[klasy]]></name><label><![CDATA[Klasy CSS]]></label><type><![CDATA[text]]></type></item></fields>",
+			"<fields><item><name><![CDATA[kategoria]]></name><label><![CDATA[Kategoria]]></label><type><![CDATA[dropdown]]></type><value><![CDATA[informacja]]></value><option><![CDATA[informacja]]></option><option><![CDATA[szkola]]></option><option><![CDATA[uczniowie]]></option><option><![CDATA[nauczyciele]]></option><option><![CDATA[ekologia]]></option><option><![CDATA[sport]]></option><option><![CDATA[kultura]]></option><option><![CDATA[nauka]]></option><option><![CDATA[historia]]></option><option><![CDATA[pomagamy]]></option><option><![CDATA[sukces]]></option><option><![CDATA[informatyka]]></option><index>2</index></item>",
+			"<template><![CDATA[post.php]]></template>",
+			"<title><![CDATA[Archiwum",
+			"li",
+			"<parent><![CDATA[index]]></parent>",
+			"<img class=\"img-thumbnail pull-right\" ",
+			"</h3>",
+			"<h3>",
+			"",
+			"<a class=\"btn-system btn-medium border-btn\" ",
+			"",
+			"<li class=\"list-group-item list-group-item-info\">",
+			"/cgarch/data/",
+			"h2",
+			"<a class=\"btn-system border-btn btn-medium\" ",
+			"",
+			"</div>\n\t</div>",
+			"",
+			"\t<div class=\"faq-item\">\n\t\t<div class=\"faq-title\"><span class=\"fa fa-angle-right\"></span>",
+			"_201617.jpg",
+			"cg/data/uploads/201617/",
+			"r",
+			"nast_gen",
+			"generacja",
+			"sasiedzi",
+			"zywe_komorki",
+			"populacja",
+			"cgarch/data",
+			"2016/17<br />",
+			"img/",
+			"python",
+			"img/",
+			"qt-4.8",
+			"../img/",
+			"qt-4.8",
+			"python",
+			"qt-4",
+			"wynik",
+			"liczba2",
+			"liczba1",
+			"wynik",
+			"liczba2",
+			"liczba1",
+			"#DFCCA7",
+			"",
+			"zadanie",
+			"zadania",
+			"zadania_",
+			"P_",
+			"polegry",
+			"PREDKOSC_AI",
+			"paletkaAI",
+			"oknogry",
+			"paletka1",
+			"widzety",
+			"'",
+			"self.ksztaltAktywny.",
+			"2014/15",
+			"tabela",
+			"Kalkulator"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1795,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								424,
+								424
+							]
+						],
+						"settings":
+						{
+							"__vi_external_disable": false,
+							"git_savvy.help_hidden": false,
+							"git_savvy.interface": "status",
+							"git_savvy.repo_path": "/home/smaster/github/python101",
+							"git_savvy.status_view": true,
+							"git_savvy.tabbable": true,
+							"syntax": "Packages/GitSavvy/syntax/status.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "docs/podstawy/dlotek/index.rst",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10777,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3081,
+								3081
+							]
+						],
+						"settings":
+						{
+							"git_savvy.file_path": "/home/smaster/github/python101/docs/podstawy/dlotek/index.rst",
+							"git_savvy.repo_path": "/home/smaster/github/python101",
+							"syntax": "Packages/RestructuredText Improved/reStructuredText Improved.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1506.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "docs/podstawy/dlotek/toto22.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 475,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								260,
+								260
+							]
+						],
+						"settings":
+						{
+							"git_savvy.file_path": "/home/smaster/github/python101/docs/podstawy/dlotek/toto22.py",
+							"git_savvy.repo_path": "/home/smaster/github/python101",
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "docs/podstawy/dlotek/toto22_0.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 385,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								384,
+								384
+							]
+						],
+						"settings":
+						{
+							"git_savvy.file_path": "/home/smaster/github/python101/docs/podstawy/dlotek/toto22_0.py",
+							"git_savvy.repo_path": "/home/smaster/github/python101",
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "docs/podstawy/dlotek/toto21.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 297,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								238,
+								238
+							]
+						],
+						"settings":
+						{
+							"git_savvy.file_path": "/home/smaster/github/python101/docs/podstawy/dlotek/toto21.py",
+							"git_savvy.repo_path": "/home/smaster/github/python101",
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 347,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								347,
+								347
+							]
+						],
+						"settings":
+						{
+							"auto_complete": true,
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"auto_indent": false,
+							"detect_indentation": false,
+							"git_savvy.repo_path": "/home/smaster/github/python101",
+							"gutter": false,
+							"history_arrows": true,
+							"indent_subsequent_lines": false,
+							"line_numbers": false,
+							"repl": true,
+							"repl_external_id": "python3",
+							"repl_id": "828c3a66825d46169544dc7874945824",
+							"repl_restart_args":
+							{
+								"cmd":
+								[
+									"python3",
+									"-i",
+									"-u"
+								],
+								"cwd": "$file_path",
+								"encoding": "utf8",
+								"extend_env":
+								{
+									"PYTHONIOENCODING": "utf-8"
+								},
+								"external_id": "python3",
+								"syntax": "Packages/Python/Python.tmLanguage",
+								"type": "subprocess"
+							},
+							"repl_sublime2": false,
+							"smart_indent": false,
+							"spell_check": false,
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 29.0
+	},
+	"input":
+	{
+		"height": 37.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.GitSavvy":
+	{
+		"height": 136.0
+	},
+	"output.exec":
+	{
+		"height": 136.0
+	},
+	"output.find_results":
+	{
+		"height": 136.0
+	},
+	"pinned_build_system": "Packages/User/C++.sublime-build",
+	"project": "python101.sublime-project",
+	"replace":
+	{
+		"height": 54.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 245.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

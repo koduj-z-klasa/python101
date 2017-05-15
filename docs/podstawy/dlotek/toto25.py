@@ -17,7 +17,7 @@ while i < ileliczb:
 
 # print "Wylosowane liczby:", liczby
 
-print "Wytypuj", ileliczb, "z", maksliczba, "liczb:"
+print "Wytypuj %s z %s liczb: " % (ileliczb, maksliczba)
 typy = set()
 i = 0
 while i < ileliczb:
