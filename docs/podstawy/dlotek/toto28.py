@@ -9,7 +9,7 @@ try:
     if ileliczb > maksliczba:
         print "Błędne dane!"
         exit()
-except:
+except ValueError:
     print "Błędne dane!"
     exit()
 
