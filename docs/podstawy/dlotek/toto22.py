@@ -1,11 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import random
 
-ileliczb = int(raw_input("Podaj ilość typowanych liczb: "))
-maksliczba = int(raw_input("Podaj maksymalną losowaną liczbę: "))
-# print "Wytypuj %s z %s liczb: " % (ileliczb, maksliczba)
+ileliczb = int(input("Podaj ilość typowanych liczb: "))
+maksliczba = int(input("Podaj maksymalną losowaną liczbę: "))
+# print("Wytypuj %s z %s liczb: " % (ileliczb, maksliczba))
 
 liczby = []
 # for i in range(ileliczb):
@@ -16,4 +16,4 @@ while i < ileliczb:
         liczby.append(liczba)
         i = i + 1
 
-print "Wylosowane liczby:", liczby
+print("Wylosowane liczby:", liczby)
