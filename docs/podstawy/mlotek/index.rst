@@ -50,13 +50,13 @@ z zakresu <a; b>. Do naszego pliku dopisujemy:
     :lines: 4-7
 
 Wylosowana liczba zostanie zapamiętana w **zmiennej** ``liczba`` (zob. :term:`zmienna` ).
-Instrukcja ``print`` wydrukuje ją razem z komunikatem na ekranie.
+Funkcja ``print()`` wydrukuje ją razem z komunikatem na ekranie.
 Program możemy już uruchomić w terminalu (zob. :term:`terminal`),
 wydając w katalogu z plikiem polecenie:
 
 .. code-block:: bash
 
-    ~$ python toto.py
+    ~$ python3 toto.py
 
 Efekt działania naszego skryptu:
 
@@ -85,7 +85,7 @@ na ile prób mu pozwolimy. Zacznijmy od jednej! Dopisujemy zatem:
     :lineno-start: 1
     :lines: 1-
 
-Liczbę podaną przez użytkownika pobieramy za pomocą instrukcji ``raw_input()``
+Liczbę podaną przez użytkownika pobieramy za pomocą funkcji ``input()``
 i zapamiętujemy w zmiennej ``odp``.
 
 .. attention::
@@ -97,7 +97,7 @@ i zapamiętujemy w zmiennej ``odp``.
 =============
 
 * Zgadywanie, gdy losowana liczba jest drukowana, nie jest zabawne. Zakomentuj
-  więc instrukcję drukowania: ``# print "Wylosowana liczba:", liczba`` – będzie pomijana
+  więc instrukcję drukowania: ``# print("Wylosowana liczba:", liczba``) – będzie pomijana
   przez interpreter.
 
 * Dopisz odpowiednie polecenie, które wyświetli liczbę podaną przez gracza.
@@ -130,10 +130,10 @@ do ponownej próby.
 
 .. note::
 
-    Instrukcja ``raw_input()`` wszystkie pobrane dane zwraca jako napisy (typ *string*).
+    Instrukcja ``input()`` wszystkie pobrane dane zwraca jako napisy (typ *string*).
     Do przekształcenia napisu na liczbę całkowitą (typ *integer*) wykorzystujemy funkcję
     ``int()``, która w przypadku niepowodzenia zgłasza wyjątek ``ValueError``.
-    Ich obsługę omówimy później.
+    Obsługę wyjątków omówimy później.
 
 Przetestuj kilkukrotnie działanie programu.
 
@@ -162,7 +162,7 @@ Pobieranie i sprawdzanie kolejnych liczb wymaga powtórzeń, czyli **pętli** (z
 Blok powtarzających się operacji umieszczamy więc w instrukcji ``for``.
 Ilość powtórzeń określa wyrażenie ``i in range(3)``. **Zmienna iteracyjna** ``i``
 to "licznik" powtórzeń. Przyjmuje on kolejne wartości wygenerowane przez
-funkcję ``range(n)``. Funkcja ta tworzy listę liczb całkowitych od *0* do *n-1*.
+konstruktor ``range(n)``. Funkcja ta tworzy sekwencję liczb całkowitych od *0* do *n-1*.
 
 A więc polecenia naszego skryptu, które umieściliśmy w pętli, wykonają się 3 razy,
 chyba że... użytkownik trafi za 1 lub 2 razem. Wtedy warunek w instrukcji ``if``
@@ -183,22 +183,22 @@ a polecenie ``break`` przerwie działanie pętli.
 Ćwiczenia
 ==========
 
-Sprawdźmy działanie funkcji ``range()`` w trybie interaktywnym interpretera Pythona.
+Sprawdźmy działanie konstruktora ``range()`` w trybie interaktywnym interpretera Pythona.
 W terminalu wpisz polecenia:
 
 .. code-block:: bash
 
-    ~$ python
-    >>> range(100)
+    ~$ python3
+    >>> list(range(30))
     >>> for i in range(0, 100, 2)
     ...   print i
     ...
     >>> exit()
 
-Funkcja range może przyjmować opcjonalne parametry określające początek, koniec
+Funkcja ``range()`` może przyjmować opcjonalne parametry określające początek, koniec
 oraz krok generowanej listy wartości.
 
-**Uzupełnij kod**, tak aby program wyświetlał informację "Próba 1", "Próba 2"
+**Uzupełnij kod** naszego programu, tak aby wyświetlane były komunikaty: "Próba 1", "Próba 2"
 itd. przed podaniem liczby.
 
 
@@ -206,8 +206,8 @@ Instrukcja if...elif
 ********************
 
 Po 3 błędnej próbie program ponownie wyświetla komunikat: "Nie zgadłeś..."
-Za pomocą członu ``elif`` możemy wychwycić ten moment i wyświetlić komunikat:
-"Miałem na myśli liczbę: liczba". Kod przyjmie następującą postać:
+Za pomocą członu ``elif`` możemy wychwycić ten przypadek i właściwie go obsłużyć.
+Kod przyjmie następującą postać:
 
 .. raw:: html
 
