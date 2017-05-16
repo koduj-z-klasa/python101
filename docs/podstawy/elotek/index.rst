@@ -154,7 +154,7 @@ dwie nowe: ``czytaj_ust()`` i ``zapisz_ust()``.
 .. highlight:: python
 .. literalinclude:: totomodul32.py
     :linenos:
-    :emphasize-lines: 14, 23, 36-37, 42, 51
+    :emphasize-lines: 14, 21, 36-37, 42, 51
     :lineno-start: 1
     :lines: 1-55
 
@@ -163,35 +163,49 @@ z ustawieniami, następnie próbujemy je odczytać wywołując funkcję ``czytaj
 Funkcja ta sprawdza, czy podany plik istnieje na dysku i otwiera go do odczytu:
 ``plik = open(nazwapliku, "r")``. Plik powinien zawierać 1 linię, która przechowuje
 ustawienia w formacie: ``nick;ile_liczb;maks_liczba;ile_prób``. Po jej
-odczytaniu za pomocą metody ``.readline()`` i rozbiciu na elementy
+odczytaniu za pomocą metody ``.readline()`` i rozbiciu na elementy (``linia.split(";")``)
 zwracamy ją jako listę ``gracz``.
 
 Jeżeli uda się odczytać zapisane ustawienia, drukujemy je, a następnie
-pytamy, czy użytkownik chce je zmienić. Jeżeli nie znaleźliśmy zapisanych
-ustawień lub użytkownik nacisnął klawisz "t" lub "T", wykonujemy poprzedni
-kod. Na koniec zmiennej ``gracz`` przypisujemy listę ustawień przekazaną
-do zapisu funkcji ``zapisz_ust()``. Funkcja ta zapisuje dane złączone za
-pomocą średnika w jedną linię do pliku: ``plik.write(";".join(gracz))``.
+pytamy, czy użytkownik chce je zmienić. Jeżeli brak zapisanych
+ustawień lub użytkownik chce je zmienić, wykonujemy dotychczasowy kod,
+tj. pobieramy dane i jako listę przekazujemy do zapisania funkcji ``zapisz_ust()``.
+Dane zostają zapisane i zwrócone.
 
 W powyższym kodzie widać, jakie operacje można wykonywać na tekstach, tj.:
 
-* operator ``+``: łączenie tekstów,
+* operator ``+``: konkatenacja, czyli łączenie tekstów,
 * ``linia.split(";")`` – rozbijanie tekstu wg podanego znaku na elementy listy,
 * ``";".join(gracz)`` – wspomniane już złączanie elementów listy za pomocą podanego znaku,
 * ``odp.lower()`` – zmiana wszystkich znaków na małe litery,
 * ``str(arg)`` – przekształcanie podanego argumentu na typ tekstowy.
 
-Zwróćmy uwagę na konstrukcję ``return gracz[0:1] + map(int, gracz[1:4])``,
-której używamy, aby zwrócić odczytane/zapisane ustawienia do programu głównego.
-Dane w pliku przechowujemy, a także pobieramy od użytkownika jako znaki.
-Natomiast program główny oczekuje 4 wartości typu: znak, liczba, liczba, liczba.
-Stosujemy więc **notację wycinkową** (ang. *slice*), aby wydobyć nick użytkownika:
-``gracz[0:1]``. Pierwsza wartość mówi od którego elementu, a druga do którego
-elementu wycinamy wartości z listy (przećwicz w konsoli Pythona!).
-Wspominana już funkcja ``map()`` pozwala zastosować
-do pozostałych 3 elementów (``gracz[1:4]``) funkcję ``int()``,
-która zamienia je w wartości liczbowe.
+Ponieważ w programie głównym oczekujemy, że funkcja ``ustawienia()``
+zwróci dane typu napis, liczba, liczba, liczba – używamy konstrukcji:
+``return gracz[0:1] + [int(x) for x in gracz[1:4]]``.
 
+Na początku za pomocą notacji wycinkowej (ang. *slice*, :term:`notacja wycinkowa`)
+tworzymy 1-elementową listę zawierającą nick użytkownika (``gracz[0:1]``).
+Pozostałe elementy z listy ``gracz`` (``gracz[1:4]``) umieszczamy w wyrażeniu listowym
+(:term:`wyrażenie listowe`). Przy użyciu pętli przekształca ono każdy element
+na liczbę całkowitą i umieszcza w nowej liście.
+
+Na końcu operator ``+`` ponownie tworzy nową listę, która zawiera wartości oczekiwanych typów.
+
+Ćwiczenie
+=========
+
+Przećwicz w konsoli notację wycinkową, wyrażenia listowe i łączenie list:
+
+.. code-block:: bash
+
+    ~$ python3
+    >>> dane = ['a', 'b', 'c', '1', '2', '3']
+    >>> dane[0:3]
+    >>> dane[3:6]
+    >>> duze = [x.upper() for x in dane[0:3]]
+    >>> kwadraty = [int(x)**2 for x in dane[3:6]]
+    >>> duze + kwadraty
 
 Słowniki
 ******************
@@ -241,8 +255,8 @@ Teraz zobaczmy, jak wyglądają funkcje ``czytaj_json()`` i ``zapisz_json()`` w 
 .. highlight:: python
 .. literalinclude:: totomodul33.py
     :linenos:
-    :lineno-start: 103
-    :lines: 103-
+    :lineno-start: 102
+    :lines: 102-
 
 Kiedy czytamy i zapisujemy dane, ważną sprawą staje się ich format. Najprościej
 zapisywać dane jako znaki, tak jak zrobiliśmy to z ustawieniami, jednak często

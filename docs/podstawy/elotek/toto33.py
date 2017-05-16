@@ -1,8 +1,8 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from totomodul import ustawienia, losujliczby, pobierztypy, wyniki
-from totomodul import czytaj_json, zapisz_json
+from totomodul33 import ustawienia, losujliczby, pobierztypy, wyniki
+from totomodul33 import czytaj_json, zapisz_json
 import time
 
 
@@ -18,7 +18,7 @@ def main(args):
         typy = pobierztypy(ileliczb, maksliczba)
         iletraf = wyniki(set(liczby), typy)
 
-    nazwapliku = nick + ".json"
+    nazwapliku = nick + ".json"  # nazwa pliku z historią losowań
     losowania = czytaj_json(nazwapliku)
 
     losowania.append({
@@ -30,7 +30,7 @@ def main(args):
 
     zapisz_json(nazwapliku, losowania)
 
-    print "\nLosowania:", liczby
+    print("\nLosowania:", liczby)
     return 0
 
 
