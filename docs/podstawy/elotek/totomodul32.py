@@ -9,13 +9,13 @@ def ustawienia():
     """Funkcja pobiera nick użytkownika, ilość losowanych liczb, maksymalną
     losowaną wartość oraz ilość typowań. Ustawienia zapisuje."""
 
-    nick = raw_input("Podaj nick: ")
+    nick = input("Podaj nick: ")
     nazwapliku = nick + ".ini"
     gracz = czytaj_ust(nazwapliku)
     odp = None
     if gracz:
-        print "Twoje ustawienia:"
-        print "Liczb:", gracz[1]
+        print("Twoje ustawienia:")
+        print("Liczb:", gracz[1])
         print "Z Maks:", gracz[2]
         print "Losowań:", gracz[3]
         odp = raw_input("Zmieniasz (t/n)? ")

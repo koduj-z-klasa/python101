@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import random
@@ -9,15 +9,15 @@ def ustawienia():
     oraz ilość prób. Pozwala określić stopień trudności gry."""
     while True:
         try:
-            ile = int(raw_input("Podaj ilość typowanych liczb: "))
-            maks = int(raw_input("Podaj maksymalną losowaną liczbę: "))
+            ile = int(input("Podaj ilość typowanych liczb: "))
+            maks = int(input("Podaj maksymalną losowaną liczbę: "))
             if ile > maks:
-                print "Błędne dane!"
+                print("Błędne dane!")
                 continue
-            ilelos = int(raw_input("Ile losowań: "))
+            ilelos = int(input("Ile losowań: "))
             return (ile, maks, ilelos)
-        except:
-            print "Błędne dane!"
+        except ValueError:
+            print("Błędne dane!")
             continue
 
 
@@ -35,14 +35,14 @@ def losujliczby(ile, maks):
 
 def pobierztypy(ile, maks):
     """Funkcja pobiera od użytkownika jego typy wylosowanych liczb"""
-    print "Wytypuj %s z %s liczb: " % (ile, maks)
+    print("Wytypuj %s z %s liczb: " % (ile, maks))
     typy = set()
     i = 0
     while i < ile:
         try:
-            typ = int(raw_input("Podaj liczbę %s: " % (i + 1)))
+            typ = int(input("Podaj liczbę %s: " % (i + 1)))
         except ValueError:
-            print "Błędne dane!"
+            print("Błędne dane!")
             continue
 
         if 0 < typ <= maks and typ not in typy:
@@ -52,14 +52,16 @@ def pobierztypy(ile, maks):
 
 
 def wyniki(liczby, typy):
+    """Funkcja porównuje wylosowane i wytypowane liczby,
+    zwraca ilość trafień"""
     trafione = liczby & typy
     if trafione:
-        print "\nIlość trafień: %s" % len(trafione)
-        print trafione
+        print("\nIlość trafień: %s" % len(trafione))
+        # print(trafione)
         trafione = ", ".join(map(str, trafione))
-        print "Trafione liczby: %s" % trafione
+        print("Trafione liczby: %s" % trafione)
     else:
-        print "Brak trafień. Spróbuj jeszcze raz!"
-    print "\n" + "x" * 40 + "\n"  # wydrukuj 40 znaków x
+        print("Brak trafień. Spróbuj jeszcze raz!")
+    print("\n" + "x" * 40 + "\n")  # wydrukuj 40 znaków x
 
     return len(trafione)

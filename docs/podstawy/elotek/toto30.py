@@ -1,7 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from totomodul import ustawienia, losujliczby, pobierztypy
+from totomodul30 import ustawienia, losujliczby, pobierztypy
 
 
 def main(args):
@@ -16,14 +16,14 @@ def main(args):
         typy = pobierztypy(ileliczb, maksliczba)
         trafione = set(liczby) & typy
         if trafione:
-            print "\nIlość trafień: %s" % len(trafione)
-            print "Trafione liczby: %s" % trafione
+            print("\nIlość trafień: %s" % len(trafione))
+            print("Trafione liczby: %s" % trafione)
         else:
-            print "Brak trafień. Spróbuj jeszcze raz!"
+            print("Brak trafień. Spróbuj jeszcze raz!")
 
-        print "\n" + "x" * 40 + "\n"  # wydrukuj 40 znaków x
+        print("\n" + "x" * 40 + "\n")  # wydrukuj 40 znaków x
 
-    print "Wylosowane liczby:", liczby
+    print("Wylosowane liczby:", liczby)
     return 0
 
 

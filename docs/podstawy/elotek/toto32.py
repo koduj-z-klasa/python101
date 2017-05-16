@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 from totomodul import ustawienia, losujliczby, pobierztypy, wyniki
@@ -16,7 +16,7 @@ def main(args):
         typy = pobierztypy(ileliczb, maksliczba)
         iletraf = wyniki(set(liczby), typy)
 
-    print "Wylosowane liczby:", liczby
+    print("Wylosowane liczby:", liczby)
     return 0
 
 

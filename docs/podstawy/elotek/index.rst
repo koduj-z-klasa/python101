@@ -42,18 +42,13 @@ Tworzymy więc nowy plik :file:`totomodul.py` i umieszczamy w nim następujący 
 
 
 Funkcja w Pythonie składa się ze słowa kluczowego ``def``, nazwy, obowiązkowych nawiasów
-okrągłych i opcjonalnych parametrów. Funkcje zazwyczaj zwracają jakieś dane
-za pomocą instrukcji ``return``.
+okrągłych i opcjonalnych parametrów. Na końcu umieszczamy dwukropek.
+Funkcje zazwyczaj zwracają jakieś dane za pomocą instrukcji ``return``.
 
-Warto zauważyć, że można zwracać więcej niż jedną wartość naraz,
-np. w postaci tupli ``return (ile, maks, ilelos)``. **Tupla** to rodzaj listy,
-w której nie możemy zmieniać wartości (zob. :term:`tupla`). Jest często stosowana
-do przechowywania i przekazywania stałych danych.
-
-Nazwy zmiennych lokalnych w funkcjach są niezależne od nazw zmiennych w programie
+Zmienne lokalne w funkcjach są niezależne od zmiennych w programie
 głównym, ponieważ definiowane są w różnych zasięgach, a więc w różnych przestrzeniach nazw.
 Możliwe jest modyfikowanie zmiennych globalnych dostępnych w całym programie,
-o ile wskażemy je instrukcją typu: ``global nazwa_zmiennej``.
+o ile wskażemy je w funkcji instrukcją typu: ``global nazwa_zmiennej``.
 
 Program główny po zmianach przedstawia się następująco:
 
@@ -71,8 +66,13 @@ importujemy potrzebne funkcje. Następnie w funkcji głównej ``main()``
 wywołujemy je podając nazwę i ewentualne argumenty.
 Zwracane przez nie wartości zostają przypisane podanym zmiennym.
 
+Warto zauważyć, że funkcja może zwracać więcej niż jedną wartość naraz,
+np. w postaci tupli ``return (ile, maks, ilelos)``.
+**Tupla** to rodzaj listy, w której nie możemy zmieniać wartości (zob. :term:`tupla`).
+Jest często stosowana do przechowywania i przekazywania danych, których nie należy modyfikować.
+
 Wiele wartości zwracanych w tupli można jednocześnie przypisać
-kilku zmiennym dzięki operacji tzw. rozpakowania tupli:
+kilku zmiennym dzięki operacji tzw. **rozpakowania tupli**:
 ``ileliczb, maksliczba, ilerazy = ustawienia()``. Należy jednak
 pamiętać, aby ilość zmiennych z lewej strony wyrażenia odpowiadała ilości
 elementów w tupli.
@@ -80,16 +80,18 @@ elementów w tupli.
 Konstrukcja ``while True`` oznacza nieskończoną pętlę. Stosujemy ją w funkcji
 ``ustawienia()``, aby wymusić na użytkowniku podanie poprawnych danych.
 
-Funkcja główna ``main()`` zostaje wywołana, o ile warunek ``if __name__ == '__main__':`` jest prawdziwy.
-Jest on prawdziwy wtedy, kiedy nasz skrypt zostanie uruchomiony
-jako główny, wtedy nazwa specjalna ``__name__`` ustawiana jest na ``__main__``.
-Jeżeli korzystamy ze skryptu jako modułu, importując go, ``__main__`` ustawiane jest na nazwę pliku.
+Cały program zawarty został w funkcji głównej ``main()``. O tym, czy zostanie
+ona wykonana decyduje warunek ``if __name__ == '__main__':``, który będzie
+prawdziwy, kiedy nasz skrypt zostanie uruchomiony jako główny.
+Wtedy nazwa specjalna ``__name__`` ustawiana jest na ``__main__``.
+Jeżeli korzystamy ze skryptu jako modułu, importując go,
+``__main__`` ustawiane jest na nazwę pliku, dzięki czemu kod się nie wykonuje.
 
 .. note::
 
-    W rozbudowanych programach dobrą praktyką ułatwiającą późniejsze przeglądanie
-    i poprawianie kodu jest opatrywanie jego fragmentów **komentarzami**. Można je
-    umieszczać po znaku ``#``. Z kolei funkcje opatruje się krótkim opisem
+    **Komentarze**: w rozbudowanych programach dobrą praktyką ułatwiającą późniejsze przeglądanie
+    i poprawianie kodu jest opatrywanie jego fragmentów **komentarzami**. Zazwyczaj umieszczamy
+    je po znaku ``#``. Z kolei funkcje opatruje się krótkim opisem
     działania i/lub wymaganych argumentów, ograniczanym **potrójnymi cudzysłowami**.
     Notacja ``"""..."""`` lub ``'''...'''`` pozwala zamieszczać teksty wielowierszowe.
 
@@ -98,12 +100,21 @@ Jeżeli korzystamy ze skryptu jako modułu, importując go, ``__main__`` ustawia
 ==========
 
 * Przenieś kod powtarzany w pętli ``for`` (linie 17-24) do funkcji zapisanej w module
-  programu i nazwanej np. ``wyniki()``. Zdefiniuj listę argumentów, zadbaj,
-  aby funkcja zwracała ilość trafionych liczb. Wywołanie funkcji:
-  ``iletraf = wyniki(set(liczby), typy)`` umieść w linii 17.
+  programu.Wywołanie funkcji: ``iletraf = wyniki(set(liczby), typy)`` umieść w linii 17
+  programu głównego. Wykorzystaj szkielet funkcji:
 
-* Przy okazji popraw wyświetlanie listy trafionych liczb. Przed instrukcją
-  ``print "Trafione liczby: %s" % trafione`` wstaw linię:
+.. code-block:: python
+
+    def wyniki(liczby, typy):
+        """Funkcja porównuje wylosowane i wytypowane liczby,
+        zwraca ilość trafień"""
+        ...
+
+        return len(trafione)
+
+
+* Popraw wyświetlanie listy trafionych liczb. W funkcji ``wyniki()`` przed instrukcją
+  ``print("Trafione liczby: %s" % trafione``) wstaw:
   ``trafione = ", ".join(map(str, trafione))``.
 
   Funkcja ``map()`` (zob. :ref:`mapowanie funkcji <map-fun>`) pozwala na zastosowanie
