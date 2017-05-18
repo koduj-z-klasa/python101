@@ -23,13 +23,15 @@ czyli działań arytmetycznych lub logicznych.
 
     Niekiedy mówi się, że w Pythonie zmiennych nie ma, są natomiast wartości określonego typu.
 
+Funkcje:
 
-Funkcja ``raw_input()`` zwraca pobrane z klawiatury znaki jako napis, czyli typ **string**.
-Funkcja ``int()`` umożliwia konwersję napisu na liczbę całkowitą, czyli typ **integer**.
-Funkcja ``print`` drukuje podane argumenty oddzielone przecinkami. Komunikaty tekstowe ujmujemy
-w cudzysłowy podwójne lub pojedyncze. Przecinek oddziela kolejne argumenty spacjami.
+* ``input()`` zwraca pobrane z klawiatury znaki jako napis, czyli typ **string**.
+* ``int()`` umożliwia konwersję napisu na liczbę całkowitą, czyli typ **integer**.
+* ``print()`` drukuje podane argumenty oddzielone przecinkami.
 
-Instrukcja ``if`` (jeżeli) pozwala na warunkowe wykonanie kodu. Jeżeli podane wyrażenie
+Napisy ujmujemy w cudzysłowy podwójne lub pojedyncze.
+
+Instrukcja ``if wyrażenie`` (jeżeli) steruje warunkowym wykonaniem kodu. Jeżeli podane wyrażenie
 jest prawdziwe (przyjmuje wartość ``True``), wykonywana jest pierwsza instrukcja,
 w przeciwnym wypadku (``else``), kiedy wyrażenie jest fałszywe (wartość ``False``),
 wykonywana jest instrukcja druga. Części instrukcji warunkowej kończymy dwukropkiem.

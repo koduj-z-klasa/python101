@@ -1,23 +1,25 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 op = "t"
 while op == "t":
-    a, b, c = raw_input("Podaj trzy liczby oddzielone spacjami: ").split(" ")
+    a, b, c = input("Podaj trzy liczby oddzielone spacjami: ").split(" ")
 
-    print "Wprowadzono liczby:", a, b, c,
-    print "\nNajmniejsza: ",
+    print("Wprowadzono liczby:", a, b, c)
+    print("\nNajmniejsza:")
 
     if a < b:
         if a < c:
-            print a
+            najmniejsza = a
         else:
-            print c
+            najmniejsza = c
     elif b < c:
-        print b
+        najmniejsza = b
     else:
-        print c
+        najmniejsza = c
 
-    op = raw_input("Jeszcze raz (t/n)? ")
+    print(najmniejsza)
 
-print "By, by..."
+    op = input("Jeszcze raz (t/n)? ")
+
+print("Koniec.")

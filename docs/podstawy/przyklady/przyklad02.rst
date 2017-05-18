@@ -13,11 +13,10 @@ Wydrukuj alfabet
 .. literalinclude:: 03_petle_02.py
     :linenos:
 
-Pętla ``for`` wykorzystuje zmienną iteracyjną ``i``, która przybiera wartości
-z listy liczb całkowitych zwróconej przez funkcję ``range()``. Parametry
-tej funkcji określają wartość początkową i końcową listy, przy czym wartość
-końcowa nie wchodzi do listy. Kod ``range(122,96,-1)`` generuje listę wartości
-malejących od 122 do 97(!) z krokiem -1.
+Pętla ``for`` wykorzystuje zmienną iteracyjną ``i``, która przybiera kolejne
+wartości zwracane przez funkcję ``range()``. Parametry tej funkcji określają
+wartość początkową i końcową, przy czym wartość końcowa nie jest zwracana.
+Kod ``range(122,96,-1)`` generuje wartości malejące od 122 do 97(!) z krokiem -1.
 
 Funkcja ``chr()`` zwraca znak, którego kod ASCII, czyli liczbę całkowitą,
 przyjmuje jako argument. Metoda ``lower()`` typu string (napisu) zwraca

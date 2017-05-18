@@ -12,16 +12,16 @@ Trzy liczby
 .. literalinclude:: 02_if.py
     :linenos:
 
-Pętla ``while`` umożliwia powtarzanie określonych operacji, np. pozwala użytkownikowi wprowadzać
-kolejne serie liczb. Definiując pętlę określamy warunek powtarzania kodu. Dopóki jest prawdziwy,
-czyli dopóki zmienna *op* ma wartość "t" pętla działa.
+Pętla ``while warunek`` umożliwia powtarzanie bloku operacji, dopóki warunek
+jest prawdziwy. W tym wypadku dopóki zmienna *op* ma wartość "t".
 
-W Pythonie wszystko jest obiektem. Każdy obiekt przynależy do jakiego typu
+W Pythonie wszystko jest obiektem. Każdy obiekt przynależy do jakiegoś typu
 i ma jakąś wartość. Typ determinuje, jakie operacje można wykonać na wartości danego obiektu.
-Np. w podanym kodzie zmienna ``op`` jest napisem (typ string), z którego
-możemy wyłuskać poszczególne słowa za pomocą metody ``split()``.
+Np. dane pobrane od użytkownika w funkcji ``input()`` zwracane są jako napis (typ *string*),
+który rozbijamy na poszczególne składowe (w tym wypadku liczby) za pomocą metody ``split(separator)``.
 
 Instrukcje warunkowe (``if``), jak i pętle, można zagnieżdżać stosując wcięcia.
+Instrukcje o takich samych wcięciach tworzą bloki kodu.
 W jednej złożonej instrukcji warunkowej można sprawdzać wiele warunków (``elif:``).
 
 Zadania dodatkowe

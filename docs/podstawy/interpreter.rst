@@ -1,12 +1,11 @@
 Interpreter Pythona
 ####################
 
-Każdy kod można testować w interpreterze Pythona, jednak do tworzenia skryptów wykorzystujemy
-dowolny edytor tekstowy. Ze względów praktycznych warto korzystać z programów
-ułatwiających pisanie kodu (obsługa wcięć, podświetlenia itd.) tzw. IDE,
-czyli `Integrated Development Environment <http://pl.wikipedia.org/wiki/Zintegrowane_%C5%9Brodowisko_programistyczne>`_
-np. lekkie i szybkie :ref:`Geany <geany-python>` lub profesjonalne środowisko
-:ref:`PyCharm <pycharm-python>`. Obydwa programy działają na platformie Linux i Windows.
+Każdy kod można testować w interpreterze Pythona, jednak do tworzenia skryptów
+ze względów praktycznych warto korzystać z programów ułatwiających pisanie kodu
+(obsługa wcięć, podświetlenia itd.), tzw. IDE,
+czyli `Integrated Development Environment <http://pl.wikipedia.org/wiki/Zintegrowane_%C5%9Brodowisko_programistyczne>`_, np. :ref:`Geany <geany-python>`, :ref:`Sublime-Text <_st3-python>` lub :ref:`PyCharm <pycharm-python>`.
+Wymienione programy działają na platformie Linux i Windows.
 
 Zanim przystąpimy do pracy w katalogu domowym tworzymy podkatalog ``python``,
 w którym będziemy zapisywali nasze skrypty:
@@ -26,7 +25,7 @@ polecenie:
 
 .. code:: bash
 
-    ~$ python
+    ~$ python3
 
 Po uruchomieniu interpreter wyświetli swoją wersję, wersję kompilatora C++ (``GCC``),
 informację o sposobie uzyskania pomocy (polecenie ``help``), na końcu zaś
@@ -36,12 +35,12 @@ warunkowe lub pętle, w interpreterze zobaczymy znaki ``...`` oznaczające,
 
 .. note::
 
-    Można równierz korzystać z rozszerzonej konsoli Pythona uruchamianej poleceniem
-    ``ipython``. Oferuje ona kolorowane wyjście, ułatwia wszelkiego rodzaju interaktywne obliczenia.
+    Warto zainstalować i korzystać z rozszerzonych wersji konsoli Pythona uruchamianych najczęściej
+    poleceniami ``ipython3`` lub ``ipython3 qtconsole``. Oferują ona kolorowane wyjście,
+    rozbudowane podpowiedzi i ułatwienia interaktywnych obliczeń.
 
-    Przykłady zawierające znak zachęty ``$`` oznaczają komendy
-    do wykonania w terminalu systemu operacyjnego (w Xubuntu uruchom przez :kbd:`Win+T`).
+    Przykłady zawierające znak zachęty ``$`` oznaczają komendy do wykonania w terminalu systemu operacyjnego.
 
     Komendy kopiujemy i wklejamy do terminala bez znaku zachęty ``$``
     i poprzedzającego tekstu za pomocą środkowego klawisza myszki
-    lub skrótu :kbd:`CTRL+SHIFT+V`.
+    lub skrótów :kbd:`CTRL+SHIFT+V`, :kbd:`CTRL+SHIFT+Insert`.

@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 # deklarujemy i inicjalizujemy zmienne
@@ -8,14 +8,15 @@ pythonRok = 1989
 wiekPythona = aktRok - pythonRok
 
 # pobieramy dane
-imie = raw_input('Jak się nazywasz? ')
-wiek = int(raw_input('Ile masz lat? '))
+imie = input('Jak się nazywasz? ')
+wiek = int(input('Ile masz lat? '))
 
-print "Witaj", imie
-print "Mów mi Python, mam", wiekPythona, "lat."
+# wyświetlamy komunikaty
+print("Witaj", imie)
+print("Mów mi Python, mam", wiekPythona, "lat.")
 
 # instrukcja warunkowa
 if wiek > wiekPythona:
-    print 'Jesteś starszy ode mnie.'
+    print('Jesteś starszy ode mnie.')
 else:
-    print 'Jesteś młodszy ode mnie.'
+    print('Jesteś młodszy ode mnie.')

@@ -18,7 +18,7 @@ do nauki i testowania kodu.
 
 Funkcjonalność Pythona może być dowolnie rozszerzana dzięki licznym
 bibliotekom, które pozwalają tworzyć aplikacje matematyczne (`Matplotlib <http://pl.wikipedia.org/wiki/Matplotlib>`_),
-okienkowe (`PyQt <http://pl.wikipedia.org/wiki/PyQt>`_,
+okienkowe (np. `PyQt <http://pl.wikipedia.org/wiki/PyQt>`_,
 `PyGTK <http://pl.wikipedia.org/wiki/PyGTK>`_,
 `wxPython <http://pl.wikipedia.org/wiki/WxPython>`_),
 internetowe (`Flask <http://flask.pocoo.org/>`_, `Django <http://django.pl/>`_)
@@ -42,7 +42,6 @@ czy `Enthought Canopy <https://www.enthought.com/products/canopy/>`_.
 Materiały
 *********
 
-#. * :download:`Wprowadzenie do języka Python <wprowadzenie.pdf>`
 #. `Python (dokumentacja)`_
 
 .. _Python (dokumentacja): https://www.python.org/

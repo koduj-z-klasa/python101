@@ -1,16 +1,14 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# ~/python/03_petle_01.py
-
-print "Alfabet w porządku naturalnym:"
+print("Alfabet w porządku naturalnym:")
 
 for i in range(65, 91):
     litera = chr(i)
     tmp = litera + " => " + litera.lower()
-    print tmp,
+    print(tmp, end=" ")
 
-print "\nAlfabet w porządku odwróconym:"
+print("\nAlfabet w porządku odwróconym:")
 for i in range(122, 96, -1):
     litera = chr(i)
-    print litera.upper(), "=>", litera,
+    print(litera.upper(), "=>", litera, end=" ")

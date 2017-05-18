@@ -5,12 +5,8 @@ Python w przykładach
 
 Poznawanie Pythona zrealizujemy poprzez rozwiązywanie prostych zadań,
 które pozwolą zaprezentować elastyczność i łatwość tego języka.
-Nazwy kolejnych skryptów umieszczone są jako komentarz zawsze w czwartej linii kodu.
-
-Bardzo przydatnym narzędziem podczas kodowania w Pythonie, o czym wspomniano we wstępie,
-jest konsola interpretera, którą uruchomimy wydając w terminalu polecenie ``python`` lub ``ipython``.
-Można w niej testować i debugować wszystkie wyrażenia, warunki, polecenia itd.,
-z których korzystamy w skryptach.
+Sugerujemy używanie konsoli Pythona do testowania poznawanych funkcji,
+konstrukcji i fragmentów kodu.
 
 .. toctree::
     :titlesonly:
