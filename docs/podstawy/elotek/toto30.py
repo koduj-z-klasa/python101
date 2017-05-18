@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from totomodul30 import ustawienia, losujliczby, pobierztypy
+from totomodul import ustawienia, losujliczby, pobierztypy
 
 
 def main(args):

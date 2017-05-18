@@ -1,8 +1,8 @@
 #! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from totomodul33 import ustawienia, losujliczby, pobierztypy, wyniki
-from totomodul33 import czytaj_json, zapisz_json
+from totomodul import ustawienia, losujliczby, pobierztypy, wyniki
+from totomodul import czytaj_json, zapisz_json
 import time
 
 

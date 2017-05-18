@@ -154,25 +154,18 @@ dwie nowe: ``czytaj_ust()`` i ``zapisz_ust()``.
 .. highlight:: python
 .. literalinclude:: totomodul32.py
     :linenos:
-    :emphasize-lines: 14, 21, 36-37, 42, 51
+    :emphasize-lines: 14, 21, 34-35, 37, 42, 51
     :lineno-start: 1
     :lines: 1-55
 
-W funkcji ``ustawienia()`` pobieramy nick użytkownika i tworzymy nazwę pliku
-z ustawieniami, następnie próbujemy je odczytać wywołując funkcję ``czytaj_ust()``.
-Funkcja ta sprawdza, czy podany plik istnieje na dysku i otwiera go do odczytu:
-``plik = open(nazwapliku, "r")``. Plik powinien zawierać 1 linię, która przechowuje
-ustawienia w formacie: ``nick;ile_liczb;maks_liczba;ile_prób``. Po jej
-odczytaniu za pomocą metody ``.readline()`` i rozbiciu na elementy (``linia.split(";")``)
-zwracamy ją jako listę ``gracz``.
+**Operacje na plikach**:
 
-Jeżeli uda się odczytać zapisane ustawienia, drukujemy je, a następnie
-pytamy, czy użytkownik chce je zmienić. Jeżeli brak zapisanych
-ustawień lub użytkownik chce je zmienić, wykonujemy dotychczasowy kod,
-tj. pobieramy dane i jako listę przekazujemy do zapisania funkcji ``zapisz_ust()``.
-Dane zostają zapisane i zwrócone.
+* ``plik = open(nazwapliku, tryb)`` – otwarcie pliku w trybie ``"w"`` (zapis), "r" (odczyt) lub "a" (dopisywanie);
+* ``plik.readline()`` – odczytanie pojedynczej linii z pliku;
+* ``plik.write(napis)`` – zapisanie podanego napisu do pliku;
+* ``plik.close()`` – zamknięcie pliku.
 
-W powyższym kodzie widać, jakie operacje można wykonywać na tekstach, tj.:
+**Operacje na tekstach**:
 
 * operator ``+``: konkatenacja, czyli łączenie tekstów,
 * ``linia.split(";")`` – rozbijanie tekstu wg podanego znaku na elementy listy,
@@ -180,8 +173,20 @@ W powyższym kodzie widać, jakie operacje można wykonywać na tekstach, tj.:
 * ``odp.lower()`` – zmiana wszystkich znaków na małe litery,
 * ``str(arg)`` – przekształcanie podanego argumentu na typ tekstowy.
 
+W funkcji ``ustawienia()`` pobieramy nick użytkownika i tworzymy nazwę pliku
+z ustawieniami, następnie próbujemy je odczytać wywołując funkcję ``czytaj_ust()``.
+Funkcja ta sprawdza, czy podany plik istnieje na dysku i otwiera go do odczytu.
+Plik powinien zawierać 1 linię, która przechowuje ustawienia w formacie:
+``nick;ile_liczb;maks_liczba;ile_prób``. Po jej odczytaniu i rozbiciu na elementy
+(``linia.split(";")``) zwracamy ją jako listę ``gracz``.
+
+Jeżeli uda się odczytać zapisane ustawienia, pytamy użytkownika,
+czy chce je zmienić. Jeżeli brak ustawień lub użytkownik chce je zmienić,
+pobieramy informacje, tworzymy z nich listę i przekazujemy do zapisania:
+``zapisz_ust(nazwapliku, gracz)``.
+
 Ponieważ w programie głównym oczekujemy, że funkcja ``ustawienia()``
-zwróci dane typu napis, liczba, liczba, liczba – używamy konstrukcji:
+zwróci dane typu *napis, liczba, liczba, liczba* – używamy konstrukcji:
 ``return gracz[0:1] + [int(x) for x in gracz[1:4]]``.
 
 Na początku za pomocą notacji wycinkowej (ang. *slice*, :term:`notacja wycinkowa`)

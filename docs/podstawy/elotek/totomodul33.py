@@ -32,8 +32,8 @@ def ustawienia():
             except ValueError:
                 print("Błędne dane!")
                 continue
-        gracz = zapisz_ust(nazwapliku,
-                           [nick, str(ile), str(maks), str(ilelos)])
+        gracz = [nick, str(ile), str(maks), str(ilelos)]
+        zapisz_ust(nazwapliku, gracz)
 
     return gracz[0:1] + [int(x) for x in gracz[1:4]]
 
