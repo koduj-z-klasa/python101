@@ -16,11 +16,13 @@ pierwszymi jest sumą dwóch wyrazów poprzednich. Początkowe wyrazy tego ciąg
 .. literalinclude:: 04_funkcja_02.py
     :linenos:
 
-Definicja funkcji w Pythonie polega na użyciu słowa kluczowego ``def``,
-podaniu nazwy funkcji i w nawiasach okrągłych ewentualnej listy parametrów.
-Definicję kończymy znakiem dwukropka, po którym wpisujemy w następnych liniach,
-pamiętając o wcięciach, ciało funkcji. Funkcja może, ale nie musi zwracać wartości.
-Jeżeli chcemy zwrócić jakąś wartość używamy polecenia return wartość.
+Instrukcje realizujące jedno zadanie zazwyczaj grupujemy w funkcje,
+które można później wielokrotnie wywoływać.
+Funkcję definiujemy za pomocą słowa kluczowego ``def`` wg schematu
+``def nazwa_funkcji(parametry):``. Przy czym parametry są opcjonalne.
+Po dwukropku od nowego wiersza umieszczamy odpowiednio wcięte instrukcje,
+które tworzą ciało funkcji. Funkcja może zwrócać jakąś wartość za pomocą
+polecenia ``return wartość``.
 
 Zapis ``a, b = pwyrazy`` jest przykładem rozpakowania tupli, tzn. zmienne *a* i *b*
 przyjmują wartości kolejnych elementów tupli ``pwyrazy``. Zapis równoważny, w którym nie
@@ -36,5 +38,5 @@ podejścia rekurencyjnego. W tym ostatnim wypadku zwróć uwagę na argument wyw
 Zadania dodatkowe
 *****************
 
-- Zmień funkcje tak, aby zwracały poprawne wartości przy założeniu,
-  że dwa pierwsze wyrazy ciągu równe są 1 (bez zera).
+Zmień funkcje tak, aby zwracały poprawne wartości przy założeniu,
+że dwa pierwsze wyrazy ciągu równe są 1 (bez zera).

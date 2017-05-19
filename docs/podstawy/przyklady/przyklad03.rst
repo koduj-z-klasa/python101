@@ -8,11 +8,11 @@ przez użytkownika. Usuń z listy element o podanym indeksie.
 Podaj ilość wystąpień oraz indeks pierwszego wystąpienia podanego elementu.
 Wybierz z listy elementy od indeksu *i* do *j*.
 
-**POJĘCIA**: *tupla, lista, metoda*.
+**POJĘCIA**: *lista, metoda, notacja wycinkowa, tupla*.
 
 Wszystkie poniższe przykłady warto wykonać w konsoli Pythona.
-Treść komunikatów w funkcjach ``print`` można skrócić.
-Można również wpisywać kolejne polecenia do pliku i sukcesywanie go uruchomiać.
+Treść komunikatów w funkcjach ``print()`` można skrócić.
+Można również wpisywać kolejne polecenia do pliku i sukcesywnie go uruchomiać.
 
 .. raw:: html
 
@@ -21,33 +21,28 @@ Można również wpisywać kolejne polecenia do pliku i sukcesywanie go uruchomi
 .. literalinclude:: 04_listy_01.py
     :linenos:
 
-Funkcja ``input()`` pobiera dane wprowadzone przez użytkownika podobnie jak
-jak ``raw_input()``, ale próbuje zinterpretować je jako kod Pythona.
-Podane na wejściu liczby oddzielone przecinkami zostają spakowane jako
-:term:`tupla` (krotka). Jest to uporządkowana sekwencja poindeksowanych danych,
-przypominająca tablicę, której wartości nie można zmieniać. Zainicjowanie
-tupli wartościami od razu w kodzie jest proste: ``tupla = (4, 3, 5)``.
+Na początku z modułu ``random`` importujemy funkcję ``randint(a, b)``,
+która służy do generowania liczb z przedziału [a, b]. Wylosowane liczby
+dodajemy do listy.
 
-Lista to również uporządkowane sekwencje indeksowanych danych, zazwyczaj
-tego samego typu, które jednak możemy zmieniać.
+Lista (zob. :term:`lista`) to sekwencja indeksowanych danych, zazwyczaj tego samego typu.
+Listę tworzymy ujmując wartości oddzielone przecinkami w nawiasy kwadratowe,
+np. ``lista = [1, 'a']``. Dostęp do elementów sekwencji uzyskujemy podając
+nazwę i indeks, np. ``lista[0]``. Elementy indeksowane są od 0 (zera!).
+Z każdej sekwencji możemy wydobywać fragmenty dzięki notacji wycinkowej
+(ang. *slice*, zob. :term:`notacja wycinkowa`), np.: ``lista[1:4]``.
 
 .. note::
 
-    W definicji tupli nawiasy są opcjonalne, można więc pisać tak: ``tupla = 3, 2, 5, 8``
-    Oprócz tupli i list sekwencjami są w Pythonie również napisy.
-
-Dostęp do elementów sekwencji uzyskujemy podając nazwę i indeks, np. ``lista[0]``.
-Elementy indeksowane są od 0 (zera!). Z każdej sekwencji możemy wydobywać fragmenty
-dzięki notacji wycinkowej (ang. *slice*), np.: ``lista[1:4]``.
+    Sekwencjami w Pythonie są również napisy i tuple.
 
 Funkcje działające na sekwencjach:
 
 * ``len()`` – zwraca ilość elementów;
 * ``enumerate()`` – zwraca obiekt zawierający indeksy i elementy sekwencji;
-* ``reversed()`` – zwraca obiekt zawierający odwróconą sekwencję.
+* ``reversed()`` – zwraca obiekt zawierający odwróconą sekwencję;
 * ``sorted(lista)`` – zwraca kopię listy posortowanej rosnąco;
 * ``sorted(lista, reverse=True)`` – zwraca kopię listy w odwrotnym porządku;
-*
 
 Lista ma wiele użytecznych metod:
 
@@ -60,6 +55,24 @@ Lista ma wiele użytecznych metod:
 * ``.sort()`` – sortuje listę rosnąco;
 * ``.reverse()`` – sortuje listę w odwróconym porządku.
 
+Tupla to niemodyfikowalna lista. Wykorzystywana jest do zapamiętywania
+i przekazywania wartości, których nie powinno się zmieniać.
+Tuple tworzymy podając wartości w nawiasach okrągłych, np. ``tupla = (1, 'a')``
+lub z listy za pomocą funkcji: ``tuple(lista)``. Tupla może powstać
+również poprzez spakowanie wartości oddzielonych przecinkami,
+np. ``tupla = 1, 'a'``. Próba zmiany wartości w tupli generuje błąd.
+
+Funkcja ``eval()`` interpretuje swój argument jako kod Pythona.
+W instrukcji ``a, i = eval(input("Podaj element i indeks oddzielone przecinkiem: "))``
+podane przez użytkownika liczby oddzielone przecinkiem interpretowane są jako tupla,
+która następnie zostaje rozpakowana, czyli jej elementy zostają przypisane
+do zmiennych z lewej strony. Przetestuj w konsoli Pythona:
+
+.. code-block:: bash
+
+	>>> tupla = 2, 6
+	>>> a, b = tupla
+	>>> print(a, b)
 
 Zadania dodatkowe
 *****************

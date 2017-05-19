@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 """
@@ -9,9 +9,9 @@ import math  # zaimportuj moduł matematyczny
 
 
 def drukuj(co, kom="Sekwencja zawiera: "):
-    print kom
+    print(kom)
     for i in co:
-        print i,
+        print(i, end=" ")
 
 
 def srednia(oceny):
@@ -27,7 +27,7 @@ def mediana(oceny):
     """
     oceny.sort()
     if len(oceny) % 2 == 0:  # parzysta ilość ocen
-        half = len(oceny) / 2
+        half = int(len(oceny) / 2)
         # można tak:
         # return float(oceny[half-1]+oceny[half]) / 2.0
         # albo tak:

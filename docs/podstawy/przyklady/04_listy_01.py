@@ -1,50 +1,63 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# ~/python/04_1_listy.py
+from random import randint
 
-tupla = input("Podaj liczby oddzielone przecinkami: ")
-lista = []
-for i in range(len(tupla)):
-    lista.append(int(tupla[i]))
+ile = int(input("Ile liczb wylosować? "))
+lista = []  # pusta lista
+for i in range(0, ile):
+    lista.append(randint(0, 100))
+print(lista)
 
-print "Elementy i ich indeksy:"
+print("Dodawanie elementów na końcu listy")
+for i in range(0, 3):
+    liczba = int(input("Podaj liczbę: "))
+    lista.append(liczba)
+print(lista)
+
+print("Zawartość listy ([indeks] wartość):")
 for i, v in enumerate(lista):
-    print v, "[", i, "]"
+    print("[", i, "]", v)
 
-print "Elementy w odwróconym porządku:"
+print("Elementy w odwróconym porządku:")
 for e in reversed(lista):
-    print e,
+    print(e, end=" ")
 
-print ""
-print "Elementy posortowane rosnąco:"
+print()
+print("Elementy posortowane rosnąco:")
 for e in sorted(lista):
-    print e,
+    print(e, end=" ")
 
-print ""
-e = int(raw_input("Którą liczbę usunąć? "))
+print()
+e = int(input("Którą liczbę usunąć? "))
 lista.remove(e)
-print lista
+print(lista)
 
-print "Dodawanie elementów do listy"
-a, i = input("Podaj element i indeks oddzielone przecinkiem: ")
+print("Wstawianie elementów do listy")
+a, i = eval(input("Podaj element i indeks oddzielone przecinkiem: "))
 lista.insert(i, a)
-print lista
+print(lista)
 
-print "Wyszukiwanie i zliczanie elementu w liście"
-e = int(raw_input("Podaj liczbę: "))
-print "Liczba wystąpień: "
-print lista.count(e)
-print "Indeks pierwszego wystąpienia: "
+print("Wyszukiwanie i zliczanie elementu w liście")
+e = int(input("Podaj liczbę: "))
+print("Liczba wystąpień: ")
+print(lista.count(e))
+print("Indeks pierwszego wystąpienia: ")
 if lista.count(e):
-    print lista.index(e)
+    print(lista.index(e))
 else:
-    print "Brak elementu w liście"
+    print("Brak elementu w liście")
 
-print "Pobieramy ostatni element z listy: "
-print lista.pop()
-print lista
+print("Pobieramy ostatni element z listy: ")
+print(lista.pop())
+print(lista)
 
-print "Część listy:"
-i, j = input("Podaj indeks początkowy i końcowy oddzielone przecinkiem: ")
-print lista[i:j]
+print("Część listy (notacja wycinkowa):")
+i, j = eval(input("Podaj indeks początkowy i końcowy oddzielone przecinkiem: "))
+print(lista[i:j])
+
+print()
+print("Tupla to lista niemodyfikowalna.")
+print("Próba zmiany tupli generuje błąd:")
+tupla = tuple(lista)
+tupla[0] = 100
