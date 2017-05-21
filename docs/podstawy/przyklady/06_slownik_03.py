@@ -2,38 +2,29 @@
 # -*- coding: utf-8 -*-
 
 import os  # moduł udostępniający funkcję isfile()
+import csv  # moduł do obsługi formatu csv
 
 slownik = {}  # pusty słownik
-sPlik = "slownik.txt"  # nazwa pliku zawierającego wyrazy i ich tłumaczenia
+sFile = "slownik.csv"  # nazwa pliku zawierającego wyrazy i ich tłumaczenia
 
 
 def otworz(plik):
-    if os.path.isfile(sPlik):  # czy istnieje plik słownika?
-        with open(sPlik, "r") as pliktxt:  # otwórz plik do odczytu
-            for line in pliktxt:  # przeglądamy kolejne linie
-                # rozbijamy linię na wyraz obcy i tłumaczenia
-                t = line.split(":")
-                wobcy = t[0]
-                # usuwamy znaki nowych linii
-                znaczenia = t[1].replace("\n", "")
-                znaczenia = znaczenia.split(",")  # tworzymy listę znaczeń
-                # dodajemy do słownika wyrazy obce i ich znaczenia
-                slownik[wobcy] = znaczenia
+    if os.path.isfile(sFile):  # czy istnieje plik słownika?
+        with open(sFile, newline='') as plikcsv:  # otwórz plik do odczytu
+            tresc = csv.reader(plikcsv)
+            for linia in tresc:  # przeglądamy kolejne linie
+                slownik[linia[0]] = linia[1:]
     return len(slownik)  # zwracamy ilość elementów w słowniku
 
 
 def zapisz(slownik):
     # otwieramy plik do zapisu, istniejący plik zostanie nadpisany(!)
-    pliktxt = open(sPlik, "w")
-    for wobcy in slownik:
-        # "sklejamy" znaczenia przecinkami w jeden napis
-        znaczenia = ",".join(slownik[wobcy])
-        # wyraz_obcy:znaczenie1,znaczenie2,...
-        linia = ":".join([wobcy, znaczenia])
-        pliktxt.write(linia)  # zapisujemy w pliku kolejne linie
-        # można też tak:
-        # print(linia, file=pliktxt)
-    pliktxt.close()  # zamykamy plik
+    with open(sFile, "w", newline='') as plikcsv:
+        tresc = csv.writer(plikcsv)
+        for wobcy in slownik:
+            lista = slownik[wobcy]
+            lista.insert(0, wobcy)
+            tresc.writerow(lista)
 
 
 def oczysc(str):
@@ -51,7 +42,7 @@ def main(args):
     # wobce = set() # pusty zbiór wyrazów obcych
     # zmienna oznaczająca, że użytkownik uzupełnił lub zmienił słownik
     nowy = False
-    ileWyrazow = otworz(sPlik)
+    ileWyrazow = otworz(sFile)
     print("Wpisów w bazie:", ileWyrazow)
 
     # główna pętla programu
@@ -76,8 +67,6 @@ def main(args):
 
     if nowy:
         zapisz(slownik)
-
-    print(slownik)
 
     print("=" * 50)
     print("{0: <15}{1: <40}".format("Wyraz obcy", "Znaczenia"))

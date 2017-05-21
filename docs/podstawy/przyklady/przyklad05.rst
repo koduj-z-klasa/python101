@@ -48,12 +48,11 @@ jako liczbę zmiennoprzecinkową (typ *float*) do listy: ``oceny.append(float(oc
 
 Metoda ``.capitalize()`` pozwala wydrukować podany napis dużą literą.
 
-W funkcji ``print(...).format(s,m,o)`` zastosowano formatowanie drukowanych wartości,
-do których odwołujemy się w specyfikacji ``{0:5.2f}``. Pierwsza cyfra wskazuje, którą wartość
-z numerowanej od 0 (zera) listy, umieszczonej w funkcji ``format()``, wydrukować;
-np. aby wydrukować drugą wartość, trzeba by użyć kodu ``{1:}``.
-Po dwukropku podajemy szerokość pola przeznaczonego na wydruk,
-po kropce ilość miejsc po przecinku, symbol *f* oznacza natomiast
+W funkcji ``print("Mediana: {0:5.2f}\nOdchylenie: {1:5.2f}".format(m, o))`` zastosowano formatowanie
+wyświetlanych wartości. Nawiasy ``{}`` oznaczają pola zastępowane przez wartości podane jako
+argumenty metody ``format()``. W ciągu ``{0:5.2f}`` pierwsza cyfra wskazuje, który argument
+(numerowane od zera) metody ``format()``, wydrukować. Po dwukropku podajemy szerokość pola
+przeznaczonego na wydruk. Po kropce – ilość miejsc po przecinku. Symbol *f* oznacza
 liczbę zmiennoprzecinkową stałej precyzji.
 
 Więcej informacji nt. formatowania danych wyjściowych: `PyFormat <https://pyformat.info/>`_.
@@ -103,8 +102,15 @@ Zadania dodatkowe
 
 - W konsoli Pythona utwórz listę ``wyrazy`` zawierającą elementy: *abrakadabra* i *kordoba*.
   Utwórz zbiór *w1* poleceniem ``set(wyrazy[0])``. Oraz zbiór *w2* poleceniem ``set(wyrazy[1])``.
-  Wykonaj kolejno polecenia: ``print w1 – w2; print w1 | w2; print w1 & w2; print w1 ^ w2``.
-  Przykłady te ilustrują użycie klasycznych operatorów na zbiorach, czyli:
-  różnica (-) , suma (|), przecięcie (część wspólna, &) i elementy unikalne (^).
+  Wykonaj kolejno polecenia ilustrujące użycie klasycznych operatorów na zbiorach, czyli:
+  różnica (-) , suma (|), przecięcie (część wspólna, &) i elementy unikalne (^):
+
+.. code-block:: bash
+
+  >>> print(w1 – w2)
+  >>> print(w1 | w2)
+  >>> print(w1 & w2)
+  >>> print(w1 ^ w2)
+
 - W pliku :file:`ocenyfun.py` dopisz funkcję, która wyświetli wszystkie oceny oraz ich odchylenia
   od wartości średniej.
