@@ -45,6 +45,7 @@ def oczysc(str):
     str = str.lower()  # zmień na małe litery
     return str
 
+
 # zmienna oznaczająca, że użytkownik uzupełnił lub zmienił słownik
 nowy = False
 ileWyrazow = otworz(sFile)
