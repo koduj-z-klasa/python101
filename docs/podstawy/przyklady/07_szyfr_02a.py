@@ -1,18 +1,25 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 KLUCZ = 3
 
 
 def szyfruj(tekst):
-    stxt = ""
+    zaszyfrowny = ""
     for znak in tekst:
         if ord(znak) > 122 - KLUCZ:
-            stxt += chr(ord(znak) + KLUCZ - 26)
+            zaszyfrowny += chr(ord(znak) + KLUCZ - 26)
         else:
-            stxt += chr(ord(znak) + KLUCZ)
-    return stxt
+            zaszyfrowny += chr(ord(znak) + KLUCZ)
+    return zaszyfrowny
 
 
-u_tekst = raw_input("Podaj ciąg do zaszyfrowania:\n")
-print "Ciąg zaszyfrowany:\n", szyfruj(u_tekst)
+def main(args):
+    tekst = input("Podaj ciąg do zaszyfrowania:\n")
+    print("Ciąg zaszyfrowany:\n", szyfruj(tekst))
+    return 0
+
+
+if __name__ == '__main__':
+    import sys
+    sys.exit(main(sys.argv))

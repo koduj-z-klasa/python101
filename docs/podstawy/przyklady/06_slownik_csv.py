@@ -73,6 +73,7 @@ def main(args):
     print("=" * 50)
     for wobcy in slownik:
         print("{0: <15}{1: <40}".format(wobcy, ",".join(slownik[wobcy])))
+    return 0
 
 
 if __name__ == '__main__':

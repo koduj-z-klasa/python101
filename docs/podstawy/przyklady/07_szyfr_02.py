@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 KLUCZ = 3
@@ -14,5 +14,12 @@ def szyfruj(txt):
     return zaszyfrowny
 
 
-u_tekst = raw_input("Podaj ciąg do zaszyfrowania:\n")
-print "Ciąg zaszyfrowany:\n", szyfruj(u_tekst)
+def main(args):
+    tekst = input("Podaj ciąg do zaszyfrowania:\n")
+    print("Ciąg zaszyfrowany:\n", szyfruj(tekst))
+    return 0
+
+
+if __name__ == '__main__':
+    import sys
+    sys.exit(main(sys.argv))

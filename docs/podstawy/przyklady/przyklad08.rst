@@ -3,7 +3,10 @@
 Trójkąt
 #######
 
-**ZADANIE**: Napisz program, który na podstawie danych pobranych od użytkownika, czyli długości boków, sprawdza, czy da się zbudować trójkąt i czy jest to trójkąt prostokątny. Jeżeli da się zbudować trójkąt, należy wydrukować jego obwód i pole, w przeciwnym wypadku komunikat, że nie da się utworzyć trójkąta.
+**ZADANIE**: Napisz program, który na podstawie danych pobranych od użytkownika,
+czyli długości boków, sprawdza, czy da się zbudować trójkąt i czy jest to trójkąt prostokątny.
+Jeżeli da się zbudować trójkąt, należy wydrukować jego obwód i pole, w przeciwnym wypadku
+komunikat, że nie da się utworzyć trójkąta.
 
 .. raw:: html
 
@@ -12,13 +15,14 @@ Trójkąt
 .. literalinclude:: 08_trojkat_01.py
     :linenos:
 
-Pętla ``while`` wykonuje się dopóki warunek jest prawdziwy, czyli zmienna kontrolna "op" różna jest od "n". Dzięki temu użytkownik może wielokrotnie wprowadzać wartości boków tworzące trójkąt.
+Pętla ``while`` wykonuje się dopóki warunek jest prawdziwy, czyli zmienna kontrolna
+"op" różna jest od "n". Dzięki temu użytkownik może wielokrotnie wprowadzać wartości
+boków tworzące trójkąt.
 
 Są dwie metody pobierania kilku wartości z wejścia (np. klawiatury) na raz.
-Funkcja ``raw_input()`` zwraca wprowadzone dane zakończone nową linią jako napis.
 Funkcja ``input()`` wartości pobrane z wejścia (np. klawiatury) traktuje jak kod Pythona.
-Konstrukcja ``int(x) for x in raw_input().split()`` (przykład tzw. wyrażenia listowego) wywołuje funkcję ``int()``, która
-usiłuje przekształcić podaną wartość na liczbę całkowitą dla każdej
+Konstrukcja ``[int(x) for x in input().split()]`` (przykład tzw. wyrażenia listowego)
+wywołuje funkcję ``int()``, która usiłuje przekształcić podaną wartość na liczbę całkowitą dla każdej
 wartości wyodrębnionej z ciągu wejściowego przez funkcję ``split()``. Separatorem
 kolejnych wartości są dla funkcji ``split()`` białe znaki (spacje, tabulatory).
 Funkcja ``input()`` pobiera wejście w postaci napisu, ale próbuje zinterpretować go

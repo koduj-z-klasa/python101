@@ -46,6 +46,7 @@ def main(args):
             print("Błędne dane!")
 
     drukuj(oceny, przedmiot.capitalize() + " - wprowadzone oceny: ")
+    return 0
 
 
 if __name__ == '__main__':

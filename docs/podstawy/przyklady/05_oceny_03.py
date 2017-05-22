@@ -48,6 +48,7 @@ def main(args):
     o = odchylenie(oceny, s)  # wywołanie funkcji z modułu ocenyfun
     print("\nŚrednia: {0:5.2f}".format(s))
     print("Mediana: {0:5.2f}\nOdchylenie: {1:5.2f}".format(m, o))
+    return 0
 
 
 if __name__ == '__main__':

@@ -3,7 +3,8 @@
 Szyfr Cezara
 ############
 
-**ZADANIE**: Napisz program, który podany przez użytkownika ciąg znaków szyfruje przy użyciu szyfru Cezara i wyświetla zaszyfrowany tekst.
+**ZADANIE**: Napisz program, który podany przez użytkownika ciąg znaków szyfruje
+przy użyciu szyfru Cezara i wyświetla zaszyfrowany tekst.
 
 .. raw:: html
 
@@ -12,11 +13,11 @@ Szyfr Cezara
 .. literalinclude:: 07_szyfr_02.py
     :linenos:
 
-W programie możemy wykorzystywać zmienne globalne, np. KLUCZ.
+W programie możemy wykorzystywać zmienne globalne, np. ``KLUCZ``.
 ``def nazwa_funkcji(argumenty)`` – tak definiujemy funkcje, które
 mogą lub nie zwracać jakieś wartości.
 ``nazwa_funkcji(argumenty)`` – tak wywołujemy funkcje.
-Napisy mogą być indeksowane (od 0), co daje dostęp do pojedynczych znaków.
+Napisy są indeksowane (od 0), co daje dostęp do pojedynczych znaków.
 Funkcja ``len(str)`` zwraca długość napisu, wykorzystana jako argument funkcji
 ``range()`` pozwala iterować po znakach napisu.
 Operator ``+=`` oznacza dodanie argumentu z prawej strony do wartości z lewej.

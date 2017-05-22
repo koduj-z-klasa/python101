@@ -27,6 +27,7 @@ def main(args):
                 print("Brak takiego przedmiotu, możesz go dodać.")
             else:
                 break  # wyjście z pętli
+    return 0
 
 
 if __name__ == '__main__':
