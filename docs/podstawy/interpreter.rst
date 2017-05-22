@@ -4,7 +4,7 @@ Interpreter Pythona
 Każdy kod można testować w interpreterze Pythona, jednak do tworzenia skryptów
 ze względów praktycznych warto korzystać z programów ułatwiających pisanie kodu
 (obsługa wcięć, podświetlenia itd.), tzw. IDE,
-czyli `Integrated Development Environment <http://pl.wikipedia.org/wiki/Zintegrowane_%C5%9Brodowisko_programistyczne>`_, np. :ref:`Geany <geany-python>`, :ref:`Sublime-Text <_st3-python>` lub :ref:`PyCharm <pycharm-python>`.
+czyli `Integrated Development Environment <http://pl.wikipedia.org/wiki/Zintegrowane_%C5%9Brodowisko_programistyczne>`_, np. :ref:`Geany <geany-python>`, :ref:`Sublime-Text <st3-python>` lub :ref:`PyCharm <pycharm-python>`.
 Wymienione programy działają na platformie Linux i Windows.
 
 Zanim przystąpimy do pracy w katalogu domowym tworzymy podkatalog ``python``,

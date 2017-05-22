@@ -6,16 +6,18 @@ Słownik słówek
 **ZADANIE**: Przygotuj słownik zawierający obce wyrazy oraz ich możliwe znaczenia. Pobierz od użytkownika dane w formacie: *wyraz obcy: znaczenie1, znaczenie2, ...* itd. Pobieranie danych kończy wpisanie słowa "koniec".
 Podane dane zapisz w pliku. Użytkownik powinien mieć możliwość dodawania nowych i zmieniania zapisanych danych.
 
-**POJĘCIA**: *słownik, odczyt i zapis plików, formatowanie napisów.*
+**POJĘCIA**: *słownik, odczyt i zapis plików, formatowanie napisów, format csv.*
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: 06_slownik_02.py
+.. highlight:: python
+
+.. literalinclude:: 06_slownik_txt.py
     :linenos:
 
-Słownik (zob. :term:`slownik`) to struktura nieuporządkowanych danych w formacie *klucz:wartość*.
+Słownik (zob. :term:`słownik`) to struktura nieuporządkowanych danych w formacie *klucz:wartość*.
 Kluczami są najczęściej napisy, które wskazują na wartości dowolnego typu,
 np. inne napisy, liczby, listy, tuple itd. W programie wykorzystujemy słownik,
 którego kluczami są wyrazy obce, natomiast wartościami są listy możliwych znaczeń.
@@ -62,12 +64,46 @@ Instrukcja ``list()`` przekształca zwrócony przez funkcję ``map()`` obiekt z 
 
 Metoda napisów ``format()`` pozwala na drukowanie przekazanych jej jako argumentów danych
 zgodnie z ciągami formatującymi umieszczanymi w nawiasach klamrowych w napisie,
-np. ``{0: <15}{1: <40}``. Pierwsza cyfra wskazuje, do którego argumentu metody ``format()``
-odnosi się ciąg formatujący. Po dwukropku podajemy znak
+np. ``{0: <15}{1: <40}``. Pierwsza cyfra wskazuje, do którego z kolejnych argumentów metody ``format()``
+odnosi się ciąg formatujący. Po dwukropku podajemy znak wypełnienia (" " – spacja),
+symbol "<" oznacza wyrównanie do lewej, a ostatnia cyfra ("15") to szerokość pola.
+Zob. dokumentację `Format String Syntax <https://docs.python.org/3/library/string.html>`_.
 
-, że pierwszy argument umieszczony w funkcji ``format()``, drukowany ma być wyrównany do lewej (<) w polu o szerokości 15 znaków, drugi argument, również wyrównany do lewej, w polu o szerokości 40 znaków.
+Zapis w pliku csv
+=================
 
-`csv <https://pl.wikipedia.org/wiki/CSV_(format_pliku)>`_
+Dane można też wygodnie zapisywać do pliku w formacie `csv <https://pl.wikipedia.org/wiki/CSV_(format_pliku)>`_.
+Jest to rozwiązanie wygodniejsze, ponieważ zwalnia nas od konieczności ręcznego przekształcania
+odczytywanych z pliku linii na struktury danych.
+
+Na początku pliku dodajemy import modułu: ``import csv``. Następnie zmieniamy funkcje
+``otworz()`` i ``zapisz()`` na podane niżej:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: 06_slownik_csv.py
+    :linenos:
+    :lineno-start: 11
+    :lines: 11-27
+
+`Format csv <https://pl.wikipedia.org/wiki/CSV_(format_pliku)>`_
+polega na zapisywaniu wartości oddzielonych separatorem,
+czyli domyślnie przecinkiem. Jeżeli wartość zawiera znak separatora,
+jest cytowana domyślnie za pomocą cudzysłowu. W naszym wypadku przykładowa
+linia pliku przyjmie postać: *wyraz obcy,znaczenie1,znaczenie2,...*
+
+W powyższym kodzie używamy metody ``csv.reader(plik)``, która interpretuje
+podany plik jako zapisany w formacie csv i każdą linię zwraca
+w postaci listy elementów. Instrukcja ``slownik[linia[0]] = linia[1:]``
+zapisuje dane w słowniku, kluczem jest wyraz obcy (1 ellement listy),
+wartościami – lista znaczeń.
+
+W funkcji zapisującej dane w formacie csv, na początku tworzymy obiekt ``tresc``
+zwrócony przez metodę ``csv.writer(plik)``. Po przygotowaniu listy zawierającej
+wyraz obcy i jego znaczenia zapisujemy ją za pomocą metody ``writerow(lista)``.
+
 
 Zadania dodatkowe
 *****************
