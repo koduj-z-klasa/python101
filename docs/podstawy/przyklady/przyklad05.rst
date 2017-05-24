@@ -15,7 +15,7 @@ formatowanie napisów i danych na wyjściu, argumenty funkcji, zwracanie wartoś
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: 05_oceny_03.py
+.. literalinclude:: 05_oceny.py
     :linenos:
 
 Jak to działa

@@ -5,10 +5,16 @@ import math  # dołączamy bibliotekę matematyczną
 
 op = "t"  # deklarujemy i inicjujemy zmienną pomocniczą
 while op != "n":  # dopóki wartość zmiennej op jest inna niż znak "n"
-    a, b, c = input("Podaj 3 boki trójkąta (oddzielone przecinkami): ").split()
-    # alternatywna forma pobrania danych
-    # a, b, c = [int(x) for x in raw_input(
-    #     "Podaj 3 boki trójkąta (oddzielone spacjami): ").split()]
+    dane = input("Podaj 3 boki trójkąta (oddzielone przecinkami): ")
+
+    lista = []  # definicja pustej listy
+    for x in dane.split(","):
+        lista.append(int(x))  # dodanie lementu do listy
+    a, b, c = lista  # rozpakowanie listy
+    # wyrażenie listowe, które zastępuje kod 10-13:
+    # a, b, c = [int(x) for x in dane.split(",")]
+
+    print("Podano boki: ", a, b, c)
 
     if a + b > c and a + c > b and b + c > a:  # warunek złożony
         print("Z podanych boków można zbudować trójkąt.")

@@ -18,7 +18,7 @@ Można również wpisywać kolejne polecenia do pliku i sukcesywnie go uruchomia
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: 04_listy_01.py
+.. literalinclude:: 03_listy.py
     :linenos:
 
 Na początku z modułu ``random`` importujemy funkcję ``randint(a, b)``,

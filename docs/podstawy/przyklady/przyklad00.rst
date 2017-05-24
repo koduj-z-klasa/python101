@@ -12,7 +12,7 @@ Jesteś starszy(młodszy) ode mnie."
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: 01_hello.py
+.. literalinclude:: 00_hello.py
     :linenos:
 
 Deklaracja zmiennej w Pythonie nie jest wymagana, wystarczy podanej nazwie przypisać jakąś wartość
@@ -23,10 +23,9 @@ czyli działań arytmetycznych lub logicznych.
 
     Niekiedy mówi się, że w Pythonie zmiennych nie ma, są natomiast wartości określonego typu.
 
-Funkcje:
+Wejście i wyjście danych:
 
 * ``input()`` zwraca pobrane z klawiatury znaki jako napis, czyli typ **string**.
-* ``int()`` umożliwia konwersję napisu na liczbę całkowitą, czyli typ **integer**.
 * ``print()`` drukuje podane argumenty oddzielone przecinkami.
 
 Napisy ujmujemy w cudzysłowy podwójne lub pojedyncze.
@@ -36,8 +35,10 @@ jest prawdziwe (przyjmuje wartość ``True``), wykonywana jest pierwsza instrukc
 w przeciwnym wypadku (``else``), kiedy wyrażenie jest fałszywe (wartość ``False``),
 wykonywana jest instrukcja druga. Części instrukcji warunkowej kończymy dwukropkiem.
 
-Charakterystyczną cechą Pythona jest używanie wcięć do zaznaczania bloków kodu. Standardem są 4 spacje.
-Komentarze wprowadzamy po znaku ``#``.
+Charakterystyczną cechą Pythona jest używanie wcięć do zaznaczania bloków kodu.
+Standardem są 4 spacje. Komentarze wprowadzamy po znaku ``#``.
+
+Funkcja ``int()`` umożliwia konwersję napisu na liczbę całkowitą, czyli typ **integer**.
 
 Zadania
 ********

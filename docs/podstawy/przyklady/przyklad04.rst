@@ -13,7 +13,7 @@ pierwszymi jest sumą dwóch wyrazów poprzednich. Początkowe wyrazy tego ciąg
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: 04_funkcja_02.py
+.. literalinclude:: 04_fibonacci.py
     :linenos:
 
 Instrukcje realizujące jedno zadanie zazwyczaj grupujemy w funkcje,
