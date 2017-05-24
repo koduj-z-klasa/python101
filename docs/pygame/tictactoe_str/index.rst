@@ -90,6 +90,7 @@ Funkcja ``drukuj_wynik()`` ma za zadanie przygotowanie końcowego napisu. W tym 
 Ostatnie linie kodu wypełniają okno gry kolorem (``.fill()``), wywołują funkcję rysujące planszę (``rysuj_plansze()``), stan gry (``rysuj_pole_gry()``, czyli znaki gracza i komputera), a także ewentualny komunikat końcowy (``drukuj_wynik()``). Funkcja ``pygame.display.update()``, która musi być wykonywana na końcu rysowania, aktualizuje obraz gry na ekranie.
 
 .. note::
+
     Plik wykorzystywany do wyświetlania tekstu (``freesansbold.ttf``) musi znaleźć się w katalogu ze skryptem.
 
 Grę możemy uruchomić poleceniem wpisanym w terminalu:
@@ -111,14 +112,3 @@ Materiały
 **Źródła:**
 
 * :download:`tictactoe_str.zip <tictactoe_str.zip>`
-* :download:`tictactoe_str.pdf <../../pdf/tictactoe_str.pdf>`
-
-Kolejne wersje tworzonego kodu można znaleźć w katalogu ``~/python101/docs/tictactoe``.
-Uruchamiamy je wydając polecenie:
-
-.. code-block:: bash
-
-    ~/python101$ cd docs/tictactoe
-    ~/python101/docs/tictactoe$ python tictactoe_strx.py
-
-\- gdzie *x* jest numerem kolejnej wersji kodu.

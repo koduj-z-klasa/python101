@@ -103,7 +103,7 @@ class Population(object):
         """
         # w pętli wypełnij listę kolumnami
         # które także w pętli zostają wypełnione wartością 0 (DEAD)
-        return [[DEAD for y in xrange(self.height)] for x in xrange(self.width)]
+        return [[DEAD for y in range(self.height)] for x in range(self.width)]
 
 def handle_mouse(self):
     # pobierz stan guzików myszki z wykorzystaniem funcji pygame
@@ -125,7 +125,7 @@ def handle_mouse(self):
     y /= self.box_size
 
     # ustaw stan komórki na macierzy
-    self.generation[x][y] = ALIVE if alive else DEAD
+    self.generation[int(x)][int(y)] = ALIVE if alive else DEAD
 
 def draw_on(self, surface):
     """

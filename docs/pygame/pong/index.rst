@@ -51,7 +51,7 @@ bez żadnych elementów wymagających narysowania.
     Każdy plik skryptu *Python* jest uruchamiany w momencie importu — plik/moduł główny
     jest importowany jako pierwszy.
 
-    Deklaracje klas są faktycznie instrukcjami sterującymi mówiącymi by w aktualnym module
+    Deklaracje klas są faktycznie instrukcjami sterującymi mówiącymi, by w aktualnym module
     utworzyć typy zawierające wskazane definicje.
 
     Możemy mieszać deklaracje klas ze zwykłymi instrukcjami sterującymi takimi jak ``print``,
@@ -82,7 +82,7 @@ możemy na końcu chwilkę uśpić nasz program:
 
 
 Jednak zamiast tego, dla lepszej kontroli powinniśmy zadeklarować klasę kontrolera gry,
-usuńmy kod o linii 37 do końca i dodajmy klasę kontrolera:
+usuńmy kod od linii 37 do końca i dodajmy klasę kontrolera:
 
 .. raw:: html
 
@@ -95,18 +95,18 @@ usuńmy kod o linii 37 do końca i dodajmy klasę kontrolera:
 
 .. note::
 
-    Prócz dodania kontrolera zmieniliśmy także sposób w jaki gra jest uruchamiana
+    Prócz dodania kontrolera zmieniliśmy także sposób, w jaki gra jest uruchamiana
     — nie mylić z uruchomieniem programu.
 
     Na końcu dodaliśmy instrukcję warunkową
-    ``if __name__ == "__main__":``, w niej sprawdzamy czy nasz moduł jest modułem
-    głównym programu, jeśli nim jest gra zostanie uruchomiona.
+    ``if __name__ == "__main__":``, w niej sprawdzamy, czy nasz moduł jest modułem
+    głównym programu, jeśli nim jest, gra zostanie uruchomiona.
 
-    Dzięki temu jeśli nasz moduł został zaimportowany gdzieś indziej instrukcją
-    ``import pong``, deklaracje klas zostały by wykonane, ale sama gra nie będzie
+    Dzięki temu, jeśli nasz moduł zostałby zaimportowany gdzieś indziej instrukcją
+    ``import pong``, deklaracje klas wykonałyby się, ale sama gra nie zostanie
     uruchomiona.
 
-Gotowy kod możemy wyciągnąć komendą:
+Gotowy kod możemy pobrać komendą:
 
 .. code-block:: bash
 
@@ -115,10 +115,10 @@ Gotowy kod możemy wyciągnąć komendą:
 Piłeczka
 **********************
 
-Czas dodać piłkę do gry. *Piłeczką* będzie kolorowe kółko które z każdym przejściem
+Czas dodać piłkę do gry. *Piłeczką* będzie kolorowe kółko, które z każdym przejściem
 naszej pętli przesuniemy o kilka punktów w osi X i Y, zgodnie wektorem prędkości.
 
-Wcześniej jednak zdefiniujemy wspólną klasę bazową dla obiektów które będziemy
+Wcześniej jednak zdefiniujemy wspólną klasę bazową dla obiektów, które będziemy
 rysować w oknie naszej gry:
 
 .. raw:: html
@@ -144,7 +144,7 @@ Następnie dodajmy klasę samej piłeczki dziedzicząc z ``Drawable``:
 
 W przykładzie powyżej wykonaliśmy :term:`dziedziczenie` oraz :term:`przesłanianie` konstruktora,
 ponieważ rozszerzamy ``Drawable`` i chcemy zachować efekt działania konstruktora na początku
-konstruktora ``Ball`` wywołujemy konstruktorr klasy bazowej:
+konstruktora ``Ball`` wywołujemy konstruktor klasy bazowej:
 
     .. code-block:: python
 
@@ -164,18 +164,18 @@ Teraz musimy naszą piłeczkę zintegrować z resztą gry:
 
 .. note::
 
-    Metoda ``Board.draw`` oczekuje wielu opcjonalnych argumentów, chodź na razie przekazujemy
+    Metoda ``Board.draw`` oczekuje wielu opcjonalnych argumentów, choć na razie przekazujemy
     tylko jeden. By zwiększyć czytelność potencjalnie dużej listy argumentów — kto
-    wie co jeszcze dodamy :) — podajemy każdy argument w swojej linii zakończonej przecinkiem ``,``
+    wie co jeszcze dodamy :) — podajemy każdy argument w osobnej linii zakończonej przecinkiem ``,``.
 
     Python nie traktuje takich osieroconych przecinków jako błąd, jest to ukłon w stronę
-    programistów którzy często zmieniają kod, kopiują i wklejają kawałki.
+    programistów, którzy często zmieniają kod, kopiują i wklejają kawałki.
 
-    Dzięki temu możemy wstawiać nowe, i zmieniać kolejność bez zwracania uwagi czy na końcu
+    Dzięki temu możemy wstawiać nowe i zmieniać kolejność bez zwracania uwagi, czy na końcu
     jest przecinek, czy go brakuje, czy go należy usunąć. Zgodnie z konwencją powinien być
     tam zawsze.
 
-Gotowy kod możemy wyciągnąć komendą:
+Gotowy kod możemy pobrać komendą:
 
 .. code-block:: bash
 
@@ -200,7 +200,7 @@ prędkości, musimy tylko wykryć moment w którym piłeczka będzie dotykać kr
 
 W tym celu piłeczka musi być świadoma istnienia planszy i pozycji krawędzi, dlatego
 zmodyfikujemy metodę ``Ball.move`` tak by przyjmowała ``board`` jako argument i na
-jego podstawie sprawdzimy czy piłeczka powinna się odbijać:
+jego podstawie sprawdzimy, czy piłeczka powinna się odbijać:
 
 .. raw:: html
 
@@ -252,13 +252,13 @@ Jeszcze zmodyfikujmy wywołanie metody ``move`` w naszej pętli głównej:
     należy poprawić dodając jedno wcięcie (4 spacje).
 
 
-Sprawdzamy piłka się odbija, uruchamiamy nasz program:
+Sprawdzamy, czy piłka się odbija, uruchamiamy nasz program:
 
 .. code-block:: bash
 
     ~/python101$ python games/pong.py
 
-Gotowy kod możemy wyciągnąć komendą:
+Gotowy kod możemy pobrać komendą:
 
 .. code-block:: bash
 
@@ -268,8 +268,8 @@ Gotowy kod możemy wyciągnąć komendą:
 Odbijamy piłeczkę rakietką
 *******************************
 
-Dodajmy "rakietkę" od przy pomocy której będziemy mogli odbijać piłeczkę.
-Dodajmy zwykły prostokąt, który będziemy przesuwać przy pomocy myszki.
+Dodajmy "rakietkę", przy pomocy której będziemy mogli odbijać piłeczkę.
+Będzie to zwykły prostokąt, który będziemy przesuwać za pomocą myszki.
 
 .. raw:: html
 
@@ -282,7 +282,7 @@ Dodajmy zwykły prostokąt, który będziemy przesuwać przy pomocy myszki.
 
 .. note::
 
-    W tym przykładzie zastosowaliśmy operator warunkowy, za jego pomocą ograniczamy
+    W tym przykładzie zastosowaliśmy operator warunkowy, który ogranicza
     prędkość poruszania się rakietki:
 
     .. code-block:: python
@@ -294,8 +294,8 @@ Dodajmy zwykły prostokąt, który będziemy przesuwać przy pomocy myszki.
 
 
 Następnie "pokażemy" rakietkę piłeczce, tak by mogła się od niej odbijać.
-Wiemy że rakietek będzie więcej dlatego od razu tak zmodyfikujemy metodę
-``Ball.move`` by przyjmowała kolekcję rakietek:
+Wiemy że rakietek będzie więcej, dlatego od razu tak zmodyfikujemy metodę
+``Ball.move``, by przyjmowała kolekcję rakietek:
 
 .. raw:: html
 
@@ -337,7 +337,7 @@ dodatkowo musimy ją pokazać piłeczce:
     :emphasize-lines: 13, 21, 24, 39-42
     :lineno-start: 38
 
-Gotowy kod możemy wyciągnąć komendą:
+Gotowy kod możemy pobrać komendą:
 
 .. code-block:: bash
 
@@ -345,9 +345,9 @@ Gotowy kod możemy wyciągnąć komendą:
 
 .. note::
 
-    W tym miejscu można się pobawić naszą grą, zmodyfikuj ją według uznania
-    i pochwal się rezultatem z innymi.
-    Jeśli kod przestanie działać, można szybko porzucić zmiany poniższą komendą.
+    W tym miejscu można się pobawić naszą grą. Zmodyfikuj ją według uznania
+    i podziel się rezultatem z innymi.
+    Jeśli kod przestanie działać, można szybko cofnąć zmiany poniższą komendą.
 
     .. code-block:: bash
 
@@ -370,10 +370,10 @@ Dodajemy przeciwnika, nasz przeciwnik będzie mistrzem, będzie dokładnie
     :lineno-start: 167
 
 Tak jak w przypadku piłeczki i rakietki dodajemy nasze ``Ai`` do gry,
-a wraz nią wraz dodajemy drugą rakietkę.
-Dwie rakietki ustawiamy na przeciwległych brzegach planszy.
+a wraz nią drugą rakietkę.
+Rakietki ustawiamy na przeciwległych brzegach planszy.
 
-Trzeba pamiętać by pokazać drugą rakietkę piłeczce, tak by mogła się
+Trzeba pamiętać, by pokazać drugą rakietkę piłeczce, tak by mogła się
 od niej odbijać.
 
 .. raw:: html
@@ -391,7 +391,7 @@ Pokazujemy punkty
 **********************
 
 Dodajmy klasę sędziego, który patrząc na poszczególne elementy gry będzie
-decydował czy graczom należą się punkty i będzie ustawiał piłkę w początkowym położeniu.
+decydował, czy graczom należą się punkty i będzie ustawiał piłkę w początkowym położeniu.
 
 .. raw:: html
 
@@ -402,7 +402,7 @@ decydował czy graczom należą się punkty i będzie ustawiał piłkę w począ
     :lines: 184-231
     :lineno-start: 184
 
-Tradycyjnie dodajemy instancję nowej klasy do gry:
+Jak zwykle dodajemy instancję nowej klasy do gry:
 
 .. raw:: html
 
@@ -421,7 +421,7 @@ Zadania dodatkowe
 #. Metoda ``Ball.move`` otrzymuje w argumentach planszę i rakietki. Te elementy można
    piłeczce przekazać tylko raz w konstruktorze.
 #. Komputer nie odbija piłeczkę rogiem rakietki.
-#. Rakietka gracza rusza się tylko gdy gracz rusza myszką, ruch w stronę myszki powinen
-   być kontynuowany także gdy myszka jest bezczynna.
-#. Gdy piłeczka odbija się od boków rakietki powinna odbijać się w osi X.
+#. Rakietka gracza rusza się tylko, gdy gracz rusza myszką, ruch w stronę myszki powinien
+   być kontynuowany także, gdy myszka jest bezczynna.
+#. Gdy piłeczka odbija się od boków rakietki, powinna odbijać się w osi X.
 #. Gra dwuosobowa z użyciem komunikacji po sieci.

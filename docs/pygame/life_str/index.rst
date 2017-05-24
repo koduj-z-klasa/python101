@@ -40,8 +40,8 @@ Kolejnym krokiem będzie zdefiniowanie funkcji przygotowującej i rysującej pop
 
 .. literalinclude:: life_str2.py
     :linenos:
-    :lineno-start: 36
-    :lines: 36-
+    :lineno-start: 39
+    :lines: 39-
 
 Najważniejszym fragmentem kodu, implementującym logikę naszej gry, jest funkcja przygotuj_populacje(), która jako parametr przyjmuje omówioną wcześniej strukturę ``POLE_GRY`` (pod nazwą ``polegry``). Funkcja sprawdza, jak rozwija się populacja komórek, według następujących zasad:
 
@@ -71,12 +71,15 @@ Dopisujemy więc do kodu główną pętlę wraz z obsługą zdarzeń:
 
 .. literalinclude:: life_str3.py
     :linenos:
-    :lineno-start: 99
-    :lines: 99-
+    :lineno-start: 122
+    :lines: 122-
 
-W obrębie głównej pętli programu pętla ``for`` odczytuje kolejne zdarzenia zwracane przez metodę ``pygame.event.get()``. Jak widać, w pierwszej kolejności obsługujemy wydarzenie typu (właściwość ``.type``) QUIT, czyli zakończenie aplikacji.
+W obrębie głównej pętli programu pętla ``for`` odczytuje kolejne zdarzenia zwracane przez
+metodę ``pygame.event.get()``. Jak widać, w pierwszej kolejności obsługujemy wydarzenie typu
+(właściwość ``.type``) QUIT, czyli zakończenie aplikacji.
 
-Jednak na początku gry gracz klika lewym lub prawym klawiszem myszy i ożywia lub uśmierca kliknięte komórki w obrębie okna gry. Dzieje się tak dopóty, dopóki zmienna ``zycie_trwa`` ma wartość ``False``, a więc dopóki gracz nie naciśnie klawisza ENTER (``if event.type == KEYDOWN and event.key == K_RETURN:``). Każde kliknięcie myszą zostaje przechwycone (``if event.type == MOUSEBUTTONDOWN:``) i zapamiętane w zmiennej ``przycisk_wdol``. Jeżeli zmienna ta ma wartość ``True``, pobieramy współrzędne kursora myszy (``mouse_x, mouse_y = pygame.mouse.get_pos()``) i obliczamy indeksy elementu listy ``POLE_GRY`` odpowiadającego klikniętej komórce. Następnie sprawdzamy, który przycisk myszy został naciśnięty; informację tę zapisaliśmy wcześniej za pomocą funkcji ``event.button`` w zmiennej ``przycisk_typ``, która przyjmuje wartość 1 (lewy) lub 3 (prawy przycisk myszy), w zależności od klikniętego przycisku ożywiamy lub uśmiercamy komórkę, zapisując odpowiedni stan w liście ``POLE_GRY``.
+Jednak na początku gry gracz klika lewym lub prawym klawiszem myszy i ożywia lub uśmierca
+kliknięte komórki w obrębie okna gry. Dzieje się tak dopóty, dopóki zmienna ``zycie_trwa`` ma wartość ``False``, a więc dopóki gracz nie naciśnie klawisza ENTER (``if event.type == KEYDOWN and event.key == K_RETURN:``). Każde kliknięcie myszą zostaje przechwycone (``if event.type == MOUSEBUTTONDOWN:``) i zapamiętane w zmiennej ``przycisk_wdol``. Jeżeli zmienna ta ma wartość ``True``, pobieramy współrzędne kursora myszy (``mouse_x, mouse_y = pygame.mouse.get_pos()``) i obliczamy indeksy elementu listy ``POLE_GRY`` odpowiadającego klikniętej komórce. Następnie sprawdzamy, który przycisk myszy został naciśnięty; informację tę zapisaliśmy wcześniej za pomocą funkcji ``event.button`` w zmiennej ``przycisk_typ``, która przyjmuje wartość 1 (lewy) lub 3 (prawy przycisk myszy), w zależności od klikniętego przycisku ożywiamy lub uśmiercamy komórkę, zapisując odpowiedni stan w liście ``POLE_GRY``.
 
 Naciśnięcie klawisza ENTER uruchamia symulację rozwoju populacji. Zmienna ``zycie_trwa`` ustawiona zostaje na wartość ``True`` , co przerywa obsługę kliknięć myszą, i wywoływana jest funkcja ``przygotuj_populacje()``, która przygotowuje kolejny stan populacji. Końcowe polecenia wypełniają okno gry kolorem (``.fill()``), wywołują funkcję rysującą planszę (``rysuj_populacje()``). Funkcja ``pygame.display.update()``, która musi być wykonywana na końcu rysowania, aktualizuje obraz gry na ekranie. Ostatnie polecenie ``pygame.time.delay(100)`` dodaje 100-milisekundowe opóźnienie kolejnej aktualizacji stanu populacji. Dzięki temu możemy obserwować jej rozwój na planszy.
 
@@ -99,21 +102,3 @@ Materiały
 **Źródła:**
 
 * :download:`life_str.zip <life_str.zip>`
-* :download:`life_str.pdf <../../pdf/life_str.pdf>`
-
-Kolejne wersje tworzenego kodu można pobierać wydając polecenia:
-
-.. code-block:: bash
-
-    ~/python101$ git checkout -f life/str1
-    ~/python101$ git checkout -f life/str2
-    ~/python101$ git checkout -f life/str3
-
-Uruchamiamy je wydając polecenie:
-
-.. code-block:: bash
-
-    ~/python101$ cd docs/life_str
-    ~/python101/docs/life_str$ python life_strx.py
-
-\- gdzie *x* jest numerem kolejnej wersji kodu.

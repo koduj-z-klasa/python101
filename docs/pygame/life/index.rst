@@ -120,15 +120,15 @@ macierz na podstawie zadanych parametrów.
 
     def reset_generation(self)
         generation = []
-        for x in xrange(self.width):
+        for x in range(self.width):
             column = []
-            for y in xrange(self.height)
+            for y in range(self.height)
                 column.append(DEAD)
             generation.append(column)
         return generation
 
 Powyżej wykorzystaliśmy 2 pętle (jedna zagnieżdżona w drugiej)
-oraz funkcję ``xrange`` która wygeneruje listę wartości
+oraz funkcję ``range`` która wygeneruje listę wartości
 od 0 do zadanej wartości - 1. Dzięki temu nasze pętle uzyskają ``self.width``
 i ``self.height`` przebiegów. Jest lepiej.
 
@@ -136,7 +136,7 @@ Przykład kodu powyżej to konstrukcja którą w taki lub podobny sposób
 wykorzystuje się co chwila w każdym programie — to chleb powszedni programisty.
 Każdy program musi w jakiś sposób iterować po elementach list przekształcając je w inne listy.
 
-W linii 113 mamy przykład zastosowania tzw. wyrażeń listowych (ang. list comprehensions).
+W linii 113 mamy przykład zastosowania tzw. wyrażeń listowych (ang. *list comprehensions*).
 Pomiędzy znakami nawiasów kwadratowych ``[ ]`` mamy pętlę, która w każdym przebiegu
 zwraca jakiś element. Te zwrócone elementy napełniają nową listę która zostanie zwrócona
 w wyniku wyrażenia.
@@ -151,7 +151,7 @@ wyrażenie listowe (jak 2 pętle powyżej). Zajrzyjmy najpierw do wewnętrznego 
 .. code-block:: python
     :linenos:
 
-    [DEAD for y in xrange(self.height)]
+    [DEAD for y in range(self.height)]
 
 W kodzie powyżej każdym przebiegu pętli uzyskamy ``DEAD``. Dzięki temu zyskamy
 *kolumnę* macierzy od wysokości ``self.height``, w każdej z nich będziemy mogli się dostać do pojedynczej
@@ -167,7 +167,7 @@ listowym, ale dla uproszczenia w każdym jego przebiegu zwracajmy ``nowa_kolumna
 .. code-block:: python
     :linenos:
 
-    [nowa_kolumna for x in xrange(self.width)]
+    [nowa_kolumna for x in range(self.width)]
 
 W kodzie powyżej w każdym przebiegu pętli uzyskamy ``nowa_kolumna``. Dzięki temu zyskamy
 listę *kolumn*. Do każdej z nich będziemy mogli się dostać adresując listę wartością ``x`` o tak
@@ -184,7 +184,7 @@ zamiast 7 z przykładu z podwójną pętlą:
 .. code-block:: python
     :linenos:
 
-    [[DEAD for y in xrange(self.height)] for x in xrange(self.width)]
+    [[DEAD for y in range(self.height)] for x in range(self.width)]
 
 Układamy żywe komórki na planszy
 **********************************

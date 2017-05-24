@@ -75,7 +75,7 @@ class Board(object):
         cell_size = self.surface.get_width() / 3
         x /= cell_size
         y /= cell_size
-        self.markers[x + y * 3] = player_marker(True)
+        self.markers[int(x) + int(y) * 3] = player_marker(True)
 
     def draw_markers(self):
         """

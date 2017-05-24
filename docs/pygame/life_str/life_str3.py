@@ -1,8 +1,10 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import pygame, sys, random
-from pygame.locals import * #udostępnienie nazw metod z locals
+import pygame
+import sys
+import random
+from pygame.locals import *  # udostępnienie nazw metod z locals
 
 # inicjacja modułu pygame
 pygame.init()
@@ -19,8 +21,8 @@ pygame.display.set_caption('Gra o życie')
 # rozmiar komórki
 ROZ_KOM = 10
 # ilość komórek w poziomie i pionie
-KOM_POZIOM = OKNOGRY_SZER/ROZ_KOM
-KOM_PION = OKNOGRY_WYS/ROZ_KOM
+KOM_POZIOM = int(OKNOGRY_SZER / ROZ_KOM)
+KOM_PION = int(OKNOGRY_WYS / ROZ_KOM)
 
 # wartości oznaczające komórki "martwe" i "żywe"
 KOM_MARTWA = 0
@@ -32,6 +34,7 @@ POLE_GRY = [KOM_MARTWA] * KOM_POZIOM
 # rozszerzamy listę o listy zagnieżdżone, otrzymujemy więc listę dwuwymiarową
 for i in range(KOM_POZIOM):
     POLE_GRY[i] = [KOM_MARTWA] * KOM_PION
+
 
 # przygotowanie następnej generacji komórek, czyli zaktualizowanego POLA_GRY
 def przygotuj_populacje(polegry):
@@ -48,39 +51,56 @@ def przygotuj_populacje(polegry):
             populacja = 0
             # wiersz 1
             try:
-                if polegry[x-1][y-1] == KOM_ZYWA: populacja += 1
-            except IndexError:pass
+                if polegry[x - 1][y - 1] == KOM_ZYWA:
+                    populacja += 1
+            except IndexError:
+                pass
             try:
-                if polegry[x][y-1] == KOM_ZYWA: populacja += 1
-            except IndexError:pass
+                if polegry[x][y - 1] == KOM_ZYWA:
+                    populacja += 1
+            except IndexError:
+                pass
             try:
-                if polegry[x+1][y-1] == KOM_ZYWA: populacja += 1
-            except IndexError:pass
+                if polegry[x + 1][y - 1] == KOM_ZYWA:
+                    populacja += 1
+            except IndexError:
+                pass
 
             # wiersz 2
             try:
-                if polegry[x-1][y] == KOM_ZYWA: populacja += 1
-            except IndexError:pass
+                if polegry[x - 1][y] == KOM_ZYWA:
+                    populacja += 1
+            except IndexError:
+                pass
             try:
-                if polegry[x+1][y] == KOM_ZYWA: populacja += 1
-            except IndexError:pass
+                if polegry[x + 1][y] == KOM_ZYWA:
+                    populacja += 1
+            except IndexError:
+                pass
 
             # wiersz 3
             try:
-                if polegry[x-1][y+1] == KOM_ZYWA: populacja += 1
-            except IndexError:pass
+                if polegry[x - 1][y + 1] == KOM_ZYWA:
+                    populacja += 1
+            except IndexError:
+                pass
             try:
-                if polegry[x][y+1] == KOM_ZYWA: populacja += 1
-            except IndexError:pass
+                if polegry[x][y + 1] == KOM_ZYWA:
+                    populacja += 1
+            except IndexError:
+                pass
             try:
-                if polegry[x+1][y+1] == KOM_ZYWA: populacja += 1
-            except IndexError:pass
+                if polegry[x + 1][y + 1] == KOM_ZYWA:
+                    populacja += 1
+            except IndexError:
+                pass
 
             # "niedoludnienie" lub przeludnienie = śmierć komórki
             if polegry[x][y] == KOM_ZYWA and (populacja < 2 or populacja > 3):
                 nast_gen[x][y] = KOM_MARTWA
             # życie trwa
-            elif polegry[x][y] == KOM_ZYWA and (populacja == 3 or populacja == 2):
+            elif polegry[x][y] == KOM_ZYWA \
+                    and (populacja == 3 or populacja == 2):
                 nast_gen[x][y] = KOM_ZYWA
             # nowe życie
             elif polegry[x][y] == KOM_MARTWA and populacja == 3:
@@ -89,12 +109,15 @@ def przygotuj_populacje(polegry):
     # zwróć nowe polegry z następną generacją komórek
     return nast_gen
 
-# rysowanie komórek (kwadratów) żywych
+
 def rysuj_populacje():
+    """Rysowanie komórek (kwadratów) żywych"""
     for y in range(KOM_PION):
         for x in range(KOM_POZIOM):
             if POLE_GRY[x][y] == KOM_ZYWA:
-                pygame.draw.rect(OKNOGRY, (255,255,255), Rect((x*ROZ_KOM,y*ROZ_KOM),(ROZ_KOM,ROZ_KOM)),1)
+                pygame.draw.rect(OKNOGRY, (255, 255, 255), Rect(
+                    (x * ROZ_KOM, y * ROZ_KOM), (ROZ_KOM, ROZ_KOM)), 1)
+
 
 # zmienne sterujące wykorzystywane w pętli głównej
 zycie_trwa = False
@@ -112,7 +135,7 @@ while True:
         if event.type == KEYDOWN and event.key == K_RETURN:
             zycie_trwa = True
 
-        if zycie_trwa == False:
+        if zycie_trwa is False:
             if event.type == MOUSEBUTTONDOWN:
                 przycisk_wdol = True
                 przycisk_typ = event.button
@@ -122,17 +145,19 @@ while True:
 
             if przycisk_wdol:
                 mouse_x, mouse_y = pygame.mouse.get_pos()
-                mouse_x = mouse_x / ROZ_KOM
-                mouse_y = mouse_y / ROZ_KOM
+                mouse_x = int(mouse_x / ROZ_KOM)
+                mouse_y = int(mouse_y / ROZ_KOM)
                 # lewy przycisk myszy ożywia
-                if przycisk_typ == 1: POLE_GRY[mouse_x][mouse_y] = KOM_ZYWA
+                if przycisk_typ == 1:
+                    POLE_GRY[mouse_x][mouse_y] = KOM_ZYWA
                 # prawy przycisk myszy uśmierca
-                if przycisk_typ == 3: POLE_GRY[mouse_x][mouse_y] = KOM_MARTWA
+                if przycisk_typ == 3:
+                    POLE_GRY[mouse_x][mouse_y] = KOM_MARTWA
 
-    if zycie_trwa == True:
+    if zycie_trwa is True:
         POLE_GRY = przygotuj_populacje(POLE_GRY)
 
-    OKNOGRY.fill((0,0,0)) # ustaw kolor okna gry
+    OKNOGRY.fill((0, 0, 0))  # ustaw kolor okna gry
     rysuj_populacje()
     pygame.display.update()
     pygame.time.delay(100)
