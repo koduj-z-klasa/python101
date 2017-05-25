@@ -143,7 +143,7 @@ klas, do których należą:
 .. literalinclude:: sqlraw.py
     :linenos:
     :lineno-start: 58
-    :lines: 58-71
+    :lines: 58-72
 
 Funkcja ``czytajdane()`` wykonuje zapytanie SQL pobierające wszystkie dane z dwóch
 powiązanych tabel: "uczen" i "klasa". Wydobywamy *id ucznia*, *imię* i *nazwisko*,
@@ -171,8 +171,8 @@ Do skryptu dodajemy jeszcze kilka linii:
 
 .. literalinclude:: sqlraw.py
     :linenos:
-    :lineno-start: 73
-    :lines: 73-83
+    :lineno-start: 74
+    :lines: 74-83
 
 Aby zmienić przypisanie ucznia do klasy, pobieramy identyfikor klasy za pomocą
 metody ``.execute()`` i polecenia *SELECT* SQL-a z odpowiednim warunkiem.
@@ -186,8 +186,8 @@ Następnie usuwamy dane ucznia o identyfikatorze 3, używając polecenia SQL
 Na koniec zamykamy połącznie z bazą, wywołując metodę ``.close()``, dzięki
 czemu zapisujemy dokonane zmiany i zwalniamy zarezerwowane przez skrypt zasoby.
 
-Zadania dodatkowe
-*******************
+Zadania
+********
 
 - Przeczytaj :ref:`opis przykładowej funkcji pobierającej dane <dane_z_pliku>` z pliku tekstowego
   w formacie *csv*. W skrypcie ``sqlraw.py`` zaimportuj tę funkcję i wykorzystaj
@@ -204,13 +204,3 @@ Zadania dodatkowe
 *******************
 
 * :download:`sqlraw.zip <sqlraw.zip>`
-
-Kolejne wersje tworzenego kodu znajdziesz w katalogu ``~/python101/bazy/sqlraw``.
-Uruchamiamy je wydając polecenia:
-
-.. code-block:: bash
-
-    ~/python101$ cd bazy/sqlraw
-    ~/python101/bazy/sqlraw$ python sqlraw0x.py
-
-\- gdzie *x* jest numerem kolejnej wersji kodu.

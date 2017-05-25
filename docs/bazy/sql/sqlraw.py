@@ -1,4 +1,4 @@
-#! /usr/bin/env python2
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import sqlite3
@@ -65,8 +65,9 @@ def czytajdane():
         """)
     uczniowie = cur.fetchall()
     for uczen in uczniowie:
-        print uczen['id'], uczen['imie'], uczen['nazwisko'], uczen['nazwa']
-    print ""
+        print(uczen['id'], uczen['imie'], uczen['nazwisko'], uczen['nazwa'])
+    print()
+
 
 czytajdane()
 
