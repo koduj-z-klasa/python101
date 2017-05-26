@@ -89,7 +89,7 @@ właśnie istotę mapowania relacyjno-obiektowego.
 .. literalinclude:: ormpw.py
     :linenos:
     :lineno-start: 18
-    :lines: 18-33
+    :lines: 18-32
 
 .. raw:: html
 
@@ -98,7 +98,7 @@ właśnie istotę mapowania relacyjno-obiektowego.
 .. literalinclude:: ormsa.py
     :linenos:
     :lineno-start: 18
-    :lines: 18-38
+    :lines: 18-37
 
 W obydwu przypadkach deklarowanie modelu opiera się na pewnej "klasie" podstawowej,
 którą nazwaliśmy ``BazaModel``. Dziedzicząc z niej, deklarujemy następnie
@@ -164,8 +164,8 @@ wykorzystujemy metody sesji, w ramach której komunikujemy się z bazą.
 
 .. literalinclude:: ormpw.py
     :linenos:
-    :lineno-start: 35
-    :lines: 35-63
+    :lineno-start: 34
+    :lines: 34-63
 
 .. raw:: html
 
@@ -173,8 +173,8 @@ wykorzystujemy metody sesji, w ramach której komunikujemy się z bazą.
 
 .. literalinclude:: ormsa.py
     :linenos:
-    :lineno-start: 40
-    :lines: 40-65
+    :lineno-start: 39
+    :lines: 39-65
 
 Dodawanie informacji w systemach ORM polega na utworzeniu instancji odpowiedniego
 obiektu i podaniu w jego konstruktorze wartości atrybutów reprezentujących pola rekordu:
@@ -289,8 +289,8 @@ lub sesji ``sesja.close()`` (SQLAlchemy). UWAGA: operacje dokonywane
 podczas sesji w SQLAlchemy muszą zostać zapisane w bazie, dlatego przed
 zamknięciem połączenia trzeba umieścić polecenie ``sesja.commit()``.
 
-Zadania dodatkowe
-******************
+Zadania
+********
 
 - Spróbuj dodać do bazy korzystając z systemu Peewee lub SQLAlchemy
   wiele rekordów na raz pobranych z pliku. Wykorzystaj i zmodyfikuj
@@ -308,18 +308,8 @@ Zadania dodatkowe
   frameworku *Django*, korzystającego z własnego modelu ORM.
 
 Źródła
-*******************
+********
 
 * :download:`orm.zip <orm.zip>`
 
-Kolejne wersje tworzenego kodu znajdziesz w katalogu ``~/python101/bazy/orm``.
-Uruchamiamy je wydając polecenia:
-
-.. code-block:: bash
-
-    ~/python101$ cd bazy/orm
-    ~/python101/bazy/orm$ python ormpw0x.py
-    ~/python101/bazy/orm$ python ormsa0x.py
-
-\- gdzie *x* jest numerem kolejnej wersji kodu.
 

@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import os
@@ -17,8 +17,6 @@ BazaModel = declarative_base()
 
 # klasy Klasa i Uczen opisują rekordy tabel "klasa" i "uczen"
 # oraz relacje między nimi
-
-
 class Klasa(BazaModel):
     __tablename__ = 'klasa'
     id = Column(Integer, primary_key=True)
@@ -33,6 +31,7 @@ class Uczen(BazaModel):
     imie = Column(String(100), nullable=False)
     nazwisko = Column(String(100), nullable=False)
     klasa_id = Column(Integer, ForeignKey('klasa.id'))
+
 
 # tworzymy tabele
 BazaModel.metadata.create_all(baza)
@@ -59,15 +58,16 @@ sesja.add_all([
 
 def czytajdane():
     for uczen in sesja.query(Uczen).join(Klasa).all():
-        print uczen.id, uczen.imie, uczen.nazwisko, uczen.klasa.nazwa
-    print ""
+        print(uczen.id, uczen.imie, uczen.nazwisko, uczen.klasa.nazwa)
+    print()
+
 
 czytajdane()
 
 # zmiana klasy ucznia o identyfikatorze 2
 inst_uczen = sesja.query(Uczen).filter(Uczen.id == 2).one()
 inst_uczen.klasa_id = sesja.query(Klasa.id).filter(
-                                            Klasa.nazwa == '1B').scalar()
+    Klasa.nazwa == '1B').scalar()
 
 # usunięcie ucznia o identyfikatorze 3
 sesja.delete(sesja.query(Uczen).get(3))

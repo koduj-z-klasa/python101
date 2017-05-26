@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import os
@@ -17,8 +17,6 @@ class BazaModel(Model):  # klasa bazowa
 
 # klasy Klasa i Uczen opisują rekordy tabel "klasa" i "uczen"
 # oraz relacje między nimi
-
-
 class Klasa(BazaModel):
     nazwa = CharField(null=False)
     profil = CharField(default='')
@@ -28,6 +26,7 @@ class Uczen(BazaModel):
     imie = CharField(null=False)
     nazwisko = CharField(null=False)
     klasa = ForeignKeyField(Klasa, related_name='uczniowie')
+
 
 baza.connect()  # nawiązujemy połączenie z bazą
 baza.create_tables([Klasa, Uczen], True)  # tworzymy tabele
@@ -57,8 +56,9 @@ Uczen.insert_many(uczniowie).execute()
 
 def czytajdane():
     for uczen in Uczen.select().join(Klasa):
-        print uczen.id, uczen.imie, uczen.nazwisko, uczen.klasa.nazwa
-    print ""
+        print(uczen.id, uczen.imie, uczen.nazwisko, uczen.klasa.nazwa)
+    print()
+
 
 czytajdane()
 
