@@ -19,4 +19,3 @@ konstrukcji i fragmentów kodu.
     przyklad05
     przyklad06
     przyklad07
-    przyklad08

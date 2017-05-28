@@ -45,10 +45,3 @@ Materiały
 #. `Python (dokumentacja)`_
 
 .. _Python (dokumentacja): https://www.python.org/
-
-Źródła
-======
-
-Kody "Python w przykładach":
-
-- :download:`basic.zip <basic.zip>`
