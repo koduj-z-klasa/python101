@@ -9,16 +9,15 @@ if os.path.exists('test.db'):
 # tworzymy instancję bazy używanej przez modele
 baza = SqliteDatabase('test.db')  # ':memory:'
 
-# BazaModel to klasa bazowa dla klas Klasa i Uczen, które
-# opisują rekordy tabel "klasa" i "uczen" oraz relacje między nimi
 
-
+# BazaModel to klasa bazowa dla klas Grupa i Uczen, które
+# opisują rekordy tabel "grupa" i "uczen" oraz relacje między nimi
 class BazaModel(Model):
     class Meta:
         database = baza
 
 
-class Klasa(BazaModel):
+class Grupa(BazaModel):
     nazwa = CharField(null=False)
     profil = CharField(default='')
 
@@ -26,38 +25,40 @@ class Klasa(BazaModel):
 class Uczen(BazaModel):
     imie = CharField(null=False)
     nazwisko = CharField(null=False)
-    klasa = ForeignKeyField(Klasa, related_name='uczniowie')
+    grupa = ForeignKeyField(Grupa, related_name='uczniowie')
+
 
 baza.connect()  # nawiązujemy połączenie z bazą
-baza.create_tables([Klasa, Uczen], True)  # tworzymy tabele
+baza.create_tables([Grupa, Uczen], True)  # tworzymy tabele
 
 # dodajemy dwie klasy, jeżeli tabela jest pusta
-if Klasa.select().count() == 0:
-    inst_klasa = Klasa(nazwa='1A', profil='matematyczny')
-    inst_klasa.save()
-    inst_klasa = Klasa(nazwa='1B', profil='humanistyczny')
-    inst_klasa.save()
+if Grupa.select().count() == 0:
+    inst_grupa = Grupa(nazwa='1A', profil='matematyczny')
+    inst_grupa.save()
+    inst_grupa = Grupa(nazwa='1B', profil='humanistyczny')
+    inst_grupa.save()
 
-# tworzymy instancję klasy Klasa reprezentującą klasę "1A"
-inst_klasa = Klasa.select().where(Klasa.nazwa == '1A').get()
+# tworzymy instancję klasy Grupa reprezentującą klasę "1A"
+inst_grupa = Grupa.select().where(Grupa.nazwa == '1A').get()
 # dodajemy uczniów
-inst_uczen = Uczen(imie='Tomasz', nazwisko='Nowak', klasa=inst_klasa)
+inst_uczen = Uczen(imie='Tomasz', nazwisko='Nowak', grupa=inst_grupa)
 inst_uczen.save()
-inst_uczen = Uczen(imie='Adam', nazwisko='Kowalski', klasa=inst_klasa)
+inst_uczen = Uczen(imie='Adam', nazwisko='Kowalski', grupa=inst_grupa)
 inst_uczen.save()
 
 
 def czytajdane():
     """Funkcja pobiera i wyświetla dane z bazy"""
-    for uczen in Uczen.select():  # lub szybsze: Uczen.select().join(Klasa)
-        print uczen.id, uczen.imie, uczen.nazwisko, uczen.klasa.nazwa
-    print ""
+    for uczen in Uczen.select():  # lub szybsze: Uczen.select().join(Grupa)
+        print(uczen.id, uczen.imie, uczen.nazwisko, uczen.grupa.nazwa)
+    print()
+
 
 czytajdane()
 
 # przepisanie ucznia do innej klasy
-inst_uczen = Uczen.select().join(Klasa).where(Uczen.nazwisko == 'Nowak').get()
-inst_uczen.klasa = Klasa.select().where(Klasa.nazwa == '1B').get()
+inst_uczen = Uczen.select().join(Grupa).where(Uczen.nazwisko == 'Nowak').get()
+inst_uczen.grupa = Grupa.select().where(Grupa.nazwa == '1B').get()
 inst_uczen.save()  # zapisanie zmian w bazie
 czytajdane()
 
