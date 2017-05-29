@@ -4,29 +4,33 @@ Przygotowanie systemu Linux
 ***************************
 
 Jeżeli nie masz zainstalowanego systemu Linux, możesz wykorzystać wersję
-:ref:`Linux Live <linux-live>`, która po nagraniu na pendrajwa pozwoli uruchomić komputer.
-Jeżeli masz Linuksa lub planujesz go zainstalować na dysku, czytaj dalej.
+:ref:`Linux Live <linux-live>`, która po nagraniu na pendrajwa pozwoli
+uruchomić komputer. Jeżeli masz Linuksa lub planujesz go zainstalować
+na dysku, czytaj dalej.
 
 .. _linux-distro:
 
 Dystrybucje
 ===========
 
-Najwygodniej pracować w systemie Linux zainstalowanym na stałe, np. obok MS Windows.
-Polecamy systemy, na których przetestowaliśmy scenariusze:
+Najwygodniej pracować w systemie Linux zainstalowanym na dysku twardym,
+np. obok MS Windows. Polecamy systemy, na których przetestowaliśmy scenariusze:
 
-* `Linux Mint 18 <https://www.linuxmint.com/download.php>`_  z dowolnym środowiskiem graficznym.
+* `Linux Mint 18 <https://www.linuxmint.com/download.php>`_
+* `Debian Jessie 8 <https://www.debian.org/index.pl.html>`_
+* `Ubuntu 16.04 LTS <https://www.ubuntu.com/>`__ lub jego odmiany np.
+  `Xbuntu <https://xubuntu.org/getxubuntu/>`__.
 
-* `Debian Jessie 8 <https://www.debian.org/index.pl.html>`_  – ostatnia stabilna wersja,
-   proponujemy wersję ze środowiskiem `XFCE`_. Zob.: `Instalacja Debiana Jessie <http://ecg.vot.pl/?id=debian-stable-install>`_.
+Środowisko graficzne (zob. :term:`środowisko graficzne`) dowolne, chociaż
+osobom przyzwyczajonym do tradycyjnego pulpitu polecamy proste i wydajne
+`XFCE`_.
 
-* `Xubuntu <https://xubuntu.org/getxubuntu/>`__ 16.04 LTS – stabilna odmiana
-  `Ubuntu <https://www.ubuntu.com/>`__, zawiera proste i wydajne
-  :term:`środowisko graficzne` `XFCE`_.
-  Zob. `Instalacja Lubuntu <http://ecg.vot.pl/?id=lubuntu>`_ (instalacja jest taka sama).
+Wskazówki dotyczące instalacji:
 
-Instalacja powyższych systemów jest prosta, pomocne informacje można znaleźć
-np. na stronie `Zainstalu Linuksa <http://ecg.vot.pl/?id=linux-instalacja>`_
+* `Zainstaluj Linuksa <http://ecg.vot.pl/?id=linux-instalacja>`_;
+* `Instalacja Ubuntu <http://ecg.vot.pl/?id=lubuntu>`_;
+* `Instalacja Debiana Jessie <http://ecg.vot.pl/?id=debian-stable-install>`_.
+
 
 .. _linux-pakiety:
 

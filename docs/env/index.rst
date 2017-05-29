@@ -1,25 +1,23 @@
 System i oprogramowanie
 #######################
 
-Nasze materiały zakładają wykorzystanie systemu :term:`Linux` i języka :term:`Python` w wersji 2.7.x,
-który jest częścią wszystkich desktopowych dystrybucji. Oprócz interpretera języka
-potrzebne są biblioteki wykorzystywane w bardziej zaawansowanych przykładach,
-takich jak gry, aplikacje internetowe czy obsługa baz danych za pomocą systemów ORM.
+Nasze materiały zakładają wykorzystanie języka :term:`Python` w wersji 3.x.
+Mogą być realizowane w dowolnym systemie operacyjnym, jednak proponujemy systemy Linux,
+w których Python jest domyślnie zainstalowany.
 
-Przygotowaliśmy również specjalną wersję systemu :ref:`Linux Live <linux-live>`
-o nazwie *LxPup KzkBox* przeznaczoną do instalacji na kluczu USB.
-Zawiera ona wszystkie potrzebne narzędzia i biblioteki, uruchamia się z napędu USB
-na większości komputerów i zapamiętuje wyniki naszej pracy.
+Oprócz interpretera języka w realizacji poszczególnych scenariuszy wymagane będą
+dodatkowe biblioteki, które również najłatwiej dioinstalować w systemach Linux.
 
-.. note::
+Do realizacji materiałów przygotowaliśmy również specjalne wersje systemu
+:ref:`Linux Live <linux-live>` przeznaczone do instalacji na pendrajwach.
+Zawierają one wszystkie potrzebne narzędzia i biblioteki, uruchamiają się
+z napędu USB na większości komputerów i zapamiętują wyniki naszej pracy.
 
-    Do realizacji scenariuszy dostosować można praktycznie każdy system, w tym MS Windows.
-    Na końcu tego dokumentu znajdziesz wskazówki, jak to zrobić.
 
 Katalog użytkownika
 *******************
 
-Scenariusze zakładają również, że pracujemy w **katalogu domowym** użytkownika.
+Scenariusze zakładają najczęściej, że pracujemy w **katalogu domowym** użytkownika.
 W systemach Linux jest to podfolder katalogu ``/home`` o nazwie zalogowanego użytkownika,
 np. ``/home/uczen``. W poleceniach wydawanych w terminalu (zob. :term:`terminal`)
 ścieżkę do tego katalogu symbolizuje znak ``~``.
