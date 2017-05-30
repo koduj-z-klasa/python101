@@ -31,7 +31,6 @@ czy `Enthought Canopy <https://www.enthought.com/products/canopy/>`_.
 .. toctree::
     :titlesonly:
 
-    interpreter
     mlotek/index
     dlotek/index
     elotek/index

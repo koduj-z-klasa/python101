@@ -79,39 +79,3 @@ w terminalu wydajemy następujące polecenia:
     * W systemach opartych na *Debianie* (*(X)Ubuntu, LinuxMint* itp.) interpreter
       wywołujemy poleceniem ``python3``, w systemach opartych na *Arch Linuksie* –
       ``python``.
-
-
-**Omówienie narzędzi:**
-
-* `pip <https://pip.pypa.io/en/stable/>`_  – instalator pakietów Pythona,
-  podstawowe narzędzie służące do zarządzania pakietami Pythona zgromadzonymi np.
-  w repozytorium `PyPI <https://pypi.python.org/pypi>`_  (Python Package Index);
-* `virtualenv <https://virtualenv.readthedocs.org/en/latest/>`_  –
-  menedżer wirtualnych środowisk Pythona, pozwala tworzyć katalogi zawierające
-  izolowane środowisko Pythona umożliwiające instalowanie wybranych wersji pakietów
-  przez zwykłych użytkowników;
-* `klient git <https://git-scm.com/downloads>`_  – narzędzie wersjonowania kodu
-  umożliwiające korzystanie z repozytoriów i dokumentacji w serwisie `Github <https://github.com/>`_
-* `sqlite3 <https://www.sqlite.org/>`_ – konsolowa powłoka dla baz SQLite3,
-  umożliwia przeglądanie schematów tabel oraz zarządzanie bazą za pomocą języka SQL.
-* `ipython <http://ipython.org/>`_ i `qtconsole <http://jupyter.org/qtconsole/stable/>`_ – rozszerzona interaktywna konsola Pythona;
-*   – rozszerzona interaktywna konsola
-  Pythona wykorzystująca bibliotekę Qt, umożliwia m. in. wyświetlanie wykresów utworzonych
-  z wykorzystaniem *matplotlib*.
-
-
-
-Pip
--------
-
-Przydatne polecenia:
-
-.. code-block:: bash
-
-    ~$ pip -V  # wersja narzędzia pip
-    ~$ pip list  # lista zainstalowanych pakietów
-    ~$ sudo pip install nazwa_pakietu  # instalacja pakietu
-    ~$ sudo pip install nazwa_pakietu -U  # aktualizacja pakietu
-    ~$ sudo pip uninstall  # usunięcie pakietu
-
-.. _XFCE: http://www.xfce.org/

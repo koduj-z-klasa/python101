@@ -3,10 +3,8 @@ System i oprogramowanie
 
 Nasze materiały zakładają wykorzystanie języka :term:`Python` w wersji 3.x.
 Mogą być realizowane w dowolnym systemie operacyjnym, jednak proponujemy systemy Linux,
-w których Python jest domyślnie zainstalowany.
-
-Oprócz interpretera języka w realizacji poszczególnych scenariuszy wymagane będą
-dodatkowe biblioteki, które również najłatwiej dioinstalować w systemach Linux.
+w których Python jest domyślnie zainstalowany i łatwiej doinstalować
+dodatkowe narzędzia i biblioteki.
 
 Do realizacji materiałów przygotowaliśmy również specjalne wersje systemu
 :ref:`Linux Live <linux-live>` przeznaczone do instalacji na pendrajwach.
@@ -17,7 +15,7 @@ z napędu USB na większości komputerów i zapamiętują wyniki naszej pracy.
 Katalog użytkownika
 *******************
 
-Scenariusze zakładają najczęściej, że pracujemy w **katalogu domowym** użytkownika.
+Scenariusze zakładają również, że pracujemy w **katalogu domowym** użytkownika.
 W systemach Linux jest to podfolder katalogu ``/home`` o nazwie zalogowanego użytkownika,
 np. ``/home/uczen``. W poleceniach wydawanych w terminalu (zob. :term:`terminal`)
 ścieżkę do tego katalogu symbolizuje znak ``~``.
@@ -35,6 +33,8 @@ jako zwykły użytkownik, natomiast ``#`` – jako root, czyli administrator.
 .. include:: linux.inc
 
 .. include:: windows.inc
+
+.. include:: interpreter.inc
 
 .. include:: ide.inc
 
