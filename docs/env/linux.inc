@@ -22,11 +22,12 @@ np. obok MS Windows. Polecamy systemy, na których przetestowaliśmy scenariusze
   `Xbuntu <https://xubuntu.org/getxubuntu/>`__.
 
 Środowisko graficzne (zob. :term:`środowisko graficzne`) dowolne, chociaż
-osobom przyzwyczajonym do tradycyjnego pulpitu polecamy proste i wydajne
+osobom przyzwyczajonym do tradycyjnego pulpitu proponujemy proste i wydajne
 `XFCE`_.
 
 Wskazówki dotyczące instalacji:
 
+* `Windows i Linux na jednym dysku <https://www.dobreprogramy.pl/Windows-i-Linux-Mint-na-jednym-dysku-poradnik-dla-poczatkujacych,News,81165.html>`_;
 * `Zainstaluj Linuksa <http://ecg.vot.pl/?id=linux-instalacja>`_;
 * `Instalacja Ubuntu <http://ecg.vot.pl/?id=lubuntu>`_;
 * `Instalacja Debiana Jessie <http://ecg.vot.pl/?id=debian-stable-install>`_.
@@ -37,61 +38,37 @@ Wskazówki dotyczące instalacji:
 Narzędzia i biblioteki
 ======================
 
-W systemach linuksowych Python 2.7.x zainstalowany jest domyślnie,
-wersja 3.x również. Potrzebne narzędzia/biblioteki instalujemy przy użyciu systemowego
-menedżera pakietów (np. ``apt-get`` czy ``pacman``) i/lub instalatora pakietów Pythona ``pip``.
-
-**Wymagane:**
-
-* `pip <https://pip.pypa.io/en/stable/>`_  – instalator pakietów Pythona, podstawowe narzędzie
-  służące do zarządzania pakietami Pythona zgromadzonymi np.
-  w repozytorium `PyPI <https://pypi.python.org/pypi>`_  (Python Package Index);
-* `virtualenv <https://virtualenv.readthedocs.org/en/latest/>`_  – menedżer wirtualnych środowisk Pythona,
-  pozwala tworzyć katalogi zawierające izolowane środowisko Pythona umożliwiające instalowanie
-  wybranych wersji pakietów przez zwykłych użytkowników;
-* `klient git <https://git-scm.com/downloads>`_  – narzędzie umożliwiające korzystanie z repozytoriów
-  kodu i dokumentacji w serwisie `Github <https://github.com/>`_
-* `sqlite3 <https://www.sqlite.org/>`_ – konsolowa powłoka dla baz SQLite3, umożliwia przeglądanie
-  schematów tabel oraz zarządzanie bazą za pomocą języka SQL.
-
-**Dodatkowe:**
-
-* `ipython <http://ipython.org/>`_ – rozszerzona interaktywna konsola Pythona;
-* `qtconsole <http://jupyter.org/qtconsole/stable/>`_  – rozszerzona interaktywna konsola
-  Pythona wykorzystująca bibliotekę Qt, umożliwia m. in. wyświetlanie wykresów utworzonych
-  z wykorzystaniem *matplotlib*.
+W systemach linuksowych Python 3.x zainstalowany jest domyślnie. Potrzebne
+narzędzia i biblioteki instalujemy przy użyciu systemowego menedżera pakietów
+(np. ``apt`` czy ``pacman``) i/lub instalatora pakietów Pythona ``pip``.
 
 **Instalacja**
 
-W systemach opartych na *Debianie* (*LinuxMint, (X)Ubuntu* itp.) w terminalu wydajemy następujące polecenia:
+W systemach opartych na *Debianie* (*LinuxMint, (X)Ubuntu* itp.) w terminalu wydajemy
+następujące polecenia:
 
 .. code-block:: bash
 
-    ~$ sudo apt-get update
-    ~$ sudo apt-get install python-pip python-pygame python-tk python-matplotlib git sqlite3
-    ~$ sudo apt-get install ipython ipython-qtconsole
-    ~$ sudo pip install virtualenv flask django peewee sqlalchemy flask-sqlalchemy
+    ~$ sudo apt update
+    ~$ sudo apt install ipython ipython-qtconsole git sqlite3
+    ~$ sudo apt install python3-pip python3-sip python3-pyqt5
+    ~$ sudo pip3 install virtualenv
+    ~$ sudo pip3 install matplotlib
+    ~$ sudo pip3 install pygame
+    ~$ sudo pip3 install flask django peewee sqlalchemy flask-sqlalchemy
 
-W systemach opartych na *Arch Linuksie* (*Manjaro* itp.) w terminalu wydajemy następujące polecenia:
+W systemach opartych na *Arch Linuksie* (*Manjaro*, *Antergos* itp.)
+w terminalu wydajemy następujące polecenia:
 
 .. code-block:: bash
 
     ~# pacman -Syyu
-    ~# pacman -S python2-pip python2-pygame tk python2-matplotlib git sqlite
-    ~# pacman -S ipython2-notebook python2-pyqt5
-    ~# pip2 install virtualenv flask django peewee sqlalchemy flask-sqlalchemy
-
-.. note::
-
-    Ewentualna aktualizacja biblioteki *matplotlib* oraz narzędzi *ipython* i *qtconsole*
-    w systemach opartych na Debianie wymaga doinstalowania środowiska
-    umożliwijącego kompilację:
-
-.. code-block:: bash
-
-    ~$ sudo apt-get install build-essential libpng12-dev zlib1g-dev libfreetype6-dev python-dev
-    ~$ sudo pip install matplotlib ipython qtconsole
-
+    ~# pacman -S ipython-qtconsole git sqlite
+    ~# pacman -S python-pip python-pyqt5
+    ~# pip install virtualenv
+    ~# pip install matplotlib
+    ~# pip install pygame
+    ~# pip install flask django peewee sqlalchemy flask-sqlalchemy
 
 .. note::
 
@@ -99,9 +76,30 @@ W systemach opartych na *Arch Linuksie* (*Manjaro* itp.) w terminalu wydajemy na
     * Systemy *Debian* i *Arch Linux* w domyślnej konfiguracji nie wykorzystują
       mechanizmu podnoszenia uprawnień ``sudo``, dlatego polecenia instalacji
       należy wydawać z konta użytkownika root, co oznaczamy znakami ``~#``.
-    * W systemach opartych na *Debianie* (*(X)Ubuntu, LinuxMint* itp.) polecenie ``python``
-      domyślnie wywołuje Pythona 2, w systemach opartych na *Arch Linuksie* – Pythona 3.
-      Aby użyć interpretera Pythona 2, w *Archu* itp. trzeba wydać polecenie ``python2``.
+    * W systemach opartych na *Debianie* (*(X)Ubuntu, LinuxMint* itp.) interpreter
+      wywołujemy poleceniem ``python3``, w systemach opartych na *Arch Linuksie* –
+      ``python``.
+
+
+**Omówienie narzędzi:**
+
+* `pip <https://pip.pypa.io/en/stable/>`_  – instalator pakietów Pythona,
+  podstawowe narzędzie służące do zarządzania pakietami Pythona zgromadzonymi np.
+  w repozytorium `PyPI <https://pypi.python.org/pypi>`_  (Python Package Index);
+* `virtualenv <https://virtualenv.readthedocs.org/en/latest/>`_  –
+  menedżer wirtualnych środowisk Pythona, pozwala tworzyć katalogi zawierające
+  izolowane środowisko Pythona umożliwiające instalowanie wybranych wersji pakietów
+  przez zwykłych użytkowników;
+* `klient git <https://git-scm.com/downloads>`_  – narzędzie wersjonowania kodu
+  umożliwiające korzystanie z repozytoriów i dokumentacji w serwisie `Github <https://github.com/>`_
+* `sqlite3 <https://www.sqlite.org/>`_ – konsolowa powłoka dla baz SQLite3,
+  umożliwia przeglądanie schematów tabel oraz zarządzanie bazą za pomocą języka SQL.
+* `ipython <http://ipython.org/>`_ i `qtconsole <http://jupyter.org/qtconsole/stable/>`_ – rozszerzona interaktywna konsola Pythona;
+*   – rozszerzona interaktywna konsola
+  Pythona wykorzystująca bibliotekę Qt, umożliwia m. in. wyświetlanie wykresów utworzonych
+  z wykorzystaniem *matplotlib*.
+
+
 
 Pip
 -------

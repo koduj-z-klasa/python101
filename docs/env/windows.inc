@@ -3,17 +3,14 @@
 Przygotowanie systemu Windows
 *****************************
 
-Przykłady zostały przygotowane z myślą o systemie Linux.
-Przygotowana i polecana przez nas przenośna wersja Linuksa :ref:`LxPup <linux-live>`
-zawiera wszystkie potrzebne narzędzia i biblioteki.
-Można je również wykonywać w środowisku Windows. Cały kod działa tak samo,
-jednak niektóre biblioteki w wersjach binarnych trzeba ściągnąć i zainstalować ręcznie.
+Scenariusze zostały przygotowane z z myślą o systemie Linux.
+Można je również wykonywać w środowisku Windows, trzeba jednak pamiętać
+o kilku różnicach:
 
-.. note::
-
-    Pamiętaj, by w systemie Windows zmieniać znaki ``/`` (slash) na ``\`` (backslash) w ścieżkach
-    podawanych w scenariuszach, podobnie pozamieniaj komendy systemu Linux
-    na odpowiedniki wiersza poleceń Windows.
+* w systemie Windows znaki ``/`` (slash) zmieniamy na ``\`` (backslash)
+  w ścieżkach podawanych w scenariuszach
+* pamiętaj o zmianie komend systemu Linux na odpowiedniki wiersza poleceń
+  Windows.
 
 
 .. _ins-python:
@@ -21,9 +18,10 @@ jednak niektóre biblioteki w wersjach binarnych trzeba ściągnąć i zainstalo
 Inerpreter Pythona
 ==================
 
-Na stronie `Python Releases for Windows <https://www.python.org/downloads/windows/>`_ klikamy
-link *Last Python 2 Release - ...* i pobieramy plik :file:`Windows x86 MSI installer` dla
-Windowsa 32-bitowego lub :file:`Windows x86-64 MSI installer` dla edycji 64-bitowej.
+Na stronie `Python Releases for Windows <https://www.python.org/downloads/windows/>`_
+klikamy link *Last Python 3 Release - ...* i pobieramy instalator
+:file:`Windows executable installer` w odpowiedniej wersji, tj.
+*x86-64* (64-bitowe, wersja zalecanaj) lub *x86* (32-bitowej.
 
 .. tip::
 
@@ -31,8 +29,36 @@ Windowsa 32-bitowego lub :file:`Windows x86-64 MSI installer` dla edycji 64-bito
 
 .. figure:: img/python_windows01.jpg
 
+
 Narzędzia i biblioteki
 ======================
+
+W wierszu poleceń wydajemy następujące polecenia:
+
+.. code-block:: bat
+
+    pip install virtualenv
+    pip install ipython qtconsole
+
+Git
+----
+
+Podstawowego klienta w wersji 64- lub 32-bitowej pobieramy ze strony
+`Downloading Git <https://git-scm.com/download/win>`_ i instalujemy, zaznaczając wszystkie opcje.
+
+:ref:`Alternatywna metoda instalacji <git-install>`, jak również zasady pracy z repozytoriami
+omówione zostały w osobnym :ref:`dokumencie <git-howto>`. Gorąco zachęcamy do jego przejrzenia.
+
+.. _sqlite3-win:
+
+SQLite3
+-------
+
+Ze strony `SQLite Download Page <http://>`_, z sekcji *Precompiled Binaries for Windows*
+ściągamy skompilowany interpreter dla 64- lub 32-bitowej wersji Windows.
+Przykładowe archiwum :file:`sqlite-dll-win64-x64-3140200.zip` należy rozpakować,
+najlepiej do katalogu systemowego (:file:`C:\Windows\System32`),
+żeby był dostępny z każdej lokalizacji.
 
 Narzędzia wymagane:
 
@@ -67,12 +93,6 @@ Narzędzie uruchamiamy w wierszu poleceń (terminalu). Przydatne polecenia:
     pip install nazwa_pakietu -U  # aktualizacja pakietu
     pip uninstall  # usunięcie pakietu
 
-Narzędzia ``pip`` użyjemy do instalacji pakietów *virtualenv*, *ipython* i *qtconsole*:
-
-.. code-block:: bat
-
-    pip install virtualenv
-    pip install ipython qtconsole
 
 .. _pyqt-win:
 
@@ -88,14 +108,7 @@ W wersji 64-bitowej Windowsa w terminalu wydajemy polecenie:
 
     pip install python-qt5
 
-Git
-----
 
-Git to narzędzie do obsługi repozytoriów hostowanych w serwisie `GitHub <https://github.com/>`_.
-Podstawowego klienta w wersji 32- lub 64-bitowej pobieramy ze strony `Downloading Git <https://git-scm.com/download/win>`_ i instalujemy, zaznaczając wszystkie opcje.
-
-:ref:`Alternatywna metoda instalacji <git-install>`, jak również zasady pracy z repozytoriami
-omówione zostały w osobnym :ref:`dokumencie <git-howto>`. Gorąco zachęcamy do jego przejrzenia.
 
 .. _pygame-win:
 
@@ -146,16 +159,7 @@ Instalacja bibliotek wymaganych do scenariuszy:
 
     pip install flask django peewee sqlalchemy flask-sqlalchemy
 
-.. _sqlite3-win:
 
-SQLite3
--------
-
-Ze strony `SQLite Download Page <http://>`_, z sekcji *Precompiled Binaries for Windows*
-ściągamy skompilowany interpreter dla 32- lub 64-bitowej wersji Windows.
-Przykładowe archiwum :file:`sqlite-dll-win64-x64-3140200.zip` należy rozpakować,
-najlepiej do katalogu systemowego (:file:`C:\Windows\System32`),
-żeby był dostępny z każdej lokalizacji.
 
 
 Brak Pythona?
