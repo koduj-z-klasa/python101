@@ -23,9 +23,9 @@ np. obok MS Windows. Polecamy systemy, na których przetestowaliśmy scenariusze
 
 Środowisko graficzne (zob. :term:`środowisko graficzne`) dowolne, chociaż
 osobom przyzwyczajonym do tradycyjnego pulpitu proponujemy proste i wydajne
-`XFCE`_.
+`XFCE <http://www.xfce.org/>`_
 
-Wskazówki dotyczące instalacji:
+**Wskazówki dotyczące instalacji:**
 
 * `Windows i Linux na jednym dysku <https://www.dobreprogramy.pl/Windows-i-Linux-Mint-na-jednym-dysku-poradnik-dla-poczatkujacych,News,81165.html>`_;
 * `Zainstaluj Linuksa <http://ecg.vot.pl/?id=linux-instalacja>`_;
@@ -63,10 +63,10 @@ w terminalu wydajemy następujące polecenia:
 .. code-block:: bash
 
     ~# pacman -Syyu
-    ~# pacman -S ipython-qtconsole git sqlite
-    ~# pacman -S python-pip python-pyqt5
-    ~# pip install virtualenv
-    ~# pip install matplotlib
+    ~# pacman -S ipython python-qtconsole git sqlite
+    ~# pacman -S python-pip python-pyqt5 tk
+    ~# pacman -S python-virtualenv
+    ~# pacman -S python-matplotlib
     ~# pip install pygame
     ~# pip install flask django peewee sqlalchemy flask-sqlalchemy
 
