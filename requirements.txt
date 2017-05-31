@@ -1,7 +1,5 @@
-Sphinx==1.4.5
-# hg+https://bitbucket.org/birkenfeld/sphinx#egg=sphinx
-# albo: pip install sphinx
-# sphinx_rtd_theme
+Sphinx==1.5.3
+# pip install sphinx sphinx_rtd_theme
 # pip ma problem z instalacja pod windows, trzeba znalezc obejscie
 # pygame
 turtle
