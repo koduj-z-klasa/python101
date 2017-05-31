@@ -1,7 +1,7 @@
 .. _linux-env:
 
 Przygotowanie systemu Linux
-***************************
+###########################
 
 Jeżeli nie masz zainstalowanego systemu Linux, możesz wykorzystać wersję
 :ref:`Linux Live <linux-live>`. Jeżeli masz Linuksa lub planujesz go zainstalować

@@ -1,6 +1,60 @@
 Git - wersjonowanie kodów źródłowych
 ####################################
 
+TYMCZASOWO
+
+Wykorzystanie Git-a
+=====================
+
+Materiały szkoleniowe zostały umieszczone w repozytorium w serwisie GitHub
+dzięki temu każdy może w łatwy sposób pobrać, zmieniać, a także zsynchronizować
+swoją lokalną kopię.
+
+W katalogu domowym użytkownika uruchamiamy komendę:
+
+.. code-block:: bash
+
+    ~$ git clone --recursive https://github.com/koduj-z-klasa/python101.git
+
+W efekcie otrzymamy katalog ``python101`` z kodami źródłowymi materiałów.
+
+
+Synchronizacja kodu
+*******************
+
+.. note::
+
+    Poniższe instrukcje nie są wymagane w ramach przygotowania, ale warto
+    się z nimi zapoznać w przypadku gdybyśmy chcieli skorzystać z możliwości
+    pozbycia się lokalnych zmian wprowadzonych podczas ćwiczeń i przywrócenia
+    stanu do punktu wyjścia.
+
+Materiały zostały podzielone w repozytorium na części, które w kolejnych krokach
+są rozbudowywane. Dzięki temu na początku szkolenia mamy niewielki zbiór plików,
+natomiast w kolejnych krokach szkolenia możemy aktualizować wersję roboczą o nowe treści.
+
+Uczestnicy mogą spokojnie edytować i zmieniać materiały bez obaw
+o późniejsze różnice względem reszty grupy.
+
+Zmiany możemy szybko wyczyścić i powrócić do stanu z początku ćwiczenia:
+
+.. code-block:: bash
+
+    $ git reset --hard
+
+Możemy także skakać pomiędzy punktami kontrolnymi np. skoczyć do następnego
+lub skoczyć do następnego punktu kontrolnego i zsynchronizować kody źródłowe grupy
+bez zachowania zmian poszczególnych uczestników:
+
+.. code-block:: bash
+
+    $ git checkout -f pong/z1
+
+Jeśli uczestnicy chcą wcześniej zachować swoje modyfikacje, mogą je zapisać
+w swoim lokalnym repozytorium (wykonują tzw. commit).
+
+TYMCZASOWO
+
 .. _git-howto:
 
 Pokażemy tutaj, jak nauczyciele mogą wykorzystać profesjonalne i bezpłatne narzędzia do wersjonowania

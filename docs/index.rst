@@ -15,13 +15,13 @@ Fundację `Centrum Edukacji Obywatelskiej`_.
 
 Krótki link do tej strony: `bit.ly/py-101 <http://bit.ly/py-101>`_
 
-Pytania do tych materiałów
-**************************
+Forum
+******
 
 Zachęcamy do dyskusji i zadawania pytań `na naszym forum <http://discourse.kodujzklasa.pl/>`_
 
-Pobieranie tej dokumentacji
-***************************
+Pobieranie dokumentacji
+************************
 
 Materiały można pobrać do czytania w `wersji offline
 <http://readthedocs.org/projects/python101/downloads/htmlzip/latest/>`_.
@@ -49,7 +49,7 @@ Przed szkoleniem warto przygotować swój komputer.
     :maxdepth: 1
 
     env/index
-    source_code
+    realizacja/index
     git/index
 
 Zaczynamy!

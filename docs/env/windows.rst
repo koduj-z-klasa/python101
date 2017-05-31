@@ -1,7 +1,7 @@
 .. _windows-env:
 
 Przygotowanie systemu Windows
-*****************************
+#############################
 
 Scenariusze zostały przygotowane z z myślą o systemie Linux.
 Można je również wykonywać w środowisku Windows, trzeba jednak pamiętać

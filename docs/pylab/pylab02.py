@@ -1,10 +1,10 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import pylab
 
-a = int(raw_input('Podaj współczynnik a: '))
-b = int(raw_input('Podaj współczynnik b: '))
+a = int(input('Podaj współczynnik a: '))
+b = int(input('Podaj współczynnik b: '))
 x = range(-10, 11)  # lista argumentów x
 
 # wyrażenie listowe wylicza dziedzinę y

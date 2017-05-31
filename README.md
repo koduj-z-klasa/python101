@@ -5,27 +5,27 @@ Niniejsze materiały to dokumentacja i kody źródłowe do szkolenia z
 języka Python realizowanego w ramach projektu [Koduj z Klasą][1]
 prowadzonego przez Fundację [Centrum Edukacji Obywatelskiej][2].
 
-Pełna dokumentacja szkolenia znajduje się tutaj:
+Wersja HTML dokumentacji znajduje się tutaj:
 
 http://python101.rtfd.io
 
-Pobieranie tego repozytorium
-----------------------------
+Nasze repozytorium
+-------------------
 
-Gorąco zalecamy do klonowania tego repozytorium lokanie:
+ZAchęcamy do sklonowania tego repozytorium lokalnie:
 
     $ git clone https://github.com/koduj-z-klasa/python101/
 
-Wszystkie kody źródłowe można też pobrać jako archiwum ZIP bezpośrednio z tego repozytorium 
-bez wykorzystania narzędzia GIT, jednak stracimy wtedy możliwość wykonywania
-skoków pomiędzy etapami które zostały wskazane w materiałach szkoleniowych.
+Wszystkie kody źródłowe można też pobrać jako archiwum ZIP bezpośrednio,
+jednak stracimy wtedy możliwość wykonywania skoków pomiędzy etapami,
+które zostały wskazane w materiałach szkoleniowych.
 
 https://github.com/koduj-z-klasa/python101/archive/master.zip
 
-Dyskusje i pytania na temat tych materiałów
--------------------------------------------
+Forum Koduj z Klasą
+--------------------
 
-Zachęcamy do dyskusji i zadawania pytań na forum Koduj z Klasą:
+Zachęcamy do dyskusji i zadawania pytań na forum:
 
 http://discourse.kodujzklasa.pl/
 
@@ -34,68 +34,67 @@ Linki do zapamiętania
 
 Polecamy poniższe strony jako źródła dodatkowych materiałów dla uczestników szkoleń:
 
-- GitHub: Bezpłatne publiczne repozytoria kodu źródłowego  
+- GitHub: Bezpłatne publiczne repozytoria kodu źródłowego
   https://github.com/
 
-- BitBucket: Bezpłatne prywatne repozytoria kodu źródłowego dla małych zespołów  
+- BitBucket: Bezpłatne prywatne repozytoria kodu źródłowego dla małych zespołów
   https://bitbucket.org/
 
-- SourceTree: Okienkowa aplikacja dla GIT pod Windows  
+- SourceTree: Okienkowa aplikacja dla GIT pod Windows
   http://www.sourcetreeapp.com/
 
-- PyCharm: Środowisko IDE dla Pythona bezpłatne na nauczycieli i uczniów  
+- PyCharm: Środowisko IDE dla Pythona bezpłatne na nauczycieli i uczniów
   https://www.jetbrains.com/student/
 
-- Python101: Nasze repozytorium materiałów szkoleniowych  
+- Python101: Nasze repozytorium materiałów szkoleniowych
   https://github.com/koduj-z-klasa/python101
 
-- Strona główna programu KZK dla Python  
+- Strona główna programu KZK dla Python
   http://www.ceo.org.pl/pl/kodujzklasa/python
 
-- Proste przykłady OEIiZK dla pythona  
+- Proste przykłady OEIiZK dla pythona
   http://python.oeiizk.edu.pl/
 
-- Darmowy soft i usługi dla uczniów (w tym 100$ na serwer w internecie, hosting na ok. 1,5 roku)  
+- Darmowy soft i usługi dla uczniów (w tym 100$ na serwer w internecie, hosting na ok. 1,5 roku)
   https://education.github.com/pack
 
-- Dokumentacja Python'a i bibliotek standardowych  
+- Dokumentacja Python'a i bibliotek standardowych
   https://docs.python.org/2.7/
 
-- PyPi: Python Package Index, miejsce w którym można poszukać biliotek instalowanych przy pomocy narzędzia PIP  
+- PyPi: Python Package Index, miejsce w którym można poszukać biliotek instalowanych przy pomocy narzędzia PIP
   https://pypi.python.org/pypi
 
-- Django: Framework do robienia aplikacji WWW z bateryjkami i dużym ekosystemem dodatków  
-  https://docs.djangoproject.com/en/1.7/ - polecam zrobienie tutoriala 
+- Django: Framework do robienia aplikacji WWW z bateryjkami i dużym ekosystemem dodatków
+  https://docs.djangoproject.com/en/1.7/ - polecam zrobienie tutoriala
 
-- Flask: Elastyczny Frameworkdo budowy aplikacji WWW. Pomimo tego że jest na początek jest prosty, to zbudowanie większych aplikacji wymaga doświadczeń.  
+- Flask: Elastyczny Frameworkdo budowy aplikacji WWW. Pomimo tego że jest na początek jest prosty, to zbudowanie większych aplikacji wymaga doświadczeń.
   http://flask.pocoo.org/
 
-- PyGame: Framework do tworzenia gier  
+- PyGame: Framework do tworzenia gier
   http://www.pygame.org/news.html
 
 
 Modyfikacje i budowa dokumentacji offline
 -----------------------------------------
 
-Materiały szkoleniowe są przygotowywane z pomocą oprogramowania [Sphinx w
-wersji 1.3][3]. Jeżeli chcemy lokalnie generować dokumentację, instalujemy Sphinksa z kodów źródlowych.
+Materiały szkoleniowe są przygotowywane z pomocą oprogramowania [Sphinx][3].
+Jeżeli chcemy lokalnie generować dokumentację, instalujemy Sphinksa z kodów źródlowych.
 
-    ~/python101$ sudo apt-get install python mercurial git python-dev python-pip python-virtualenv
+    ~/python101$ sudo apt install python-pip
+    ~/python101$ sudo pip install virtualenv
     ~/python101$ virtualenv .pve
     ~/python101$ source .pve/bin/activate
-    ~/python101$ pip install sphinx
-        
-Po instalacji możemy w folderze dokumentacji możemy uruchomić make:
-  
+    ~/python101$ pip install sphinx sphinx-rtd-theme
+
+Po instalacji w folderze dokumentacji wykonujemy polecenie:
+
     ~/python101/docs$ make html
 
 Autorzy
 -------
 
 - Robert Bednarz <ecg@ecg.vot.pl>
-- Dorota Rybicka <rybicka.dorota@gmail.com>
 - Adam Jurkiewicz <biuro@cyfrowaszkola.waw.pl>
-- Grzegorz Wilczek <grzegorz.wilczek@ceo.org.pl>
 - [Janusz Skonieczny][4]
 
   [1]: http://www.ceo.org.pl/koduj
