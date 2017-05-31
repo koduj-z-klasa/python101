@@ -20,7 +20,7 @@ W efekcie otrzymamy katalog ``python101`` z kodami źródłowymi materiałów.
 
 
 Synchronizacja kodu
-*******************
+-------------------
 
 .. note::
 
