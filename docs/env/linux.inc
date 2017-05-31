@@ -4,8 +4,7 @@ Przygotowanie systemu Linux
 ***************************
 
 Jeżeli nie masz zainstalowanego systemu Linux, możesz wykorzystać wersję
-:ref:`Linux Live <linux-live>`, która po nagraniu na pendrajwa pozwoli
-uruchomić komputer. Jeżeli masz Linuksa lub planujesz go zainstalować
+:ref:`Linux Live <linux-live>`. Jeżeli masz Linuksa lub planujesz go zainstalować
 na dysku, czytaj dalej.
 
 .. _linux-distro:
@@ -35,14 +34,12 @@ osobom przyzwyczajonym do tradycyjnego pulpitu proponujemy proste i wydajne
 
 .. _linux-pakiety:
 
-Narzędzia i biblioteki
-======================
+Instalacja narzędzi i bibliotek
+===============================
 
 W systemach linuksowych Python 3.x zainstalowany jest domyślnie. Potrzebne
 narzędzia i biblioteki instalujemy przy użyciu systemowego menedżera pakietów
 (np. ``apt`` czy ``pacman``) i/lub instalatora pakietów Pythona ``pip``.
-
-**Instalacja**
 
 W systemach opartych na *Debianie* (*LinuxMint, (X)Ubuntu* itp.) w terminalu wydajemy
 następujące polecenia:

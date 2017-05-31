@@ -1,5 +1,5 @@
 Interpreter Pythona
-####################
+*******************
 
 Python to język interpretowany. Kod źródłowy Pythona zapisujemy w plikach tekstowych
 z rozszerzeniem ``.py``.
@@ -54,9 +54,7 @@ warunkowe lub pętle, w interpreterze zobaczymy znaki ``...`` oznaczające,
 
 Ze względów praktycznych warto korzystać z programów ułatwiających pisanie kodu
 (obsługa wcięć, podświetlenia itd.), tzw. IDE,
-czyli `Integrated Development Environment <http://pl.wikipedia.org/wiki/Zintegrowane_%C5%9Brodowisko_programistyczne>`_,
-np. :ref:`Geany <geany-python>`, :ref:`Sublime-Text <st3-python>` lub :ref:`PyCharm <pycharm-python>`.
-Wymienione programy działają na platformie Linux i Windows.
+czyli `Integrated Development Environment <http://pl.wikipedia.org/wiki/Zintegrowane_%C5%9Brodowisko_programistyczne>`_. Zobacz :ref:`IDE – edytory kodu <ide>`
 
 .. note::
 

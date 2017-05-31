@@ -15,14 +15,12 @@ Geany
 
 .. figure:: ide/geany_win.jpg
 
-`Geany <http://www.geany.org>`_ to proste i lekkie środowisko IDE dostępne na licencji
-`GNU General Public Licence <http://pl.wikipedia.org/wiki/GNU_General_Public_License>`_.
-Geany oferuje kolorowanie składni dla najpopularniejszych języków,
-m.in. C, C++, C#, Java, PHP, HTML, Python, Perl i Pascal,
-wsparcie dla kodowania w ponad 50 standardach, dopełnianie poleceń, mechanizmy automatycznego zamykanie tagów dla HTML\XML,
-auto-wcięć, pracy na kartach i wiele, wiele więcej. Podczas pisania kodu przydatny okazuje się brudnopis,
-pozwalający tworzyć dowolne notatki, a także możliwość kompilacji plików źródłowych
-bezpośrednio z poziomu programu.
+`Geany <http://www.geany.org>`_ to proste i lekkie środowisko IDE dostępne na
+licencji `GNU General Public Licence <http://pl.wikipedia.org/wiki/GNU_General_Public_License>`_.
+Geany oferuje kolorowanie składni, wsparcie standardów kodowania,
+dopełnianie poleceń, automatyczne zamykanie tagów, auto-wcięcia,
+pracę w kartach itd. Ma wbudowany podręczny notatnik oraz
+kompilowanie, budowanie i uruchamianie tworzonego kodu.
 
 W Linuksie
 ----------------
@@ -37,8 +35,9 @@ W systemach linuksowych korzystamy z dedykowanych menedżerów, np. w Xubuntu
 W Windows
 ------------------
 
-W MS Windows ściągamy i instalujemy `pełną wersję binarną Geany <http://www.geany.org/Download/Releases>`_
-przeznaczoną dla tych systemów. *Pełna* oznacza tutaj, ze zwaiera biblioteki
+W MS Windows ściągamy i instalujemy
+`pełną wersję binarną Geany <http://www.geany.org/Download/Releases>`_
+przeznaczoną dla tych systemów. *Pełna* oznacza tutaj, ze zawiera biblioteki
 GTK wykorzystywane przez program. Podczas standardowej instalacji można
 zmienić katalog docelowy, np. na ``C:\Geany``.
 
@@ -75,13 +74,12 @@ PyCharm
 PyCharm to profesjonalne, komercyjne środowisko programistyczne dostępne
 za darmo do celów szkoleniowych. Interfejs nie został na razie spolszczony.
 
-To IDE doskonale wspiera proces uczenia się. Dzięki nawigacji po kodzie,
-podpowiedziom oraz wykrywaniu błędów niemal na bieżąco, uczniowie mniej
-czasu będą spędzać na szukaniu problemów, a więcej na poznawaniu tajników
-programowania.
+To IDE doskonale wspiera proces uczenia się. Udostępnia nawigację po kodzie,
+podpowiedzi, wykrywa błędy i ma wbudowanych wiele innych udogodnień.
 
-**Zarówno w systemach Linux, jak i MS Windows najlepiej pobrać
-ostatnią wersję** `Professional Edition <http://www.jetbrains.com/pycharm/download/>`_ ze strony producenta.
+**Zarówno w systemach Linux, jak i MS Windows pobieramy
+ostatnią wersję** `Professional Edition <http://www.jetbrains.com/pycharm/download/>`_
+ze strony producenta.
 
 W Linuksie
 -----------
@@ -93,7 +91,7 @@ Wersja linuksowa to archiwum, które trzeba rozpakować. W terminalu wydajemy po
     ~$ sudo tar xzf pycharm-professional-2016.3.2.tar.gz -C /opt
     ~$ sudo ln -s /opt/pycharm-2016.3.2/bin/pycharm.sh /usr/bin/pycharm
 
-W ten sposób program zostanie rozpakowany do katalogu :file:`/opt/pycharm-wersja`,
+Program zostanie rozpakowany do katalogu :file:`/opt/pycharm-wersja`,
 przy czym "wersja" to ciąg typu ``2016.3.2`` odczytany z nazwy archiwum.
 Drugie polecenie utworzy skrót pozwalający uruchamiać edytor za pomocą polecenia
 ``pycharm`` w terminalu.
@@ -126,7 +124,7 @@ Polski słownik
 --------------
 
 W programie możemy włączyć sprawdzanie polskiej pisowni.
-Pobieramy archiuwm :download:`polish-dic.tgz <ide/polish-dic.tgz>`,
+Pobieramy archiwum :download:`polish-dic.tgz <ide/polish-dic.tgz>`,
 następnie wydajemy polecenie w terminalu:
 
 .. code-block:: bash
@@ -154,7 +152,7 @@ Sublime Text 3
 
 Profesjonalny edytor dla programistów, dzięki systemowi dodatków można go
 skonfigurować jako środowisko IDE do programowania w dowolnym języku.
-Poza konfigurowalnością zaletą jest szybkość działania i małe użycie zasobów
+Zaletą jest również szybkość działania i małe użycie zasobów
 systemowych.
 
 Unikalne cechy:
@@ -165,16 +163,12 @@ Unikalne cechy:
 * Lista wszystkich poleceń z menu: :kbd:`CTRL+SHIFT+P`
 * Równoczesna edycja kilku plików: *View/Layout*
 
-Konfiguracja edytora polega na zainstalowaniu kilku dodatków i zmianie
-niektórych ustawień. Aby uprościć sprawę, wystarczy pobrać przygotowane przez
-nas archiwum i rozpakować do odpowiedniego katalogu.
-
 W Linuksie
 -----------------
 
-W Debianie i systemach na nim opartych, czyli (X)Ubuntu czy Linux Mint, wchodzimy na stronę
-`Sublime Text 3 <http://www.sublimetext.com/3>`_, pobieramy wersję *Ubuntu 64 bit* lub
-*Ubuntu 32 bit* i dwa razy klikamy zapisany plik:
+W Debianie i systemach na nim opartych ((X)Ubuntu, Linux Mint),
+wchodzimy na stronę `Sublime Text 3 <http://www.sublimetext.com/3>`_,
+pobieramy wersję *Ubuntu 64 bit* lub *Ubuntu 32 bit* i dwa razy klikamy zapisany plik:
 
 .. figure:: ide/gdebi.jpg
 
@@ -185,16 +179,17 @@ pakietem, np.:
 
     ~$ sudo dpkg -i sublime-text_build-3126_amd64.deb
 
-W Arch Linux i systemach na nim opartych, np. Manjaro Linux, edytor dostępny
-jest w repozytoriach AUR (Arch User Repository), można go zainstalować np.
-przy użyciu pomocniczego narzędzia ``pacaur`` lub ``yaourt``, np.:
+W Arch Linux i systemach na nim opartych (*Manjaro*, *Antergos*), edytor
+instalujemy z repozytorium AUR przy użyciu pomocniczego narzędzia
+``pacaur`` lub ``yaourt``, np.:
 
 .. code-block:: bash
 
     ~$ pacaur -S sublime-text-dev
 
-Następnie pobieramy :download:`archiwum zip <ide/st3.zip>` i wypakowujemy do katalogu :file:`~/.config`
-za pomocą menedżera archiwów albo polecenia w terminalu:
+Następnie pobieramy :download:`archiwum zip <ide/st3.zip>`
+i wypakowujemy do katalogu :file:`~/.config` za pomocą menedżera archiwów
+albo polecenia w terminalu:
 
 .. code-block:: bash
 
@@ -202,9 +197,9 @@ za pomocą menedżera archiwów albo polecenia w terminalu:
 
 .. tip::
 
-    Katalog :file:`~/.config` to ukryty katalog konfiguracyjny znajdujący się w katalogu domowym
-    użytkownika. W menedżerze plików możemy włączyć wyświetlanie katalogów ukrytych skrótem
-    :kbd:`CTRL+H`.
+    Katalog :file:`~/.config` to ukryty katalog w katalogu domowym
+    użytkownika. W menedżerze plików możemy włączyć wyświetlanie katalogów
+    ukrytych skrótem :kbd:`CTRL+H`.
 
 
 W Windows
@@ -214,7 +209,9 @@ Po wejściu na stronę `Sublime Text 3 <http://www.sublimetext.com/3>`_
 pobieramy archiwum dla wersji 32- lub 64-bitowej. Instalujemy standardowo
 dwukrotnie klikając pobrany plik.
 
-Następnie pobieramy :download:`archiwum zip <ide/st3.zip>`, wypakowujemy do katalogu :file:`C:\\Użytkownicy\\nazwa_użytkownika\\Dane palikacji` i zmieniamy nazwę folderu :file:`sublime-text-3` na :file:`Sublime Text 3`.
+Następnie pobieramy :download:`archiwum zip <ide/st3.zip>`, wypakowujemy do katalogu
+:file:`C:\\Użytkownicy\\nazwa_użytkownika\\Dane aplikacji` i zmieniamy nazwę folderu
+:file:`sublime-text-3` na :file:`Sublime Text 3`.
 
 
 **Przygotowane ustawienia zawierają m.in.:**

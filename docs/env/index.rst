@@ -15,7 +15,7 @@ z napędu USB na większości komputerów i zapamiętują wyniki naszej pracy.
 Katalog użytkownika
 *******************
 
-Scenariusze zakładają również, że pracujemy w **katalogu domowym** użytkownika.
+Scenariusze zakładają, że pracujemy w **katalogu domowym** użytkownika.
 W systemach Linux jest to podfolder katalogu ``/home`` o nazwie zalogowanego użytkownika,
 np. ``/home/uczen``. W poleceniach wydawanych w terminalu (zob. :term:`terminal`)
 ścieżkę do tego katalogu symbolizuje znak ``~``.
@@ -39,7 +39,5 @@ jako zwykły użytkownik, natomiast ``#`` – jako root, czyli administrator.
 .. include:: ide.inc
 
 .. include:: live.inc
-
-.. include:: py3.inc
 
 .. include:: gloss_env.inc

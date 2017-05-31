@@ -1,11 +1,11 @@
-Live USB – inne opcje
+Linux Live USB – opcje
 ######################
 
 System na kluczu USB
 ====================
 
-Jeżeli dysponujemy startowym nośnikiem (np. CD/DVD) z systemem Xubuntu, SRU,
-czy FREE_DESKTOP możemy uruchomić normalną instalację, podpiąć nośnik USB,
+Jeżeli dysponujemy startowym nośnikiem (np. CD/DVD) z systemem Linux Mint,
+Xubuntu czy FREE_DESKTOP możemy uruchomić normalną instalację, podpiąć nośnik USB,
 założyć na nim (w trakcie instalacji) partycję Ext4 i wskazać ją jako miejsce instalacji
 systemu. Trzeba również zainstalować menedżer startowy GRUB w MBR takiego napędu.
 
