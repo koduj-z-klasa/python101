@@ -9,11 +9,13 @@ korzystanie z omawianej biblioteki na wzór środowiska `Matlab <http://pl.wikip
 Poniżej pokazujemy, jak łatwo przy użyciu Pythona wizualizować wykresy różnych
 funkcji.
 
-Zobacz, jak zainstalować matplotlib w systemie :ref:`Linux <linux-pakiety>` lub :ref:`Windows <matplotlib-win>`.
+Zobacz, jak zainstalować matplotlib w systemie :ref:`Linux <linux-pakiety>`
+lub :ref:`Windows <matplotlib-win>`.
 
 .. note::
 
-    W systemach **Linux** *matplotlib* wymaga pakietu ``python-tk`` (systemy oparte na Debianie) lub ``tk`` (systemy oparte na Arch Linux).
+    W systemach **Linux** *matplotlib* wymaga pakietu ``python-tk`` (systemy oparte na Debianie)
+    lub ``tk`` (systemy oparte na Arch Linux).
 
 .. contents::
     :depth: 1
@@ -37,7 +39,7 @@ Zobacz, jak zainstalować matplotlib w systemie :ref:`Linux <linux-pakiety>` lub
 
     Konsolę rozszerzoną możemy uruchamiać poleceniem ``ipython --pylab``, które z kolei
     równoważne jest instrukcji ``from pylab import *``. W tym wypadku nie trzeba podawać
-    przedrostka ``pylab`` przy korzystaniu z funkcji rsyowania.
+    przedrostka ``pylab`` przy korzystaniu z funkcji rysowania.
 
 Funkcja liniowa
 ***************
@@ -106,9 +108,9 @@ W konsoli Pythona wydajemy następujące polecenia:
     >>> a = 2
     >>> x = range(11)
     >>> for i in x:
-    ...   print a + i
+    ...   print(a + i)
     >>> y = [a + i for i in range(11)]
-    >>> y
+    >>> print(y)
 
 Powyższy przykład pokazuje kolejne ułatwienie dostępne w Pythonie, czyli
 :term:`wyrażenie listowe`, które zwięźle zastępuje pętlę i zwraca listę
@@ -159,7 +161,7 @@ Zanim zrealizujemy zadanie przećwiczmy w konsoli Pythona następujący kod:
 
     >>> import pylab
     >>> x = pylab.arange(-10, 10.5, 0.5)
-    >>> x
+    >>> print(x)
     >>> len(x)
     >>> a = 3
     >>> y1 = [i / -3 + a for i in x if i <= 0]
@@ -233,7 +235,7 @@ Spróbujmy zakodować część drugą. Dopisujemy:
     :lines: 14-16
 
 Wyrażenie listowe wylicza nam drugą dziedzinę wartości. Następnie do argumentów
-funkcji ``plot()`` dodajemy drugę parę list. Spróbuj uruchomić program.
+funkcji ``plot()`` dodajemy drugą parę list. Spróbuj uruchomić program.
 Nie działa, znowu dostajemy komunikat: *ValueError: x and y must have same first dimension*.
 Teraz jednak wiemy już dlaczego...
 
@@ -315,8 +317,8 @@ dlatego wylosowany kąt po zamianie na liczbę zmiennoprzecinkową mnożymy prze
 Ćwiczenie 6
 ============
 
-Do przygotowania wykresu ilustrującego ruch cząsteczeki generowane współrzędne musimy
-zapisać w listach. Wstaw w odpowiednich miejscach pliku poniższe intrukcje:
+Do przygotowania wykresu ilustrującego ruch cząsteczki generowane współrzędne musimy
+zapisać w listach. Wstaw w odpowiednich miejscach pliku poniższe instrukcje:
 
 .. raw:: html
 
@@ -330,7 +332,8 @@ zapisać w listach. Wstaw w odpowiednich miejscach pliku poniższe intrukcje:
     wsp_x.append(x)
     wsp_y.append(y)
 
-Na końcu skryptu dopisz instrukcje wyliczającą końcowy wektor przesunięcia (:math:`|s| = \sqrt{(x^2 + y^2)}`) i drukującą go na ekranie. Przetestuj program.
+Na końcu skryptu dopisz instrukcje wyliczającą końcowy wektor przesunięcia
+(:math:`|s| = \sqrt{(x^2 + y^2)}`) i drukującą go na ekranie. Przetestuj program.
 
 Pozostaje dopisanie importu biblioteki *matplotlib* oraz instrukcji generujących wykres.
 Poniższy kod ilustruje również użycie opcji wzbogacających wykres o legendę, etykiety czy tytuł.
@@ -346,9 +349,11 @@ Poniższy kod ilustruje również użycie opcji wzbogacających wykres o legend�
     :lineno-start: 1
     :lines: 1-
 
-Warto zwrócić uwagę na dodatkowe opcje formatujące wykres w poleceniu ``p.plot(wsp_x, wsp_y, "o:", color="green", linewidth="3", alpha=0.5)``. Trzeci parametr określa styl linii, możesz sprawdzić
-inne wartości, np: ``r:.``, ``r:+``, ``r.``, ``r+``. Można też określać kolor (``color``), grubość linii (``linewidth``)
-i przezroczystość (``alpha``). Poeksperymentuj.
+Warto zwrócić uwagę na dodatkowe opcje formatujące wykres w poleceniu
+``p.plot(wsp_x, wsp_y, "o:", color="green", linewidth=2, alpha=0.5)``.
+Trzeci parametr określa styl linii, możesz sprawdzić inne wartości, np:
+``r:.``, ``r:+``, ``r.``, ``r+``. Można też określać kolor (``color``),
+grubość linii (``linewidth``) i przezroczystość (``alpha``). Poeksperymentuj.
 
 Ćwiczenie 7
 ============
@@ -373,13 +378,3 @@ Uzyskany wykres powinien wyglądać następująco:
 *******************
 
 * :download:`pylab.zip <pylab.zip>`
-
-Kolejne wersje tworzonych skryptów znajdziesz w katalogu ``~/python101/pylab``.
-Uruchamiamy je wydając polecenia:
-
-.. code-block:: bash
-
-    ~/python101$ cd pylab
-    ~/python101/pylab$ python pylab0x.py
-
-\- gdzie *x* jest numerem kolejnej wersji kodu.
