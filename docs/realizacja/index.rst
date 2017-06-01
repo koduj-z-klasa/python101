@@ -18,6 +18,24 @@ jako zwykły użytkownik, natomiast ``#`` – jako root, czyli administrator.
     W przygotowanym przez nas systemie *LxPup KzkBox* wyjątkowo pracujemy jako użytkownik
     *root* w katalogu domowym :file:`/root`.
 
+W systemie Windows
+==================
+
+Jeżeli scenariusze będziemy wykonywać w MS Windows, musimy pamiętać różnicach:
+
+* Katalog domowy użytkownika w Windows nie nadaje się do przechowywania w nim
+  kodów programów lub repozytoriów, najlepiej utworzyć jakiś katalog na partycji
+  innej niż systemowa (oanczana literą *C:*), np. :file:`D:\python` i w nim
+  tworzyć foldery dla poszczególnych scenariuszy.
+* Domyślnym terminalem jest program ``cmd``, czyli wiersz poleceń; jest on jednak
+  ograniczony i niewygodny, warto używać konsoli PowerShell lub jeszcze lepiej
+  konsoli instalowanych razem z Pythonem i klientem Git.
+* W systemie Windows znaki ``/`` (slash) w ścieżkach zmieniamy na ``\`` (backslash).
+* Zamieniamy również komendy systemu Linux na odpowiedniki wiersza poleceń Windows,
+  np. ``mkdir`` na ``md``.
+* pamiętajmy, żeby skrypty zapisywać w plikach kodowanych jako UTF-8.
+
+
 Kod źródłowy
 =============
 

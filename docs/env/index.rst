@@ -3,8 +3,8 @@ System i oprogramowanie
 
 Nasze materiały zakładają wykorzystanie języka :term:`Python` w wersji 3.x.
 Mogą być realizowane w dowolnym systemie operacyjnym, jednak proponujemy systemy Linux,
-w których Python jest domyślnie zainstalowany i łatwiej doinstalować
-dodatkowe narzędzia i biblioteki.
+w których Python jest domyślnie zainstalowany i nie ma problemów z instalacją
+dodatkowych narzędzi i bibliotek.
 
 Do realizacji materiałów przygotowaliśmy również specjalne wersje systemu
 :ref:`Linux Live <linux-live>` przeznaczone do instalacji na pendrajwach.

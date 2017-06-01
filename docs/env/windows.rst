@@ -3,20 +3,14 @@
 Przygotowanie systemu Windows
 #############################
 
-Scenariusze zostały przygotowane z z myślą o systemie Linux.
-Można je również wykonywać w środowisku Windows, trzeba jednak pamiętać
-o kilku różnicach:
-
-* w systemie Windows znaki ``/`` (slash) zmieniamy na ``\`` (backslash)
-  w ścieżkach podawanych w scenariuszach
-* pamiętaj o zmianie komend systemu Linux na odpowiedniki wiersza poleceń
-  Windows.
-
-
 .. _ins-python:
 
 Inerpreter Pythona
 ==================
+
+.. note::
+
+  Przed rozpoczęciem instalacji Pythona zaktualizuj sytem.
 
 Na stronie `Python Releases for Windows <https://www.python.org/downloads/windows/>`_
 klikamy link *Last Python 3 Release - ...* i pobieramy instalator
