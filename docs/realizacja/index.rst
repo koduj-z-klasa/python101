@@ -4,28 +4,31 @@ Realizacja scenariuszy
 Katalog użytkownika
 ===================
 
-Scenariusze zakładają, że pracujemy w **katalogu domowym** użytkownika.
-W systemach Linux jest to podfolder katalogu ``/home`` o nazwie zalogowanego użytkownika,
+Jeżeli w scenariuszu mowa o **katalogu domowym** użytkownika, w systemie Linux
+należy przez to rozumieć podfolder katalogu ``/home`` o nazwie zalogowanego użytkownika,
 np. ``/home/uczen``. W poleceniach wydawanych w terminalu (zob. :term:`terminal`)
 ścieżkę do tego katalogu symbolizuje znak ``~``.
 
-Skrócony zapis typu ``~/quiz2$`` oznacza, że dane polecenie należy wykonać w podkatalogu ``quiz2``
-katalogu domowego użytkownika. Znak ``$`` oznacza, że komendy wydajemy
-jako zwykły użytkownik, natomiast ``#`` – jako root, czyli administrator.
+Zapis typu ``~/quiz2$`` oznacza więc, że dane polecenie należy wykonać w podkatalogu
+``quiz2`` katalogu domowego użytkownika.
+
+Znak ``$`` oznacza, że komendy wydajemy jako zwykły użytkownik,
+natomiast ``#`` – jako root, czyli administrator.
 
 .. note::
 
-    W przygotowanym przez nas systemie *LxPup KzkBox* wyjątkowo pracujemy jako użytkownik
-    *root* w katalogu domowym :file:`/root`.
+    W przygotowanym przez nas systemie *Porteus* pracujesz jako zwykły
+    użytkownik *guest*, natomiast w *LxPup KzkBox* pracujemy
+    jako użytkownik *root* w katalogu domowym :file:`/root`.
 
 W systemie Windows
 ==================
 
-Jeżeli scenariusze będziemy wykonywać w MS Windows, musimy pamiętać różnicach:
+Jeżeli scenariusze będziemy wykonywać w MS Windows, musimy pamiętać o różnicach:
 
 * Katalog domowy użytkownika w Windows nie nadaje się do przechowywania w nim
   kodów programów lub repozytoriów, najlepiej utworzyć jakiś katalog na partycji
-  innej niż systemowa (oanczana literą *C:*), np. :file:`D:\python` i w nim
+  innej niż systemowa (oznaczana literą *C:*), np. :file:`D:\python` i w nim
   tworzyć foldery dla poszczególnych scenariuszy.
 * Domyślnym terminalem jest program ``cmd``, czyli wiersz poleceń; jest on jednak
   ograniczony i niewygodny, warto używać konsoli PowerShell lub jeszcze lepiej
@@ -33,7 +36,7 @@ Jeżeli scenariusze będziemy wykonywać w MS Windows, musimy pamiętać różni
 * W systemie Windows znaki ``/`` (slash) w ścieżkach zmieniamy na ``\`` (backslash).
 * Zamieniamy również komendy systemu Linux na odpowiedniki wiersza poleceń Windows,
   np. ``mkdir`` na ``md``.
-* pamiętajmy, żeby skrypty zapisywać w plikach kodowanych jako UTF-8.
+* Pamiętajmy, żeby skrypty zapisywać w plikach kodowanych jako UTF-8.
 
 
 Kod źródłowy
@@ -42,11 +45,12 @@ Kod źródłowy
 W materiałach znajdziesz przykłady kodu źródłowego, które pokazują,
 jak rozwija się program. Warto je wpisywać w wybranym edytorze samodzielnie,
 aby nauczyć się składni języka i lepiej poznać środowisko programistyczne.
-
-W przypadku braku czasu kod można zaznaczać, kopiować i wklejać, pamiętając
-o zachowaniu wcięć. Podczas przepisywania można pominąć komentarze, czyli
+Podczas przepisywania można pominąć komentarze, czyli
 teksty zaczynające się od znaku ``#`` lub zamknięte pomiędzy potrójnymi
 cudzysłowami ``"""``.
+
+W przypadku braku czasu kod można zaznaczać, kopiować i wklejać, pamiętając
+o zachowaniu wcięć.
 
 Większość fragmentów kodu jest numerowana, ale jeśli Twój kod różni się nieznacznie
 numeracją linii, nie musi to oznaczać błędu.
