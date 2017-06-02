@@ -31,7 +31,7 @@ przekazać do funkcji:
 
     # wygeneruj liczby parzyste od 2 do 10
     lista = [2,11,2]
-    range(*lista)
+    list(range(*lista))
 
 Operator ``**`` potrafi z kolei rozpakować słownik, dostarczając funkcji
 nazwanych argumentów (ang. *keyword argument*):
@@ -44,7 +44,7 @@ nazwanych argumentów (ang. *keyword argument*):
     :linenos:
 
     def kalendarz(data, wydarzenie):
-        print "Data:", data,"\nWydarzenie:", wydarzenie
+        print("Data:", data,"\nWydarzenie:", wydarzenie)
 
     slownik = {"data" : "10.02.2015", "wydarzenie" : "szkolenie"}
     kalendarz(**slownik)
@@ -67,17 +67,17 @@ generatory wyrażeń i wyrażenia listowe, a także funkcje ``map()`` i ``filter
     kwadraty = []
     for x in range(10):
         kwadraty.append(x**2)
+    print(kwadraty)
 
 Iteratory
 ***************
 
 Obiekty, z których pętle odczytują kolejne dane to :term:`iteratory` (ang. *iterators*)
-Reprezentują one strumień danych, z którego zwracają tylko jedną kolejną
-wartość na raz za pomocą metody ``__next()__``. Jeżeli w strumieniu nie ma
-więcej danych, wywoływany jest wyjątek ``StopIteration``.
+Są to strumienie danych zwracanych po jednej wartości na raz za pomocą metody ``__next()__``.
+Jeżeli w strumieniu nie ma więcej danych, wywoływany jest wyjątek ``StopIteration``.
 
 Wbudowana funkcja ``iter()`` zwraca iterator utworzony z dowolnego iterowalnego
-obiektu. Iteratory wykorzystujemy do przeglądania **list**,** tupli**, **słowników** czy **plików**
+obiektu. Iteratory wykorzystujemy do przeglądania **list**,** tupli**, **słowników** i **plików**
 używając instrukcji ``for x in y``, w której *y* jest obiektem iterowalnym równoważnym
 wyrażeniu ``iter(y)``. Np.:
 
@@ -90,13 +90,14 @@ wyrażeniu ``iter(y)``. Np.:
 
     lista = [2, 4, 6]
     for x in lista:
-        print x
+        print(x)
 
     slownik = {'Adam':1, 'Bogdan':2 , 'Cezary':3}
     for x in slownik:
-        print(x, slownik(x))
+        print(x, slownik[x])
 
-Listy można przekształcać w inne iterowalne obiekty. Z dwóch list lub z jednej zawierającej tuple (klucz, wartość) można utworzyć słownik, np.:
+Listy można łączyć ze sobą i przekształcać w inne iterowalne obiekty.
+Z dwóch list lub z jednej zawierającej tuple (klucz, wartość) można utworzyć słownik:
 
 .. raw:: html
 
@@ -105,21 +106,20 @@ Listy można przekształcać w inne iterowalne obiekty. Z dwóch list lub z jedn
 .. code-block:: python
     :linenos:
 
-    panstwa = ['Polska', 'Niemcy', 'Francja']
-    stolice = ['Warszawa', 'Berlin', 'Paryż']
-    lista = zip(panstwa, stolice)
-    slownik = dict(lista)
+    panstwa = ['Polska', 'Niemcy', 'Francja']  # lista państw
+    stolice = ['Warszawa', 'Berlin', 'Paryż']  # lista stolic
+    panstwa_stolice = zip(panstwa, stolice)  # utworzenie iteratora
+    lista_tupli = list(panstwa_stolice)  # utworzenie listy tupli (państwo, stolica)
+    print(lista_tupli)
+    slownik = dict(lista_tupli)  # utworzenie słownika z listy tupli
+    print(slownik)
 
-    lista = [('Polska','Warszawa'), ('Berlin','Niemcy'), ('Francja','Paryż')]
-    slownik = dict(lista)
+    slownik.items()  # zwraca tuple (klucz, wartość)
+    slownik.keys()  # zwraca klucze
+    slownik.values()  # zwraca wartości
 
-    slownik
-    slownik.items()
-    slownik.keys()
-    slownik.values()
-
-    for klucz, wartosc in slownik.iteritems():
-        print klucz, wartosc
+    for klucz, wartosc in slownik.items():
+        print(klucz, wartosc)
 
 Generatory wyrażeń
 ************************
@@ -135,17 +135,15 @@ Poniższy przykład wydrukuje wszystkie imiona z dużej litery:
     wyrazy = ['anna', 'ala', 'ela', 'wiola', 'ola']
     imiona = (imie.capitalize() for imie in wyrazy)
     for imie in imiona:
-        print imie
+        print(imie)
 
 Schemat składniowy generatora jest następujący:
-``( wyrażenie for wyr in sekwencja if warunek )`` – przy czym:
+``( wyrażenie for x in sekwencja if warunek )`` – przy czym:
 
-- ``wyrażenie`` – powinno zawierać zmienną z pętli for
-- ``if warunek`` – klauzula ta jest opcjonalna i działa jak filtr eliminujący
-  wartości nie spełniające warunku
+- ``wyrażenie`` – powinno zawierać zmienną ``x`` z pętli ``for``
+- ``if warunek`` – opcjonalna klauzula filtrująca wartości nie spełniające warunku
 
-Gdybyśmy chcieli wybrać tylko imiona 3-literowe w wyrażeniu, użyjemy wspomnianej
-opcjonalnej klauzuli ``if warunek``:
+Gdybyśmy chcieli wybrać tylko imiona 3-literowe w wyrażeniu, użyjemy:
 
 .. raw:: html
 
@@ -155,13 +153,14 @@ opcjonalnej klauzuli ``if warunek``:
     :linenos:
 
     imiona = (imie.capitalize() for imie in wyrazy if len(imie) == 3)
+    list(imiona)
 
 Omawiane wyrażenia można zagnieżdzać. Przykłady podajemy niżej.
 
 Wyrażenia listowe
 ***********************
 
-Jeżeli nawiasy okrągłe w generatorze wyrażeń zamienimy na kwadratowe dostaniemy
+Jeżeli nawiasy okrągłe w generatorze wyrażeń zamienimy na kwadratowe, dostaniemy
 :term:`wyrażenie listowe` (ang. *list comprehensions*), które – jak wskazuje nazwa –
 zwraca listę:
 

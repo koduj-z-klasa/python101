@@ -35,7 +35,7 @@ czy `Enthought Canopy <https://www.enthought.com/products/canopy/>`_.
     dlotek/index
     elotek/index
     przyklady/index
-    przyklady/index5
+    pythonizmy
     gloss_python
 
 Materiały
