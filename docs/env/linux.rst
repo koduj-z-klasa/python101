@@ -48,7 +48,7 @@ następujące polecenia:
 
     ~$ sudo apt update
     ~$ sudo apt install ipython ipython-qtconsole git sqlite3
-    ~$ sudo apt install python3-pip python3-sip python3-pyqt5
+    ~$ sudo apt install python3-pip python3-tk python3-sip python3-pyqt5
     ~$ sudo pip3 install virtualenv
     ~$ sudo pip3 install matplotlib
     ~$ sudo pip3 install pygame
