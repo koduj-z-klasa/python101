@@ -178,8 +178,8 @@ zwraca listę:
     [x**2 for x in range(10)]
 
     # lista dwuwymiarowa [20,40] o wartościach a
-    a = int(raw_input("Podaj liczbę całkowtią: "))
-    [[a for y in xrange(20)] for x in xrange(40)]
+    a = int(input("Podaj liczbę całkowtią: "))
+    [[a for y in range(20)] for x in range(40)]
 
     # lista krotek (x, y), przy czym x != y
     [(x, y) for x in [1,2,3] for y in [3,1,4] if x != y]
@@ -222,6 +222,7 @@ podanej jako argument drugi:
         return x**2
 
     kwadraty = map(kwadrat, range(10))
+    list(kwadraty)
 
 .. _lambda:
 
@@ -231,7 +232,7 @@ Wyrażenia lambda
 Słowo kluczowe ``lambda`` pozwala utworzyć zwięzły odpowiednik prostej, jednowyrażeniowej
 funkcji. Poniższy przykład należy rozumieć następująco: do każdej liczby wygenerowanej
 przez funkcję ``range()`` zastosuj funkcję w postaci wyrażenia lambda podnoszącą
-wartość do kwadratu, a uzyskane wartości zapisz w liście ``kwadraty``.
+argument do kwadratu, a uzyskane wartości zapisz w liście ``kwadraty``.
 
 .. raw:: html
 
@@ -241,6 +242,7 @@ wartość do kwadratu, a uzyskane wartości zapisz w liście ``kwadraty``.
     :linenos:
 
     kwadraty = map(lambda x: x**2, range(10))
+    list(kwadraty)
 
 Funkcje *lambda* często stosowane są w poleceniach sortowania jako wyrażenie
 zwracające klucz (wartość), wg którego mają zostać posortowane elementy.
@@ -256,14 +258,12 @@ Jeżeli np. mamy listę tupli opisującą uczniów:
         ('kamil','czuja','1B',14)
     ]
 
-–  wywołanie ``sorted(uczniowie)`` zwróci nam listę posortowaną wg pierwszego elementu
-każdej tupli, czyli imienia. Jeżeli jednak chcemy sortować wg np. klasy,
-użyjemy parametru ``key``, który przyjmuje jednoargumentową funkcję zwracającą
-odpowiedni klucz do sortowania, np.: ``sorted(uczniowie, key=lambda x: x[2])``.
+- ``sorted(uczniowie)`` – posortuje listę wg pierwszego elementu każdej tupli, czyli imienia;
+- ``sorted(uczniowie, key=lambda x: x[1])`` – posortuje listę wg klucza zwróconego przez
+  jednoargumentową funkcję lambda, w tym wypadku będzie to nazwisko;
+- ``max(uczniowie, key=lambda x: x[3])`` – zwróci najstarszego ucznia;
+- ``min(uczniowie, key=lambda x: x[3])`` – zwróci najmłodszego ucznia.
 
-W funkcjach ``min()``, ``max()`` podobnie używamy wyrażeń *lambda* jako argumentu
-parametru ``key``, aby wskazać wartości, dla których wyszukujemy minimum i maksimum, np.:
-``max(uczniowie, key=lambda x: x[3])`` – zwróci najstarszego ucznia.
 
 Filtrowanie danych
 ==========================
@@ -281,6 +281,7 @@ które spełniają założony warunek:
 
     wyrazy = ['anna', 'ala', 'ela', 'wiola', 'ola']
     imiona = filter(lambda imie: len(imie) == 3, wyrazy)
+    list(imiona)
 
 Generatory
 **************************
@@ -299,18 +300,19 @@ Najprostszy przykład generatora zwracającego kolejne liczby parzyste:
 
     def gen_parzyste(N):
         for i in range(N):
-            if i % 2 == 0
+            if i % 2 == 0:
                 yield i
 
     gen = gen_parzyste(10)
-    gen.next()
-    gen.next()
-    ...
+    next(gen)
+    next(gen)
+    list(gen)
+
 
 Pliki
 **************************
 
-Przećwicz alternatywne sposoby otwierania plików:
+Czytanie plików tekstowych:
 
 .. raw:: html
 
@@ -319,23 +321,73 @@ Przećwicz alternatywne sposoby otwierania plików:
 .. code-block:: python
     :linenos:
 
+    with open("test.txt", "r") as f:  # odczytywanie linia po linii
+        for linia in f:
+            print(linia.strip())
+
     f = open('test.txt', 'r')
     for linia in f:  # odczytywanie linia po linii
-        print linia.strip()  # usuwanie z linii białych znaków
+        print(linia.strip())
     f.close()
 
     f = open('test.txt', 'r')
     tresc = f.read()  # odczytanie zawartości całego pliku
     for znak in tresc:  # odczytaywanie znak po znaku
-        print znak
+        print(znak)
     f.close()
 
-    for line in open('test.txt', 'r'):  # odczytywanie linia po linii
-        print linia.strip()
 
-    with open("text.txt", "r") as f:  # odczytywanie linia po linii
-        for linia in f:
-            print linia.strip()
+Pierwsza metoda używająca instrukcji ``with ... as ...`` jest preferowana,
+ponieważ zapewnia obsługę błędów i dba o zamknięcie pliku.
+
+
+Zapisywanie danych do pliku tekstowego:
+
+.. code-block:: python
+    :linenos:
+
+    dane = ['pierwsza linia', 'druga linia']
+    with open("output.txt", "w") as f:
+        for linia in dane:
+            f.write(linia + '\n')
+
+**Użycie formatu** `csv <https://pl.wikipedia.org/wiki/CSV_(format_pliku)>`_:
+
+.. code-block:: python
+    :linenos:
+
+    import csv  # moduł do obsługi formatu csv
+
+    dane = ([1, 'jan', 'kowalski'], [2, 'anna', 'nowak'])
+    plik = "test.csv"
+
+    with open(plik, "w", newline='') as plikcsv:
+        tresc = csv.writer(plikcsv)
+        for lista in dane:
+            tresc.writerow(lista)
+
+    with open(plik, newline='') as plikcsv:  # otwórz plik do odczytu
+        tresc = csv.reader(plikcsv)
+        for linia in tresc:  # przeglądamy kolejne linie
+            print(linia)
+
+**Użycie formatu** `json <https://pl.wikipedia.org/wiki/JSON>`_:
+
+.. code-block:: python
+
+    import os
+    import json
+
+    dane = {'uczen1':[1, 'jan', 'kowalski'], 'uczen2':[2, 'anna', 'nowak']}
+    plik = "test.json"
+
+    with open(plik, "w") as plikjson:
+        json.dump(dane, plikjson)
+
+    if os.path.isfile(plik):  # sprawdzenie, czy plik istnieje
+        with open(plik, "r") as plikjson:
+            dane = json.load(plikjson)
+        print(dane)
 
 
 Materiały
