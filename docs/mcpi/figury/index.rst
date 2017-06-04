@@ -10,13 +10,6 @@ raczej problemu, o tyle trójkąty, koła i bardziej skomplikowane budowle
 nie są trywialnym zadaniem. Tworzenie 2- i 3-wymiarowych konstrukcji ułatwi
 nam biblioteka `minecraftstuff <http://www.stuffaboutcode.com/2013/11/coding-shapes-in-minecraft.html>`_.
 
-**Instalacja**
-
-Symulator ``mcpi-sim`` domyślnie nie działa z omawianą biblioteką i wymaga modyfikacji.
-Zmienione pliki oraz omawianą bibliotekę umieściliśmy w archiwum
-:download:`mcpi-sim-fix.zip <../mcpi-sim-fix.zip>`, które po ściągnięciu
-należy rozpakować do katalogu :file:`~/mcpi-sim/local` nadpisując oryginalne pliki.
-
 
 Linia
 ===========

@@ -16,27 +16,34 @@ Całość bardzo dobrze nadaje się do nauki programowania z wykorzystaniem jęz
 1. Serwer Minecrafta Pi, czyli minikomputer Raspberry Pi w wersji B+, 2 lub 3
    z najnowszą wersją systemu Raspbian.
 2. Klient, czyli dowolny komputer z systemem Linux lub Windows,
-   zawierający interpreter Pythona 2, bibliotekę `mcpi <https://github.com/martinohanlon/mcpi>`_
-   oraz symulator `mcpi-sim <https://github.com/pddring/mcpi-sim>`_.
+   zawierający:
+
+   - interpreter Pythona 2.7.x,
+   - biblioteki PyGame i numpy,
+   - bibliotekę `mcpi <https://github.com/martinohanlon/mcpi>`_,
+   - symulator `mcpi-sim <https://github.com/pddring/mcpi-sim>`_.
+
 3. Adresy IP serwera i klienta muszą należeć do tej samej sieci lokalnej.
 
 **Instalacja bibliotek**
 
-Symulator *mcpi-sim* zawiera biblioteki *mcpi* w katalogu :file:`~/mcpi-sim/mcpi`,
-zainstalujemy go poleceniem:
+Pobierz archwium :download:`mcpi-sim.zip <mcpi-sim.zip>` i rozpakuj je w wybranym
+katalogu (np. katalogu domowym) za pomocą menedżera archwiwów lub poleceniem w terminalu:
 
 .. code-block:: bash
 
-    ~$ git clone https://github.com/pddring/mcpi-sim.git
+    ~$ unzip mcpi-sim.zip
 
-Do działania symulatora potrzebna jest biblioteka *PyGame*. Zobacz, jak ją zainstalować
-w systemie :ref:`Linux <linux-pakiety>` lub :ref:`Windows <pygame-win>`.
+Archiwum zawiera katalog :file:`mcpi-sim` z biblioteką *mcpi* oraz zmodyfikowanymi
+na potrzeby naszych scenariuszy bibliotekami symulatora.
+
+W razie potrzeby zobacz, jak zainstalować biblioteki *PyGame* i *numpy* w systemie
+:ref:`Linux <linux-pakiety>` lub :ref:`Windows <pygame-win>`.
 
 .. note::
 
   * Dystrybucja XenialPup KzkBox przygotowana na potrzeby naszego projektu zawiera już symulator.
   * Opisane poniżej scenariusze można realizować bezpośrednio w Raspbianie na Raspberry Pi.
-  * Same biblioteki *mcpi* można zainstalować poleceniem: ``git clone https://github.com/martinohanlon/mcpi.git``.
 
 
 .. toctree::

@@ -9,12 +9,6 @@ budowanie konstrukcji przestrzennych. Inspirowana jest wbudowaną w Pythona bibl
 `turtle <https://docs.python.org/2/library/turtle.html>`_, często wykorzystywaną do
 nauki programowania najmłodszych. Poniżej pokażemy, jak poruszać się "żółwiem" w przestrzeni.
 
-**Instalacja**
-
-Symulator ``mcpi-sim`` domyślnie nie działa z omawianą biblioteką i wymaga modyfikacji.
-Zmienione pliki oraz omawianą bibliotekę umieściliśmy w archiwum
-:download:`mcpi-sim-fix.zip <../mcpi-sim-fix.zip>`, które po ściągnięciu
-należy rozpakować do katalogu :file:`~/mcpi-sim/local` nadpisując oryginalne pliki.
 
 Kwadraty
 =========
