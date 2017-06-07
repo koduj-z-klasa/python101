@@ -13,18 +13,18 @@ krótkimi wiadomościami.
 
     **Wymagane oprogramowanie**:
 
-      * Python v. 2.7.x
-      * Django v. 1.10.x
+      * Python v. 3.x
+      * Django v. 1.11.2
       * Interpreter bazy SQLite3
 
 .. contents::
     :depth: 1
     :local:
 
-Projekt i aplikacja
-**********************
+Środowisko
+==========
 
-Tworzymy nowy projekt Django oraz szkielet naszej aplikacji. W katalogu domowym wydajemy polecenia w terminalu:
+W katalogu domowym tworzymy wirtualne środowisko Pythona:
 
 .. raw:: html
 
@@ -32,16 +32,105 @@ Tworzymy nowy projekt Django oraz szkielet naszej aplikacji. W katalogu domowym 
 
 .. code-block:: bash
 
-    ~$ django-admin.py startproject czatpro
-    ~$ cd czatpro
-    ~/czatpro$ python manage.py migrate
-    ~/czatpro$ django-admin.py startapp czat
+    ~$ virtualenv -p python3 pve3
+    ~$ source pve3/bin/activate
+    (pve3) ~$ pip install Django==1.11.2
 
-Powstanie katalog projektu :file:`czatpro` z **podkatalogiem ustawień** o takiej samej nazwie :file:`czatpro`.
-Utworzona zostanie również inicjalna baza danych z tabelami wykorzystywanymi przez Django.
+.. warning::
 
-Dostosowujemy ustawienia projektu: rejestrujemy naszą aplikację w projekcie, ustawiamy polską wersję językową oraz lokalizujemy
-datę i czas. Edytujemy plik :file:`czatpro/settings.py`:
+    Polecenie ``source pve3/bin/activate`` aktywuje wirtualne środowisko Pythona.
+    Zawsze wydajemy je przed rozpoczęciem pracy nad projektem. Innymi słowy w terminalu
+    ścieżka katalogu musi być poprzedzona prefiksem wirtualnego środowiska: ``(pve3)``.
+
+Projekt i aplikacja
+===================
+
+Utworzymy nowy projekt Django. Wydajemy polecenia:
+
+.. raw:: html
+
+    <div class="code_no">Terminal nr <script>var ter_no = ter_no || 1; document.write(ter_no++);</script></div>
+
+.. code-block:: bash
+
+    (pve3) ~/$ django-admin.py startproject czat1
+    (pve3) ~$ cd czat1
+    (pve3) ~$ python manage.py migrate
+
+- Opcja ``startproject`` tworzy katalog :file:`czat1` z **podkatalogiem ustawień projektu**
+  o takiej samej nazwie (:file:`czat1`).
+- Opcja ``migrate`` – tworzy inicjalną bazę danych z tabelami wykorzystywanymi przez Django.
+
+**Struktura plików projektu** – w terminalu wydajemy jedno z poleceń:
+
+.. code-block:: bash
+
+    (.pve) ~/czat1$ tree -L 2
+    [lub]
+    (.pve) ~/czat1$ ls -R
+
+Zewnętrzny katalog :file:`czat1` to tylko pojemnik na projekt, jego nazwę można zmieniać.
+Zawiera on:
+
+    - :file:`manage.py` – skrypt Pythona do zarządzania projektem;
+    - :file:`db.sqlite3` – bazę danych w domyślnym formacie SQLite3.
+
+
+**Katlog projektu** :file:`czat1/czat1` zawiera:
+
+    - :file:`settings.py` – konfiguracja projektu;
+    - :file:`urls.py` – lista osbługiwanych adresów URL;
+    - :file:`wsgi.py` – plik konfiguracyjny wykorzystywany przez serwery WWW.
+
+
+Plik :file:`__init__.py` obecny w danym katalogu wskazuje, że dany katalog jest modułem Pythona.
+
+Serwer deweloperski
+===================
+
+Serwer uruchamiamy poleceniem w terminalu:
+
+.. code-block:: bash
+
+    (pve3) ~/czat1$ python manage.py runserver
+
+Łączymy się z serwerem wpisując w przeglądarce adres: ``127.0.0.1:8000``.
+W terminalu możemy obserwować żądania obsługiwane przez serwer.
+Większość zmian w kodzie nie wymaga restartowania serwera.
+Serwer zatrzymujemy naciskając w terminalu skrót :kbd:`CTRL+C`.
+
+
+Aplikacja
+=========
+
+W ramach jednego projektu (serwisu internetowego) może działać wiele aplikacji.
+Utworzymy teraz naszą aplikację `czat` i zbadamy jej strukturę plików:
+
+.. code-block:: bash
+
+    (.pve) ~/czat1$ python manage.py startapp czat
+    (.pve) ~/czat1$ tree czat
+    lub:
+    (.pve) ~/czat1$ ls -R czat
+
+
+.. figure:: img/django_03.jpg
+
+
+**Katalog aplikacji** :file:`czat1/czat` zawiera:
+
+    - :file:`apps.py` – ustawienia aplikacji;
+    - :file:`admin.py` – konfigurację panelu administracyjnego;
+    - :file:`models.py` – plik definiujący modele danych przechowywanych w bazie;
+    - :file:`views.py` – plik zawierający funkcje lub klasy definiujące tzw. *widoki* (ang. *views*), obsługujące żądania klienta przychodzące do serwera.
+
+
+Ustawienia projektu
+===================
+
+Dostosoujemy ustawienia projektu: zarejestrujemy naszą aplikację w projekcie,
+ustawimy polską wersję językową oraz zlokalizujemy datę i czas.
+Edytujemy plik :file:`czat1/settings.py`:
 
 .. raw:: html
 
@@ -49,7 +138,7 @@ datę i czas. Edytujemy plik :file:`czatpro/settings.py`:
 
 .. code-block:: python
 
-    # czatpro/czatpro/settings.py
+    # czat1/settings.py
 
     INSTALLED_APPS = (
         'django.contrib.admin',
@@ -59,52 +148,102 @@ datę i czas. Edytujemy plik :file:`czatpro/settings.py`:
         'django.contrib.messages',
         'django.contrib.staticfiles',
 
-        'czat',  # rejestrujemy aplikację
+        'czat',  # rejestrujemy aplikacje
     )
 
-    LANGUAGE_CODE = 'pl'  # ustawienie języka
+    LANGUAGE_CODE = 'pl'  # ustawienie jezyka
 
     TIME_ZONE = 'Europe/Warsaw'  # ustawienie strefy czasowej
 
-.. note::
+Uruchom ponownie serwer deweloperski i sprawdź w przeglądarce, jak wygląda strona powitalna.
 
-    Jeżeli w jakimkolwiek pliku, np. ``settings.py`` chcemy używać polskich znaków,
-    musimy na początku wstawić deklarację kodowania: ``# -*- coding: utf-8 -*-``
+Strona domyślna
+===============
 
-Teraz uruchomimy :term:`serwer deweloperski`, wydając polecenie:
+**Mapowanie adresów URL** aplikacji umieszczamy w nowym pliku :file:`czat/urls.py`:
 
 .. raw:: html
 
-    <div class="code_no">Terminal nr <script>var ter_no = ter_no || 1; document.write(ter_no++);</script></div>
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. code-block:: bash
+.. highlight:: python
+.. literalinclude:: urls-app_01.py
+    :linenos:
+    :lineno-start: 1
+    :lines: 1-
+    :emphasize-lines: 3, 5, 7
 
-    ~/czatpro$ python manage.py runserver
 
-Po wpisaniu w przeglądarce adresu *127.0.0.1:8000* zobaczymy stronę powitalną.
+- Zmienna ``app-name`` określa przestrzeń nazw, w której dostępne będą adresy URL aplikacji.
+- Lista ``urlpatterns`` zawiera powiązania adresów URL z widokami zapisanymi w pliku :file:`views.py`,
+  który importujemy w drugiej linii.
 
-.. figure:: img/czat01.png
+Funkcja ``url()`` przyporządkowuje adresowi URL widok, który go obsługuje. Pierwszy parametr to wyrażenie
+regularne, do którego Django próbuje dopasować adres otrzymany w żądaniu od klienta. Drugi to nazwa widoku.
+Trzeci to unikalna nazwa, dzięki której można odwoływać się w aplikacji do zdefiniowanego adresu.
 
-.. note::
+**Konfiguracja adresów URL projektu** zawarta jest w pliku :file:`malybar/urls.py`.
+W tym miejscu dołączamy listy adresów URL zdefiniowane przez poszczególne aplikacje.
 
-    * Domyślnie serwer nasłuchuje na porcie ``8000``, można to zmienić, podając port w poleceniu:
-      ``python manage.py runserver 127.0.0.1:8080``.
+.. raw:: html
 
-    * Lokalny serwer deweloperski zatrzymujemy za pomocą skrótu :kbd:`Ctrl+C`.
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: malybar/urls_01.py
+    :linenos:
+    :lineno-start: 16
+    :lines: 16-24
+    :emphasize-lines: 3, 6-7
+
+Funkcja ``include()`` jako parametr przyjmuje ścieżkę dostępu do konfiguracji adresów danej
+aplikacji. W praktyce jest to nazwa katalogu, w którym znajduje się aplikacja, operator ``.`` (kropka)
+oraz domyślna nazwa pliku konfiguracyjnego :file:`urls.py` bez rozszerzenia.
+
+**Widok** definiuje jakiś typ strony WWW, za pomocą którego użytkownik wykonuje w aplikacji
+jakieś operacje, np. wyświetla zestawienie danych. Technicznie widok zazwyczaj składa się
+z funkcji otrzymującej żądanie klienta i jakiegoś szablonu służącego prezentowaniu danych.
+
+Widok domyślny obsługujący żądania typu GET przychodzące na adres podstawowy serwera
+zdefiniujemy w pliku :file:`pizza/views.py`:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: pizza/views_01.py
+    :linenos:
+    :lineno-start: 1
+    :lines: 1-
+
+
+.. attention::
+
+    **Zapamiętaj:**
+
+    - linia ``# -*- coding: utf-8 -*-`` to określenie kodowania znaków. Należy umieszczać je w pierwszej linii każdego pliku, w którym zamierzamy używać polskich znaków, czy to w komentarzach czy w kodzie.
+    - napisy zawierające polskie znaki poprzedzamy literą `u`, np. ``u'składnik'``.
+
+
+Nazwa funkcji – ``index()`` – jest umowna. Każdy widok otrzymuje szczegóły żądania wysłanego przez klienta
+(obiekt typu ``HttpRequest``) i powinien zwrócić jakąś odpowiedź (``HttpResponse``).
+W tym wypadku zwracamy funkcję ``render()`` wywołującą wskazany jako drugi parametr szablon,
+który otrzymuje dane w postaci słownika ``kontekst`` (nazwa umowna).
+
+Model danych
+============
 
 Budowanie aplikacji w Django nawiązuje do wzorca projektowego :term:`MVC`, czyli
 Model-Widok-Kontroler. Więcej informacji na ten temat umieściliśmy w osobnym
 materiale :ref:`MVC <mvc_wzorzec>`.
 
-Model danych
-**********************
-
-Budując aplikację, zaczynamy od zdefiniowania modelu (zob. :term:`model`), czyli klasy opisującej tabelę zawierającą
+Zaczynamy więc od zdefiniowania modelu (zob. :term:`model`), czyli klasy opisującej tabelę zawierającą
 wiadomości. Atrybuty klasy odpowiadają polom tabeli. Instancje tej klasy będą reprezentować wiadomości
 utworzone przez użytkowników, czyli rekordy tabeli. Każda wiadomość będzie zwierała treść,
 datę dodania oraz wskazanie autora (użytkownika).
 
-W pliku :file:`~/czatpro/czat/models.py` wpisujemy:
+W pliku :file:`czat/models.py` wpisujemy:
 
 .. raw:: html
 
@@ -114,7 +253,8 @@ W pliku :file:`~/czatpro/czat/models.py` wpisujemy:
 .. literalinclude:: models_z1.py
     :linenos:
 
-Opisując klasę ``Wiadomosc`` podajemy nazwy poszczególnych właściwości (pól) oraz typy przechowywanych w nich danych.
+Opisując klasę ``Wiadomosc`` podajemy nazwy poszczególnych właściwości (pól)
+oraz typy przechowywanych w nich danych.
 Po zdefiniowaniu przynajmniej jednego modelu możemy zaktualizować bazę danych,
 czyli zmienić/dodać potrzebne tabele:
 

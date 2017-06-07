@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# czatpro/czat/models.py
+# czat/models.py
 
 from django.db import models
 from django.contrib.auth.models import User
