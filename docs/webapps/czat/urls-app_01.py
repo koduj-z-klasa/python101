@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+# czat/urls.py
+
 from django.conf.urls import url
 from . import views  # import widoków aplikacji
 

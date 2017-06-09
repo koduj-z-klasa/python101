@@ -157,80 +157,6 @@ Edytujemy plik :file:`czat1/settings.py`:
 
 Uruchom ponownie serwer deweloperski i sprawdź w przeglądarce, jak wygląda strona powitalna.
 
-Strona domyślna
-===============
-
-**Mapowanie adresów URL** aplikacji umieszczamy w nowym pliku :file:`czat/urls.py`:
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: python
-.. literalinclude:: urls-app_01.py
-    :linenos:
-    :lineno-start: 1
-    :lines: 1-
-    :emphasize-lines: 3, 5, 7
-
-
-- Zmienna ``app-name`` określa przestrzeń nazw, w której dostępne będą adresy URL aplikacji.
-- Lista ``urlpatterns`` zawiera powiązania adresów URL z widokami zapisanymi w pliku :file:`views.py`,
-  który importujemy w drugiej linii.
-
-Funkcja ``url()`` przyporządkowuje adresowi URL widok, który go obsługuje. Pierwszy parametr to wyrażenie
-regularne, do którego Django próbuje dopasować adres otrzymany w żądaniu od klienta. Drugi to nazwa widoku.
-Trzeci to unikalna nazwa, dzięki której można odwoływać się w aplikacji do zdefiniowanego adresu.
-
-**Konfiguracja adresów URL projektu** zawarta jest w pliku :file:`malybar/urls.py`.
-W tym miejscu dołączamy listy adresów URL zdefiniowane przez poszczególne aplikacje.
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: python
-.. literalinclude:: malybar/urls_01.py
-    :linenos:
-    :lineno-start: 16
-    :lines: 16-24
-    :emphasize-lines: 3, 6-7
-
-Funkcja ``include()`` jako parametr przyjmuje ścieżkę dostępu do konfiguracji adresów danej
-aplikacji. W praktyce jest to nazwa katalogu, w którym znajduje się aplikacja, operator ``.`` (kropka)
-oraz domyślna nazwa pliku konfiguracyjnego :file:`urls.py` bez rozszerzenia.
-
-**Widok** definiuje jakiś typ strony WWW, za pomocą którego użytkownik wykonuje w aplikacji
-jakieś operacje, np. wyświetla zestawienie danych. Technicznie widok zazwyczaj składa się
-z funkcji otrzymującej żądanie klienta i jakiegoś szablonu służącego prezentowaniu danych.
-
-Widok domyślny obsługujący żądania typu GET przychodzące na adres podstawowy serwera
-zdefiniujemy w pliku :file:`pizza/views.py`:
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: python
-.. literalinclude:: pizza/views_01.py
-    :linenos:
-    :lineno-start: 1
-    :lines: 1-
-
-
-.. attention::
-
-    **Zapamiętaj:**
-
-    - linia ``# -*- coding: utf-8 -*-`` to określenie kodowania znaków. Należy umieszczać je w pierwszej linii każdego pliku, w którym zamierzamy używać polskich znaków, czy to w komentarzach czy w kodzie.
-    - napisy zawierające polskie znaki poprzedzamy literą `u`, np. ``u'składnik'``.
-
-
-Nazwa funkcji – ``index()`` – jest umowna. Każdy widok otrzymuje szczegóły żądania wysłanego przez klienta
-(obiekt typu ``HttpRequest``) i powinien zwrócić jakąś odpowiedź (``HttpResponse``).
-W tym wypadku zwracamy funkcję ``render()`` wywołującą wskazany jako drugi parametr szablon,
-który otrzymuje dane w postaci słownika ``kontekst`` (nazwa umowna).
-
 Model danych
 ============
 
@@ -255,8 +181,22 @@ W pliku :file:`czat/models.py` wpisujemy:
 
 Opisując klasę ``Wiadomosc`` podajemy nazwy poszczególnych właściwości (pól)
 oraz typy przechowywanych w nich danych.
-Po zdefiniowaniu przynajmniej jednego modelu możemy zaktualizować bazę danych,
-czyli zmienić/dodać potrzebne tabele:
+
+.. note:: Typy pól:
+
+    * ``CharField`` – pole znakowe, przechowuje niezbyt długie napisy, np. nazwy;
+    * ``Date(Time)Field`` – pole daty (i czasu);
+    * ``ForeignKey`` – pole klucza obcego, czyli relacji; wymaga nazwy powiązanego modelu jako pierwszego argumentu.
+
+  Właściwości pól:
+
+    * ``verbose_name`` lub napis podany jako pierwszy argument – przyjazna nazwa pola;
+    * ``max_length`` – maksymalna długość pola znakowego;
+    * ``help_text`` – tekst podpowiedzi;
+    * ``auto_now_add=True`` – data (i czas) wstawione zostaną automatycznie.
+
+**Utworzenie migracji** – po dodaniu lub zmianie modelu należy zaktualizować bazę danych,
+tworząc tzw. migrację, czyli zapis zmian:
 
 .. raw:: html
 
@@ -264,8 +204,8 @@ czyli zmienić/dodać potrzebne tabele:
 
 .. code-block:: bash
 
-    ~/czatpro$ python manage.py makemigrations czat
-    ~/czatpro$ python manage.py migrate
+    (.pve) ~/czat1$ python manage.py makemigrations czat
+    (.pve) ~/czat1$ python manage.py migrate
 
 .. figure:: img/czat02.png
 
@@ -281,11 +221,10 @@ czyli zmienić/dodać potrzebne tabele:
 .. figure:: img/czat03.png
 
 Panel administracyjny
-**********************
+=====================
 
-Utworzymy panel administratora dla projektu, dzięki czemu będziemy mogli zacząć
-dodawać użytkowników i wprowadzać dane. Otwieramy więc plik :file:`~/czat/czat/admin.py`
-i rejestrujemy w nim nasz model jako element panelu:
+Panel administratora pozwala dodawać użytkowników i wprowadzać dane.
+W pliku :file:`czat/admin.py` umieszczamy kod:
 
 .. raw:: html
 
@@ -296,14 +235,14 @@ i rejestrujemy w nim nasz model jako element panelu:
     :linenos:
     :emphasize-lines: 5, 8
 
+Po zaimportowaniu modelu rejestrujemy go w panelu: ``admin.site.register(models.Wiadomosc)``.
+
 .. note::
 
     Warto zapamiętać, że każdy model, funkcję, formularz czy widok, których chcemy użyć,
     musimy najpierw zaimportować za pomocą klauzuli typu ``from <skąd> import <co>``.
 
-Do celów administracyjnych potrzebne nam będzie odpowiednie konto. Tworzymy
-je, wydając w terminalu poniższe polecenie. Django zapyta o nazwę, email i hasło administratora.
-Podajemy: "admin", "", "admin".
+**Konto administratora** – tworzymy wydając w terminalu polecenie:
 
 .. raw:: html
 
@@ -311,11 +250,15 @@ Podajemy: "admin", "", "admin".
 
 .. code-block:: bash
 
-    ~/czatpro$ python manage.py createsuperuser
+    (.pve) ~/czat1$ python manage.py createsuperuser
 
-Po ewentualnym ponownym uruchomieniu serwera wchodzimy na adres *127.0.0.1:8000/admin/*.
-Logujemy się podając dane wprowadzone podczas tworzenia bazy.
-Otrzymamy dostęp do panelu administracyjnego, w którym możemy dodawać nowych użytkowników i wiadomości [#]_.
+– na pytanie o nazwę, email i hasło administratora, podajemy: "admin", "", "zaq1@WSX".
+
+Ćwiczenie
+---------
+
+Uruchom/zrestartuj serwer, w przeglądarce wpisz adres *127.0.0.1:8000/admin/*
+i zaloguj się na konto administratora [#]_.
 
 .. [#] Bezpieczna aplikacja powinna dysponować osobnym mechanizmem rejestracji
    użytkowników i dodawania wiadomości, tak by nie trzeba było udostępniać
@@ -323,21 +266,19 @@ Otrzymamy dostęp do panelu administracyjnego, w którym możemy dodawać nowych
 
 .. figure:: img/czat04.png
 
-Ćwiczenie 1
-============
+Ćwiczenie 2
+-----------
 
-Po zalogowaniu na konto administratora dodaj użytkownika "adam".
-Na stronie szczegółów, która wyświetli się po jego utworzeniu, zaznacz
-opcję "W zespole", następnie w panelu "Dostępne uprawnienia" zaznacz opcje
+Po zalogowaniu na konto administratora dodaj użytkowników "adam" i "ewa"
+z hasłami "zaq1@WSX". Na stronie, która wyświetla się utworzeniu konta,
+zaznacz opcję "W zespole". W sekcji "Dostępne uprawnienia" zaznacz opcje
 dodawania (*add*), zmieniania (*change*) oraz usuwania (*del*) wiadomości
 (wpisy typu: "czat | wiadomosc | Can add wiadomosc") i przypisz je
 użytkownikowi naciskając strzałkę w prawo.
 
 .. figure:: img/czat06.png
 
-Przeloguj się na konto "adam" i dodaj dwie przykładowe wiadomości.
-Następnie utwórz w opisany wyżej sposób kolejnego użytkownika o nazwie "ewa"
-i po przelogowaniu się dodaj co najmniej 1 wiadomość.
+Z konta "adam" dodaj dwie przykładowe wiadomości, a z konta "ewa" – jedną.
 
 .. figure:: img/czat05.png
 
@@ -345,12 +286,11 @@ i po przelogowaniu się dodaj co najmniej 1 wiadomość.
 
     <hr />
 
-Model w panelu
-==============
+Uzupełnienie modelu
+===================
 
-W formularzu dodawania wiadomości widać, że etykiety nie są spolszczone, z kolei
-dodane wiadomości wyświetlają się na liście jako "Wiadomosc object".
-Aby poprawić te niedoskonałości, uzupełniamy plik :file:`models.py`:
+W formularzu dodawania wiadomości widać, że etykiety opisujące nasz model
+nie są spolszczone. Uzupełniamy więc plik :file:`czat/models.py`:
 
 .. raw:: html
 
@@ -359,48 +299,41 @@ Aby poprawić te niedoskonałości, uzupełniamy plik :file:`models.py`:
 .. highlight:: python
 .. literalinclude:: models.py
     :linenos:
-    :emphasize-lines: 2-3
-    :lineno-start: 10
-    :lines: 10-21
+    :lineno-start: 8
+    :lines: 8-21
+    :emphasize-lines: 8-14
 
-W definicji każdego pola jako pierwszy argument dopisujemy spolszczoną etykietę,
-np. ``u'data publikacji'``. W podklasie ``Meta`` podajemy nazwy modelu w liczbie
-pojedynczej i mnogiej. Dodajemy też funkcję ``__unicode__``, której zadaniem
-jest "autoprezentacja" klasy, czyli wyświetlenie treści wiadomości.
-Po odświeżeniu panelu administracyjnego (np. klawiszem :kbd:`F5`) nazwy zostaną spolszczone.
+Podklasa ``Meta`` pozwala zdefiniować formy liczby pojedynczej i mnogiej oraz
+domyślny sposób sortowania wiadomości (``ordering = ['data_pub']``).
+Zadaniem funkcji ``__str__()`` jest "autoprezentacja" klasy,
+czyli w naszym wypadku wyświetlenie treści wiadomości.
 
-.. note::
-
-    Prefiks ``u`` wymagany w Pythonie v.2 przed łańcuchami znaków oznacza
-    kodowanie w unikodzie (ang. *unicode*) umożliwiające wyświetlanie m.in. znaków narodowych.
-
-.. tip::
-
-    W Pythonie v.3 zamiast nazwy funkcji ``_unicode__`` należy użyć ``str``.
+Odśwież panel administracyjny (np. klawiszem :kbd:`F5`).
 
 .. figure:: img/czat09.png
 
 
-Widoki i szablony
-*******************
+Adresy i widoki
+================
 
-Panel administracyjny już mamy, ale po wejściu na stronę główną zwykły użytkownik
-niczego poza standardowym powitaniem Django nie widzi. Zajmiemy się teraz
-stronami po stronie (:-)) użytkownika.
-
-Aby utworzyć stronę główną, zakodujemy pierwszy :term:`widok` (zob. :ref:`więcej »»» <mvc_widok>`),
-czyli funkcję o przykładowej nazwie ``index()``, którą powiążemy z adresem URL głównej strony (/).
-Najprostszy widok zwraca jakiś tekst: ``return HttpResponse("Witaj w aplikacji Czat!")``.
-W pliku :file:`views.py` umieszczamy:
+To jakie adresy URL ma obsługiwać nasza aplikacja, definiujemy w pliku :file:`czat/urls.py`,
+który tworzymy (!) i uzupełniamy kodem:
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: views_z1.py
+.. literalinclude:: urls-app_01.py
     :linenos:
-    :emphasize-lines: 9
+    :emphasize-lines: 7-10
+
+- ``r'^$'`` – wyrażenie regularne opisujące adres URL, symbol ``^`` to początek,
+  ``$`` – koniec łańcucha. Zapis ``r'^$'`` to adres główny serwera;
+- ``views.index`` – przykładowy widok, czyli funkcja zdefiniowana w pliku :file:`czat/views.py`;
+- ``name='index'`` – nazwa, która pozwoli na generowanie adresów url dla linków w kodzie HTML;
+- ``url()`` – funkcja wiążąca powyższe elementy, czyli adres URL z widokiem.
+
 
 Teraz musimy **powiązać widok z adresem url**. Na początku do pliku projektu :file:`czatpro/urls.py`
 dopiszemy import ustawień z naszej aplikacji:
@@ -419,23 +352,32 @@ dopiszemy import ustawień z naszej aplikacji:
 Parametr ``namespace='czat'`` definiuje przestrzeń nazw, w której dostępne będą zdefiniowane
 dla naszej aplikacji mapowania między adresami url a widokami.
 
-Następnie **tworzymy (!)** plik :file:`czat/urls.py` o następującej treści:
+
+
+Podstawową funkcją wiążącą adres z widokiem jest ``url()``. Jako pierwszy parametr przyjmuje wyrażenie
+regularne oznaczane ``r`` przed łańcuchem dopasowania.
+Drugi parametr wskazuje widok (funkcję), która ma obsłużyć dany adres.
+Trzeci parametr ``name`` pozwala zapamiętać skojarzenie url-a i widoku pod nazwą,
+której będzie można użyć np. do wygenerowania adresu linku.
+
+Widoki i szablony
+=================
+
+Aby utworzyć stronę główną, zakodujemy pierwszy :term:`widok` (zob. :ref:`więcej »»» <mvc_widok>`),
+czyli funkcję o przykładowej nazwie ``index()``, którą powiążemy z adresem URL głównej strony (/).
+Najprostszy widok zwraca jakiś tekst: ``return HttpResponse("Witaj w aplikacji Czat!")``.
+W pliku :file:`views.py` umieszczamy:
 
 .. raw:: html
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: urls_z1.py
+.. literalinclude:: views_z1.py
     :linenos:
-    :emphasize-lines: 5, 8
+    :emphasize-lines: 9
 
-Podstawową funkcją wiążącą adres z widokiem jest ``url()``. Jako pierwszy parametr przyjmuje wyrażenie
-regularne oznaczane ``r`` przed łańcuchem dopasowania. Symbol ``^`` to początek,
-``$`` – koniec łańcucha. Zapis ``r'^$'`` to adres główny serwera.
-Drugi parametr wskazuje widok (funkcję), która ma obsłużyć dany adres.
-Trzeci parametr ``name`` pozwala zapamiętać skojarzenie url-a i widoku pod nazwą,
-której będzie można użyć np. do wygenerowania adresu linku.
+
 
 Przetestujmy nasz widok wywołując adres ``127.0.0.1:8000``. Powinniśmy zobaczyć tekst
 podany jako argument funkcji ``HttpResponse()``:
