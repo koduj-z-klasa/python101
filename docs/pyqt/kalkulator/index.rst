@@ -6,7 +6,7 @@ Kalkulator
 .. highlight:: python
 
 Prosta 1-okienkowa aplikacja ilustrująca podstawy tworzenia interfejsu graficznego
-i obsługi działań użytkownika za pomocą Pythona 2, PyQt5 i biblioteki Qt5.
+i obsługi działań użytkownika za pomocą Pythona 3, PyQt5 i biblioteki Qt5.
 Przykład wprowadza również podstawy `programowania obiektowego <https://pl.wikipedia.org/wiki/Programowanie_obiektowe>`_ (ang. Object Oriented Programing).
 
 .. figure:: img//kalkulator05.png
@@ -74,7 +74,7 @@ Przetestujmy kod. Program uruchamiamy poleceniem wydanym w terminalu w katalogu 
 
 .. code-block:: bash
 
-    ~$ python kalkulator.py
+    ~$ python3 kalkulator.py
 
 .. figure:: img//kalkulator01.png
 
@@ -94,8 +94,8 @@ Dodajemy wymagane importy i rozbudowujemy metodę ``interfejs()``:
 .. highlight:: python
 .. literalinclude:: kalkulator02.py
     :linenos:
-    :lineno-start: 6
-    :lines: 6-7
+    :lineno-start: 5
+    :lines: 5-6
 
 .. raw:: html
 
@@ -104,8 +104,8 @@ Dodajemy wymagane importy i rozbudowujemy metodę ``interfejs()``:
 .. highlight:: python
 .. literalinclude:: kalkulator02.py
     :linenos:
-    :lineno-start: 17
-    :lines: 17-36
+    :lineno-start: 16
+    :lines: 16-35
 
 Dodawanie etykiet zaczynamy od utworzenia obiektów na podstawie odpowiedniej klasy,
 w tym wypadku `QtLabel <http://doc.qt.io/qt-5/qlabel.html>`_. Do jej konstruktora
@@ -145,8 +145,8 @@ Jak zwykle, zaczynamy od zaimportowania potrzebnych klas:
 .. highlight:: python
 .. literalinclude:: kalkulator03.py
     :linenos:
-    :lineno-start: 8
-    :lines: 8
+    :lineno-start: 7
+    :lines: 7
 
 Następnie przed instrukcją ``self.setLayout(ukladT)`` wstawiamy następujący kod:
 
@@ -157,8 +157,8 @@ Następnie przed instrukcją ``self.setLayout(ukladT)`` wstawiamy następujący 
 .. highlight:: python
 .. literalinclude:: kalkulator03.py
     :linenos:
-    :lineno-start: 31
-    :lines: 31-58
+    :lineno-start: 30
+    :lines: 30-57
 
 Jak widać, dodawanie widżetów polega zazwyczaj na:
 
@@ -207,8 +207,8 @@ zawierającą różne stałe:
 .. highlight:: python
 .. literalinclude:: kalkulator04.py
     :linenos:
-    :lineno-start: 9
-    :lines: 9-10
+    :lineno-start: 8
+    :lines: 8-9
 
 Dalej po instrukcji ``self.setLayout(ukladT)`` w metodzie ``interfejs()`` dopisujemy:
 
@@ -219,8 +219,8 @@ Dalej po instrukcji ``self.setLayout(ukladT)`` w metodzie ``interfejs()`` dopisu
 .. highlight:: python
 .. literalinclude:: kalkulator04.py
     :linenos:
-    :lineno-start: 65
-    :lines: 65
+    :lineno-start: 64
+    :lines: 64
 
 – instrukcja ta wiąże kliknięcie przycisku "Koniec" z wywołaniem metody ``koniec()``,
 którą musimy dopisać na końcu klasy ``Kalkulator()``:
@@ -232,8 +232,8 @@ którą musimy dopisać na końcu klasy ``Kalkulator()``:
 .. highlight:: python
 .. literalinclude:: kalkulator04.py
     :linenos:
-    :lineno-start: 72
-    :lines: 72-73
+    :lineno-start: 71
+    :lines: 71-72
 
 Funkcja ``koniec()``, obsługująca wydarzenie (ang. *event*) kliknięcia przycisku,
 wywołuje po prostu metodę ``close()`` okna głównego.
@@ -256,8 +256,8 @@ Do klasy ``Kalkulator()`` dopiszmy następujący kod:
 .. highlight:: python
 .. literalinclude:: kalkulator04.py
     :linenos:
-    :lineno-start: 75
-    :lines: 75-85
+    :lineno-start: 74
+    :lines: 74-84
 
 W nadpisanej metodzie `closeEvent() <http://doc.qt.io/qt-5/qwidget.html#closeEvent>`_
 wyświetlamy użytkownikowi prośbę o potwierdzenie zamknięcia
@@ -283,8 +283,8 @@ Dopiszmy jeszcze jedną funkcję:
 .. highlight:: python
 .. literalinclude:: kalkulator04.py
     :linenos:
-    :lineno-start: 87
-    :lines: 87-89
+    :lineno-start: 86
+    :lines: 86-88
 
 Podobnie jak w przypadku ``closeEvent()`` tworzymy własną wersję funkcji
 `keyPressEvent <http://doc.qt.io/qt-5/qwidget.html#keyPressEvent>`_ obsługującej
@@ -309,8 +309,8 @@ Pod instrukcją ``koniecBtn.clicked.connect(self.koniec)`` dodajemy:
 .. highlight:: python
 .. literalinclude:: kalkulator05.py
     :linenos:
-    :lineno-start: 66
-    :lines: 66-69
+    :lineno-start: 65
+    :lines: 65-68
 
 Następnie zaczynamy implementację funkcji ``dzialanie()``. Na końcu klasy ``Kalkulator()`` dodajemy:
 
@@ -321,8 +321,8 @@ Następnie zaczynamy implementację funkcji ``dzialanie()``. Na końcu klasy ``K
 .. highlight:: python
 .. literalinclude:: kalkulator05.py
     :linenos:
-    :lineno-start: 95
-    :lines: 95-112
+    :lineno-start: 94
+    :lines: 94-111
 
 Ponieważ jedna funkcja ma obsłużyć cztery sygnały, musimy znać źródło sygnału (ang. *source*),
 czyli nadawcę (ang. *sender*): ``nadawca = self.sender()``.
@@ -349,8 +349,8 @@ rozbudowujemy następująco:
 .. highlight:: python
 .. literalinclude:: kalkulator06.py
     :linenos:
-    :lineno-start: 104
-    :lines: 104-116
+    :lineno-start: 103
+    :lines: 103-115
 
 Na uwagę zasługuje tylko dzielenie. Po pierwsze określamy dokładność dzielenia do 9
 miejsc po przecinku ``round(liczba1 / liczba2, 9)``. Po drugie zabezpieczamy się
@@ -380,5 +380,5 @@ Materiały
 
 **Źródła:**
 
-* :download:`Kalkulator Qt5 Python 2<kalkulator-qt5-py2.zip>`
 * :download:`Kalkulator Qt5 Python 3<kalkulator-qt5-py3.zip>`
+* :download:`Kalkulator Qt5 Python 2<kalkulator-qt5-py2.zip>`

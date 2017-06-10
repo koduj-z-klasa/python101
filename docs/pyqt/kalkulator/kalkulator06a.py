@@ -1,7 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-from __future__ import unicode_literals
 from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QLabel, QGridLayout
@@ -13,7 +12,7 @@ from PyQt5.QtCore import Qt
 class Kalkulator(QWidget):
 
     def __init__(self, parent=None):
-        super(Kalkulator, self).__init__(parent)
+        super().__init__(parent)
 
         self.interfejs()
 
@@ -120,6 +119,7 @@ class Kalkulator(QWidget):
 
         except ValueError:
             QMessageBox.warning(self, "Błąd", "Błędne dane", QMessageBox.Ok)
+
 
 if __name__ == '__main__':
     import sys

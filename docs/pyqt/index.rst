@@ -10,8 +10,7 @@ framework `Qt <https://pl.wikipedia.org/wiki/Qt>`_ (zob. również oficjalną st
 dostępny w wersji `Open Source <https://pl.wikipedia.org/wiki/Otwarte_oprogramowanie>`_  na licencji `GNU LGPL <https://pl.wikipedia.org/wiki/GNU_Lesser_General_Public_License>`_ .
 Działa na wielu platformach i systemach operacyjnych.
 
-Najnowszą stabilną wersją jest Qt 5, można programować z jej pomocą zarówno przy użyciu Pythona 2, jak i 3.
-Nasze scenariusze przygotowane zostały z wykorzystaniem Pythona 2 i bilioteki PyQt5.
+Nasze scenariusze przygotowane zostały z wykorzystaniem Pythona 3 i bilioteki PyQt5.
 
 .. toctree::
     :maxdepth: 2

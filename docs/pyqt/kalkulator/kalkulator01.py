@@ -1,13 +1,12 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-from __future__ import unicode_literals
 from PyQt5.QtWidgets import QApplication, QWidget
 
 
 class Kalkulator(QWidget):
     def __init__(self, parent=None):
-        super(Kalkulator, self).__init__(parent)
+        super().__init__(parent)
 
         self.interfejs()
 
