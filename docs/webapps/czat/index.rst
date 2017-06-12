@@ -242,7 +242,7 @@ Po zaimportowaniu modelu rejestrujemy go w panelu: ``admin.site.register(models.
     Warto zapamiętać, że każdy model, funkcję, formularz czy widok, których chcemy użyć,
     musimy najpierw zaimportować za pomocą klauzuli typu ``from <skąd> import <co>``.
 
-**Konto administratora** – tworzymy wydając w terminalu polecenie:
+**Konto administratora** tworzymy wydając w terminalu polecenie:
 
 .. raw:: html
 
@@ -266,15 +266,11 @@ i zaloguj się na konto administratora [#]_.
 
 .. figure:: img/czat04.png
 
-Ćwiczenie 2
------------
-
-Po zalogowaniu na konto administratora dodaj użytkowników "adam" i "ewa"
-z hasłami "zaq1@WSX". Na stronie, która wyświetla się utworzeniu konta,
-zaznacz opcję "W zespole". W sekcji "Dostępne uprawnienia" zaznacz opcje
-dodawania (*add*), zmieniania (*change*) oraz usuwania (*del*) wiadomości
-(wpisy typu: "czat | wiadomosc | Can add wiadomosc") i przypisz je
-użytkownikowi naciskając strzałkę w prawo.
+Dodaj użytkowników "adam" i "ewa" z hasłami "zaq1@WSX".
+Na stronie, która wyświetla się po utworzeniu konta, zaznacz opcję "W zespole".
+W sekcji "Dostępne uprawnienia" zaznacz prawa dodawania (*add*), zmieniania (*change*)
+oraz usuwania (*del*) wiadomości (wpisy typu: "czat | wiadomosc | Can add wiadomosc")
+i przypisz je użytkownikowi naciskając strzałkę w prawo.
 
 .. figure:: img/czat06.png
 
