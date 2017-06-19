@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-# czatpro/czat/urls.py
+# czat/urls.py
 
 from django.conf.urls import url
-from czat import views
+from . import views  # import widoków aplikacji
 
+app_name = 'czat'  # przestrzeń nazw aplikacji
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^loguj/$', views.loguj, name='loguj'),

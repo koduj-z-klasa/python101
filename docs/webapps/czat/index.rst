@@ -140,16 +140,15 @@ Edytujemy plik :file:`czat1/settings.py`:
 
     # czat1/settings.py
 
-    INSTALLED_APPS = (
+    INSTALLED_APPS = [
+        'czat.apps.CzatConfig', # rejestrujemy aplikacje czat
         'django.contrib.admin',
         'django.contrib.auth',
         'django.contrib.contenttypes',
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
-
-        'czat',  # rejestrujemy aplikacje
-    )
+    ]
 
     LANGUAGE_CODE = 'pl'  # ustawienie jezyka
 
@@ -309,11 +308,26 @@ Odśwież panel administracyjny (np. klawiszem :kbd:`F5`).
 .. figure:: img/czat09.png
 
 
-Adresy i widoki
+Strona główna
 ================
 
-To jakie adresy URL ma obsługiwać nasza aplikacja, definiujemy w pliku :file:`czat/urls.py`,
-który tworzymy (!) i uzupełniamy kodem:
+Aby utworzyć stronę główną, zakodujemy pierwszy :term:`widok` (zob. :ref:`więcej »»» <mvc_widok>`),
+czyli funkcję o zwyczajowej nazwie ``index()``. W pliku :file:`views.py` umieszczamy:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: views_z1.py
+    :linenos:
+    :emphasize-lines: 10
+
+Najprostszy widok zwraca do klienta (przeglądarki) jakiś tekst:
+``return HttpResponse("Witaj w aplikacji Czat!")``.
+
+**Adresy URL**, które ma obsługiwać nasza aplikacja, definiujemy w pliku :file:`czat/urls.py`.
+Tworzymy nowy plik i uzupełniamy go kodem:
 
 .. raw:: html
 
@@ -324,15 +338,16 @@ który tworzymy (!) i uzupełniamy kodem:
     :linenos:
     :emphasize-lines: 7-10
 
+- ``app_name = 'czat'`` – określamy przestrzeń nazw, w której dostępne będą mapowania
+  między adresami url a widokami naszej aplikacji,
+- ``url()`` – funkcja, która wiąże zdefiniowany adres URL z widokiem,
 - ``r'^$'`` – wyrażenie regularne opisujące adres URL, symbol ``^`` to początek,
   ``$`` – koniec łańcucha. Zapis ``r'^$'`` to adres główny serwera;
 - ``views.index`` – przykładowy widok, czyli funkcja zdefiniowana w pliku :file:`czat/views.py`;
-- ``name='index'`` – nazwa, która pozwoli na generowanie adresów url dla linków w kodzie HTML;
-- ``url()`` – funkcja wiążąca powyższe elementy, czyli adres URL z widokiem.
+- ``name='index'`` – nazwa, która pozwoli na generowanie adresów url dla linków w kodzie HTML.
 
-
-Teraz musimy **powiązać widok z adresem url**. Na początku do pliku projektu :file:`czatpro/urls.py`
-dopiszemy import ustawień z naszej aplikacji:
+Konfigurację adresów URL naszej aplikacji musimy włączyć konfiguracji adresów URL projektu.
+W pliku :file:`czat1/urls.py` dopisujemy:
 
 .. raw:: html
 
@@ -341,52 +356,23 @@ dopiszemy import ustawień z naszej aplikacji:
 .. highlight:: python
 .. literalinclude:: urls_p1.py
     :linenos:
-    :emphasize-lines: 2-3
-    :lineno-start: 19
-    :lines: 19-
+    :emphasize-lines: 1, 6
+    :lineno-start: 16
+    :lines: 16-
 
-Parametr ``namespace='czat'`` definiuje przestrzeń nazw, w której dostępne będą zdefiniowane
-dla naszej aplikacji mapowania między adresami url a widokami.
+- ``include()`` – funkcja pozwala na import adresów URL wskazanej aplikacji
+- ``'czat.urls'`` – plik konfiguracyjny aplikacji
 
+Przetestuj stronę główną wywołując adres ``127.0.0.1:8000``.
 
-
-Podstawową funkcją wiążącą adres z widokiem jest ``url()``. Jako pierwszy parametr przyjmuje wyrażenie
-regularne oznaczane ``r`` przed łańcuchem dopasowania.
-Drugi parametr wskazuje widok (funkcję), która ma obsłużyć dany adres.
-Trzeci parametr ``name`` pozwala zapamiętać skojarzenie url-a i widoku pod nazwą,
-której będzie można użyć np. do wygenerowania adresu linku.
+.. figure:: img/czat10.png
 
 Widoki i szablony
 =================
 
-Aby utworzyć stronę główną, zakodujemy pierwszy :term:`widok` (zob. :ref:`więcej »»» <mvc_widok>`),
-czyli funkcję o przykładowej nazwie ``index()``, którą powiążemy z adresem URL głównej strony (/).
-Najprostszy widok zwraca jakiś tekst: ``return HttpResponse("Witaj w aplikacji Czat!")``.
-W pliku :file:`views.py` umieszczamy:
-
-.. raw:: html
-
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: python
-.. literalinclude:: views_z1.py
-    :linenos:
-    :emphasize-lines: 9
-
-
-
-Przetestujmy nasz widok wywołując adres ``127.0.0.1:8000``. Powinniśmy zobaczyć tekst
-podany jako argument funkcji ``HttpResponse()``:
-
-.. figure:: img/czat10.png
-
-.. raw:: html
-
-    <hr />
-
-Zazwyczaj odpowiedzią na wywołanie jakiegoś adresu URL będzie jednak jakaś
-strona zapisana w języku HTML. **Szablony** takich stron umieszczamy w podkatalogu
-``templates/nazwa aplikacji``. Tworzymy więc katalog:
+Typową odpowiedzią na wywołanie jakiegoś adresu URL są strony zapisane w języku HTML.
+**Szablony** takich stron umieszczamy w podkatalogu ``aplikacja/templates/aplikacja``.
+Tworzymy więc katalog:
 
 .. raw:: html
 
@@ -394,9 +380,9 @@ strona zapisana w języku HTML. **Szablony** takich stron umieszczamy w podkatal
 
 .. code-block:: bash
 
-    ~/czatpro$ mkdir -p czat/templates/czat
+    (pve3) ~/czat1$ mkdir -p czat/templates/czat
 
-Następnie tworzymy szablon :file:`~/czatpro/czat/templates/czat/index.html`, który zawiera:
+Następnie tworzymy szablon :file:`templates/czat/index.html`, który zawiera:
 
 .. raw:: html
 
@@ -406,7 +392,7 @@ Następnie tworzymy szablon :file:`~/czatpro/czat/templates/czat/index.html`, kt
 .. literalinclude:: index_z2.html
     :linenos:
 
-W pliku :file:`views.py` zmieniamy instrukcje odpowiedzi:
+W pliku :file:`views.py` zmieniamy instrukcję odpowiedzi:
 
 .. raw:: html
 
@@ -415,25 +401,25 @@ W pliku :file:`views.py` zmieniamy instrukcje odpowiedzi:
 .. highlight:: python
 .. literalinclude:: views_z2.py
     :linenos:
-    :emphasize-lines: 1-2, 7-8
+    :emphasize-lines: 2, 7-8
     :lineno-start: 4
-    :lines: 4-11
+    :lines: 4-
 
-Po zaimportowaniu funkcji ``render()`` używamy jej do zwrócenia szablonu.
-Jako pierwszy argument podajemy obiekt typu ``HttpRequest`` zawierający informacje o żądaniu,
-a jako drugi nazwę szablonu z katalogiem nadrzędnym.
+Funkcja ``render()`` jako pierwszy parametr pobiera obiekt typu ``HttpRequest`` zawierający informacje
+o żądaniu, jako drugi nazwę szablonu z katalogiem nadrzędnym.
 
-Po uruchomieniu serwera i wpisaniu adresu *127.0.0.1:8000* zobaczymy tekst, który umieściliśmy w szablonie:
+Po uruchomieniu serwera i wpisaniu adresu *127.0.0.1:8000* zobaczymy tekst,
+który umieściliśmy w szablonie:
 
 .. figure:: img/czat11.png
 
 (Wy)logowanie
 ********************
 
-Udostępnimy użytkownikom możliwość logowania i wylogowywania się, aby mogli dodawać i przeglądać
-wiadomości.
+Udostępnimy użytkownikom możliwość logowania i wylogowywania się,
+aby mogli dodawać i przeglądać wiadomości.
 
-Na początku w pliku :file:`views.py`, jak zawsze, dopisujemy importy wymaganych obiektów,
+Na początku w pliku :file:`views.py`, dopisujemy importy wymaganych obiektów,
 później dodajemy widoki ``loguj()`` i ``wyloguj()``:
 
 .. raw:: html
@@ -456,32 +442,27 @@ później dodajemy widoki ``loguj()`` i ``wyloguj()``:
     :lineno-start: 20
     :lines: 20-38
 
-Widoki mogą obsługiwać zarówno żądania typu :term:`GET`, kiedy użytkownik chce tylko zobaczyć
-jakieś dane na stronie, oraz :term:`POST`, gdy wysyła informacje poprzez formularz, aby np. zostały zapisane.
-Typ żądania rozpoznajemy w instrukcji warunkowej ``if request.method == 'POST':``.
+**Logowanie** rozpoczyna się od wyświetlenia odpowiedniej strony – to żądanie typu :term:`GET`.
+Widok logowania zwraca wtedy szablon: ``return render(request, 'czat/loguj.html', kontekst)``.
+Parametr ``kontekst`` to słownik, który pod kluczem ``form`` zawiera pusty formularz logowania
+utworzony w instrukcji ``AuthenticationForm()``.
 
-W **widoku logowania** korzystamy z wbudowanego w Django formularza ``AuthenticationForm``,
-dzięki temu nie musimy "ręcznie" sprawdzać poprawności przesłanych danych. Po wypełnieniu
-formularza przesłanymi danymi (``form = AuthenticationForm(request, request.POST)``)
-robi to metoda ``is_valid()``. Jeżeli nie zwróci ona błędu,
-możemy zalogować użytkownika za pomocą funkcji ``login()``,
-której przekazujemy żądanie (obiekt typu ``HttpRequest``) i informację o użytkowniku
-zwrócone przez metodę ``get_user()`` formularza.
+Wypełnienie formularza danymi i przesłanie ich na serwer to żądanie typu :term:`POST`.
+Wykrywamy je w instrukcji ``if request.method == 'POST':``. Następnie tworzymy obiekt
+formularza wypełniony przesłanymi danymi: ``form = AuthenticationForm(request, request.POST)``.
+Jeżeli dane są poprawne ``if form.is_valid():``, możemy zalogować użytkownika
+za pomocą funkcji ``login(request, form.get_user())``.
 
 Tworzymy również informację zwrotną dla użytkownika, wykorzystując system komunikatów:
 ``messages.error(request, "...")``. Tak utworzone komunikaty możemy odczytać
 w każdym szablonie ze zmiennej ``messages``.
-
-Na żądanie wyświetlenia strony (typu GET), widok logowania zwraca szablon :file:`loguj.html`,
-któremu w słowniku ``kontekst`` udostępniamy pusty formularz logowania:
-``return render(request, 'czat/loguj.html', kontekst)``.
 
 **Wylogowanie** polega na użyciu funkcji ``logout(request)`` – wyloguje ona
 użytkownika, którego dane zapisane są w przesłanym żądaniu. Po utworzeniu
 informacji zwrotnej podobnie jak po udanym logowaniu przekierowujemy użytkownika
 na stronę główną (``return redirect(reverse('index'))``) z żądaniem jej wyświetlenia (typu GET).
 
-Dalej potrzebny nam **szablon logowania** :file:`~/czatpro/czat/templates/czat/loguj.html`:
+**Szablon logowania** :file:`templates/czat/loguj.html` zawiera kod:
 
 .. raw:: html
 
@@ -491,18 +472,17 @@ Dalej potrzebny nam **szablon logowania** :file:`~/czatpro/czat/templates/czat/l
 .. literalinclude:: loguj_z3.html
     :linenos:
 
-Na początku widzimy, jak sprawdzić, czy użytkownik jest zalogowany (``{% if not user.is_authenticated %}``),
-co pozwala różnicować wyświetlaną treść. Użytkownikom niezalogowanym wyświetlamy
-formularz. W tym celu musimy ręcznie wstawić znacznik ``<form>``, zabezpieczenie formularza
-``{% csrf_token %}`` oraz przycisk typu *submit*.
-Natomiast przekazany do szablonu formularz Django potrafi wyświetlić automatycznie,
-np. używając znaczników akapitów: ``{{ form.as_p }}``.
+W szablonach wykorzystujemy tagi dwóch rodzajów:
 
-Trzeba również zapamiętać, jak wstawiamy odnośniki do zdefiniowanych widoków.
-Służy do tego kod typu ``{% url 'czat:index' %}`` – w cudzysłowach podajemy
-na początku przestrzeń nazw przypisaną do aplikacji w pliku projektu :file:`czatpro/urls.py`
-(``namespace='czat'``), a później nazwę widoku zdefiniowaną w pliku aplikacji
-:file:`czat/urls.py` (``name='index'``).
+- ``{% instrukcja %}`` – pozwalają używać instrukcji sterujących, np. warunkowych lub pętli,
+- ``{{ zmienna }}`` – służą wyświetlaniu wartości zmiennych lub wywoływaniu metod obiektów przekazanych do szablonu.
+
+- ``{% if not user.is_authenticated %}`` – instrukcja sprawdza, czy aktualny użytkownik jest zalogowany,
+- ``{% csrf_token %}`` – zabezpieczenie formularza przed atakiem typu csrf,
+- ``{{ form.as_p }}`` – automatyczne wyświetlenie pól formularza w akapitach,
+- ``{% url 'czat:index'%}`` – wstawienie adresu do odnośnika: w cudzysłowach podajemy przestrzeń nazw
+  naszej aplikacji (``app_name``), a później nazwę widoku (``name``) zdefiniowane w pliku :file:`czat/urls.py`,
+- ``{{ user.username }}`` – tak wyświetlamy nazwę zalogowanego użytkownika.
 
 **Komunikaty zwrotne** przygotowane dla użytkownika w widokach wyświetlimy po
 uzupełnieniu szablonu :file:`index.html`. Po znaczniku ``<h1>`` wstawiamy poniższy kod:
@@ -517,14 +497,11 @@ uzupełnieniu szablonu :file:`index.html`. Po znaczniku ``<h1>`` wstawiamy poni�
     :lineno-start: 7
     :lines: 7-13
 
-Jak widać na przykładach, w szablonach używamy **tagów** ``{% %}`` pozwalających korzystać
-z instrukcji warunkowych ``if``, pętli ``for``, czy instrukcji generujących linki ``url``.
-**Tagi** ``{{ }}`` umożliwiają wyświetlanie wartości przekazanych zmiennych,
-np. ``{{ komunikat }}`` lub wywoływanie metod obiektów, np. {{ form.as_p }}.
-Zwracany tekst można dodatkowo formatować za pomocą filtrów,
-np. wyświetlać go z dużej litery ``{{ komunikat|capfirst }}``.
+- ``{% if messages %}`` – sprawdzamy, czy mamy jakieś komunikaty,
+- ``{% for komunikat in messages %}`` – w pętli pobieramy kolejne komunikaty...
+- ``{{ komunikat|capfirst }}`` – i wyświetlamy z dużej litery za pomocą filtra.
 
-Pozostaje **skojarzenie widoków z adresami URL**. W pliku :file:`czat/urls.py` dopisujemy reguły:
+**Mapowanie adresów URL na widoki** – w pliku :file:`czat/urls.py` dopisujemy reguły:
 
 .. raw:: html
 
@@ -533,22 +510,23 @@ Pozostaje **skojarzenie widoków z adresami URL**. W pliku :file:`czat/urls.py` 
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 9
-    :lines: 9-10
+    :lineno-start: 10
+    :lines: 10-11
 
-Możesz przetestować działanie dodanych funkcji wywołując w przeglądarce adresy:
-``127.0.0.1:8000/loguj`` i ``127.0.0.1:8000/wyloguj``. Przykładowy formularz
-wygląda tak:
+Działanie dodanych funkcji testujemy pod adresami: ``127.0.0.1:8000/loguj`` i ``127.0.0.1:8000/wyloguj``.
+Używamy nazw i haseł utworzonych wcześniej użytkowników.
+Przykładowy formularz wygląda tak:
 
 .. figure:: img/czat12.png
 
 Ćwiczenie 2
 =================
 
-Adresów logowania i wylogowywania nikt w serwisach nie wpisuje ręcznie.
-Wstaw zatem odpowiednie linki do szablonu strony głównej po bloku wyświetlającym
-komunikaty. Użytkownik niezalogowany powinien zobaczyć odnośnik *Zaloguj*,
-użytkownik zalogowany – *Wyloguj*. Przykładowe działanie stron może wyglądać tak:
+Adresów logowania i wylogowywania nikt nie wpisuje ręcznie. Wstaw odpowiednie
+linki do szablonu strony głównej po bloku wyświetlającym komunikaty.
+Użytkownik niezalogowany powinien zobaczyć odnośnik *Zaloguj*,
+użytkownik zalogowany – *Wyloguj*.
+Przykładowe działanie stron może wyglądać tak:
 
 .. figure:: img/czat13.png
 
@@ -560,11 +538,9 @@ Dodawanie wiadomości
 Chcemy, by zalogowani użytkownicy mogli dodawać wiadomości,
 a także przeglądać wiadomości innych.
 
-Jak zwykle, **zaczynamy od widoku** o nazwie np. ``wiadomosci()`` powiązanego z adresem */wiadomosci*,
-który zwróci szablon :file:`wiadomosci.html`. W odpowiedzi na żądanie GET wyświetlimy
-formularz dodawania oraz listę wiadomości. Kiedy dostaniemy żądanie typu POST
-(tzn. kiedy użytkownik wyśle formularz), spróbujemy zapisać nową wiadomość w bazie.
-Do pliku :file:`views.py` dodajemy importy i kod funkcji:
+Zaczynamy od **widoku** o nazwie np. ``wiadomosci()`` powiązanego z adresem */wiadomosci*,
+który zwróci szablon :file:`wiadomosci.html`. Do pliku :file:`views.py` dodajemy importy
+i kod funkcji:
 
 .. raw:: html
 
@@ -586,10 +562,13 @@ Do pliku :file:`views.py` dodajemy importy i kod funkcji:
     :lineno-start: 41
     :lines: 41-59
 
-Po sprawdzeniu typu żądania wydobywamy treść przesłanej wiadomości
-ze słownika ``request.POST`` za pomocą metody ``get('tekst', '')``. Jej pierwszy argument
-to nazwa pola formularza użytego w szablonie, które chcemy odczytać.
-Drugi argument oznacza wartość domyślną, przydatną, jeśli
+- ``wiadomosci = Wiadomosc.objects.all()`` – w odpowiedzi na żądanie GET pobieramy
+  wszystkie wiadomości z bazy, używając wbudowanego w Django systemu ORM, a nie
+  czytsego SQL-a,
+- ``tekst = request.POST.get('tekst', '')`` – po przesłaniu formularza wiadomość
+  pobieramy ze słownika ``request.POST`` za pomocą metody ``get('tekst', '')``.
+  Pierwszy argument to nazwa pola formularza użytego w szablonie. Drugi argument
+  oznacza wartość domyślną, przydatną, jeśli
 pole będzie niedostępne.
 
 Po sprawdzeniu długości wiadomości (``if not 0 < len(tekst) <= 250:``),

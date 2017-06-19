@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-# czatpro/czat/views.py
+# czat/views.py
 
-# from django.http import HttpResponse
 from django.shortcuts import render
+# from django.http import HttpResponse
 from django.contrib.auth import login, logout
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
