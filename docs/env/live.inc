@@ -31,7 +31,7 @@ pozwalają doinstalowywać programy, zapisują ustawienia i utworzone dokumenty.
 
 * Na początku pobieramy wybrany :term:`obraz iso`:
 
-  - `porteus322XFCE.iso <https://drive.google.com/open?id=0B1zG9cfNyT7WakRQN1BWUEV4UFk>`_ (597MB)
+  - `porteus322XFCE.iso <https://drive.google.com/open?id=0B1zG9cfNyT7Wa0psMC1iVzAzSUk>`_ (597MB)
   - `LxPupXenial Full <https://drive.google.com/open?id=0B1zG9cfNyT7WUExnbTNkTWtnZFE>`_ (705MB)
   - `LxPupXenial Base <https://drive.google.com/open?id=0B1zG9cfNyT7WN2JCZEZMNTJnMjg>`_ (412MB)
 
