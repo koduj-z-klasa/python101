@@ -8,7 +8,6 @@ from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from czat.models import Wiadomosc
-from django.utils import timezone
 
 
 def index(request):
@@ -49,10 +48,9 @@ def wiadomosci(request):
         else:
             wiadomosc = Wiadomosc(
                 tekst=tekst,
-                data_pub=timezone.now(),
                 autor=request.user)
             wiadomosc.save()
-            return redirect(reverse('wiadomosci'))
+            return redirect(reverse('czat:wiadomosci'))
 
     wiadomosci = Wiadomosc.objects.all()
     kontekst = {'wiadomosci': wiadomosci}

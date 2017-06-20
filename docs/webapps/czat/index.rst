@@ -57,9 +57,9 @@ Utworzymy nowy projekt Django. Wydajemy polecenia:
     (pve3) ~$ cd czat1
     (pve3) ~$ python manage.py migrate
 
-- Opcja ``startproject`` tworzy katalog :file:`czat1` z **podkatalogiem ustawień projektu**
-  o takiej samej nazwie (:file:`czat1`).
-- Opcja ``migrate`` – tworzy inicjalną bazę danych z tabelami wykorzystywanymi przez Django.
+- ``startproject`` – tworzy katalog :file:`czat1` z **podkatalogiem ustawień projektu**
+  o takiej samej nazwie (:file:`czat1`),
+- ``migrate`` – tworzy inicjalną bazę danych z tabelami wykorzystywanymi przez Django.
 
 **Struktura plików projektu** – w terminalu wydajemy jedno z poleceń:
 
@@ -68,6 +68,10 @@ Utworzymy nowy projekt Django. Wydajemy polecenia:
     (.pve) ~/czat1$ tree -L 2
     [lub]
     (.pve) ~/czat1$ ls -R
+
+
+.. figure:: img/django_projekt.jpg
+
 
 Zewnętrzny katalog :file:`czat1` to tylko pojemnik na projekt, jego nazwę można zmieniać.
 Zawiera on:
@@ -85,6 +89,7 @@ Zawiera on:
 
 Plik :file:`__init__.py` obecny w danym katalogu wskazuje, że dany katalog jest modułem Pythona.
 
+
 Serwer deweloperski
 ===================
 
@@ -99,12 +104,14 @@ W terminalu możemy obserwować żądania obsługiwane przez serwer.
 Większość zmian w kodzie nie wymaga restartowania serwera.
 Serwer zatrzymujemy naciskając w terminalu skrót :kbd:`CTRL+C`.
 
+.. figure:: img/django_it_worked.jpg
+
 
 Aplikacja
 =========
 
 W ramach jednego projektu (serwisu internetowego) może działać wiele aplikacji.
-Utworzymy teraz naszą aplikację `czat` i zbadamy jej strukturę plików:
+Utworzymy teraz aplikację `czat` i zbadamy jej strukturę plików:
 
 .. code-block:: bash
 
@@ -114,7 +121,7 @@ Utworzymy teraz naszą aplikację `czat` i zbadamy jej strukturę plików:
     (.pve) ~/czat1$ ls -R czat
 
 
-.. figure:: img/django_03.jpg
+.. figure:: img/django_aplikacja.jpg
 
 
 **Katalog aplikacji** :file:`czat1/czat` zawiera:
@@ -128,7 +135,7 @@ Utworzymy teraz naszą aplikację `czat` i zbadamy jej strukturę plików:
 Ustawienia projektu
 ===================
 
-Dostosoujemy ustawienia projektu: zarejestrujemy naszą aplikację w projekcie,
+Dostosujemy ustawienia projektu: zarejestrujemy aplikację w projekcie,
 ustawimy polską wersję językową oraz zlokalizujemy datę i czas.
 Edytujemy plik :file:`czat1/settings.py`:
 
@@ -155,6 +162,9 @@ Edytujemy plik :file:`czat1/settings.py`:
     TIME_ZONE = 'Europe/Warsaw'  # ustawienie strefy czasowej
 
 Uruchom ponownie serwer deweloperski i sprawdź w przeglądarce, jak wygląda strona powitalna.
+
+.. figure:: img/django_zadzialalo.jpg
+
 
 Model danych
 ============
@@ -206,7 +216,9 @@ tworząc tzw. migrację, czyli zapis zmian:
     (.pve) ~/czat1$ python manage.py makemigrations czat
     (.pve) ~/czat1$ python manage.py migrate
 
-.. figure:: img/czat02.png
+
+.. figure:: img/django_migrations.jpg
+
 
 .. note::
 
@@ -217,7 +229,6 @@ tworząc tzw. migrację, czyli zapis zmian:
     * ``.schema czat_wiadomosc`` - pokaże instrukcje SQL-a użyte do utworzenia podanej tabeli
     * ``.quit`` - wyjście z interpretera.
 
-.. figure:: img/czat03.png
 
 Panel administracyjny
 =====================
@@ -256,30 +267,26 @@ Po zaimportowaniu modelu rejestrujemy go w panelu: ``admin.site.register(models.
 Ćwiczenie
 ---------
 
-Uruchom/zrestartuj serwer, w przeglądarce wpisz adres *127.0.0.1:8000/admin/*
-i zaloguj się na konto administratora [#]_.
+1) Uruchom/zrestartuj serwer, w przeglądarce wpisz adres *127.0.0.1:8000/admin/*
+   i zaloguj się na konto administratora.
 
-.. [#] Bezpieczna aplikacja powinna dysponować osobnym mechanizmem rejestracji
-   użytkowników i dodawania wiadomości, tak by nie trzeba było udostępniać
-   panelu administracyjnego osobom postronnym.
+.. figure:: img/django_admin.jpg
 
-.. figure:: img/czat04.png
 
-Dodaj użytkowników "adam" i "ewa" z hasłami "zaq1@WSX".
-Na stronie, która wyświetla się po utworzeniu konta, zaznacz opcję "W zespole".
-W sekcji "Dostępne uprawnienia" zaznacz prawa dodawania (*add*), zmieniania (*change*)
-oraz usuwania (*del*) wiadomości (wpisy typu: "czat | wiadomosc | Can add wiadomosc")
-i przypisz je użytkownikowi naciskając strzałkę w prawo.
+2) Dodaj użytkowników "adam" i "ewa" z hasłami "zaq1@WSX".
 
-.. figure:: img/czat06.png
+   Na stronie, która wyświetla się po utworzeniu konta, zaznacz opcję "W zespole".
+   W sekcji "Dostępne uprawnienia" zaznacz prawa dodawania (*add*), zmieniania (*change*)
+   oraz usuwania (*del*) wiadomości (wpisy typu: "czat | wiadomosc | Can add wiadomosc")
+   i przypisz je użytkownikowi naciskając strzałkę w prawo.
 
-Z konta "adam" dodaj dwie przykładowe wiadomości, a z konta "ewa" – jedną.
+.. figure:: img/django_admin_uprawnienia.jpg
 
-.. figure:: img/czat05.png
 
-.. raw:: html
+3) Z konta "adam" dodaj dwie przykładowe wiadomości, a z konta "ewa" – jedną.
 
-    <hr />
+.. figure:: img/django_admin_wiadomosci1.jpg
+
 
 Uzupełnienie modelu
 ===================
@@ -305,7 +312,7 @@ czyli w naszym wypadku wyświetlenie treści wiadomości.
 
 Odśwież panel administracyjny (np. klawiszem :kbd:`F5`).
 
-.. figure:: img/czat09.png
+.. figure:: img/django_admin_wiadomosci2.jpg
 
 
 Strona główna
@@ -334,7 +341,7 @@ Tworzymy nowy plik i uzupełniamy go kodem:
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. highlight:: python
-.. literalinclude:: urls-app_01.py
+.. literalinclude:: urls_z1.py
     :linenos:
     :emphasize-lines: 7-10
 
@@ -346,7 +353,7 @@ Tworzymy nowy plik i uzupełniamy go kodem:
 - ``views.index`` – przykładowy widok, czyli funkcja zdefiniowana w pliku :file:`czat/views.py`;
 - ``name='index'`` – nazwa, która pozwoli na generowanie adresów url dla linków w kodzie HTML.
 
-Konfigurację adresów URL naszej aplikacji musimy włączyć konfiguracji adresów URL projektu.
+Konfigurację adresów URL naszej aplikacji musimy włączyć do konfiguracji adresów URL projektu.
 W pliku :file:`czat1/urls.py` dopisujemy:
 
 .. raw:: html
@@ -360,12 +367,13 @@ W pliku :file:`czat1/urls.py` dopisujemy:
     :lineno-start: 16
     :lines: 16-
 
-- ``include()`` – funkcja pozwala na import adresów URL wskazanej aplikacji
-- ``'czat.urls'`` – plik konfiguracyjny aplikacji
+- ``include()`` – funkcja pozwala na import adresów URL wskazanej aplikacji,
+- ``'czat.urls'`` – plik konfiguracyjny aplikacji.
 
 Przetestuj stronę główną wywołując adres ``127.0.0.1:8000``.
 
-.. figure:: img/czat10.png
+.. figure:: img/django_index1.jpg
+
 
 Widoki i szablony
 =================
@@ -411,10 +419,11 @@ o żądaniu, jako drugi nazwę szablonu z katalogiem nadrzędnym.
 Po uruchomieniu serwera i wpisaniu adresu *127.0.0.1:8000* zobaczymy tekst,
 który umieściliśmy w szablonie:
 
-.. figure:: img/czat11.png
+.. figure:: img/django_index2.jpg
+
 
 (Wy)logowanie
-********************
+=============
 
 Udostępnimy użytkownikom możliwość logowania i wylogowywania się,
 aby mogli dodawać i przeglądać wiadomości.
@@ -439,8 +448,8 @@ później dodajemy widoki ``loguj()`` i ``wyloguj()``:
 .. highlight:: python
 .. literalinclude:: views.py
     :linenos:
-    :lineno-start: 20
-    :lines: 20-38
+    :lineno-start: 19
+    :lines: 19-37
 
 **Logowanie** rozpoczyna się od wyświetlenia odpowiedniej strony – to żądanie typu :term:`GET`.
 Widok logowania zwraca wtedy szablon: ``return render(request, 'czat/loguj.html', kontekst)``.
@@ -448,8 +457,8 @@ Parametr ``kontekst`` to słownik, który pod kluczem ``form`` zawiera pusty for
 utworzony w instrukcji ``AuthenticationForm()``.
 
 Wypełnienie formularza danymi i przesłanie ich na serwer to żądanie typu :term:`POST`.
-Wykrywamy je w instrukcji ``if request.method == 'POST':``. Następnie tworzymy obiekt
-formularza wypełniony przesłanymi danymi: ``form = AuthenticationForm(request, request.POST)``.
+Wykrywamy je w instrukcji ``if request.method == 'POST':``. Następnie tworzymy instancję
+formularza wypełnioną przesłanymi danymi: ``form = AuthenticationForm(request, request.POST)``.
 Jeżeli dane są poprawne ``if form.is_valid():``, możemy zalogować użytkownika
 za pomocą funkcji ``login(request, form.get_user())``.
 
@@ -517,30 +526,32 @@ Działanie dodanych funkcji testujemy pod adresami: ``127.0.0.1:8000/loguj`` i `
 Używamy nazw i haseł utworzonych wcześniej użytkowników.
 Przykładowy formularz wygląda tak:
 
-.. figure:: img/czat12.png
+.. figure:: img/django_loguj_form.jpg
 
-Ćwiczenie 2
-=================
 
-Adresów logowania i wylogowywania nikt nie wpisuje ręcznie. Wstaw odpowiednie
-linki do szablonu strony głównej po bloku wyświetlającym komunikaty.
+Ćwiczenie
+---------
+
+Adresów logowania i wylogowywania nikt nie wpisuje ręcznie. Wstaw kod generujący
+odpowiednie linki do szablonu strony głównej po bloku wyświetlającym komunikaty.
 Użytkownik niezalogowany powinien zobaczyć odnośnik *Zaloguj*,
 użytkownik zalogowany – *Wyloguj*.
 Przykładowe działanie stron może wyglądać tak:
 
-.. figure:: img/czat13.png
+.. figure:: img/django_zalogowany.jpg
 
-.. figure:: img/czat14.png
+
+.. figure:: img/django_wylogowany.jpg
+
 
 Dodawanie wiadomości
-***********************************
+====================
 
 Chcemy, by zalogowani użytkownicy mogli dodawać wiadomości,
 a także przeglądać wiadomości innych.
 
-Zaczynamy od **widoku** o nazwie np. ``wiadomosci()`` powiązanego z adresem */wiadomosci*,
-który zwróci szablon :file:`wiadomosci.html`. Do pliku :file:`views.py` dodajemy importy
-i kod funkcji:
+Zaczynamy od dodania **widoku** o nazwie np. ``wiadomosci()``.
+Do pliku :file:`views.py` dodajemy import i kod funkcji:
 
 .. raw:: html
 
@@ -550,7 +561,7 @@ i kod funkcji:
 .. literalinclude:: views.py
     :linenos:
     :lineno-start: 10
-    :lines: 10-11
+    :lines: 10
 
 .. raw:: html
 
@@ -559,31 +570,31 @@ i kod funkcji:
 .. highlight:: python
 .. literalinclude:: views.py
     :linenos:
-    :lineno-start: 41
-    :lines: 41-59
+    :lineno-start: 40
+    :lines: 40-57
 
-- ``wiadomosci = Wiadomosc.objects.all()`` – w odpowiedzi na żądanie GET pobieramy
-  wszystkie wiadomości z bazy, używając wbudowanego w Django systemu ORM, a nie
-  czytsego SQL-a,
-- ``tekst = request.POST.get('tekst', '')`` – po przesłaniu formularza wiadomość
-  pobieramy ze słownika ``request.POST`` za pomocą metody ``get('tekst', '')``.
-  Pierwszy argument to nazwa pola formularza użytego w szablonie. Drugi argument
-  oznacza wartość domyślną, przydatną, jeśli
-pole będzie niedostępne.
+Obsługa żądania typu GET (wyświetlenie wiadomości i formularza):
 
-Po sprawdzeniu długości wiadomości (``if not 0 < len(tekst) <= 250:``),
-możemy ją utworzyć wykorzystując konstruktor naszego modelu, podając
-jako nazwane argumenty wartości kolejnych pól:
-``Wiadomosc(tekst=tekst, data_pub=timezone.now(), autor=request.user)``.
-Zapisanie nowej wiadomości w bazie sprowadza się do polecenia ``wiadomosc.save()``.
+- ``wiadomosci = Wiadomosc.objects.all()`` – pobieramy wszystkie wiadomości z bazy,
+  używając wbudowanego w Django systemu ORM.
+- ``return render(request, 'czat/wiadomosci.html', kontekst)`` – zwracamy szablon,
+  któremu przekazujemy słownik ``kontekst`` zawierający wiadomości.
 
-Pobranie wszystkich wiadomości z bazy realizuje kod: ``Wiadomosc.objects.all()``.
-Widać tu, że używamy systemu ORM, a nie "surowego" SQL-a.
-Zwrócony obiekt umieszczamy w słowniku ``kontekst`` i przekazujemy do szablonu.
+Obsługa żądania typu POST (przesłanie danych z formularza):
 
-Zadaniem **szablonu** zapisanego w pliku :file:`~/czat/czat/templates/wiadomosci.html`
-będzie wyświetlenie komunikatów zwrotnych, np. błędów, formularza dodawania
-i listy wiadomości.
+- ``tekst = request.POST.get('tekst', '')`` – wiadomość pobieramy ze słownika
+  ``request.POST`` za pomocą metody ``get('tekst', '')``, pierwszy argument to
+  nazwa pola formularza użytego w szablonie, drugi argument to wartość domyślna,
+  jeśli pole będzie niedostępne.
+- ``if not 0 < len(tekst) <= 250:`` – sprawdzenie minimalnej i maksymalnej
+  długości wiadomości,
+- ``Wiadomosc(tekst=tekst, autor=request.user)`` – utworzenie instancji wiadomości
+  za pomocą konstruktora modelu, któremu przekazujemy wartości wymaganych pól,
+- ``wiadomosc.save()`` – zapisanie nowej wiadomości w bazie.
+
+**Szablon** zapisany w pliku :file:`templates/czat/wiadomosci.html`
+będzie wyświetlał komunikaty zwrotne, np. błędy, a także formularz dodawania
+i listę wiadomości:
 
 .. raw:: html
 
@@ -593,13 +604,13 @@ i listy wiadomości.
 .. literalinclude:: wiadomosci_z4.html
     :linenos:
 
-Powyżej widać, że inaczej niż w szablonie logowania formularz przygotowaliśmy ręcznie (``<input type="text" name="tekst" />``),
-dalej pokażemy, jak można sprawić, aby framework robił to za nas. Widać również, że możemy
-wyświetlać atrybuty przekazanych w kontekście obiektów reprezentujących dane pobrane z bazy,
-np. ``{{ wiadomosc.tekst }}``.
+- ``<input type="text" name="tekst" />`` – "ręczne" przygotowanie formularza,
+  czyli wstawienie kodu HTML pola do wprowadzania tekstu wiadomości,
+- ``{{ wiadomosc.tekst }}`` – wyświetlenie właściwości obiektu przekazanego
+  w kontekście.
 
-Widok ``wiadomosci()`` **wiążemy z adresem** */wiadomosci* w pliku :file:`czat/urls.py`,
-nadając mu nazwę *wiadomosci*:
+**Adres URL**, obsługiwany przez widok ``wiadomosci()``, definiujemy w
+pliku :file:`czat/urls.py`, nadając mu nazwę *wiadomosci*:
 
 .. raw:: html
 
@@ -608,14 +619,15 @@ nadając mu nazwę *wiadomosci*:
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 11
-    :lines: 11
+    :lineno-start: 12
+    :lines: 12
 
-Ćwiczenie 3
-=============
+Ćwiczenie
+---------
 
-* W szablonie widoku strony głównej dodaj link do wiadomości dla zalogowanych użytkowników.
-* W szablonie wiadomości dodaj link do strony głównej.
+* W szablonie widoku strony głównej dodaj link "Dodaj wiadomość" dla
+  zalogowanych użytkowników.
+* W szablonie wiadomości dodaj link "Strona główna".
 * Zaloguj się i przetestuj wyświetlanie [#]_ i dodawanie wiadomości pod adresem
   *127.0.0.1:8000/wiadomosci/*. Sprawdź, co się stanie po wysłaniu pustej
   wiadomości.
@@ -625,14 +637,13 @@ nadając mu nazwę *wiadomosci*:
 
 Poniższe zrzuty prezentują efekty naszej pracy:
 
-.. figure:: img/czat15.png
+.. figure:: img/django_final1.jpg
 
-.. figure:: img/czat16.png
+.. figure:: img/django_final2.jpg
 
-Przetestuj działanie aplikacji.
 
 Materiały
-***************
+=========
 
 1. O Django http://pl.wikipedia.org/wiki/Django_(informatyka)
 2. Strona projektu Django https://www.djangoproject.com/
@@ -641,4 +652,4 @@ Materiały
 
 **Źródła:**
 
-* :download:`czatpro_cz1.zip <czatpro_cz1.zip>`
+* :download:`czat1.zip <czat1.zip>`
