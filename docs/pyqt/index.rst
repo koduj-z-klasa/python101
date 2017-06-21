@@ -19,8 +19,8 @@ W systemach Linux opartych na Debianie ((X)Ubuntu, Linux Mint itp.) lub na Arch 
 
 .. code-block:: bash
 
-    ~$ sudo apt-get install python3-pyqt5
-    ~# pacman -S python-pyqt5
+    ~$ sudo apt-get install python3-pyqt5 python3-sip
+    ~# pacman -S python-pyqt5 python-sip
 
 W środowisku Windows 64-bitowym(!) (w systemach Linux również) najnowszą wersję zainstalujemy
 zgodnie z `instrukcjami Riverbank <https://www.riverbankcomputing.com/software/pyqt/download5>`_
@@ -28,7 +28,7 @@ za pomocą menedżera pakietów:
 
 .. code-block:: bash
 
-    ~$ pip3 install PyQt5
+    ~$ pip3 install PyQt5 SIP
 
 
 .. toctree::
