@@ -7,23 +7,39 @@ Dodawanie, edycja, usuwanie czy przeglądanie danych zgromadzonych w bazie
 są typowymi czynnościami w aplikacjach internetowych. Utworzony w scenariuszu :ref:`Czat (cz. 1) <czat-app>`
 kod ilustruje "ręczną" obsługę żądań GET i POST, w tym tworzenie formularzy,
 walidację danych itp. Django zawiera jednak gotowe mechanizmy, których
-użycie skraca i ulepsza programistyczną pracę eliminując potencjalne błędy.
+użycie skraca i ulepsza pracę programisty eliminując potencjalne błędy.
 
-Będziemy rozwijać kod uzyskany po zrealizowaniu punktów **5.4.1 – 5.4.4** scenariusza :ref:`Czat (cz. 1) <czat-app>`.
-Pobierz więc :download:`archiwum <czatpro2_z01.zip>` z potrzebnymi plikami
-i rozpakuj w katalogu domowym użytkownika. Utworzony zostanie katalog :file:`czatpro2`,
-w którym będziemy pracować.
+Będziemy rozwijać kod uzyskany po zrealizowaniu punktów **8.1.1 – 8.1.10** scenariusza
+:ref:`Czat (cz. 1) <czat-app>`. Pobierz więc :download:`archiwum <czat2_z01.zip>`
+i rozpakuj w katalogu domowym użytkownika. Następnie wydaj polecenia:
 
-Na początku zajmiemy się obsługą użytkowników. Umożliwimy im samodzielne
-zakładanie kont w serwisie, logowanie i wylogowywanie się. Później
-zajmiemy się dodawaniem, edycją i usuwaniem wiadomości.
-Inaczej niż w cz. 1 zadania te zrealizujemy za pomocą tzw. widoków wbudowanych opartych
-na klasach (ang. `class-based generic views <https://docs.djangoproject.com/en/1.4/topics/class-based-views/>`_ ).
+.. raw:: html
+
+    <div class="code_no">Terminal nr <script>var ter_no = ter_no || 1; document.write(ter_no++);</script></div>
+
+.. code-block:: bash
+
+    ~$ source pve3/bin/activate
+    (pve3) ~$ cd czat2
+    (pve3) ~$ python manage.py check
+
+
+.. warning::
+
+    Przypominamy, że pracujemy w wirtualnym środowisku Pythona z zainstalowanym frameworkiem
+    Django, które powinno znajdować się w katalogu :file:`pve3`. Zobacz w scenariuszu Czat (cz. 1),
+    w jaki sposób :ref:`utworzyć takie środowisko <czat1-env:>`.
+
 
 Rejestrowanie
-*************
+=============
 
-Na początku pliku :file:`czatpro2/czat/urls.py` aplikacji czat importujemy formularz tworzenia użytkownika
+Na początku zajmiemy się obsługą użytkowników. Umożliwimy im samodzielne
+zakładanie kont w serwisie, logowanie i wylogowywanie się. Inaczej niż w cz. 1
+zadania te zrealizujemy za pomocą tzw. widoków wbudowanych opartych na klasach
+(ang. `class-based generic views <https://docs.djangoproject.com/en/1.4/topics/class-based-views/>`_).
+
+Na początku pliku :file:`czat2/czat/urls.py` importujemy formularz tworzenia użytkownika
 (``UserCreationForm``) oraz wbudowany widok przenaczony do dodawania danych (``CreateView``):
 
 .. raw:: html
