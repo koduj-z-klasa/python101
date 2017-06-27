@@ -65,7 +65,8 @@ Zaczynamy!
     pygame/index
     bazy/index
     pyqt/index
-    webapps/index
+    webflask/index
+    webdjango/index
     mcpi/index
 
 Dodatkowe informacje

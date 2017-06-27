@@ -34,6 +34,9 @@ Zadania
 Sprawdź, co się stanie, jeśli podasz liczby oddzielone przecinkiem lub podasz
 za mało liczb. Zmień program tak, aby poprawnie interpretował dane oddzielane przecinkami.
 
+
+.. _trojkat:
+
 Trójkąt
 =======
 
