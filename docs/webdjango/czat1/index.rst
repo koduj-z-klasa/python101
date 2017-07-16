@@ -492,7 +492,7 @@ W szablonach wykorzystujemy tagi dwóch rodzajów:
 - ``{% if not user.is_authenticated %}`` – instrukcja sprawdza, czy aktualny użytkownik jest zalogowany,
 - ``{% csrf_token %}`` – zabezpieczenie formularza przed atakiem typu csrf,
 - ``{{ form.as_p }}`` – automatyczne wyświetlenie pól formularza w akapitach,
-- ``{% url 'czat:index'%}`` – wstawienie adresu do odnośnika: w cudzysłowach podajemy przestrzeń nazw
+- ``{% url 'czat:index' %}`` – wstawienie adresu do odnośnika: w cudzysłowach podajemy przestrzeń nazw
   naszej aplikacji (``app_name``), a później nazwę widoku (``name``) zdefiniowane w pliku :file:`czat/urls.py`,
 - ``{{ user.username }}`` – tak wyświetlamy nazwę zalogowanego użytkownika.
 

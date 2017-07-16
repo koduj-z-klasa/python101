@@ -3,6 +3,14 @@
   <body>
     <h1>Wiadomości</h1>
 
+    {% if messages %}
+      <ul>
+        {% for komunikat in messages %}
+          <li>{{ komunikat|capfirst }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
     <h2>Lista wiadomości:</h2>
     <ol>
       {% for wiadomosc in wiadomosci %}

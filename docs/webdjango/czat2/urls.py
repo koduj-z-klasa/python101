@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-# czatpro2/czat/urls.py
+# czat/urls.py
 
 from django.conf.urls import url
-from czat import views  # importujemy zdefiniowane w pliku views.py widoki
+from . import views  # import widoków aplikacji
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
 from django.core.urlresolvers import reverse_lazy
@@ -12,6 +12,7 @@ from django.views.generic import ListView
 from czat.models import Wiadomosc
 from django.views.generic import DeleteView
 
+app_name = 'czat'  # przestrzeń nazw aplikacji
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^rejestruj/', CreateView.as_view(
@@ -28,13 +29,12 @@ urlpatterns = [
         ListView.as_view(
             model=Wiadomosc,
             context_object_name='wiadomosci',
-            paginate_by=10),
-        login_url='/loguj'),
+            paginate_by=2)),
         name='wiadomosci'),
-    url(r'^wiadomosc/$', login_required(
-        views.UtworzWiadomosc.as_view(),
+    url(r'^dodaj/$', login_required(
+        views.DodajWiadomosc.as_view(),
         login_url='/loguj'),
-        name='wiadomosc'),
+        name='dodaj'),
     url(r'^edytuj/(?P<pk>\d+)/', login_required(
         views.EdytujWiadomosc.as_view(),
         login_url='/loguj'),

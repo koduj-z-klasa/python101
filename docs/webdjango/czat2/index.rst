@@ -28,7 +28,7 @@ i rozpakuj w katalogu domowym użytkownika. Następnie wydaj polecenia:
 
     Przypominamy, że pracujemy w wirtualnym środowisku Pythona z zainstalowanym frameworkiem
     Django, które powinno znajdować się w katalogu :file:`pve3`. Zobacz w scenariuszu Czat (cz. 1),
-    w jaki sposób :ref:`utworzyć takie środowisko <czat1-env:>`.
+    jak utworzyć takie :ref:`środowisko <czat1-env:>`.
 
 
 Rejestrowanie
@@ -37,7 +37,7 @@ Rejestrowanie
 Na początku zajmiemy się obsługą użytkowników. Umożliwimy im samodzielne
 zakładanie kont w serwisie, logowanie i wylogowywanie się. Inaczej niż w cz. 1
 zadania te zrealizujemy za pomocą tzw. widoków wbudowanych opartych na klasach
-(ang. `class-based generic views <https://docs.djangoproject.com/en/1.4/topics/class-based-views/>`_).
+(ang. `class-based generic views <https://docs.djangoproject.com/en/1.11/topics/class-based-views/>`_).
 
 Na początku pliku :file:`czat2/czat/urls.py` importujemy formularz tworzenia użytkownika
 (``UserCreationForm``) oraz wbudowany widok przenaczony do dodawania danych (``CreateView``):
@@ -61,10 +61,10 @@ Następnie do listy ``paterns`` dopisujemy:
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 17
-    :lines: 17-20
+    :lineno-start: 18
+    :lines: 18-20
 
-Powyższy kod wiąże adres URL */rejestruj* z wywołaniem widoku wbudowanego jako funkcji
+Powyższy kod łączy adres URL */rejestruj* z wywołaniem widoku wbudowanego jako funkcji
 ``CreateView.as_view()``. Przekazujemy jej trzy parametry:
 
 * ``template_name`` – szablon, który zostanie użyty do zwrócenia odpowiedzi;
@@ -72,7 +72,7 @@ Powyższy kod wiąże adres URL */rejestruj* z wywołaniem widoku wbudowanego ja
 * ``success_url`` – adres, na który nastąpi przekierowanie w przypadku braku błędów
   (np. po udanej rejestracji).
 
-Teraz tworzymy szablon formularza rejestracji, który zapisać należy w pliku :file:`czatpro2/czat/templates/czat/rejestruj.html`:
+Teraz tworzymy szablon formularza rejestracji, który zapisać należy w pliku :file:`templates/czat/rejestruj.html`:
 
 .. raw:: html
 
@@ -92,17 +92,12 @@ Na koniec wstawimy link na stronie głównej, a więc uzupełniamy plik :file:`i
 .. literalinclude:: index_z2.html
     :linenos:
 
-Zwróć uwagę na sposób tworzenia linków w szablonie: ``{% url 'czat:rejestruj' %}``.
-``czat`` to nazwa przestrzeni nazw zdefiniowanej w pliku adresów projektu
-:file:`czatpro2/czatpro/urls.py` (``namespace='czat'``). Link ``rejestruj``
-definiowany jest w parametrze ``name`` w pliku :file:`czatpro2/czat/urls.py` aplikacji.
-
 **Ćwiczenie:** dodaj link do strony głównej w szablonie :file:`rejestruj.html`.
 
 Uruchom aplikację (``python manage.py runserver``) i przetestuj dodawanie użytkowników:
 spróbuj wysłać niepełne dane, np. bez hasła; spróbuj dodać dwa razy tego samego użytkownika.
 
-.. figure:: img/czatpro2_02.png
+.. figure:: img/django_rejestracja.png
 
 Wy(logowanie)
 *************
@@ -128,8 +123,8 @@ Na początku pliku :file:`urls.py` aplikacji dopisujemy wymagany import:
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 21
-    :lines: 21-26
+    :lineno-start: 22
+    :lines: 22-27
 
 Widać, że z adresami */loguj* i */wyloguj* wiążemy wbudowane w Django widoki ``login``
 i ``logout`` importowane z modułu ``django.contrib.auth.views``. Jedynym nowym
@@ -147,7 +142,7 @@ Logowanie wymaga szablonu :file:`loguj.html`, który tworzymy i zapisujemy w pod
     :linenos:
 
 Musimy jeszcze określić stronę, na którą powinien zostać przekierowany
-użytkownik po udanym zalogowaniu. W tym wypadku na końcu pliku :file:`czatpro/czatpro/settings.py`
+użytkownik po udanym zalogowaniu. W tym wypadku na końcu pliku :file:`czat2/settings.py`
 definiujemy wartość zmiennej ``LOGIN_REDIRECT_URL``:
 
 .. raw:: html
@@ -156,20 +151,20 @@ definiujemy wartość zmiennej ``LOGIN_REDIRECT_URL``:
 
 .. code-block:: python
 
-    # czatpro2/czatpro/settings.py
+    # czat2/settings.py
 
     from django.core.urlresolvers import reverse_lazy
     LOGIN_REDIRECT_URL = reverse_lazy('czat:index')
 
 **Ćwiczenie:** Uzupełnij plik :file:`index.html` o linki służące do logowania i wylogowania.
 
-.. figure:: img/czatpro2_03.png
+.. figure:: img/django_logowanie.png
 
 Lista wiadomości
 *****************
 
 Chcemy, by zalogowani użytkownicy mogli przeglądać wiadomości wszystkich użytkowników,
-zmieniać, usuwać i dodawać własne. Najprostszy sposób to skorzystanie z wspomnianych
+zmieniać, usuwać i dodawać własne. Najprostszy sposób to skorzystanie z
 widoków wbudowanych.
 
 .. note::
@@ -204,30 +199,41 @@ Do pliku :file:`urls.py` dopisujemy importy:
 .. highlight:: python
 .. literalinclude:: urls.py
     :linenos:
-    :lineno-start: 27
-    :lines: 27-33
+    :lineno-start: 28
+    :lines: 28-33
 
 Zakładamy, że wiadomości mogą oglądać tylko użytkownicy zalogowani. Dlatego
 całe wywołanie widoku umieszczamy w funkcji ``login_required()``.
 
-W wywołaniu ``ListView.as_view()`` wykorzystujemy kolejne parametry
+W funkcji ``ListView.as_view()`` podajemy kolejne parametry
 modyfikujące działanie widoków:
 
 * ``model`` – podajemy model, którego dane zostaną pobrane z bazy;
 * ``context_object_name`` – pozwala zmienić domyślną nazwę (object_list)
   listy obiektów przekazanych do szablonu;
-* ``paginate_by``– pozwala ustawić ilość obiektów wyświetlanych na stronie.
+* ``paginate_by``– pozwala określić ilość obiektów wyświetlanych na stronie.
 
-Parametr ``login_url`` określa adres, na który przekierowany zostanie
-niezalogowany użytkownik.
+
+Na końcu pliku :file:`czat2/settings.py` określamy adres logowania,
+na który przekierowani zostaną niezalogowani użytkownicy, którzy próbowaliby
+zobaczyć listę wiadomości:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. code-block:: python
+
+    # czat2/settings.py
+
+    LOGIN_URL = reverse_lazy('czat:loguj')
 
 .. raw:: html
 
     <hr />
 
 Potrzebujemy szablonu, którego Django szuka pod domyślną nazwą
-*<nazwa modelu>_list.html*, czyli w naszym przypadku tworzymy plik
-:file:`~/czatpro/czat/templates/czat/wiadomosc_list.html`:
+*<nazwa modelu>_list.html*, czyli w naszym przypadku tworzymy plik :file:`czat/wiadomosc_list.html`:
 
 .. raw:: html
 
@@ -240,9 +246,22 @@ Potrzebujemy szablonu, którego Django szuka pod domyślną nazwą
 Kolejne wiadomości odczytujemy i wyświetlamy w pętli przy użyciu tagu ``{% for %}``.
 Dostęp do właściwości obiektów umożliwia operator kropki, np.: ``{{ wiadomosc.autor.username }}``.
 
+Linki nawigacyjne tworzymy w instrukcji warunkowej ``{% if is_paginated %}``.
+Obiekt ``page_obj`` zawiera następujące właściwości:
+
+* ``has_previous`` – zwraca ``True``, jeżeli jest poprzednia strona;
+* ``previous_page_number`` – numer poprzedniej strony;
+* ``next_page_number`` – numer następnej strony;
+* ``number`` – numer aktualnej strony;
+* ``paginator.num_pages`` – ilość wszystkich stron.
+
+Numer strony do wyświetlenia przekazujemy w zmiennej ``page`` adresu URL.
+
 **Ćwiczenie:** Dodaj link do strony wyświetlającej wiadomości na stronie głównej dla zalogowanych użytkowników.
 
-.. figure:: img/czatpro2_04.png
+.. figure:: img/django_index.png
+
+.. figure:: img/django_wiadomosci.png
 
 Dodawanie wiadomości
 ********************
@@ -286,34 +305,30 @@ Dalej kodujemy w pliku :file:`views.py`. Na początku dodajemy importy:
     :lineno-start: 19
     :lines: 19-40
 
-Dostosowując widok ogólny, tworzymy opartą na nim klasę ``class UtworzWiadomosc(CreateView)``.
-Nieomówiona dotąd właściwość ``fields`` pozwala wskazać pola, które mają znaleźć
-się na formularzu. Jak widać, pomijamy pole ``autor``.
+Tworzymy klasę opartą na widoku ogólnym (``class DodajWiadomosc(CreateView)``),
+określamy jej podstawowe właściwości i nadpisujemy wybrane metody:
 
-Pole to jest jednak wymagane. Aby je uzupełnić, nadpisujemy metodę
-``form_valid()``, która sprawdza poprawność przesłanych danych i zapisuje je w bazie:
+* ``fields`` – pozwala wskazać pola, które mają znaleźć się na formularzu;
+* ``get_initial()`` – metoda pozwala ustawić domyślne wartości dla wybranych pól.
+  Wykorzystujemy ją do zainicjowania pola ``data_pub`` aktualna datą:
+  ``initial['data_pub'] = timezone.now()``.
+* ``get_context_data()`` – metoda pozwala przekazać do szablonu dodatkowe dane,
+  w tym wypadku jest to lista wszystkich wiadomości: ``context['wiadomosci'] = Wiadomosc.objects.all()``.
+* ``form_valid()`` – metoda, która sprawdza poprawność przesłanych danych i zapisuje je w bazie:
 
-* ``wiadomosc = form.save(commit=False)`` – tworzymy obiekt wiadomości, ale go nie zapisujemy;
-* ``wiadomosc.autor = self.request.user`` – uzupełniamy dane autora;
-* ``wiadomosc.save()`` – zapisujemy obiekt;
-* ``messages.success(self.request, "Dodano wiadomość!")`` – przygotowujemy komunikat,
-  który wyświetlony zostanie po dodaniu wiadomości.
+    - ``wiadomosc = form.save(commit=False)`` – tworzymy obiekt wiadomości, ale go nie zapisujemy;
+    - ``wiadomosc.autor = self.request.user`` – uzupełniamy dane autora;
+    - ``wiadomosc.save()`` – zapisujemy obiekt;
+    - ``messages.success(self.request, "Dodano wiadomość!")`` – przygotowujemy komunikat,
+      który wyświetlony zostanie po dodaniu wiadomości.
 
-Metoda ``get_initial()`` pozwala ustawić domyślne wartości dla wybranych pól.
-Wykorzystujemy ją do zainicjowania pola ``data_pub`` aktualna datą (``initial['data_pub'] = timezone.now()``).
-
-Metoda ``get_context_data()`` z punktu widzenia dodawania wiadomości
-nie jest potrzebna. Pozwala natomiast przekazać do szablonu dodatkowe dane,
-w tym wypadku jest to lista wszystkich wiadomości: ``context['wiadomosci'] = Wiadomosc.objects.all()``.
-Wyświetlimy je poniżej formularza dodawania nowej wiadomości.
 
 .. raw:: html
 
     <hr />
 
-Domyślny szablon dodawania danych nazywa się *<nazwa modelu>_form.html*. Możemy go utworzyć
-na podstawie szablonu :file:`wiadomosc_list.html`. Otwórz go i zapisz pod nazwą
-:file:`wiadomosc_form.html`. Przed listą wiadomości umieść kod wyświetlający komunikaty i formularz:
+Domyślny szablon dodawania danych nazywa się *<nazwa modelu>_form.html*. W nowym pliku
+wstawiamy poniższą treść i zapisujemy pod nazwą :file:`templates/czat/wiadomosc_form.html`:
 
 .. raw:: html
 
@@ -322,12 +337,30 @@ na podstawie szablonu :file:`wiadomosc_list.html`. Otwórz go i zapisz pod nazw�
 .. highlight:: html
 .. literalinclude:: wiadomosc_form_z5.html
     :linenos:
+
+W szablonie :file:`templates/czat/wiadomosc_list.html` wstawimy jeszcze po nagłówku
+``<h1>`` kod wyświetlający komunikaty:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>wiadomosc_list.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: html
+.. literalinclude:: wiadomosc_list_z5.html
+    :linenos:
     :lineno-start: 6
-    :lines: 6-19
+    :lines: 6-12
+
+.. warning::
+
+    W pliku :file:`czat/models.py` trzeba usunąć parametr ``auto_now_add=True``
+    z definicji pola ``data_pub``, aby użytkownik mógł modyfikować datę
+    dodania wiadomości w formularzu.
+
 
 **Ćwiczenie:** Jak zwykle, umieść link do dodawanie wiadomości na stronie głównej.
 
-.. figure:: img/czatpro2_05.png
+.. figure:: img/django_dodawanie.png
 
 Edycja wiadomości
 *****************

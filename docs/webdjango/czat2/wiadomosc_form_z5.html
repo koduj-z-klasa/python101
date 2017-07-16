@@ -1,15 +1,7 @@
-<!-- czatpro2/czat/templates/czat/wiadomosc_form.html -->
+<!-- czat/wiadomosc_form.html -->
 <html>
   <body>
     <h1>Wiadomości</h1>
-
-    {% if messages %}
-      <ul>
-        {% for komunikat in messages %}
-          <li>{{ komunikat|capfirst }}</li>
-        {% endfor %}
-      </ul>
-    {% endif %}
 
     <h2>Dodaj wiadomość:</h2>
     <form method="POST">

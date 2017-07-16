@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-# czatpro/czat/views.py
+# czat/views.py
 
-# from django.http import HttpResponse
 from django.shortcuts import render
+# from django.http import HttpResponse
 from django.views.generic.edit import CreateView
 from czat.models import Wiadomosc
 from django.utils import timezone
@@ -16,19 +16,19 @@ def index(request):
     return render(request, 'czat/index.html')
 
 
-class UtworzWiadomosc(CreateView):
+class DodajWiadomosc(CreateView):
     model = Wiadomosc
     fields = ['tekst', 'data_pub']
     context_object_name = 'wiadomosci'
-    success_url = '/wiadomosc'
+    success_url = '/dodaj'
 
     def get_initial(self):
-        initial = super(UtworzWiadomosc, self).get_initial()
+        initial = super(DodajWiadomosc, self).get_initial()
         initial['data_pub'] = timezone.now()
         return initial
 
     def get_context_data(self, **kwargs):
-        context = super(UtworzWiadomosc, self).get_context_data(**kwargs)
+        context = super(DodajWiadomosc, self).get_context_data(**kwargs)
         context['wiadomosci'] = Wiadomosc.objects.all()
         return context
 
