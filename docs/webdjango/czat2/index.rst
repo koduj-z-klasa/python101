@@ -21,7 +21,7 @@ i rozpakuj w katalogu domowym użytkownika. Następnie wydaj polecenia:
 
     ~$ source pve3/bin/activate
     (pve3) ~$ cd czat2
-    (pve3) ~$ python manage.py check
+    (pve3) ~/czat2$ python manage.py check
 
 
 .. warning::

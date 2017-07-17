@@ -1,22 +1,22 @@
-<!-- czatpro3/czat/templates/czat/rejestruj.html -->
+<!-- templates/czat/rejestruj.html -->
 {% extends "czat/baza.html" %}
 
-  {% block naglowek %}Rejestracja użytkownika{% endblock %}
+{% block naglowek %}Rejestracja użytkownika{% endblock %}
 
-  {% block tresc %}
-    {% if not user.is_authenticated %}
-      <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Zarejestruj</button>
-      </form>
-    {% endif %}
-  {% endblock %}
+{% block tresc %}
+  {% if not user.is_authenticated %}
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Zarejestruj</button>
+    </form>
+  {% endif %}
+{% endblock %}
 
-  {% block linki1 %}
-    <p>Jesteś już zarejestrowany jako {{ user.username }}.</p>
-  {% endblock %}
+{% block linki1 %}
+  <p>Jesteś już zarejestrowany jako {{ user.username }}.</p>
+{% endblock %}
 
-  {% block linki3 %}
-    <p><a href="{% url 'czat:index' %}">Strona główna</a></p>
-  {% endblock %}
+{% block linki3 %}
+  <p><a href="{% url 'czat:index' %}">Strona główna</a></p>
+{% endblock %}

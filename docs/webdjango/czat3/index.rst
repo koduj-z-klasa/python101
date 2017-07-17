@@ -7,11 +7,29 @@ Poniższy materiał koncentruje się na obsłudze szablonów (ang. *templates*)
 wykorzystywanych w Django. Stanowi kontynuację projektu zrealizowanego
 w scenariuszu :ref:`Czat (cz. 2) <czat-app2>`.
 
-Na początku pobierz :download:`archiwum <czatpro3_z01.zip>` z potrzebnymi plikami
-i rozpakuj je w katalogu domowym użytkownika.
+Na początku pobierz :download:`archiwum <czat3_z01.zip>` z potrzebnymi plikami
+i rozpakuj je w katalogu domowym użytkownika. Następnie wydaj polecenia:
+
+.. raw:: html
+
+    <div class="code_no">Terminal nr <script>var ter_no = ter_no || 1; document.write(ter_no++);</script></span></div>
+
+.. code-block:: bash
+
+    ~$ source pve3/bin/activate
+    (pve3) ~$ cd czat3
+    (pve3) ~/czat3$ python manage.py check
+
+
+.. warning::
+
+    Przypominamy, że pracujemy w wirtualnym środowisku Pythona z zainstalowanym frameworkiem
+    Django, które powinno znajdować się w katalogu :file:`pve3`. Zobacz w scenariuszu Czat (cz. 1),
+    jak utworzyć takie :ref:`środowisko <czat1-env>`.
+
 
 Szablony
-*****************
+========
 
 Zapewne zauważyłeś, że większość kodu w szablonach i stronach
 HTML, które z nich powstają, powtarza się albo jest bardzo podobna.
@@ -25,19 +43,19 @@ Najważniejsze tagi, ``{% if warunek %}``, ``{% for wyrażenie %}``, ``{% url na
 – już stosowaliśmy.
 
 Spróbujmy uprościć i ujednolicić nasze szablony. Zacznijmy od szablonu
-bazowego, który umieścimy w pliku :file:`~/czatpro3/czat/templates/czat/baza.html`:
+bazowego, który umieścimy w pliku :file:`templates/czat/baza.html`:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>baza.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>baza.html</i>. <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: html
 .. literalinclude:: baza_z02.html
     :linenos:
 
 Jest to zwykły tekstowy dokument, zawierający schemat strony utworzony z
-wymaganych znaczników HTML oraz bloki zdefiniowane za pomocą tagów mini-języka
-szablonów ``{% block %}``. W pliku tym umieszczamy stałą i wspólną strukturę stron w serwisie
+wymaganych znaczników HTML oraz bloki zdefiniowane za pomocą tagów ``{% block %}``.
+W pliku tym umieszczamy wspólną strukturę stron w serwisie
 (np. nagłówek, menu, sekcja treści, stopka itp.) oraz wydzielamy bloki,
 których treść będzie można zmieniać w szablonach konkretnych stron.
 
@@ -46,7 +64,7 @@ Wykorzystując szablon podstawowy, zmieniamy stronę główną, czyli plik
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>index.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>index.html</i>. <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: html
 .. literalinclude:: index_z02.html
@@ -59,27 +77,38 @@ Postępując na tej samej zasadzie modyfikujemy szablon rejestracji:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>rejestruj.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>rejestruj.html</i>. <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: html
 .. literalinclude:: rejestruj_z02.html
     :linenos:
 
-**Ćwiczenie:** Wzorując się na podanych przykładach zmień pozostałe szablony tak,
+Ćwiczenie
+---------
+
+Wzorując się na podanych przykładach zmień pozostałe szablony tak,
 aby opierały się na szablonie bazowym.
 Następnie przetestuj działanie aplikacji. Wygląd stron nie powinien ulec zmianie!
 
-.. figure:: img/czatpro3_z02.png
+Dla przykładu szablon :file:`wiadomosc_list.html` powinien wyglądać tak:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>wiadomosc_list.html</i>. <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
+
+.. highlight:: html
+.. literalinclude:: wiadomosc_list_z02.html
+    :linenos:
 
 Style CSS i obrazki
-********************
+===================
 
 Nasze szablony zyskały na zwięzłości i przejrzystości, ale nadal pozbawione
 są elementarnych dla dzisiejszych stron WWW zasobów, takich jak
 style CSS, skrypty JavaScript czy zwykłe obrazki. Jak je dołączyć?
 
-Przede wszystkim potrzebujemy osobnego katalogu :file:`~czatpro/czat/static/czat`.
-W terminalu w katalogu projektu (!) wydajemy polecenie:
+Przede wszystkim potrzebujemy osobnego katalogu :file:`czat/static/czat`.
+W terminalu w katalogu projektu (!) wydajemy polecenia:
 
 .. raw:: html
 
@@ -87,32 +116,35 @@ W terminalu w katalogu projektu (!) wydajemy polecenie:
 
 .. code-block:: bash
 
-    ~/czatpro3$ mkdir -p czat/static/czat
-    ~/czatpro3$ cd czat/static/czat
-    ~/czatpro3/czat/static/czat$ mkdir css js img
+    (.pve) ~/czat3$  mkdir -p czat/static/czat
+    (.pve) ~/czat3$  cd czat/static/czat
+    (.pve) ~/czat3/czat/static/czat$ mkdir css js img
 
-Ostatnie polecenie tworzy podkatalogi dla różnych typów
-zasobów: arkuszy stylów CSS (:file:`css`), skrypów Java Script (:file:`js`)
-i obrazków (:file:`img`).
+Ostatnie polecenie tworzy podkatalogi dla różnych typów zasobów:
 
-Teraz przygotujemy przykładowy arkusz stylów CSS :file:`~/czatpro3/czat/static/czat/css/style.css`:
+* :file:`css` – arkusze stylów CSS,
+* :file:`js` – skrypty Java Script,
+* :file:`img` – obrazki.
+
+
+Tworzymy przykładowy arkusz stylów CSS :file:`style.css` i zapisujemy
+w katalogu :file:`static/czat/css`:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>style.css</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>style.css</i>. <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: css
 .. literalinclude:: style_z03.css
     :linenos:
 
-Do podkatalogu :file:`~/czat/czat/static/czat/img` rozpakuj obrazki z podanego
-:download:`archiwum <img.zip>`.
+Do podkatalogu :file:`static/czat/img` rozpakuj obrazki z pobranego :download:`archiwum <img.zip>`.
 
 Teraz musimy dołączyć style i obrazki do szablonu bazowego :file:`baza.html`:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>baza.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>baza.html</i>. <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: html
 .. literalinclude:: baza_z03.html
@@ -121,33 +153,30 @@ Teraz musimy dołączyć style i obrazki do szablonu bazowego :file:`baza.html`:
     :lines: 1-
     :emphasize-lines: 2, 8-9, 35-39
 
-* ``{% load staticfiles %}`` – ten kod umieszczamy na początku dokumentu;
+* ``{% load staticfiles %}`` – ten kod umieszczamy na początku dokumentu,
   konfiguruje on ścieżkę do zasobów;
+* ``{% static plik %}`` – ten tag wskazuje lokalizację dołączanego do strony pliku,
+  np. arkusza CSS czy obrazka, tag umieszczamy jako wartość atrybutu ``href``.
 
-* ``{% static plik %}`` – za pomocą tego tagu wskazujemy lokalizację arkusza
-  stylów w atrybucie ``href`` znacznika ``<link>``, który umieszczamy w sekcji
-  ``<head>`` za znacznikiem ``<title>``.
+.. figure:: img/django_style.png
 
-  Ten sam tag służy do wskazywania ścieżki do obrazków w atrybucie ``href``
-  znacznika ``<img>``. Kod z linii 5-8 umieszczamy na przed znacznikiem zamykającym
-  ``</body>``.
+Ćwiczenie
+---------
 
-.. figure:: img/czatpro3_z03.png
-
-**Ćwiczenie:** W szablonie bazowym stwórz block umożliwiający
-zastępowanie domyślnych obrazków. Następnie zmień szablon :file:`rejestracja.html`
-tak, aby wyświetlał inne obrazki, które znajdziesz w podkatalogu :file:`czat/static/img`.
+W szablonie bazowym stwórz block umożliwiający zastępowanie domyślnych obrazków.
+Następnie zmień szablon :file:`rejestracja.html` tak, aby wyświetlał inne obrazki,
+które znajdziesz w podkatalogu :file:`czat/static/img`.
 
 .. tip::
 
-    Tag ``{% load staticfiles %}`` musisz wstawić do każdego szablonu,
-    najlepiej zaraz po tagu ``{% extends %}``, w którym chcesz odwoływać
-    się do plików z katalogu :file:`static`.
+    Tag ``{% load staticfiles %}`` musisz wstawić zaraz po tagu ``{% extends %}``
+    do każdego szablonu, w którym chcesz odwoływać się do plików
+    z katalogu :file:`static`.
 
-.. figure:: img/czatpro3_z03a.png
+.. figure:: img/django_obrazki.png
 
 Java Script
-*************
+===========
 
 Na ostatnim zrzucie widać wykonane ćwiczenie, czyli użycie dodatkowych
 obrazków. Jednak strona nie wygląda dobrze, ponieważ treść podpowiedzi
@@ -162,7 +191,7 @@ w których wskazujemy położenie skryptów:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>baza.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>baza.html</i>. <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: html
 .. literalinclude:: baza_z04.html
@@ -171,66 +200,66 @@ w których wskazujemy położenie skryptów:
 
 Po odświeżeniu adresu */rejestruj* powinieneś zobaczyć poprawioną stronę:
 
-.. figure:: img/czatpro3_z04.png
+.. figure:: img/django_jscript.png
 
 Bootstrap
-***********
+=========
 
 `Bootstrap <http://getbootstrap.com/>`_  to jeden z najpopularniejszych frameworków,
 który z wykorzystaniem języków HTML, CSS i JS ułatwia tworzenie responsywnych aplikacji sieciowych.
 Zintegrowanie go z naszą aplikacją przy wykorzystaniu omówionych mechanizmów
 jest całkiem proste.
 
-Na początku ściągamy :download:`archiwum <bootstrap-3.3.6-dist.zip>` zawierające pliki
-tworzące framework i rozpakowujemy je w dowolnym katalogu, np. :file:`Pobrane`.
-Powstanie folder o nazwie :file:`bootstrap-3.3.6-dist`. Pliki z podfolderu :file:`css`
-z rozszerzeniem ``*.css`` kopiujemy do katalogu :file:`static/czat/css`, pliki z podfolderu
-:file:`js` kopiujemy do katalogu :file:`static/czat/js`, natomiast podfolder :file:`fonts`
-kopiujemy do katalogu :file:`static/czat`.
-
-.. tip::
-
-    W systemie ``LxPup``, którego używamy na szkoleniach, najłatwiej rozpakować
-    archiwum do bieżącego katalogu klikając go w menedżerze plików raz,
-    następnie naciskając :kbd:`CTRL+E` i klikając dwa razy ``OK``.
-
-    Do kopiowania plików otwieramy drugą kartę menedżera plików skrótem :kbd:`CTRL+T`.
-    W pierwszej karcie po zaznaczeniu kopiujemy pliki naciskając :kbd:`CTRL+C`, w drugiej
-    po wejściu do właściwego katalogu docelowego, np. :file:`~/czatpro3/czat/static/czat`,
-    wklejamy skrótem :kbd:`CTRL+V`.
-
-    Aby zaznaczyć kilka plików ułożonych nie po kolei, należy je klikać z wciśniętym klawiszem
-    :kbd:`CTRL`. Aby zaznaczyć wszystkie pliki, naciśnij :kbd:`CTRL+A`.
-    Aby przejść do katalogu nadrzędnego w menedżerze plików kliknij ikonę
-    strzałki w górę lub naciśnij :kbd:`ALT+UP` lub :kbd:`BACKSPACE`.
-
-Po skopiowaniu plików należy ich wersje skompresowane (mają w nazwie ``min``)
-dołączyć do szablonu :file:`baza.html` za pomocą odpowiednich znaczników HTML-a
-i tagów ``{% static %}``. Ważna przy tym jest kolejność ich dołączania.
-Aby sprawdzić poprawność dołączenia *Bootstrapa* dopiszemy też kilka klas
-w znacznikach ``<img>`` definiujących wyświetlanie obrazków. Nanieś
-więc pokazane poniżej zmiany:
+Wchodzimy na stronę `Getting started <http://getbootstrap.com/getting-started/#download-cdn>`_,
+kopiujemy linki dołączające arkusze CSS i klejamy je za znacznikiem ``<title>``
+w szablonie bazowym:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>baza.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>baza.html</i>. <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: html
 .. literalinclude:: baza_z05.html
     :linenos:
-    :lineno-start: 1
-    :lines: 1-
-    :emphasize-lines: 9-10, 40-41, 46
+    :lines: 8-12
 
-Po poprawnym wykonaniu operacji wejdźmy na stronę główną aplikacji.
-Powinniśmy zobaczyć obraz podobny do poniższego:
+Następnie kopiujemy link dołączający Java Script i wklejamy na końcu szablonu
+bazowego po linku włączającym *jQuery*.
 
-.. figure:: img/czatpro3_z05.png
+.. raw:: html
 
-cdn.
+    <div class="code_no">Plik <i>baza.html</i>. <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
+
+.. highlight:: html
+.. literalinclude:: baza_z05.html
+    :linenos:
+    :lines: 49-52
+    :emphasize-lines: 50-51
+
+
+Na koniec użyjemy dla przykładu klas ``img-thumbnail`` i ``img-circle`` Bootstrapa
+w znacznikach ``<img>`` szablonu bazowego:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>baza.html</i>. <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
+
+.. highlight:: html
+.. literalinclude:: baza_z05.html
+    :linenos:
+    :lines: 44-45
+
+.. figure:: img/django_bootstrap.png
+
+.. note::
+
+    Można oczywiście dołączać pliki Bootstrapa po pobraniu i umieszczeniu
+    ich w podkatalogach folderu :file:`static` za pomocą omawianego tagu
+    ``{% static %}``.
+
 
 Materiały
-***************
+=========
 
 1. O Django http://pl.wikipedia.org/wiki/Django_(informatyka)
 2. Strona projektu Django https://www.djangoproject.com/
@@ -239,4 +268,4 @@ Materiały
 
 **Źródła:**
 
-* :download:`czatpro_cz3.zip <czatpro_cz3.zip>`
+* :download:`czat3.zip <czat3.zip>`

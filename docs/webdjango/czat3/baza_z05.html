@@ -1,13 +1,17 @@
-<!-- czatpro3/czat/templates/czat/baza.html -->
+<!-- templates/czat/baza.html -->
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="pl">
   <meta charset="utf-8" />
   <head>
     <title>{% block tytul %} System wiadomości Czat {% endblock tytul %}</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
     <!-- dołączamy arkusz stylów: -->
-    <link rel="stylesheet" type="text/css" href="{% static 'czat/css/bootstrap.min.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'czat/css/bootstrap-theme.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'czat/css/style.css' %}" />
   </head>
   <body>
@@ -16,9 +20,9 @@
     {% block komunikaty %}
       {% if messages %}
         <ul>
-        {% for komunikat in messages %}
-          <li>{{ komunikat|capfirst }}</li>
-        {% endfor %}
+          {% for komunikat in messages %}
+            <li>{{ komunikat|capfirst }}</li>
+          {% endfor %}
         </ul>
       {% endif %}
     {% endblock %}
@@ -36,14 +40,15 @@
 
     <!-- wstawiamy obrazki: -->
     <div id="obrazki">
-      {% block obrazki %}
-        <img src="{% static 'czat/img/python.png' %}" width="300" class="img-thumbnail img-circle" />
-        <img src="{% static 'czat/img/sqlite.png' %}" width="300" class="img-thumbnail img-circle" />
-      {% endblock %}
+    {% block obrazki %}
+      <img src="{% static 'czat/img/python.png' %}" width="300" class="img-thumbnail img-circle" />
+      <img src="{% static 'czat/img/sqlite.png' %}" width="300" class="img-thumbnail img-circle" />
+    {% endblock %}
     </div>
 
     <script type="text/javascript" src="{% static 'czat/js/jquery.js' %}"></script>
-    <script type="text/javascript" src="{% static 'czat/js/bootstrap.min.js' %}"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{% static 'czat/js/czat.js' %}"></script>
 
   </body>

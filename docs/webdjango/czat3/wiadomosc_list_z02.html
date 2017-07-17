@@ -1,0 +1,37 @@
+<!-- czat/wiadomosc_list.html -->
+{% extends "czat/baza.html" %}
+
+{% block naglowek %}Wiadomości{% endblock %}
+
+{% block tresc %}
+  <h2>Lista wiadomości:</h2>
+  <ol>
+    {% for wiadomosc in wiadomosci %}
+    <li>
+      <strong>{{ wiadomosc.autor.username }}</strong> ({{ wiadomosc.data_pub }}):
+      <br /> {{ wiadomosc.tekst }}
+      {% if wiadomosc.autor.username == user.username %}
+        &bull; <a href="{% url 'czat:edytuj' wiadomosc.id %}">Edytuj</a>
+        &bull; <a href="{% url 'czat:usun' wiadomosc.id %}">Usuń</a>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ol>
+
+  {% if is_paginated %}
+    <p>
+    {% if page_obj.has_previous %}
+      <a href="?page={{ page_obj.previous_page_number }}">Poprzednie</a>
+    {% endif %}
+      Strona {{ page_obj.number }} z {{ page_obj.paginator.num_pages }}.
+    </span>
+    {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}">Następne</a>
+    {% endif %}
+    </p>
+  {% endif %}
+{% endblock %}
+
+{% block linki3 %}
+  <p><a href="{% url 'czat:index' %}">Strona główna</a></p>
+{% endblock %}

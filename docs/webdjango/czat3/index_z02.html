@@ -1,15 +1,15 @@
-<!-- czatpro3/czat/templates/czat/index.html -->
+<!-- templates/czat/index.html -->
 {% extends "czat/baza.html" %}
 
-  {% block naglowek %}Witaj w aplikacji Czat!{% endblock %}
+{% block naglowek %}Witaj w aplikacji Czat!{% endblock %}
 
-  {% block linki1 %}
-    <p>Jesteś zalogowany jako {{ user.username }}.</p>
-    <p><a href="{% url 'czat:wiadomosc' %}">Dodaj wiadomość</a></p>
-    <p><a href="{% url 'czat:wiadomosci' %}">Lista wiadomości</a></p>
-  {% endblock %}
+{% block linki1 %}
+  <p>Jesteś zalogowany jako {{ user.username }}.</p>
+  <p><a href="{% url 'czat:dodaj' %}">Dodaj wiadomość</a></p>
+  <p><a href="{% url 'czat:wiadomosci' %}">Lista wiadomości</a></p>
+{% endblock %}
 
-  {% block linki2 %}
-    <p><a href="{% url 'czat:loguj' %}">Zaloguj się</a></p>
-    <p><a href="{% url 'czat:rejestruj' %}">Zarejestruj się</a></p>
-  {% endblock %}
+{% block linki2 %}
+  <p><a href="{% url 'czat:loguj' %}">Zaloguj się</a></p>
+  <p><a href="{% url 'czat:rejestruj' %}">Zarejestruj się</a></p>
+{% endblock %}
