@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# czatpro2/czat/forms.py
+# czat/forms.py
 
 from django.forms import ModelForm, TextInput
 from czat.models import Wiadomosc

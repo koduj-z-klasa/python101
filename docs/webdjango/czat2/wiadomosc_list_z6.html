@@ -1,7 +1,15 @@
-<!-- czatpro2/czat/templates/czat/wiadomosc_list.html -->
+<!-- templates/czat/wiadomosc_list.html -->
 <html>
   <body>
     <h1>Wiadomości</h1>
+
+    {% if messages %}
+      <ul>
+        {% for komunikat in messages %}
+          <li>{{ komunikat|capfirst }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
 
     <h2>Lista wiadomości:</h2>
     <ol>
@@ -15,6 +23,19 @@
       </li>
       {% endfor %}
     </ol>
+
+    {% if is_paginated %}
+      <p>
+      {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">Poprzednie</a>
+      {% endif %}
+        Strona {{ page_obj.number }} z {{ page_obj.paginator.num_pages }}.
+      </span>
+      {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Następne</a>
+      {% endif %}
+      </p>
+    {% endif %}
 
     <p><a href="{% url 'czat:index' %}">Strona główna</a></p>
 

@@ -37,7 +37,7 @@ class DodajWiadomosc(CreateView):
         wiadomosc.autor = self.request.user
         wiadomosc.save()
         messages.success(self.request, "Dodano wiadomość!")
-        return super(UtworzWiadomosc, self).form_valid(form)
+        return super(DodajWiadomosc, self).form_valid(form)
 
 
 class EdytujWiadomosc(UpdateView):

@@ -19,7 +19,6 @@ lub :ref:`Windows <webapps-win>`.
     czat2/index
     czat3/index
     mvc
-    ../glossary_www
 
 Materiały
 ***************

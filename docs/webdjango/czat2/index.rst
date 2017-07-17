@@ -15,7 +15,7 @@ i rozpakuj w katalogu domowym użytkownika. Następnie wydaj polecenia:
 
 .. raw:: html
 
-    <div class="code_no">Terminal nr <script>var ter_no = ter_no || 1; document.write(ter_no++);</script></div>
+    <div class="code_no">Terminal nr <script>var ter_no = ter_no || 1; document.write(ter_no++);</script></span></div>
 
 .. code-block:: bash
 
@@ -28,7 +28,7 @@ i rozpakuj w katalogu domowym użytkownika. Następnie wydaj polecenia:
 
     Przypominamy, że pracujemy w wirtualnym środowisku Pythona z zainstalowanym frameworkiem
     Django, które powinno znajdować się w katalogu :file:`pve3`. Zobacz w scenariuszu Czat (cz. 1),
-    jak utworzyć takie :ref:`środowisko <czat1-env:>`.
+    jak utworzyć takie :ref:`środowisko <czat1-env>`.
 
 
 Rejestrowanie
@@ -44,7 +44,7 @@ Na początku pliku :file:`czat2/czat/urls.py` importujemy formularz tworzenia u�
 
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>urls.py</i><span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: python
 .. literalinclude:: urls.py
@@ -52,11 +52,11 @@ Na początku pliku :file:`czat2/czat/urls.py` importujemy formularz tworzenia u�
     :lineno-start: 6
     :lines: 6-7
 
-Następnie do listy ``paterns`` dopisujemy:
+Następnie do listy ``urlpatterns`` dopisujemy:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>urls.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>urls.py</i><span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: python
 .. literalinclude:: urls.py
@@ -76,7 +76,7 @@ Teraz tworzymy szablon formularza rejestracji, który zapisać należy w pliku :
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>rejestruj.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>rejestruj.html</i><span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: html
 .. literalinclude:: rejestruj_z2.html
@@ -86,7 +86,7 @@ Na koniec wstawimy link na stronie głównej, a więc uzupełniamy plik :file:`i
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>index.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>index.html</i><span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: html
 .. literalinclude:: index_z2.html
@@ -100,13 +100,13 @@ spróbuj wysłać niepełne dane, np. bez hasła; spróbuj dodać dwa razy tego 
 .. figure:: img/django_rejestracja.png
 
 Wy(logowanie)
-*************
+=============
 
 Na początku pliku :file:`urls.py` aplikacji dopisujemy wymagany import:
 
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: python
 .. literalinclude:: urls.py
@@ -118,7 +118,7 @@ Na początku pliku :file:`urls.py` aplikacji dopisujemy wymagany import:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>urls.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>urls.py</i><span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: python
 .. literalinclude:: urls.py
@@ -135,7 +135,7 @@ Logowanie wymaga szablonu :file:`loguj.html`, który tworzymy i zapisujemy w pod
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>loguj.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>loguj.html</i><span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: html
 .. literalinclude:: loguj_z3.html
@@ -147,7 +147,7 @@ definiujemy wartość zmiennej ``LOGIN_REDIRECT_URL``:
 
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>settings.py</i>. <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. code-block:: python
 
@@ -161,7 +161,7 @@ definiujemy wartość zmiennej ``LOGIN_REDIRECT_URL``:
 .. figure:: img/django_logowanie.png
 
 Lista wiadomości
-*****************
+================
 
 Chcemy, by zalogowani użytkownicy mogli przeglądać wiadomości wszystkich użytkowników,
 zmieniać, usuwać i dodawać własne. Najprostszy sposób to skorzystanie z
@@ -182,7 +182,7 @@ Do pliku :file:`urls.py` dopisujemy importy:
 
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div><span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: python
 .. literalinclude:: urls.py
@@ -194,7 +194,7 @@ Do pliku :file:`urls.py` dopisujemy importy:
 
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: python
 .. literalinclude:: urls.py
@@ -220,7 +220,7 @@ zobaczyć listę wiadomości:
 
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. code-block:: python
 
@@ -237,7 +237,7 @@ Potrzebujemy szablonu, którego Django szuka pod domyślną nazwą
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>wiadomosc_list.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>wiadomosc_list.html</i><span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: html
 .. literalinclude:: wiadomosc_list_z4.html
@@ -264,7 +264,7 @@ Numer strony do wyświetlenia przekazujemy w zmiennej ``page`` adresu URL.
 .. figure:: img/django_wiadomosci.png
 
 Dodawanie wiadomości
-********************
+====================
 
 Zadanie to zrealizujemy wykorzystując widok ``CreateView``. Aby ułatwić
 dodawanie wiadomości **dostosujemy klasę widoku** tak, aby użytkownik
@@ -275,7 +275,7 @@ Na początek dopiszemy w pliku :file:`urls.py` skojarzenie adresu URL
 
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: python
 .. literalinclude:: urls.py
@@ -287,7 +287,7 @@ Dalej kodujemy w pliku :file:`views.py`. Na początku dodajemy importy:
 
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: python
 .. literalinclude:: views.py
@@ -297,7 +297,7 @@ Dalej kodujemy w pliku :file:`views.py`. Na początku dodajemy importy:
 
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: python
 .. literalinclude:: views.py
@@ -332,7 +332,7 @@ wstawiamy poniższą treść i zapisujemy pod nazwą :file:`templates/czat/wiado
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>wiadomosc_form.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>wiadomosc_form.html</i><span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: html
 .. literalinclude:: wiadomosc_form_z5.html
@@ -343,7 +343,7 @@ W szablonie :file:`templates/czat/wiadomosc_list.html` wstawimy jeszcze po nagł
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>wiadomosc_list.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>wiadomosc_list.html</i><span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: html
 .. literalinclude:: wiadomosc_list_z5.html
@@ -363,7 +363,7 @@ W szablonie :file:`templates/czat/wiadomosc_list.html` wstawimy jeszcze po nagł
 .. figure:: img/django_dodawanie.png
 
 Edycja wiadomości
-*****************
+=================
 
 Widok pozwalający na edycję wiadomości i jej aktualizację dostępny będzie
 pod adresem **/edytuj/id_wiadomości**, gdzie **id_wiadomosci** będzie identyfikatorem
@@ -371,7 +371,7 @@ obiektu do zaktualizowania. Zaczniemy od uzupełnienia pliku :file:`urls.py`:
 
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: python
 .. literalinclude:: urls.py
@@ -382,15 +382,15 @@ obiektu do zaktualizowania. Zaczniemy od uzupełnienia pliku :file:`urls.py`:
 Nowością w powyższym kodzie są wyrażenia regularne definiujące adresy z dodatkowym
 parametrem, np. ``r'^edytuj/(?P<pk>\d+)/'``. Część ``/(?P<pk>\d+)`` oznacza,
 że oczekujemy 1 lub więcej cyfr (``\d+``), które zostaną zapisane w zmiennej o nazwie
-``pk`` (``?P<pk>``) – nazwa jest tu skrótem od ang. wyrażenia *primary key*, co znaczy
-"klucz główny". Zmienna ta zawierać będzie identyfikator wiadomości i dostępna
-będzie w klasie widoku, który obsłuży edycję wiadomości.
+``pk`` (``?P<pk>``) – nazwa jest tu skrótem od ang. wyrażenia *primary key*,
+co znaczy "klucz główny". Zmienna ta zawierać będzie identyfikator wiadomości
+i dostępna będzie w klasie widoku, który obsłuży edycję wiadomości.
 
 Na początku pliku :file:`views.py` importujemy więc potrzebny widok:
 
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: python
 .. literalinclude:: views.py
@@ -403,7 +403,7 @@ widok ``UpdateView``:
 
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: python
 .. literalinclude:: views.py
@@ -427,7 +427,7 @@ domyślne ustawienia:
 
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: python
 .. literalinclude:: forms_z6.py
@@ -449,29 +449,27 @@ Wstaw w odpowiednie miejsce szablonu, tzn po tagu wyświetlającym tekst wiadomo
 
 .. raw:: html
 
-    <div class="code_no">Plik wiadomosc_lista.html nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik wiadomosc_lista.html</i> <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: html
 .. literalinclude:: wiadomosc_list_z6.html
     :linenos:
-    :lineno-start: 12
-    :lines: 12-14
+    :lineno-start: 20
+    :lines: 20-22
 
 **Ćwiczenie:** Ten sam link "Edytuj" umieść również w szablonie dodawania.
 
-.. figure:: img/czatpro2_06.png
-
-.. figure:: img/czatpro2_06a.png
+.. figure:: img/django_edycja.png
 
 Usuwanie wiadomości
-*******************
+===================
 
 **Usuwanie danych** realizujemy za pomocą widoku ``DeleteView``, który importujemy
 na początku pliku :file:`urls.py`:
 
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: python
 .. literalinclude:: urls.py
@@ -480,12 +478,12 @@ na początku pliku :file:`urls.py`:
     :lines: 13
 
 Podobnie, jak w przypadku edycji, usuwanie powiążemy z adresem URL zawierającym
-identyfikator wiadomości ***/usun/id_wiadomości***. W pliku :file:`urls.py` dopisujemy:
+identyfikator wiadomości */usun/id_wiadomości*. W pliku :file:`urls.py` dopisujemy:
 
 
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: python
 .. literalinclude:: urls.py
@@ -502,23 +500,23 @@ dlatego uprościliśmy jego nazwę we właściwości ``template_name``. Tworzymy
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>wiadomosc_usun.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>wiadomosc_usun.html</i><span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: html
 .. literalinclude:: wiadomosc_usun_z7.html
     :linenos:
 
 Tag ``{{ object }}`` zostanie zastąpiony treścią wiadomości zwróconą przez funkcję
-"autoprezentacji" ``__unicode__()`` modelu.
+"autoprezentacji" ``__str__()`` modelu.
 
 **Ćwiczenie:** Wstaw link "Usuń" (``&bull; <a href="{% url 'czat:usun' wiadomosc.id %}">Usuń</a>``) za linkiem "Edytuj" w szablonach wyświetlających listę wiadomości.
 
-.. figure:: img/czatpro2_07.png
+.. figure:: img/django_edycja_usun.png
 
-.. figure:: img/czatpro2_07a.png
+.. figure:: img/django_usun.png
 
 Materiały
-***************
+=========
 
 1. O Django http://pl.wikipedia.org/wiki/Django_(informatyka)
 2. Strona projektu Django https://www.djangoproject.com/
@@ -527,4 +525,4 @@ Materiały
 
 **Źródła:**
 
-* :download:`czatpro_cz2.zip <czatpro_cz2.zip>`
+* :download:`czat2.zip <czat2.zip>`
