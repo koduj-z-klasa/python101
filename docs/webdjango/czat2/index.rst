@@ -40,7 +40,7 @@ zadania te zrealizujemy za pomocą tzw. widoków wbudowanych opartych na klasach
 (ang. `class-based generic views <https://docs.djangoproject.com/en/1.11/topics/class-based-views/>`_).
 
 Na początku pliku :file:`czat2/czat/urls.py` importujemy formularz tworzenia użytkownika
-(``UserCreationForm``) oraz wbudowany widok przenaczony do dodawania danych (``CreateView``):
+(``UserCreationForm``) oraz wbudowany widok przeznaczony do dodawania danych (``CreateView``):
 
 .. raw:: html
 

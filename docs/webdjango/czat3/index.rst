@@ -163,7 +163,7 @@ Teraz musimy dołączyć style i obrazki do szablonu bazowego :file:`baza.html`:
 Ćwiczenie
 ---------
 
-W szablonie bazowym stwórz block umożliwiający zastępowanie domyślnych obrazków.
+W szablonie bazowym stwórz blok umożliwiający zastępowanie domyślnych obrazków.
 Następnie zmień szablon :file:`rejestracja.html` tak, aby wyświetlał inne obrazki,
 które znajdziesz w podkatalogu :file:`czat/static/img`.
 
@@ -211,7 +211,7 @@ Zintegrowanie go z naszą aplikacją przy wykorzystaniu omówionych mechanizmów
 jest całkiem proste.
 
 Wchodzimy na stronę `Getting started <http://getbootstrap.com/getting-started/#download-cdn>`_,
-kopiujemy linki dołączające arkusze CSS i klejamy je za znacznikiem ``<title>``
+kopiujemy linki dołączające arkusze CSS i wklejamy je za znacznikiem ``<title>``
 w szablonie bazowym:
 
 .. raw:: html

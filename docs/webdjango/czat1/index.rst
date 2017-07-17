@@ -86,7 +86,7 @@ Zawiera on:
 **Katlog projektu** :file:`czat1/czat1` zawiera:
 
     - :file:`settings.py` – konfiguracja projektu;
-    - :file:`urls.py` – lista osbługiwanych adresów URL;
+    - :file:`urls.py` – lista obsługiwanych adresów URL;
     - :file:`wsgi.py` – plik konfiguracyjny wykorzystywany przez serwery WWW.
 
 
