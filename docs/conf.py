@@ -287,6 +287,7 @@ rst_epilog = u"""
         span.right {{ float: right; }}
         div.highlight, div.highlight-python {{ margin-top: 0px; }}
         .rst-content code {{ color: #E74C3C; }}
+        div[class^="highlight"] pre {{ line-height: normal; }}
     </style>
 
 .. |date| date::
