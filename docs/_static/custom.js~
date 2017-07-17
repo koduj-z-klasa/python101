@@ -1,8 +1,0 @@
-$(document).ready(function(){
-    $('#contents ul.simple').insertAfter('div.wy-menu ul.current li.current a.current');
-    $('div.wy-menu ul.current li.current ul.simple').css('padding-left','3.8em');
-    //$('div.wy-menu ul.current li.current ul.simple').css('margin-left','2.5em');
-    $('div.wy-menu ul.current li.current ul.simple li').css('list-style-type','circle');
-    $('div.wy-menu ul.current li.current ul.simple li a').css('padding-left','0.5em');
-    $('div.wy-menu ul.current li.current ul.simple li a').css('margin-left','-0.5em');
-});
