@@ -1,8 +1,6 @@
 Życie Conwaya (str)
 #####################
 
-.. highlight:: python
-
 `Gra w życie`_ zrealizowana z użyciem biblioteki `PyGame`_. Wersja strukturalna.
 Biblioteka PyGame ułatwia tworzenie aplikacji multimedialnych, w tym gier.
 
@@ -24,6 +22,7 @@ Tworzymy plik ``life.py`` w terminalu lub w wybranym edytorze i zaczynamy od zde
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
+.. highlight:: python
 .. literalinclude:: life_str1.py
     :linenos:
 
@@ -38,6 +37,7 @@ Kolejnym krokiem będzie zdefiniowanie funkcji przygotowującej i rysującej pop
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
+.. highlight:: python
 .. literalinclude:: life_str2.py
     :linenos:
     :lineno-start: 39
@@ -69,6 +69,7 @@ Dopisujemy więc do kodu główną pętlę wraz z obsługą zdarzeń:
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
+.. highlight:: python
 .. literalinclude:: life_str3.py
     :linenos:
     :lineno-start: 122
@@ -85,9 +86,10 @@ Naciśnięcie klawisza ENTER uruchamia symulację rozwoju populacji. Zmienna ``z
 
 Grę możemy uruchomić poleceniem wpisanym w terminalu:
 
+.. highlight:: bash
 .. code:: bash
 
-    $ python life_str.py
+    ~$ python life_str.py
 
 Zadania dodatkowe
 ****************************

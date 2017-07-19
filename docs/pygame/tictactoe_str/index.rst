@@ -95,9 +95,10 @@ Ostatnie linie kodu wypełniają okno gry kolorem (``.fill()``), wywołują funk
 
 Grę możemy uruchomić poleceniem wpisanym w terminalu:
 
+.. highlight:: bash
 .. code:: bash
 
-    $ python tictactoe.py
+    ~$ python tictactoe.py
 
 Zadania dodatkowe
 ******************

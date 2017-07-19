@@ -3,8 +3,6 @@
 Quiz ORM
 #####################
 
-.. highlight:: python
-
 Realizacja aplikacji internetowej Quiz w oparciu o :term:`framework` `Flask`_
 i bazę danych `SQLite`_ zarządzaną systemem ORM `Peewee`_ lub `SQLAlchemy`_.
 
@@ -30,6 +28,7 @@ z aplikacją internetową.
 
 Wykorzystywane biblioteki instalujemy przy użyciu instalatora ``pip``:
 
+.. highlight:: bash
 .. code-block:: bash
 
     ~$ sudo pip install peewee sqlalchemy flask-sqlalchemy
@@ -59,6 +58,7 @@ W podkatalogach ``templates`` umieścimy wszystkie szablony, czyli pliki
 z rozszerzeniem *html*, arkusz stylów o nazwie ``style.css`` znajdzie się
 w podkatalogu ``static``. Potrzebną strukturę katalogów można utworzyć poleceniami:
 
+.. highlight:: bash
 .. code-block:: bash
 
     ~$ mkdir quiz2
@@ -77,6 +77,7 @@ Aplikacja i baza
 
     <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
+.. highlight:: python
 .. literalinclude:: quiz2_pw/app.py
     :linenos:
 
@@ -259,6 +260,7 @@ o ile na dysku nie istnieje już plik bazy ``quiz.db``.
 Ostatnie polecenie ``app.run(debug=True)`` ma uruchomić naszą aplikację
 w trybie debugowania. Czas więc uruchomić nasz testowy serwer:
 
+.. highlight:: bash
 .. code-block:: bash
 
     ~/quiz2$ python main.py
@@ -305,7 +307,7 @@ Pierwsza funkcja ``pobierz_dane('pytania.csv')`` odczytuje z podanego pliku kole
 linie zawierające pytanie, odpowiedzi i odpowiedź prawidłową oddzielone znakiem
 "#". Z odczytanych linii usuwamy znaki końca linii, następnie ustawiamy
 kodowanie znaków, a na koniec rozbijamy je na trzy elementy (``line.split("#")``),
-z których tworzymy tuple i dodajemy ją do listy ``dane.append(tuple(...))``.
+z których tworzymy tuple i dodajemy ją do listy ``dane.append(tuple())``.
 Na koniec listę tupli zwracamy jako tuplę, która trafia do wywołania
 drugiej funkcji ``dodaj_pytania()``.
 
@@ -565,6 +567,7 @@ Poćwicz sam
 Kompletne wersje kodu znajdziesz w powyższym archiwum w podkatalogach :file:`quiz2_pw`
 i :file:`quiz2_sa`. Uruchamiamy je poleceniami:
 
+.. highlight:: bash
 .. code-block:: bash
 
     ~/quiz2/quiz2_orm$ python main.py

@@ -3,8 +3,6 @@
 Pong (str)
 ###################
 
-.. highlight:: python
-
 Wersja strukturalna klasycznej gry w odbijanie piłeczki zrealizowana z użyciem biblioteki `PyGame`_.
 
 .. _PyGame: http://www.pygame.org/wiki/tutorials
@@ -25,6 +23,7 @@ i wprowadzamy poniższy kod:
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
+.. highlight:: python
 .. literalinclude:: pong_str01.py
     :linenos:
 
@@ -51,9 +50,10 @@ Jego wyświetlenie następuje w poleceniu ``pygame.display.update()``.
 
 Uruchom aplikację, wydając w terminalu polecenie:
 
+.. highlight:: bash
 .. code:: bash
 
-    $ python pong_str.py
+    ~$ python pong_str.py
 
 Paletka gracza
 ***************
@@ -65,6 +65,7 @@ Poniższy kod wstawiamy **przed pętlą główną** programu:
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
+.. highlight:: python
 .. literalinclude:: pong_str02.py
     :linenos:
     :lineno-start: 22
@@ -94,6 +95,7 @@ przed instrukcją wyświetlającą okno.
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
+.. highlight:: python
 .. literalinclude:: pong_str02.py
     :linenos:
     :lineno-start: 47
@@ -110,6 +112,7 @@ W pętli przechwytującej zdarzenia dopisujemy zaznaczony poniżej kod:
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
+.. highlight:: python
 .. literalinclude:: pong_str03.py
     :linenos:
     :lineno-start: 35
@@ -133,6 +136,7 @@ Piłkę tworzymy podobnie jak paletkę. Przed pętlą główną programu wstawia
 
     <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
+.. highlight:: python
 .. literalinclude:: pong_str04.py
     :linenos:
     :lineno-start: 35
