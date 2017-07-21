@@ -275,7 +275,7 @@ Na początek dopiszemy w pliku :file:`urls.py` skojarzenie adresu URL
 
 .. raw:: html
 
-    <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
+    <div class="code_no">Plik <i>urls.py</i> <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: python
 .. literalinclude:: urls.py
@@ -287,9 +287,8 @@ Dalej kodujemy w pliku :file:`views.py`. Na początku dodajemy importy:
 
 .. raw:: html
 
-    <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
+    <div class="code_no">Plik <i>views.py</i> <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
-.. highlight:: python
 .. literalinclude:: views.py
     :linenos:
     :lineno-start: 6
@@ -297,9 +296,8 @@ Dalej kodujemy w pliku :file:`views.py`. Na początku dodajemy importy:
 
 .. raw:: html
 
-    <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
+    <div class="code_no">Plik <i>views.py</i> <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
-.. highlight:: python
 .. literalinclude:: views.py
     :linenos:
     :lineno-start: 19
@@ -371,7 +369,7 @@ obiektu do zaktualizowania. Zaczniemy od uzupełnienia pliku :file:`urls.py`:
 
 .. raw:: html
 
-    <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
+    <div class="code_no">Plik <i>urls.py</i><span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: python
 .. literalinclude:: urls.py
@@ -390,7 +388,7 @@ Na początku pliku :file:`views.py` importujemy więc potrzebny widok:
 
 .. raw:: html
 
-    <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
+    <div class="code_no">Plik <i>views.py</i><span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: python
 .. literalinclude:: views.py
@@ -403,7 +401,7 @@ widok ``UpdateView``:
 
 .. raw:: html
 
-    <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
+    <div class="code_no">Plik <i>views.py</i><span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: python
 .. literalinclude:: views.py
@@ -427,7 +425,7 @@ domyślne ustawienia:
 
 .. raw:: html
 
-    <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
+    <div class="code_no">Plik <i>forms.py</i><span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: python
 .. literalinclude:: forms_z6.py
@@ -469,7 +467,7 @@ na początku pliku :file:`urls.py`:
 
 .. raw:: html
 
-    <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
+    <div class="code_no">Plik <i>urls.py</i><span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: python
 .. literalinclude:: urls.py
@@ -483,7 +481,7 @@ identyfikator wiadomości */usun/id_wiadomości*. W pliku :file:`urls.py` dopisu
 
 .. raw:: html
 
-    <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
+    <div class="code_no">Plik <i>urls.py</i><span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: python
 .. literalinclude:: urls.py

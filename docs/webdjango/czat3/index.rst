@@ -234,7 +234,7 @@ bazowego po linku włączającym *jQuery*.
 .. literalinclude:: baza_z05.html
     :linenos:
     :lines: 49-52
-    :emphasize-lines: 50-51
+    :emphasize-lines: 2-3
 
 
 Na koniec użyjemy dla przykładu klas ``img-thumbnail`` i ``img-circle`` Bootstrapa
