@@ -56,6 +56,11 @@ Słownik aplikacji internetowych
     szablon
         wzorzec (nazywany czasem templatką) strony WWW wykorzystywany do renderowania widoków.
 
+    renderowanie szablonu
+        przetwarzanie szkieletowego kodu HTML oraz specjalnych tagów w celu
+        uzyskania kompletnego kodu HTML strony zawierającego przekazane
+        do szablonu dane.
+
     URL
         ustandaryzowany format adresowania zasobów w internecie (`przykład <http://pl.wikipedia.org/wiki/Uniform_Resource_Locator>`_).
 
@@ -72,5 +77,13 @@ Słownik aplikacji internetowych
         przeprowadza operacje na danych i najczęściej zwraca je np. w formie strony WWW do przeglądarki.
 
     kontroler
-        logika aplikacji, we Flasku lub Django mechanizm obsługujący żadania HTTP
+        logika aplikacji, we Flasku lub Django mechanizm obsługujący zadania HTTP
         powiązane z określonymi adresami URL za pomocą widoków (funkcji lub klas).
+
+    sesja
+        w kontekście aplikacji wykorzystujących protokół HTTP sposób zapamiętywania po stronie serwera
+        danych związanych z konkretnym użytkownikiem.
+
+    ciasteczka
+        (ang. *cookies*) zaszyfrowane dane tekstowe wysyłane przez serwer i zapamiętywane po stronie klienta,
+        zawierają np. identyfikator sesji użytkownika.

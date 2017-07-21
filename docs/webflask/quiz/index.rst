@@ -12,21 +12,22 @@ przesyła je na serwer i otrzymuje informację o wynikach.
     :local:
 
 Projekt i aplikacja
-*********************
+===================
 
-W katalogu użytkownika tworzymy nowy katalog dla aplikacji :file:`quiz`,
-a w nim plik główny :file:`quiz.py`:
+W katalogu użytkownika tworzymy nowy katalog aplikacji o nazwie :file:`quiz`:
 
 .. raw:: html
 
     <div class="code_no">Terminal nr <script>var ter_t = ter_t || 1; document.write(ter_t++);</script></div>
 
+.. highlight:: bash
 .. code-block:: bash
 
-    ~$ mkdir quiz; cd quiz; touch quiz.py
+    ~$ mkdir quiz; cd quiz;
 
 Utworzymy szkielet aplikacji Flask, co pozwoli na uruchomienie testowego serwera www,
-umożliwiającego wygodne rozwijanie kodu. W pliku :file:`quiz.py` wpisujemy:
+umożliwiającego wygodne rozwijanie kodu. W nowym pliku o nazwie :file:`quiz.py`
+wpisujemy poniższy kod i zapisujemy w katalogu aplikacji.
 
 .. raw:: html
 
@@ -44,7 +45,7 @@ Serwer uruchamiamy komendą:
 
 .. code-block:: bash
 
-    ~/quiz$ python quiz.py
+    ~/quiz$ python3 quiz.py
 
 .. figure:: img/serwer.jpg
 
@@ -55,8 +56,12 @@ widoku dla tego adresu.
 
 .. figure:: img/quiz1.png
 
-Widok (strona główna)
-*********************
+.. tip::
+
+    Działanie serwera w terminalu zatrzymujemy skrótem :kbd:`CTRL+C`.
+
+Strona główna
+=============
 
 Jeżeli chcemy, aby nasza aplikacja zwracała użytkownikowi jakieś strony www,
 tworzymy tzw. :term:`widok`. Jest to funkcja Pythona powiązana z określonymi
@@ -66,10 +71,10 @@ kiedy użytkownik chce zobaczyć stronę, i :term:`POST`, kiedy użytkownik prze
 na serwer za pomocą formularza.
 
 W odpowiedzi aplikacja może odsyłać różne dane. Najczęściej
-będą to znaczniki :term:`HTML` oraz żądane treści, np. wyniki quizu. Flask ułatwia
+będą to znaczniki :term:`HTML` oraz treści, np. wyniki quizu. Flask ułatwia
 tworzenie takich dokumentów za pomocą szablonów.
 
-W pliku :file:`quiz.py` umieszczamy funkcję ``index()``, czyli widok strony głównej:
+W pliku :file:`quiz.py` umieszczamy kod:
 
 .. raw:: html
 
@@ -78,23 +83,20 @@ W pliku :file:`quiz.py` umieszczamy funkcję ``index()``, czyli widok strony gł
 .. highlight:: python
 .. literalinclude:: quiz2.py
     :linenos:
-    :emphasize-lines: 8-11
+    :emphasize-lines: 9-11
 
-Widok (czyli funkcja) ``index()`` powiązana jest z adresem głównym (/)
-za pomocą dekoratora ``@app.route('/')``. Dzięki temu, jeżeli użytkownik
-wpisze w przeglądarce adres serwera, jego żądanie (GET)
-zostanie przechwycone i obsłużone właśnie w tej funkcji.
+Widok (czyli funkcja) ``index()`` powiązany jest z adresem głównym (/)
+za pomocą dekoratora ``@app.route('/')``. Funkcja zostanie wykonana w odpowiedzi
+na żądanie GET wysłane przez przeglądarkę po wpisaniu i zatwierdzeniu przez
+użytkownika adresu serwera.
 
-Najprostszą odpowiedzią na żądanie GET jest zwrócenie jakiegoś tekstu.
-Tak też robimy wywołując funkcję ``return 'Cześć, tu Python!'``, która odeśle
-podany tekst do przeglądarki, a ta wyświetli go użytkownikowi.
+Najprostszą odpowiedzią jest zwrócenie jakiegoś tekstu: ``return 'Cześć, tu Python!'``.
 
 .. figure:: img/quiz2.png
 
 Zazwyczaj będziemy prezentować bardziej skomplikowane dane, w dodatku
-sformatowane wizualnie. Potrzebujemy szablonu.
-Tworzymy więc plik :file:`~/quiz/templates/index.html`.
-Można to zrobić w terminalu po ewentualnym zatrzymaniu serwera (CTRL+C):
+sformatowane wizualnie. Potrzebujemy szablonów. Będziemy je zapisywać
+w katalogu :file:`quiz/templates`, który utworzymy np. poleceniem:
 
 .. raw:: html
 
@@ -102,20 +104,19 @@ Można to zrobić w terminalu po ewentualnym zatrzymaniu serwera (CTRL+C):
 
 .. code-block:: bash
 
-    ~/quiz$ mkdir templates; touch templates/index.html
+    ~/quiz$ mkdir templates
 
-Jak widać szablony umieszczamy w podkatalogu :file:`templates` aplikacji.
-Do pliku :file:`index.html` wstawiamy poniższy kod HTML:
+Następnie w nowym pliku :file:`templates/index.html` umieszczamy kod:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>index.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>index.html</i>. <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: html
 .. literalinclude:: templates/index3.html
     :linenos:
 
-Na koniec modyfikujemy funkcje ``index()`` w pliku quiz.py:
+Na koniec modyfikujemy funkcję ``index()`` w pliku :file:`quiz.py`:
 
 .. raw:: html
 
@@ -124,19 +125,20 @@ Na koniec modyfikujemy funkcje ``index()`` w pliku quiz.py:
 .. highlight:: python
 .. literalinclude:: quiz3.py
     :linenos:
-    :emphasize-lines: 5, 11-12
+    :emphasize-lines: 5, 13
 
-Po zaimportowaniu (!) potrzebnej funkcji używamy jej do wyrenderowania
-podanego jako argument szablonu: ``return render_template('index.html')``.
-Pod adresem *http://127.0.0.1:5000* strony głównej, zobaczymy dokument HTML:
+Do renderowania szablonu (zob: :term:`renderowanie szablonu`) używamy
+funkcji ``render_template('index.html')``, która jako argument przyjmuje
+nazwę pliku szablonu. Pod adresem *http://127.0.0.1:5000* strony głównej,
+zobaczymy dokument HTML:
 
 .. figure:: img/quiz3.png
 
 Pytania i odpowiedzi
-*********************
+====================
 
 Dane aplikacji, a więc pytania i odpowiedzi, umieścimy w liście
-``PYTANIA`` w postaci słowników zawierających: treść pytania,
+``DANE`` w postaci słowników zawierających: treść pytania,
 listę możliwych odpowiedzi oraz poprawną odpowiedź.
 
 Modyfikujemy plik :file:`quiz.py`. Podany kod wstawiamy po inicjacji zmiennej
@@ -149,19 +151,23 @@ Modyfikujemy plik :file:`quiz.py`. Podany kod wstawiamy po inicjacji zmiennej
 .. highlight:: python
 .. literalinclude:: quiz4.py
     :linenos:
-    :emphasize-lines: 9-31, 36
+    :emphasize-lines: 9-27, 33
 
-Dodaliśmy konfigurację aplikacji w postaci słownika, ustalając sekretny klucz,
-potrzebny do zarządzania sesjami różnych użytkowników.
-Najważniejszą zmianą jest dołożenie drugiego argumentu funkcji ``render_template()``,
-czyli słownika ``PYTANIA`` w zmiennej ``pytania``. Dzięki temu będziemy
-mogli odczytać je w szablonie.
+W konfiguracji aplikacji dodaliśmy sekretny klucz, wykorzystywany podczas
+korzystania z sesji (zob :term:`sesja`).
+
+**Dane aplikacji**
+
+Każda aplikacja korzysta z jakiegoś źródła danych. W najprostszym przypadku
+dane zawarte są w samej aplikacji. Dodaliśmy więc listę słowników ``DANE``,
+którą przekazujemy dalej jako drugi argument do funkcji ``render_template()``.
+Dzięki temu będziemy mogli odczytać je w szablonie w zmiennej ``pytania``.
 
 Do szablonu :file:`index.html` wstawiamy poniższy kod po nagłówku ``<h1>``.
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>index.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>index.html</i>. <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: html
 .. literalinclude:: templates/index4.html
@@ -169,15 +175,16 @@ Do szablonu :file:`index.html` wstawiamy poniższy kod po nagłówku ``<h1>``.
     :lines: 9-33
 
 Znaczniki HTML w powyższym kodzie tworzą formularz (``<form>``).
-Natomiast tagi, czyli polececnia dostępne w szablonach, pozwalają
-wypełnić go danymi. Warto zapamiętać, że jeżeli potrzebujemy w szablonie instrukcji sterującej,
-umieszczamy ją w znacznikach ``{% %}``, natomiast kiedy chcemy
-wyświetlić jakąś zmienną używamy notacji ``{{ }}``.
+Natomiast tagi, czyli polecenia dostępne w szablonach, pozwalają
+wypełnić go danymi.
 
-Z przekazaneej do szablonu listy pytań, czyli ze zmiennej ``pytania`` odczytujemy
+* ``{% instrukcja %}`` – tak wstawiamy instrukcje sterujące;
+* ``{{ zmienna }}`` – tak wstawiamy wartości zmiennych przekazanych do szablonu.
+
+Z przekazanej do szablonu listy pytań, czyli ze zmiennej ``pytania`` odczytujemy
 w pętli ``{% for p in pytania %}`` kolejne słowniki; dalej tworzymy elementy formularza,
-czyli wyświetlamy treść pytania ``{{ p.pytanie }}``,
-a w kolejnej pętli ``{% for o in p.odpowiedz %}`` odpowiedzi w postaci grupy opcji typu radio.
+czyli wyświetlamy treść pytania ``{{ p.pytanie }}``, a w kolejnej pętli
+``{% for o in p.odpowiedz %}`` odpowiedzi w postaci grupy opcji typu radio.
 
 Każda grupa odpowiedzi nazywana jest dla odróżnienia numerem pytania liczonym od 0.
 Odpowiednią zmienną ustawiamy w instrukcji ``{% set pnr = loop.index0 %}``,
@@ -189,10 +196,10 @@ Po ponownym uruchomieniu serwera powinniśmy otrzymać następującą stronę in
 .. figure:: img/quiz4.png
 
 Oceniamy odpowiedzi
-*********************
+===================
 
-Mechanizm sprawdzana liczby poprawnych odpowiedzi umieścimy
-w funkcji ``index()``. Uzupełniamy więc plik :file:`quiz.py`:
+Mechanizm sprawdzana liczby poprawnych odpowiedzi umieścimy w funkcji ``index()``.
+Na początku pliku :file:`quiz.py` dodajemy potrzebne importy:
 
 .. raw:: html
 
@@ -201,24 +208,34 @@ w funkcji ``index()``. Uzupełniamy więc plik :file:`quiz.py`:
 .. highlight:: python
 .. literalinclude:: quiz5.py
     :linenos:
-    :lineno-start: 32
-    :lines: 32-49
+    :lineno-start: 6
+    :lines: 6
 
-Przede wszystkim importujemy potrzebne funkcje. Następnie
-uzupełniamy dekorator ``app.route()``, aby obsługiwał zarówno żądania :term:`GET`
-(odesłanie żądanej strony), jak i :term:`POST` (ocena przesłanych odpowiedzi
-i odesłanie wyniku).
+– i uzupełniamy kod funkcji ``index()``:
 
-Instrukcja warunkowa ``if request.method == 'POST':`` wykrywa żądania POST
-i wykonuje blok kodu zliczający poprawne odpowiedzi.
-Dane pobieramy z przesłanego formularza i zapisujemy w zmiennej:
-``odpowiedzi = request.form``. Następnie w pętli
-``for pnr, odp_u in odpowiedzi.items()`` odczytujemy
-kolejne pary danych, czyli numer pytania i udzieloną odpowiedź.
+.. raw:: html
 
-Instrukcja ``if odp_u == PYTANIA[int(pnr)]['odpok']:`` sprawdza,
-czy nadesłana odpowiedź jest zgodna z poprawną, którą wydobywamy z
-listy pytań za pomocą zmiennej ``pnr`` i klucza ``odpok``.
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: quiz5.py
+    :linenos:
+    :lineno-start: 30
+    :lines: 30-45
+
+
+* ``methods=['GET', 'POST']`` – lista zawiera obsługiwane typy żądań,
+  chcemy obsługiwać zarówno żądania :term:`GET` (odesłanie żądanej strony),
+  jak i :term:`POST` (ocena przesłanych odpowiedzi i odesłanie wyniku);
+* ``if request.method == 'POST':`` – instrukcja warunkowa, która wykrywa
+  żądania POST i wykonuje blok kodu zliczający poprawne odpowiedzi;
+* ``odpowiedzi = request.form`` – przesyłane dane z formularza pobieramy z obiektu
+  ``request`` i zapisujemy w zmiennej odpowiedzi;
+* ``for pnr, odp in odpowiedzi.items()`` – w pętli odczytujemy
+  kolejne pary danych, czyli numer pytania i udzieloną odpowiedź;
+* ``if odp == DANE[int(pnr)]['odpok']:`` – sprawdzamy, czy nadesłana odpowiedź
+  jest zgodna z poprawną, którą wydobywamy z listy pytań.
+
 Zwróćmy uwagę, że wartości zmiennej ``pnr``, czyli numery pytań liczone od zera,
 ustaliliśmy wcześniej w szablonie.
 
@@ -233,7 +250,7 @@ wstawiamy instrukcje wyświetlające wynik:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>index.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>index.html</i>. <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: html
 .. literalinclude:: templates/index5.html
@@ -247,19 +264,9 @@ otrzymujemy ocenę.
 .. figure:: img/quiz5.png
 
 Materiały
-*******************************
+=========
 
 **Źródła:**
 
 * :download:`quiz.zip <quiz.zip>`
-* :download:`quiz_flask.pdf <../../pdf/quiz_flask.pdf>`
-
-Kolejne wersje tworzenego kodu znajdziesz w katalogu ``~/python101/docs/webapps/quiz``.
-Uruchamiamy je wydając polecenia:
-
-.. code-block:: bash
-
-    ~/python101$ cd docs/webapps/quiz
-    ~/python101/docs/webapps/bazy$ python quizx.py
-
-\- gdzie *x* jest numerem kolejnej wersji kodu.
+* :download:`Instrukcja w pdf dla Pythona 2 <../../pdf/quiz_flask.pdf>`

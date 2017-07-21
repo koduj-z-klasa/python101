@@ -12,28 +12,26 @@ app.config.update(dict(
 ))
 
 # lista pytań
-PYTANIA = [
+DANE = [{
+    'pytanie': 'Stolica Hiszpani, to:',  # pytanie
+    'odpowiedzi': ['Madryt', 'Warszawa', 'Barcelona'],  # możliwe odpowiedzi
+    'odpok': 'Madryt'},  # poprawna odpowiedź
     {
-        'pytanie': u'Stolica Hiszpani, to:',# pytanie
-        'odpowiedzi': [u'Madryt', u'Warszawa', u'Barcelona'], # możliwe odpowiedzi
-        'odpok': u'Madryt', # poprawna odpowiedź
-    },
+    'pytanie': 'Objętość sześcianu o boku 6 cm, wynosi:',
+    'odpowiedzi': ['36', '216', '18'],
+    'odpok': '216'},
     {
-        'pytanie': u'Objętość sześcianu o boku 6 cm, wynosi:',
-        'odpowiedzi': [u'36', u'216', u'18'],
-        'odpok': u'216',
-    },
-    {
-        'pytanie': u'Symbol pierwiastka Helu, to:',
-        'odpowiedzi': [u'Fe', u'H', u'He'],
-        'odpok': u'He',
-    }
+    'pytanie': 'Symbol pierwiastka Helu, to:',
+    'odpowiedzi': ['Fe', 'H', 'He'],
+    'odpok': 'He'},
 ]
+
 
 @app.route('/')
 def index():
-    #return 'Cześć, tu Python!'
-    return render_template('index.html', pytania=PYTANIA)
+    # return 'Cześć, tu Python!'
+    return render_template('index.html', pytania=DANE)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

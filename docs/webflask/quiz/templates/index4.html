@@ -1,36 +1,36 @@
 <!-- quiz/tempaltes/index.html -->
 <html>
-    <head>
-        <title>Quiz Python</title>
-    </head>
-    <body>
-        <h1>Quiz Python</h1>
+  <head>
+    <title>Quiz Python</title>
+  </head>
+  <body>
+    <h1>Quiz Python</h1>
 
-        <!-- formularz z quizem -->
-        <form method="POST">
-            <!-- przeglądamy listę pytań -->
-            {% for p in pytania %}
-                <p>
-                    <!-- wyświetlamy treść pytania -->
-                    {{ p.pytanie }}
-                    <br>
-                    <!-- zapamiętujemy numer pytania licząc od zera -->
-                    {% set pnr = loop.index0 %}
-                    <!-- przeglądamy odpowiedzi dla danego pytania -->
-                    {% for o in p.odpowiedzi %}
-                        <label>
-                            <!-- odpowiedzi wyświetlamy jako pole typu radio -->
-                            <input type="radio" value="{{ o }}" name="{{ pnr }}">
-                            {{ o }}
-                        </label>
-                        <br>
-                    {% endfor %}
-                </p>
+    <!-- formularz z quizem -->
+    <form method="POST">
+        <!-- przeglądamy listę pytań -->
+        {% for p in pytania %}
+          <p>
+            <!-- wyświetlamy treść pytania -->
+            {{ p.pytanie }}
+            <br>
+            <!-- zapamiętujemy numer pytania licząc od zera -->
+            {% set pnr = loop.index0 %}
+            <!-- przeglądamy odpowiedzi dla danego pytania -->
+            {% for o in p.odpowiedzi %}
+              <label>
+                <!-- odpowiedzi wyświetlamy jako pole typu radio -->
+                <input type="radio" value="{{ o }}" name="{{ pnr }}">
+                {{ o }}
+              </label>
+              <br>
             {% endfor %}
+          </p>
+        {% endfor %}
 
-            <!-- przycisk wysyłający wypełniony formularz -->
-            <button type="submit">Sprawdź odpowiedzi</button>
-        </form>
+        <!-- przycisk wysyłający wypełniony formularz -->
+        <button type="submit">Sprawdź odpowiedzi</button>
+    </form>
 
-    </body>
+  </body>
 </html>
