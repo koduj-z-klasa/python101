@@ -8,17 +8,17 @@ em { font-size: 11px; margin-left: 10px; }
 form { display: inline-block; margin-bottom: 0;}
 input[name="zadanie"] { width: 300px; }
 input[name="zadanie"]:focus {
-    border-color: blue;
-    border-radius: 5px;
+  border-color: blue;
+  border-radius: 5px;
 }
 li { margin-bottom: 5px; }
 button {
-    padding: 0;
-    cursor: pointer;
-    font-size: 11px;
-    background: white;
-    border: none;
-    color: blue;
+  padding: 3px 5px;
+  cursor: pointer;
+  color: blue;
+  font-size: 12px/1.5em;
+  background: white;
+  border: 1px solid grey;
 }
 .error { color: red; }
 .success { color: green; }

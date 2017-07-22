@@ -3,9 +3,10 @@
 
 from flask import Flask, g
 from flask import render_template
-
 import os
 import sqlite3
+from datetime import datetime
+from flask import flash, redirect, url_for, request
 
 app = Flask(__name__)
 
@@ -19,7 +20,7 @@ app.config.update(dict(
 
 def get_db():
     """Funkcja tworząca połączenie z bazą danych"""
-    if not hasattr(g, 'db'):  # jeżeli brak połączenia, to je tworzymy
+    if not g.get('db'):  # jeżeli brak połączenia, to je tworzymy
         con = sqlite3.connect(app.config['DATABASE'])
         con.row_factory = sqlite3.Row
         g.db = con  # zapisujemy połączenie w kontekście aplikacji
@@ -29,17 +30,38 @@ def get_db():
 @app.teardown_request
 def close_db(error):
     """Zamykanie połączenia z bazą"""
-    if hasattr(g, 'db'):
+    if g.get('db'):
         g.db.close()
 
 
 @app.route('/')
 def index():
     # return 'Cześć, tu Python!'
+    return render_template('index.html')
+
+
+@app.route('/zadania', methods=['GET', 'POST'])
+def zadania():
+    error = None
+    if request.method == 'POST':
+        zadanie = request.form['zadanie'].strip()
+        if len(zadanie) > 0:
+            zrobione = '0'
+            data_pub = datetime.now()
+            db = get_db()
+            db.execute('INSERT INTO zadania VALUES (?, ?, ?, ?);',
+                       [None, zadanie, zrobione, data_pub])
+            db.commit()
+            flash('Dodano nowe zadanie.')
+            return redirect(url_for('zadania'))
+
+        error = 'Nie możesz dodać pustego zadania!'  # komunikat o błędzie
+
     db = get_db()
-    kursor = db.execute('select * from zadania order by data_pub desc;')
+    kursor = db.execute('SELECT * FROM zadania ORDER BY data_pub DESC;')
     zadania = kursor.fetchall()
-    return render_template('zadania_lista.html', zadania=zadania)
+    return render_template('zadania_lista.html', zadania=zadania, error=error)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

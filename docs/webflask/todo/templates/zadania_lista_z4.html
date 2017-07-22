@@ -1,36 +1,35 @@
 <!-- todo/templates/zadania_lista.html -->
 <html>
-    <head>
-    <!-- nazwa aplikacji pobrana z ustawień -->
-        <title>{{ config.SITE_NAME }}</title>
-    </head>
-    <body>
-        <h1>{{ config.SITE_NAME }}:</h1>
+  <head>
+  <!-- nazwa aplikacji pobrana z ustawień -->
+    <title>{{ config.SITE_NAME }}</title>
+  </head>
+  <body>
+    <h1>{{ config.SITE_NAME }}:</h1>
 
-        <!-- formularz dodawania zadania -->
-        <form class="add-form" method="POST" action="{{ url_for('index') }}">
-            <input name="zadanie" value=""/>
-            <button type="submit">Dodaj zadanie</button>
-        </form>
+    <!-- formularz dodawania zadania -->
+    <form class="add-form" method="POST" action="{{ url_for('zadania') }}">
+      <input name="zadanie" value=""/>
+      <button type="submit">Dodaj zadanie</button>
+    </form>
 
-        <!-- informacje o sukcesie lub błędzie -->
-        <p>
-            {% if error %}
-                <strong class="error">Błąd: {{ error }}</strong>
-            {% endif %}
+    <!-- informacje o sukcesie lub błędzie -->
+    <p>
+      {% if error %}
+        <strong class="error">Błąd: {{ error }}</strong>
+      {% endif %}
 
-            {% for message in get_flashed_messages() %}
-                <strong class="success">{{ message }}</strong>
-            {% endfor %}
-        </p>
+      {% for message in get_flashed_messages() %}
+        <strong class="success">{{ message }}</strong>
+      {% endfor %}
+    </p>
 
-        <ol>
-            <!-- wypisujemy kolejno wszystkie zadania -->
-            {% for zadanie in zadania %}
-                <li>
-                    {{ zadanie.zadanie }} – <em>{{ zadanie.data_pub }}</em>
-                </li>
-            {% endfor %}
-        </ol>
-    </body>
+    <ol>
+      <!-- wypisujemy kolejno wszystkie zadania -->
+      {% for zadanie in zadania %}
+        <li>{{ zadanie.zadanie }} – <em>{{ zadanie.data_pub }}</em></li>
+      {% endfor %}
+    </ol>
+
+  </body>
 </html>

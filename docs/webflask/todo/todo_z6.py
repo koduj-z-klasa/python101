@@ -3,14 +3,12 @@
 
 from flask import Flask, g
 from flask import render_template
+import os
+import sqlite3
 from datetime import datetime
 from flask import flash, redirect, url_for, request
 
-import os
-import sqlite3
-
 app = Flask(__name__)
-
 
 app.config.update(dict(
     SECRET_KEY='bardzosekretnawartosc',
@@ -21,7 +19,7 @@ app.config.update(dict(
 
 def get_db():
     """Funkcja tworząca połączenie z bazą danych"""
-    if not hasattr(g, 'db'):  # jeżeli brak połączenia, to je tworzymy
+    if not g.get('db'):  # jeżeli brak połączenia, to je tworzymy
         con = sqlite3.connect(app.config['DATABASE'])
         con.row_factory = sqlite3.Row
         g.db = con  # zapisujemy połączenie w kontekście aplikacji
@@ -31,19 +29,22 @@ def get_db():
 @app.teardown_request
 def close_db(error):
     """Zamykanie połączenia z bazą"""
-    if hasattr(g, 'db'):
+    if g.get('db'):
         g.db.close()
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
-    """Główny widok strony. Obsługuje wyświetlanie i dodawanie zadań."""
+    # return 'Cześć, tu Python!'
+    return render_template('index.html')
 
+
+@app.route('/zadania', methods=['GET', 'POST'])
+def zadania():
     error = None
-
     if request.method == 'POST':
-        if len(request.form['zadanie']) > 0:
-            zadanie = request.form['zadanie']
+        zadanie = request.form['zadanie'].strip()
+        if len(zadanie) > 0:
             zrobione = '0'
             data_pub = datetime.now()
             db = get_db()
@@ -51,9 +52,9 @@ def index():
                        [None, zadanie, zrobione, data_pub])
             db.commit()
             flash('Dodano nowe zadanie.')
-            return redirect(url_for('index'))
+            return redirect(url_for('zadania'))
 
-        error = u'Nie możesz dodać pustego zadania!'  # komunikat o błędzie
+        error = 'Nie możesz dodać pustego zadania!'  # komunikat o błędzie
 
     db = get_db()
     kursor = db.execute('SELECT * FROM zadania ORDER BY data_pub DESC;')
@@ -66,9 +67,11 @@ def zrobione():
     """Zmiana statusu zadania na wykonane."""
     zadanie_id = request.form['id']
     db = get_db()
-    db.execute('update zadania set zrobione=1 where id=?', [zadanie_id, ])
+    db.execute('UPDATE zadania SET zrobione=1 WHERE id=?', [zadanie_id])
     db.commit()
-    return redirect(url_for('index'))
+    flash('Zmieniono status zadania.')
+    return redirect(url_for('zadania'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,18 @@
+<!-- todo/templates/zadania_lista.html -->
+<html>
+  <head>
+  <!-- nazwa aplikacji pobrana z ustawień -->
+    <title>{{ config.SITE_NAME }}</title>
+  </head>
+  <body>
+    <h1>{{ config.SITE_NAME }}:</h1>
+
+    <ol>
+      <!-- wypisujemy kolejno wszystkie zadania -->
+      {% for zadanie in zadania %}
+        <li>{{ zadanie.zadanie }} – <em>{{ zadanie.data_pub }}</em></li>
+      {% endfor %}
+    </ol>
+
+  </body>
+</html>

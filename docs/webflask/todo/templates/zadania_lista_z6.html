@@ -1,38 +1,55 @@
 <!-- todo/templates/zadania_lista.html -->
 <html>
-    <head>
-    <!-- nazwa aplikacji pobrana z ustawień -->
-        <title>{{ config.SITE_NAME }}</title>
-    <!-- ładujemy arkusz CSS -->
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-    </head>
-    <body>
-        <h1>{{ config.SITE_NAME }}:</h1>
+  <head>
+  <!-- nazwa aplikacji pobrana z ustawień -->
+    <title>{{ config.SITE_NAME }}</title>
+  <!-- dołączamy arkusz CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <h1>{{ config.SITE_NAME }}:</h1>
 
-        <!-- formularz dodawania zadania -->
-        <form class="add-form" method="POST" action="{{ url_for('index') }}">
-            <input name="zadanie" value=""/>
-            <button type="submit">Dodaj zadanie</button>
-        </form>
+    <!-- formularz dodawania zadania -->
+    <form class="add-form" method="POST" action="{{ url_for('zadania') }}">
+      <input name="zadanie" value=""/>
+      <button type="submit">Dodaj zadanie</button>
+    </form>
 
-        <!-- informacje o sukcesie lub błędzie -->
-        <p>
-            {% if error %}
-                <strong class="error">Błąd: {{ error }}</strong>
-            {% endif %}
+    <!-- informacje o sukcesie lub błędzie -->
+    <p>
+      {% if error %}
+        <strong class="error">Błąd: {{ error }}</strong>
+      {% endif %}
 
-            {% for message in get_flashed_messages() %}
-                <strong class="success">{{ message }}</strong>
-            {% endfor %}
-        </p>
+      {% for message in get_flashed_messages() %}
+        <strong class="success">{{ message }}</strong>
+      {% endfor %}
+    </p>
 
-        <ol>
-            <!-- wypisujemy kolejno wszystkie zadania -->
-            {% for zadanie in zadania %}
-                <li>
-                    {{ zadanie.zadanie }} – <em>{{ zadanie.data_pub }}</em>
-                </li>
-            {% endfor %}
-        </ol>
-    </body>
+    <ol>
+      <!-- wypisujemy kolejno wszystkie zdania -->
+      {% for zadanie in zadania %}
+        <li>
+          <!-- wyróżnienie zadań zakończonych -->
+          {% if zadanie.zrobione %}
+            <span class="done">{{ zadanie.zadanie }} – <em>{{ zadanie.data_pub }}</em></span>
+          {% else %}
+            {{ zadanie.zadanie }} – <em>{{ zadanie.data_pub }}</em>
+          {% endif %}
+
+          <!-- formularz zmiany statusu zadania -->
+          {% if not zadanie.zrobione %}
+            <form method="POST" action="{{ url_for('zrobione') }}">
+              <!-- wysyłamy jedynie informacje o id zadania -->
+              <input type="hidden" name="id" value="{{ zadanie.id }}"/>
+              <button type="submit">Wykonane</button>
+            </form>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+
+    <p><a href="{{ url_for('index') }}">Strona główna</a></p>
+
+  </body>
 </html>
