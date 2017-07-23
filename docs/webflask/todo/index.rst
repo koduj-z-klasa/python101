@@ -105,8 +105,8 @@ Funkcja ``get_db()``:
 
 Funkcja ``close_db()``:
 
-* ``@app.teardown_request`` – dekorator, który powoduje, że funkcja
-  będzie wykonywana po każdym żądaniu;
+* ``@app.teardown_appcontext`` – dekorator, który rejestruje funkcję
+  zamykającą połączenie z bazą do wykonania po zakończeniu obsługi żądania;
 * ``g.db.close()`` – zamknięcie połączenia z bazą.
 
 

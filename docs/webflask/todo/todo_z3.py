@@ -24,7 +24,7 @@ def get_db():
     return g.db  # zwracamy połączenie z bazą
 
 
-@app.teardown_request
+@app.teardown_appcontext
 def close_db(error):
     """Zamykanie połączenia z bazą"""
     if g.get('db'):
