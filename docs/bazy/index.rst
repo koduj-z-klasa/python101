@@ -1,3 +1,5 @@
+.. _bazy-python:
+
 Bazy danych w Pythonie
 #######################
 

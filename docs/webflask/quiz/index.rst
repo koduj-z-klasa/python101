@@ -1,7 +1,7 @@
 .. _quiz-app:
 
 Quiz
-#######################
+#####
 
 Realizacja aplikacji internetowej Quiz w oparciu o :term:`framework` Flask 0.12.x.
 Na stronie wyświetlamy pytania, użytkownik zaznacza poprawne odpowiedzi,

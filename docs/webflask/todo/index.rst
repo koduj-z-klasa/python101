@@ -1,7 +1,7 @@
-ToDo
-##########################
-
 .. _todo:
+
+ToDo
+#####
 
 .. highlight:: python
 

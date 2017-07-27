@@ -1,5 +1,7 @@
+.. _podstawy-python:
+
 Podstawy Pythona
-#########################
+#################
 
 `Python <http://www.python.org>`_ jest dynamicznie typowanym językiem interpretowanym
 (zob. :term:`język interpretowany`) `wysokiego poziomu <http://pl.wikipedia.org/wiki/J%C4%99zyk_wysokiego_poziomu>`_.
