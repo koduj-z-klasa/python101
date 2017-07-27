@@ -1,26 +1,27 @@
 # -*- coding: utf-8 -*-
-# quiz_pw/app.py
+# quiz-orm/app.py
 
 from flask import Flask, g
-from peewee import *
+from peewee import SqliteDatabase
+import os
 
 app = Flask(__name__)
 
-# konfiguracja aplikacji, m.in. klucz do obsługi sesji HTTP wymaganej
-# przez funkcję flash
+# konfiguracja aplikacji
 app.config.update(dict(
     SECRET_KEY='bardzosekretnawartosc',
-    TYTUL='Quiz 2 Peewee'
+    DATABASE=os.path.join(app.root_path, 'quiz.db'),
+    TYTUL='Quiz ORM Peewee'
 ))
 
 # tworzymy instancję bazy używanej przez modele
-baza = SqliteDatabase('quiz.db')
+baza = SqliteDatabase(app.config['DATABASE'])
 
 
 @app.before_request
 def before_request():
     g.db = baza
-    g.db.connect()
+    g.db.get_conn()
 
 
 @app.after_request

@@ -3,7 +3,7 @@
 Quiz ORM
 #####################
 
-Realizacja aplikacji internetowej Quiz w oparciu o :term:`framework` `Flask`_
+Realizacja aplikacji internetowej Quiz w oparciu o :term:`framework` `Flask`_ 0.12.x
 i bazę danych `SQLite`_ zarządzaną systemem ORM `Peewee`_ lub `SQLAlchemy`_.
 
 .. _Flask: http://flask.pocoo.org
@@ -16,15 +16,13 @@ i bazę danych `SQLite`_ zarządzaną systemem ORM `Peewee`_ lub `SQLAlchemy`_.
     :local:
 
 Wymagania
-*******************
+=========
 
-Dobre zrozumienie omawianych tu zagadnień wymaga przyswojenia podstaw Pythona
-omówionych w scenariuszu "Python w przykładach" (tematy 2-6), obsługi bazy
-danych przedstawionej w scenariuszu "Bazy danych w Pythonie" oraz scenariusza
-wprowadzającego do użycia frameworka Flask w aplikacjach internetowych
-pt. "Quiz". Zalecamy również zapoznanie się ze scenariuszem "ToDo", który
-ilustruje użycie bazy danych obsługiwanej za pomocą wbudowanego modułu ``sqlite3``
-z aplikacją internetową.
+Zalecamy zapoznanie się z materiałami zawartymi w scenariuszach:
+* :ref:`Podstawy Pythona <podstawy-python>`,
+* :ref:`Bazy danych w Pythonie <bazy-python>`,
+* :ref:`Quiz <quiz-app>`,
+* :ref:`ToDo <todo-app>`.
 
 Wykorzystywane biblioteki instalujemy przy użyciu instalatora ``pip``:
 
@@ -34,155 +32,154 @@ Wykorzystywane biblioteki instalujemy przy użyciu instalatora ``pip``:
     ~$ sudo pip install peewee sqlalchemy flask-sqlalchemy
 
 Modularyzacja
-*******************
+=============
 
 Scenariusze "Quiz" i "ToDo" pokazują możliwość umieszczenia całego kodu
-aplikacji obsługiwanej przez Flaska w jednym pliku. O ile dla celów
-szkoleniowych jest to dobre rozwiązanie, o tyle w praktycznych realizacjach
-wygodniej logicznie rozdzielić poszczególne części aplikacji i umieścić
-je w osobnych plikach, których nazwy określają ich przeznaczenie.
-Podejście takie usprawnia rozwijanie aplikacji, ale również ułatwia
-poznawanie bardziej rozbudowanych systemów, takich jak Django, przedstawione
-w scenariuszu "Czat".
+aplikacji obsługiwanej przez Flaska w jednym pliku. Dla celów
+szkoleniowych to dobre rozwiązanie, ale w praktycznych realizacjach
+wygodniej umieścić poszczególne części aplikacji w osobnych plikach,
+których nazwy określają ich przeznaczenie.
+Podejście takie usprawnia rozwijanie aplikacji.
 
-Tak więc kod rozmieścimy następująco:
+Kod rozmieścimy następująco:
 
-    - ``app.py`` – konfiguracja aplikacji Flaska i obiektu służącego do łączenia się z bazą;
-    - ``models.py`` – klasy opisujące tabele, pola i relacje w bazie;
-    - ``views.py`` – widoki obsługujące udostępnione użytkownikowi akcje, typu "rozwiąż quiz", "dodaj pytanie", "edytuj pytania" itp.
-    - ``main.py`` – główny plik naszej aplikacji wiążący wszystkie powyższe, odpowiada za utworzenie tabel w bazie, wypełnienie ich danymi początkowymi i uruchomienie aplikacji, czyli serwera www;
-    - ``dane.py`` – moduł opcjonalny, którego zadaniem jest odczytanie wstępnych danych z pliku *csv* i dodanie ich do bazy.
+    - ``app.py`` – konfiguracja aplikacji Flaska i połączeń z bazą,
+    - ``models.py`` – klasy opisujące tabele, pola i relacje w bazie,
+    - ``views.py`` – widoki, czyli funkcje, powiązane z adresami URL, obsługujące żądania użytkownika,
+    - ``forms.py`` – definicje formularza wykorzystywanego w aplikacji,
+    - ``main.py`` – główny plik naszej aplikacji wiążący wszystkie powyższe, odpowiada za utworzenie początkowej bazy,
+    - ``dane.py`` – moduł opcjonalny, odczytanie przykładowych danych z pliku *csv* i dodanie ich do bazy.
 
-Wszystkie powyższe pliki muszą znajdować się w katalogu aplikacji ``quiz2``.
-W podkatalogach ``templates`` umieścimy wszystkie szablony, czyli pliki
-z rozszerzeniem *html*, arkusz stylów o nazwie ``style.css`` znajdzie się
-w podkatalogu ``static``. Potrzebną strukturę katalogów można utworzyć poleceniami:
+Wszystkie powyższe pliki muszą znajdować się w katalogu aplikacji ``quiz-orm``,
+który zawierać będzie podkatalogi:
+
+* ``templates`` – tu umieścimy wszystkie szablony html,
+* ``static`` – tu znaleźć się mogą arkusze stylów, obrazki i/lub skrypty *js*.
+
+Potrzebną strukturę katalogów można utworzyć poleceniami:
 
 .. highlight:: bash
 .. code-block:: bash
 
-    ~$ mkdir quiz2
-    ~$ cd quiz2
-    ~$ mkdir templates; mkdir static
-    ~$ touch app.py
+    ~$ mkdir quiz-orm; cd quiz-orm
+    ~$ mkdir templates static
 
-Komendę z ostatniej linii, która tworzy pusty plik o podanej nazwie,
-wydajemy w miarę rozbudowywania aplikacji. Można oczywiście korzystać
-z wybranego edytora.
 
 Aplikacja i baza
-*******************
+================
+
+Zaczynamy od utworzenia obiektu aplikacji (````app = Flask(__name__)````),
+uzupełnienia ustawień w słowniku ``config`` i utworzenia obiektu bazy danych:
 
 .. raw:: html
 
-    <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Peewee *app.py*. <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: python
 .. literalinclude:: quiz2_pw/app.py
     :linenos:
 
+* ``before_request()``, ``after_request()`` – funkcje wykorzystywane do otwierania
+  i zamykania połączenia z bazą SQLite przed żądaniem i po żądaniu (ang. *request*),
+* ``g`` – specjalny obiekt Flaska do przechowywania danych kontekstowych aplikacji.
+
 .. raw:: html
 
-    <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">SQLAlchemy *app.py*. <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. literalinclude:: quiz2_sa/app.py
     :linenos:
 
-Moduł ``app.py``, jak wskazuje sama nazwa, służy zainicjowaniu aplikacji
-Flaska (``app = Flask(__name__)``).
-Jej ustawienia przechowywane są w słowniku ``.config``. Oprócz klucza
-używanego do obsługi sesji (``SECRET_KEY``), a także nazwy wykorzystywanej
-w szablonach (``TYTUL``), w przypadku SQLAlchemy definiujemy tu nazwę pliku
-bazy danych (``SQLALCHEMY_DATABASE_URI='sqlite:///quiz.db'``)
-i wyłączamy śledzenie modyfikacji (``SQLALCHEMY_TRACK_MODIFICATIONS=False``).
-Następnie tworzymy instancję obiektu reprezentującego bazę.
-
-Peewee wykorzystuje specjalną zmienną ``g``, w której możemy przechowywać
-różne zasoby składające się na kontekst aplikacji, np. instancję bazy.
-Tworzymy ją przekazując konstruktorowi nazwę pliku (``SqliteDatabase('quiz.db')``).
-Następnie przy użyciu odpowiednich dekoratorów Flaska definiujemy funkcje
-otwierające i zamykające połączenie w ramach każdego cyklu żądanie-odpowiedź,
-co stanowi specyficzny wymóg bazy SQLite.
-
-SQLAlchemy będziemy obsługiwać za pomocą rozszerzenia ``flask_sqlalchemy``,
-które ułatwia używanie tego systemu ORM. Dzięki niemu tworzymy instancję
-bazy powiązaną z konkretną aplikacją Flaska dzięki prostemu wywołaniu
-odpowiedniego konstruktora (``baza = SQLAlchemy(app)``).
+* ``SQLALCHEMY_TRACK_MODIFICATIONS=False`` – wyłączenie niużywanego przez nas
+  śledzenia modyfikacji obiektów i emitowania sygnałów.
 
 Modele
-*******************
+======
+
+Modele to miejsce, w którym opisujemy strukturę naszej bazy danych,
+a więc definiujemy klasy – odpowiadające tabelom i ich właściwości -
+odpowiadające kolumnom. Wykorzystamy tabelę ``Pytanie``,
+zawierającą treść pytania i poprawną odpowiedź, oraz tabelę ``Odpowiedź``,
+która przechowywać będzie wszystkie możliwe odpowiedzi.
+Relację *jeden-do-wielu* między tabelami tworzyć będzie pole ``pnr``,
+czyli klucz obcy (``ForeignKey``), przechowujący identyfikator pytania.
 
 .. raw:: html
 
-    <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Peewee *models.py*. <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. literalinclude:: quiz2_pw/models.py
     :linenos:
 
+* ``BaseModel`` – klasa określająca obiekt bazy,
+* ``unique=True`` – właściwość wymagająca niepowtarzalnej zawartości pola,
+* ``ForeignKeyField()`` – definicja klucza obcego, tworzenie relacji,
+* ``on_delete = 'CASCADE'`` – usuwanie rekordów z powiązanych tabel.
+
+Identyfikatory pytań i odpowiedzi, czyli pola ``id`` w każdej tabeli
+tworzone są automatycznie.
+
 .. raw:: html
 
-    <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">SQLAlchemy *models.py*. <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. literalinclude:: quiz2_sa/models.py
     :linenos:
 
-Modele to miejsce, w którym opisujemy strukturę naszej bazy danych,
-a więc definiujemy klasy – odpowiadające tabelom i ich właściwości -
-odpowiadające kolumnom. Jak widać, wykorzystamy tabelę ``Pytanie``,
-zawierającą treść pytania i poprawną odpowiedź, oraz tabelę ``Odpowiedź``,
-która przechowywać będzie wszystkie możliwe odpowiedzi. Relację
-*jeden-do-wielu* między tabelami tworzyć będzie pole ``pnr``, czyli klucz obcy (``ForeignKey``),
-przechowujący identyfikator pytania. W obu systemach nieco inaczej definiujemy
-to powiązanie, w Peewee podajemy nazwę klasy (``Pytanie``), w SQLAlchemy
-nazwę konkretnego pola (``pytani.id``). W obu przypadkach inaczej też określamy
-relacje zwrotne w postaci pola ``odpowiedzi``, za pomocą którego w obiekcie
-``Pytanie`` będziemy mieli dostęp do przypisanych mu odpowiedzi.
+* ``primary_key=True`` – definicja klucza podstawowego, czyli identyfikatora
+  pytania i odpowiedzi,
+* ``ForeignKey()`` – określenie klucza obcego, czyli relacji,
+* ``relationship()`` – relacja zwrotna, właściwość ``Pytanie.odpowiedzi``,
+* ``backref=baza.backref('pytanie')`` – relacja zwrotna, właściwość ``Odpowiedz.pytanie``,
+* ``cascade="all, delete, delete-orphan"`` – usuwanie rekordów z powiązanych tabel.
 
-Na uwagę zasługują atrybuty dodatkowe, dzięki którym po usunięciu pytania,
-usunięte również zostaną wszystkie przypisane mu odpowiedzi. W Peewee
-podajemy: ``on_delete = 'CASCADE'``; w SQLAlchemy: ``cascade="all, delete, delete-orphan"``.
+Dzięki rozszerzeniu ``flask.ext.sqlalchemy`` jedyny import, którego potrzebujemy,
+to obiekt ``baza`` udostępniający wszystkie klasy i metody SQLAlchemy.
 
-Warto zauważyć również, że w SQLAlchemy dzięki rozszerzeniu ``flask.ext.sqlalchemy``
-jedyny import, którego potrzebujemy, to obiekt ``baza``, który udostępnia
-wszystkie klasy i metody SQLAlchemy. Druga rzecz to miejsce, w którym określamy
-relację zwrotną. Inaczej niż w Peewee robimy to w klasie ``Pytanie``.
+Metody ``__str__(self)`` służą "autoprezentacji" obiektów utworzonych na podstawie
+danego modelu, są wykorzystywane np. podczas używania funkcji ``print()``.
 
-Widoki
-*******************
+Strona główna
+=============
 
-Przypomnijmy, że widoki to funkcje obsługujące przypisane im adresy url.
-Najczęściej po wykonaniu określonych operacji zawierają również wywołanie
-szablonu html, który uzupełniony o ewentualne dane zostaje odesłany użytkownikowi.
-Zawartość tych funkcji jest w dużej mierze niezależna od obsługi bazy,
-dlatego poniżej prezentować będziemy kompletny kod dla Peewee,
-a potrzebne zmiany dla SQLAlchemy będziemy wskazywać w komentarzu lub
-przywoływać we fragmentach. Warto również zaznaczyć,
-że wykorzystywane szablony dla obu systemów są takie same.
+Strony widoczne w przeglądarce powstają dzięki widokom, czyli funkcjom obsługującym
+przypisane im adresy url. Po wykonaniu określonych operacji w odpowiedzi na żądania
+użytkownika zwracają szablony html uzupełnione o ewentualne dane.
 
-Strona główna i szablony
-============================
-
-Widok obsługujący stronę główną w obu przypadkach jest prawie taki sam,
-w *Peewee* linia ``from app import baza`` nie jest potrzebna:
+Początek pliku :file:`views.py` dla Peewee:
 
 .. raw:: html
 
-    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Peewee <i>views.py</i> <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
+
+.. literalinclude:: quiz2_pw/views.py
+    :linenos:
+    :lineno-start: 1
+    :lines: 1-12
+
+Początek pliku :file:`views.py` dla SQLAlchemy:
+
+.. raw:: html
+
+    <div class="code_no">SQLAlchemy <i>views.py</i> <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. literalinclude:: quiz2_sa/views.py
     :linenos:
     :lineno-start: 1
     :lines: 1-13
 
-Zadaniem funkcji ``index()`` jest tylko wywołanie renderowania szablonu
-``index.html``, który zostanie zwrócony użytkownikowi. W omówionych
-do tej pory scenariuszach aplikacji internetowych (*Quiz*, *ToDo*) opartych
-na Flasku każdy szablon zawierał kompletny kod strony. W praktyce jednak
-spora część kodu HTML powtarza się na każdej stronie w ramach danego serwisu.
-W związku z tym nasze szablony będą oparte o wzorzec zawierający stałe
-elementy i bloki oznaczające fragmenty, które będzie można dostosować
-do danego widoku. Wzorzec umieszczamy w katalogu ``templates`` pod nazwą
-``szkielet.html``.
+* ``return render_template('index.html')`` – zwrócenie wyrenderowanego szablonu ``index.html``
+  w odpowiedzi na wpisanie adresu domyślnego serwera, w środowisku
+  deweloperskim będzie to *http://127.0.0.1:5000/*.
+
+
+Szablon podstawowy
+==================
+
+W omówionych do tej pory scenariuszach aplikacji internetowych (*Quiz*, *ToDo*)
+każdy szablon zawierał kompletny kod strony. W praktyce jednak duża część kodu HTML
+powtarza się na każdej stronie w ramach danego serwisu. Tę wspólną część kodu
+umieścimy w szablonie podstawowym :file:`templates/szkielet.html`:
 
 .. raw:: html
 
@@ -192,48 +189,55 @@ do danego widoku. Wzorzec umieszczamy w katalogu ``templates`` pod nazwą
 .. literalinclude:: quiz2_pw/templates/szkielet.html
     :linenos:
 
-Przypomnijmy i uzupełnijmy składnię. Instrukcje sterujące otoczone znacznikami
-``{% %}`` wymagają otwarcia i zamknięcia, np.: ``{% for %} {% endfor %}``.
-Nowy znacznik ``{% block nazwa_bloku %}`` pozwala definiować nazwane miejsca,
-w których szablony dziedziczące mogą wstawiać swój kod. Jeżeli chcemy
-umieścić w kodzie konkretne wartości używamy znaczników ``{{ zmienna }}``.
+Szablon oparty jest na frameworku `Bootstrap <http://getbootstrap.com/>`_.
+Odpowiednie linki do stylów CSS, pobieranych z systemu
+`CDN <https://pl.wikipedia.org/wiki/Content_Delivery_Network>`_ zostały
+skopiowane ze strony `Getting started <http://getbootstrap.com/getting-started/>`_
+i wklejone w linii 10 i 12.
 
-We wzorcu szablonów zawarliśmy więc elementy stałe, takie jak dołączane style css
-w nagłówku strony, menu nawigacyjne wyświetlane na każdej stronie
-(``<div id="menu" class="cb">...</div>``) oraz wyświetlanie komunikatów
-(``<div id="komunikaty" class="cb">``). W każdym szablonie zwracanym przez
-zdefiniowane widoki możemy natomiast zmienić tytuł strony
-(``{% block tytul %}{% endblock %}``), nagłówek strony
-(``{% block h1 %}{% endblock %}``) i przede wszystkim treść
-(``{% block tresc %}{% endblock %}``). Tak właśnie robimy w szablonie
-``index.html``:
+* ``{{ url_for('static', filename='style.css') }}`` – funkcja ``url_for()``
+  pozwala wygenerować scieżkę do zasobów umieszczonych w podkatalogu :file:`static`;
+* ``{% tag %}...{% endtag %}`` – tagi sterujące, wymagają zamknięcia(!);
+* ``{% block nazwa_bloku %}`` – tag pozwala definiować miejsca, w których
+  szablony dziedziczące mogą wstawiać swój kod;
+* ``{{ zmienna }}`` – tagi pozwlające wstawiać wartości zmiennych dostępnych
+  domyślnie i przekazanych do szablonu;
+* ``container``, ``row``, ``navbar`` itd. – klasy Bootstrapa tworzące podstawowy
+  układ (ang. *layout*) strony;
+* ``navigation_bar`` – lista na podstawie której generowane są pozycje menu;
+* ``active_page`` – zmienna zawierająca identyfikator aktywnej strony;
+* ``get_flashed_messages(with_categories=true)`` – funkcja zwracająca komunikaty
+  dla użytkownika oznaczone kategoriami, wykorzystywanymi jako klasy
+  CSS.
 
+Zawartość dołączanego pliku :file:`static/style.css`:
 
 .. raw:: html
 
-    <div class="code_no">Szablon <i>index.html</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Arkusz stylów <i>style.css</i>. <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
+
+.. highlight:: html
+.. literalinclude:: quiz2_pw/static/style.css
+    :linenos:
+
+
+**Szablon strony głównej** zawiera się w pliku :file:`index.html`:
+
+.. raw:: html
+
+    <div class="code_no">Szablon <i>index.html</i>. <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
 .. highlight:: html
 .. literalinclude:: quiz2_pw/templates/index.html
     :linenos:
 
-Każdy szablon dziedziczący z wzorca musi zawierać znacznik ``{% extends "szkielet.html" %}``,
-a jeżeli coś zmienia, umieszcza odpowiednią treść w znaczniku typu
-``{% block tresc %} treść {% endblock %}``.
+* ``{% extends "szkielet.html" %}`` – wskazanie dzidziczenia z szablonu podstawowego;
+* ``{% block tresc %} treść {% endblock %}`` – zastąpienie lub uzupełnienie treści
+  bloków zdefiniowanych w szablonie podstawowym.
 
-Dla porządku spójrzmy jeszcze na zawartość pliku ``style.css`` zapisanego
-w katalogu ``static`` i określającego wygląd naszej aplikacji.
-
-.. raw:: html
-
-    <div class="code_no">Arkusz stylów <i>style.css</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. highlight:: css
-.. literalinclude:: quiz2_pw/static/style.css
-    :linenos:
 
 Powiązanie modułów
-***********************
+==================
 
 Po zdefiniowaniu aplikacji, bazy, modelu, widoków i wykorzystywanych
 przez nie szablonów, trzeba wszystkie moduły połączyć w całość.
@@ -271,11 +275,6 @@ Po wpisaniu w przeglądarce adresu 127.0.0.1:5000 powinniśmy zobaczyć:
 
 .. figure:: quiz2_2.png
 
-Widoki CRUD
-*********************
-
-Skrót :term:`CRUD` (*Create* (tworzenie), *Read* (odczyt), *Update* (aktualizacja), *Delete* (usuwanie))
-oznacza, jak wyjaśniono, podstawowe operacje wykonywane na bazie danych.
 
 Dane początkowe
 ====================
@@ -341,7 +340,10 @@ wykorzystujemy identyfikatory zapisanych wcześniej pytań
 (``odp = Odpowiedz(pnr = pyt.id, odpowiedz = o.strip())``).
 
 Odczyt
-====================
+=======
+
+Skrót :term:`CRUD` (*Create* (tworzenie), *Read* (odczyt), *Update* (aktualizacja), *Delete* (usuwanie))
+oznacza, jak wyjaśniono, podstawowe operacje wykonywane na bazie danych.
 
 Zaczniemy od widoku wyświetlającego pobrane z bazy dane w formie quizu
 i sprawdzającego udzielone przez użytkownika odpowiedzi.

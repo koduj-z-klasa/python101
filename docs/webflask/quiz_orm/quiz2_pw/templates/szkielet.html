@@ -1,28 +1,74 @@
 <!doctype html>
-<!-- quiz2pw/templates/szkielet.html -->
+<!-- quiz-orm/templates/szkielet.html -->
 <html>
-    <head>
-        <title>{% block tytul %}{% endblock %} &#8211; {{ config.TYTUL }}</title>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-    </head>
-    <body>
-        <h1>{% block h1 %}{% endblock %}</h1>
-        <div id="menu" class="cb">
-        <ul>
-            <li><a href="{{ url_for('index') }}">Strona główna</a></li>
-            <li><a href="{{ url_for('quiz') }}">Rozwiąż quiz</a></li>
-            <li><a href="{{ url_for('dodaj') }}">Dodaj pytanie</a></li>            
-            <li><a href="{{ url_for('edytuj') }}">Edytuj pytania</a></li>
-        </ul>
-        </div>
-        <div id="komunikaty" class="cb">
-            {% for kategoria, komunikat in get_flashed_messages(with_categories=true) %}
-                <span class="{{ kategoria }}">{{ komunikat }}</span>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block tytul %}{% endblock %} &#8211; {{ config.TYTUL }}</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <div class="container">
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Przełącz nawigację</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ url_for('index') }}">Quiz ORM</a>
+          </div>
+
+{% set navigation_bar = [
+    ('/', 'index', 'Strona główna'),
+    ('/quiz', 'quiz', 'Quiz'),
+    ('/dodaj', 'dodaj', 'Dodaj pytania'),
+    ('/lista', 'lista', 'Lista pytań'),
+] %}
+{% set active_page = active_page|default('index') %}
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+{% for href, id, tekst in navigation_bar %}
+  <li{% if id == active_page %} class="active"{% endif %}>
+    <a href="{{ href|e }}">{{ tekst|e }}</a>
+  </li>
+{% endfor %}
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+      <div class="row">
+        <div class="col-md-12">
+          <h1>{% block h1 %}{% endblock %}</h1>
+
+          {% with komunikaty = get_flashed_messages(with_categories=true) %}
+          {% if komunikaty %}
+          <div id="komunikaty" class="well">
+            {% for kategoria, komunikat in komunikaty %}
+              <span class="{{ kategoria }}">{{ komunikat }}</span><br>
             {% endfor %}
+          </div>
+          {% endif %}
+          {% endwith %}
+
+          <div id="tresc" class="cb">
+          {% block tresc %}
+          {% endblock %}
+          </div>
+
         </div>
-        <div id="tresc" class="cb">
-        {% block tresc %}
-        {% endblock %}
-        </div>
-    </body>
+      </div> <!-- /row -->
+    </div> <!-- /container -->
+
+  </body>
 </html>

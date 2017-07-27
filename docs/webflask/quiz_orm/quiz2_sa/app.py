@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-# quiz_sa/app.py
+# quiz-orm/app.py
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+import os
 
 app = Flask(__name__)
 
@@ -10,9 +11,11 @@ app = Flask(__name__)
 # przez funkcję flash
 app.config.update(dict(
     SECRET_KEY='bardzosekretnawartosc',
-    SQLALCHEMY_DATABASE_URI='sqlite:///quiz.db',
+    DATABASE=os.path.join(app.root_path, 'quiz.db'),
+    SQLALCHEMY_DATABASE_URI='sqlite:///' +
+                            os.path.join(app.root_path, 'quiz.db'),
     SQLALCHEMY_TRACK_MODIFICATIONS=False,
-    TYTUL='Quiz 2 SQLAlchemy'
+    TYTUL='Quiz ORM SQLAlchemy'
 ))
 
 # tworzymy instancję bazy używanej przez modele
