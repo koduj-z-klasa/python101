@@ -10,8 +10,8 @@ app = Flask(__name__)
 # konfiguracja aplikacji
 app.config.update(dict(
     SECRET_KEY='bardzosekretnawartosc',
+    TYTUL='Quiz ORM Peewee',
     DATABASE=os.path.join(app.root_path, 'quiz.db'),
-    TYTUL='Quiz ORM Peewee'
 ))
 
 # tworzymy instancję bazy używanej przez modele

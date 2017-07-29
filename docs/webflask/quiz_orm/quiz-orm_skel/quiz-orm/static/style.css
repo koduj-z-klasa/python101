@@ -1,0 +1,22 @@
+/* quiz-orm/static/style.css */
+body {
+    background-color: #E6E6FA;
+    color: #000;
+}
+#komunikaty {
+    width: 80%;
+    margin: 0.5em 2em;
+    padding: 1em;
+    font-family: verdana,sans-serif;
+    border-radius: 5px;
+    background-color: #cecece;
+}
+#tresc { width: 80%; margin: 0.5em 2em 0 2em; }
+form { display: inline-block; margin-bottom: 0;}
+input[type=text].form-control { width: 300px; }
+input:focus { border-color: light-blue; border-radius: 5px; }
+span.blad { color: red; }
+span.sukces { color: green; }
+span.kom { color: blue; }
+.cb { clear: both; }
+.fb { font-weight: bold; }

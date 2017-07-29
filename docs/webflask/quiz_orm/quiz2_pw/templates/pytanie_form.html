@@ -1,0 +1,15 @@
+  <form method="POST" class="form-inline" action="">
+    {{ form.csrf_token }}
+
+    {{ form.pytanie.label }}<br>
+    {{ form.pytanie(class="form-control") }}<br>
+    <br>
+    <label>Podaj odpowiedzi i zaznacz poprawną:</label><br>
+    <ol>
+    {% for o in form.odpowiedzi %}
+      <li>{{ radio[loop.index0] }} {{ o(class="form-control") }}</li>
+    {% endfor %}
+    </ol>
+
+    <button type="submit" class="btn btn-default">Zapisz pytanie</button>
+  </form>

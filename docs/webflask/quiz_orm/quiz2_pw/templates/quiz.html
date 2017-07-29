@@ -1,32 +1,31 @@
-<!-- quiz2pw/templates/quiz.html -->
+<!-- quiz-orm/templates/quiz.html -->
 {% extends "szkielet.html" %}
+{% set active_page = "quiz" %}
 {% block tytul %}Pytania{% endblock%}
-{% block h1 %}Quiz 2 &#8211; pytania{% endblock%}
+{% block h1 %}Quiz ORM &#8211; pytania{% endblock%}
 {% block tresc %}
-    <p class="fb">
-        Odpowiedz na pytania:
-    </p>
-    <!-- formularz z quizem -->
-    <form method="POST">
-        <!-- pętla odczytująca kolejne pytania z listy -->
-        {% for p in pytania %}
-            <p>
-                <!-- wypisujemy pytanie -->
-                {{ p.pytanie }}
-                <br>
-                <!-- pętla odczytująca możliwe odpowiedzi dla danego pytania -->
-                {% for o in p.odpowiedzi %}
-                    <label>
-                        <!-- odpowiedź wyświetlamy jako pole radio button -->
-                        <input type="radio" value="{{ o.odpowiedz }}" name="{{ p.id }}">
-                        {{ o.odpowiedz }}
-                    </label>
-                    <br>
-                {% endfor %}
-            </p>
+  <h2>Odpowiedz na pytania:</h2>
+  <!-- formularz z quizem -->
+  <form method="POST">
+    <!-- pętla odczytująca kolejne pytania z listy -->
+    {% for p in pytania %}
+      <p>
+        <!-- wypisujemy pytanie -->
+        {{ p.pytanie }}
+        <br>
+        <!-- pętla odczytująca możliwe odpowiedzi dla danego pytania -->
+        {% for o in p.odpowiedzi %}
+          <label>
+            <!-- pole radio button aby można było zaznaczyć odpowiedź -->
+            <input type="radio" value="{{ o.odpowiedz }}" name="{{ p.id }}">
+            {{ o.odpowiedz }}
+          </label>
+          <br>
         {% endfor %}
+      </p>
+    {% endfor %}
 
-        <!-- przycisk wysyłający wypełniony formularz -->
-        <button type="submit">Sprawdź odpowiedzi</button>
-    </form>
+    <!-- przycisk wysyłający wypełniony formularz -->
+    <button type="submit" class="btn btn-default">Sprawdź odpowiedzi</button>
+  </form>
 {% endblock %}

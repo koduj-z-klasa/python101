@@ -10,11 +10,13 @@ from sqlalchemy.orm.exc import NoResultFound
 
 @app.route('/')
 def index():
+    """Strona główna"""
     return render_template('index.html')
 
 
 @app.route('/lista')
 def lista():
+    """Pobranie wszystkich pytań z bazy i zwrócenie szablonu z listą pytań"""
     pytania = Pytanie.query.join(Odpowiedz)
     if not pytania.count():
         flash('Brak pytań w bazie.', 'kom')
@@ -25,17 +27,16 @@ def lista():
 
 @app.route('/quiz', methods=['GET', 'POST'])
 def quiz():
-    # POST, sprawdź odpowiedzi
+    """Wyświetlenie pytań i odpowiedzi w formie quizu oraz ocena poprawności
+    przesłanych odpowiedzi"""
     if request.method == 'POST':
-        wynik = 0  # liczba poprawnych odpowiedzi
-        # odczytujemy słownik z odpowiedziami
+        wynik = 0
         for pid, odp in request.form.items():
-            # pobieramy z bazy poprawną odpowiedź
             odpok = baza.session.query(Pytanie.odpok).filter(
                 Pytanie.id == int(pid)).scalar()
-            if odp == odpok:  # porównujemy odpowiedzi
-                wynik += 1  # zwiększamy wynik
-        # przygotowujemy informacje o wyniku
+            if odp == odpok:
+                wynik += 1
+
         flash('Liczba poprawnych odpowiedzi, to: {0}'.format(wynik), 'sukces')
         return redirect(url_for('index'))
 

@@ -9,11 +9,13 @@ from forms import *
 
 @app.route('/')
 def index():
+    """Strona główna"""
     return render_template('index.html')
 
 
 @app.route('/lista')
 def lista():
+    """Pobranie wszystkich pytań z bazy i zwrócenie szablonu z listą pytań"""
     pytania = Pytanie().select().annotate(Odpowiedz)
     if not pytania.count():
         flash('Brak pytań w bazie.', 'kom')
@@ -24,17 +26,16 @@ def lista():
 
 @app.route('/quiz', methods=['GET', 'POST'])
 def quiz():
-    # POST, sprawdź odpowiedzi
+    """Wyświetlenie pytań i odpowiedzi w formie quizu oraz ocena poprawności
+    przesłanych odpowiedzi"""
     if request.method == 'POST':
-        wynik = 0  # liczba poprawnych odpowiedzi
-        # odczytujemy słownik z odpowiedziami
+        wynik = 0
         for pid, odp in request.form.items():
-            # pobieramy z bazy poprawną odpowiedź
             odpok = Pytanie.select(Pytanie.odpok).where(
                 Pytanie.id == int(pid)).scalar()
-            if odp == odpok:  # porównujemy odpowiedzi
-                wynik += 1  # zwiększamy wynik
-        # przygotowujemy informacje o wyniku
+            if odp == odpok:
+                wynik += 1
+
         flash('Liczba poprawnych odpowiedzi, to: {0}'.format(wynik), 'sukces')
         return redirect(url_for('index'))
 
@@ -48,6 +49,7 @@ def quiz():
 
 
 def flash_errors(form):
+    """Odczytanie wszystkich błędów formularza i przygotowanie komunikatów"""
     for field, errors in form.errors.items():
         for error in errors:
             if type(error) is list:
@@ -57,13 +59,9 @@ def flash_errors(form):
                 getattr(form, field).label.text))
 
 
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html'), 404
-
-
 @app.route('/dodaj', methods=['GET', 'POST'])
 def dodaj():
+    """Dodawanie pytań i odpowiedzi"""
     form = DodajForm()
     if form.validate_on_submit():
         odp = form.odpowiedzi.data
@@ -72,7 +70,6 @@ def dodaj():
         for o in odp:
             inst = Odpowiedz(pnr=p.id, odpowiedz=o)
             inst.save()
-
         flash("Dodano pytanie: {}".format(form.pytanie.data))
         return redirect(url_for("lista"))
     elif request.method == 'POST':
@@ -82,6 +79,7 @@ def dodaj():
 
 
 def get_or_404(pid):
+    """Pobranie i zwrócenie obiektu z bazy lub wywołanie szablonu 404.html"""
     try:
         p = Pytanie.select().annotate(Odpowiedz).where(Pytanie.id == pid).get()
         return p
@@ -89,8 +87,15 @@ def get_or_404(pid):
         abort(404)
 
 
+@app.errorhandler(404)
+def page_not_found(e):
+    """Zwrócenie szablonu 404.html w przypadku nie odnalezienia strony"""
+    return render_template('404.html'), 404
+
+
 @app.route('/edytuj/<int:pid>', methods=['GET', 'POST'])
 def edytuj(pid):
+    """Edycja pytania o identyfikatorze pid i odpowiedzi"""
     p = get_or_404(pid)
     form = DodajForm()
 
@@ -112,8 +117,7 @@ def edytuj(pid):
             p.odpok = i
             break
     form = DodajForm(obj=p)
-    odpok = list(form.odpok)
-    return render_template("edytuj.html", form=form, radio=odpok)
+    return render_template("edytuj.html", form=form, radio=list(form.odpok))
 
 
 @app.route('/usun/<int:pid>', methods=['GET', 'POST'])

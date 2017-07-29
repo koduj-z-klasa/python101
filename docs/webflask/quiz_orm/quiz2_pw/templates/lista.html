@@ -1,0 +1,18 @@
+<!-- quiz-orm/templates/lista.html -->
+{% extends "szkielet.html" %}
+{% set active_page = "lista" %}
+{% block tytul %}Lista pytań{% endblock%}
+{% block h1 %}Quiz ORM &#8211; lista pytań{% endblock%}
+{% block tresc %}
+  <ol>
+  {% for p in pytania %}
+  <!-- pętla odczytująca kolejne pytania z listy -->
+    <li>
+      <!-- wypisujemy pytanie -->
+      {{ p.pytanie }}
+      <a href="{{ url_for('edytuj', pid=p.id ) }}" class="btn btn-default">Edytuj</a>
+      <a href="{{ url_for('usun', pid=p.id ) }}" class="btn btn-danger">Usuń</a>
+    </li>
+  {% endfor %}
+  </ol>
+{% endblock %}
