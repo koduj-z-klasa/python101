@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-# quiz-sa/dane.py
+# quiz-orm/dane.py
 
-from models import Pytanie, Odpowiedz
-from app import baza
 import os
 import csv
+from models import Pytanie, Odpowiedz
+from app import baza
 
 
 def pobierz_dane(plikcsv):

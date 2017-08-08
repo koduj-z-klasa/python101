@@ -123,10 +123,9 @@ def edytuj(pid):
 @app.route('/usun/<int:pid>', methods=['GET', 'POST'])
 def usun(pid):
     """Usunięcie pytania o identyfikatorze pid"""
+    p = get_or_404(pid)
     if request.method == 'POST':
-        p = get_or_404(request.form['pid'])
         flash('Usunięto pytanie {0}'.format(p.pytanie), 'sukces')
         p.delete_instance(recursive=True)
         return redirect(url_for('index'))
-    p = get_or_404(pid)
     return render_template("pytanie_usun.html", pytanie=p)

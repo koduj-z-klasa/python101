@@ -7,9 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block tytul %}{% endblock %} &#8211; {{ config.TYTUL }}</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet"
+     href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+     crossorigin="anonymous">
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet"
+     href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+     integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+     crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
@@ -24,24 +30,28 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ url_for('index') }}">Quiz ORM</a>
+            <a class="navbar-brand" href="http://flask.pocoo.org/">
+              <img src="{{ url_for('static', filename='flask.png') }}" style="max-width: 100%; max-height: 100%;">
+            </a>
           </div>
 
 {% set navigation_bar = [
-    ('/', 'index', 'Strona główna'),
-    ('/lista', 'lista', 'Lista pytań'),
-    ('/quiz', 'quiz', 'Quiz'),
-    ('/dodaj', 'dodaj', 'Dodaj pytania'),
+  ('/', 'index', 'Strona główna'),
+  ('/lista', 'lista', 'Lista pytań'),
+  ('/quiz', 'quiz', 'Quiz'),
+  ('/dodaj', 'dodaj', 'Dodaj pytania'),
 ] %}
 {% set active_page = active_page|default('index') %}
 
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-{% for href, id, tekst in navigation_bar %}
-  <li{% if id == active_page %} class="active"{% endif %}>
-    <a href="{{ href|e }}">{{ tekst|e }}</a>
-  </li>
-{% endfor %}
+
+            {% for href, id, tekst in navigation_bar %}
+              <li{% if id == active_page %} class="active"{% endif %}>
+                <a href="{{ href|e }}">{{ tekst|e }}</a>
+              </li>
+            {% endfor %}
+
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
@@ -69,6 +79,15 @@
         </div>
       </div> <!-- /row -->
     </div> <!-- /container -->
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+     integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+     crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
 
   </body>
 </html>

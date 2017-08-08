@@ -1,0 +1,13 @@
+<!-- quiz-orm/templates/pytanie_usun.html -->
+{% extends "szkielet.html" %}
+{% set active_page = "usun" %}
+{% block tytul %}Edycja{% endblock%}
+{% block h1 %}Quiz ORM &#8211; usuwanie pytania{% endblock%}
+{% block tresc %}
+  <form method="POST" action="{{ url_for('usun', pid=pytanie.id) }}">
+    <!-- wstawiamy id pytania -->
+    <p class="lead">Czy na pewno chcesz usunąć pytanie:</p>
+    <p>{{ pytanie.pytanie }}</p>
+    <button id="btn-delete" type="submit" class="btn btn-danger">Usuń</button>
+  </form>
+{% endblock %}

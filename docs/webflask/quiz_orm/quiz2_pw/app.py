@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 # quiz-orm/app.py
 
+import os
 from flask import Flask, g
 from peewee import SqliteDatabase
-import os
 
 app = Flask(__name__)
 

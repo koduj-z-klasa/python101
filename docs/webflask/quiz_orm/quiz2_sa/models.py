@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# quiz_sa/models.py
+# quiz-orm/models.py
 
 from app import baza
 

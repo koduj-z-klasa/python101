@@ -10,11 +10,11 @@ app = Flask(__name__)
 # konfiguracja aplikacji
 app.config.update(dict(
     SECRET_KEY='bardzosekretnawartosc',
-    TYTUL='Quiz ORM SQLAlchemy',
     DATABASE=os.path.join(app.root_path, 'quiz.db'),
     SQLALCHEMY_DATABASE_URI='sqlite:///' +
                             os.path.join(app.root_path, 'quiz.db'),
-    SQLALCHEMY_TRACK_MODIFICATIONS=False
+    SQLALCHEMY_TRACK_MODIFICATIONS=False,
+    TYTUL='Quiz ORM SQLAlchemy'
 ))
 
 # tworzymy instancję bazy używanej przez modele
