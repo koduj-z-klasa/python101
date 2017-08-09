@@ -1,5 +1,5 @@
-Git – wersjonowanie kodów źródłowych
-####################################
+Git – wersjonowanie kodu
+########################
 
 TYMCZASOWO
 

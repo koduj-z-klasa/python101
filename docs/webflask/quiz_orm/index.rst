@@ -226,11 +226,13 @@ w pliku :file:`main.py`:
 
     <div class="code_no">Peewee <i>main.py</i>. <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
+.. highlight:: python
 .. literalinclude:: quiz2_pw/main.py
     :linenos:
     :lineno-start: 4
     :lines: 4-
     :emphasize-lines: 8-10
+
 
 [todo]
 

@@ -3,7 +3,7 @@
 Przygotowanie systemu Windows
 #############################
 
-.. _ins-python:
+.. _python-ins:
 
 Inerpreter Pythona
 ==================
@@ -24,15 +24,8 @@ klikamy link *Last Python 3 Release - ...* i pobieramy instalator
 .. figure:: img/python_windows01.jpg
 
 
-Narzędzia i biblioteki
-======================
-
-W wierszu poleceń wydajemy następujące polecenia:
-
-.. code-block:: bat
-
-    pip install virtualenv
-    pip install ipython qtconsole
+Narzędzia
+==========
 
 Git
 ----
@@ -42,6 +35,17 @@ Podstawowego klienta w wersji 64- lub 32-bitowej pobieramy ze strony
 
 :ref:`Alternatywna metoda instalacji <git-install>`, jak również zasady pracy z repozytoriami
 omówione zostały w osobnym :ref:`dokumencie <git-howto>`. Gorąco zachęcamy do jego przejrzenia.
+
+Rozszerzona konsola
+-------------------
+
+W wierszu poleceń wydajemy następujące polecenia:
+
+.. code-block:: bat
+
+    pip install virtualenv
+    pip install ipython qtconsole
+
 
 .. _sqlite3-win:
 
@@ -54,44 +58,18 @@ Przykładowe archiwum :file:`sqlite-dll-win64-x64-3140200.zip` należy rozpakowa
 najlepiej do katalogu systemowego (:file:`C:\Windows\System32`),
 żeby był dostępny z każdej lokalizacji.
 
-Narzędzia wymagane:
-
-* `pip <https://pip.pypa.io/en/stable/>`_  – instalator pakietów Pythona, podstawowe narzędzie
-  służące do zarządzania pakietami Pythona zgromadzonymi np.
-  w repozytorium `PyPI <https://pypi.python.org/pypi>`_  (Python Package Index);
-* `virtualenv <https://virtualenv.readthedocs.org/en/latest/>`_  – menedżer wirtualnych środowisk Pythona,
-  pozwala tworzyć katalogi zawierające izolowane środowisko Pythona umożliwiające instalowanie
-  wybranych wersji pakietów przez zwykłych użytkowników;
-* `klient git <https://git-scm.com/downloads>`_  – narzędzie umożliwiające korzystanie z repozytoriów
-  kodu i dokumentacji w serwisie `Github <https://github.com/>`_
-* `sqlite3 <https://www.sqlite.org/>`_ – konsolowa powłoka dla baz SQLite3, umożliwia przeglądanie
-  schematów tabel oraz zarządzanie bazą za pomocą języka SQL.
-
-Narzędzia dodatkowe:
-
-* `ipython <http://ipython.org/>`_ – rozszerzona interaktywna konsola Pythona;
-* `qtconsole <http://jupyter.org/qtconsole/stable/>`_  – rozszerzona interaktywna konsola
-  Pythona wykorzystująca bibliotekę Qt, umożliwia m. in. wyświetlanie wykresów utworzonych
-  z wykorzystaniem *matplotlib*.
-
-Pip
-----
-
-Narzędzie uruchamiamy w wierszu poleceń (terminalu). Przydatne polecenia:
-
-.. code-block:: bat
-
-    pip -V  # wersja narzędzia pip
-    pip list  # lista zainstalowanych pakietów
-    pip install nazwa_pakietu  # instalacja pakietu
-    pip install nazwa_pakietu -U  # aktualizacja pakietu
-    pip uninstall  # usunięcie pakietu
-
-
 .. _pyqt-win:
 
-Biblioteki PyQt
-----------------
+Biblioteki
+==========
+
+.. tip::
+
+    W przypadku bibliotek warto rozważyć instalację
+    w :ref:`środowisku wirtualnym <pve>` dostępną dla zwykłego użytkownika.
+
+PyQt
+-----
 
 *Qtconsole* wymaga bibliotek PyQt. W Windows 32-bitowym ze strony `PyQt4 Download <http://https://www.riverbankcomputing.com/software/pyqt/download>`_ pobieramy plik `PyQt4-4.11.4-gpl-Py2.7-Qt4.8.7-x32.exe <http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.11.4/PyQt4-4.11.4-gpl-Py2.7-Qt4.8.7-x32.exe>`_
 i instalujemy.
@@ -103,21 +81,22 @@ W wersji 64-bitowej Windowsa w terminalu wydajemy polecenie:
     pip install python-qt5
 
 
-
 .. _pygame-win:
 
 PyGame
 -------
 
 Jest to moduł wymagany m.in. przez scenariusze gier. W przypadku Windows 32-bitowego ze strony
-`PyGame <http://pygame.org/ftp/pygame-1.9.1.win32-py2.7.msi>`_ pobieramy plik
+`PyGame <http://pygame.org>`_ pobieramy plik
 `pygame-1.9.1.win32-py2.7.msi <http://pygame.org/ftp/pygame-1.9.1.win32-py2.7.msi>`_
 i instalujemy:
 
 .. figure:: img/pygame_windows01.jpg
 
-W przypadku wersji 64-bitowej ze strony `http://www.lfd.uci.edu/~gohlke/pythonlibs <http://www.lfd.uci.edu/~gohlke/pythonlibs>`_ pobieramy pakiet ``pygame-1.9.2b1-cp27-cp27m-win_amd64.whl``. Następnie
-otwieramy terminal w katalogu z zapisanym pakietem i wydajemy polecenie:
+W przypadku wersji 64-bitowej wejdź na stronę
+`http://www.lfd.uci.edu/~gohlke/pythonlibs <http://www.lfd.uci.edu/~gohlke/pythonlibs>`_
+i pobierz pakiet ``pygame‑1.9.3‑cp36‑cp36m‑win_amd64.whl`` (dla Pythona 3.6).
+Następnie otwieramy terminal w katalogu z zapisanym pakietem i wydajemy polecenie:
 
 .. code-block:: bat
 
@@ -128,9 +107,11 @@ otwieramy terminal w katalogu z zapisanym pakietem i wydajemy polecenie:
 Matplotlib
 ----------
 
-Aby zainstalować **matplotlib**, wchodzimy na stronę `http://www.lfd.uci.edu/~gohlke/pythonlibs <http://www.lfd.uci.edu/~gohlke/pythonlibs>`_ i pobieramy pakiety ``numpy`` oraz ``matplotlib`` w formacie ``whl`` dostosowane do naszej wersji Pythona i Windows. Np. jeżeli zainstalowaliśmy *Pythona v. 2.7.12* i mamy *Windows 7 64-bit*, pobierzemy: ``numpy‑1.10.0b1+mkl‑cp27‑none‑win_amd64.whl``
-i ``matplotlib‑1.4.3‑cp27‑none‑win_amd64.whl``. Następnie otwieramy terminal w katalogu z pobranymi pakietami
-i instalujemy:
+Wejdź na stronę `http://www.lfd.uci.edu/~gohlke/pythonlibs <http://www.lfd.uci.edu/~gohlke/pythonlibs>`_
+i pobierz pakiety ``numpy`` oraz ``matplotlib`` w formacie ``whl`` dostosowane do wersji Pythona i Windows.
+Np. jeżeli mamy *Pythona 3.6.x* i *Windows 64-bit*, pobierzemy:
+``numpy‑1.13.1+mkl‑cp36‑cp36m‑win_amd64.whl`` i ``matplotlib‑2.0.2‑cp36‑cp36m‑win_amd64.whl``.
+Następnie otwieramy terminal w katalogu z pobranymi pakietami i instalujemy:
 
 .. code-block:: bat
 
@@ -140,20 +121,18 @@ i instalujemy:
 .. note::
 
     Oficjalne kompilacje **matplotlib** dla Windows dostępne są w serwisie
-    `Sourceforge matplotlib <http://sourceforge.net/projects/matplotlib/files/matplotlib/matplotlib-1.5.0/windows/>`_.
+    `Sourceforge matplotlib <http://sourceforge.net/projects/matplotlib/files/matplotlib>`_.
 
 .. _webapps-win:
 
-Aplikacje internetowe
----------------------
+Frameworki WWW
+--------------
 
-Instalacja bibliotek wymaganych do scenariuszy:
+Instalacja bibliotek wymaganych do scenariuszy *Aplikacje WWW*:
 
 .. code-block:: bat
 
-    pip install flask django peewee sqlalchemy flask-sqlalchemy
-
-
+    pip install flask flask-wtf peewee sqlalchemy flask-sqlalchemy django
 
 
 Brak Pythona?
@@ -189,11 +168,11 @@ uruchomić z okna właściwości komputera:
 .. figure:: img/winpath01.jpg
 .. figure:: img/winpath02.jpg
 
-Następnie klikamy przycisk "Nowa" i wpisujemy: ``PATH=%PATH%;c:\Python27\;c:\Python27\Scripts\``;
-w przypadku zmiennej systemowej klikamy "Edytuj", a ścieżki ``c:\Python27\;c:\Python27\Scripts\``
-dopisujemy po średniku. Dla pojedynczej sesji (do momentu przelogowania się) możemy użyć
-polecenia w konsoli tekstowej:
+Następnie klikamy przycisk "Nowa" i dopisujemy ścieżkę do katalogu z Pythonem, np.:
+``PATH=%PATH%;c:\Python36\;c:\Python36\Scripts\``; w przypadku zmiennej systemowej
+klikamy "Edytuj", a ścieżki ``c:\Python36\;c:\Python36\Scripts\`` dopisujemy po średniku.
+Dla pojedynczej sesji (do momentu przelogowania się) możemy użyć polecenia w konsoli tekstowej:
 
 .. code-block:: bat
 
-    set PATH=%PATH%;c:\Python27\;c:\Python27\Scripts\
+    set PATH=%PATH%;c:\Python36\;c:\Python36\Scripts\

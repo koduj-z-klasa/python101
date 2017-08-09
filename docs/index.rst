@@ -16,12 +16,12 @@ Fundację `Centrum Edukacji Obywatelskiej`_.
 Krótki link do tej strony: `bit.ly/py-101 <http://bit.ly/py-101>`_
 
 Forum
-******
+=====
 
 Zachęcamy do dyskusji i zadawania pytań `na naszym forum <http://discourse.kodujzklasa.pl/>`_
 
 Pobieranie dokumentacji
-************************
+=======================
 
 Materiały można pobrać do czytania w `wersji offline
 <http://readthedocs.org/projects/python101/downloads/htmlzip/latest/>`_.
@@ -41,7 +41,7 @@ Materiały można także pobrać, zmodyfikować i przygotować według `instrukc
 
 
 Przygotowanie do szkolenia
-****************************
+==========================
 
 Przed szkoleniem warto przygotować swój komputer.
 
@@ -53,7 +53,7 @@ Przed szkoleniem warto przygotować swój komputer.
     git/index
 
 Zaczynamy!
-=================
+----------
 
 .. toctree::
     :maxdepth: 2
@@ -70,7 +70,7 @@ Zaczynamy!
     mcpi/index
 
 Dodatkowe informacje
-=====================
+--------------------
 
 ..  toctree::
     :maxdepth: 1
@@ -81,7 +81,7 @@ Dodatkowe informacje
 .. include:: authors.rst
 
 Indices and tables
-----------------------
+******************
 
 * :ref:`genindex`
 * :ref:`modindex`

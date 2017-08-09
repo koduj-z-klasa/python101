@@ -1,3 +1,5 @@
+.. _mcpi-app:
+
 Minecraft Pi
 #############
 

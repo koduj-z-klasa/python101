@@ -1,9 +1,11 @@
 System i oprogramowanie
 #######################
 
-Nasze materiały zakładają wykorzystanie języka :term:`Python` w wersji 3.x.
+Nasze materiały zakładają wykorzystanie języka :term:`Python` w większości w wersji 3.x,
+w kilku przypadkach (:ref:`Gra robotów <robot-game>` częściowo :ref:`Minecraft Pi <mcpi-app>`)
+wymagana jest wersja 2.x.
 Mogą być realizowane w dowolnym systemie operacyjnym, jednak proponujemy systemy Linux,
-w których Python jest domyślnie zainstalowany i nie ma problemów z instalacją
+w których Python 2.x i 3.x są obecne domyślnie i nie ma problemów z instalacją
 dodatkowych narzędzi i bibliotek.
 
 Do realizacji materiałów przygotowaliśmy również specjalne wersje systemu
@@ -15,7 +17,8 @@ z napędu USB na większości komputerów i zapamiętują wyniki naszej pracy.
     :maxdepth: 2
 
     linux
-    windows
     live
+    windows
+    tools
     interpreter
     ide

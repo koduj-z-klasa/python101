@@ -6,7 +6,7 @@ Autorzy
 - `Robert Bednarz <ecg@ecg.vot.pl>`_:
   "System i oprogramowanie", "Podstawy Pythona", "Gra robotów", "Gry w Pythonie"
   (wersje strukturalne), "Bazy danych w Pythonie", "Aplikacje okienkowe",
-  "Aplikacje internetowe", "Minecraft Pi", "Scenariusze"
+  "Aplikacje WWW (Flask)", "Aplikacje WWW (Django)", "Minecraft Pi", "Scenariusze"
 - `Dorota Rybicka <rybicka.dorota@gmail.com>`_ ("Wprowadzenie do języka Python")
 - `Adam Jurkiewicz <biuro@cyfrowaszkola.waw.pl>`_ ("IDE - edytory kodu")
 - `Grzegorz Wilczek <grzegorz.wilczek@ceo.org.pl>`_ ("Wprowadzenie do języka Python")

@@ -14,7 +14,7 @@ Według zestawień serwisu `TIOBE <http://www.tiobe.com/index.php/content/paperi
 Python jest w czołówce popularności języków programowania – 4 miejsce na koniec 2015 r.
 
 W systemach opartych na Linuksie :term:`interpreter` Pythona jest standardowo
-zainstalowany. W systemach Microsoft Windows należy go :ref:`doinstalować <ins-python>`.
+zainstalowany. W systemach Microsoft Windows należy go :ref:`doinstalować <python-ins>`.
 Interpreter Pythona może i powinien być używany w trybie interaktywnym
 do nauki i testowania kodu.
 

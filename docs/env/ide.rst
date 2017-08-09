@@ -1,7 +1,7 @@
 .. _ide:
 
 IDE – edytory kodu
-******************
+##################
 
 Skrypty Pythona można zapisywać w dowolnym edytorze tekstu, ale oczywiście
 wygodniej jest używać programów, które potrafią przynajmniej odpowiednio
