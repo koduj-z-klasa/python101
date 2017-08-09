@@ -4,6 +4,7 @@ Sphinx==1.5.3
 # pygame
 turtle
 Flask
+Flask-wtf
 Flask-SQLAlchemy
 SQLAlchemy
 django
