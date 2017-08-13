@@ -66,7 +66,7 @@ W systemach opartych na *Debianie* wydajemy polecenia w terminalu:
 .. code-block:: bash
 
     ~$ sudo apt update
-    ~$ sudo apt install python3-pip git sqlite3
+    ~$ sudo apt install python3-pip python3-venv git sqlite3
     ~$ sudo pip3 install virtualenv
 
 W systemach opartych na *Arch Linuksie*:
