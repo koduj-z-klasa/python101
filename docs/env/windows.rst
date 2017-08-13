@@ -21,7 +21,9 @@ klikamy link *Last Python 3 Release - ...* i pobieramy instalator
 
     Podczas instalacji zaznaczamy opcję "Add Python.exe to Path".
 
-.. figure:: img/python_windows01.jpg
+.. figure:: img/python361_00.jpg
+
+.. figure:: img/python361_01.jpg
 
 
 Narzędzia

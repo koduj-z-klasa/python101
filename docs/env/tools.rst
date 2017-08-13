@@ -64,11 +64,11 @@ używać modułu *venv*:
 
 – drugie polecenie pokazuje, jak uruchamiać skrypty w utworzonym środowisku.
 
-W systemie **Windows** skrypt aktywujący znajduje się w innej lokalizacji:
+W systemie **Windows** skrypt aktywujący uruchamiamy poleceniem:
 
 .. code-block:: bash
 
-    > \\katalog\\Scripts\\activate
+    > katalog\\Scripts\\activate.bat
 
 **Deaktywacja środowiska** – sprowadza się do polecenia:
 
