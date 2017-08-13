@@ -371,6 +371,7 @@ Zapisywanie danych do pliku tekstowego:
         for linia in tresc:  # przeglądamy kolejne linie
             print(linia)
 
+
 **Użycie formatu** `json <https://pl.wikipedia.org/wiki/JSON>`_:
 
 .. code-block:: python
