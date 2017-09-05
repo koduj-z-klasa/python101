@@ -1,24 +1,22 @@
-Szkolenie Python 101
+Szkolenia Python 101
 ====================
 
-Niniejsze materiały to dokumentacja i kody źródłowe do szkolenia z
-języka Python realizowanego w ramach projektu [Koduj z Klasą][1]
+Niniejsze materiały to dokumentacja i kody źródłowe do szkoleń z
+języka Python realizowanych w ramach projektu [Koduj z Klasą][1]
 prowadzonego przez Fundację [Centrum Edukacji Obywatelskiej][2].
 
-Wersja HTML dokumentacji znajduje się tutaj:
+Wersja HTML dokumentacji znajduje się pod adresem:
 
 http://python101.rtfd.io
 
 Nasze repozytorium
 -------------------
 
-ZAchęcamy do sklonowania tego repozytorium lokalnie:
+Zachęcamy do sklonowania tego repozytorium lokalnie:
 
     $ git clone https://github.com/koduj-z-klasa/python101/
 
-Wszystkie kody źródłowe można też pobrać jako archiwum ZIP bezpośrednio,
-jednak stracimy wtedy możliwość wykonywania skoków pomiędzy etapami,
-które zostały wskazane w materiałach szkoleniowych.
+Można je również pobrać jako archiwum ZIP:
 
 https://github.com/koduj-z-klasa/python101/archive/master.zip
 
@@ -59,15 +57,18 @@ Polecamy poniższe strony jako źródła dodatkowych materiałów dla uczestnik�
   https://education.github.com/pack
 
 - Dokumentacja Python'a i bibliotek standardowych
-  https://docs.python.org/2.7/
+  https://docs.python.org/3/
 
 - PyPi: Python Package Index, miejsce w którym można poszukać biliotek instalowanych przy pomocy narzędzia PIP
   https://pypi.python.org/pypi
 
 - Django: Framework do robienia aplikacji WWW z bateryjkami i dużym ekosystemem dodatków
-  https://docs.djangoproject.com/en/1.7/ - polecam zrobienie tutoriala
+  https://docs.djangoproject.com/en/1.11/
 
-- Flask: Elastyczny Frameworkdo budowy aplikacji WWW. Pomimo tego że jest na początek jest prosty, to zbudowanie większych aplikacji wymaga doświadczeń.
+  Polecamy tutorial w języku polskim:
+  https://docs.djangoproject.com/pl/1.11/intro/tutorial01/
+
+- Flask: Elastyczny Framework do budowy aplikacji WWW. Prosty do prostych aplikacji.
   http://flask.pocoo.org/
 
 - PyGame: Framework do tworzenia gier
@@ -77,18 +78,18 @@ Polecamy poniższe strony jako źródła dodatkowych materiałów dla uczestnik�
 Modyfikacje i budowa dokumentacji offline
 -----------------------------------------
 
-Materiały szkoleniowe są przygotowywane z pomocą oprogramowania [Sphinx][3].
-Jeżeli chcemy lokalnie generować dokumentację, instalujemy Sphinksa z kodów źródlowych.
+Dokumentacja szkoleń przygotowywana jest za pomocą oprogramowania [Sphinx][3].
+Można je zainstalować lokalnie i wygenerować materiały w formacie html samodzielnie:
 
     ~/python101$ sudo apt install python-pip
     ~/python101$ sudo pip install virtualenv
     ~/python101$ virtualenv .pve
     ~/python101$ source .pve/bin/activate
-    ~/python101$ pip install sphinx sphinx-rtd-theme
+    (.pve) ~/python101$ pip install sphinx sphinx-rtd-theme
 
-Po instalacji w folderze dokumentacji wykonujemy polecenie:
+Po instalacji w folderze dokumentacji wydajemy polecenie:
 
-    ~/python101/docs$ make html
+    (.pve) ~/python101/docs$ make html
 
 Autorzy
 -------
