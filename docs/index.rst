@@ -4,34 +4,28 @@
    contain the root `toctree` directive.
 
 
-Szkolenie Python 101
+Szkolenia Python 101
 ####################
 
 .. title:: Python 101 materiały Koduj z Klasą
 
-Niniejsze materiały to dokumentacja do szkolenia z języka Python realizowanego
-w ramach projektu `Koduj z Klasą`_ prowadzonego przez
-Fundację `Centrum Edukacji Obywatelskiej`_.
+Niniejsze materiały to poprawiona i uzupełnionan dokumentacja do szkoleń
+z języka Python realizowanych w ramach projektu `Koduj z Klasą`_
+prowadzonych przez Fundację `Centrum Edukacji Obywatelskiej`_ w latach 2014-2017.
 
-Krótki link do tej strony: `bit.ly/py-101 <http://bit.ly/py-101>`_
+Początkowe materiały zakładały wykorzystanie języka Python w wersji 2.
+W wersji obecnej wszędzie, gdzie to możliwe, używamy Pythona 3.
 
 Forum
 =====
 
-Zachęcamy do dyskusji i zadawania pytań `na naszym forum <http://discourse.kodujzklasa.pl/>`_
+Zachęcamy do dyskusji i zadawania pytań na `naszym forum <http://discourse.kodujzklasa.pl/>`_
 
 Pobieranie dokumentacji
 =======================
 
 Materiały można pobrać do czytania w `wersji offline
 <http://readthedocs.org/projects/python101/downloads/htmlzip/latest/>`_.
-Za pomocą poniższych poleceń pobierzemy dokumentację i rozpakujemy
-do folderu ``~/Pulpit/python-101-html``:
-
-.. code-block:: bash
-
-    ~$ wget -O python-101-html.zip http://koduj-z-klasa.github.io/python101/python-101-html.zip
-    ~$ unzip python-101-html.zip -d ~/Pulpit/
 
 Materiały można także pobrać, zmodyfikować i przygotować według `instrukcji w repozytorium`_
 
@@ -40,10 +34,11 @@ Materiały można także pobrać, zmodyfikować i przygotować według `instrukc
 .. _instrukcji w repozytorium: https://github.com/koduj-z-klasa/python101
 
 
-Przygotowanie do szkolenia
+Przygotowanie do szkoleń
 ==========================
 
-Przed szkoleniem warto przygotować swój komputer.
+Jeżeli na szkoleniach chcesz wykorzystywać swój komputer,
+musisz go przygotować.
 
 ..  toctree::
     :maxdepth: 1
