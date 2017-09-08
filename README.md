@@ -18,7 +18,7 @@ Zachęcamy do sklonowania tego repozytorium lokalnie:
 
 Można je również pobrać jako archiwum ZIP:
 
-    https://github.com/koduj-z-klasa/python101/archive/master.zip
+https://github.com/koduj-z-klasa/python101/archive/master.zip
 
 Forum Koduj z Klasą
 --------------------
