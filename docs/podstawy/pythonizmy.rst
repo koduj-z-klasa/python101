@@ -347,7 +347,7 @@ Zapisywanie danych do pliku tekstowego:
     :linenos:
 
     dane = ['pierwsza linia', 'druga linia']
-    with open("output.txt", "w") as f:
+    with open('output.txt', 'w') as f:
         for linia in dane:
             f.write(linia + '\n')
 
@@ -361,13 +361,13 @@ Zapisywanie danych do pliku tekstowego:
     dane = ([1, 'jan', 'kowalski'], [2, 'anna', 'nowak'])
     plik = "test.csv"
 
-    with open(plik, "w", newline='') as plikcsv:
-        tresc = csv.writer(plikcsv)
+    with open(plik, 'w', newline='') as plikcsv:
+        tresc = csv.writer(plikcsv, delimiter=';')
         for lista in dane:
             tresc.writerow(lista)
 
     with open(plik, newline='') as plikcsv:  # otwórz plik do odczytu
-        tresc = csv.reader(plikcsv)
+        tresc = csv.reader(plikcsv, delimiter=';')
         for linia in tresc:  # przeglądamy kolejne linie
             print(linia)
 
@@ -382,11 +382,11 @@ Zapisywanie danych do pliku tekstowego:
     dane = {'uczen1':[1, 'jan', 'kowalski'], 'uczen2':[2, 'anna', 'nowak']}
     plik = "test.json"
 
-    with open(plik, "w") as plikjson:
+    with open(plik, 'w') as plikjson:
         json.dump(dane, plikjson)
 
     if os.path.isfile(plik):  # sprawdzenie, czy plik istnieje
-        with open(plik, "r") as plikjson:
+        with open(plik, 'r') as plikjson:
             dane = json.load(plikjson)
         print(dane)
 
