@@ -6,8 +6,8 @@ import random
 
 n = int(input("Ile ruchów? "))
 x = y = 0
-wsp_x = [0]
-wsp_y = [0]
+lx = [0]
+ly = [0]
 
 for i in range(0, n):
     # wylosuj kąt i zamień go na radiany
@@ -15,10 +15,10 @@ for i in range(0, n):
     x = x + np.cos(rad)  # wylicz współrzędną x
     y = y + np.sin(rad)  # wylicz współrzędną y
     # print(x, y)
-    wsp_x.append(x)
-    wsp_y.append(y)
+    lx.append(x)
+    ly.append(y)
 
-print(wsp_x, wsp_y)
+print(lx, ly)
 
 # oblicz wektor końcowego przesunięcia
 s = np.fabs(np.sqrt(x**2 + y**2))

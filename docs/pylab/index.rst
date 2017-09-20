@@ -24,22 +24,25 @@ lub :ref:`Windows <matplotlib-win>`.
 .. note::
 
     Bibliotekę *matplotlib* można importować na kilka sposobów. Najprostszym jest użycie
-    instrukcji ``import pylab``, która udostępnia szkielet *pyplot* (do tworzenia wykresów) oraz
+    instrukcji ``import pylab``, która udostępnia moduł *pyplot* (do tworzenia wykresów) oraz
     bibliotekę *numpy* (funkcje matematyczne) w jednej przestrzeni nazw. Tak będziemy
-    robić w konsoli i początkowych przykładach. Oficjalna dokumentacja sugeruje jednak,
-    aby w programowaniu biblioteki importować osobno, np. za pomocą podanego niżej kodu.
-    Tak zrobimy w przykładach korzystających z funkcji matematycznych z modułu *numpy*.
+    robić w konsoli i początkowych przykładach.
+
+    Oficjalna dokumentacja sugeruje jednak, aby w bardziej złożonych projektach stosować
+    jawne importy podane niżej. Tak zrobimy w przykładach korzystających
+    z funkcji matematycznych.
 
 .. code-block:: python
 
     import numpy as np
     import matplotlib.pyplot as plt
 
+
 .. tip::
 
-    Konsolę rozszerzoną możemy uruchamiać poleceniem ``ipython --pylab``, które z kolei
-    równoważne jest instrukcji ``from pylab import *``. W tym wypadku nie trzeba podawać
-    przedrostka ``pylab`` przy korzystaniu z funkcji rysowania.
+    Jeżeli konsolę rozszerzoną uruchomimy poleceniem ``ipython --pylab``, nie trzeba będzie
+    podawać przedrostka ``pylab`` przy korzystaniu z funkcji rysowania.
+
 
 Funkcja liniowa
 ***************
@@ -89,10 +92,8 @@ pomocniczej siatki. Uruchom program.
 Ćwiczenie 1
 ============
 
-Można ułatwić użytkownikowi testowanie funkcji, umożliwiając mu podawanie
-współczynników *a* i *b*. Zastąp odpowiednie przypisania instrukcjami
-pobierającymi dane od użytkownika. Nie zapomnij przekonwertować danych
-tekstowych na liczby całkowite. Przetestuj zmodyfikowany kod.
+Zmodyfikuj kod tak, aby współczynniki *a* i *b* mógł podawać użytkownik.
+Nie zapomnij przekonwertować danych tekstowych na liczby całkowite.
 
 Ćwiczenie 2
 ============
@@ -112,13 +113,12 @@ W konsoli Pythona wydajemy następujące polecenia:
     >>> y = [a + i for i in range(11)]
     >>> print(y)
 
-Powyższy przykład pokazuje kolejne ułatwienie dostępne w Pythonie, czyli
-:term:`wyrażenie listowe`, które zwięźle zastępuje pętlę i zwraca listę
-wartości. Jego działanie należy rozumieć następująco: dla każdej wartości
-``i`` (nazwa zmiennej dowolna) w liście ``x`` wylicz wyrażenie ``a + i``
-i umieść w liście ``y``.
+Powyższy przykład wykorzystuje tzw. :term:`wyrażenie listowe`, które zwięźle
+zastępuje pętlę i zwraca listę wartości. Jego działanie należy rozumieć następująco:
+dla każdej wartości ``i`` (nazwa zmiennej dowolna) w liście ``x`` wylicz wyrażenie
+``a + i`` i umieść w liście ``y``.
 
-Wykorzystajmy wyrażenie listowe w naszym programie:
+Użyj wyrażenia listowego w naszym programie:
 
 .. raw:: html
 
@@ -143,7 +143,7 @@ ZADANIE: wykonaj wykres funkcji:
 
 Wykonanie zadania wymaga umieszczenia na wykresie dwóch funkcji.
 Wykorzystamy funkcję ``arange()``, która zwraca listę wartości
-zmiennoprzecinkowych (zob. typ :term:`typy danych`) z zakresu określonego przez
+zmiennoprzecinkowych (zob. :term:`typy danych`) z zakresu określonego przez
 dwa pierwsze argumenty i z krokiem wyznaczonym przez argument trzeci.
 Drugą przydatną konstrukcją będzie wyrażenie listowe uzupełnione o instrukcję
 warunkową, która ogranicza wartości, dla których obliczane jest podane wyrażenie.
@@ -326,11 +326,11 @@ zapisać w listach. Wstaw w odpowiednich miejscach pliku poniższe instrukcje:
 
 .. code-block:: python
 
-    wsp_x = [0]
-    wsp_y = [0]
+    lx = [0]
+    ly = [0]
 
-    wsp_x.append(x)
-    wsp_y.append(y)
+    lx.append(x)
+    ly.append(y)
 
 Na końcu skryptu dopisz instrukcje wyliczającą końcowy wektor przesunięcia
 (:math:`|s| = \sqrt{(x^2 + y^2)}`) i drukującą go na ekranie. Przetestuj program.
@@ -350,7 +350,7 @@ Poniższy kod ilustruje również użycie opcji wzbogacających wykres o legend�
     :lines: 1-
 
 Warto zwrócić uwagę na dodatkowe opcje formatujące wykres w poleceniu
-``p.plot(wsp_x, wsp_y, "o:", color="green", linewidth=2, alpha=0.5)``.
+``p.plot(lx, ly, "o:", color="green", linewidth=2, alpha=0.5)``.
 Trzeci parametr określa styl linii, możesz sprawdzić inne wartości, np:
 ``r:.``, ``r:+``, ``r.``, ``r+``. Można też określać kolor (``color``),
 grubość linii (``linewidth``) i przezroczystość (``alpha``). Poeksperymentuj.

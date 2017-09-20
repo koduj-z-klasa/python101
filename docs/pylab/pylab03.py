@@ -14,7 +14,7 @@ y1 = [i / -3 + a for i in x if i <= 0]
 print(x, len(x))
 print(y1, len(y1))
 
-# pylab.plot(x, y1)
-# pylab.title('Wykres f(x)')
-# pylab.grid(True)
-# pylab.show()
+pylab.plot(x, y1)
+pylab.title('Wykres f(x)')
+pylab.grid(True)
+pylab.show()
