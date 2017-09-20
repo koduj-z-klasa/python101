@@ -117,8 +117,12 @@ Następnie otwieramy terminal w katalogu z pobranymi pakietami i instalujemy:
 
 .. code-block:: bat
 
-    pip install numpy‑1.10.0b1+mkl‑cp27‑none‑win_amd64.whl
-    pip install matplotlib‑1.4.3‑cp27‑none‑win_amd64.whl
+    pip install numpy‑1.13.1+mkl‑cp36‑cp36m‑win_amd64.whl
+    pip matplotlib‑2.0.2‑cp36‑cp36m‑win_amd64.whl
+
+
+.. figure:: img/win_matplotlib.jpg
+
 
 .. note::
 
@@ -141,7 +145,7 @@ Brak Pythona?
 =============
 
 Jeżeli nie możemy wywołać interpretera lub instalatora ``pip`` w terminalu,
-oznacza to, że zapomnieliśmy zaznaczyć opcji "Add Python.exe to Path" podczas
+oznacza to zazwyczaj, że zapomnieliśmy zaznaczyć opcji "Add Python.exe to Path" podczas
 instalacji interpretera. Najprościej zainstalować go jeszcze raz z zaznaczoną
 opcją.
 
@@ -150,14 +154,14 @@ o ścieżkę do ``python.exe``. Najwygodniej wykorzystać konsolę PowerShell:
 
 .. code-block:: posh
 
-    [Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27\;C:\Python27\Scripts\", "User")
+    [Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python36\;C:\Python36\Scripts\", "User")
 
 Ewentualnie, jeśli posiadamy uprawnienia administracyjne, możemy zmienić zmienną ``PATH`` wszystkim użytkownikom:
 
 .. code-block:: posh
 
     $CurrentPath=[Environment]::GetEnvironmentVariable("Path", "Machine")
-    [Environment]::SetEnvironmentVariable("Path", "$CurrentPath;C:\Python27\;C:\Python27\Scripts\", "Machine")
+    [Environment]::SetEnvironmentVariable("Path", "$CurrentPath;C:\Python36\;C:\Python36\Scripts\", "Machine")
 
 Jeżeli nie mamy dostępu do konsoli PowerShell, w oknie "Uruchamianie" (:kbd:`WIN+R`)
 wpisujemy polecenie wywołujące okno "Zmienne środowiskowe" – można je również
@@ -171,10 +175,16 @@ uruchomić z okna właściwości komputera:
 .. figure:: img/winpath02.jpg
 
 Następnie klikamy przycisk "Nowa" i dopisujemy ścieżkę do katalogu z Pythonem, np.:
-``PATH=%PATH%;c:\Python36\;c:\Python36\Scripts\``; w przypadku zmiennej systemowej
-klikamy "Edytuj", a ścieżki ``c:\Python36\;c:\Python36\Scripts\`` dopisujemy po średniku.
+``PATH=%PATH%;C:\Python36\;C:\Python36\Scripts\``; w przypadku zmiennej systemowej
+klikamy "Edytuj", a ścieżki ``C:\Python36\;C:\Python36\Scripts\`` dopisujemy po średniku.
 Dla pojedynczej sesji (do momentu przelogowania się) możemy użyć polecenia w konsoli tekstowej:
 
 .. code-block:: bat
 
     set PATH=%PATH%;c:\Python36\;c:\Python36\Scripts\
+
+
+.. warning::
+
+    W powyższych przykładach założono, że Python zainstalowany został w katalogu
+    :file:`C:\Python36`, co nie jest opcją domyślną.
