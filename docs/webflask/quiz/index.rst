@@ -268,5 +268,4 @@ Materiały
 
 **Źródła:**
 
-* :download:`quiz.zip <quiz.zip>`
 * :download:`Instrukcja w pdf dla Pythona 2 <../../pdf/quiz_flask.pdf>`
