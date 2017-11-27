@@ -16,22 +16,14 @@ prowadzonych przez Fundację `Centrum Edukacji Obywatelskiej`_ w latach 2014-201
 Początkowe materiały zakładały wykorzystanie języka Python w wersji 2.
 W wersji obecnej wszędzie, gdzie to możliwe, używamy Pythona 3.
 
-Forum
-=====
-
-Zachęcamy do dyskusji i zadawania pytań na `naszym forum <http://discourse.kodujzklasa.pl/>`_
-
 Pobieranie dokumentacji
 =======================
 
-Materiały można pobrać do czytania w `wersji offline
-<http://readthedocs.org/projects/python101/downloads/htmlzip/latest/>`_.
-
-Materiały można także pobrać, zmodyfikować i przygotować według `instrukcji w repozytorium`_
+* `Wersja HTML offline <http://readthedocs.org/projects/python101/downloads/htmlzip/latest/>`_
+* `Wersja źródłowa w GitHubie <https://github.com/koduj-z-klasa/python101>`_
 
 .. _Koduj z Klasą: http://www.ceo.org.pl/koduj
 .. _Centrum Edukacji Obywatelskiej: http://www.ceo.org.pl/
-.. _instrukcji w repozytorium: https://github.com/koduj-z-klasa/python101
 
 
 Przygotowanie do szkoleń

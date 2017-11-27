@@ -1,11 +1,9 @@
-:orphan:
-
 Autorzy
 -------
 
 - `Robert Bednarz <ecg@ecg.vot.pl>`_:
-  "System i oprogramowanie", "Podstawy Pythona", "Gra robotów", "Gry w Pythonie"
-  (wersje strukturalne), "Bazy danych w Pythonie", "Aplikacje okienkowe",
+  "System i oprogramowanie", "Podstawy Pythona", "Matplotlib", "Gra robotów", "Gry w Pythonie"
+  (wersje strukturalne), "Bazy danych w Pythonie", "Aplikacje okienkowe Qt5",
   "Aplikacje WWW (Flask)", "Aplikacje WWW (Django)", "Minecraft Pi", "Scenariusze"
 - `Dorota Rybicka <rybicka.dorota@gmail.com>`_ ("Wprowadzenie do języka Python")
 - `Adam Jurkiewicz <biuro@cyfrowaszkola.waw.pl>`_ ("IDE - edytory kodu")
