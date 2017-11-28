@@ -290,8 +290,8 @@ odczytu danych danych z bazy. Dodajemy funkcję ``quiz()``:
 .. highlight:: python
 .. literalinclude:: quiz2_pw/views.py
     :linenos:
-    :lines: 28-48
-    :lineno-start: 28
+    :lines: 27-48
+    :lineno-start: 27
 
 * ``@app.route('/quiz', methods=['GET', 'POST'])`` – określenie obsługiwanego adresu URL
   oraz akcpetowanych metod żądań,
