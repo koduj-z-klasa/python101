@@ -15,15 +15,26 @@ Inerpreter Pythona
 Na stronie `Python Releases for Windows <https://www.python.org/downloads/windows/>`_
 klikamy link *Last Python 3 Release - ...* i pobieramy instalator
 :file:`Windows executable installer` w odpowiedniej wersji, tj.
-*x86-64* (64-bitowe, wersja zalecanaj) lub *x86* (32-bitowej.
+*x86-64* (64-bitowe, wersja zalecana) lub *x86* (32-bitowej.
+
+.. figure:: img/python00.jpg
 
 .. tip::
 
-    Podczas instalacji zaznaczamy opcję "Add Python.exe to Path".
+    Podczas instalacji zaznaczamy opcję "Add Python.exe to Path" i wybieramy "Customize installation".
 
-.. figure:: img/python361_00.jpg
+.. figure:: img/python01.jpg
 
-.. figure:: img/python361_01.jpg
+.. figure:: img/python02.jpg
+
+Na końcu instalacji można aktywować opcję "Disable path length limit".
+
+.. figure:: img/python03.jpg
+
+Podczas pierwszego uruchomienia możemy zobaczyć komunikat zapory systemowej.
+Zezwalamy na dostęp wybierając sieci prywatne:
+
+.. figure:: img/python04.jpg
 
 
 Narzędzia
@@ -56,8 +67,8 @@ SQLite3
 
 Ze strony `SQLite Download Page <http://>`_, z sekcji *Precompiled Binaries for Windows*
 ściągamy skompilowany interpreter dla 64- lub 32-bitowej wersji Windows.
-Przykładowe archiwum :file:`sqlite-dll-win64-x64-3140200.zip` należy rozpakować,
-najlepiej do katalogu systemowego (:file:`C:\Windows\System32`),
+Przykładowe archiwum :file:`sqlite-tools-win32-x86-3220000.zip` należy rozpakować,
+najlepiej do katalogu systemowego (:file:`C:\\Windows\\System32`),
 żeby był dostępny z każdej lokalizacji.
 
 .. _pyqt-win:
