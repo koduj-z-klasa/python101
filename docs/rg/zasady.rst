@@ -48,22 +48,33 @@ Do tego musisz dojść sam.
 Środowisko testowe
 *******************
 
-Do budowania i testowania robotów używamy biblioteki *rg* z pakietu *rgkit*.
-Przygotujemy więc środowisko deweloperskie w katalogu :file:`robot`.
+Do budowania i testowania robotów używamy pakietu *rgkit*.
+Środowisko deweloperskie przygotujemy w katalogu :file:`robot`.
+
+.. note::
+
+  W polecanych przez nas dystrybucjach :ref:`Linux Live <linux-live>`
+  środowisko testowe jest już przygotowane.
 
 .. attention::
 
-    Jeżeli korzystasz z polecanej przez nas na warsztaty dystrybucji *LxPupXenial*,
-    środowisko testowe jest już przygotowane w katlogu :file:`~/robot`.
+  Uwaga: biblioteka *rgkit* i symulator gry wymagają **Pythona 2.7.x**.
+
 
 W terminalu wydajemy polecenia:
 
 .. code-block:: bash
 
     ~$ mkdir robot; cd robot
-    ~robot$ virtualenv env
+    ~robot$ virtualenv -p python2.7 env
     ~robot$ source env/bin/activate
     (env):~/robot$ pip install rgkit
+
+.. note::
+
+  W środowisku Windows polecenie aktywujące środowisko wirtualne będzie miało postać:
+  ``env\\Scripts\\activate.bat``.
+
 
 Dodatkowo instalujemy pakiet zawierający roboty open source, następnie symulator
 ułatwiający testowanie, a na koniec tworzymy skrót do jego uruchamiania:
@@ -78,6 +89,7 @@ Po wykonaniu wszystkich powyższych poleceń i komendy ``ls -l`` powinniśmy zob
 
 .. figure:: img/rgkit_env.png
 
+
 Kolejne wersje robota proponujemy zapisywać w plikach *robot01.py*, *robot02.py*
 itd. Będziemy mogli je uruchamiać lub testować za pomocą poleceń:
 
@@ -85,6 +97,7 @@ itd. Będziemy mogli je uruchamiać lub testować za pomocą poleceń:
 
     (env)~/robot$ rgrun robot01.py robot02.py
     (env)~/robot$ rgrun bots/stupid26.py robot01.py
+    (env)~/robot$ python ./symuluj robot01.py
     (env)~/robot$ python ./symuluj robot01.py robot02.py
 
 Obsługa symulatora
@@ -99,10 +112,11 @@ Obsługa symulatora
 * Klawisz **Enter**: uruchomienie rundy.
 * Klawisz **G**: tworzy i usuwa roboty w punktach wejścia (ang. *spawn locations*), "generowanie robotów".
 
+
 .. attention::
 
     Opisana instalacja zakłada użycie środowiska wirtualnego tworzonego
-    przez polecenie *virtualenv*, dlatego przed uruchomieniem rozgrywki
+    przez polecenie *virtualenv*. Przed uruchomieniem rozgrywki
     lub symulacji trzeba pamiętać o wydaniu w katalogu :file:`robot` polecenia
-    ``source env/bin/activate``. Poleceniem ``deactivate`` opuszczamy
-    środowisko wirtualne.
+    ``source env/bin/activate`` (Linux) lub ``env\\Scripts\\activate.bat`` (Windows).
+    Poleceniem ``deactivate`` opuszczamy środowisko wirtualne.
