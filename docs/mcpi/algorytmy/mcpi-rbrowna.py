@@ -25,7 +25,7 @@ def plac(x, y, z, roz=10, gracz=False):
     Wymaga: globalnych obiektów mc i block.
     """
 
-    podloga = block.WATER
+    podloga = block.SAND
     wypelniacz = block.AIR
 
     # podloga i czyszczenie
