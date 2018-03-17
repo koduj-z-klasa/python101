@@ -124,7 +124,7 @@ losowe roboty.
     # funkcja znajdująca najsłabszego robota
 
     def minhp(bots):
-        return min(bots, key=lambda x: robots[x].hp)
+        return min(bots, key=lambda x: game.robots[x].hp)
 
     elif wrogowie_obok:
         ...
