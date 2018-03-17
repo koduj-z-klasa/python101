@@ -24,21 +24,21 @@ Całość bardzo dobrze nadaje się do nauki programowania z wykorzystaniem jęz
 
 **Instalacja bibliotek**
 
-Symulator *mcpi-sim* zawiera biblioteki *mcpi* w katalogu :file:`~/mcpi-sim/mcpi`,
-zainstalujemy go poleceniem:
+Wszystkie biblioteki oraz symulator umieściliśmy w archiwum :download:`mcpi-sim.zip <mcpi-sim.zip>`,
+które należy pobrać i rozpakować w katalogu użytkownika. W kolejnych scenariuszach zakładamy,
+że tworzone skrypty zapisujemy w katalogu ``~/mcpi-sim``.
 
-.. code-block:: bash
-
-    ~$ git clone https://github.com/pddring/mcpi-sim.git
-
-Do działania symulatora potrzebna jest biblioteka *PyGame*. Zobacz, jak ją zainstalować
-w systemie :ref:`Linux <linux-pakiety>` lub :ref:`Windows <pygame-win>`.
 
 .. note::
 
-  * Dystrybucja XenialPup KzkBox przygotowana na potrzeby naszego projektu zawiera już symulator.
-  * Opisane poniżej scenariusze można realizować bezpośrednio w Raspbianie na Raspberry Pi.
-  * Same biblioteki *mcpi* można zainstalować poleceniem: ``git clone https://github.com/martinohanlon/mcpi.git``.
+  * Do działania symulatora potrzebna jest biblioteka *PyGame*.
+    Zobacz, jak ją zainstalować w systemie :ref:`Linux <linux-pakiety>` lub :ref:`Windows <pygame-win>`.
+    Symulator działa tylko w Pythonie 2.
+  * Dystrybucje :ref:`Linux Live <linux-live>` przygotowane na potrzeby naszego projektu
+    zawierają już symulator.
+  * Opisane poniżej scenariusze można realizować bezpośrednio na Raspberry Pi.
+  * Symulator dostępny jest w repozytorium ``https://github.com/pddring/mcpi-sim.git``.
+  * Biblioteki *mcpi* dostępne są w repozytorium ``https://github.com/martinohanlon/mcpi.git``.
 
 
 .. toctree::
