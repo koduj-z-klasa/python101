@@ -12,7 +12,7 @@ import mcpi.block as block  # import modułu block
 os.environ["USERNAME"] = "Steve"  # wpisz dowolną nazwę użytkownika
 os.environ["COMPUTERNAME"] = "mykomp"  # wpisz dowolną nazwę komputera
 
-mc = minecraft.Minecraft.create("192.168.1.10")  # połaczenie z symulatorem
+mc = minecraft.Minecraft.create("192.168.1.10")  # połączenie z serwerem
 
 
 def plac(x, y, z, roz=10, gracz=False):
@@ -86,7 +86,7 @@ def ruchyBrowna(dane=[]):
             y = y + r * np.sin(rad)  # wylicz współrzędną y
             x = int(round(x, 2))  # zaokrągl
             y = int(round(y, 2))  # zaokrągl
-            print x, y
+            print(x, y)
             lx.append(x)
             ly.append(y)
 

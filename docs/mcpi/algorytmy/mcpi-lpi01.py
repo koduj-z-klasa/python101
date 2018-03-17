@@ -11,7 +11,7 @@ import local.minecraftstuff as mcstuff
 os.environ["USERNAME"] = "Steve"  # nazwa użytkownika
 os.environ["COMPUTERNAME"] = "mykomp"  # nazwa komputera
 
-mc = minecraft.Minecraft.create("192.168.1.10")  # połączenie z symulatorem
+mc = minecraft.Minecraft.create("192.168.1.10")  # połączenie z serwerem
 
 
 def plac(x, y, z, roz=10, gracz=False):
