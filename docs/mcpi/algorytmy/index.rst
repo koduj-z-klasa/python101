@@ -119,6 +119,10 @@ Instrukcja ``sleep(1)`` wstrzymując budowanie na 1 sekundę wywołuje wrażenie
 animacji i pozwala śledzić na bieżąco budowany tor.
 Końcowe instrukcje służą zaznaczeniu początku i końca ruchu blokami obsydianu.
 
+Na koniec trzeba w funkcji ``ruchyBrowna()`` zmienić wywołanie ``rysuj()`` na
+``rysuj_linie()``.
+
+
 **Eksperymenty**
 
 Uruchamiamy kod i eksperymentujemy. Dla 100 ruchów z krokiem przesunięcia 5

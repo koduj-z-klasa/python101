@@ -3,7 +3,7 @@
 
 import os
 import numpy as np  # import biblioteki do obliczeń naukowych
-import matplotlib.pyplot as plt  # import biblioteki do tworzenia wykresów
+import matplotlib.pyplot as plt  # import biblioteki do tworzenia wykresow
 from random import randint
 from time import sleep
 import mcpi.minecraft as minecraft  # import modułu minecraft
