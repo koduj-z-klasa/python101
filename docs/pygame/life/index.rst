@@ -238,7 +238,7 @@ i zwróci tylko współrzędne żywych komórek.
 
 .. literalinclude:: code1a.py
     :linenos:
-    :lines: 141-150
+    :lines: 141-152
     :lineno-start: 141
 
 W kodzie powyżej mamy przykład dwóch pętli przy pomocy których sprawdzamy zawartość
