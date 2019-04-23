@@ -221,7 +221,7 @@ Tą metodę wywołamy w metodzie ``GameOfLife.draw``.
 
 .. literalinclude:: code1a.py
     :linenos:
-    :lines: 130-137
+    :lines: 130-139
     :lineno-start: 130
 
 Powyżej wykorzystaliśmy nie istniejącą metodę ``alive_cells`` która jak wynika z
