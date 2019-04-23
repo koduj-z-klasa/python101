@@ -25,7 +25,7 @@ Forum Koduj z Klasą
 
 Zachęcamy do dyskusji i zadawania pytań na forum:
 
-http://discourse.kodujzklasa.pl/
+http://forum.pspo.edu.pl/
 
 Linki do zapamiętania
 ---------------------
