@@ -14,7 +14,7 @@ również w maszynie wirtualnej, na dysku twardym lub wykorzystać do odzyskiwan
 **Na potrzeby szkoleń, do realizacji scenariuszy i codziennej pracy,
 dla nauczycieli i uczniów** przygotowaliśmy specjalne wersje dystrybucji
 `Porteus <http://porteus.org/>`_ (opartej na systemie Slackware)
-i `LxPup <http://lx-pup.weebly.com/>`_ (opartej na Ubutnu).
+i `LxPup <http://lx-pup.weebly.com/>`_ (opartej na Ubuntu).
 Systemy zawierają wszystkie dodatkowe narzędzia i biblioteki,
 pozwalają doinstalowywać programy, zapisują ustawienia i utworzone dokumenty.
 
