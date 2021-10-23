@@ -25,7 +25,7 @@ Forum Koduj z Klasą
 
 Zachęcamy do dyskusji i zadawania pytań na forum:
 
-http://discourse.kodujzklasa.pl/
+http://forum.pspo.edu.pl/
 
 Linki do zapamiętania
 ---------------------
@@ -50,6 +50,15 @@ Polecamy poniższe strony jako źródła dodatkowych materiałów dla uczestnik�
 - Strona główna programu KZK dla Python
   http://www.ceo.org.pl/pl/kodujzklasa/python
 
+- Serwis poświęcony Pythonowi w szkołach
+  https://python.szkola.pl/
+
+- Python w przeglądarce z przykładami dla SP
+  https://python.abixedukacja.eu/
+
+- Robot sterowany Pythonem i Blockly
+  http://robot.abixedukacja.eu/
+
 - Proste przykłady OEIiZK dla pythona
   http://python.oeiizk.edu.pl/
 
@@ -63,16 +72,22 @@ Polecamy poniższe strony jako źródła dodatkowych materiałów dla uczestnik�
   https://pypi.python.org/pypi
 
 - Django: Framework do robienia aplikacji WWW z bateryjkami i dużym ekosystemem dodatków
-  https://docs.djangoproject.com/en/1.11/
+  https://www.djangoproject.com/
 
   Polecamy tutorial w języku polskim:
   https://docs.djangoproject.com/pl/1.11/intro/tutorial01/
 
 - Flask: Elastyczny Framework do budowy aplikacji WWW. Prosty do prostych aplikacji.
-  http://flask.pocoo.org/
+  https://flask.palletsprojects.com/en/2.0.x/
+
+- FastAPI: rewelacyjny framework do tworzenia mikroserwisów API.
+  https://fastapi.tiangolo.com/
 
 - PyGame: Framework do tworzenia gier
   http://www.pygame.org/news.html
+
+- Pygame Zero: Wersja minimalistyczna
+  https://pygame-zero.readthedocs.io/en/stable/
 
 
 Modyfikacje i budowa dokumentacji offline
@@ -95,7 +110,7 @@ Autorzy
 -------
 
 - Robert Bednarz <ecg@ecg.vot.pl>
-- Adam Jurkiewicz <biuro@cyfrowaszkola.waw.pl>
+- Adam Jurkiewicz <biuro@abixedukacja.eu>
 - [Janusz Skonieczny][4]
 
   [1]: http://www.ceo.org.pl/koduj
