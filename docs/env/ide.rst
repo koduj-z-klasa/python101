@@ -116,8 +116,8 @@ Zainstaluj pobrany plik.
 Bezpłatna licencja
 ------------------
 
-Każdy nauczyciel może wystąpić o klucz licencyjny przy pomocy `formularza
-<https://www.jetbrains.com/buy/classroom/?product=pycharm>`_
+Każdy nauczyciel może wystąpić o klucz licencyjny przy pomocy
+`formularza <https://www.jetbrains.com/buy/classroom/?product=pycharm>`_
 dostępnego na stronie producenta.
 
 Polski słownik

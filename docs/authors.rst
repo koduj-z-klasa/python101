@@ -1,7 +1,7 @@
 Autorzy
 -------
 
-- `Robert Bednarz <ecg@ecg.vot.pl>`_:
+- `Robert Bednarz <&#101;&#099;&#103;&#064;&#115;&#114;&#118;&#052;&#048;&#053;&#055;&#056;&#046;&#115;&#101;&#111;&#104;&#111;&#115;&#116;&#046;&#099;&#111;&#109;&#046;&#112;&#108;>`_:
   "System i oprogramowanie", "Podstawy Pythona", "Matplotlib", "Gra robotów", "Gry w Pythonie"
   (wersje strukturalne), "Bazy danych w Pythonie", "Aplikacje okienkowe Qt5",
   "Aplikacje WWW (Flask)", "Aplikacje WWW (Django)", "Minecraft Pi", "Scenariusze"
