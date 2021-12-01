@@ -70,7 +70,7 @@ musimy wydać następujące polecenia SQL:
 Wydawanie poleceń SQL-a wymaga koncentracji na poprawności użycia tego języka,
 systemy ORM izolują nas od takich szczegółów pozwalając skupić się na logice danych.
 Tworzymy więc klasy opisujące nasze obiekty, tj. grupy i uczniów. Na podstawie
-Właściwości tych obierków system ORM utworzy odpowiednie pola tabel. Konkretna grupa
+właściwości tych obiektów system ORM utworzy odpowiednie pola tabel. Konkretna grupa
 lub uczeń, czyli instancje klasy, reprezentować będą rekordy w tabelach.
 
 .. raw:: html
