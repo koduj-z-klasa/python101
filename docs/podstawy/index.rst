@@ -27,8 +27,7 @@ internetowe (`Flask <http://flask.pocoo.org/>`_, `Django <http://django.pl/>`_)
 czy multimedialne i gry (`Pygame <http://pl.wikipedia.org/wiki/Pygame>`_).
 
 Istnieją również kompleksowe projekty oparte na Pythonie wspomagające naukową
-analizę, obliczenia i przetwarzanie danych, np.: `Anaconda <https://store.continuum.io/cshop/anaconda/>`_
-czy `Enthought Canopy <https://www.enthought.com/products/canopy/>`_.
+analizę, obliczenia i przetwarzanie danych, np.: `Anaconda <https://store.continuum.io/cshop/anaconda/>`_, `Enthought Deployment Manager <https://www.enthought.com/enthought-deployment-manager/>`_ czy `Enthought Tool Suite <https://docs.enthought.com/ets/>`_.
 
 .. toctree::
     :titlesonly:
