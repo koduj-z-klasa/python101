@@ -3,10 +3,9 @@
 IDE – edytory kodu
 ##################
 
-Skrypty Pythona można zapisywać w dowolnym edytorze tekstu, ale oczywiście
-wygodniej jest używać programów, które potrafią przynajmniej odpowiednio
+Skrypty Pythona można zapisywać w dowolnym edytorze tekstu, ale wygodniej jest
+używać edytorów programistycznych, które potrafią przynajmniej odpowiednio
 podświetlać kod.
-
 
 .. _geany-python:
 
@@ -22,46 +21,34 @@ dopełnianie poleceń, automatyczne zamykanie tagów, auto-wcięcia,
 pracę w kartach itd. Ma wbudowany podręczny notatnik oraz
 kompilowanie, budowanie i uruchamianie tworzonego kodu.
 
-W Linuksie
+Instalacja
 ----------------
 
-W systemach linuksowych korzystamy z dedykowanych menedżerów, np. w Xubuntu
-(i innych debianopochodnych) wystarczy wpisać w terminalu:
+W systemach opartych na Debianie (Linux Mint, Ubuntu) wystarczy wpisać w terminalu:
 
 .. code-block:: bash
 
-    ~$ sudo apt-get install geany geany-plugins
+    ~$ sudo apt-get install geany
 
-W Windows
-------------------
-
-W MS Windows ściągamy i instalujemy
-`pełną wersję binarną Geany <http://www.geany.org/Download/Releases>`_
-przeznaczoną dla tych systemów. *Pełna* oznacza tutaj, ze zawiera biblioteki
-GTK wykorzystywane przez program. Podczas standardowej instalacji można
-zmienić katalog docelowy, np. na ``C:\Geany``.
+W MS Windows ściągamy instalator ze strony
+`Geany Releases <http://www.geany.org/Download/Releases>`_ i przeprowadzamy instalację.
 
 Konfiguracja
 ------------
 
-Zanim rozpoczniemy pracę w edytorze, warto dostosować kilka ustawień.
-
-W menu `Narzędzia/Menedżer wtyczek` zaznaczamy pozycję "Addons" (dostępna
-po zainstalowaniu wtyczek), a następnie "Przeglądarka plików".
-Zanim wyjdziemy z okna naciskamy przycisk "Preferencje" i na zakładce
-"Przeglądarka plików" zaznaczamy opcję "Podążanie za ścieżką do bieżącego pliku".
-Dzięki temu w panelu bocznym w zakładce "Pliki" zobaczymy listę katalogów i plików,
-które łatwo możemy otwierać.
+Zanim rozpoczniemy pracę w edytorze, należy dostosować kilka ustawień.
 
 W menu `Edycja/Preferencje` :kbd:`CTRL+ALT+P` w zakładce `Edytor/Wcięcia` jako
-"Typ" wcięć wybieramy opcję "spacje".
+"Typ" wcięć wybieramy opcję "spacje". Wcięcia wstawiają się automatycznie.
+Do ręcznego wstawiania wcięć, np. zaznaczonego bloku kodu, używamy klawisza :kbd:`TAB` lub :kbd:`CTRL+I`,
+zmniejszenie wcięcia uzyskamy naciskając :kbd:`CTRL+U`.
 
-Jeżeli pracujemy ze skryptem Pythona, uruchomimy go naciskając klawisz F5
-(lub `Zbuduj/Wykonaj`). Wcięcia wstawiają się automatycznie lub poprzez
-naciśnięcie klawisza :kbd:`TAB`. Jeżeli chcielibyśmy wciąć od razu cały blok kodu,
-zaznaczamy go i również używamy :kbd:`TAB` lub :kbd:`CTRL+I`, zmniejszenie wcięcia uzyskamy
-naciskając :kbd:`CTRL+U`.
+Skrypty Pythona uruchamiamy naciskając klawisz F5 (lub `Zbuduj/Wykonaj`).
 
+W menu `Narzędzia/Menedżer wtyczek` można włączyć wtyczkę "Przeglądarka plików"
+i po naciśnięciu "Preferencje" zaznaczyć opcję "Podążanie za ścieżką do bieżącego pliku".
+Dzięki temu w panelu bocznym w zakładce "Pliki" zobaczymy listę katalogów i plików,
+które łatwo możemy otwierać.
 
 .. _pycharm-python:
 
@@ -77,41 +64,12 @@ za darmo do celów szkoleniowych. Interfejs nie został na razie spolszczony.
 To IDE doskonale wspiera proces uczenia się. Udostępnia nawigację po kodzie,
 podpowiedzi, wykrywa błędy i ma wbudowanych wiele innych udogodnień.
 
-**Zarówno w systemach Linux, jak i MS Windows pobieramy
-ostatnią wersję** `Professional Edition <http://www.jetbrains.com/pycharm/download/>`_
-ze strony producenta.
+Najprościej zainstalować
 
-W Linuksie
------------
-
-Wersja linuksowa to archiwum, które trzeba rozpakować. W terminalu wydajemy polecenia:
-
-.. code-block:: bash
-
-    ~$ sudo tar xzf pycharm-professional-2016.3.2.tar.gz -C /opt
-    ~$ sudo ln -s /opt/pycharm-2016.3.2/bin/pycharm.sh /usr/bin/pycharm
-
-Program zostanie rozpakowany do katalogu :file:`/opt/pycharm-wersja`,
-przy czym "wersja" to ciąg typu ``2016.3.2`` odczytany z nazwy archiwum.
-Drugie polecenie utworzy skrót pozwalający uruchamiać edytor za pomocą polecenia
-``pycharm`` w terminalu.
-
-.. note::
-
-    PyCharm wykorzystuje środowisko Java, które dostarczane jest razem z nim w wersji 64-bitowej.
-    Jeżeli czcionki w programie są nieczytelne, można w pliku :file:`~/.bashrc` (Debian i pochodne)
-    lub :file:`~/.bash_profile` (Arch Linux i pochodne) dodać poniższą linię:
-
-.. code-block:: bash
-
-    export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
-
-
-W Windows
-------------------
-
-Zainstaluj pobrany plik.
-
+Zarówno w systemach Linux, jak i MS Windows, na początku pobieramy i instalujemy
+aplikację `Toolbox App <https://www.jetbrains.com/toolbox-app/>`_.
+Po jej uruchomieniu wybieramy instalację PyCharma w wersji Professional
+(po okresie próbnym wymaga rejestracji) lub Community (darmowa).
 
 Bezpłatna licencja
 ------------------
