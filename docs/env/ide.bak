@@ -30,8 +30,7 @@ W systemach opartych na Debianie (Linux Mint, Ubuntu) wystarczy wpisać w termin
 
     ~$ sudo apt-get install geany
 
-W MS Windows ściągamy instalator ze strony
-`Geany Releases <http://www.geany.org/Download/Releases>`_ i przeprowadzamy instalację.
+W MS Windows ściągamy instalator ze strony `Geany Releases <http://www.geany.org/Download/Releases>`_ i przeprowadzamy instalację.
 
 Konfiguracja
 ------------
@@ -81,25 +80,9 @@ dostępnego na stronie producenta.
 Polski słownik
 --------------
 
-W programie możemy włączyć sprawdzanie polskiej pisowni.
-Pobieramy archiwum :download:`polish-dic.tgz <ide/polish-dic.tgz>`,
-następnie wydajemy polecenie w terminalu:
-
-.. code-block:: bash
-
-    ~$ sudo tar xzf polish-dic.tgz -C /
-
-– które wypakuje słownik ``polish.dic`` do katalogu :file:`/usr/share/dictionaries-common/`.
-Na koniec w ustawieniach programu (:kbd:`Ctrl+Alt+S`) wyszukujemy `Spelling`, klikamy
-zakładkę `Dictionaries` i znak `+` przy `Custom Dictionaries Folder` i wskazujemy
-katalog :file:`/usr/share/dictionaries-common/`.
-
-
-.. tip::
-
-    W Linuksie plik :file:`polish.dic` można wygenerować poleceniem:
-    ``aspell --lang pl dump master | aspell --lang pl expand | tr ' ' '\n' > polish.dic``
-
+W programie możemy włączyć sprawdzanie polskiej pisowni. Naciskamy
+:kbd:`Ctrl+Alt+S` i wyszukujemy "languages" i na zakładce "Natural Languages"
+dodajemy język polski.
 
 .. _st3-python:
 
@@ -136,14 +119,6 @@ pakietem, np.:
 .. code-block:: bash
 
     ~$ sudo dpkg -i sublime-text_build-3126_amd64.deb
-
-W Arch Linux i systemach na nim opartych (*Manjaro*, *Antergos*), edytor
-instalujemy z repozytorium AUR przy użyciu pomocniczego narzędzia
-``pacaur`` lub ``yaourt``, np.:
-
-.. code-block:: bash
-
-    ~$ pacaur -S sublime-text-dev
 
 Następnie pobieramy :download:`archiwum zip <ide/st3.zip>`
 i wypakowujemy do katalogu :file:`~/.config` za pomocą menedżera archiwów
