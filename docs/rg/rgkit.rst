@@ -29,7 +29,7 @@ W terminalu wydajemy polecenia:
     ~$ mkdir robot; cd robot
     ~robot$ virtualenv -p python2.7 env
     ~robot$ source env/bin/activate
-    (env):~/robot$ pip install rgkit
+    (env):~/robot$ pip install git+https://github.com/outkine/rgkit.git
 
 .. note::
 
