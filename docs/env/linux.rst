@@ -37,7 +37,8 @@ Interpreter, narzędzia i pakiety
 W Linuksach interpreter Pythona 3.x zainstalowany jest domyślnie.
 Wymagane pakiety Pythona i/lub wersję Pythona 2.x, a także narzedzia dodatkowe
 w razie potrzeby instalujemy za pomocą systemowego menedżera pakietów ``apt``.
-Pakiety można również instalować przy użyciu instalatora pakietów Pythona ``pip``.
+Pakiety można również instalować przy użyciu instalatora pakietów Pythona
+`pip <http://www.pip-installer.org/en/latest/>`_.
 
 .. note::
 
@@ -51,13 +52,13 @@ W terminalu wydajemy polecenie:
 
     ~$ sudo apt update
 
-#. Doinstalowanie Pythona 2.x:
+* Doinstalowanie Pythona 2.x:
 
    .. code-block:: bash
 
        ~$ sudo apt install python2-minimal
 
-#. Instalacja podstawowych narzędzi:
+* Instalacja podstawowych narzędzi:
 
    .. code-block:: bash
 
@@ -68,19 +69,19 @@ W terminalu wydajemy polecenie:
     W przypadku pakietów Pythona warto rozważyć instalację
     w :ref:`środowisku wirtualnym <pve>` dostępną dla zwykłego użytkownika.
 
-#. Ogólnosystemowa rozszerzonej konsoli:
+* Ogólnosystemowa instalacja rozszerzonej konsoli:
 
    .. code-block:: bash
 
        ~$ sudo apt install python3-qtconsole python3-tk python3-sip python3-pyqt5
 
-#. Instalacja rozszerzonej konsoli w środowisku wirtualnym:
+* Instalacja rozszerzonej konsoli w środowisku wirtualnym:
 
    .. code-block:: bash
 
        ~$ pip3 install qtconsole pyqt5
 
-#. Ogólnosystemowa instalacja dodatkowych pakietów (podczas instalacji w środowisku
+* Ogólnosystemowa instalacja dodatkowych pakietów (podczas instalacji w środowisku
    wirtualnym pomijamy ``sudo``):
 
    .. code-block:: bash
