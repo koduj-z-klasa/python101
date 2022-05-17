@@ -63,7 +63,7 @@ Połączenie z bazą
 =================
 
 Bazę danych już mamy, teraz pora napisać funkcje umożiwiające łączenie się
-z nią z poziomu naszej aplikacji. W pliku :file:`todo.py` dodajemy importy:
+z nią z poziomu naszej aplikacji. W pliku :file:`todo.py` dodajemy importy i kod:
 
 .. raw:: html
 
@@ -72,21 +72,8 @@ z nią z poziomu naszej aplikacji. W pliku :file:`todo.py` dodajemy importy:
 .. highlight:: python
 .. literalinclude:: todo_z2.py
     :linenos:
-    :lineno-start: 4
-    :lines: 4-7
-    :emphasize-lines: 1, 3-4
-
-– następnie wstawiamy kod:
-
-.. raw:: html
-
-    <div class="code_no">Plik <i>todo.py</i> <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
-
-.. highlight:: python
-.. literalinclude:: todo_z2.py
-    :linenos:
-    :lineno-start: 11
-    :lines: 11-31
+    :lineno-start: 1
+    :lines: 1-31
 
 Konfiguracja aplikacji przechowywana jest w obiekcie ``config``, który
 jest podklasą słownika i w naszym przypadku zawiera:
