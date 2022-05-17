@@ -63,7 +63,7 @@ Połączenie z bazą
 =================
 
 Bazę danych już mamy, teraz pora napisać funkcje umożiwiające łączenie się
-z nią z poziomu naszej aplikacji. W pliku :file:`todo.py` dodajemy importy i kod:
+z nią z poziomu naszej aplikacji. W pliku :file:`todo.py` dodajemy brakujący kod:
 
 .. raw:: html
 
@@ -73,7 +73,7 @@ z nią z poziomu naszej aplikacji. W pliku :file:`todo.py` dodajemy importy i ko
 .. literalinclude:: todo_z2.py
     :linenos:
     :lineno-start: 1
-    :lines: 1-31
+    :lines: 1-42
 
 Konfiguracja aplikacji przechowywana jest w obiekcie ``config``, który
 jest podklasą słownika i w naszym przypadku zawiera:
@@ -160,7 +160,7 @@ Po odwiedzeniu strony *127.0.0.1:5000/zadania* powinniśmy zobaczyć listę zada
 Dodawanie zadań
 ===============
 
-Wpisując adres w polu adresu przeglądarki, wysyłamy do serwera żądanie typu :term:`GET`,
+Po wpisaniu adresu w przeglądarce i naciśnięciu Enter, wysyłamy do serwera żądanie typu :term:`GET`,
 które obsługujemy zwracając klientowi odpowiednie dane (listę zadań).
 Dodawanie zadań wymaga przesłania danych z formularza na serwer – są to
 żądania typu :term:`POST`, które modyfikują dane aplikacji.
