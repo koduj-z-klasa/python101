@@ -17,9 +17,8 @@ natomiast ``#`` – jako root, czyli administrator.
 
 .. note::
 
-    W przygotowanym przez nas systemie *Porteus* pracujesz jako zwykły
-    użytkownik *guest*, natomiast w *LxPup KzkBox* pracujemy
-    jako użytkownik *root* w katalogu domowym :file:`/root`.
+    W przygotowanym przez nas systemie *MX Linux Live* pracujesz jako użytkownik
+    z loginem i hasłem *demo*.
 
 W systemie Windows
 ==================

@@ -5,11 +5,16 @@
 
 Do budowania i testowania robotów używamy pakietu *rgkit*. Działa on
 pod Pythonem 2 i 3, ale symulator, który jest nieocenionym narzędziem
-testowania robotów, działa tylko w Pythonie 2. W Linuksie interpreter jest
-zainstalowany domyślnie. W MS Windows ze strony `Python Releases <https://www.python.org/downloads/windows/>`_
-pobieramy instalator *Windows x86-64 MSI installer* (wersja 64-bitowa)
-lub *Windows x86 MSI installer* (wersja 32-bitowa). Podczas instalacji
-zaznaczamy opcję "Add python.exe to path".
+testowania robotów, działa tylko w Pythonie 2. W Linuksie Pythona 2
+trzeba doinstalować:
+
+.. code-block:: bash
+
+    ~$ sudo apt install python2-minimal
+
+W MS Windows na stronie `Python Releases <https://www.python.org/downloads/windows/>`_
+klikamy link *Latest Python2 Release* i pobieramy instalator *Windows x86-64 MSI installer* (wersja 64-bitowa).
+Podczas instalacji zaznaczamy opcję "Add python.exe to path".
 
 .. figure:: img/python27_01.jpg
 
@@ -80,8 +85,6 @@ Obsługa symulatora
 
 .. attention::
 
-    Opisana instalacja zakłada użycie środowiska wirtualnego tworzonego
-    przez polecenie *virtualenv*. Przed uruchomieniem rozgrywki
-    lub symulacji trzeba pamiętać o wydaniu w katalogu :file:`robot` polecenia
+    Opisana instalacja zakłada użycie środowiska wirtualnego, które przed uruchomieniem rozgrywki
+    lub symulacji trzeba aktywować w katalogu :file:`robot` poleceniem
     ``source env/bin/activate`` (Linux) lub ``env\\Scripts\\activate.bat`` (Windows).
-    Poleceniem ``deactivate`` opuszczamy środowisko wirtualne.

@@ -35,7 +35,7 @@ Interpreter, narzędzia i pakiety
 ================================
 
 W Linuksach interpreter Pythona 3.x zainstalowany jest domyślnie.
-Wymagane pakiety Pythona i/lub wersję Pythona 2.x, a także narzedzia dodatkowe
+Wymagane pakiety Pythona i/lub wersję Pythona 2.x, a także narzędzia dodatkowe
 w razie potrzeby instalujemy za pomocą systemowego menedżera pakietów ``apt``.
 Pakiety można również instalować przy użyciu instalatora pakietów Pythona
 `pip <http://www.pip-installer.org/en/latest/>`_.
@@ -43,52 +43,34 @@ Pakiety można również instalować przy użyciu instalatora pakietów Pythona
 .. note::
 
    Polecenie ``sudo`` oznacza, że do instalacji potrzebne są uprawnienia administracyjne,
-   co wymaga zalogowania na konto użytkownika utworzonego podczas instalacji i podania jego hasła.
+   czyli w praktyce należy być zalogowanym na koncie użytkownika utworzonym podczas instalacji systemu.
 
-Przed użyciem narzędzia ``apt`` warto zawsze zaktualizować listę dostępnego oprogramowania.
-W terminalu wydajemy polecenie:
-
-.. code-block:: bash
-
-    ~$ sudo apt update
-
-* Doinstalowanie Pythona 2.x:
+* Aktualizacja bazy oprogramowania i instalacja podstawowych narzędzi:
 
    .. code-block:: bash
 
-       ~$ sudo apt install python2-minimal
-
-* Instalacja podstawowych narzędzi:
-
-   .. code-block:: bash
-
+       ~$ sudo apt update
        ~$ sudo apt install python3-pip python3-venv git sqlite3
 
-.. tip::
-
-    W przypadku pakietów Pythona warto rozważyć instalację
-    w :ref:`środowisku wirtualnym <pve>` dostępną dla zwykłego użytkownika.
-
-* Ogólnosystemowa instalacja rozszerzonej konsoli:
+* Ogólnosystemowa instalacja rozszerzonych powłok:
 
    .. code-block:: bash
 
        ~$ sudo apt install python3-qtconsole python3-tk python3-sip python3-pyqt5
 
-* Instalacja rozszerzonej konsoli w środowisku wirtualnym:
-
-   .. code-block:: bash
-
-       ~$ pip3 install qtconsole pyqt5
-
-* Ogólnosystemowa instalacja dodatkowych pakietów (podczas instalacji w środowisku
-   wirtualnym pomijamy ``sudo``):
+* Ogólnosystemowa instalacja dodatkowych pakietów:
 
    .. code-block:: bash
 
        ~$ sudo pip3 install matplotlib
        ~$ sudo pip3 install pygame
        ~$ sudo pip3 install flask flask-wtf peewee sqlalchemy flask-sqlalchemy django
+
+.. tip::
+
+    Zamiast ogólnosystemowej instalacji rozszerzonych powłok i pakietów
+    zalecamy instalację w :ref:`środowisku wirtualnym <pve>`
+    dostępną dla zwykłego użytkownika.
 
 .. note::
 

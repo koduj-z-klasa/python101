@@ -5,8 +5,8 @@ Przygotowanie systemu Windows
 
 .. _python-ins:
 
-Inerpreter Pythona
-==================
+Interpreter Pythona
+===================
 
 .. note::
 
@@ -14,8 +14,7 @@ Inerpreter Pythona
 
 Na stronie `Python Releases for Windows <https://www.python.org/downloads/windows/>`_
 klikamy link *Last Python 3 Release - ...* i pobieramy instalator
-:file:`Windows executable installer` w odpowiedniej wersji, tj.
-*x86-64* (64-bitowe, wersja zalecana) lub *x86* (32-bitowej.
+:file:`Windows executable installer` w wersji *x86-64* (64-bitowej).
 
 .. figure:: img/python00.jpg
 
@@ -43,7 +42,7 @@ Narzędzia
 Git
 ----
 
-Podstawowego klienta w wersji 64- lub 32-bitowej pobieramy ze strony
+Podstawowego klienta w wersji 64-bitowej pobieramy ze strony
 `Downloading Git <https://git-scm.com/download/win>`_ i instalujemy, zaznaczając wszystkie opcje.
 
 :ref:`Alternatywna metoda instalacji <git-install>`, jak również zasady pracy z repozytoriami
@@ -56,18 +55,16 @@ W wierszu poleceń wydajemy następujące polecenia:
 
 .. code-block:: bat
 
-    pip install virtualenv
-    pip install ipython qtconsole
-
+    pip install ipython qtconsole pyqt5
 
 .. _sqlite3-win:
 
 SQLite3
 -------
 
-Ze strony `SQLite Download Page <http://>`_, z sekcji *Precompiled Binaries for Windows*
-ściągamy skompilowany interpreter dla 64- lub 32-bitowej wersji Windows.
-Przykładowe archiwum :file:`sqlite-tools-win32-x86-3220000.zip` należy rozpakować,
+Ze strony `SQLite Download Page <http://https://www.sqlite.org/download.html>`_,
+z sekcji *Precompiled Binaries for Windows* ściągamy powłokę dla 64-bitowej wersji Windows.
+Przykładowe archiwum :file:`sqlite-dll-win64-x64-3380500.zip` należy rozpakować,
 najlepiej do katalogu systemowego (:file:`C:\\Windows\\System32`),
 żeby był dostępny z każdej lokalizacji.
 
@@ -84,15 +81,11 @@ Biblioteki
 PyQt
 -----
 
-*Qtconsole* wymaga bibliotek PyQt. W Windows 32-bitowym ze strony `PyQt4 Download <http://https://www.riverbankcomputing.com/software/pyqt/download>`_ pobieramy plik `PyQt4-4.11.4-gpl-Py2.7-Qt4.8.7-x32.exe <http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.11.4/PyQt4-4.11.4-gpl-Py2.7-Qt4.8.7-x32.exe>`_
-i instalujemy.
-
-W wersji 64-bitowej Windowsa w terminalu wydajemy polecenie:
+*Qtconsole* wymaga bibliotek PyQt. W 64-bitowej wersji Windowsa w wierszu poleceń wydajemy polecenie:
 
 .. code-block:: bat
 
     pip install python-qt5
-
 
 .. _pygame-win:
 
@@ -106,9 +99,9 @@ i instalujemy:
 
 .. figure:: img/pygame_windows01.jpg
 
-W przypadku wersji 64-bitowej wejdź na stronę
+W przypadku wersji 64-bitowej wchodzimy na stronę
 `http://www.lfd.uci.edu/~gohlke/pythonlibs <http://www.lfd.uci.edu/~gohlke/pythonlibs>`_
-i pobierz pakiet ``pygame‑1.9.3‑cp36‑cp36m‑win_amd64.whl`` (dla Pythona 3.6).
+i pobieramy pakiet ``pygame‑1.9.3‑cp36‑cp36m‑win_amd64.whl`` (dla Pythona 3.6).
 Następnie otwieramy terminal w katalogu z zapisanym pakietem i wydajemy polecenie:
 
 .. code-block:: bat
@@ -155,7 +148,7 @@ Instalacja bibliotek wymaganych do scenariuszy *Aplikacje WWW*:
 Brak Pythona?
 =============
 
-Jeżeli nie możemy wywołać interpretera lub instalatora ``pip`` w terminalu,
+Jeżeli nie możemy wywołać interpretera lub instalatora ``pip`` w wierszu poleceń,
 oznacza to zazwyczaj, że zapomnieliśmy zaznaczyć opcji "Add Python.exe to Path" podczas
 instalacji interpretera. Najprościej zainstalować go jeszcze raz z zaznaczoną
 opcją.
