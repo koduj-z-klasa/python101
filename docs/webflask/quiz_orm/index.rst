@@ -27,7 +27,7 @@ Wykorzystywane biblioteki instalujemy przy użyciu instalatora ``pip``:
 .. note::
 
     W budowanym poniżej kodzie wykorzystamy ORM Peewee, na końcu omówimy
-    różnice w przypadlku użycia SQLAlchemy.
+    różnice w przypadku użycia SQLAlchemy.
 
 .. contents::
     :depth: 1
@@ -100,7 +100,7 @@ przez Bootstrapa bibliotekę `jQuery <https://jquery.com/>`_.
 
 
 * ``{{ url_for('static', filename='style.css') }}`` – funkcja ``url_for()``
-  pozwala wygenerować scieżkę do zasobów umieszczonych w podkatalogu :file:`static`;
+  pozwala wygenerować ścieżkę do zasobów umieszczonych w podkatalogu :file:`static`;
 * ``{% tag %}...{% endtag %}`` – tagi sterujące, wymagają zamknięcia(!),
 * ``{% block nazwa_bloku %}`` – tag pozwala definiować miejsca, w których
   szablony dziedziczące mogą wstawiać swój kod,
