@@ -22,7 +22,7 @@ skryptów i dokumentów.
 W systemie Windows
 ==================
 
-* Pobieramy :term:`obraz iso` `MXLinux2201.iso <https://drive.google.com/drive/folders/1Gzphi3N4eogsX2XiU4X7UbOvPp7w9iqE?usp=sharing>`_ (2,49GB).
+* Pobieramy :term:`obraz iso` `MXLinux2201.iso <https://drive.google.com/drive/folders/1gS8hcC0J8m47VkNdoPlrNxrejdEW8Yqa?usp=sharing>`_ (2,49GB).
 * Pobieramy program `Rufus <https://rufus.akeo.ie/>`_.
 * Wpinamy pendrajwa o pojemności min. 4 GB.
 * Uruchamiamy *Rufusa*, upewniamy się, że na liście "Urządzenie" wybrany jest właściwy pendrajw,
@@ -34,7 +34,7 @@ W systemie Windows
 W Linuksie
 ==========
 
-* Pobieramy :term:`obraz iso` `MXLinux2201.iso <https://drive.google.com/drive/folders/1Gzphi3N4eogsX2XiU4X7UbOvPp7w9iqE?usp=sharing>`_ (2,49GB).
+* Pobieramy :term:`obraz iso` `MXLinux2201.iso <https://drive.google.com/drive/folders/1gS8hcC0J8m47VkNdoPlrNxrejdEW8Yqa?usp=sharing>`_ (2,49GB).
 * Pobieramy archiwum programu `live-usb-maker-qt-21.11 appimage <https://github.com/dolphinoracle/lum-qt-appimage/releases>`_
   i rozpakowujemy go w dowolnym katalogu.
 * Wpinamy pendrajwa o pojemności min. 4 GB.
