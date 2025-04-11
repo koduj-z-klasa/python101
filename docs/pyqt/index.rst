@@ -37,8 +37,6 @@ za pomocą menedżera pakietów:
     kalkulator/index
     widzety/index
     todopw/index
-    gloss_pyqt
-
 
 .. note::
 

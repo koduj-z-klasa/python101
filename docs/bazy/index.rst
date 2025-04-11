@@ -26,7 +26,6 @@ Zobacz, jak je zainstalować w systemie :ref:`Linux <linux-pakiety>` lub :ref:`W
     sqlorm/index
     sql/dane
     sqlite3
-    glossary
 
 Materiały
 ***************

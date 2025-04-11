@@ -18,7 +18,6 @@ lub :ref:`Windows <webapps-win>`.
     quiz/index
     todo/index
     quiz_orm/index
-    ../glossary_www
 
 Materiały
 ***************

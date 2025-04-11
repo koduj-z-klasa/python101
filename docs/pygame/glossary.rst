@@ -3,20 +3,11 @@ Słownik PyGame
 
 .. glossary::
 
-    Klatki na sekundę (FPS)
+    klatki na sekundę (FPS)
         liczba klatek wyświetlanych w ciągu sekundy, czyli częstotliwość, z jaką statyczne obrazy pojawiają się na ekranie. Jest ona miarą płynności wyświetlania ruchomych obrazów.
 
-    Kanał alfa (ang. alpha channel)
+    kanał alfa (ang. alpha channel)
         w grafice komputerowej jest kanałem, który definiuje przezroczyste obszary grafiki. Jest on zapisywany dodatkowo wewnątrz grafiki razem z trzema wartościami barw składowych RGB.
-
-    Inicjalizacja
-        proces wstępnego przypisania wartości zmiennym i obiektom. Każdy obiekt jest inicjalizowany różnymi sposobami zależnie od swojego typu.
-
-    Iteracja
-        czynność powtarzania (najczęściej wielokrotnego) tej samej instrukcji (albo wielu instrukcji) w pętli. Mianem iteracji określa się także operacje wykonywane wewnątrz takiej pętli.
-
-    Zdarzenie (ang. event)
-        zapis zajścia w systemie komputerowym określonej sytuacji, np. poruszenie myszką, kliknięcie, naciśnięcie klawisza.
 
     pygame.locals
         moduła zawierający różne stałe używane przez Pygame, np. typy zdarzeń, identyfikatory naciśniętych klawiszy itp.
@@ -68,13 +59,3 @@ Słownik PyGame
         na użyciu pamięci. Listy w całości znajdują się pamięci podczas gdy generatory
         "tworzą" wartość na zawołanie.
         Czasem tak samo nazywane są funkcje zwracające generator (ang. generator function).
-
-    dziedziczenie
-        w programowaniu obiektowym nazywamy mechanizm współdzielenia funkcjonalności
-        między klasami. Klasa może dziedziczyć po innej klasie, co oznacza,
-        że oprócz swoich własnych atrybutów oraz zachowań, uzyskuje także te pochodzące
-        z klasy, z której dziedziczy.
-
-    przesłanianie
-        w programowaniu obiektowym możemy w klasie dziedziczącej przesłonić metody
-        z klasy nadrzędnej rozszerzając lub całkowicie zmieniając jej działanie

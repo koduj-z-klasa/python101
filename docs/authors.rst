@@ -1,7 +1,17 @@
-Autorzy
--------
+Autorzy aktualnych wersji
+-------------------------
 
-- `Robert Bednarz <&#120;&#105;n&#117;l&#115;w&#64;gm&#97;il&#46;c&#111;m>`_:
+- `Robert Bednarz <xinulsw@gmail.com>`_:
+  "System i oprogramowanie", "Podstawy Pythona", "Matplotlib", "Gra robotów", "Gry w Pythonie"
+  (wersje strukturalne), "Bazy danych w Pythonie", "Aplikacje okienkowe Qt5",
+  "Aplikacje WWW (Flask)", "Aplikacje WWW (Django)", "Minecraft Pi", "Scenariusze"
+- `Janusz Skonieczny <https://plus.google.com/+JanuszSkonieczny/>`_:
+  "Gry w Pythonie" (wersje obiektowe), "Git – wersjonowanie kodów źródłowych"
+
+Autorzy materiałów realizowanych podczas szkoleń 2014-2017
+----------------------------------------------------------
+
+- `Robert Bednarz <xinulsw@gmail.com>`_:
   "System i oprogramowanie", "Podstawy Pythona", "Matplotlib", "Gra robotów", "Gry w Pythonie"
   (wersje strukturalne), "Bazy danych w Pythonie", "Aplikacje okienkowe Qt5",
   "Aplikacje WWW (Flask)", "Aplikacje WWW (Django)", "Minecraft Pi", "Scenariusze"
