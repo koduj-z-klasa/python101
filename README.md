@@ -1,119 +1,40 @@
 Szkolenia Python 101
 ====================
 
-Niniejsze materiały to dokumentacja i kody źródłowe do szkoleń z
-języka Python realizowanych w ramach projektu [Koduj z Klasą][1]
-prowadzonego przez Fundację [Centrum Edukacji Obywatelskiej][2].
+Niniejsze materiały to aktualizowane i poprawiane wersje szkoleń
+z języka Python początkowo przygotowanych i realizowanych w ramach projektu
+[Koduj z Klasą](http://www.ceo.org.pl/koduj) prowadzonego przez
+Fundację [Centrum Edukacji Obywatelskiej](http://www.ceo.org.pl/) w latach 2014-2017.
+
+Początkowe materiały zakładały wykorzystanie języka Python w wersji 2.
+W wersji obecnej wszędzie, gdzie to możliwe, używany jest Python 3.
 
 Wersja HTML dokumentacji znajduje się pod adresem:
 
 http://python101.rtfd.io
 
-Nasze repozytorium
--------------------
-
-Zachęcamy do sklonowania tego repozytorium lokalnie:
-
-    $ git clone https://github.com/koduj-z-klasa/python101/
-
-Można je również pobrać jako archiwum ZIP:
-
-https://github.com/koduj-z-klasa/python101/archive/master.zip
-
-Forum Koduj z Klasą
---------------------
-
-Zachęcamy do dyskusji i zadawania pytań na forum:
-
-http://forum.pspo.edu.pl/
-
-Linki do zapamiętania
+Przydatne linki
 ---------------------
 
-Polecamy poniższe strony jako źródła dodatkowych materiałów dla uczestników szkoleń:
-
-- GitHub: Bezpłatne publiczne repozytoria kodu źródłowego
-  https://github.com/
-
-- BitBucket: Bezpłatne prywatne repozytoria kodu źródłowego dla małych zespołów
-  https://bitbucket.org/
-
-- SourceTree: Okienkowa aplikacja dla GIT pod Windows
-  http://www.sourcetreeapp.com/
-
 - PyCharm: Środowisko IDE dla Pythona bezpłatne na nauczycieli i uczniów
-  https://www.jetbrains.com/student/
-
-- Python101: Nasze repozytorium materiałów szkoleniowych
-  https://github.com/koduj-z-klasa/python101
-
-- Strona główna programu KZK dla Python
-  http://www.ceo.org.pl/pl/kodujzklasa/python
-
-- Serwis poświęcony Pythonowi w szkołach
-  https://python.szkola.pl/
-
-- Python w przeglądarce z przykładami dla SP
-  https://python.abixedukacja.eu/
-
-- Robot sterowany Pythonem i Blockly
-  http://robot.abixedukacja.eu/
-
-- Proste przykłady OEIiZK dla pythona
-  http://python.oeiizk.edu.pl/
-
-- Darmowy soft i usługi dla uczniów (w tym 100$ na serwer w internecie, hosting na ok. 1,5 roku)
-  https://education.github.com/pack
+  https://www.jetbrains.com/pycharm/download/
 
 - Dokumentacja Python'a i bibliotek standardowych
   https://docs.python.org/3/
 
-- PyPi: Python Package Index, miejsce w którym można poszukać biliotek instalowanych przy pomocy narzędzia PIP
-  https://pypi.python.org/pypi
-
-- Django: Framework do robienia aplikacji WWW z bateryjkami i dużym ekosystemem dodatków
+- Django: framework dla aplikacji WWW
   https://www.djangoproject.com/
 
-  Polecamy tutorial w języku polskim:
-  https://docs.djangoproject.com/pl/1.11/intro/tutorial01/
-
-- Flask: Elastyczny Framework do budowy aplikacji WWW. Prosty do prostych aplikacji.
+- Flask: framework dla aplikacji WWW
   https://flask.palletsprojects.com/en/2.0.x/
 
-- FastAPI: rewelacyjny framework do tworzenia mikroserwisów API.
-  https://fastapi.tiangolo.com/
-
-- PyGame: Framework do tworzenia gier
+- PyGame: framework do tworzenia gier
   http://www.pygame.org/news.html
 
-- Pygame Zero: Wersja minimalistyczna
-  https://pygame-zero.readthedocs.io/en/stable/
+Autorzy aktualnych wersji
+--------------------------
 
+- Robert Bednarz <xinulsw@gmail.com>
+- [Janusz Skonieczny][1]
 
-Modyfikacje i budowa dokumentacji offline
------------------------------------------
-
-Dokumentacja szkoleń przygotowywana jest za pomocą oprogramowania [Sphinx][3].
-Można je zainstalować lokalnie i wygenerować materiały w formacie html samodzielnie:
-
-    ~/python101$ sudo apt install python-pip
-    ~/python101$ sudo pip install virtualenv
-    ~/python101$ virtualenv .pve
-    ~/python101$ source .pve/bin/activate
-    (.pve) ~/python101$ pip install sphinx sphinx-rtd-theme
-
-Po instalacji w folderze dokumentacji wydajemy polecenie:
-
-    (.pve) ~/python101/docs$ make html
-
-Autorzy
--------
-
-- Robert Bednarz <ecg@ecg.vot.pl>
-- Adam Jurkiewicz <biuro@abixedukacja.eu>
-- [Janusz Skonieczny][4]
-
-  [1]: http://www.ceo.org.pl/koduj
-  [2]: http://www.ceo.org.pl/
-  [3]: http://sphinx-doc.org/latest/
-  [4]: http://plus.google.com/+JanuszSkonieczny/
+  [1]: http://plus.google.com/+JanuszSkonieczny/
