@@ -1,34 +1,31 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
-
-from PyQt5.QtWidgets import QApplication, QWidget
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QLabel, QGridLayout
+from PyQt6.QtWidgets import QApplication, QWidget
+from PyQt6.QtGui import QIcon
+from PyQt6.QtWidgets import QLabel, QGridLayout
 
 
 class Kalkulator(QWidget):
 
     def __init__(self, parent=None):
         super().__init__(parent)
-
         self.interfejs()
 
     def interfejs(self):
 
         # etykiety
-        etykieta1 = QLabel("Liczba 1:", self)
-        etykieta2 = QLabel("Liczba 2:", self)
-        etykieta3 = QLabel("Wynik:", self)
+        etykieta_1 = QLabel("Liczba 1:", self)
+        etykieta_2 = QLabel("Liczba 2:", self)
+        etykieta_3 = QLabel("Wynik:", self)
 
         # przypisanie widgetów do układu tabelarycznego
-        ukladT = QGridLayout()
-        ukladT.addWidget(etykieta1, 0, 0)
-        ukladT.addWidget(etykieta2, 0, 1)
-        ukladT.addWidget(etykieta3, 0, 2)
+        uklad_t = QGridLayout()
+        uklad_t.addWidget(etykieta_1, 0, 0)
+        uklad_t.addWidget(etykieta_2, 0, 1)
+        uklad_t.addWidget(etykieta_3, 0, 2)
 
         # przypisanie utworzonego układu do okna
-        self.setLayout(ukladT)
+        self.setLayout(uklad_t)
 
+        # ustawienia rozmiaru, ikony i tytułu okna
         self.setGeometry(20, 20, 300, 100)
         self.setWindowIcon(QIcon('kalkulator.png'))
         self.setWindowTitle("Prosty kalkulator")
@@ -37,7 +34,6 @@ class Kalkulator(QWidget):
 
 if __name__ == '__main__':
     import sys
-
     app = QApplication(sys.argv)
     okno = Kalkulator()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())

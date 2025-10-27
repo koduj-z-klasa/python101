@@ -1,13 +1,9 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
-
-from PyQt5.QtWidgets import QApplication, QWidget
+from PyQt6.QtWidgets import QApplication, QWidget
 
 
 class Kalkulator(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
-
         self.interfejs()
 
     def interfejs(self):
@@ -19,7 +15,6 @@ class Kalkulator(QWidget):
 
 if __name__ == '__main__':
     import sys
-
     app = QApplication(sys.argv)
     okno = Kalkulator()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
