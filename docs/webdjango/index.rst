@@ -9,8 +9,8 @@ projektowanie serwisów oferując gotowe rozwiązania wielu powtarzalnych i prac
 mechanizmów wymaganych w serwisach internetowych. Oferuje również gotowe środowisko testowe,
 czyli deweloperski serwer WWW, nie musimy instalować żadnych dodatkowych narzędzi typu LAMP (WAMP).
 
-Zobacz, jak zainstalować wymagane biblioteki w systemie :ref:`Linux <linux-pakiety>`
-lub :ref:`Windows <webapps-win>`.
+Przed rozpoczęciem pracy przygotuj w katalogu :file:`projekty_django`` :ref:`wirtualne środowisko Pythona <venv>`
+i zainstaluj pakiet *Django*.
 
 .. toctree::
     :maxdepth: 2

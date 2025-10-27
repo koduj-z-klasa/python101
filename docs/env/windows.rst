@@ -1,7 +1,7 @@
 .. _windows-env:
 
-Przygotowanie systemu Windows
-#############################
+Python w systemie Windows
+#########################
 
 .. _python-ins:
 

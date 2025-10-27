@@ -1,30 +1,6 @@
 Co musisz wiedzieć i umieć?
 ###########################
 
-O Pythonie
-==========
-
-`Python <http://www.python.org>`_ jest dynamicznie typowanym językiem interpretowanym
-(zob. :term:`język interpretowany`) `wysokiego poziomu <http://pl.wikipedia.org/wiki/J%C4%99zyk_wysokiego_poziomu>`_.
-Cechuje się czytelnością i zwięzłością kodu. Stworzony został w latach 90.
-przez `Guido van Rossuma <https://www.python.org/~guido/>`_,
-nazwa zaś pochodzi od tytułu serialu komediowego emitowanego w BBC pt.
-`"Latający cyrk Monty Pythona" <http://pl.wikipedia.org/wiki/Lataj%C4%85cy_cyrk_Monty_Pythona>`_.
-
-Według zestawień serwisu `TIOBE <http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html>`_
-Python jest w czołówce popularności języków programowania – 1 miejsce w sierpniu 2024 r.
-
-Python ma zróżnicowane zastosowanie m. in. dzięki licznym dodatkowym bibliotekom,
-które pozwalają tworzyć aplikacje matematyczne (`Matplotlib <http://pl.wikipedia.org/wiki/Matplotlib>`_),
-okienkowe (np. `PyQt <http://pl.wikipedia.org/wiki/PyQt>`_, `PyGTK <http://pl.wikipedia.org/wiki/PyGTK>`_,
-`wxPython <http://pl.wikipedia.org/wiki/WxPython>`_),
-internetowe (`Flask <http://flask.pocoo.org/>`_, `Django <http://django.pl/>`_)
-czy multimedialne i gry (`Pygame <http://pl.wikipedia.org/wiki/Pygame>`_).
-
-Istnieją również kompleksowe projekty oparte na Pythonie wspomagające naukową
-analizę, obliczenia i przetwarzanie danych, np.: `Anaconda <https://store.continuum.io/cshop/anaconda/>`_, `Enthought Deployment Manager <https://www.enthought.com/enthought-deployment-manager/>`_
-czy `Enthought Tool Suite <https://docs.enthought.com/ets/>`_.
-
 Tryb interaktywny
 =================
 
@@ -52,7 +28,13 @@ Po uruchomieniu powłoka wyświetli znak zachęty ``>>>``. Przydatne polecenia:
     >>> help(math.pow) # wyświetla pomoc nt. stałej lub funkcji dostępnej w pakiecie
     >>> exit()         # wyjście z trybu interaktywnego interpretera
 
-Znaki ``...`` oznaczają, że wpisujemy instrukcję złożoną, np. warunkową lub pętlę, i dalszy kod wymaga wcięć.
+.. figure:: img/python3_shell_terminal.png
+
+Tryb interaktywny może być również uruchomiony za pomocą domyślnego dla Pythona środowiska programowania, tzn. IDLE:
+
+.. figure:: img/python3_shell_idle.png
+
+Znaki ``...`` oznaczają, że wpisujemy instrukcję złożoną, np. warunkową lub pętlę, i kod wymaga wcięć.
 
 Skrypty Pythona
 =================
@@ -119,8 +101,12 @@ W scenariuszach często wykorzystujemy terminal, inaczej wiersz poleceń.
 
 .. note::
 
-  Katalogi i pliki można tworzyć nie tylko w terminalu, ale również za pomocą menedżera plików,
-  edytora lub środowiska programistycznego.
+    Klawisze strzałek GÓRA, DÓŁ służą w terminalu do przywoływania poprzednich
+    poleceń. Każde przywołane polecenie możesz przed zatwierdzeniem
+    zmienić używając klawiszy strzałek LEWO, PRAWO oraz DEL i BACKSPACE.
+
+    Katalogi i pliki można tworzyć nie tylko w terminalu, ale również za pomocą menedżera plików,
+    edytora lub środowiska programistycznego.
 
 Linux
 --------
@@ -149,5 +135,5 @@ Windows
 * Pamiętajmy, żeby skrypty zapisywać w plikach kodowanych jako UTF-8.
 
 .. admonition:: Pojęcia
-
+    
     :term:`interpreter`, :term:`terminal`, :term:`kod źródłowy`

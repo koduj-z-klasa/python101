@@ -16,7 +16,7 @@ takimi jak np. MySQL, MariaDB czy PostgresSQL.
 
 Do testowania baz danych SQLite można wykorzystać przygotowane przez jej twórców
 konsolowe narzędzie `sqlite3 <http://www.sqlite.org/cli.html>`_.
-Zobacz, jak je zainstalować w systemie :ref:`Linux <linux-pakiety>` lub :ref:`Windows <sqlite3-win>`.
+Zobacz: :ref:`instalacja klienta SQLite3 <sqlite3-install>`.
 
 .. toctree::
     :maxdepth: 2

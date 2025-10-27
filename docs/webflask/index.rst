@@ -9,8 +9,8 @@ Upraszcza on projektowanie zapewniając przejrzysty schemat łączenia adresów 
 widoków i szablonów. Domyślnie dostajemy również deweloperski serwer WWW,
 nie musimy instalować żadnych dodatkowych narzędzi typu LAMP (WAMP).
 
-Zobacz, jak zainstalować wymagane biblioteki w systemie :ref:`Linux <linux-pakiety>`
-lub :ref:`Windows <webapps-win>`.
+Przed rozpoczęciem pracy przygotuj w wybranym katalogu :ref:`wirtualne środowisko Pythona <venv>`
+i zainstaluj pakiet *Flask*.
 
 .. toctree::
     :maxdepth: 2

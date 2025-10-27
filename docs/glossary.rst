@@ -146,14 +146,15 @@ Słownik
 
     obraz iso
         format zapisu danych dysków CD/DVD, tzw. hybrydowe obrazy iso, wykorzystywane
-        do udostępniania dystrybucji linuksowych, umożliwiają uruchmianie
+        do udostępniania dystrybucji linuksowych, umożliwiają uruchomianie
         systemu zarówno z płyt optycznych, jak i napędów USB.
 
     ORM
         (ang. Object-Relational Mapping) – mapowanie obiektowo-relacyjne, oprogramowanie
-        odwzorowujące strukturę relacyjnej bazy danych na obiekty danego języka oprogramowania.
+        odwzorowujące strukturę relacyjnej bazy danych na obiekty danego języka programowania.
 
     szablon
+        wzorzec (nazywany czasem templatką) strony WWW wykorzystywany do renderowania widoków,
         plik zawierający znaczniki HTML oraz tagi szablonów, za pomocą których można:
         dziedziczyć kod z szablonu bazowego, używać instrukcji sterujących i/lub
         wstawiać przekazane do szablonu dane
@@ -203,9 +204,6 @@ Słownik
         interfejs użytkownika, często zawiera domyślny wybór aplikacji przeznaczonych
         do wykonywania typowych zadań. Najpopularnijesze środowiska to `XFCE`_,
         `Gnome`_, `KDE`_, `LXDE <http://pl.wikipedia.org/wiki/LXDE>`__, `Cinnamon`_, `Mate`_.
-
-    szablon
-        wzorzec (nazywany czasem templatką) strony WWW wykorzystywany do renderowania widoków.
 
     terminal
         inaczej zwany konsolą tekstową, wierszem poleceń itp. Program umożliwiający

@@ -295,7 +295,7 @@ rst_epilog = u"""
 .. |sphinx_version| replace:: {}
 
 :Utworzony: |date| o |time| w Sphinx |sphinx_version|
-:Autorzy: :doc:`Patrz plik "Autorzy" </authors>`
+:Autorzy: `Robert Bednarz <xinulsw@gmail.com>`_
 
 """.format(sphinx.__version__)
 

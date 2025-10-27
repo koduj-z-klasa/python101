@@ -32,14 +32,10 @@ które należy pobrać i rozpakować w katalogu użytkownika. W kolejnych scenar
 .. note::
 
   * Do działania symulatora potrzebna jest biblioteka *PyGame*.
-    Zobacz, jak ją zainstalować w systemie :ref:`Linux <linux-pakiety>` lub :ref:`Windows <pygame-win>`.
     Symulator działa tylko w Pythonie 2.
-  * Dystrybucje :ref:`Linux Live <linux-live>` przygotowane na potrzeby naszego projektu
-    zawierają już symulator.
   * Opisane poniżej scenariusze można realizować bezpośrednio na Raspberry Pi.
   * Symulator dostępny jest w repozytorium ``https://github.com/pddring/mcpi-sim.git``.
   * Biblioteki *mcpi* dostępne są w repozytorium ``https://github.com/martinohanlon/mcpi.git``.
-
 
 .. toctree::
     :maxdepth: 2
@@ -51,7 +47,6 @@ które należy pobrać i rozpakować w katalogu użytkownika. W kolejnych scenar
     algorytmy/index
     glife/index
     rgame/index
-    gloss_mcpi
 
 **Materiały**
 

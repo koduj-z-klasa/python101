@@ -123,4 +123,3 @@ Przydatne polecenia
     (.venv) pip install nazwa_pakietu     # instalacja pakietu
     (.venv) pip install nazwa_pakietu -U  # aktualizacja pakietu
     (.venv) pip uninstall nazwa_pakietu   # usunięcie pakietu
-

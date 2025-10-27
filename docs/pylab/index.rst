@@ -9,8 +9,8 @@ korzystanie z omawianej biblioteki na wzór środowiska `Matlab <http://pl.wikip
 Poniżej pokazujemy, jak łatwo przy użyciu Pythona wizualizować wykresy różnych
 funkcji.
 
-Zobacz, jak zainstalować matplotlib w systemie :ref:`Linux <linux-pakiety>`
-lub :ref:`Windows <matplotlib-win>`.
+Przed rozpoczęciem pracy przygotuj w wybranym katalogu :ref:`wirtualne środowisko Pythona <venv>`
+i zainstaluj pakiet *Matplotlib*.
 
 .. note::
 
