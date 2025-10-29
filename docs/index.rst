@@ -7,6 +7,7 @@ Niniejsze materiały to poprawiane i uzupełniane wersje szkoleń
 z języka Python początkowo przygotowanych i realizowanych w ramach projektu
 `Koduj z Klasą <http://www.ceo.org.pl/koduj>`_ prowadzonego przez
 Fundację `Centrum Edukacji Obywatelskiej <http://www.ceo.org.pl/>`_ w latach 2014-2017.
+Zobacz: `repozytorium <https://github.com/koduj-z-klasa/python101/>`_.
 
 Celem materiałów jest nauczenie programowania w języku :term:`Python`
 oraz pokazanie zastosowań tego języka w bardziej rozbudowanych projektach
