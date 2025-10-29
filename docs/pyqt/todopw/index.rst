@@ -21,7 +21,7 @@ Przykład wykorzystuje `programowanie obiektowe <https://pl.wikipedia.org/wiki/P
 
     	* Znajomość Pythona w stopniu średnim.
     	* Znajomość podstaw projektowania interfejsu z wykorzystaniem biblioteki Qt
-    	  (zob. scenariusze :ref:`Kalkulator <kalkulator-qt5>` i :ref:`Widżety <widzety-qt5>`).
+    	  (zob. scenariusze :ref:`Kalkulator <kalkulator-qt>` i :ref:`Widżety <widzety-qt5>`).
         * Znajomość podstaw systemów ORM (zob. scenariusz :ref:`Systemy ORM <systemy_orm>`).
 
 .. contents::

@@ -15,7 +15,7 @@ Przykład ilustruje również techniki `programowania obiektowego <https://pl.wi
 
     	* Znajomość Pythona w stopniu średnim.
     	* Znajomość podstaw projektowania interfejsu z wykorzystaniem bibliotek Qt
-    	  (zob. scenariusz :ref:`Kalkulator <kalkulator-qt5>`).
+    	  (zob. scenariusz :ref:`Kalkulator <kalkulator-qt>`).
 
 .. contents::
     :depth: 1

@@ -1,4 +1,4 @@
-.. _kalkulator-qt6:
+.. _kalkulator-qt:
 
 Kalkulator
 ###########################
@@ -6,7 +6,7 @@ Kalkulator
 .. highlight:: python
 
 Prosta 1-okienkowa aplikacja ilustrująca podstawy tworzenia interfejsu graficznego
-i obsługi działań użytkownika za pomocą Pythona 3 i PyQt6.
+i obsługi działań użytkownika za pomocą Pythona 3 i biblioteki **PyQt6**.
 Przykład wprowadza również podstawy `programowania obiektowego <https://pl.wikipedia.org/wiki/Programowanie_obiektowe>`_
 (ang. Object Oriented Programing).
 
@@ -218,7 +218,7 @@ Dalej w metodzie ``interfejs()`` po instrukcji ``self.setLayout(uklad_t)`` dopis
 
 Jednym ze zdarzeń jest kliknięcie przycisku (``clicked``), które wiążemy za pomocą metody
 ``conect()`` z metodami ``koniec()`` i ``dzialanie()``.
-Metody te dodajemy na końcu klasy ``Kalkulator()``:
+Metody te trzeba dodać do klasy ``Kalkulator()``. Zacznijmy od metody ``koniec()``:
 
 .. raw:: html
 
@@ -228,7 +228,7 @@ Metody te dodajemy na końcu klasy ``Kalkulator()``:
 .. literalinclude:: kalkulator03.py
     :linenos:
     :lineno-start: 73
-    :lines: 73-102
+    :lines: 73-75
 
 Metoda ``koniec()`` wywołana po kliknięciu przycisku "Koniec" wywołuje metodę ``close()`` okna głównego,
 co powoduje jego zamknięcie.
@@ -244,17 +244,30 @@ Działania
 *********
 
 Ze zdarzeniem kliknięcia przycisków działań powiązana została metoda ``działania()``.
+Dodajmy ją więc do klasy ``Kalkulator()``:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. highlight:: python
+.. literalinclude:: kalkulator03.py
+    :linenos:
+    :lineno-start: 76
+    :lines: 76-101
+
 Ponieważ jedna metoda ma obsłużyć cztery sygnały, musimy znać źródło sygnału (ang. *source*),
-czyli nadawcę (ang. *sender*): ``nadawca = self.sender()``.
+czyli nadawcę (ang. *sender*), w tym przypadku przycisk, który został kliknięty: ``nadawca = self.sender()``.
 
 W bloku ``try:`` przekształcamy wprowadzone w polach tekstowych liczby na typ zmiennoprzecinkowy.
 Operacja ta z powodu błędnych danych może zwrócić wyjątek, który przechwytujemy w klauzuli
 ``except ValueError`` i wyświetlamy ostrzeżenie: ``QMessageBox.warning()``.
 
-Jeżeli dane są poprawne, w złożonej instrukcji warunkowej sprawdzamy nadawcę
-(np. ``if nadawca.text() == "&Dodaj":``) i wykonujemy odpowiednie działanie.
+Jeżeli dane są poprawne, w złożonej instrukcji warunkowej identyfikujemy kliknięty
+poprzez umieszczony na nim komunikat, np. ``if nadawca.text() == "&Dodaj":``.
+Następnie wykonujemy odpowiednie dla danego przycisku działanie.
 
-Podczas dzielenia ponownie korzystamy z przechwytywania wyjątków, tym razem do obsługi
+Warto zwrócić uwagę, że w przypadku dzielenia ponownie korzystamy z przechwytywania wyjątków, tym razem do obsługi
 ewentualnego błędu dzielenia przez zero (``ZeroDivisionError``).
 
 .. figure:: img/kalkulator06.png
