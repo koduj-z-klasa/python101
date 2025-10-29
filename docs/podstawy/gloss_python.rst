@@ -18,7 +18,7 @@ Słownik Pythona
         Błędy wcięć zgłaszane są jako wyjątki ``IndentationError``.
 
     funkcja
-        blok często wykonywanego kodu wydzielony słowem kluczowym ``def``,
+        blok często wykonywanego kodu definiowany słowem kluczowym ``def``,
         opatrzony unikalną w danym zasięgu nazwą; może przyjmować dane
         i zwracać wartości za pomocą słowa kluczowego ``return``.
 
@@ -26,6 +26,11 @@ Słownik Pythona
         (ang. *generator expressions*) – zwięzły w notacji sposób tworzenia
         iteratorów według składni: ``( wyrażenie for wyraz in sekwencja if warunek )``
 
+    importowanie
+        powszechną praktyką jest umieszczanie często wykorzystywanego lub rozwijanego niezależnie kodu,
+        tj. stałych, funkcji, klas itp. w osobnych modułach; aby z kodu skorzystać, importujemy go, tzn.
+        włączamy do bieżącego skryptu; można importować całe moduły, np. ``import math``
+        lub wybrane części (stałe, funkcje, klasy), np. ``from math import sqrt, pi``.
 
     instrukcja warunkowa
         podstawowa konstrukcja w programowaniu, wykorzystuje wyrażenie logiczne
@@ -74,6 +79,15 @@ Słownik Pythona
         Tłumaczeniem i wykonywaniem programu zajmuje się specjalny program
         nazwany interpreterem języka.
 
+    krotka
+        (ang. *tuple*) podobnie jak lista, zawiera indeksowaną sekwencję takich samych lub
+        różnych elementów, ale nie można ich zmieniać. Często służy do
+        przechowywania lub przekazywania argumentów, stałych wartości itp.
+        Np. ``imiona = ('Ala', 'Ola', 'Ela')``. 1-elementową tuplę należy
+        zapisywać z dodatkowym przecinkiem: ``tupla1 = (1,)``. Tuplę
+        można rozpakować, tj. przypisać wartości kolejnych elementów do
+        zmiennych, np. ``a, b = 0, 1```.
+
     lista
         jedna z podstawowych struktur danych, indeksowana sekwencja takich samych
         lub różnych elementów, które można zmieniać. Przypomina tabele z innych
@@ -82,7 +96,13 @@ Słownik Pythona
 
     mapowanie funkcji
         w kontekście funkcji ``map()`` oznacza zastosowanie danej funkcji
-        do wszystkich dostarczonych wartości
+        do wszystkich podanych w drugim argumencie wartości
+
+    metoda
+        funkcje definiowane w klasach i wywoływane na rzecz obiektów będących instancjami tych klas,
+        np. ``"abc".upper()`` – ciągi znaków w Pythonie są instancjami klasy ``str``,
+        która definiuje wiele funkcji, czyli operacji, które można wykonywać na obiektach tekstowycgh;
+        wywołania metod można łączyć, np. ``" ABC ".strip().lower()``
 
     moduł
         plik zawierający wiele zazwyczaj często używanych w wielu programach
@@ -94,7 +114,7 @@ Słownik Pythona
         (ang. *slice notation*) pojedyncze elementy wszystkich sekwencji takich jak
         napisy, listy, tuple są indeksowane zaczynając od 0, odczytujemy je za pomocą indeksu,
         np.: ``napis[0]``; możliwe jest również odczytanie kilku elementów sekwencji
-        naraz, w najprostszej postacji trzeba określić indeks pierwszego i ostatniego
+        naraz, w najprostszej postaci trzeba określić indeks pierwszego i ostatniego
         (niewliczanego) elementu, np. ``napis[1:5]``.
 
     operatory
@@ -104,26 +124,41 @@ Słownik Pythona
         **Zawierania**: in, not in;
         **Porównania**: ==, >, <, <>, <=, >= != (jest różne).
 
-        Operator * rozpakowuję listę paramterów przekazaną funkcji.
+        Operator * rozpakowuję listę parametrów przekazaną funkcji.
         Operator ** rozpakuje słownik.
 
     pętla
         podstawowa konstrukcja w programowaniu, umożliwia powtarzanie fragmentów
         kodu zadaną ilość razy (pętla ``for``) lub dopóki podane wyrażenie
         logiczne jest prawdziwe (pętla ``while``). Należy zadbać, aby pętla
-        była skończona za pomocą odpowiedniego warunku lub instrukcji przeywającej
+        była skończona za pomocą odpowiedniego warunku lub instrukcji przerywającej
         powtarzanie. Np.:
 
 .. code-block:: python
 
     for i in range(11):
-        print i
+        print(i)
+
+    i = 0
+    while i < 10:
+        print(i)
+        i = i + 1
 
 .. glossary::
 
     serializacja
         proces przekształcania obiektów w strumień znaków lub bajtów,
         który można zapisać w pliku (bazie) lub przekazać do innego programu.
+
+    f-strings
+        (ang. formatted string literals) sformatowane literały (stałe wartości w kodzie) ciągów znaków,
+        rozpoczynają się małą lub wielką literą ``f`` i pozwalają umieszczać w napisach wartości wyrażeń, np. zmiennych;
+        wartości mogą być dodatkowo formatowane za pomocą specyfikatorów,
+        np.: ``f'Przybliżona wartość pi: {math.pi:.3f}.'``.
+
+        Zob.: `Formatted String Literals <https://docs.python.org/3/tutorial/inputoutput.html#tut-f-strings>`_,
+        `f-strings <https://docs.python.org/3/reference/lexical_analysis.html#f-strings>`_,
+        `Format Specification Mini-Language <https://docs.python.org/3/library/string.html#formatspec>`_
 
     słownik
         typ mapowania, zestaw par elementów w postaci "klucz: wartość". Kluczami mogą być
@@ -132,13 +167,6 @@ Słownik Pythona
         Dane ze słownika łatwo wydobyć: ``slownik['klucz']``,
         lub zmienić: ``slownik['klucz'] = wartosc``.
         Deklaracja pustego słownika: ``slownik = dict()``.
-
-    tupla
-        podbnie jak lista, zawiera indeksowaną sekwencję takich samych lub
-        różnych elementów, ale nie można ich zmieniać. Często służy do
-        przechowywania lub przekazywania ustawień, stałych wartości itp.
-        Np. ``imiona = ('Ala', 'Ola', 'Ela')``. 1-elementową tuplę należy
-        zapisywać z dodatkowym przecinkiem: ``tupla1 = (1,)``.
 
     typ danych
         W Pythonie wszystkie dane, tj. przypisane do nazw wartości, są obiektami określonego typu.
@@ -159,8 +187,11 @@ Słownik Pythona
         i wyniki działania programu.
 
     wyjątki
-        to komunikaty zgłaszane przez interpreter Pythona, pozwalające ustalić
-        przyczyny błędnego działania kodu.
+        to sygnały zgłaszane przez interpreter Pythona, pozwalające ustalić
+        przyczyny błędnego działania kodu, rozróżniamy wyjątki wbudowane
+        (`Built-in Exceptions <https://docs.python.org/pl/3.14/library/exceptions.html>`_)
+        i tworzone przez użytkownika
+        (`Wyjątki zdefiniowane przez użytkownika <https://docs.python.org/pl/3.14/tutorial/errors.html#tut-userexceptions>`_).
 
     wyrażenia lambda
         zwane czasem *funkcjami lambda*, mechanizm pozwalający zwięźle

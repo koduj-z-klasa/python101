@@ -340,6 +340,13 @@ Czytanie plików tekstowych:
 Pierwsza metoda używająca instrukcji ``with ... as ...`` jest preferowana,
 ponieważ zapewnia obsługę błędów i dba o zamknięcie pliku.
 
+Zliczanie wierszy w dużym pliku:
+
+.. code-block::
+    :linenos:
+
+    with open("test.txt", "r") as f:
+        liczba_wierszy = sum(1 for _ in f)
 
 Zapisywanie danych do pliku tekstowego:
 

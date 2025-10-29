@@ -3,17 +3,26 @@
 Podstawy Pythona
 #################
 
-Poznawanie Pythona zrealizujemy poprzez rozwiązywanie prostych zadań,
-które pozwolą zaprezentować elastyczność i łatwość tego języka.
-Sugerujemy używanie powłoki Pythona do testowania poznawanych funkcji i fragmentów kodu.
+Poznawanie Pythona zrealizujemy poprzez rozwiązywanie zadań,
+które pozwolą zaprezentować możliwości tego języka.
+
+.. tip::
+
+    Poznawane funkcje i fragmenty kodu warto wykonywać w interaktywnej powłoce Pythona.
 
 .. toctree::
     :titlesonly:
 
-    mlotek/index
-    dlotek/index
-    elotek/index
-    przyklady/index
+    przyklad01
+    przyklad02
+    przyklad03
+    przyklad04
+    przyklad05
+    przyklad06
+    przyklad07
+    maly_lotek
+    duzy_lotek
+    extra_lotek
     pythonizmy
     gloss_python
 
@@ -21,6 +30,5 @@ Materiały
 *********
 
 #. `Python (dokumentacja)`_
-#. :download:`Python 2 – przewodnik (pl) <python2-przewodnik.pdf>`
 
 .. _Python (dokumentacja): https://www.python.org/
