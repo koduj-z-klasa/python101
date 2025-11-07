@@ -1,0 +1,14 @@
+<!-- projekty_flask/todo/templates/users/loguj.html -->
+{% extends "index.html" %}
+{% block h1 %} Logowanie użytkownika {% endblock %}
+{% block body %}
+    <form method="POST" action="{{ url_for('users.loguj') }}">
+      <label for="login">Login:</label>
+      <input type="text" id="login" name="login" value="" required>
+      <br>
+      <label for="haslo">Hasło:</label>
+      <input type="password" id="haslo" name="haslo" value="" required>
+      <br>
+      <button type="submit">Zaloguj</button>
+    </form>
+{% endblock %}

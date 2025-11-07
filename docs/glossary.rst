@@ -132,8 +132,9 @@ Słownik
         z pliku :file:`models.py` definiujących obiekty przetwarzane w aplikacji, np. wiadomości.
         Po każdej zmianie modelu należy migrację utworzyć, a następnie ją wykonać.
 
-    model
-        schemat opisujący strukturę danych w bazie, np. klasa definiująca tabele i relacje między nimi.
+    model bazy danych
+        schemat opisujący strukturę danych w bazie, np. opis tabel i relacji między nimi lub
+        klasy definiujące atrybuty i relacje.
         `Więcej o modelu bazy danych »»» <https://pl.wikipedia.org/wiki/Model_bazy_danych>`_
 
     MVC

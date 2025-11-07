@@ -1,0 +1,29 @@
+<!-- templates/czat/wiadomosc_form.html -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodawanie wiadomości</title>
+</head>
+<body>
+    <h1>Dodaj wiadomość</h1>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Zapisz</button>
+    </form>
+
+    <h2>Lista wiadomości:</h2>
+    <ol>
+      {% for wiadomosc in wiadomosci %}
+      <li>
+        <strong>{{ wiadomosc.autor.username }}</strong> ({{ wiadomosc.data_pub }}):
+        <br /> {{ wiadomosc.tekst }}
+      </li>
+      {% endfor %}
+    </ol>
+
+    <p><a href="{% url 'czat:wiadomosci' %}">Strona główna</a></p>
+
+  </body>
+</html>

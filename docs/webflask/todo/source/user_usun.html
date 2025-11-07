@@ -1,0 +1,10 @@
+<!-- projekty_flask/todo/templates/users/usun.html -->
+{% extends "index.html" %}
+{% block h1 %} Usuwanie użytkownika {% endblock %}
+{% block body %}
+    <form method="POST" action="{{ url_for('users.usun') }}">
+      <p>Czy na pewno chcesz usunąć swoje konto oraz wszystkie zadania?</p>
+      <br>
+      <button type="submit">Usuń</button>
+    </form>
+{% endblock %}

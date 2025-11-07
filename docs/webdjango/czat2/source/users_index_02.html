@@ -1,0 +1,35 @@
+<!-- templates/users/index.html -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Lista użytkowników</title>
+</head>
+<body>
+    <h1>Lista użytkowników</h1>
+    <ul>
+    {% if users %}
+        {% for user in users %}
+            <li>{{ user.username }}</li>
+        {% endfor %}
+    {% else %}
+        <p>Brak użytkowników!</p>
+    {% endif %}
+    </ul>
+
+    {% if user.is_authenticated %}
+        <p>Jesteś już zalogowany jako {{ user.username }}.</p>
+        <form method="POST" action="{% url 'users:wyloguj' %}">
+            {% csrf_token %}
+            <button type="submit">Wyloguj</button>
+        </form>
+        <p><a href="{% url 'czat:lista' %}">Wiadomości »»»</a></p>
+    {% else %}
+        <p><a href="{% url 'users:rejestruj' %}">Utwórz konto</a></p>
+        <form method="POST" action="{% url 'users:loguj' %}">
+            {% csrf_token %}
+            <button type="submit">Zaloguj</button>
+        </form>
+    {% endif %}
+</body>
+</html>

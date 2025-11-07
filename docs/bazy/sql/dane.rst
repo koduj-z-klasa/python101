@@ -36,7 +36,7 @@ jako argument metody ``.executemany()`` (zob. przykład poniżej).
 
 Powyższy kod można zmodyfikować, aby zwracał dane w strukturę wymaganą
 przez ORM Peewee, tj. listę słowników zawierających dane w formacie
-"klucz":"wartość" (zob. :ref:`Systemy ORM -> Operacje CRUD <systemy_orm>`).
+"klucz":"wartość" (zob. :ref:`System ORM Peewee <orm_peewee>`).
 
 .. attention::
 

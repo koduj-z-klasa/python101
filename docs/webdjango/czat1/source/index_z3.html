@@ -1,0 +1,25 @@
+<!-- templates/czat/index.html -->
+<html>
+  <head></head>
+  <body>
+      <h1>Witaj w aplikacji Czat!</h1>
+
+      {% if messages %}
+        <ul>
+        {% for komunikat in messages %}
+           <li>{{ komunikat|capfirst }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+
+    {% if not user.is_authenticated %}
+      <a href="{% url 'czat:loguj' %}">Zaloguj</a>
+    {% else %}
+      <form action="{% url 'wyloguj' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Wyloguj się">
+      </form>
+    {% endif %}
+
+  </body>
+</html>

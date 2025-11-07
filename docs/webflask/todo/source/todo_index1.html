@@ -1,0 +1,11 @@
+<!-- projekty_flask/todo/templates/todo/index.html -->
+{% extends "index.html" %}
+{% block h1 %} Lista zadań {% endblock %}
+{% block body %}
+    <ol>
+      <!-- wypisujemy kolejno wszystkie zadania -->
+      {% for zadanie in zadania %}
+        <li>{{ zadanie.zadanie }} – <em>{{ zadanie.data_pub }}</em></li>
+      {% endfor %}
+    </ol>
+{% endblock %}

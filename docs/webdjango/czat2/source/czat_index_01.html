@@ -1,0 +1,17 @@
+<!-- templates/czat/index.html -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Aplikacja Czat 2</title>
+</head>
+<body>
+    <h1>Aplikacja Czat 2</h1>
+    <nav>
+        <a href="{% url 'czat:index' %}">Strona główna</a> &bull;
+        <a href="{% url 'users:loguj' %}">Zaloguj się</a> &bull;
+        <a href="{% url 'users:rejestruj' %}">Utwórz konto</a> &bull;
+        <a href="{% url 'czat:lista' %}">Lista wiadomości</a>
+    </nav>
+</body>
+</html>

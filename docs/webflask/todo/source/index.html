@@ -1,0 +1,36 @@
+<!-- projekty_flask/todo/templates/index.html -->
+<html>
+  <head>
+    <title>{{ config.SITE_NAME }}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+<body>
+  <h1>{% block h1 %} {{ config.SITE_NAME }} {% endblock %}</h1>
+
+  <nav>
+    <ul>
+      <li><a href="{{ url_for('index') }}">Strona główna »</a></li>
+    {% if g.user %}
+      <li><a href="{{ url_for('todo.index') }}">Lista zadań »</a></li>
+      <li><a href="{{ url_for('users.wyloguj') }}">Wyloguj się »</a></li>
+      <li><a href="{{ url_for('users.usun') }}">Usuń konto »</a></li>
+      <li>Zalogowany: {{ g.user['login'] }}</li>
+    {% else %}
+      <li><a href="{{ url_for('users.loguj') }}">Zaloguj się »</a></li>
+      <li><a href="{{ url_for('users.dodaj') }}">Dodaj konto »</a></li>
+    {% endif %}
+    </ul>
+  </nav>
+
+  {% with komunikaty = get_flashed_messages() %}
+    {% if komunikaty %}
+      {% for komunikat in komunikaty %}
+        <p> {{ komunikat }} </p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  {% block body %} {% endblock %}
+
+</body>
+</html>

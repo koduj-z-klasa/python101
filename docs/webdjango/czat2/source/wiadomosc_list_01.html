@@ -1,0 +1,34 @@
+<!-- templates/czat/wiadomosc_list.html -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Lista wiadomości</title>
+</head>
+<body>
+    <h1>Lista wiadomości</h1>
+    <ol>
+      {% for wiadomosc in wiadomosci %}
+      <li>
+        <strong>{{ wiadomosc.autor.username }}</strong> ({{ wiadomosc.data_pub }}):
+        <br> {{ wiadomosc.tekst }}
+      </li>
+      {% endfor %}
+    </ol>
+
+    {% if is_paginated %}
+      <p>
+      {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">Poprzednie</a>
+      {% endif %}
+
+        Strona {{ page_obj.number }} z {{ page_obj.paginator.num_pages }}.
+
+      {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Następne</a>
+      {% endif %}
+      </p>
+    {% endif %}
+
+  </body>
+</html>

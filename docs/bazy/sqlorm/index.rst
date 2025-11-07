@@ -16,8 +16,8 @@ przy użyciu języka :term:`SQL`, jak i systemów :term:`ORM` na przykładzie ro
 
     Niniejszy materiał koncentruje się na poglądowym wyeksponowaniu różnic w kodowaniu,
     komentarz ograniczono do minimum. Dokładne wyjaśnienia poszczególnych instrukcji
-    znajdziesz w materiale :ref:`SQL <sql_raw>` oraz :ref:`Systemy ORM <systemy_orm>`.
-    W tym ostatnim omówiono również ORM SQLAlchemy.
+    znajdziesz w materiale :ref:`SQL <sql_raw>` oraz :ref:`System ORM Peewee <orm_peewee>`
+    i :ref:`System ORM SQLAlchemy <orm_sqlalchemy>`.
 
 Połączenie z bazą
 ***********************
@@ -215,8 +215,8 @@ Zadania
 - Wykonaj scenariusz aplikacji :ref:`Quiz ORM <quiz-orm>`, aby zobaczyć przykład
   wykorzystania systemów ORM w aplikacjach internetowych.
 
-- Wykonaj scenariusz aplikacji internetowej :ref:`Czat (cz. 1) <czat-app>`,
-  zbudowanej z wykorzystaniem frameworku *Django*, korzystającego z własnego modelu ORM.
+- Wykonaj scenariusz aplikacji internetowej :ref:`Czat (cz. 1) <czat1>`,
+  zbudowanej z użyciem frameworku *Django*, korzystającego z własnego modelu ORM.
 
 Źródła
 *******************

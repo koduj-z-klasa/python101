@@ -1,0 +1,9 @@
+<!-- projekty_flask/todo/templates/todo/zadanie_dodaj.html -->
+{% extends "index.html" %}
+{% block h1 %} Dodawanie zadań {% endblock %}
+{% block body %}
+    <form method="POST" action="{{ url_for('todo.dodaj') }}">
+      <input name="zadanie" value=""> <br>
+      <button type="submit">Dodaj zadanie</button>
+    </form>
+{% endblock %}

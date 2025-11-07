@@ -1,0 +1,24 @@
+<!-- templates/users/loguj.html -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Logowanie użytkownika</title>
+</head>
+<body>
+    <h1>Logowanie użytkownika</h1>
+    {% if user.is_authenticated %}
+        <p>Jesteś już zalogowany jako {{ user.username }}.</p>
+        <form method="POST" action="{% url 'users:wyloguj' %}">
+            {% csrf_token %}
+            <button type="submit">Wyloguj</button>
+        </form>
+    {% else %}
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Zaloguj</button>
+        </form>
+    {% endif %}
+</body>
+</html>

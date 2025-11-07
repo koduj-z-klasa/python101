@@ -1,0 +1,44 @@
+/* todo/static/style.css */
+body { margin-top: 20px; background-color: lightgreen; }
+h1, p { margin-left: 20px; }
+ol { text-align: left; }
+form { display: inline-block; margin: 5px; }
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box
+  border-color: blue;
+  border-radius: 5px;
+}
+input:focus {
+  background-color: lightgray;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333333;
+}
+ul li { float: left; }
+ul li a, ul li span{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+ul li a:hover { background-color: #111111; }
+li { margin-bottom: 5px; }
+button {
+  padding: 8px 16px;
+  cursor: pointer;
+  color: blue;
+  font-size: 14px/1.5em;
+  background: white;
+  border: 1px solid grey;
+}
+.error { color: red; }
+.success { color: green; }
+.done { text-decoration: line-through; }

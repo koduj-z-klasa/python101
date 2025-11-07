@@ -1,0 +1,18 @@
+<!-- templates/czat/wiadomosc_usun.html -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuwanie wiadomości</title>
+</head>
+<body>
+    <h1>Usuń wiadomość</h1>
+    <form method="POST">
+      {% csrf_token %}
+      <p>Czy na pewno chcesz usunąć wiadomość:<br /><i>{{ object }}</i>?</p>
+      <button type="submit">Usuń</button>
+    </form>
+
+    <p><a href="{% url 'czat:lista' %}">Lista wiadomości</a></p>
+  </body>
+</html>

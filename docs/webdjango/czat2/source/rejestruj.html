@@ -1,0 +1,20 @@
+<!-- templates/users/rejestruj.html -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Rejestracja użytkownika</title>
+</head>
+<body>
+    <h1>Rejestracja użytkownika</h1>
+    {% if user.is_authenticated %}
+        <p>Jesteś już zalogowany jako {{ user.username }}.</p>
+    {% else %}
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Zarejestruj</button>
+        </form>
+    {% endif %}
+  </body>
+</html>
