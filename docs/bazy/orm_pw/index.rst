@@ -113,38 +113,25 @@ reprezentujących rekordy zdefiniowanych tabel oraz ich metod.
 .. literalinclude:: orm_pw.py
     :linenos:
     :lineno-start: 33
-    :lines: 33-51
+    :lines: 33-46
 
-Zanim dodamy pierwsze informacje sprawdzamy, czy w bazie są już zapisane jakieś obiekty typu ``Klasa``,
-wykonujemy więc kwerendę zliczającą definiowaną za pomocą kolejno wywoływanych metod:
-``Klasa().select().count()``. Jeżeli w bazie nie są zapisane żądne klasy, dodajemy dwie klasy.
+Metoda ``create()`` modelu służy do utworzenia jego instancji (obiektu) i zapisania odpowiedniego rekordu w bazie,
+czyli wykonania klauzuli ``INSERT`` języka SQL. Nazwane argumenty metody odpowiadają atrybutom modelu:
+``klasa = '1A', profil = 'matematyczny')``.
 
-Dodawanie polega na utworzeniu instancji odpowiedniego obiektu i podaniu w konstruktorze wartości
-jego atrybutów, np.: ``Klasa(nazwa = '1A', profil = 'matematyczny')``.
-Utworzony obiekt zapisujemy w bazie jako rekord za pomocą metody ``.save()``.
+Innym sposobem jest utworzenie instancji modelu i zapisanie obiektu w bazie jako rekordu za pomocą metody ``.save()``.
 
-Można również dodawać wiele rekordów na raz. Na początku tworzymy obiekt reprezentujący klasę
-o podanej nazwie jako kwerendę warunkową. Warunki podajemy jako parametry metody ``where()``:
-``Klasa.select().where(Klasa.nazwa == '1A').get()``.
+Można również dodawać wiele rekordów na raz. Tworzymy listę słowników ``uczniowie``. Każdy słownik zawieraja dane
+w formacie "klucz":"wartość", przy czym klucze są nazwami atrybutów klasy. Wartością klucza ``'klasa'`` jest
+instancja modelu ``Klasa``.
 
-Następnie definiujemy listę słowników ``uczniowie``. Każdy słownik zawieraja dane w formacie
-"klucz":"wartość", przy czym klucze są nazwami atrybutów klasy. Wartością klucza ``'klasa'`` jest
-utworzona wcześniej instancja klasy o nazwie ``1A``.
-
-Za pomocą metody ``insert_many()``, która jako parametr przyjmuje listę słowników,
+Następnie za pomocą metody ``insert_many()``, której jako argument podajemy przygotowaną listę słowników,
 dodajemy rekordy z danymi wielu uczniów do bazy.
 
-Odczytywanie danych
-*******************
+Odczyt danych
+*************
 
-Odczytywanie danych polega na u użyciu metody ``select()`` obiektu z opcjonalnymi metodami,
-które zawężają zbiór zwracanych rekordów. Do tej pory użyliśmy już instrukcji:
-
-- ``Klasa().select().count()`` – wybieramy wszystkie klasy i je zliczamy;
-- ``Klasa.select().where(Klasa.nazwa == '1A').get()`` – wybieramy obiekt reprezentujący klasę o nazwie ``1A``.
-
-
-Do skryptu dodajemy poniższy kod, który wypisze dane wszystkich klas oraz wszystkich uczniów zapisanych w bazie:
+Odczyt danych może być realizowany na wiele sposobów. Zacznijmy od uzupełnienia kodu skryptu:
 
 .. raw:: html
 
@@ -152,25 +139,28 @@ Do skryptu dodajemy poniższy kod, który wypisze dane wszystkich klas oraz wszy
 
 .. literalinclude:: orm_pw.py
     :linenos:
-    :lineno-start: 52
-    :lines: 52-67
+    :lineno-start: 47
+    :lines: 47-72
 
-Metoda ``select()`` wywołana dla danej klasy zwraca listę obiektów zapisanych w bazie.
-Elementy listy odczytujemy w pętli ``for klasa in klasy:`` i wypisujemy atrybuty kolejnych obiektów używając
-notacji z kropką: ``print(klasa.id, klasa.nazwa, klasa.profil)``.
+Do odczytywaniu wielu rekordów służy metoda ``select()`` modelu, która zwraca listę obiektów
+zapisanych w bazie. Listę możemy odczytać za pomocą pętli, np.: ``for klasa in klasy:``.
+Mamy również dostęp do atrybutów odczytywanych obiektów, możemy je wypisać dzięki notacji z kropką:
+``print(klasa.id, klasa.nazwa, klasa.profil)``.
 
-Funkcja ``czytaj_dane()``, pokazuje jak odczytywać dane obiektów połączonych relacjami, tj. dane z wielu tabel.
-Oprócz metody ``select()`` używamy metody ``join()``, aby wskazać obiekt (tabelę) połączony relacją zawierający
-dodatkowe dane, w tym przypadku informacje o klasie, do której przypisany jest uczeń: ``Uczen.select().join(Klasa)``.
-Zwrócone rekordy odczytujemy w pętli ``for``.
+Do odczytania jednego rekordu (obiektu) z bazy danych na podstawie wartości któregoś z jego atrybutów,
+możemy użyć metody ``where()``, która odpowiada klauzuli warunkowej ``WHERE`` języka SQL, np.:
+``Klasa.select().where(Klasa.nazwa == '1A').get()``. Dopóki interesuje nas jeden rekord z jednej tabeli,
+możemy też użyć skróconego zapytania: ``klasa = Klasa.get(Klasa.nazwa == '1A')``.
 
-Dodatkowe metody dostępne podczas odczytywania danych to:
-
-- ``.get()`` - zwraca pojedynczy rekord pasujący do zapytania lub wyjątek ``DoesNotExist``, jeżeli go brak;
-- ``.first()`` - zwróci z kolei pierwszy rekord ze wszystkich pasujących.
+W funkcji ``wypisz_liste_uczniow()`` do sprawdzenia liczby obiektów zapisanych w bazie używamy metody ``count()``.
+Jeżeli w bazie zapisano jakichś uczniów (``if Uczen().select().count():``),
+pobieramy ich dane używając złączenia z modelem ``Klasa``.
+Używamy metody ``join()``, która odpowiada klauzuli ``INNER JOIN`` języka SQL:
+``Uczen.select().join(Klasa)``. Zwróconą listę rekordów odczytujemy za pomocą pętli ``for``.
+Jeżeli w bazie nie ma żadnych uczniów, wypisujemy odpowiedni komunikat.
 
 Modyfikowanie danych
-====================
+********************
 
 Systemy ORM ułatwiają modyfikowanie danych w bazie, ponieważ operacja ta polega
 na zmianie wartości pól wybranego obiektu. W naszym skrypcie dopisujemy kod:
@@ -181,22 +171,17 @@ na zmianie wartości pól wybranego obiektu. W naszym skrypcie dopisujemy kod:
 
 .. literalinclude:: orm_pw.py
     :linenos:
-    :lineno-start: 68
-    :lines: 68-73
+    :lineno-start: 73
+    :lines: 73-80
 
-Powyższy kod pokazuje, jak zmienić przypisanie ucznia do klasy. Na początku zwróć uwagę na kwerendy warunkowe:
-
-- ``Uczen().select().join(Klasa).where(Uczen.id == 2).get()`` – zwraca obiekt
-  ucznia o identyfikatorze "2";
-- ``Klasa.select().where(Klasa.nazwa == '1B').get()`` – zwraca obiekt klasy o nazwię "1B".
-
-Modyfikacja polega na przypisaniu obiektu ``nowa_klasa`` do odpowiedniego atrybutu obiektu ``uczen``.
+Na początku odczytujemy obiekt klasy ``Uczen`` o podanym identyfikatorze oraz obiekt klasy ``Klasa`` o podanej nazwie.
+Następnie atrybutowi ``klasa`` obiektu reprezentującego ucznia przypisujemy obiekt klasy:
+``uczen.klasa = nowa_klasa``. Na koniec zapisujemy zmiany w bazie za pomocą metody ``save()``.
 
 Usuwanie danych
-================
+****************
 
-Usuwanie jest jeszcze prostsze. Wystarczy użyć metody ``delete_instance()`` obiektu przeznaczonego do
-usunięcia.
+Do skryptu dodajemy poniższy kod:
 
 .. raw:: html
 
@@ -204,11 +189,15 @@ usunięcia.
 
 .. literalinclude:: orm_pw.py
     :linenos:
-    :lineno-start: 74
-    :lines: 74-
+    :lineno-start: 87
+    :lines: 87-
 
-Za pomocą kwerendy warunkowej tworzymy obiekt ucznia o identyfikatorze "3",
-a następnie wywołujemy metodę ``delete_instance()``.
+Za pomocą kwerendy warunkowej odczytujemy obiekt ucznia o identyfikatorze "3",
+a następnie wywołujemy metodę ``delete_instance()``, która usuwa obiekt z bazy.
+
+Do usuwania wielu rekordów służy metoda ``delete()`` modelu połączona z metodą ``where()``,
+która pozwala wskazać rekordy do usunięcia. Należy pamiętać, żeby po utworzeniu
+zapytania wykonać go za pomocą metody ``execute()``.
 
 Po zakończeniu operacji wykonywanych na danych powinniśmy pamiętać o zamknięciu połączenia.
 Robimy to używając metody obiektu bazy ``baza.close()``
@@ -220,8 +209,8 @@ Zadania
    :download:`uczniowie.csv <uczniowie.csv>`.
    Wykorzystaj i zmodyfikuj funkcję ``pobierz_dane()`` opisaną w materiale :ref:`Dane z pliku <dane_z_pliku>`.
 
-2) Postaraj się przedstawione aplikacje wyposażyć w konsolowy interfejs,
-   który umożliwi operacje odczytu, zapisu, modyfikowania i usuwania rekordów.
+2) Dodaj do aplikacji konsolowy interfejs, który umożliwi operacje
+   odczytu, zapisu, modyfikowania i usuwania rekordów.
    Dane powinny być pobierane z klawiatury od użytkownika.
 
 3) Przedstawione rozwiązania warto użyć w aplikacjach internetowych
