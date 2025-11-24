@@ -1,106 +1,92 @@
 .. _orm_sqlalchemy:
 
-Systemy ORM
-##################
+System ORM SQLAlchemy
+#####################
 
-Znajomość języka SQL jest oczywiście niezbędna, aby korzystać z wszystkich możliwości baz danych,
-niemniej w wielu projektach można je obsługiwać inaczej, tj. za pomocą systemów ORM (ang. *Object-Relational Mapping*
-– mapowanie obiektowo-relacyjne). Pozwalają one traktować tabele w sposób obiektowy,
-co bywa wygodniejsze w budowaniu logiki aplikacji.
-
-Używanie systemów ORM, takich jak :term:`Peewee` czy :term:`SQLAlchemy`, w prostych projektach
+Używanie systemów ORM, takich jak :term:`SQLAlchemy`, w prostych projektach
 sprowadza się do schematu, który poglądowo można opisać w trzech krokach:
 
 1. deklaracja modelu opisującego bazę
 2. utworzenie na podstawie modelu tabel w bazie,
 3. wykonywanie operacji :term:`CRUD`.
 
-Poniżej spróbujemy pokazać, jak operacje wykonywane przy użyciu wbudowanego
-w Pythona modułu *sqlite3* zrealizować przy użyciu biblioteki Peewee.
+Przez model (zob. też: :term:`model bazy danych`) rozumiemy tutaj deklaracje klas i ich właściwości (atrybutów)
+opisujące obiekty, które będą przechowywane w bazie. Systemy ORM na podstawie klas tworzą
+odpowiednie tabele i pola, uwzględniając ich typy i powiązania. Odwzorowanie klas i ich właściwości
+na tabele, kolumny i relacje w bazie stanowi istotę mapowania relacyjno-obiektowego.
+
+Poniżej spróbujemy pokazać, jak wykonywać typowe operacje na bazie z wykorzystaniem biblioteki SQLAlchemy.
 
 .. note::
 
     Wyjaśnienia podanego niżej kodu są uproszczone ze względu na przejrzystość i poglądowość instrukcji.
     Do używania systemów ORM wystarczające jest poznanie ich interfejsu API.
 
+Środowisko pracy
+================
+
+Do tworzenia aplikacji możesz użyć dowolnych narzędzi, np. terminala i ulubionego edytora kodu.
+Sugerujemy jednak wykorzystanie środowiska **PyCharm** lub innego, ponieważ w ułatwiają pracę nad projektami
+w języku Python.
+
+Przed rozpoczęciem pracy przygotuj w wybranym katalogu, np. :file:`baza_orm`` :ref:`wirtualne środowisko Pythona <venv>`
+i w aktywnym środowisku zainstaluj pakiet *SQLAlchemy*:
+
+.. code-block:: bash
+
+    (.venv) ~/baza_orm$ pip install sqlalchemy
+
 Klasa bazowa
 ************
 
-W ulubionym edytorze utwórz dwa puste pliki o nazwach :file:`orm_pw.py` i :file:`orm_sa.py`.
-Pierwszy z nich zawierał będzie kod wykorzystujący ORM Peewee, drugi ORM SQLAlchemy.
-
-.. raw:: html
-
-    <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. literalinclude:: orm_pw.py
-    :linenos:
-    :lineno-start: 1
-    :lines: 1-16
+W ulubionym edytorze utwórz dwa plik o nazwie :file:`orm_sa.py`.
 
 .. raw:: html
 
     <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: orm_sa.py
+.. literalinclude:: orm_pw.py
     :linenos:
     :lineno-start: 1
     :lines: 1-17
 
-W jednym i drugim przypadku importujemy najpierw potrzebne klasy.
-Następnie tworzymy obiekt ``baza`` do obsługi bazy SQlite3 przechowywanej
-w zdefiniowanym pliku. Jeżeli zamiast nazwy pliku,
-podamy ``:memory:`` bazy umieszczone zostaną w pamięci RAM (przydatne
-podczas testowania).
+Na początku importujemy potrzebne klasy. Dalej tworzymy zmienną ``plik_bazy``,
+która będzie przechowywała nazwę pliku z bazą danych.
+Jeżeli plik znajduje się na dysku (``if os.path.exists()``), usuwamy go (os.remove()),
+aby zapewnić bezproblemowe działanie skryptu podczas wielokrotnego uruchamiania.
 
-Do utworzenia modeli danych potrzebna będzie **klasa bazowa**. W przypadku systemu Peewee
-tworzymy ją w oparciu o klasę ``Model`` i w klasie ``Meta`` dodatkowo przypisujemy
-obiekt służący do komunikacji z bazą do atrybutu ``database``. W SqlAlchemy
-klasa bazowa tworzona jest w oparciu o klasę ``DeclarativeBase``.
+Następnie tworzymy obiekt ``baza`` do obsługi bazy SQlite3 przechowywanej w pliku :file:`baza_sa.db`.
 
-
-.. note::
-
-    Moduły ``os`` i ``sys`` nie są niezbędne do działania prezentowanego kodu.
-    W podanych przykładach usuwamy plik bazy, jeżeli znajduje się na dysku (``if os.path.ispath()``),
-    aby zapewnić bezproblemowe działanie podczas wielokrotnego uruchamiania skryptów.
+Do utworzenia modeli danych potrzebna będzie **klasa bazowa**, którą tworzymy w oparciu o klasę
+``DeclarativeBase``.
 
 Model danych
 *************
 
-Przez model rozumiemy tutaj deklaracje klas i ich właściwości (atrybutów)
-opisujące obiekty, które będą przechowywane w bazie. Systemy ORM na podstawie klas tworzą
-odpowiednie tabele i pola, uwzględniając ich typy i powiązania.
-Wzajemne powiązanie klas i ich właściwości z tabelami i kolumnami w bazie stanowi
-właśnie istotę mapowania relacyjno-obiektowego.
-
-.. raw:: html
-
-    <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. literalinclude:: orm_pw.py
-    :linenos:
-    :lineno-start: 18
-    :lines: 18-32
+Dodajemy definicje klas opisujących dwa obiekty reprezentujące klasę i ucznia. Każda klasa ma swoją nazwę
+i profil, każdy uczeń ma imię, nazwisko oraz przynależy do jakiejś klasy.
 
 .. raw:: html
 
     <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: orm_sa.py
+.. literalinclude:: orm_pw.py
     :linenos:
     :lineno-start: 18
     :lines: 18-37
 
-W obydwu przypadkach deklarowanie modelu opiera się na pewnej "klasie" podstawowej,
-którą nazwaliśmy ``BazaModel``. Dziedzicząc z niej, deklarujemy następnie
-własne klasy o nazwach *Klasa* i *Uczen* reprezentujące tabele w bazie.
-Właściwości tych klas odpowiadają kolumnom; w SQLAlchemy używamy nawet
-klasy o nazwie ``Column()``, która wyraźnie wskazuje na rodzaj tworzonego atrybutu.
-Obydwa systemy wymagają określenia *typu danych* definiowanych pól. Służą temu odpowiednie
-klasy, np. ``CharField()`` lub ``String()``. Możemy również definiować dodatkowe
-cechy pól, takie jak np. nie zezwalanie na wartości puste (``null=False`` lub ``nullable=False``)
-lub określenie wartości domyślnych (``default=''``).
+Deklarowanie modelu opiera się na dziedziczonej klasie podstawowej ``Base``.
+Klasy o nazwach ``Klasa`` i ``Uczen`` reprezentują tabele w bazie. Właściwości tych klas odpowiadają polom.
+Definicja każdego polaKażde pole definiujemy jest instancją klasy określającej typ danych i ma ograniczenia podawane jako dodatkowe argumenty
+konstruktora:
+
+- ``CharFiled()`` – klasa definiująca pole zawierające ciąg znaków,
+- ``null=False`` – ograniczenie, pole nie może zawierać wartości ``NULL``,
+- ``default=''`` – ograniczenie, wartość domyślna przechowywana w polu,
+- ``ForeignKeyField()`` – klasa definiująca relację, konstruktor otrzymuje nazwę klasy powiązanej,
+  z którą tworzymy relację, oraz nazwę atrybutu określającego relację zwrotną w powiązanej klasie;
+  dzięki temu wywołanie w postaci ``Klasa.uczniowie`` da nam dostęp do obiektów reprezentujących
+  uczniów przypisanych do danej klasy.
 
 Warto zwrócić uwagę, na sposób określania relacji. W *Peewee* używamy
 konstruktora klasy: ``ForeignKeyField(Klasa, related_name = 'uczniowie')``.
@@ -152,7 +138,7 @@ wykorzystujemy metody sesji, w ramach której komunikujemy się z bazą.
 
 .. raw:: html
 
-    <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: orm_pw.py
     :linenos:
@@ -245,7 +231,7 @@ tabelę lub do usunięcia instancji danej klasy.
 
 .. raw:: html
 
-    <div class="code_no">Peewee. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
 .. literalinclude:: orm_pw.py
     :linenos:

@@ -22,6 +22,20 @@ Poniżej spróbujemy pokazać, jak wykonywać typowe operacje na bazie z wykorzy
     Wyjaśnienia podanego niżej kodu są uproszczone ze względu na przejrzystość i poglądowość instrukcji.
     Do używania systemów ORM wystarczające jest poznanie ich interfejsu API.
 
+Środowisko pracy
+================
+
+Do tworzenia aplikacji możesz użyć dowolnych narzędzi, np. terminala i ulubionego edytora kodu.
+Sugerujemy jednak wykorzystanie środowiska **PyCharm** lub innego, ponieważ w ułatwiają pracę nad projektami
+w języku Python.
+
+Przed rozpoczęciem pracy przygotuj w wybranym katalogu, np. :file:`baza_orm`` :ref:`wirtualne środowisko Pythona <venv>`
+i w aktywnym środowisku zainstaluj pakiet *Peewee*:
+
+.. code-block:: bash
+
+    (.venv) ~/baza_orm$ pip install peewee
+
 Klasa bazowa
 ************
 
@@ -66,7 +80,7 @@ i profil, każdy uczeń ma imię, nazwisko oraz przynależy do jakiejś klasy.
     :lineno-start: 18
     :lines: 18-32
 
-Deklarowanie modelu opiera się na dziedziczonej klasie podstawowej ``Model``.
+Deklarowanie modelu opiera się na dziedziczonej klasie podstawowej ``Base``.
 Klasy o nazwach ``Klasa`` i ``Uczen`` reprezentują tabele w bazie. Właściwości tych klas odpowiadają polom.
 Każde pole jest instancją klasy określającej typ danych i ma ograniczenia podawane jako dodatkowe argumenty
 konstruktora:
