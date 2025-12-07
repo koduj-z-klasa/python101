@@ -36,31 +36,38 @@ class Uczen(Base):
 Base.metadata.create_all(baza)
 
 # tworzymy sesję, która przechowuje obiekty i umożliwia "rozmowę" z bazą
-sesja = Session(baza)
+with Session(baza) as sesja:
 
-# dodajemy dwie klasy, jeżeli tabela jest pusta
-if not sesja.query(Klasa).count():
-    sesja.add(Klasa(nazwa='1A', profil='matematyczny'))
-    sesja.add(Klasa(nazwa='1B', profil='humanistyczny'))
+    # dodajemy dwie klasy
+    klasa1 = Klasa(nazwa='1A', profil='matematyczny')
+    klasa2 = Klasa(nazwa='1B', profil='humanistyczny')
+    sesja.add(klasa1)
+    sesja.add(klasa2)
 
-# tworzymy instancję klasy Klasa reprezentującą klasę "1A"
-inst_klasa = sesja.query(Klasa).filter_by(nazwa='1A').one()
+    sesja.commit()
 
-# dodajemy dane wielu uczniów
-sesja.add_all([
-    Uczen(imie='Tomasz', nazwisko='Nowak', klasa_id=inst_klasa.id),
-    Uczen(imie='Jan', nazwisko='Kos', klasa_id=inst_klasa.id),
-    Uczen(imie='Piotr', nazwisko='Kowalski', klasa_id=inst_klasa.id),
-])
+    uczniowie = [
+        Uczen(imie='Tomasz', nazwisko='Nowak', klasa_id=klasa1.id),
+        Uczen(imie='Jan', nazwisko='Kos', klasa_id=klasa2.id),
+        Uczen(imie='Piotr', nazwisko='Kowalski', klasa_id=klasa2.id)
+    ]
+    # dodajemy dane wielu uczniów
+    sesja.add_all(uczniowie)
+
+    sesja.commit()
+
+exit()
 
 def czytajdane():
+    # if not sesja.query(Klasa).count():
     for uczen in sesja.query(Uczen).join(Klasa).all():
         print(uczen.id, uczen.imie, uczen.nazwisko, uczen.klasa.nazwa)
     print()
 
 
 czytajdane()
-
+# tworzymy instancję klasy Klasa reprezentującą klasę "1A"
+# klasa1 = sesja.query(Klasa).filter_by(nazwa='1A').one()
 # zmiana klasy ucznia o identyfikatorze 2
 inst_uczen = sesja.query(Uczen).filter(Uczen.id == 2).one()
 inst_uczen.klasa_id = sesja.query(Klasa.id).filter(

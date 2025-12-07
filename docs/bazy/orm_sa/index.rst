@@ -45,7 +45,7 @@ W ulubionym edytorze utwórz dwa plik o nazwie :file:`orm_sa.py`.
 
     <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: orm_pw.py
+.. literalinclude:: orm_sa.py
     :linenos:
     :lineno-start: 1
     :lines: 1-17
@@ -70,80 +70,59 @@ i profil, każdy uczeń ma imię, nazwisko oraz przynależy do jakiejś klasy.
 
     <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: orm_pw.py
+.. literalinclude:: orm_sa.py
     :linenos:
     :lineno-start: 18
     :lines: 18-37
 
-Deklarowanie modelu opiera się na dziedziczonej klasie podstawowej ``Base``.
-Klasy o nazwach ``Klasa`` i ``Uczen`` reprezentują tabele w bazie. Właściwości tych klas odpowiadają polom.
-Definicja każdego polaKażde pole definiujemy jest instancją klasy określającej typ danych i ma ograniczenia podawane jako dodatkowe argumenty
-konstruktora:
+Tworzenie modelu opiera się na dziedziczonej klasie podstawowej ``Base`` i mapowaniu deklaratywnym
+(ang. *Declarative Mapping*). Definicje klas o nazwach ``Klasa`` i ``Uczen`` z jednej strony opisują
+obiekty Pythona, z drugiej strony zawierają metainformacje opisujące tabele SQL,
+które utworzone zostaną w bazie. Definicje wykorzystują również wskazówki dotyczące typów danych
+(ang. *type hinst*). Przeanalizujmy kilka fragmentów kodu:
 
-- ``CharFiled()`` – klasa definiująca pole zawierające ciąg znaków,
-- ``null=False`` – ograniczenie, pole nie może zawierać wartości ``NULL``,
-- ``default=''`` – ograniczenie, wartość domyślna przechowywana w polu,
-- ``ForeignKeyField()`` – klasa definiująca relację, konstruktor otrzymuje nazwę klasy powiązanej,
-  z którą tworzymy relację, oraz nazwę atrybutu określającego relację zwrotną w powiązanej klasie;
-  dzięki temu wywołanie w postaci ``Klasa.uczniowie`` da nam dostęp do obiektów reprezentujących
-  uczniów przypisanych do danej klasy.
+- ``__tablename__`` – określa nazwę tabeli w bazie danych,
+- ``id: Mapped[int]`` – nazwa pola z adnotacją typu danych,
+- ``mapped_column()`` - funkcja pozwalająca definiować ograniczenia pól tworzonych w tabelach, np.:
 
-Warto zwrócić uwagę, na sposób określania relacji. W *Peewee* używamy
-konstruktora klasy: ``ForeignKeyField(Klasa, related_name = 'uczniowie')``.
-Przyjmuje on nazwę klasy powiązanej, z którą tworzymy relację, i nazwę atrybutu
-określającego relację zwrotną w powiązanej klasie. Dzięki temu
-wywołanie w postaci ``Klasa.uczniowie`` da nam dostęp do obiektów
-reprezentujących uczniów przypisanych do danej klasy. Zuważmy, że *Peewee*
-nie wymaga definiowania kluczy głównych, są tworzone automatycznie
-pod nazwą ``id``.
+  - ``Integer`` – pole przechowuje liczby całkowite,
+  - ``String(100)`` – pole przechowuje maksymalnie 40 znaków,
+  - ``primary_key=True`` – pole jest kluczem głównym,
+  - ``nullable=False`` – pole nie może zawierać wartości null,
+  - ``default=''`` – domyślna wartość pola,
+  - ``ForeignKey()`` – definiuje klucz obcy, jako argument podajemy nazwę tabeli i klucza głównego,
 
-W SQLAlchemy dla odmiany nie tylko jawnie określamy klucze główne
-(``primary_key=True``), ale i podajemy nazwy tabel (``__tablename__ = 'klasa'``).
-Klucz obcy oznaczamy odpowiednim parametrem w klasie definiującej pole
-(``Column(Integer, ForeignKey('klasa.id'))``). Relację zwrotną
-tworzymy za pomocą konstruktora ``relationship('Uczen', backref='klasa')``,
-w którym podajemy nazwę powiązanej klasy i nazwę atrybutu tworzącego
-powiązanie. W tym wypadku wywołanie typu ``uczen.klasa`` udostępni obiekt
-reprezentujący klasę, do której przypisano ucznia.
+- ``relationship()`` – funkcja, która tworzy relację zwrotną między dwoma zmapowanymi klasami podanymi
+  w adnotacji typu, np.: ``Mapped[List["Uczen"]]``, ``Mapped["Klasa"]``; argument ``back_populates``
+  pozwala wskazać nazwę relacji w powiązanej klasie.
 
-Po zdefiniowaniu przemyślanego modelu, co jest relatywnie najtrudniejsze,
-trzeba przetestować działanie mechanizmów ORM w praktyce, czyli utworzyć
-tabele i kolumny w bazie. W Peewee łączymy się z bazą i wywołujemy
-metodę ``.create_tables()``, której podajemy nazwy klas reprezentujących
-tabele. Dodatkowy parametr ``True`` powoduje sprawdzenie przed utworzeniem,
-czy tablic w bazie już nie ma. SQLAlchemy wymaga tylko wywołania metody
-``.create_all()`` kontenera *metadata* zawartego w klasie bazowej.
+Relacja zwrotna pozwala na dostęp do powiązanych obiektów, np. kod typu ``klasa.uczniowie``
+da nam dostęp do uczniów należących do danej klasy, a kod ``uczen.klasa`` wskaże klasę,
+do której należy uczeń.
 
-Podane kody można już uruchomić, oba powinny utworzyć bazę ``test.db``
-w katalogu, z którego uruchamiamy skrypt.
+Zdefiniowane model możemy sprawdzić za pomocą kodu tworzącego tabele: ``Base.metadata.create_all(baza)``.
 
-.. note::
+Omówiony kod można uruchomić. W katalogu, z którego uruchamiamy skrypt, powinien zostać utworzony
+plik bazy :file:`baza_sa.db`.
 
-    Warto wykorzystać :ref:`interpreter sqlite3 <sqlite3>`
-    i sprawdzić, jak wygląda kod tworzący tabele wygenerowany przez ORM-y.
-    Poniżej przykład ilustrujący SQLAlchemy.
+Ćwiczenie
+==========
+
+1) Wykorzystaj :ref:`interpreter sqlite3 <sqlite3>` i sprawdź, czy zostały utworzone tabele,
+   czyli jak wygląda kod SQL wygenerowany przez ORM. Przykładowy zrzut poniżej.
 
 .. figure:: sqlite3_2.png
 
-Operacje CRUD
-***********************
+.. note::
 
-Wstawianie i odczytywanie danych
-=================================
+    Nazwy utworzonych tabel to nazwy klas, które je opisują, podobnie nazwy pól odpowiadają nazwom atrybutów.
+    Warto zauważyć, że *Peewee* nie wymaga definiowania kluczy głównych, są tworzone automatycznie
+    jako pola o nazwie ``id`` zawierające liczby całkowite.
 
-Podstawowe operacje wykonywane na bazie, np, wstawianie i odczytywanie danych,
-w Peewee wykonywane są za pomocą obiektów reprezentujących rekordy
-zdefiniowanych tabel oraz ich metod. W SQLAlchemy oprócz obiektów
-wykorzystujemy metody sesji, w ramach której komunikujemy się z bazą.
+Dodawanie danych
+****************
 
-.. raw:: html
-
-    <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. literalinclude:: orm_pw.py
-    :linenos:
-    :lineno-start: 34
-    :lines: 34-63
+Do pliku :file:`orm_sa.py` dodajemy następujący kod:
 
 .. raw:: html
 
@@ -151,18 +130,26 @@ wykorzystujemy metody sesji, w ramach której komunikujemy się z bazą.
 
 .. literalinclude:: orm_sa.py
     :linenos:
-    :lineno-start: 39
-    :lines: 39-65
+    :lineno-start: 38
+    :lines: 38-57
 
-Dodawanie informacji w systemach ORM polega na utworzeniu instancji odpowiedniego
-obiektu i podaniu w jego konstruktorze wartości atrybutów reprezentujących pola rekordu:
-``Klasa(nazwa = '1A', profil = 'matematyczny')``. Utworzony rekord zapisujemy metodą
-``.save()`` obiektu w Peewee lub metodą ``.add()`` :ref:`sesji <sesja>` w SQLAlchemy.
-Można również dodawać wiele rekordów na raz. Peewee oferuje metodę ``.insert_many()``,
-która jako parametr przyjmuje listę słowników zawierających dane w formacie
-"klucz":"wartość", przy czym kluczem jest nazwa pola klasy (tabeli).
-SQLAlchemy ma metodę ``.add_all()`` wymagającą listy konstruktorów obiektów,
-które chcemy dodać.
+Wykonywanie operacji na bazie danych wymaga utworzenia obiektu sesji, tworzonego w kontekście:
+``with Session(baza) as sesja`` – co ułatwia pracę z bazą.
+
+Metoda ``add()`` pozwala na tworzenie nowych rekordów. Jako argument podajemy nazwę modelu
+z wymaganymi argumentami.
+
+W ramach sesji można wykonywać wiele operacji, jednak aby zostały odzwierciedlone w bazie danych,
+trzeba wywołać metodę ``commit()``.
+
+.. note::
+
+    Dopiero po zatwierdzeniu zmian metodą ``commit()`` mamy dostęp do identyfikatorów nowo
+    utworzonych obiektów.
+
+Metoda ``add_all()`` pozwala dodać wiele rekordów na raz. Jako argument podajemy listę obiektów.
+Zwróć uwagę, w jaki sposób wskazujemy klasę do której należy uczeń.
+
 
 Zanim dodamy pierwsze informacje sprawdzamy, czy w tabeli *klasa* są jakieś wpisy, a więc
 wykonujemy prostą kwerendę zliczającą. Peewee używa
