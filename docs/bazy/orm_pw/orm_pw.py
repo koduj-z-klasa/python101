@@ -30,7 +30,7 @@ class Uczen(Base):
 baza.connect()  # nawiązujemy połączenie z bazą
 baza.create_tables([Klasa, Uczen])  # tworzymy tabele
 
-# dodajemy dwie klasy, jeżeli tabela jest pusta
+# dodajemy dwie klasy
 klasa1 = Klasa.create(nazwa='1A', profil='matematyczny')
 klasa2 = Klasa(nazwa='1B', profil='humanistyczny')
 klasa2.save()
