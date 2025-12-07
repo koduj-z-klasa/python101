@@ -103,3 +103,6 @@ $RECYCLE.BIN/
 *.sublime-workspace
 /python101.sublime-project
 /python101.sublime-workspace
+
+# Bazy danych
+*.db
