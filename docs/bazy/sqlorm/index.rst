@@ -1,6 +1,6 @@
 .. _sql-orm:
 
-SQL v. ORM
+SQL vs ORM
 ##################
 
 .. contents::
@@ -9,8 +9,8 @@ SQL v. ORM
 
 Bazy danych są niezbędnym składnikiem większości aplikacji. Poniżej
 zwięźle pokażemy, w jaki sposób z wykorzystaniem Pythona można je obsługiwać
-przy użyciu języka :term:`SQL`, jak i systemów :term:`ORM` na przykładzie rozwiązania
-*Peewee*.
+przy użyciu modułu ``sqlite3`` i języka :term:`SQL`, jak i systemów :term:`ORM`
+na przykładzie frameworku :term:`Peewee`.
 
 .. note::
 
@@ -22,169 +22,208 @@ przy użyciu języka :term:`SQL`, jak i systemów :term:`ORM` na przykładzie ro
 Połączenie z bazą
 ***********************
 
-Na początku pliku :file:`sqlraw.py` umieszczamy kod, który importuje moduł do obsługi bazy *SQLite3*
+Na początku pliku :file:`sql_raw.py` umieszczamy kod, który importuje moduł do obsługi bazy *SQLite3*
 i przygotowuje obiekt kursora, który posłuży nam do wydawania poleceń SQL:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>sqlraw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>sql_raw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: sqlraw.py
+.. literalinclude:: sql_raw.py
     :linenos:
     :lineno-start: 1
-    :lines: 1-13
+    :lines: 1-9
 
-System ORM Peewee inicjujemy w pliku :file:`ormpw.py` tworząc klasę bazową, która zapewni połączenie z bazą:
+System ORM Peewee inicjujemy w pliku :file:`orm_pw.py` tworząc klasę bazową, która zapewni połączenie z bazą:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>ormpw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>orm_pw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: ormpw.py
+.. literalinclude:: orm_pw.py
     :linenos:
     :lineno-start: 1
-    :lines: 1-17
+    :lines: 1-12
 
 .. note::
 
     Parametr ``:memory:`` powoduje utworzenie bazy danych w pamięci operacyjnej,
     która istnieje tylko w czasie wykonywania programu. Aby utworzyć trwałą bazę,
-    zastąp omawiany parametr nazwę pliku, np. :file:`test.db`.
+    zastąp omawiany parametr nazwę pliku, np. :file:`baza.db`.
 
 Model bazy
-***********************
+**********
 
-Dane w bazie zorganizowane są w tabelach, połączonych najczęściej relacjami.
-Aby utworzyć tabele ``grupa`` i ``uczen`` powiązane relacją jeden-do-wielu,
+Dane w bazie zorganizowane są w tabelach połączonych relacjami.
+Aby utworzyć tabele ``klasa`` i ``uczen`` powiązane relacją jeden-do-wielu,
 musimy wydać następujące polecenia SQL:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>sqlraw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>sql_raw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: sqlraw.py
+.. literalinclude:: sql_raw.py
     :linenos:
-    :lineno-start: 15
-    :lines: 15-30
+    :lineno-start: 10
+    :lines: 10-26
 
-Wydawanie poleceń SQL-a wymaga koncentracji na poprawności użycia tego języka,
-systemy ORM izolują nas od takich szczegółów pozwalając skupić się na logice danych.
-Tworzymy więc klasy opisujące nasze obiekty, tj. grupy i uczniów. Na podstawie
-właściwości tych obiektów system ORM utworzy odpowiednie pola tabel. Konkretna grupa
-lub uczeń, czyli instancje klasy, reprezentować będą rekordy w tabelach.
+Wydawanie poleceń SQL-a wymaga znajomości składni tego języka.
+Systemy ORM, chociaż pozwalają na wykonywanie zapytań SQL, oferują manipulowanie obiektami, a nie tabelami.
+W powyższym kodzie zamiast tabel definiujemy więc modele, tj. klasy reprezentujące klasy i uczniów.
+Na podstawie właściwości modeli system ORM utworzy tabele i odpowiednie pola, tj. wygeneruje i wykona odpowiednie
+zapytania SQL.
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>ormpw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>orm_pw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: ormpw.py
+.. literalinclude:: orm_pw.py
     :linenos:
-    :lineno-start: 20
-    :lines: 20-32
+    :lineno-start: 13
+    :lines: 13-27
 
 Ćwiczenie 1
 ============
 
-Utwórz za pomocą tworzonych skryptów bazy w plikach o nazwach :file:`sqlraw.db` oraz
-:file:`peewee.db`. Następnie otwórz te bazy w `interpreterze Sqlite <sqlite3>`_  i wykonaj
+Utwórz za pomocą powyższych skryptów bazy w plikach o nazwach :file:`sql_raw.db` oraz
+:file:`orm_pw.db`. Następnie otwórz te bazy w `interpreterze Sqlite <sqlite3>`_  i wykonaj
 podane niżej polecenia. Porównaj struktury utworzonych tabel.
 
 .. code-block:: bash
 
     sqlite> .tables
-    sqlite> .schema grupa
-    sqlite> .schema uczen
+    sqlite> .schema
 
-Wstawianie danych
-***********************
+.. figure:: sql_raw_db.png
 
-Chcemy wstawić do naszych tabel dane dwóch grup oraz dwóch uczniów.
+.. figure:: orm_pw_db.png
+
+Dodawanie danych
+*****************
+
+Chcemy wstawić do naszych tabel dane dwóch klas oraz trzech uczniów.
 Korzystając z języka SQL użyjemy następujących poleceń:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>sqlraw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>sql_raw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: sqlraw.py
+.. literalinclude:: sql_raw.py
     :linenos:
-    :lineno-start: 32
-    :lines: 32-47
+    :lineno-start: 27
+    :lines: 27-42
 
-W systemie ORM pracujemy z instancjami ``inst_grupa`` i ``inst_uczen``. Nadajemy wartości ich
-atrybutom i korzystamy z ich metod:
+Metoda kursora ``execute()`` pozwala wykonać pojedyncze zapytanie SQL. Metoda ``executemany()``
+wykonuje jedno zapytanie dla danych podanych w liście krotek. Dane zapisane krotkach odpowiadają rekordom w tabeli.
+Znaki zapytania (zamienniki) w poleceniach SQL są zastępowane przez kolejne parametry przekazywane w krotkach.
+
+W systemie ORM tworzymy obiekty (instancje) na podstawie klas modelu. Właściwości obiektów przekazujemy metodzie
+``create()``, która od razu tworzy rekord w bazie, lub konstruktorowi, po którym wywołujemy metodę ``save()``.
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>ormpw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>orm_pw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: ormpw.py
+.. literalinclude:: orm_pw.py
     :linenos:
-    :lineno-start: 34
-    :lines: 34-47
+    :lineno-start: 28
+    :lines: 28-41
+
+Do dawania wielu rekordów używamy metody ``insert_many()`` modelu, która przyjmuje jako argument
+listę słowników opisujących właściwości kolejnych obiektów.
 
 Pobieranie danych
-***********************
+*****************
 
-Pobieranie danych (czyli :term:`kwerenda`) wymaga polecenia *SELECT* języka SQL.
+Pobieranie danych (czyli :term:`kwerenda`) wymaga polecenia ``SELECT`` języka SQL.
 Aby wyświetlić dane wszystkich uczniów zapisane w bazie użyjemy kodu:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>sqlraw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>sql_raw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: sqlraw.py
+.. literalinclude:: sql_raw.py
     :linenos:
-    :lineno-start: 50
-    :lines: 50-63
+    :lineno-start: 43
+    :lines: 43-60
 
-W systemie ORM korzystamy z metody ``select()`` instancji reprezentującej ucznia.
-Dostęp do danych przechowywanych w innych tabelach uzyskujemy dzięki wyrażeniom
-typu ``inst_uczen.grupa.nazwa``, które generuje podzapytanie zwracające obiekt
-grupy przypisanej uczniowi.
+Funkcja ``wypisz_liste_uczniow()`` na początku wykonuje zapytanie o liczbę rekordów w tabeli ``uczen``.
+Jeżeli w tabeli są jakieś rekordy (``if (cur.fetchone()[0]):``), pobieramy informacje o wszystkich uczniach
+wykonując zapytanie SQL i wypisujemy je.
+
+W systemie ORM korzystamy z metod modelu ``select().count()``, aby sprawdzić, czy w tabeli ``uczen`` są jakieś dane.
+Jeżeli tak, wykorzystujemy metody ``select().join()``, aby pobrać dane uczniów i klas, do których należą.
+W pętli ``for`` odczytujemy zwrócone obiekty i wypisujemy ich właściwości korzystając z notacji z kropką:
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>ormpw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>orm_pw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: ormpw.py
+.. literalinclude:: orm_pw.py
     :linenos:
-    :lineno-start: 50
-    :lines: 50-57
+    :lineno-start: 42
+    :lines: 42-54
 
-.. tip::
+Modyfikacja danych
+******************
 
-    Ze względów wydajnościowych pobieranie danych z innych tabel możemy
-    zasygnalizować już w głównej kwerendzie, używając metody ``join()``,
-    np.: ``Uczen.select().join(Grupa)``.
+Edycja danych zapisanych już w bazie to kolejna częsta operacja. Jeżeli chcemy przepisać ucznia do innej klasy,
+w przypadku SQL-a musimy pobrać identyfikator ucznia. To wymaga wykonania zapytania,
+np. ``SELECT id FROM uczen WHERE nazwisko="Nowak"`` i pobrania wartości pierwszego zwróconego obiektu:
+``uczen_id = cur.fetchone()[0]``.
 
-Modyfikacja i usuwanie danych
-*****************************
+Podobnie uzyskujemy identyfikator klasy.
 
-Edycja danych zapisanych już w bazie to kolejna częsta operacja. Jeżeli chcemy
-przepisać ucznia z grupy do grupy, w przypadku czystego SQL-a musimy pobrać
-identyfikator ucznia (``uczen_id = cur.fetchone()[0]``),
-identyfikator grupy (``grupa_id = cur.fetchone()[0]``) i użyć ich w klauzuli ``UPDATE``.
-Usuwany rekord z kolei musimy wskazać w klauzuli ``WHERE``.
+Na koniec używamy zapytania aktualizującego: ``UPDATE uczen SET klasa_id=? WHERE id=?``,
+któremu podajemy w krotce identyfikator nowej klasy i ucznia.
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>sqlraw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>sql_raw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: sqlraw.py
+.. literalinclude:: sql_raw.py
     :linenos:
-    :lineno-start: 65
-    :lines: 65-
+    :lineno-start: 61
+    :lines: 61-68
 
-W systemie ORM tworzymy instancję reprezentującą ucznia i zmieniamy jej właściwości (``inst_uczen.grupa = Grupa.select().where(Grupa.nazwa == '1B').get()``). Usuwając dane w przypadku systemu ORM, usuwamy instancję wskazanego obiektu:
+W systemie ORM tworzymy obiekty reprezentujące ucznia i nową klasę. Następnie zmieniamy klasę ucznia,
+przypisując odpowiadającej właściwości obiekt nowej klasy (``uczen.klasa = nowa_klasa``).
 
 .. raw:: html
 
-    <div class="code_no">Plik <i>ormpw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+    <div class="code_no">Plik <i>orm_pw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
 
-.. literalinclude:: ormpw.py
+.. literalinclude:: orm_pw.py
     :linenos:
-    :lineno-start: 59
-    :lines: 59-
+    :lineno-start: 55
+    :lines: 55-62
+
+Usuwanie danych
+****************
+
+Usuwanie danych w języku SQL wymaga użycia klauzuli ``DELETE``, która na podstawie podanych kryteriów wybiera i usuwa
+wybrany z tabeli rekord, np.:
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>sql_raw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: sql_raw.py
+    :linenos:
+    :lineno-start: 69
+    :lines: 69-
+
+W systemach ORM zazwyczaj na początku odczytujemy interesujący nas obiekt za pomocą metody ``select()``,
+a następnie usuwamy za pomocą metody ``delete_instance()``.
+
+.. raw:: html
+
+    <div class="code_no">Plik <i>orm_pw.py</i>. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: orm_pw.py
+    :linenos:
+    :lineno-start: 63
+    :lines: 63-
 
 .. note::
 
@@ -196,14 +235,12 @@ Podsumowanie
 ***********************
 
 Bazę danych można obsługiwać za pomocą języka SQL na niskim poziomie. Zyskujemy wtedy na szybkości
-działania, ale tracimy przejrzystość kodu, łatwość jego przeglądania i rozwijania.
-O ile w prostych zastosowaniach można to zaakceptować, o tyle w bardziej rozbudowanych
-projektach używa się systemów ORM, które pozwalają zarządzać danymi nie w formie tabel, pól i rekordów,
-ale w formie obiektów reprezentujących logicznie spójne dane. Takie podejście
-lepiej odpowiada obiektowemu wzorcowi projektowania aplikacji.
+działania, ale wymaga to znajomości SQL-a, a kod może być mniej czytelny, a jego rozwijanie trudniejsze.
+W bardziej rozbudowanych projektach zazwyczaj używamy systemów ORM, które pozwalają zarządzać danymi
+nie w formie tabel, pól i rekordów, ale w postaci obiektów reprezentujących modele, tj. klasy.
+Takie podejście odpowiada obiektowemu wzorcowi projektowania aplikacji.
 
-Dodatkową zaletą systemów ORM, nie do przecenienia, jest większa odporność na błędy i ewentualne
-ataki na dane w bazie.
+Dodatkową zaletą systemów ORM jest większa odporność na błędy i ewentualne ataki na dane w bazie.
 
 Systemy ORM można łatwo integrować z programami desktopowymi i frameworkami przeznaczonymi do tworzenia
 aplikacji sieciowych. Wśród tych ostatnich znajdziemy również takie, w których system ORM jest
@@ -212,13 +249,9 @@ podstawowym składnikiem, np. *Django*.
 Zadania
 ********
 
-- Wykonaj scenariusz aplikacji :ref:`Quiz ORM <quiz-orm>`, aby zobaczyć przykład
-  wykorzystania systemów ORM w aplikacjach internetowych.
+1) Wykonaj scenariusze aplikacji :ref:`System ORM Peewee <orm_peewee>`
+   i/lub :ref:`System ORM SQLAlchemy <orm_sqlalchemy>`, aby poznać przykłady
+   użycia systemów ORM.
 
-- Wykonaj scenariusz aplikacji internetowej :ref:`Czat (cz. 1) <czat1>`,
-  zbudowanej z użyciem frameworku *Django*, korzystającego z własnego modelu ORM.
-
-Źródła
-*******************
-
-* :download:`sqlorm.zip <sqlorm.zip>`
+2) Wykonaj scenariusz aplikacji internetowej :ref:`Czat (cz. 1) <czat1>`,
+   zbudowanej z użyciem frameworku *Django*, korzystającego z własnego modelu ORM.

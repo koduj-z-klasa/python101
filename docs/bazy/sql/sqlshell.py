@@ -1,8 +1,3 @@
-#! /usr/bin/env python
-# -*- coding: UTF-8 -*-
-# Minimala powłoka SQLite
-# https://docs.python.org/2/library/sqlite3.html
-
 import sqlite3
 
 con = sqlite3.connect(":memory:")
@@ -11,11 +6,11 @@ cur = con.cursor()
 
 buffer = ""
 
-print "Podaj polecenie SQL do wykonania w sqlite3."
-print "Naciśnij Enter, aby wyjść."
+print("Podaj polecenie SQL do wykonania w sqlite3.")
+print("Naciśnij Enter, aby wyjść.")
 
 while True:
-    line = raw_input()
+    line = input()
     if line == "":
         break
     buffer += line

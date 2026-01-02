@@ -1,24 +1,31 @@
-#! /usr/bin/env python
-# -*- coding: utf-8 -*-
-
 import os
 
 
-def pobierz_dane(plikcsv):
-    """
-    Funkcja zwraca tuplę tupli zawierających dane pobrane z pliku csv
-    do zapisania w tabeli.
-    """
+def pobierz_dane_1(plikcsv):
     dane = []  # deklarujemy pustą listę
-    if os.path.isfile(plikcsv):  # sprawdzamy czy plik istnieje na dysku
-        with open(plikcsv, "r") as zawartosc:  # otwieramy plik do odczytu
-            for linia in zawartosc:
-                linia = linia.replace("\n", "")  # usuwamy znaki końca linii
-                linia = linia.replace("\r", "")  # usuwamy znaki końca linii
-                linia = linia.decode("utf-8")  # odczytujemy znaki jako utf-8
-                # dodajemy elementy do tupli a tuplę do listy
-                dane.append(tuple(linia.split(",")))
+    if os.path.isfile(plikcsv):
+        # otwieramy plik do odczytu
+        with open(plikcsv) as plik:
+            for linia in plik:
+                dane.append(linia.strip().split(","))
     else:
-        print "Plik z danymi", plikcsv, "nie istnieje!"
+        print("Plik z danymi", plikcsv, "nie istnieje!")
 
-    return tuple(dane)  # przekształcamy listę na tuplę i zwracamy ją
+    return dane
+
+
+import csv
+
+
+def pobierz_dane_2(plikcsv):
+    dane = []  # deklarujemy pustą listę
+    if os.path.isfile(plikcsv):
+        # otwieramy plik do odczytu
+        with open(plikcsv) as plik:
+            for linia in csv.reader(plik, delimiter=','):
+                dane.append(linia)
+    return dane
+
+
+print(pobierz_dane_1("uczniowie.csv"))
+print(pobierz_dane_2("uczniowie.csv"))

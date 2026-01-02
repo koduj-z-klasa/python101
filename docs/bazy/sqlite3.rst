@@ -12,14 +12,14 @@ polecenie:
 
 .. code-block:: bash
 
-	~$ sqlite3 test.db
+    ~$ sqlite3 test.db
 
 Później do dyspozycji mamy polecenia:
 
-  - ``.databases`` – pokazuje aktualną bazę danych;
-  - ``.schema`` – pokazuje schemat bazy danych, czyli polecenia SQL tworzące tabele i relacje;
-  - ``.table`` – pokaże tabele w bazie;
-  - ``.quit`` – wychodzimy z powłoki interpretera.
+- ``.databases`` – pokazuje aktualną bazę danych;
+- ``.schema`` – pokazuje schemat bazy danych, czyli polecenia SQL tworzące tabele i relacje;
+- ``.table`` – pokaże tabele w bazie;
+- ``.quit`` – wychodzimy z powłoki interpretera.
 
 Możemy również wydawać komendy SQL-a operujące na bazie, np. kwerendy:
 ``SELECT * FROM klasa;`` – polecenia te zawsze kończymy średnikiem.
@@ -28,5 +28,5 @@ Możemy również wydawać komendy SQL-a operujące na bazie, np. kwerendy:
 
 .. note::
 
-	Bardziej zaawansowanym narzędziem umożliwiającym kompleksową obsługę baz SQLite
-	za pomocą interfejsu graficznego jest program ``sqlitestudio``.
+    Bardziej zaawansowanym narzędziem umożliwiającym kompleksową obsługę baz SQLite
+    za pomocą interfejsu graficznego jest program `SQLiteStudio <https://sqlitestudio.pl/>`_.

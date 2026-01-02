@@ -1,13 +1,8 @@
-import os
 from peewee import SqliteDatabase, Model
 from peewee import CharField, ForeignKeyField
 
-plik_bazy = 'baza_pw.db'
-if os.path.exists(plik_bazy):
-    os.remove(plik_bazy)
-
-# tworzymy instancję klasy Database do obsługi bazy
-baza = SqliteDatabase(plik_bazy)  # ':memory:'
+# tworzymy instancję klasy Database do obsługi bazy przechowywanej w pamięci RAM
+baza = SqliteDatabase(':memory:')
 
 # klasa bazowa dla modeli
 class Base(Model):
@@ -44,19 +39,6 @@ uczniowie = [
 # dodajemy dane wielu uczniów
 Uczen.insert_many(uczniowie).execute()
 
-# odczytujemy wiele rekordów
-print('Klasy:')
-klasy = Klasa.select()
-for klasa in klasy:
-    print(klasa.id, klasa.nazwa, klasa.profil)
-print()
-
-# odczytujemy jeden rekord
-klasa = Klasa.select().where(Klasa.nazwa == '1A').get()
-# klasa = Klasa.get(Klasa.nazwa == '1A')
-print('Klasa:', klasa.nazwa)
-print()
-
 def wypisz_listę_uczniow():
     """ Odczytujemy i wypisujemy dane uczniów, w tym klasę"""
     if Uczen.select().count():
@@ -78,15 +60,10 @@ uczen.klasa = nowa_klasa
 uczen.save()  # zapisanie zmian w bazie
 wypisz_listę_uczniow()
 
-# usunięcie ucznia o identyfikatorze 3
-uczen = Uczen.select().where(Uczen.id == 3).get()
+# usunięcie ucznia o identyfikatorze 1
+uczen = Uczen.select().where(Uczen.id == 1).get()
 print('Usuwam ucznia:', uczen.id, uczen.imie, uczen.nazwisko)
 uczen.delete_instance()
-wypisz_listę_uczniow()
-
-print('Usuwam uczniów z klasy 1A')
-zapytanie = Uczen.delete().where(Uczen.klasa == Klasa.get(Klasa.nazwa == '1A'))
-zapytanie.execute()
 wypisz_listę_uczniow()
 
 baza.close()

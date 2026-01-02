@@ -116,8 +116,6 @@ plik bazy :file:`baza_sa.db`.
 .. note::
 
     Nazwy utworzonych tabel to nazwy klas, które je opisują, podobnie nazwy pól odpowiadają nazwom atrybutów.
-    Warto zauważyć, że *Peewee* nie wymaga definiowania kluczy głównych, są tworzone automatycznie
-    jako pola o nazwie ``id`` zawierające liczby całkowite.
 
 Dodawanie danych
 ****************
@@ -133,10 +131,25 @@ Do pliku :file:`orm_sa.py` dodajemy następujący kod:
     :lineno-start: 38
     :lines: 38-57
 
-Wykonywanie operacji na bazie danych wymaga utworzenia obiektu sesji, tworzonego w kontekście:
-``with Session(baza) as sesja`` – co ułatwia pracę z bazą.
+Wykonywanie operacji na bazie danych wymaga utworzenia obiektu sesji:
+``with Session(baza) as sesja``. Użycie konstrukcji ``with ... as ...``
+pozwala uniknąć niektórych błędów podczas wykonywania operacji na bazie.
 
-Metoda ``add()`` pozwala na tworzenie nowych rekordów. Jako argument podajemy nazwę modelu
+.. _sesja:
+
+.. note::
+
+    Mechanizm sesji jest unikalny dla SQLAlchemy, pozwala wykonywać serię powiązanych
+    ze sobą operacji na bazie danych w ramach jednej transakcji. Sesja przechowuje
+    tworzone obiekty i zapamiętuje wykonywane na nich operacje.
+    W prostych aplikacjach wykorzystuje się jedną instancję sesji,
+    w bardziej złożonych można korzystać z wielu.
+    Instancja sesji tworzona jest na podstawie klasy ``Session`` z parametrem wskazującym bazę.
+    Obiekt sesji zawiera metody pozwalające komunikować się z bazą, np. ``execute()``, która
+    wykonuje zapytania. Jeżeli zmiany w sesji mają zostać zapisane w bazie danych,
+    trzeba użyć metody ``commit()`` do ich zatwierdzenia.
+
+Do tworzenia nowych rekordów używamy metody ``add()``. Jako argument podajemy nazwę modelu
 z wymaganymi argumentami.
 
 W ramach sesji można wykonywać wiele operacji, jednak aby zostały odzwierciedlone w bazie danych,
@@ -147,83 +160,25 @@ trzeba wywołać metodę ``commit()``.
     Dopiero po zatwierdzeniu zmian metodą ``commit()`` mamy dostęp do identyfikatorów nowo
     utworzonych obiektów.
 
-Metoda ``add_all()`` pozwala dodać wiele rekordów na raz. Jako argument podajemy listę obiektów.
-Zwróć uwagę, w jaki sposób wskazujemy klasę do której należy uczeń.
+Metoda ``add_all()`` służy do dodawania wielu rekordów na raz. Jako argument podajemy listę obiektów
+``uczniowie``. Warto zwrócić uwagę, że aby określić klasę, do której należy uczeń, atrybutowi ``klasa_id``
+modelu przypisujemy identyfikator obiektu reprezentującego klasę.
 
+Ćwiczenie
+==========
 
-Zanim dodamy pierwsze informacje sprawdzamy, czy w tabeli *klasa* są jakieś wpisy, a więc
-wykonujemy prostą kwerendę zliczającą. Peewee używa
-metod odpowiednich obiektów: ``Klasa().select().count()``, natomiast
-SQLAlchemy korzysta metody ``.query()`` sesji, która pozwala pobierać dane
-z określonej jako klasa tabeli. Obydwa rozwiązania umożliwiają łańcuchowe
-wywoływanie charakterytycznych dla kwerend operacji poprzez "doklejanie"
-kolejnych metod, np. ``sesja.query(Klasa).count()``.
+1) Ponownie wykonaj dotychczasowy kod i sprawdź za pomocą interpretera ``sqlite3``,
+   czy w tabelach znalazły się odpowiednie dane.
 
-Tak właśnie konstruujemy kwerendy warunkowe. W Peewee definiujemy warunki jako
-prametry metody ``.where(Klasa.nazwa == '1A')``. Podobnie w SQLAlchemy,
-tyle, że metody sesji inaczej się nazywają i przyjmują postać
-``.filter_by(nazwa = '1A')`` lub ``.filter(Klasa.nazwa == '1A')``. Pierwsza
-wymaga podania warunku w formacie "klucz"="wartość", druga w postaci
-wyrażenia SQL (należy uważać na użycie poprawnego operatora ``==``).
+   .. tip::
 
-Pobieranie danych z wielu tabel połączonych relacjami może być w porównaniu
-do zapytań SQL-a bardzo proste. W zależności od ORM-a wystarcza polecenie:
-``Uczen.select()`` lub ``sesja.query(Uczen).all()``, ale przy próbie
-odczytu klasy, do której przypisano ucznia (``inst_uczen.klasa.nazwa``),
-wykonane zostanie dodatkowe zapytanie, co nie jest efektywne.
-Dlatego lepiej otwarcie wskazywać na powiązania między obiektami,
-czyli w zależności od ORM-u używać:
-``Uczen.select().join(Klasa)`` lub ``sesja.query(Uczen).join(Klasa).all()``.
-Tak właśnie postępujemy w bliźniaczych funkcjach ``czytajdane()``, które
-pokazują, jak pobierać i wyświetlać wszystkie rekordy z tabel powiązanych
-relacjami.
+      W interpreterze możesz wykorzystać proste kwerendy SQL, np.:
+      ``SELECT * FROM klasa;`` oraz ``SELECT * FROM uczen;``.
 
-Systemy ORM oferują pewne ułatwiania w zależności od tego, ile rekordów lub pól
-i w jakiej formie chcemy wydobyć. Metody w Peewee:
+Odczyt danych
+*************
 
-    - ``.get()`` - zwraca pojedynczy rekord pasujący do zapytania lub wyjątek ``DoesNotExist``, jeżeli go brak;
-    - ``.first()`` - zwróci z kolei pierwszy rekord ze wszystkich pasujących.
-
-Metody SQLAlchemy:
-
-    - ``.get(id)`` - zwraca pojedynczy rekord na podstawie podanego identyfikatora;
-    - ``.one()`` - zwraca pojedynczy rekord pasujący do zapytania lub wyjątek ``DoesNotExist``, jeżeli go brak;
-    - ``.scalar()`` - zwraca pierwszy element pierwszego zwróconego rekordu lub wyjątek ``MultipleResultsFound``;
-    - ``.all()`` - zwraca pasujące rekordy w postaci listy.
-
-.. _sesja:
-
-.. note::
-
-    Mechanizm sesji jest unikalny dla SQLAlchemy, pozwala m. in. zarządzać
-    transakcjami i połączeniami z wieloma bazami. Stanowi "przechowalnię"
-    dla tworzonych obiektów, zapamiętuje wykonywane na nich operacje,
-    które mogą zostać zapisane w bazie lub w razie potrzeby odrzucone.
-    W prostych aplikacjach wykorzystuje się jedną instancję sesji,
-    w bardziej złożonych można korzystać z wielu.
-    Instancja sesji (``sesja = BDSesja()``) tworzona jest na podstawie klasy, która z kolei
-    powstaje przez wywołanie konstruktora z opcjonalnym parametrem
-    wskazującym bazę: ``BDSesja = sessionmaker(bind=baza)``. Jak pokazano
-    wyżej, obiekt sesji zawiera metody pozwalające komunikować się
-    z bazą. Warto również zauważyć, że po wykonaniu wszystkich zamierzonych
-    operacji w ramach sesji zapisujemy dane do bazy wywołując polecenie
-    ``sesja.commit()``.
-
-Modyfikowanie i usuwanie danych
-=================================
-
-Systemy ORM ułatwiają modyfikowanie i usuwanie danych z bazy, ponieważ
-operacje te sprowadzają się do zmiany wartości pól klasy reprezentującej
-tabelę lub do usunięcia instancji danej klasy.
-
-.. raw:: html
-
-    <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
-
-.. literalinclude:: orm_pw.py
-    :linenos:
-    :lineno-start: 65
-    :lines: 65-
+Odczyt danych może być realizowany na wiele sposobów. Zacznijmy od uzupełnienia kodu skryptu:
 
 .. raw:: html
 
@@ -231,50 +186,97 @@ tabelę lub do usunięcia instancji danej klasy.
 
 .. literalinclude:: orm_sa.py
     :linenos:
-    :lineno-start: 67
-    :lines: 67-
+    :lineno-start: 58
+    :lines: 58-85
 
-Załóżmy, że chcemy zmienić przypisanie ucznia do klasy. W obydwu systemach
-tworzymy więc obiekt reprezentujący ucznia o identyfikatorze "2". Stosujemy
-omówione wyżej metody zapytań. W następnym kroku modyfikujemy odpowiednie
-pole tworzące relację z tabelą "klasy", do którego przypisujemy
-pobrany w zapytaniu obiekt (Peewee) lub identyfikator (SQLAlchemy).
-Różnice, tzn. przypisywanie obiektu lub identyfikatora, wynikają ze sposobu
-definiowania modeli w obu rozwiązanich.
+Do tworzenia zapytań używamy funkcji ``select()``, np.:
 
-Usuwanie jest jeszcze prostsze. W Peewee wystarczy do zapytania zwracającego
-obiekt reprezentujący ucznia o podanym id "dokleić" odpowiednią metodę:
-``Uczen.select().where(Uczen.id == 3).get().delete_instance()``.
-W SQLAlchemy korzystamy jak zwykle z metody sesji, której przekazujemy
-obiekt reprezentujący ucznia: ``sesja.delete(sesja.query(Uczen).get(3))``.
+- ``select(Klasa)`` – odczytujemy wszystkie obiekty modelu ``Klasa``,
+- ``select(Klasa).where(Klasa.nazwa == '1A')`` – odczytujemy obiekt reprezentujący klasę *1A*,
+  metoda ``where()`` odpowiada klauzuli ``WHERE`` języka SQL,
+- ``select(Uczen).join(Klasa)`` – odczytujemy obiekty modelu ``Uczen`` razem z danymi o klasie, do której uczeń należy,
+  metoda ``join()`` odpowiada klauzuli ``JOIN`` języka SQL.
 
-Po zakończeniu operacji wykonywanych na danych powinniśmy pamiętać o zamknięciu
-połączenia, robimy to używając metody obiektu bazy ``baza.close()`` (Peewee)
-lub sesji ``sesja.close()`` (SQLAlchemy). UWAGA: operacje dokonywane
-podczas sesji w SQLAlchemy muszą zostać zapisane w bazie, dlatego przed
-zamknięciem połączenia trzeba umieścić polecenie ``sesja.commit()``.
+Zapytania wykonujemy za pomocą metod sesji:
+
+- ``scalars()`` – zwraca wszystkie pasujące obiekty, które można odczytywać np. w pętli ``for``,
+- ``scalar()`` – zwraca pierwszy element pierwszego zwróconego rekordu lub wyjątek ``MultipleResultsFound``.
+
+W funkcji ``wypisz_liste_uczniow()`` do sprawdzenia liczby obiektów zapisanych w bazie używamy zapytania
+zawierającego:
+
+- funkcję ``select()``, której argumentem jest funkcja ``count()`` wywoływana z przestrzeni nazw ``func``
+  udostępniającej funkcje SQL,
+- metody ``select_from()``, które pozwala określić źródło danych na podstawie podanego modelu.
+
+Zapytanie wykonujemy za pomocą metody ``execute()``, wynik, tzn. liczbę obiektów,
+pobieramy z użyciem metody ``scalar()``.
+
+.. tip::
+
+    Omówiony powyżej kod zliczający obiekty, czyli rekordy zapisane w tabeli bazy danych,
+    charakterystyczny dla SQLAlchemy w wersji 2.x można zastąpić prostszym stosowanym w wersji
+    1.4, który nadal działa: ``if sesja.query(Uczen).count():``.
+
+Modyfikowanie danych
+=================================
+
+Systemy ORM ułatwiają modyfikowanie danych w bazie, ponieważ operacja ta polega
+na zmianie wartości pól wybranego obiektu. W naszym skrypcie dopisujemy kod:
+
+.. raw:: html
+
+    <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: orm_sa.py
+    :linenos:
+    :lineno-start: 87
+    :lines: 87-94
+
+Na początku odczytujemy obiekt klasy ``Uczen`` o podanym identyfikatorze.
+Następnie wykonujemy zapytanie ``select(Klasa.id).where(Klasa.nazwa == '1A')`` za pomocą
+metody ``scalar()``, która zwraca identyfikator klasy 1A.
+W kolejnym kroku zmieniamy atrybut ``klasa_id`` obiektu reprezentującego ucznia.
+Ma końcu zatwierdzamy zmiany w bazie danych za pomocą metody ``commit()``.
+
+Usuwanie danych
+****************
+
+Do skryptu dodajemy kolejna porcję kodu:
+
+.. raw:: html
+
+    <div class="code_no">SQLAlchemy. Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: orm_sa.py
+    :linenos:
+    :lineno-start: 95
+    :lines: 95-
+
+Z użyciem metody ``get()`` sesji możemy odczytać obiekt (ucznia), o podanym identyfikatorze (3).
+Obiekt usuwamy za pomocą metody ``delete()`` sesji. Za pomocą metody ``flush()`` przekazujemy
+bazie danych zlecenie usunięcia obiektu.
+
+Do usuwania wielu rekordów służy funkcja ``delete()``, któ©a podobnie jak ``select()``
+służy do przygotowania zapytania wybierającego rekordy na podstawie kryteriów podanych
+jako argumenty metody ``where()``. Zapytanie wykonujemy za pomocą metody ``execute()`` sesji.
+
+Na koniec ponownie zatwierdzamy (tj. zapisujemy) zmiany w bazie danych.
 
 Zadania
 ********
 
-- Spróbuj dodać do bazy korzystając z systemu Peewee lub SQLAlchemy
-  wiele rekordów na raz pobranych z pliku. Wykorzystaj i zmodyfikuj
-  funkcję ``pobierz_dane()`` opisaną w materiale :ref:`Dane z pliku <dane_z_pliku>`.
+1) Spróbuj dodać do bazy korzystając z systemu Peewee wiele rekordów na raz pobranych z pliku
+   :download:`uczniowie.csv <uczniowie.csv>`.
+   Wykorzystaj i zmodyfikuj funkcję ``pobierz_dane()`` opisaną w materiale :ref:`Dane z pliku <dane_z_pliku>`.
 
-- Postaraj się przedstawione aplikacje wyposażyć w konsolowy interfejs,
-  który umożliwi operacje odczytu, zapisu, modyfikowania i usuwania rekordów.
-  Dane powinny być pobierane z klawiatury od użytkownika.
+2) Dodaj do aplikacji konsolowy interfejs, który umożliwi operacje
+   odczytu, zapisu, modyfikowania i usuwania rekordów.
+   Dane powinny być pobierane z klawiatury od użytkownika.
 
-- Przedstawione rozwiązania warto użyć w aplikacjach internetowych
-  jako relatywnie szybki i łatwy sposób obsługi danych. Zobacz,
-  jak to zrobić na przykładzie scenariusza aplikacji :ref:`Quiz ORM <quiz-orm>`.
+3) Przedstawione rozwiązania warto użyć w aplikacjach internetowych
+   jako relatywnie szybki i łatwy sposób obsługi danych. Zobacz,
+   jak to zrobić na przykładzie scenariusza aplikacji :ref:`Quiz ORM <quiz-orm>`.
 
-- Przejrzyj scenariusz aplikacji internetowej :ref:`Czat <czat1>`, zbudowanej z użyciem
-  frameworku *Django*, korzystającego z własnego modelu ORM.
-
-Źródła
-********
-
-* :download:`orm.zip <orm.zip>`
-
-
+4) Przejrzyj scenariusz aplikacji internetowej :ref:`Czat <czat1>`, zbudowanej z użyciem
+   frameworku *Django*, korzystającego z własnego modelu ORM.

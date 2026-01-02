@@ -53,31 +53,55 @@ with Session(baza) as sesja:
     ]
     # dodajemy dane wielu uczniów
     sesja.add_all(uczniowie)
-
     sesja.commit()
 
-exit()
-
-def czytajdane():
-    # if not sesja.query(Klasa).count():
-    for uczen in sesja.query(Uczen).join(Klasa).all():
-        print(uczen.id, uczen.imie, uczen.nazwisko, uczen.klasa.nazwa)
+    from sqlalchemy import select, func, delete
+    # odczytujemy wiele rekordów
+    print('Klasy:')
+    zapytanie = select(Klasa)
+    klasy = sesja.execute(zapytanie)
+    for klasa in klasy:
+        print(klasa[0].id, klasa[0].nazwa, klasa[0].profil)
     print()
 
+    # odczytujemy jeden rekord
+    zapytanie = select(Klasa).where(Klasa.nazwa == '1A')
+    klasa = sesja.scalar(zapytanie)
+    print('Klasa:', klasa.nazwa)
+    print()
 
-czytajdane()
-# tworzymy instancję klasy Klasa reprezentującą klasę "1A"
-# klasa1 = sesja.query(Klasa).filter_by(nazwa='1A').one()
-# zmiana klasy ucznia o identyfikatorze 2
-inst_uczen = sesja.query(Uczen).filter(Uczen.id == 2).one()
-inst_uczen.klasa_id = sesja.query(Klasa.id).filter(
-    Klasa.nazwa == '1B').scalar()
+    def wypisz_listę_uczniow():
+        """ Odczytujemy i wypisujemy dane uczniów, w tym klasę"""
+        # if sesja.query(Uczen).count():
+        if sesja.execute(select(func.count()).select_from(Uczen)).scalar():
+            print('Uczniowie:')
+            uczniowie = sesja.scalars(select(Uczen).join(Klasa))
+            for uczen in uczniowie:
+                print(uczen.id, uczen.imie, uczen.nazwisko, uczen.klasa.nazwa)
+            print()
+        else:
+            print('Brak uczniów w bazie!')
 
-# usunięcie ucznia o identyfikatorze 3
-sesja.delete(sesja.get(Uczen, 3))
+    wypisz_listę_uczniow()
 
-czytajdane()
+    # zmiana klasy ucznia o identyfikatorze 2
+    uczen = sesja.scalar(select(Uczen).where(Uczen.id == 2))
+    id_klasa = sesja.scalar(select(Klasa.id).where(Klasa.nazwa == '1A'))
+    print('Zmieniam klasę ucznia:', uczen.imie, uczen.nazwisko, uczen.klasa.nazwa)
+    uczen.klasa_id = id_klasa
+    sesja.commit()
+    wypisz_listę_uczniow()
 
-# zapisanie zmian w bazie i zamknięcie sesji
-sesja.commit()
-sesja.close()
+    # usunięcie ucznia o identyfikatorze 3
+    uczen = sesja.get(Uczen, 3)
+    print('Usuwam ucznia:', uczen.id, uczen.imie, uczen.nazwisko)
+    sesja.delete(uczen)
+    sesja.flush()
+    wypisz_listę_uczniow()
+
+    print('Usuwam uczniów z klasy 1A')
+    id_klasa = sesja.scalar(select(Klasa.id).where(Klasa.nazwa == '1A'))
+    zapytanie = delete(Uczen).where(Uczen.klasa_id == id_klasa)
+    sesja.execute(zapytanie)
+    sesja.commit()
+    wypisz_listę_uczniow()

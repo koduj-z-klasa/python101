@@ -4,15 +4,24 @@ Dane z pliku
 ##################
 
 Dane z tabel w bazach MS Accessa lub LibreOffice Base'a możemy eksportować
-do formatu *csv*, czyli pliku tekstowego, w którym każda linia reprezentuje
-pojedynczy rekord, a wartości pól oddzielone są jakimś separatorem, najczęściej
-przecinkiem.
+do formatu `CSV (comma-separated values) <https://pl.wikipedia.org/wiki/CSV_(format_pliku)>`_,
+czyli pliku tekstowego, w którym każda linia reprezentuje pojedynczy rekord,
+a wartości pól oddzielone są jakimś separatorem, najczęściej przecinkiem lub średnikiem.
 
-Załóżmy więc, że mamy plik :download:`uczniowie.csv` zawierający dane uczniów
-w formacie: ``Jan,Nowak,2``. Poniżej podajemy przykład funkcji, która
-odczyta dane i zwróci je w użytecznej postaci:
+Załóżmy więc, że mamy plik :download:`uczniowie.csv` w formacie CSV z danymi uczniów. Każda linia zawiera
+dane jednego rekordu, np: ``Jan,Nowak,2``. Poniżej podamy przykłady dwóch funkcji,
+które odczytują dane i zwracają je w postaci listy, której elementami są listy zawierające poszczególne wartości pól
+jednego rekordu.
 
+.. attention::
 
+    Znaki w pliku wejściowym powinny być zakodowane w standardzie ``UTF-8``.
+
+Użycie metod ciągów znaków
+**************************
+
+Do pliku :file:`dane.py` dodajemy pierwszą funkcję, która wykorzystuje metody ciągów znaków
+do oczyszczenia i odczytywania danych.
 
 .. raw:: html
 
@@ -20,30 +29,56 @@ odczyta dane i zwróci je w użytecznej postaci:
 
 .. literalinclude:: dane.py
     :linenos:
+    :lineno-start: 1
+    :lines: 1-15
 
-Na początku funkcji ``pobierz_dane()`` sprawdzamy, czy istnieje plik
-podany jako argumet. Wykorzystujemy metodę ``isfile()`` z modułu ``os``,
-który należy wcześniej zaimportować. Następnie w konstrukcji ``with``
-otwieramy plik i wczytujemy jego treść do zmiennej ``zawartosc``.
-Pętla ``for`` pobiera kolejne linie, które oczyszczamy ze znaków końca linii
-(``.replace('\n','')``, ``.replace('\r','')``) i dekodujemy jako zapisane w standardzie *utf-8*.
-Poszczególne wartości oddzielone przecinkiem wyodrębniamy (``.split(',')``)
-do tupli, którą dodajemy do zdefiniowanej wcześniej listy (``dane.append()``).
+Na początku funkcji za pomocą metody ``isfile()`` modułu ``os`` sprawdzamy, czy na dysku istnieje plik
+podany jako argument. Jeżeli tak, w konstrukcji ``with`` otwieramy plik w trybie do odczytu,
+a jego zawartość udostępniamy w zmiennej ``plik``.
 
-Na koniec funkcja zwraca listę przekształconą na tuplę (a więc zagnieżdzone tuple),
-która po przypisaniu do jakiejś zmiennej może zostać użyta np.
-jako argument metody ``.executemany()`` (zob. przykład poniżej).
+Ponieważ plik można traktować jako sekwencję linii używamy pętli ``for`` do ich odczytywania.
+Każda odczytana linia za pomocą metody ``strip()`` oczyszczana jest z ewentualnych znaków spacji
+na początku i końcu oraz ze znaków końca linii. Następnie metoda ``split()`` rozbija linię
+na podciągi znaków, tj. wartości poszczególnych pól, wydzielając je za pomocą znaku przecinka
+podanego jako argument metody. Omawiana metoda zwraca listę, którą dopisujemy do listy ``dane``.
 
-Powyższy kod można zmodyfikować, aby zwracał dane w strukturę wymaganą
-przez ORM Peewee, tj. listę słowników zawierających dane w formacie
-"klucz":"wartość" (zob. :ref:`System ORM Peewee <orm_peewee>`).
+.. tip::
 
-.. attention::
+    Jeżeli znak oddzielający wartości poszczególnych pól rekordu jest inny niż przecinek,
+    należy podać go jako argument metody ``split()``.
 
-    Znaki w pliku wejściowym powinny być zakodowane w standardzie ``utf-8``.
+Użycie modułu csv
+*****************
 
-Przykład użycia
+Język Python dostarcza gotowy moduł do wykonywania operacji na plikach w formacie CSV.
+Poniżej pokazujemy funkcję, która korzysta z tego modułu do odczytywania danych:
+
+.. raw:: html
+
+    <div class="code_no">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></div>
+
+.. literalinclude:: dane.py
+    :linenos:
+    :lineno-start: 17
+    :lines: 17-28
+
+Na początku w pliku zawierającym funkcję umieszczamy import modułu ``csv``.
+Następnie początek funkcji jest taki sam, jak w przykładzie omówionym wcześniej.
+Różnica występuje w pętli ``for``, w której do odczytania kolejnych linii z pliku
+wykorzystujemy metodę ``reader()``, która jako argumenty otrzymuje zmienną udostępniającą zawartość pliku
+oraz znak rozdzielający wartości poszczególnych pól rekordu.
+
+.. tip::
+
+    Jeżeli znak oddzielający wartości poszczególnych pól rekordu jest inny niż przecinek,
+    należy podać go jako wartość argumentu ``delimiter``.
+
+Przykłady użycia
 ****************
+
+Plik ``dane.py`` zawierający jedną z omówionych wyżej funkcji nazwaną ``pobierz_dane()``
+oraz plik z danymi w formacie CSV powinny znajdować się w katalogu ze skryptem obsługującym bazę danych.
+Jeżeli tak jest, to:
 
 W skrypcie omówionym w materiale :ref:`SQL <sql_raw>` można wykorzystać poniższy kod:
 
@@ -54,5 +89,15 @@ W skrypcie omówionym w materiale :ref:`SQL <sql_raw>` można wykorzystać poni�
     # ...
 
     uczniowie = pobierz_dane('uczniowie.csv')
-    cur.executemany(
-    'INSERT INTO uczen (imie,nazwisko,klasa_id) VALUES(?,?,?)', uczniowie)
+    cur.executemany('INSERT INTO uczen (imie,nazwisko,klasa_id) VALUES(?,?,?)', uczniowie)
+
+.. tip::
+
+    Kod przedstawionych funkcji można zmodyfikować, aby zwracał dane w strukturze wykorzystywanej przez system ORM,
+    np. listy słowników zawierających dane w formacie "klucz":"wartość"
+    (zob. :ref:`System ORM Peewee <orm_peewee>`, :ref:`System ORM SQLAlchemy <orm_sqlalchemy>`).
+
+Materiały
+==========
+
+1. `CSV File Reading and Writing <https://docs.python.org/3/library/csv.html>`_

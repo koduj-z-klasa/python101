@@ -214,7 +214,7 @@ która pozwala wskazać rekordy do usunięcia. Należy pamiętać, żeby po utwo
 zapytania wykonać go za pomocą metody ``execute()``.
 
 Po zakończeniu operacji wykonywanych na danych powinniśmy pamiętać o zamknięciu połączenia.
-Robimy to używając metody obiektu bazy ``baza.close()``
+Robimy to używając metody obiektu bazy ``baza.close()``.
 
 Zadania
 ********
