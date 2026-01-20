@@ -1,9 +1,7 @@
-#! /usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 import math
 import random
-import pylab as p
+import matplotlib.pyplot as plt
+import numpy as np
 
 n = int(input("Ile ruchów? "))
 x = y = 0

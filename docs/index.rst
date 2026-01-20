@@ -1,23 +1,22 @@
-Materiały Python 101
-####################
+Python – materiały
+##################
 
-.. title:: Materiały Python 101
+.. note::
 
-Niniejsze materiały to poprawiane i uzupełniane wersje szkoleń
-z języka Python początkowo przygotowanych i realizowanych w ramach projektu
-`Koduj z Klasą <http://www.ceo.org.pl/koduj>`_ prowadzonego przez
-Fundację `Centrum Edukacji Obywatelskiej <http://www.ceo.org.pl/>`_ w latach 2014-2017.
-Zobacz: `repozytorium <https://github.com/koduj-z-klasa/python101/>`_.
+    Niniejsze materiały to zaktualizowane i zmienione wersje szkoleń z języka Python
+    przygotowanych i realizowanych w ramach projektu `Koduj z Klasą <http://www.ceo.org.pl/koduj>`_
+    prowadzonego przez Fundację `Centrum Edukacji Obywatelskiej <http://www.ceo.org.pl/>`_.
+    Zobacz: `repozytorium <https://github.com/koduj-z-klasa/python101/>`_.
+
+    Początkowe materiały zakładały wykorzystanie języka Python w wersji 2.
+    W wersji obecnej wszędzie, gdzie to możliwe, używany jest Python 3.
 
 Celem materiałów jest nauczenie programowania w języku :term:`Python`
 oraz pokazanie zastosowań tego języka w bardziej rozbudowanych projektach
 opartych na wybranych bibliotekach dodatkowych.
 
-Początkowe materiały zakładały wykorzystanie języka Python w wersji 2.
-W wersji obecnej wszędzie, gdzie to możliwe, używany jest Python 3.
-
-Realizacja
-##########
+Realizacja materiałów
+#####################
 
 Materiały mogą być realizowane w dowolnym systemie operacyjnym, który zawiera interpreter języka
 :term:`Python` w wersji 3.x. Realizacja niektórych materiałów wymaga dodatkowych pakietów i narzędzi.
@@ -37,7 +36,7 @@ Materiały
     :numbered:
 
     podstawy/index
-    pylab/index
+    matplot/index
     rg/index
     pygame/index
     bazy/index
@@ -47,10 +46,8 @@ Materiały
     mcpi/index
     glossary
 
-.. include:: authors.rst
-
 Indices and tables
--------------------
+******************
 
 * :ref:`genindex`
 * :ref:`modindex`
