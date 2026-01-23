@@ -13,29 +13,28 @@ zawartych w bibliotekach **mcpi** napisanych w języku `Python <https://www.pyth
 i preinstalowanych w Raspbianie (w wersji dla Pythona 2 i 3).
 Całość bardzo dobrze nadaje się do nauki programowania z wykorzystaniem języka Python.
 
-**Wymagania wstępne**
+.. note::
 
-1. Serwer Minecrafta Pi, czyli minikomputer Raspberry Pi w wersji B+, 2 lub 3
-   z najnowszą wersją systemu Raspbian.
-2. Klient, czyli dowolny komputer z systemem Linux lub Windows,
-   zawierający interpreter Pythona 2, bibliotekę `mcpi <https://github.com/martinohanlon/mcpi>`_
-   oraz symulator `mcpi-sim <https://github.com/pddring/mcpi-sim>`_.
-3. Adresy IP serwera i klienta muszą należeć do tej samej sieci lokalnej.
+    **Wymagania wstępne**
+
+    1. Serwer Minecrafta Pi, czyli minikomputer Raspberry Pi w wersji B+, 2 lub 3
+       z najnowszą wersją systemu Raspbian.
+    2. Klient, czyli dowolny komputer z systemem Linux lub Windows,
+       zawierający **interpreter Pythona 2.x**, bibliotekę `mcpi <https://github.com/martinohanlon/mcpi>`_
+       oraz symulator `mcpi-sim <https://github.com/pddring/mcpi-sim>`_.
+    3. Adresy IP serwera i klienta muszą należeć do tej samej sieci lokalnej.
+
+    * Do działania symulatora potrzebna jest biblioteka *PyGame*.
+      Symulator działa tylko w Pythonie 2.x
+    * Opisane poniżej scenariusze można realizować bezpośrednio na Raspberry Pi.
+    * Symulator dostępny jest w repozytorium ``https://github.com/pddring/mcpi-sim.git``.
+    * Biblioteki *mcpi* dostępne są w repozytorium ``https://github.com/martinohanlon/mcpi.git``.
 
 **Instalacja bibliotek**
 
 Wszystkie biblioteki oraz symulator umieściliśmy w archiwum :download:`mcpi-sim.zip <mcpi-sim.zip>`,
 które należy pobrać i rozpakować w katalogu użytkownika. W kolejnych scenariuszach zakładamy,
 że tworzone skrypty zapisujemy w katalogu ``~/mcpi-sim``.
-
-
-.. note::
-
-  * Do działania symulatora potrzebna jest biblioteka *PyGame*.
-    Symulator działa tylko w Pythonie 2.
-  * Opisane poniżej scenariusze można realizować bezpośrednio na Raspberry Pi.
-  * Symulator dostępny jest w repozytorium ``https://github.com/pddring/mcpi-sim.git``.
-  * Biblioteki *mcpi* dostępne są w repozytorium ``https://github.com/martinohanlon/mcpi.git``.
 
 .. toctree::
     :maxdepth: 2

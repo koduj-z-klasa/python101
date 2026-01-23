@@ -37,12 +37,12 @@ Materiały
 
     podstawy/index
     matplot/index
-    rg/index
     pygame/index
-    bazy/index
     pyqt/index
+    bazy/index
     webflask/index
     webdjango/index
+    rg/index
     mcpi/index
     glossary
 
