@@ -1,9 +1,10 @@
 from PyQt6.QtWidgets import QWidget
 from PyQt6.QtGui import QPainter, QColor, QPolygon
-from PyQt6.QtCore import QPoint, QRect, QSize
+from PyQt6.QtCore import QRect, QPoint, QSize
+from enum import Enum
 
 
-class Ksztalty:
+class Ksztalty(Enum):
     """ Klasa pomocnicza, symuluje typ wyliczeniowy """
     RECT, ELLIPSE, POLYGON, LINE = range(4)
 
@@ -36,8 +37,7 @@ class Ksztalt(QWidget):
     def rysuj_figury(self, qp):
         qp.setPen(self.kolor_o)  # kolor obramowania
         qp.setBrush(self.kolor_w)  # kolor wypełnienia
-        # wygładzanie kształtu
-        qp.setRenderHint(QPainter.RenderHint.Antialiasing)
+        qp.setRenderHint(QPainter.RenderHint.Antialiasing)  # wygładzanie kształtu
 
         if self.ksztalt == Ksztalty.RECT:
             qp.drawRect(self.prost)
@@ -48,9 +48,6 @@ class Ksztalt(QWidget):
         elif self.ksztalt == Ksztalty.POLYGON:
             qp.drawPolygon(self.punkty)
 
-    def sizeHint(self):
-        return QSize(102, 102)
-
     def minimumSizeHint(self):
         return QSize(102, 102)
 
@@ -59,5 +56,5 @@ class Ksztalt(QWidget):
         self.update()
 
     def ustaw_kolor_w(self, r=0, g=0, b=0):
-        self.kolor_w = QColor(r, g, b)
+        self.kolorW = QColor(r, g, b)
         self.update()

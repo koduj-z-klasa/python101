@@ -1,22 +1,22 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
-from __future__ import unicode_literals
 from ksztalty import Ksztalty, Ksztalt
-from PyQt5.QtWidgets import QHBoxLayout
+from PyQt6.QtWidgets import QHBoxLayout, QVBoxLayout
 
 
-class Ui_Widget(object):
+class UiWidget:
     """ Klasa definiująca GUI """
 
-    def setupUi(self, Widget):
+    def __init__(self):
 
-        # widget rysujący kształty, instancja klasy Ksztalt
-        self.ksztalt = Ksztalt(self, Ksztalty.Polygon)
+        # widget definiujący kształt, instancja klasy Ksztalt
+        self.ksztalt1 = Ksztalt(None, Ksztalty.RECT)
 
-        # układ poziomy, zawiera: self.ksztalt
-        ukladH1 = QHBoxLayout()
-        ukladH1.addWidget(self.ksztalt)
+        # układ poziomy dla kształtów oraz przycisków CheckBox
+        uklad_h1 = QHBoxLayout()
+        uklad_h1.addWidget(self.ksztalt1)
 
-        self.setLayout(ukladH1)  # przypisanie układu do okna głównego
-        self.setWindowTitle('Widżety')
+        # główny układ okna, pionowy
+        uklad_okna = QVBoxLayout()
+        uklad_okna.addLayout(uklad_h1)
+
+        # ustawienie głównego układu okna
+        self.setLayout(uklad_okna)

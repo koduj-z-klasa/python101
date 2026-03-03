@@ -11,14 +11,6 @@ framework `Qt <https://pl.wikipedia.org/wiki/Qt>`_
 dostępny w wersji `Open Source <https://pl.wikipedia.org/wiki/Otwarte_oprogramowanie>`_  na licencji `GNU LGPL <https://pl.wikipedia.org/wiki/GNU_Lesser_General_Public_License>`_ .
 Działa w wielu systemach operacyjnych.
 
-**Instalacja**
-
-Bibliotekę instalujemy w :ref:`środowisku wirtualnym Pythona <venv>` za pomocą polecenia:
-
-.. code-block:: bash
-
-    ~$ (.venv) pip install pyqt6
-
 .. toctree::
     :maxdepth: 2
 

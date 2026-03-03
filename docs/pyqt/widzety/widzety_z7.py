@@ -1,101 +1,80 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
-from __future__ import unicode_literals
-from PyQt5.QtWidgets import QApplication, QWidget
-from gui_z7 import Ui_Widget
-from PyQt5.QtGui import QColor
+from PyQt6.QtWidgets import QApplication, QWidget
+from gui_z7 import UiWidget
+from PyQt6.QtGui import QColor
+from PyQt6.QtWidgets import QRadioButton, QComboBox
 
 
-class Widgety(QWidget, Ui_Widget):
+class Widgety(QWidget, UiWidget):
     """ Główna klasa aplikacji """
 
-    kanaly = {'R'}  # zbiór kanałów
-    kolorW = QColor(0, 0, 0)  # kolor RGB kształtu 1
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle('Widżety')
 
-    def __init__(self, parent=None):
-        super(Widgety, self).__init__(parent)
-        self.setupUi(self)  # tworzenie interfejsu
+        # Sygnały i sloty
+        # przyciski CheckBox
+        self.grupa_chk.buttonClicked.connect(self.ustaw_ksztalt)
+        self.ksztalt_chk.clicked.connect(self.aktywuj_ksztalt)
 
-        # Sygnały i sloty ###
-        # przyciski CheckBox ###
-        self.grupaChk.buttonClicked[int].connect(self.ustawKsztalt)
-        self.ksztaltChk.clicked.connect(self.aktywujKsztalt)
-        # Slider + przyciski RadioButton ###
-        for i in range(self.ukladR.count()):
-            self.ukladR.itemAt(i).widget().toggled.connect(self.ustawKanal)
-        self.suwak.valueChanged.connect(self.zmienKolor)
-        # Lista ComboBox i SpinBox ###
-        self.grupaRBtn.clicked.connect(self.ustawStan)
-        self.listaRGB.activated[str].connect(self.ustawKanal)
-        self.spinRGB.valueChanged[int].connect(self.zmienKolor)
-        # przyciski PushButton ###
-        for btn in self.grupaP.buttons():
-            btn.clicked[bool].connect(self.ustawKanalPBtn)
-        self.grupaPBtn.clicked.connect(self.ustawStan)
-        # etykiety QLabel i pola QEditLine ###
-        for v in ('R', 'G', 'B'):
-            kolor = getattr(self, 'kolor' + v)
-            kolor.textEdited.connect(self.zmienKolor)
+        self.kanaly = {'R'}  # zbiór kanałów
+        self.kolor_w = QColor(0, 0, 0)  # kolor RGB kształtu 1
 
-    def info(self):
-        fontB = "QWidget { font-weight: bold }"
-        fontN = "QWidget { font-weight: normal }"
+        # Slider + przyciski RadioButton
+        for i in range(self.uklad_r.count()):
+            self.uklad_r.itemAt(i).widget().toggled.connect(self.ustaw_kanal)
+        self.suwak.valueChanged.connect(self.zmien_kolor)
 
-        for v in ('R', 'G', 'B'):
-            label = getattr(self, 'label' + v)
-            kolor = getattr(self, 'kolor' + v)
-            if v in self.kanaly:
-                label.setStyleSheet(fontB)
-                kolor.setEnabled(True)
-            else:
-                label.setStyleSheet(fontN)
-                kolor.setEnabled(False)
+        # Lista ComboBox i SpinBox
+        self.grupa_rbb.clicked.connect(self.ustaw_stan)
+        self.lista_rgb.currentTextChanged.connect(self.ustaw_kanal)
+        self.spin_rgb.valueChanged.connect(self.zmien_kolor)
 
-        self.kolorR.setText(str(self.kolorW.red()))
-        self.kolorG.setText(str(self.kolorW.green()))
-        self.kolorB.setText(str(self.kolorW.blue()))
+        # przyciski PushButton
+        for btn in self.grupa_pb.buttons():
+            btn.clicked.connect(self.ustaw_kanal_pb)
+        self.grupa_pbb.clicked.connect(self.ustaw_stan)
 
-    def ustawKanalPBtn(self, wartosc):
+        # etykiety QLabel i pola QEditLine
+        for e in self.edits:
+            e.editingFinished.connect(self.ustaw_kanal)
+            e.editingFinished.connect(self.zmien_kolor)
+
+    def ustaw_ksztalt(self):
+        self.ksztalt_aktywny.ustaw_ksztalt(self.grupa_chk.checkedId())
+
+    def aktywuj_ksztalt(self, wartosc):
         nadawca = self.sender()
-        kolor = getattr(self, 'kolor' + nadawca.text())
         if wartosc:
-            self.kanaly.add(nadawca.text())
-            kolor.setEnabled(True)
+            self.ksztalt_aktywny = self.ksztalt1
+            nadawca.setText('<=')
         else:
-            self.kanaly.remove(nadawca.text())
-            kolor.setEnabled(False)
+            self.ksztalt_aktywny = self.ksztalt2
+            nadawca.setText('=>')
+        przyciski = self.grupa_chk.buttons()
+        przyciski[self.ksztalt_aktywny.ksztalt].setChecked(True)
 
-    def ustawStan(self, wartosc):
-        if wartosc:
-            self.listaRGB.setEnabled(False)
-            self.spinRGB.setEnabled(False)
-            nadawca = self.sender()
-            if nadawca.objectName() == 'Radio':
-                self.grupaPBtn.setChecked(False)
-            if nadawca.objectName() == 'Push':
-                self.grupaRBtn.setChecked(False)
-                for btn in self.grupaP.buttons():
-                    btn.setChecked(False)
-                    if btn.text() in self.kanaly:
-                        btn.setChecked(True)
-        else:
-            self.listaRGB.setEnabled(True)
-            self.spinRGB.setEnabled(True)
-            self.kanaly = set()
-            self.kanaly.add(self.listaRGB.currentText())
-
-    def ustawKanal(self, wartosc):
+    def ustaw_kanal(self, wartosc):
         self.kanaly = set()  # resetujemy zbiór kanałów
-        try:  # ComboBox
-            if len(wartosc) == 1:
-                self.kanaly.add(wartosc)
-        except TypeError:  # RadioButton
-            nadawca = self.sender()
-            if wartosc:
-                self.kanaly.add(nadawca.text())
+        nadawca = self.sender()
+        if isinstance(nadawca, QRadioButton) and wartosc:
+            # nadawca to QRadioButton
+            kanal = nadawca.text()
+            self.kanaly.add(kanal)
+            self.wypisz_kanal(kanal, self.suwak)
+        elif isinstance(nadawca, QComboBox):
+            # nadawca to QComboBox
+            self.kanaly.add(wartosc)
+            self.wypisz_kanal(wartosc, self.spin_rgb)
 
-    def zmienKolor(self, wartosc):
+    def wypisz_kanal(self, kanal, obiekt):
+        if kanal == 'R':
+            obiekt.setValue(self.kolor_w.red())
+        elif kanal == 'G':
+            obiekt.setValue(self.kolor_w.green())
+        else:
+            obiekt.setValue(self.kolor_w.blue())
+
+    def zmien_kolor(self, wartosc):
         try:
             wartosc = int(wartosc)
         except ValueError:
@@ -105,31 +84,74 @@ class Widgety(QWidget, Ui_Widget):
 
         self.lcd.display(wartosc)
         if 'R' in self.kanaly:
-            self.kolorW.setRed(wartosc)
+            self.kolor_w.setRed(wartosc)
         if 'G' in self.kanaly:
-            self.kolorW.setGreen(wartosc)
+            self.kolor_w.setGreen(wartosc)
         if 'B' in self.kanaly:
-            self.kolorW.setBlue(wartosc)
-
-        self.ksztaltAktywny.ustawKolorW(
-            self.kolorW.red(),
-            self.kolorW.green(),
-            self.kolorW.blue())
+            self.kolor_w.setBlue(wartosc)
+        self.ksztalt_aktywny.ustaw_kolor_w(
+            self.kolor_w.red(),
+            self.kolor_w.green(),
+            self.kolor_w.blue())
         self.info()
 
-    def ustawKsztalt(self, wartosc):
-        self.ksztaltAktywny.ustawKsztalt(wartosc)
-
-    def aktywujKsztalt(self, wartosc):
-        nadawca = self.sender()
+    def ustaw_stan(self, wartosc):
         if wartosc:
-            self.ksztaltAktywny = self.ksztalt1
-            nadawca.setText("<=")
-        else:
-            self.ksztaltAktywny = self.ksztalt2
-            nadawca.setText("=>")
+            # włączone przyciski RadioButton lub PushButton
+            self.lista_rgb.setEnabled(False)
+            self.spin_rgb.setEnabled(False)
+            nadawca = self.sender()
+            if nadawca.objectName() == 'Radio':
+                self.grupa_pbb.setChecked(False)
+                for i, kanal in enumerate('RGB'):
+                    if kanal in self.kanaly:
+                        self.uklad_r.itemAt(i).widget().setChecked(True)
 
-        self.grupaChk.buttons()[self.ksztaltAktywny.ksztalt].setChecked(True)
+            elif nadawca.objectName() == 'Push':
+                self.grupa_rbb.setChecked(False)
+                for btn in self.grupa_pb.buttons():
+                    btn.setChecked(False)
+                    if btn.text() in self.kanaly:
+                        btn.setChecked(True)
+        else:
+            # włączona lista ComboBox
+            self.lista_rgb.setEnabled(True)
+            self.spin_rgb.setEnabled(True)
+            self.kanaly = set()
+            self.kanaly.add(self.lista_rgb.currentText())
+            self.wypisz_kanal(wartosc, self.spin_rgb)
+
+    def ustaw_kanal_pb(self, wartosc):
+        nadawca = self.sender()
+        kolor = self.edits['rgb'.index(nadawca.text().lower())]
+            # getattr(self, 'kolor_' + nadawca.text().lower())
+        if wartosc:
+            self.kanaly.add(nadawca.text())
+            kolor.setEnabled(True)
+        else:
+            self.kanaly.remove(nadawca.text())
+            kolor.setEnabled(False)
+
+    def info(self):
+        font_b = "QWidget { font-weight: bold }"
+        font_n = "QWidget { font-weight: normal }"
+
+        for i, v in enumerate('rgb'):
+            # label = getattr(self, 'label_' + v)
+            # kolor = getattr(self, 'kolor_' + v)
+            label = self.labels[i]
+            kolor = self.edits[i]
+            if v in self.kanaly:
+                label.setStyleSheet(font_b)
+                kolor.setEnabled(True)
+            else:
+                label.setStyleSheet(font_n)
+                kolor.setEnabled(False)
+
+        self.edits[0].setText(str(self.kolor_w.red()))
+        self.edits[1].setText(str(self.kolor_w.green()))
+        self.edits[2].setText(str(self.kolor_w.blue()))
+
 
 if __name__ == '__main__':
     import sys
@@ -137,5 +159,4 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     okno = Widgety()
     okno.show()
-
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
