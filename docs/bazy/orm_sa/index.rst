@@ -3,6 +3,10 @@
 System ORM SQLAlchemy
 #####################
 
+.. contents::
+    :depth: 1
+    :local:
+
 Używanie systemów ORM, takich jak :term:`SQLAlchemy`, w prostych projektach
 sprowadza się do schematu, który poglądowo można opisać w trzech krokach:
 
@@ -23,11 +27,13 @@ Poniżej spróbujemy pokazać, jak wykonywać typowe operacje na bazie z wykorzy
     Do używania systemów ORM wystarczające jest poznanie ich interfejsu API.
 
 Środowisko pracy
-================
+*****************
 
-Do tworzenia aplikacji możesz użyć dowolnych narzędzi, np. terminala i ulubionego edytora kodu.
-Sugerujemy jednak wykorzystanie środowiska **PyCharm** lub innego, ponieważ w ułatwiają pracę nad projektami
-w języku Python.
+.. note::
+
+    Do kodowania i uruchamiania skryptu możesz użyć dowolnych narzędzi, np. ulubionego edytora kodu i terminala.
+    Sugerujemy jednak wykorzystanie środowiska typu **PyCharm** lub innego, ponieważ ułatwiają przygotowania
+    i pracę nad projektami w języku Python.
 
 Przed rozpoczęciem pracy przygotuj w wybranym katalogu, np. :file:`baza_orm`` :ref:`wirtualne środowisko Pythona <venv>`
 i w aktywnym środowisku zainstaluj pakiet *SQLAlchemy*:
@@ -37,7 +43,7 @@ i w aktywnym środowisku zainstaluj pakiet *SQLAlchemy*:
     (.venv) ~/baza_orm$ pip install sqlalchemy
 
 Klasa bazowa
-************
+*****************
 
 W ulubionym edytorze utwórz dwa plik o nazwie :file:`orm_sa.py`.
 
@@ -61,7 +67,7 @@ Do utworzenia modeli danych potrzebna będzie **klasa bazowa**, którą tworzymy
 ``DeclarativeBase``.
 
 Model danych
-*************
+*****************
 
 Dodajemy definicje klas opisujących dwa obiekty reprezentujące klasę i ucznia. Każda klasa ma swoją nazwę
 i profil, każdy uczeń ma imię, nazwisko oraz przynależy do jakiejś klasy.
@@ -118,7 +124,7 @@ plik bazy :file:`baza_sa.db`.
     Nazwy utworzonych tabel to nazwy klas, które je opisują, podobnie nazwy pól odpowiadają nazwom atrybutów.
 
 Dodawanie danych
-****************
+*****************
 
 Do pliku :file:`orm_sa.py` dodajemy następujący kod:
 
@@ -176,7 +182,7 @@ modelu przypisujemy identyfikator obiektu reprezentującego klasę.
       ``SELECT * FROM klasa;`` oraz ``SELECT * FROM uczen;``.
 
 Odczyt danych
-*************
+*****************
 
 Odczyt danych może być realizowany na wiele sposobów. Zacznijmy od uzupełnienia kodu skryptu:
 
@@ -219,7 +225,7 @@ pobieramy z użyciem metody ``scalar()``.
     1.4, który nadal działa: ``if sesja.query(Uczen).count():``.
 
 Modyfikowanie danych
-=================================
+**********************
 
 Systemy ORM ułatwiają modyfikowanie danych w bazie, ponieważ operacja ta polega
 na zmianie wartości pól wybranego obiektu. W naszym skrypcie dopisujemy kod:
@@ -240,7 +246,7 @@ W kolejnym kroku zmieniamy atrybut ``klasa_id`` obiektu reprezentującego ucznia
 Ma końcu zatwierdzamy zmiany w bazie danych za pomocą metody ``commit()``.
 
 Usuwanie danych
-****************
+*****************
 
 Do skryptu dodajemy kolejna porcję kodu:
 
@@ -264,7 +270,7 @@ jako argumenty metody ``where()``. Zapytanie wykonujemy za pomocą metody ``exec
 Na koniec ponownie zatwierdzamy (tj. zapisujemy) zmiany w bazie danych.
 
 Zadania
-********
+*****************
 
 1) Spróbuj dodać do bazy korzystając z systemu Peewee wiele rekordów na raz pobranych z pliku
    :download:`uczniowie.csv <uczniowie.csv>`.

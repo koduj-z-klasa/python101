@@ -38,7 +38,7 @@ class Widgety(QWidget, UiWidget):
         przyciski = self.grupa_chk.buttons()
         przyciski[self.ksztalt_aktywny.ksztalt].setChecked(True)
 
-    def ustaw_kanal(self, wartosc):
+    def ustaw_kanal(self, wartosc=''):
         nadawca = self.sender()
         if isinstance(nadawca, QRadioButton) and wartosc:
             # nadawca to QRadioButton

@@ -1,4 +1,4 @@
-.. _widzety-qt5:
+.. _widzety-qt:
 
 Widżety
 ###########################

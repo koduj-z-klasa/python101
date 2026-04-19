@@ -1,36 +1,33 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
-from __future__ import unicode_literals
-from PyQt5.QtWidgets import QApplication, QWidget
-from PyQt5.QtWidgets import QMessageBox, QInputDialog
-from gui_z1 import Ui_Widget, LoginDialog
+from PyQt6.QtWidgets import QApplication, QWidget
+from PyQt6.QtWidgets import QMessageBox, QInputDialog
+from gui_z1 import UiWidget, LoginDialog
 
 
-class Zadania(QWidget, Ui_Widget):
+class Zadania(QWidget, UiWidget):
 
     def __init__(self, parent=None):
-        super(Zadania, self).__init__(parent)
-        self.setupUi(self)
+        super().__init__(parent)
 
-        self.logujBtn.clicked.connect(self.loguj)
-        self.koniecBtn.clicked.connect(self.koniec)
+        self.loguj_btn.clicked.connect(self.loguj)
+        self.koniec_btn.clicked.connect(self.koniec)
 
     def loguj(self):
-        login, haslo, ok = LoginDialog.getLoginHaslo(self)
+        login, haslo, ok = LoginDialog.get_login_haslo(self)
+        print(login, haslo, ok)
         if not ok:
             return
 
         if not login or not haslo:
             QMessageBox.warning(self, 'Błąd',
-                                'Pusty login lub hasło!', QMessageBox.Ok)
+                                'Pusty login lub hasło!', QMessageBox.StandardButton.Ok)
             return
 
         QMessageBox.information(self,
-            'Dane logowania', 'Podano: ' + login + ' ' + haslo, QMessageBox.Ok)
+            'Dane logowania', 'Podano: ' + login + ' ' + haslo, QMessageBox.StandardButton.Ok)
 
     def koniec(self):
         self.close()
+
 
 if __name__ == '__main__':
     import sys
@@ -38,4 +35,4 @@ if __name__ == '__main__':
     okno = Zadania()
     okno.show()
     okno.move(350, 200)
-    sys.exit(app.exec_())
+    sys.exit(app.exec())

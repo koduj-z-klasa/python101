@@ -3,42 +3,34 @@
 ToDoPw
 ###########################
 
-.. highlight:: python
-
-Realizacja prostej listy zadań do zrobienia jako aplikacji okienkowej,
-z wykorzystaniem biblioteki Qt5 i wiązań Pythona PyQt5.
-Aplikacja umożliwia dodawanie, usuwanie, edycję i oznaczanie jako wykonane zadań,
+Realizacja prostej listy zadań jako aplikacji okienkowej z wykorzystaniem
+Pythona 3 i biblioteki **PyQt6**.
+Aplikacja umożliwi dodawanie, usuwanie, edycję i oznaczanie jako wykonane zadań,
 zapisywanych w bazie SQLite obsługiwanej za pomocą systemu ORM `Peewee <http://docs.peewee-orm.com/en/latest/>`_.
-Biblioteka `Peewee` musi być zainstalowana w systemie.
-
-Przykład wykorzystuje `programowanie obiektowe <https://pl.wikipedia.org/wiki/Programowanie_obiektowe>`_ (ang. *Object Oriented Programing*) i ilustruje technikę `programowania model/widok <http://doc.qt.io/qt-5/model-view-programming.html>`_ (ang. *Model/View Programming*).
+Przykład wykorzystuje `programowanie obiektowe <https://pl.wikipedia.org/wiki/Programowanie_obiektowe>`_ (ang. *Object Oriented Programing*) i ilustruje technikę `programowania model/widok <http://doc.qt.io/qt-6/model-view-programming.html>`_ (ang. *Model/View Programming*).
 
 .. figure:: img/todopw06.png
+
+W wybranym katalogu przygotuj :ref:`środowisko wirtualne Pythona <venv>`.
+Zainstaluj bibliotekę PyQt6 oraz pakiet Peewee w aktywowanym środowisku:
+
+.. code-block:: bash
+
+    (.venv) pip install pyqt6 peewee
 
 .. attention::
 
     **Wymagana wiedza**:
 
-    	* Znajomość Pythona w stopniu średnim.
-    	* Znajomość podstaw projektowania interfejsu z wykorzystaniem biblioteki Qt
-    	  (zob. scenariusze :ref:`Kalkulator <kalkulator-qt>` i :ref:`Widżety <widzety-qt5>`).
-        * Znajomość podstaw systemów ORM (zob. scenariusz :ref:`Systemy ORM <systemy_orm>`).
-
-.. contents::
-    :depth: 1
-    :local:
+    * Znajomość Pythona w stopniu średnim.
+    * Znajomość podstaw projektowania interfejsu z wykorzystaniem biblioteki Qt
+      (zob. scenariusze :ref:`Kalkulator <kalkulator-qt>` i :ref:`Widżety <widzety-qt>`).
+    * Znajomość podstaw :ref:`systemu ORM Peewee <orm_peewee>`.
 
 Interfejs
 **********
 
-Budowanie aplikacji zaczniemy od przygotowania podstawowego interfejsu.
-Na początku utwórzmy katalog aplikacji, w którym zapisywać będziemy wszystkie pliki:
-
-.. code-block:: bash
-
-    ~$ mkdir todopw
-
-Następnie w dowolnym edytorze tworzymy plik o nazwie :file:`gui.py`, który posłuży
+Zaczynamy od utworzenia pliku o nazwie :file:`gui.py`, który posłuży
 do definiowania składników interfejsu. Wklejamy do niego poniższy kod:
 
 .. raw:: html
@@ -49,10 +41,12 @@ do definiowania składników interfejsu. Wklejamy do niego poniższy kod:
 .. literalinclude:: gui_z0.py
     :linenos:
 
-Centralnym elementem aplikacji będzie komponent `QTableView <http://doc.qt.io/qt-5/qtableview.html>`_, który potrafi wyświetlać dane w formie tabeli na podstawie zdefiniowanego modelu.
-Użyjemy go po to, aby oddzielić dane od sposobu ich prezentacji (zob. `Model/View programming <http://doc.qt.io/qt-5/model-view-programming.html>`_). Taka architektura przydaje się zwłaszcza wtedy,
-kiedy aplikacja okienkowa stanowi przede wszystkim interfejs służący prezentacji
-i ewentualnie edycji danych, przechowywanych niezależnie, np. w bazie.
+Centralnym elementem aplikacji będzie komponent `QTableView <http://doc.qt.io/qt-6/qtableview.html>`_,
+który potrafi wyświetlać dane w formie tabeli na podstawie zdefiniowanego modelu.
+Użyjemy go po to, aby oddzielić dane od sposobu ich prezentacji
+(zob. `Model/View programming <http://doc.qt.io/qt-6/model-view-programming.html>`_).
+Taka architektura przydaje się zwłaszcza wtedy, kiedy aplikacja okienkowa stanowi przede wszystkim interfejs
+służący prezentacji i ewentualnie edycji danych, przechowywanych niezależnie, np. w bazie.
 
 Pod kontrolką widoku umieszczamy obok siebie dwa przyciski, za pomocą których będzie się można
 zalogować do aplikacji i ją zakończyć.
@@ -68,22 +62,22 @@ w tym samym katalogu co plik opisujący interfejs. Jego zawartość na początku
 .. literalinclude:: todopw_z0.py
     :linenos:
 
-Podobnie jak w poprzednich scenariuszach klasa ``Zadania`` dziedziczy z klasy ``Ui_Widget``,
+Podobnie jak w poprzednich scenariuszach klasa ``Zadania`` dziedziczy z klasy ``UiWidget``,
 aby utworzyć interfejs aplikacji. W konstruktorze skupiamy się na działaniu aplikacji,
 czyli wiążemy kliknięcia przycisków z odpowiednimi slotami.
 
 Przeglądanie i dodawanie zadań wymaga zalogowania, które obsługuje funkcja ``loguj()``.
-Login i hasło użytkownika można pobrać za pomocą widżetu `QInputDialog <http://doc.qt.io/qt-5/qinputdialog.html>`_, np.: ``login, ok = QInputDialog.getText(self, 'Logowanie', 'Podaj login:')``. Zmienna ``ok``
+Login i hasło użytkownika można pobrać za pomocą widżetu `QInputDialog <http://doc.qt.io/qt-6/qinputdialog.html>`_,
+np.: ``login, ok = QInputDialog.getText(self, 'Logowanie', 'Podaj login:')``. Zmienna ``ok``
 przyjmie wartość ``True``, jeżeli użytkownik zamknie okno naciśnięciem przycisku *OK*.
 
-Jeżeli użytkownik nie podał loginu lub hasła, za pomocą okna dialogowego typu `QMessageBox <http://doc.qt.io/qt-5/qmessagebox.html>`_ wyświetlamy ostrzeżenie (``warning``). W przeciwnym wypadku wyświetlamy
-okno informacyjne (``information``) z wprowadzonymi wartościami.
+Jeżeli użytkownik nie podał loginu lub hasła, za pomocą okna dialogowego typu
+`QMessageBox <http://doc.qt.io/qt-6/qmessagebox.html>`_ wyświetlamy ostrzeżenie (``warning``).
+W przeciwnym wypadku wyświetlamy okno informacyjne (``information``) z wprowadzonymi wartościami.
 
-Aplikację testujemy wpisując w terminalu polecenie:
+**Ćwiczenie**
 
-.. code-block:: bash
-
-    ~/todopw$ python todopw.py
+    * Uruchom skrypt :file:`todopw.py`.
 
 .. figure:: img/todopw00.png
 
@@ -91,7 +85,7 @@ Okno logowania
 ***************
 
 Pobieranie loginu i hasła w osobnych dialogach nie jest optymalne. Na podstawie klasy
-`QDialog <http://doc.qt.io/qt-5/qdialog.html>`_ stworzymy specjalne okno dialogowe.
+`QDialog <http://doc.qt.io/qt-6/qdialog.html>`_ stworzymy specjalne okno dialogowe.
 Na początku dodajemy importy:
 
 .. raw:: html
@@ -100,10 +94,10 @@ Na początku dodajemy importy:
 
 .. code-block:: python
 
-    from PyQt5.QtCore import Qt
-    from PyQt5.QtWidgets import QDialog, QDialogButtonBox
-    from PyQt5.QtWidgets import QLabel, QLineEdit
-    from PyQt5.QtWidgets import QGridLayout
+    from PyQt6.QtCore import Qt
+    from PyQt6.QtWidgets import QDialog, QDialogButtonBox
+    from PyQt6.QtWidgets import QLabel, QLineEdit
+    from PyQt6.QtWidgets import QGridLayout
 
 Na końcu pliku :file:`gui.py` wstawiamy:
 
@@ -114,21 +108,23 @@ Na końcu pliku :file:`gui.py` wstawiamy:
 .. highlight:: python
 .. literalinclude:: gui_z1.py
     :linenos:
-    :lineno-start: 38
-    :lines: 38-
+    :lineno-start: 35
+    :lines: 35-
     :emphasize-lines: 32-43
 
 Okno składa się z dwóch etykiet, odpowiadających im 1-liniowych pól edycyjnych oraz standardowych
 przycisków. Wywołanie metody ``setModal(True)`` powoduje, że dopóki użytkownik nie zamknie
 okna, nie może manipulować oknem rodzica, czyli aplikacją.
 
-Do wywołania okna użyjemy metody statycznej ``getLoginHaslo()`` (zob. :term:`metoda statyczna`)
-klasy *LoginDialog*. Można by ją zapisać nawet poza definicją klasy, ale ponieważ ściśle jest z nią związana, używamy dekoratora ``@staticmethod``. Metodę wywołamy w pliku :file:`todopw.py` w postaci
-``LoginDialog.getLoginHaslo(self)``. Tworzy ona okno dialogowe (``dialog = LoginDialog(parent)``)
-i aktywuje pole loginu. Następnie wyświetla okno i zapisuje odpowiedź użytkownika
-(wciśnięty przycisk) w zmiennej: ``ok = dialog.exec_()``.
-Po zamknięciu okna pobiera wpisane dane za pomocą funkcji pomocniczej ``loginHaslo()``
-i zwraca je, o ile użytkownik wcisnął przycisk *OK*.
+Do wywołania okna użyjemy metody statycznej ``get_login_haslo()`` (zob. :term:`metoda statyczna`)
+klasy *LoginDialog*. Można by ją zapisać nawet poza definicją klasy, ale ponieważ ściśle jest z nią związana,
+używamy dekoratora ``@staticmethod``.
+
+Omawiana metoda utworzy okno dialogowe (``dialog = LoginDialog(parent)``)
+i aktywuje pole loginu. Następnie wyświetli okno i zapisze odpowiedź użytkownika
+(wciśnięty przycisk) w zmiennej: ``ok = dialog.exec()``.
+Po zamknięciu okna pobierzemy wpisane dane za pomocą metody pomocniczej ``login_haslo()``
+i zwrócimy je, o ile użytkownik zamknie okno przyciskiem *OK*.
 
 W pliku :file:`todopw.py` uzupełniamy importy:
 
@@ -242,14 +238,14 @@ Model danych
 
 Kluczowym zadaniem podczas programowania z wykorzystaniem techniki model/widok jest zaimplementowanie
 modelu. Jego zadaniem jest stworzenie interfejsu dostępu do danych dla komponentów pełniących
-rolę widoków. Zob. `Model Classess <http://doc.qt.io/qt-5/model-view-programming.html#model-classes>`_.
+rolę widoków. Zob. `Model Classess <http://doc.qt.io/qt-6/model-view-programming.html#model-classes>`_.
 
 .. note::
 
     Warto zauważyć, ze dane udostępniane przez model mogą być prezentowane za pomocą różnych widoków jednocześnie.
 
 Ponieważ listę zadań przechowujemy w zewnętrznej bazie danych w tabeli, model stworzymy
-na podstawie klasy `QAbstractTableModel <http://doc.qt.io/qt-5/qabstracttablemodel.html>`_.
+na podstawie klasy `QAbstractTableModel <http://doc.qt.io/qt-6/qabstracttablemodel.html>`_.
 W nowym pliku o nazwie :file:`tabmodel.py` umieszczamy następujący kod:
 
 .. raw:: html
@@ -272,7 +268,7 @@ czy też listy dwuwymiarowej.
 
 Funkcja ``data()`` również jest obowiązkowa i odpowiada za wyświetlanie danych.
 Wywoływana jest dla każdego wiersza i każdej kolumny osobno. Trzecim parametrem
-tej funkcji jest tzw. *rola* (zob. `ItemDataRole <http://doc.qt.io/qt-5/qt.html#ItemDataRole-enum>`_ ), oznaczająca rodzaj danych wymaganych przez widok do właściwego wyświetlenia danych.
+tej funkcji jest tzw. *rola* (zob. `ItemDataRole <http://doc.qt.io/qt-6/qt.html#ItemDataRole-enum>`_ ), oznaczająca rodzaj danych wymaganych przez widok do właściwego wyświetlenia danych.
 Domyślną wartością jest ``Qt.DisplayRole``, czyli wyświetlanie danych, dla której zwracamy reprezentację tekstową naszych danych: ``return '{0}'.format(self.tabela[i][j])``.
 
 Dane przekazywane do modelu odczytamy za pomocą funkcji, którą dopisujemy do pliku :file:`baza.py`:
@@ -572,10 +568,10 @@ To wszystko, przetestuj gotową aplikację.
 Materiały
 ***************
 
-1. `Model/View Programming <http://doc.qt.io/qt-5/model-view-programming.html>`_
-2. `Model/View Tutorial <http://doc.qt.io/qt-5/modelview.html>`_
-3. `Presenting Data in a Table View <http://doc.qt.io/qt-5/sql-presenting.html>`_
-4. `Layout Management <http://doc.qt.io/qt-5/layout.html>`_
+1. `Model/View Programming <http://doc.qt.io/qt-6/model-view-programming.html>`_
+2. `Model/View Tutorial <http://doc.qt.io/qt-6/modelview.html>`_
+3. `Presenting Data in a Table View <http://doc.qt.io/qt-6/sql-presenting.html>`_
+4. `Layout Management <http://doc.qt.io/qt-6/layout.html>`_
 
 **Źródła:**
 

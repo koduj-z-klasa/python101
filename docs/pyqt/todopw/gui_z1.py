@@ -1,29 +1,26 @@
-# -*- coding: utf-8 -*-
-
-from PyQt5.QtWidgets import QTableView, QPushButton
-from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QDialog, QDialogButtonBox
-from PyQt5.QtWidgets import QLabel, QLineEdit
-from PyQt5.QtWidgets import QGridLayout
+from PyQt6.QtWidgets import QTableView, QPushButton
+from PyQt6.QtWidgets import QHBoxLayout, QVBoxLayout
+from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QDialog, QDialogButtonBox
+from PyQt6.QtWidgets import QLabel, QLineEdit
+from PyQt6.QtWidgets import QGridLayout
 
 
-class Ui_Widget(object):
+class UiWidget(object):
+    """ Klasa definiująca GUI """
 
-    def setupUi(self, Widget):
-        Widget.setObjectName("Widget")
-
+    def __init__(self):
         # tabelaryczny widok danych
         self.widok = QTableView()
 
         # przyciski Push ###
-        self.logujBtn = QPushButton("Za&loguj")
-        self.koniecBtn = QPushButton("&Koniec")
+        self.loguj_btn = QPushButton("Za&loguj")
+        self.koniec_btn = QPushButton("&Koniec")
 
         # układ przycisków Push ###
         uklad = QHBoxLayout()
-        uklad.addWidget(self.logujBtn)
-        uklad.addWidget(self.koniecBtn)
+        uklad.addWidget(self.loguj_btn)
+        uklad.addWidget(self.koniec_btn)
 
         # główny układ okna ###
         ukladV = QVBoxLayout(self)
@@ -39,22 +36,22 @@ class LoginDialog(QDialog):
     """ Okno dialogowe logowania """
 
     def __init__(self, parent=None):
-        super(LoginDialog, self).__init__(parent)
+        super().__init__()
 
         # etykiety, pola edycyjne i przyciski ###
-        loginLbl = QLabel('Login')
-        hasloLbl = QLabel('Hasło')
+        login_lbl = QLabel('Login')
+        haslo_lbl = QLabel('Hasło')
         self.login = QLineEdit()
         self.haslo = QLineEdit()
+        self.haslo.setEchoMode(QLineEdit.EchoMode.Password)
         self.przyciski = QDialogButtonBox(
-            QDialogButtonBox.Ok | QDialogButtonBox.Cancel,
-            Qt.Horizontal, self)
+            (QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel))
 
         # układ główny ###
         uklad = QGridLayout(self)
-        uklad.addWidget(loginLbl, 0, 0)
+        uklad.addWidget(login_lbl, 0, 0)
         uklad.addWidget(self.login, 0, 1)
-        uklad.addWidget(hasloLbl, 1, 0)
+        uklad.addWidget(haslo_lbl, 1, 0)
         uklad.addWidget(self.haslo, 1, 1)
         uklad.addWidget(self.przyciski, 2, 0, 2, 0)
 
@@ -66,15 +63,15 @@ class LoginDialog(QDialog):
         self.setModal(True)
         self.setWindowTitle('Logowanie')
 
-    def loginHaslo(self):
+    def login_haslo(self):
         return (self.login.text().strip(),
                 self.haslo.text().strip())
 
     # metoda statyczna, tworzy dialog i zwraca (login, haslo, ok)
     @staticmethod
-    def getLoginHaslo(parent=None):
+    def get_login_haslo(self, parent=None):
         dialog = LoginDialog(parent)
         dialog.login.setFocus()
-        ok = dialog.exec_()
-        login, haslo = dialog.loginHaslo()
-        return (login, haslo, ok == QDialog.Accepted)
+        ok = dialog.exec()
+        login, haslo = dialog.login_haslo()
+        return (login, haslo, ok == QDialog.accepted)

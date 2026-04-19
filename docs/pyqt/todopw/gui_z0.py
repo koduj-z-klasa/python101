@@ -1,25 +1,22 @@
-# -*- coding: utf-8 -*-
-
-from PyQt5.QtWidgets import QTableView, QPushButton
-from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout
+from PyQt6.QtWidgets import QTableView, QPushButton
+from PyQt6.QtWidgets import QHBoxLayout, QVBoxLayout
 
 
-class Ui_Widget(object):
+class UiWidget:
+    """ Klasa definiująca GUI """
 
-    def setupUi(self, Widget):
-        Widget.setObjectName("Widget")
-
+    def __init__(self):
         # tabelaryczny widok danych
         self.widok = QTableView()
 
         # przyciski Push ###
-        self.logujBtn = QPushButton("Za&loguj")
-        self.koniecBtn = QPushButton("&Koniec")
+        self.loguj_btn = QPushButton("Za&loguj")
+        self.koniec_btn = QPushButton("&Koniec")
 
         # układ przycisków Push ###
         uklad = QHBoxLayout()
-        uklad.addWidget(self.logujBtn)
-        uklad.addWidget(self.koniecBtn)
+        uklad.addWidget(self.loguj_btn)
+        uklad.addWidget(self.koniec_btn)
 
         # główny układ okna ###
         ukladV = QVBoxLayout(self)
