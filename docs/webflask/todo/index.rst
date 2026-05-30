@@ -3,39 +3,63 @@
 ToDo
 #####
 
-.. highlight:: python
-
-Aplikacja internetowa **ToDo** w oparciu o :term:`framework` Realizacja aplikacji internetowej Quiz w oparciu
-o :term:`framework` `Flask <https://flask.palletsprojects.com/en/stable/>`_ 3.1.x
-i bazę danych `SQLite <http://pl.wikipedia.org/wiki/SQLite>`_.
+Przykład aplikacji internetowej "Quiz" zrealizowanej w oparciu o :term:`framework`
+`Flask <https://flask.palletsprojects.com/en/stable/>`_ i bazę danych `SQLite <http://pl.wikipedia.org/wiki/SQLite>`_.
 Aplikacja umożliwi dodawanie przez zalogowanego użytkownika zadań z określoną datą,
 ich przeglądanie i oznaczanie jako wykonane.
 
-Zalecamy zapoznanie się z materiałami zawartymi w scenariuszach:
+.. attention::
 
-* :ref:`Podstawy Pythona <podstawy-python>`,
-* :ref:`Bazy danych w Pythonie <bazy-python>`,
-* :ref:`Quiz <quiz-app>`.
+    **Wymagane oprogramowanie**:
 
-.. contents::
-    :depth: 1
-    :local:
+      * Środowisko wirtualne Pythona v. 3.x
+      * Flask v. 3.1.x
+      * Opcjonalnie: interpreter bazy SQLite3
 
-Do pracy potrzebne nam będzie wirtualne środowisko Pythona z zainstalowanym pakietem Flask.
-Początek pracy jest taki sam, jak w przypadku aplikacji :ref:`Quiz <quiz-app>`, tzn.:
+    Zalecamy zapoznanie się z materiałami zawartymi w scenariuszach:
 
-1. przygotowujemy wirtualne środowisko Pythona w katalogu :file:`projekty_flask`, chyba że
-   zrobiliśmy to wcześniej podczas realizacji aplikacji Quiz;
-2. w katalogu :file:`projekty_flask` tworzymy **katalog aplikacji**: :file:`todo`;
-3. wykonujemy 2. i 3. punkt scenariusza Quiz, tj.: "Projekt i aplikacja" oraz "Strona główna".
+      * :ref:`Podstawy Pythona <podstawy-python>`,
+      * :ref:`Bazy danych w Pythonie <bazy-python>`,
+      * :ref:`Quiz <quiz-app>`.
 
-W pliku :file:`app.py` zmieniamy w konfiguracji aplikacji nazwę serwisu
-zapisaną w kluczu ``SITE_NAME`` na "Projekty Flask".
+Środowisko pracy
+================
+
+.. tip::
+
+    Do tworzenia aplikacji z użyciem Flask-a możesz użyć dowolnych narzędzi, np. terminala i ulubionego edytora kodu.
+    Sugerujemy jednak wykorzystanie środowiska typu `PyCharm <https://www.jetbrains.com/pycharm/>`_
+    lub `VSCodium <https://vscodium.com/>`_, ponieważ w dużym stopniu ułatwiają pracę nad projektami w języku Python.
+
+    Jeżeli wykonałeś scenariusz aplikacji "Quiz", pomiń przygotowanie środowiska pracy, wykorzystaj katalog
+    i wirtualne środowisko z poprzedniego scenariusza.
+
+Przed rozpoczęciem pracy przygotuj w katalogu :file:`projekty_flask` :ref:`wirtualne środowisko Pythona <venv>`
+i w aktywnym środowisku zainstaluj pakiet *Flask*:
+
+.. raw:: html
+
+    <div class="code_no">Terminal nr <script>var ter_no = ter_no || 1; document.write(ter_no++);</script></span></div>
+
+.. code-block:: bash
+
+    (.venv) ~/projekty_flask$ pip install flask==3.1.3
+
+.. warning::
+
+    Za każdym razem przed rozpoczęciem pracy nad projektem upewnij się, że środowisko wirtualne zostało aktywowane.
 
 Model danych i baza
 ===================
 
-Jako źródło danych aplikacji wykorzystamy tym razem bazę SQLite3 obsługiwaną za pomocą
+W katalogu :file:`projekty_flask` utwórz **katalog aplikacji** o nazwie :file:`todo`.
+
+Wykonaj 2. i 3. punkt scenariusza :ref:`Quiz <quiz-app>`, tj.: "Projekt i aplikacja" oraz "Strona główna".
+
+W pliku :file:`app.py` zmień w konfiguracji aplikacji nazwę serwisu
+zapisaną w kluczu ``SITE_NAME`` na "Projekty Flask".
+
+Jako źródło danych aplikacji wykorzystamy bazę SQLite3 obsługiwaną za pomocą
 modułu Pythona `sqlite3 <https://docs.python.org/3/library/sqlite3.html>`_.
 
 **Model danych**, tj. w tym przypadku schemat bazy danych, zdefiniujemy w pliku :file:`modele.sql`,
@@ -56,8 +80,7 @@ Tabele:
 - ``zadanie`` – zawierać będzie identyfikator zadania, identyfikator użytkownika, treść zadania,
   oznaczenie wykonania oraz datę dodania.
 
-Funkcje potrzebne do obsługi bazy danych umieścimy w nowym pliku :file:`db.py`, który zapisujemy
-w katalogu aplikacji.
+Funkcje potrzebne do obsługi bazy danych umieścimy w katalogu aplikacji w nowym pliku :file:`db.py`:
 
 .. raw:: html
 
@@ -111,6 +134,15 @@ klucz ``DATABASE`` wskazujący na plik bazy danych :file:`db.sqlite`.
 Następnie umieszczamy wywołanie funkcji ``init_app(app)``, dzięki czemu jeżeli
 na dysku nie będzie pliku bazy danych, zostanie on utworzony, a wraz z nim
 tabele zdefiniowane w pliku :file:`todo.sql`.
+
+.. tip::
+
+    Serwer uruchamiamy jednym z poleceń w terminalu w katalogu projektu:
+    ``flask run --debug`` lub ``python3 app.py`` (``py app.py`` w systemie Windows):
+
+    .. code-block:: bash
+
+        (.venv) ~/projekty_flask/quiz$ flask run --debug
 
 Po uruchomieniu serwera deweloperskiego i otwarciu adresu ``http://127.0.0.1:5000``
 powinniśmy zobaczyć stronę:
@@ -350,6 +382,10 @@ Dodawanie i usuwanie kont
 W blueprincie :file:`users.py` umieścimy jeszcze dwa widoki, które umożliwią zarejestrowanie się
 użytkownika oraz usuwanie konta:
 
+.. raw:: html
+
+    <div class="code_no">Plik <i>users.py</i> <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
+
 .. highlight:: python
 .. literalinclude:: source/users.py
     :linenos:
@@ -379,19 +415,23 @@ Pozostaje dodanie szablonów zwracanych przez omówione widoki. W katalogu
 
 - dodajemy plik :file:`user_dodaj.html`:
 
-    .. raw:: html
+.. raw:: html
 
-        <div class="code_no">Plik <i>user_dodaj.html</i> <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
+    <div class="code_no">Plik <i>user_dodaj.html</i> <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
 
-    .. highlight:: html
-    .. literalinclude:: source/user_dodaj.html
-        :linenos:
+.. highlight:: html
+.. literalinclude:: source/user_dodaj.html
+    :linenos:
 
 – oraz plik :file:`user_usun.html`:
 
-    .. highlight:: html
-    .. literalinclude:: source/user_usun.html
-        :linenos:
+.. raw:: html
+
+    <div class="code_no">Plik <i>user_usun.html</i> <span class="right">Kod nr <script>var code_no = code_no || 1; document.write(code_no++);</script></span></div>
+
+.. highlight:: html
+.. literalinclude:: source/user_usun.html
+    :linenos:
 
 Ćwiczenie
 ------------
